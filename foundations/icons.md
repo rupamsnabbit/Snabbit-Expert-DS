@@ -12,10 +12,10 @@ Status: **seed**. Populated fully during the Button, Tab bar and Job-alert specs
 | `x` | Close / dismiss | regular | Sheets, banners |
 | `map-pin` | Job location / distance | regular | Job alert, job card |
 | `clock` | Duration / time | regular | Job alert, shift |
-| `currency-inr` | Earnings / amount | regular | Job alert, earnings, payout |
-| `house` | Home tab | regular / fill when selected | Bottom tab bar |
-| `wallet` | Earnings tab | regular / fill when selected | Bottom tab bar |
-| `user` | Profile tab | regular / fill when selected | Bottom tab bar |
+| `currency-inr` | Earnings tab / amount | regular / fill when selected | Bottom tab bar, job alert, earnings, payout |
+| `spray-bottle` | Home tab — her tool; already learned in the shipped app | regular / fill when selected | Bottom tab bar |
+| `users` | Refer tab | regular / fill when selected | Bottom tab bar |
+| `user-circle` | Profile tab | regular / fill when selected | Bottom tab bar |
 | `siren` | SOS | fill | SOS control — this icon is used for nothing else |
 | `shield-check` | Shield / Kavach active | fill | In-job header |
 | `speaker-high` | Play spoken guidance | regular | Voice prompt |
@@ -33,8 +33,8 @@ Status: **seed**. Populated fully during the Button, Tab bar and Job-alert specs
 | `fire` | Streak | fill | Streak chip |
 | `coin` | Snabbit coins | fill | CoinChip |
 | `translate` | Change language | regular | Settings |
-| `bell` | Notifications | regular | HeaderNav (home) — with Badge |
-| `chats-circle` | Saathi / help | regular / fill when selected | Bottom tab bar |
+| `bell` | Notifications | regular | Profile / root header trailing, with Badge — not on Home |
+| `chats-circle` | Saathi / help | regular | Home header `HeaderAction`, job screens |
 | `magnifying-glass` | Search | regular | TextField search, HeaderNav search |
 
 Not icons: smileys for Rating and the mascot are illustrations, not Phosphor glyphs — they live in the illustration library.

@@ -33,3 +33,11 @@ Design decisions that constrain everything downstream. One entry each, dated, wi
 **Decision.** Tokens define light mode. No dark values are invented.
 
 **Consequence.** Semantic names are mode-ready; a dark mapping is a later token task, not a per-screen decision.
+
+## 2026-09-07 — Navigation: keep the shipped four-tab bar and the labelled home actions
+
+**Decision.** The bottom tab bar stays **Home · Earnings · Refer · Profile**, as the live app ships it, with the pink pill indicator; icons become Phosphor (`spray-bottle`, `currency-inr`, `users`, `user-circle`). Rewards and Saathi are **not** tabs. The Home header keeps the shipped *disc + label pill* item (now the `HeaderAction` sub-component) with a fixed set and order — coins · red cards · Saathi · SOS — and drops Help, bell and ≡. The greeting moves from the header into the content. *Supersedes the first HeaderNav / BottomTabBar drafts, which proposed a five-tab bar (with Rewards and Saathi) and unlabelled chips + bell in the header — written before the shipped bar had been reviewed.*
+
+**Consequence.** Experts relearn nothing: the map they know is the map. The system gains one small component (`HeaderAction`), one governed badge kind (`promo`, Refer only, live bonus only), and a rule that SOS is always the rightmost labelled action on Home and every in-job screen.
+
+**Revisit if.** Rewards outgrows the header (tier, coins, streaks, contests in one place) — then it becomes the only permitted fifth tab.
