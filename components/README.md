@@ -19,3 +19,5 @@ One spec per core component. `button.md` is the template. Status per component: 
 | ListItem | Proposed | `list-item.md` | `site/components/list-item.html` |
 | SelectionCard | Proposed | `selection-card.md` | `site/components/selection-card.html` |
 | BottomSheet | Proposed | `bottom-sheet.md` | `site/components/bottom-sheet.html` |
+| HeaderNav | Proposed | `header-nav.md` | `site/components/header-nav.html` |
+| BottomTabBar | Proposed | `bottom-tab-bar.md` | `site/components/bottom-tab-bar.html` |

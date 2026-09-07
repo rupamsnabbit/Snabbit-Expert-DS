@@ -51,7 +51,7 @@ A filled brand IconButton is never the screen's one next action — that action 
 
 ## Allowed icons
 
-An IconButton may use only these registered icons, in these positions. Anything else becomes a labelled Button.
+An IconButton may use only these registered icons (nine, after `bell` was added by the HeaderNav spec), in these positions. Anything else becomes a labelled Button.
 
 | Icon | Meaning | Position | Size |
 | --- | --- | --- | --- |
@@ -63,6 +63,7 @@ An IconButton may use only these registered icons, in these positions. Anything 
 | `camera` | Take photo | Camera screens | L primary brand (floating, circle) |
 | `crosshair` | Recentre map | Map, bottom-right above the action bar | L secondary neutral (floating, circle) |
 | `translate` | Change language | Settings header | M ghost neutral |
+| `bell` | Notifications | Home header, right of centre, with Badge | M ghost neutral |
 
 To add an icon here: it must be in `foundations/icons.md`, tested with five experts who have never seen it, and appear in the same place on every screen.
 

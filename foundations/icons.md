@@ -33,5 +33,8 @@ Status: **seed**. Populated fully during the Button, Tab bar and Job-alert specs
 | `fire` | Streak | fill | Streak chip |
 | `coin` | Snabbit coins | fill | CoinChip |
 | `translate` | Change language | regular | Settings |
+| `bell` | Notifications | regular | HeaderNav (home) — with Badge |
+| `chats-circle` | Saathi / help | regular / fill when selected | Bottom tab bar |
+| `magnifying-glass` | Search | regular | TextField search, HeaderNav search |
 
 Not icons: smileys for Rating and the mascot are illustrations, not Phosphor glyphs — they live in the illustration library.

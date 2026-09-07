@@ -1,0 +1,115 @@
+<title>Snabbit Expert HeaderNav</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>__BASECSS__
+.scr{width:360px;border:1px solid #E5E7EB;border-radius:20px;overflow:hidden;background:#F9FAFB;color:#111827;font-family:var(--sans)}
+.sb{height:24px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:11px;color:#6B7280}
+.hn{min-height:56px;background:#fff;display:flex;align-items:center;padding:0 4px;gap:4px;position:relative}
+.hn.scrolled{border-bottom:1px solid #F3F4F6}
+.hn.transparent{background:transparent}
+.hn .ib{width:48px;height:48px;border-radius:10px;display:grid;place-items:center;color:#374151;flex:none;position:relative;border:0;background:transparent}.hn .ib svg{width:24px;height:24px}
+.hn .ib.disc{background:#fff;width:40px;height:40px;border-radius:50%;margin:4px}
+.hn .ttl{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;padding:0 8px 0 4px}
+.hn .ttl.noback{padding-left:12px}
+.hn .t{font-size:18px;line-height:24px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hn .s{font-size:12px;line-height:16px;color:#6B7280;display:flex;align-items:center;gap:6px}
+.hn .greet{display:flex;align-items:center;gap:10px;flex:1;padding-left:12px}
+.hn .av{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#8C6B4F,#3B2A1E);flex:none}
+.hn .greet .g{font-size:16px;font-weight:500;line-height:20px}.hn .greet .gs{font-size:12px;color:#6B7280}
+.chipx{display:inline-flex;align-items:center;gap:4px;height:28px;padding:0 8px 0 4px;border-radius:999px;background:#F3F4F6;font-size:12px;font-weight:600;font-variant-numeric:tabular-nums;color:#111827;flex:none}
+.chipx .coin{width:20px;height:20px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#FDE68A,#F59E0B 60%,#B45309)}
+.chipx .rc{width:14px;height:18px;border-radius:2px;background:linear-gradient(135deg,#F87171,#B91C1C);margin:0 3px}
+.sos{width:48px;height:48px;border-radius:50%;background:#FEF2F2;color:#DC2626;display:grid;place-items:center;flex:none;box-shadow:inset 0 0 0 1.5px #EF4444}.sos svg{width:24px;height:24px}
+.bdg{position:absolute;top:6px;right:6px;width:10px;height:10px;border-radius:50%;background:#F70F79;box-shadow:0 0 0 2px #fff}
+.callb{display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 14px;border-radius:8px;box-shadow:inset 0 0 0 1.5px #F70F79;color:#F70F79;font-size:14px;font-weight:500;background:#fff;margin-right:8px;flex:none}.callb svg{width:18px;height:18px}
+.srch{flex:1;height:44px;margin:0 12px 0 0;border-radius:12px;background:#F9FAFB;display:flex;align-items:center;gap:10px;padding:0 14px;color:#9CA3AF;font-size:16px}.srch svg{width:20px;height:20px;color:#6B7280}
+.tmr{display:inline-flex;align-items:center;gap:6px;height:20px;padding:0 8px;border-radius:999px;box-shadow:inset 0 0 0 2px #10B981;font-size:12px;font-weight:600;color:#059669;font-variant-numeric:tabular-nums}
+.body{padding:16px;display:flex;flex-direction:column;gap:12px;min-height:120px}
+.body .cardx{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px;font-size:14px;color:#6B7280;min-height:64px}
+.mapbg{background:repeating-linear-gradient(0deg,#F3F4F6 0 1px,transparent 1px 24px),repeating-linear-gradient(90deg,#F3F4F6 0 1px,#F9FAFB 1px 24px);height:160px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:24px 32px;align-items:start}
+.stg{display:flex;flex-direction:column;gap:8px}.stg .cap{font-family:var(--mono);font-size:12px;color:var(--text-2)}.stg .cap b{color:var(--text);font-weight:500}
+.hamb{width:40px;height:40px;border-radius:50%;background:#F3F4F6;display:grid;place-items:center;color:#111827}.hamb svg{width:20px;height:20px}
+.info{width:24px;height:24px;color:#374151}
+__NAVCSS__</style>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · HeaderNav</small></div></div>
+    __SITENAV__
+    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#variants">Variants</a><a href="#home">Home cluster</a><a href="#scroll">Scroll behaviour</a><a href="#dont">Don't</a><a href="#figma">Figma changes</a></nav>
+    <div class="rail-foot">Rendered from tokens.json · spec in components/header-nav.md</div>
+  </aside>
+  <main class="main">
+    <header id="overview">
+      <div class="eyebrow">Core component</div><h1>HeaderNav</h1>
+      <p class="lede">Says where she is and how to get back. On Home it also holds the two numbers she cares about all day, and it keeps SOS in the same place on every in-job screen. It never holds a menu.</p>
+      <div class="meta"><span class="chip status">Proposed</span><span class="chip">Tier 1 · Core</span><span class="chip"><code>SnabbitHeaderNav</code></span><span class="chip">56 dp · title left</span><span class="chip">No (i), no ≡</span></div>
+    </header>
+
+    <section id="variants">
+      <header><div class="eyebrow">Six shapes</div><h2>Variants</h2><p>Title is always left-aligned beside the back button — Indic titles run long and a centred title truncates unpredictably. One trailing element at most: an IconButton from the allowed set, or a small labelled Button.</p></header>
+      <div class="stage"><div class="grid2" id="variants-grid"></div></div>
+    </section>
+
+    <section id="home">
+      <header><div class="eyebrow">Root</div><h2>Home cluster</h2><p>Six items became three, in fixed positions: status chips (coins, red cards — assets, not red tags), the bell with a Badge, and SOS always rightmost. Saathi moves to the tab bar where it has a label.</p></header>
+      <div class="stage" style="display:flex;justify-content:center"><div class="scr" id="homex"></div></div>
+    </section>
+
+    <section id="scroll">
+      <header><div class="eyebrow">Behaviour</div><h2>Scroll behaviour</h2><p>The header never hides on scroll — persistent orientation matters more than 56 dp for someone who gets lost easily. A 1 dp borderSubtle line appears once content has scrolled under it. Scroll the mock.</p></header>
+      <div class="stage" style="display:flex;justify-content:center"><div class="scr" id="scrollx"></div></div>
+    </section>
+
+    <section id="dont">
+      <header><div class="eyebrow">Common mistakes</div><h2>Don't</h2></header>
+      <div class="stage"><div class="grid2" id="dont-grid"></div></div>
+    </section>
+
+    <section id="figma">
+      <header><div class="eyebrow">Reconciliation</div><h2>What changes in Figma</h2></header>
+      <ol class="rules"><li>TopNav → HeaderNav: Variant (Default / Root / Home / Search / In-job / Transparent), booleans Subtitle, Trailing (None / IconButton / Button).</li><li>Delete the (i) and ≡ variants. Title left-aligned everywhere.</li><li>"Home navigation bar nav" → HeaderNav / Home; cluster reduced to chips (≤ 2) + bell + SOS; Saathi moves out.</li><li>Trailing Call → Button instance (secondary brand S, icon + label).</li><li>Search variant uses a TextField search instance.</li></ol>
+      <p class="sub" style="margin-top:14px">Result: ~12 variants replacing 11 frames.</p>
+    </section>
+  </main>
+</div>
+
+<script id="tokens-json" type="application/json">__TOKENS__</script>
+<script>
+(function(){
+const T=JSON.parse(document.getElementById("tokens-json").textContent); const $=s=>document.querySelector(s);
+const ICO={back:'M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z',bell:'M221.8,175.94C216.25,166.38,208,139.33,208,104a80,80,0,1,0-160,0c0,35.34-8.26,62.38-13.81,71.94A16,16,0,0,0,48,200H88.81a40,40,0,0,0,78.38,0H208a16,16,0,0,0,13.8-24.06ZM128,216a24,24,0,0,1-22.62-16h45.24A24,24,0,0,1,128,216ZM48,184c7.7-13.24,16-43.92,16-80a64,64,0,1,1,128,0c0,36.05,8.28,66.73,16,80Z',siren:'M224,192h-8V144a88,88,0,0,0-176,0v48H32a8,8,0,0,0,0,16H224a8,8,0,0,0,0-16Zm-24,0H56V144a72,72,0,0,1,144,0Zm-72-72a8,8,0,0,0-8,8v48a8,8,0,0,0,16,0V128A8,8,0,0,0,128,120Zm0-96a8,8,0,0,0-8,8V48a8,8,0,0,0,16,0V32A8,8,0,0,0,128,24ZM66.34,66.34,55,55A8,8,0,0,0,43.7,66.34L55,77.66A8,8,0,0,0,66.34,66.34ZM212.3,55,201,66.34A8,8,0,0,0,212.3,77.66L223.62,66.34A8,8,0,0,0,212.3,55Z',phone:'M222.37,158.46l-47.11-21.11-.13-.06a16,16,0,0,0-15.17,1.4,8.12,8.12,0,0,0-.75.56L134.87,160c-15.42-7.49-31.34-23.29-38.83-38.51l20.78-24.71c.2-.25.39-.5.57-.77a16,16,0,0,0,1.32-15.06l0-.12L97.54,33.64a16,16,0,0,0-16.62-9.52A56.26,56.26,0,0,0,32,80c0,79.4,64.6,144,144,144a56.26,56.26,0,0,0,55.88-48.92A16,16,0,0,0,222.37,158.46ZM176,208A128.14,128.14,0,0,1,48,80,40.2,40.2,0,0,1,82.87,40a.61.61,0,0,0,0,.12l21,47L83.2,111.86a6.13,6.13,0,0,0-.57.77,16,16,0,0,0-1,15.7c9.06,18.53,27.73,37.06,46.46,46.11a16,16,0,0,0,15.75-1.14,8.44,8.44,0,0,0,.74-.56L168.89,152l47,21.05h0s.08,0,.11,0A40.21,40.21,0,0,1,176,208Z',mag:'M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z',translate:'M239.15,212.42l-56-112a8,8,0,0,0-14.31,0l-21.71,43.43A88,88,0,0,1,100,126.93,103.65,103.65,0,0,0,127.69,64H152a8,8,0,0,0,0-16H96V32a8,8,0,0,0-16,0V48H24a8,8,0,0,0,0,16h87.63A87.76,87.76,0,0,1,88,116.35a87.74,87.74,0,0,1-19-31,8,8,0,1,0-15.08,5.34A103.63,103.63,0,0,0,76,127a87.55,87.55,0,0,1-52,17,8,8,0,0,0,0,16,103.46,103.46,0,0,0,64-22.08,104.18,104.18,0,0,0,51.44,21.31l-26.6,53.19a8,8,0,0,0,14.31,7.16L140.94,192h70.11l13.79,27.58A8,8,0,0,0,232,224a8,8,0,0,0,7.15-11.58ZM148.94,176,176,121.89,203.05,176Z',list:'M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z',info:'M144,176a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Zm120,44A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z',speaker:'M155.51,24.81a8,8,0,0,0-8.42.88L77.25,80H32A16,16,0,0,0,16,96v64a16,16,0,0,0,16,16H77.25l69.84,54.31A8,8,0,0,0,160,224V32A8,8,0,0,0,155.51,24.81ZM144,207.64,84.91,161.69A7.94,7.94,0,0,0,80,160H32V96H80a7.94,7.94,0,0,0,4.91-1.69L144,48.36ZM208,128a39.93,39.93,0,0,1-10,26.46,8,8,0,0,1-12-10.58,24,24,0,0,0,0-31.72,8,8,0,1,1,12-10.58A40,40,0,0,1,208,128Zm40,0a79.9,79.9,0,0,1-20.37,53.34,8,8,0,0,1-11.92-10.67,64,64,0,0,0,0-85.33,8,8,0,1,1,11.92-10.67A79.83,79.83,0,0,1,248,128Z',headset:'M201.89,54.66A103.43,103.43,0,0,0,128.79,24H128A104,104,0,0,0,24,128v56a24,24,0,0,0,24,24H64a24,24,0,0,0,24-24V144a24,24,0,0,0-24-24H40.36A88.12,88.12,0,0,1,190.54,65.93,87.39,87.39,0,0,1,215.65,120H192a24,24,0,0,0-24,24v40a24,24,0,0,0,24,24h24a24,24,0,0,0,24-24V128A103.41,103.41,0,0,0,201.89,54.66ZM64,136a8,8,0,0,1,8,8v40a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V136Zm152,48a8,8,0,0,1-8,8H192a8,8,0,0,1-8-8V144a8,8,0,0,1,8-8h24Z'};
+const svg=n=>`<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="${ICO[n]}"/></svg>`;
+const sb=`<div class="sb"><span>9:41</span><span>▂▄▆ 4G ▮</span></div>`;
+const ib=(i,o={})=>`<button class="ib ${o.disc?'disc':''}" aria-label="${o.label||i}">${svg(i)}${o.badge?'<span class="bdg"></span>':''}</button>`;
+const sos=`<span class="sos" role="button" aria-label="SOS, hold to call for help">${svg('siren')}</span>`;
+function hn(o){ // variant, title, sub, trailing html, scrolled, body
+ let inner='';
+ if(o.variant==='home')inner=`<div class="greet"><span class="av"></span><div><div class="g">Namaste, Radhika</div><div class="gs">Monday · 3 jobs today</div></div></div><span class="chipx"><span class="coin"></span>240</span><span class="chipx"><span class="rc"></span>1</span>${ib('bell',{badge:1,label:'Notifications, new'})}${sos}`;
+ else if(o.variant==='search')inner=`${ib('back',{label:'Back'})}<div class="srch">${svg('mag')}Search jobs</div>`;
+ else if(o.variant==='transparent')inner=`${ib('back',{disc:1,label:'Back'})}`;
+ else inner=`${o.variant==='root'?'':ib('back',{label:'Back'})}<div class="ttl ${o.variant==='root'?'noback':''}"><div class="t">${o.title}</div>${o.sub?`<div class="s">${o.sub}</div>`:''}</div>${o.trailing||''}`;
+ return `<div class="hn ${o.variant||''} ${o.scrolled?'scrolled':''}" role="banner">${inner}</div>`;}
+const scr=(hdr,body,cls)=>`<div class="scr ${cls||''}">${sb}${hdr}${body||`<div class="body"><div class="cardx">content</div></div>`}</div>`;
+const W=(cap,html)=>`<div class="stg">${html}<div class="cap">${cap}</div></div>`;
+$('#variants-grid').innerHTML=[
+ W('<b>default</b> · back · title · one trailing IconButton',scr(hn({title:'Bank account',trailing:ib('speaker',{label:'Read this screen aloud'})}))),
+ W('<b>default + subtitle</b> · trailing labelled Button',scr(hn({title:'Job details',sub:'Koramangala · 9:30 am',trailing:`<span class="callb">${svg('phone')}Call</span>`}))),
+ W('<b>root</b> · no back · title left',scr(hn({variant:'root',title:'Earnings',trailing:ib('translate',{label:'Change language'})}))),
+ W('<b>search</b> · TextField search fills the middle',scr(hn({variant:'search'}))),
+ W('<b>in-job</b> · Timer in subtitle · SOS only, rightmost',scr(hn({title:'Cleaning',sub:`<span class="tmr">${svg('phone').replace('<svg','<svg style="display:none"')}Working for 1:24:10</span>`,trailing:sos}))),
+ W('<b>transparent</b> · back on a disc · over map or camera',scr(hn({variant:'transparent'}),`<div class="mapbg"></div>`).replace('class="scr ','class="scr " style="background:#F9FAFB" data-x="')) ].join('');
+// home
+$('#homex').innerHTML=`${sb}${hn({variant:'home'})}<div class="body"><div class="cardx" style="color:#111827;font-size:16px;font-weight:500">Cleaning · 2 hr <span style="float:right;color:#6B7280;font-weight:400;font-size:14px">9:30 am</span></div><div class="cardx">Next job in 42 min</div></div>`;
+// scroll demo
+const sx=$('#scrollx');sx.innerHTML=`${sb}<div id="shdr">${hn({title:'This week',sub:'Last 7 days'})}</div><div id="sbody" style="height:220px;overflow-y:auto;background:#F9FAFB"><div class="body">${Array.from({length:8},(_,i)=>`<div class="cardx">Job ${i+1} · ₹${300+i*50}</div>`).join('')}</div></div>`;
+$('#sbody').addEventListener('scroll',e=>{$('#shdr .hn').classList.toggle('scrolled',e.target.scrollTop>4);});
+// donts
+$('#dont-grid').innerHTML=[
+ `<div class="stg">${scr(`<div class="hn">${ib('back')}<div class="ttl" style="text-align:center"><div class="t">How it Works</div></div><span class="info">${svg('info')}</span><span class="hamb" style="margin:0 8px">${svg('list')}</span></div>`)}<span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">A centred title (truncates unpredictably in Kannada), an (i) hiding a sentence behind a 24 dp target, and a hamburger — hierarchical navigation fails for this user; the tab bar is the map.</div></div>`,
+ `<div class="stg">${scr(`<div class="hn">${ib('back')}<span style="flex:1"></span><span class="chipx" style="background:#FEF2F2;color:#B91C1C">${svg('headset').replace('<svg','<svg style="width:16px;height:16px"')}Help</span><span class="chipx" style="background:#DC2626;color:#fff">SOS</span><span class="chipx">Saathi</span><span class="chipx"><span class="coin"></span>30</span><span class="chipx"><span class="rc"></span>4</span><span class="hamb">${svg('list')}</span></div>`)}<span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">Six tap targets in 56 dp. SOS as a small text pill in the middle of a row, not in its fixed rightmost place. Home holds at most three: chips, bell, SOS.</div></div>`].join('');
+const links=[...document.querySelectorAll('#nav a')];const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-20% 0px -70% 0px'});targets.forEach(t=>io.observe(t));}
+})();
+</script>

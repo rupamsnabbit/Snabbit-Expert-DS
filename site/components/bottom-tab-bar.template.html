@@ -1,0 +1,113 @@
+<title>Snabbit Expert BottomTabBar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>__BASECSS__
+.scr{width:360px;border:1px solid #E5E7EB;border-radius:20px;overflow:hidden;background:#F9FAFB;color:#111827;font-family:var(--sans);display:flex;flex-direction:column}
+.scr .top{height:56px;background:#fff;display:flex;align-items:center;padding:0 16px;font-size:18px;font-weight:500;border-bottom:1px solid #F3F4F6}
+.scr .body{flex:1;padding:16px;display:flex;flex-direction:column;gap:12px;min-height:200px}
+.scr .cardx{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px;font-size:14px;color:#6B7280}
+.tb{display:flex;background:#fff;border-top:1px solid #E5E7EB;padding-bottom:12px}
+.tab{flex:1;height:64px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:8px;gap:4px;color:#6B7280;font-size:12px;font-weight:500;line-height:16px;position:relative;cursor:pointer;border:0;background:transparent;font-family:var(--sans);border-radius:8px}
+.tab:active{background:#F9FAFB}.tab.press{background:#F9FAFB}
+.tab .ic{width:24px;height:24px;position:relative}.tab .ic svg{width:24px;height:24px;display:block}
+.tab.on{color:#F70F79}
+.tab.dis{color:#9CA3AF;cursor:default}
+.tab .lb{text-align:center;max-width:100%;padding:0 2px}
+.bdg{position:absolute;top:-4px;right:-6px;min-width:16px;height:16px;padding:0 4px;border-radius:999px;background:#F70F79;color:#fff;font-size:11px;font-weight:600;display:grid;place-items:center;box-shadow:0 0 0 2px #fff;line-height:1}
+.bdg.dot{min-width:10px;width:10px;height:10px;padding:0;top:-2px;right:-2px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:24px 32px;align-items:start}
+.stg{display:flex;flex-direction:column;gap:8px}.stg .cap{font-family:var(--mono);font-size:12px;color:var(--text-2)}.stg .cap b{color:var(--text);font-weight:500}
+.mx{display:grid;grid-template-columns:120px repeat(5,1fr);gap:14px 10px;align-items:end}
+.mx .h{font-family:var(--mono);font-size:11px;color:var(--text-2);text-transform:uppercase;letter-spacing:.05em;text-align:center}.mx .r{font-family:var(--mono);font-size:12.5px;color:var(--text)}
+.mx .c{display:flex;justify-content:center;background:#fff;border-radius:10px;border:1px solid #E5E7EB}
+.dest{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.ds{border:1px solid var(--border);border-radius:12px;padding:14px 16px;background:var(--bg);display:flex;gap:12px;align-items:flex-start}
+.ds .ic{width:40px;height:40px;border-radius:10px;background:var(--brand-wash);color:var(--brand);display:grid;place-items:center;flex:none}.ds .ic svg{width:22px;height:22px}
+.ds h4{margin:0 0 2px;font-size:15px;color:var(--text)}.ds p{margin:0;font-size:13px;color:var(--text-2);line-height:1.45}.ds code{font-size:11px}
+.logline{font-family:var(--mono);font-size:12px;color:var(--text-2);min-height:16px;margin-top:8px}
+.fab{position:absolute;left:50%;top:-24px;transform:translateX(-50%);width:56px;height:56px;border-radius:50%;background:#F70F79;color:#fff;display:grid;place-items:center;box-shadow:0 6px 16px rgba(0,0,0,.2)}.fab svg{width:24px;height:24px}
+__NAVCSS__</style>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · BottomTabBar</small></div></div>
+    __SITENAV__
+    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#dest">Destinations</a><a href="#states">States</a><a href="#live">Live</a><a href="#dont">Don't</a><a href="#figma">Figma changes</a></nav>
+    <div class="rail-foot">Rendered from tokens.json · spec in components/bottom-tab-bar.md</div>
+  </aside>
+  <main class="main">
+    <header id="overview">
+      <div class="eyebrow">Core component</div><h1>BottomTabBar</h1>
+      <p class="lede">The whole map of the app, always visible, always in the same order. For a user who struggles with hierarchical navigation this is the only structure she needs to learn. Everything is reachable from one of these tabs in at most two steps.</p>
+      <div class="meta"><span class="chip status">Proposed</span><span class="chip">Tier 1 · Core</span><span class="chip"><code>SnabbitBottomTabBar</code></span><span class="chip">5 tabs · fixed order</span><span class="chip">New — no Figma component existed</span></div>
+    </header>
+
+    <section id="dest">
+      <header><div class="eyebrow">Fixed</div><h2>Destinations</h2><p>Five, in this order, in every build. New areas go inside a tab, never as a sixth. Saathi and Rewards move down here from the home header, where they had no labels.</p></header>
+      <div class="dest" id="dest-grid"></div>
+    </section>
+
+    <section id="states">
+      <header><div class="eyebrow">Behaviour</div><h2>States</h2><p>Selected is the icon's <em>weight</em> (regular → fill) plus two colours — no underline, no pill. Labels are always visible; an icon-only tab bar is not allowed. At most two badged tabs at once; Home and Profile never badge.</p></header>
+      <div class="stage"><div class="mx" id="mx"></div></div>
+    </section>
+
+    <section id="live">
+      <header><div class="eyebrow">Try it</div><h2>Live</h2><p>Switch tabs — instant, no slide; each tab keeps its scroll. Badges clear when the tab opens. Tapping the current tab scrolls it to the top.</p></header>
+      <div class="demo" style="align-items:flex-start"><div class="scr" id="ph" style="height:520px"></div><div class="card" style="max-width:340px"><h4>Rules</h4><p>Always visible on tab roots and one level down. Hidden only on full-screen flows that must not be left mid-way: job alert, check-in camera, OTP. Never hides on scroll.</p><p>Labels wrap to two lines at 130 % font scale and the bar grows to 72 dp — they never truncate or hide.</p><div class="logline" id="log"></div></div></div>
+    </section>
+
+    <section id="dont">
+      <header><div class="eyebrow">Common mistakes</div><h2>Don't</h2></header>
+      <div class="stage"><div class="grid2" id="dont-grid"></div></div>
+    </section>
+
+    <section id="figma">
+      <header><div class="eyebrow">Reconciliation</div><h2>What changes in Figma</h2></header>
+      <ol class="rules"><li><b>Create</b> BottomTabBar: Tabs (4 / 5), Selected (1–5), per-tab Badge (None / Dot / Count).</li><li>Phosphor instances: regular unselected, fill selected.</li><li>Add it to every tab-root and one-level-down screen; remove hamburger menus, drawer frames and the Saathi / Help pill from the home header.</li><li>Move Saathi and Rewards entry points into the bar.</li></ol>
+      <p class="sub" style="margin-top:14px">Result: ~10 variants, and a bottom edge every screen agrees on.</p>
+    </section>
+  </main>
+</div>
+
+<script id="tokens-json" type="application/json">__TOKENS__</script>
+<script>
+(function(){
+const T=JSON.parse(document.getElementById("tokens-json").textContent); const $=s=>document.querySelector(s);
+const sem={}; Object.values(T.color.semantic).flat().forEach(t=>sem[t.name]=t.value);
+// Phosphor regular + fill pairs
+const R={house:'M240,208H224V136l2.34,2.34A8,8,0,0,0,237.66,127L139.31,28.68a16,16,0,0,0-22.62,0L18.34,127a8,8,0,0,0,11.32,11.31L32,136v72H16a8,8,0,0,0,0,16H240a8,8,0,0,0,0-16ZM48,120l80-80,80,80v88H160V152a8,8,0,0,0-8-8H104a8,8,0,0,0-8,8v56H48Zm64,88V160h32v48Z',
+ wallet:'M216,64H56a8,8,0,0,1,0-16H192a8,8,0,0,0,0-16H56A24,24,0,0,0,32,56V184a24,24,0,0,0,24,24H216a16,16,0,0,0,16-16V80A16,16,0,0,0,216,64Zm0,128H56a8,8,0,0,1-8-8V78.63A23.84,23.84,0,0,0,56,80H216Zm-48-60a12,12,0,1,1,12,12A12,12,0,0,1,168,132Z',
+ trophy:'M232,64H208V56a16,16,0,0,0-16-16H64A16,16,0,0,0,48,56v8H24A16,16,0,0,0,8,80V96a40,40,0,0,0,40,40h3.65A80.13,80.13,0,0,0,120,191.61V216H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16H136V191.58c31.94-3.23,58.44-25.64,68.08-55.58H208a40,40,0,0,0,40-40V80A16,16,0,0,0,232,64ZM48,120A24,24,0,0,1,24,96V80H48v32q0,4,.39,8Zm144-8.9c0,35.52-28.49,64.64-63.51,64.9H128a64,64,0,0,1-64-64V56H192ZM232,96a24,24,0,0,1-24,24h-.5a81.81,81.81,0,0,0,.5-8.9V80h24Z',
+ chats:'M232,96a16,16,0,0,0-16-16H184V48a16,16,0,0,0-16-16H40A16,16,0,0,0,24,48V176a8,8,0,0,0,13,6.22L72,154V184a16,16,0,0,0,16,16h93.59L219,230.22a8,8,0,0,0,5,1.78,8,8,0,0,0,8-8Zm-42.55,89.78a8,8,0,0,0-5-1.78H88V152h80a16,16,0,0,0,16-16V96h32V207.25ZM168,136H82.55a8,8,0,0,0-5,1.78L40,167.25V48H168Z',
+ user:'M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z',
+ plus:'M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z'};
+const F={house:'M240,208H224V136l2.34,2.34A8,8,0,0,0,237.66,127L139.31,28.68a16,16,0,0,0-22.62,0L18.34,127a8,8,0,0,0,11.32,11.31L32,136v72H16a8,8,0,0,0,0,16H240a8,8,0,0,0,0-16ZM160,208H96V152a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8Z',
+ wallet:'M216,72H56a8,8,0,0,1,0-16H192a8,8,0,0,0,0-16H56A24,24,0,0,0,32,64V192a24,24,0,0,0,24,24H216a16,16,0,0,0,16-16V88A16,16,0,0,0,216,72Zm-36,80a12,12,0,1,1,12-12A12,12,0,0,1,180,152Z',
+ trophy:'M232,64H208V56a16,16,0,0,0-16-16H64A16,16,0,0,0,48,56v8H24A16,16,0,0,0,8,80V96a40,40,0,0,0,40,40h3.65A80.13,80.13,0,0,0,120,191.61V216H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16H136V191.58c31.94-3.23,58.44-25.64,68.08-55.58H208a40,40,0,0,0,40-40V80A16,16,0,0,0,232,64ZM48,120A24,24,0,0,1,24,96V80H48v32q0,4,.39,8Zm184-24a24,24,0,0,1-24,24h-.5a81.81,81.81,0,0,0,.5-8.9V80h24Z',
+ chats:'M232,96a16,16,0,0,0-16-16H184V48a16,16,0,0,0-16-16H40A16,16,0,0,0,24,48V176a8,8,0,0,0,13,6.22L72,154V184a16,16,0,0,0,16,16h93.59L219,230.22a8,8,0,0,0,5,1.78,8,8,0,0,0,8-8ZM168,136H82.55a8,8,0,0,0-5,1.78L40,167.25V48H168Z',
+ user:'M230.93,220a8,8,0,0,1-6.93,4H32a8,8,0,0,1-6.92-12c15.23-26.33,38.7-45.21,66.09-54.16a72,72,0,1,1,73.66,0c27.39,8.95,50.86,27.83,66.09,54.16A8,8,0,0,1,230.93,220Z'};
+const svg=(n,fill)=>`<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="${fill?F[n]:R[n]}"/></svg>`;
+const TABS=[['house','Home'],['wallet','Earnings'],['trophy','Rewards'],['chats','Saathi'],['user','Profile']];
+const HOLD={Home:"Today's jobs, availability switch, the next action",Earnings:'Today / week / month, breakdown, payouts, bank',Rewards:'Tier, coins, streaks, achievement badges, contests',Saathi:'Help chat, trainer contact, how-to clips, FAQs',Profile:'Documents, shifts, language, settings'};
+$('#dest-grid').innerHTML=TABS.map(([i,l],n)=>`<div class="ds"><span class="ic">${svg(i,true)}</span><div><h4>${n+1} · ${l}</h4><p>${HOLD[l]}</p><p style="margin-top:4px"><code>${i==='chats'?'chats-circle':i}</code></p></div></div>`).join('');
+const tab=(i,l,o={})=>`<button class="tab ${o.on?'on':''} ${o.dis?'dis':''} ${o.press?'press':''}" role="tab" aria-selected="${!!o.on}" data-l="${l}"><span class="ic">${svg(i,o.on)}${o.badge==='dot'?'<span class="bdg dot"></span>':o.badge?`<span class="bdg">${o.badge}</span>`:''}</span><span class="lb">${l}</span></button>`;
+const bar=(sel,badges={},opts={})=>`<div class="tb" role="tablist" style="position:relative">${TABS.slice(0,opts.n||5).map(([i,l])=>tab(i,l,{on:l===sel,badge:badges[l],dis:opts.dis&&opts.dis.includes(l)})).join('')}</div>`;
+// states matrix
+const ST=[['unselected',{}],['selected',{on:1}],['pressed',{press:1}],['badged · dot',{badge:'dot'}],['badged · count',{badge:'3'}]];
+$('#mx').innerHTML=`<div></div>${ST.map(([h])=>`<div class="h">${h}</div>`).join('')}`+`<div class="r">Earnings</div>`+ST.map(([,o])=>`<div class="c">${tab('wallet','Earnings',o)}</div>`).join('')+`<div class="r">Saathi</div>`+ST.map(([,o])=>`<div class="c">${tab('chats','Saathi',o)}</div>`).join('')+`<div class="r">disabled<br><small style="color:var(--text-3)">onboarding only</small></div><div class="c">${tab('trophy','Rewards',{dis:1})}</div><div></div><div></div><div></div><div></div>`;
+// live
+let cur='Home',badges={Earnings:'dot',Saathi:'2'};const scrolls={};
+function ph(){$('#ph').innerHTML=`<div class="top">${cur==='Home'?'Namaste, Radhika':cur}</div><div class="body" id="pb" style="overflow-y:auto">${Array.from({length:6},(_,i)=>`<div class="cardx">${cur} · item ${i+1}</div>`).join('')}</div>${bar(cur,badges)}`;
+ const pb=$('#pb');pb.scrollTop=scrolls[cur]||0;pb.onscroll=()=>{scrolls[cur]=pb.scrollTop;};
+ $('#ph').querySelectorAll('.tab').forEach(t=>t.onclick=()=>{const l=t.dataset.l;if(l===cur){pb.scrollTo({top:0,behavior:'smooth'});scrolls[cur]=0;$('#log').textContent='same tab → scroll to top';return;}cur=l;if(badges[l]){delete badges[l];$('#log').textContent=`${l} opened · badge cleared · scroll position kept`;}else $('#log').textContent=`${l} opened · instant · scroll position kept`;ph();});}
+ph();
+// donts
+$('#dont-grid').innerHTML=[
+ `<div class="stg"><div class="scr"><div class="body" style="min-height:80px"><div class="cardx">…</div></div><div class="tb">${TABS.map(([i,l],n)=>`<button class="tab ${n===0?'on':''}" style="padding-top:20px"><span class="ic">${svg(i,n===0)}</span></button>`).join('')}</div></div><span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">Icon-only. Labels are always visible — a lone trophy or wallet is not universal enough for a first-week expert.</div></div>`,
+ `<div class="stg"><div class="scr"><div class="body" style="min-height:80px"><div class="cardx">…</div></div><div class="tb" style="position:relative;padding-top:8px">${tab('house','Home',{on:1})}${tab('wallet','Earnings')}<span style="flex:1"></span>${tab('trophy','Rewards')}${tab('user','Profile')}<span class="fab">${svg('plus')}</span></div></div><span class="verdict bad">Don't</span><div class="sub" style="font-size:13.55px">A raised centre button. One primary action per screen lives at the bottom of the <em>content</em>, not in the bar; the bar is a map, not a toolbar.</div></div>`,
+ `<div class="stg"><div class="scr"><div class="body" style="min-height:80px"><div class="cardx">…</div></div><div class="tb">${TABS.map(([i,l],n)=>tab(i,l,{on:n===0,badge:n?String(n*3):null})).join('')}${tab('chats','Contests',{badge:'9+'}).replace('chats','')}</div></div><span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">Six tabs, five of them badged. Five tabs max; at most two badged at once; Home and Profile never badge. More than that is noise, not nudging.</div></div>`].join('');
+const links=[...document.querySelectorAll('#nav a')];const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-20% 0px -70% 0px'});targets.forEach(t=>io.observe(t));}
+})();
+</script>
