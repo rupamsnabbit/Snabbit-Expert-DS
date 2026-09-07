@@ -37,7 +37,7 @@ section>header p,.sub{color:var(--text-2);margin:0;font-size:15px}
 .matrix .r small{display:block;color:#9CA3AF;font-size:11px;text-transform:none;letter-spacing:0}
 .na{width:24px;height:2px;background:#E5E7EB;border-radius:1px}
 .sizes{display:flex;gap:28px;align-items:flex-end;flex-wrap:wrap}
-.szd{display:flex;flex-direction:column;gap:10px;align-items:flex-start}.szd .lbl{font-family:var(--mono);font-size:12px;color:#6B7280}.szd .lbl b{color:#111827;font-weight:500}
+.szd{display:flex;flex-direction:column;gap:10px;align-items:flex-start}.szd .lbl{font-family:var(--mono);font-size:12px;color:var(--text-2)}.szd .lbl b{color:var(--text);font-weight:500}
 
 /* the button itself — everything from tokens via CSS vars set by JS */
 .sbtn{display:inline-flex;align-items:center;justify-content:center;border:0;cursor:pointer;white-space:nowrap;font-family:var(--sans);position:relative;overflow:hidden;
@@ -98,7 +98,7 @@ td.tk{font-family:var(--mono);font-size:12.5px;color:var(--text)}
 .ph .job .t{font-size:16px;font-weight:500}.ph .job .s{font-size:14px;color:#6B7280}
 .ph .empty{text-align:center;color:#6B7280;font-size:14px;padding:32px 0}
 .grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px 32px}
-.stg{display:flex;flex-direction:column;gap:8px}.stg .cap{font-family:var(--mono);font-size:12px;color:#6B7280}.stg .cap b{color:#111827;font-weight:500}
+.stg{display:flex;flex-direction:column;gap:8px}.stg .cap{font-family:var(--mono);font-size:12px;color:var(--text-2)}.stg .cap b{color:var(--text);font-weight:500}
 .mx{display:grid;grid-template-columns:110px repeat(5,1fr);gap:14px 12px;align-items:center}
 .mx .h{font-family:var(--mono);font-size:11px;color:#6B7280;text-transform:uppercase;letter-spacing:.05em}.mx .r{font-family:var(--mono);font-size:12.5px;color:#111827}
 .chat{width:328px;border:1px solid #E5E7EB;border-radius:16px;background:#fff;padding:12px;display:flex;flex-direction:column;gap:10px;color:#111827}
@@ -130,7 +130,7 @@ td.tk{font-family:var(--mono);font-size:12.5px;color:var(--text)}
 
     <section id="kinds">
       <header><div class="eyebrow">Three jobs</div><h2>Kinds</h2><p><b>Filter</b> picks exactly one and the list below changes now — <em>All</em> is first and selected by default. <b>Choice</b> toggles zero or more and the screen's Button commits. <b>Quick reply</b> fires once and the row disappears.</p></header>
-      <div class="stage"><div class="grid2" id="kinds"></div></div>
+      <div class="stage"><div class="grid2" id="kinds-grid"></div></div>
       <ul class="rules"><li>Selected changes <b>shape</b>: the leading icon becomes a <code>check</code>, the fill goes brand-subtle, the border goes brand. Never border colour alone (P1).</li><li><b>≤ 6 chips.</b> More categories than that is a Select sheet — a row must be scannable in one look.</li><li>The Camera / Gallery "Selection Pill" in Figma is a <code>SelectionCard</code>, not a chip.</li></ul>
     </section>
 
@@ -170,7 +170,7 @@ const ICO={check:'M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-
 const svg=n=>`<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="${ICO[n]}"/></svg>`;
 const chip=(o)=>`<button type="button" class="chp ${o.sel?'sel':''} ${o.dis?'dis':''} ${o.qr?'qr':''} ${o.cls||''}" ${o.id?`data-id="${o.id}"`:''} aria-pressed="${!!o.sel}">${o.sel?svg('check'):o.icon?svg(o.icon):''}<span>${o.label}</span>${o.count!=null?`<span class="cnt">${o.count>99?'99+':o.count}</span>`:''}${o.qr?svg('plane'):''}</button>`;
 const W=(cap,html)=>`<div class="stg">${html}<div class="cap">${cap}</div></div>`;
-$('#kinds').innerHTML=[
+$('#kinds-grid').innerHTML=[
  W('<b>filter</b> · exactly one · All first, selected',`<div style="display:flex;gap:8px;flex-wrap:wrap">${chip({label:'All',sel:1,count:12})}${chip({label:'Cleaning',icon:'broom',count:7})}${chip({label:'Cooking',icon:'pot',count:3})}</div>`),
  W('<b>choice</b> · zero or more · Button commits',`<div style="display:flex;gap:8px;flex-wrap:wrap">${chip({label:'Mon',sel:1})}${chip({label:'Tue',sel:1})}${chip({label:'Wed'})}${chip({label:'Thu'})}${chip({label:'Fri',sel:1})}</div>`),
  W('<b>quick reply</b> · fires once · brand text + plane',`<div style="display:flex;gap:8px;flex-wrap:wrap">${chip({label:'On my way',qr:1})}${chip({label:'Reached',qr:1})}${chip({label:'Need 5 more min',qr:1})}</div>`)].join('');

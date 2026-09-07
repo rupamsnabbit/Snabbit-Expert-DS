@@ -37,7 +37,7 @@ section>header p,.sub{color:var(--text-2);margin:0;font-size:15px}
 .matrix .r small{display:block;color:#9CA3AF;font-size:11px;text-transform:none;letter-spacing:0}
 .na{width:24px;height:2px;background:#E5E7EB;border-radius:1px}
 .sizes{display:flex;gap:28px;align-items:flex-end;flex-wrap:wrap}
-.szd{display:flex;flex-direction:column;gap:10px;align-items:flex-start}.szd .lbl{font-family:var(--mono);font-size:12px;color:#6B7280}.szd .lbl b{color:#111827;font-weight:500}
+.szd{display:flex;flex-direction:column;gap:10px;align-items:flex-start}.szd .lbl{font-family:var(--mono);font-size:12px;color:var(--text-2)}.szd .lbl b{color:var(--text);font-weight:500}
 
 /* the button itself — everything from tokens via CSS vars set by JS */
 .sbtn{display:inline-flex;align-items:center;justify-content:center;border:0;cursor:pointer;white-space:nowrap;font-family:var(--sans);position:relative;overflow:hidden;
@@ -81,7 +81,7 @@ td.tk{font-family:var(--mono);font-size:12.5px;color:var(--text)}
 
 .list{background:#fff;border:1px solid #E5E7EB;border-radius:12px;overflow:hidden;width:328px;color:#111827;font-family:var(--sans)}
 .list.bleed{border:0;border-radius:0;width:360px}
-.li{display:flex;align-items:center;gap:12px;min-height:56px;padding:8px 16px;position:relative;cursor:default}
+.li{display:flex;flex-direction:row;flex-wrap:nowrap;justify-content:flex-start;text-align:left;align-items:center;gap:12px;min-height:56px;padding:8px 16px;position:relative;cursor:default}
 .li.nav,.li.selrow{cursor:pointer}.li.nav:active,.li.selrow:active{background:#F9FAFB}
 .li.press{background:#F9FAFB}.li.selected{background:#FEF1F7}.li.dis{opacity:1}.li.dis .tt,.li.dis .ds,.li.dis .tr,.li.dis .ld{color:#9CA3AF!important}.li.dis .ld{opacity:.4}
 .li.two{align-items:flex-start;padding-top:12px;padding-bottom:12px}
@@ -108,7 +108,7 @@ td.tk{font-family:var(--mono);font-size:12.5px;color:var(--text)}
 @media (prefers-reduced-motion:reduce){.sk{animation:none}}
 .sec{font-size:14px;font-weight:500;color:#6B7280;padding:16px 16px 8px}
 .grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(328px,1fr));gap:24px 32px;align-items:start}
-.stg{display:flex;flex-direction:column;gap:8px}.stg .cap{font-family:var(--mono);font-size:12px;color:#6B7280}.stg .cap b{color:#111827;font-weight:500}
+.stg{display:flex;flex-direction:column;gap:8px}.stg .cap{font-family:var(--mono);font-size:12px;color:var(--text-2)}.stg .cap b{color:var(--text);font-weight:500}
 .mx{display:grid;grid-template-columns:repeat(auto-fill,minmax(328px,1fr));gap:16px 24px}
 .ibtn{width:40px;height:40px;border-radius:8px;display:grid;place-items:center;color:#F70F79;box-shadow:inset 0 0 0 1.5px #F70F79;background:#fff}.ibtn svg{width:18px;height:18px}
 .info{width:16px;height:16px;color:#9CA3AF;display:inline-block;vertical-align:-3px;margin-left:4px}
@@ -137,7 +137,7 @@ td.tk{font-family:var(--mono);font-size:12.5px;color:var(--text)}
 
     <section id="heights">
       <header><div class="eyebrow">Sizing</div><h2>Heights &amp; lines</h2><p>Title only 56; with a description 64; with two lines or a 40 dp leading 72. Title is BodyLg 16 — the row is what she reads, so it gets the reading size. Three lines maximum; more is a Card.</p></header>
-      <div class="stage"><div class="grid2" id="heights"></div></div>
+      <div class="stage"><div class="grid2" id="heights-grid"></div></div>
     </section>
 
     <section id="slots">
@@ -200,7 +200,7 @@ function li(o){ // lead:{kind,icon,text,bx,bi}, title, desc, status:{tone,text},
  return `<div class="li ${o.kind||''} ${o.state||''} ${lines||(L&&L.kind!=='icon'&&L.kind!=='cb')?'two':''}" style="--inset:${inset}px" ${o.id?`id="${o.id}"`:''}>${lead}<span class="body"><span class="tt">${o.title}${o.info?`<span class="info">${svg('info')}</span>`:''}</span>${o.desc?`<span class="ds">${o.desc}</span>`:''}${st}</span>${tr?`<span class="tr">${tr}</span>`:''}</div>`;}
 const list=(rows,bleed)=>`<div class="list ${bleed?'bleed':''}">${rows.join('')}</div>`;
 const W=(cap,html)=>`<div class="stg">${html}<div class="cap">${cap}</div></div>`;
-$('#heights').innerHTML=[
+$('#heights-grid').innerHTML=[
  W('<b>56</b> · title only',list([li({lead:{kind:'icon',icon:'bell'},title:'Notifications',trail:{kind:'caret'},kind:'nav'})])),
  W('<b>64</b> · title + description',list([li({lead:{kind:'icon',icon:'bank'},title:'Bank account',desc:'HDFC ····4821',trail:{kind:'caret'},kind:'nav'})])),
  W('<b>72</b> · title + description + status · 40 dp leading',list([li({lead:{kind:'box',icon:'broom'},title:'Cleaning · 2 hr',desc:'Koramangala · 9:30 am',status:{tone:'success',text:'Paid on Friday'},trail:{kind:'amount',v:'₹450'}})]))].join('');
