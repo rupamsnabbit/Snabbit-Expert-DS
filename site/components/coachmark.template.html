@@ -1,0 +1,138 @@
+<meta charset="utf-8">
+<title>Snabbit Expert Coachmark</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>__BASECSS__
+.ph{width:360px;height:640px;border:1px solid #E5E7EB;border-radius:20px;background:#F9FAFB;position:relative;overflow:hidden;color:#111827;font-family:var(--sans)}
+.ph.short{height:500px}
+.ph .ha.sos{position:relative;z-index:7}.ph.nosafe .ha.sos{z-index:auto}
+.ph .sb{height:24px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:11px;color:#6B7280}
+.ph .hn{height:56px;background:#fff;display:flex;align-items:center;padding:0 12px;gap:8px}
+.ph .hn .wm{font-size:20px;font-weight:700;letter-spacing:-.02em;color:#F70F79;flex:1}
+.ha{width:44px;height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;flex:none;position:relative}
+.ha .disc{width:30px;height:30px;border-radius:50%;background:#F3F4F6;display:grid;place-items:center;color:#374151}.ha .disc svg{width:18px;height:18px}
+.ha .lbl{height:16px;min-width:26px;padding:0 6px;border-radius:999px;background:#F3F4F6;color:#111827;font-size:11px;line-height:16px;font-weight:600;white-space:nowrap}
+.ha.sos .disc{background:#FEF2F2;color:#DC2626;box-shadow:inset 0 0 0 1.5px #EF4444}.ha.sos .lbl{background:#DC2626;color:#fff}
+.ha .coin{width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#FDE68A,#F59E0B 60%,#B45309)}
+.ph .body{padding:16px;display:flex;flex-direction:column;gap:12px}
+.ph .greet{font-size:20px;font-weight:500;line-height:28px}.ph .greet small{display:block;font-size:14px;color:#6B7280;font-weight:400;line-height:20px}
+.avail{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:12px}.avail .t{flex:1;font-size:16px;font-weight:500}.avail .t small{display:block;font-size:13px;color:#6B7280;font-weight:400}
+.sw{width:52px;height:32px;border-radius:16px;background:#E5E7EB;position:relative;flex:none;transition:background .2s}.sw::after{content:"";position:absolute;top:4px;left:4px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.2);transition:left .2s}.sw.on{background:#10B981}.sw.on::after{left:24px}
+.cardx{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px;font-size:14px;color:#6B7280;min-height:64px}
+.tb{position:absolute;left:0;right:0;bottom:0;display:flex;background:#fff;border-top:1px solid #E5E7EB;padding-bottom:12px;height:76px}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;padding-top:6px;gap:2px;color:#6B7280;font-size:12px;font-weight:500}.tab .ind{width:64px;height:32px;border-radius:999px;display:grid;place-items:center}.tab.on{color:#F70F79}.tab.on .ind{background:#FEF1F7}.tab svg{width:24px;height:24px}
+/* coachmark */
+.cm-scrim{position:absolute;inset:0;background:rgba(17,24,39,.6);opacity:0;pointer-events:none;transition:opacity .2s;z-index:5}
+.cm-scrim.on{opacity:1;pointer-events:auto}
+.cm-hole{position:absolute;border-radius:16px;box-shadow:0 0 0 2000px rgba(17,24,39,.6);z-index:5;pointer-events:none;opacity:0;transition:opacity .2s}
+.cm-hole.on{opacity:1}
+.cm-hole::after{content:"";position:absolute;inset:-2px;border-radius:inherit;border:2px solid #fff;opacity:.9;animation:cmpulse 1.2s ease-out 2}
+@keyframes cmpulse{0%{inset:-2px;opacity:.9}100%{inset:-8px;opacity:0}}
+.cm{position:absolute;left:32px;width:296px;background:#fff;border-radius:12px;padding:16px;z-index:6;display:flex;flex-direction:column;gap:12px;box-shadow:0 8px 24px rgba(0,0,0,.25);opacity:0;transform:scale(.96);transition:opacity .2s,transform .2s}
+.cm.on{opacity:1;transform:none}
+.cm .arrow{position:absolute;width:16px;height:16px;background:#fff;transform:rotate(45deg);border-radius:2px}
+.cm.below .arrow{top:-8px}.cm.above .arrow{bottom:-8px}
+.cm .msg{display:flex;gap:12px;align-items:flex-start}.cm .msg .pic{width:48px;height:48px;flex:none;border-radius:12px;background:#FEF1F7;display:grid;place-items:center;color:#F70F79}.cm .msg .pic svg{width:26px;height:26px}
+.cm .msg p{margin:0;font-size:18px;line-height:24px;color:#111827}
+.cm .foot{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.cm .spk{display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 12px 0 10px;border-radius:8px;background:#FEF1F7;color:#F70F79;font:500 14px var(--sans);border:0;cursor:pointer}.cm .spk svg{width:20px;height:20px}.cm .spk.muted{background:#F3F4F6;color:#6B7280}
+.cm .cnt{font-size:12px;color:#6B7280;font-variant-numeric:tabular-nums}
+.cm .btn{height:48px;border-radius:10px;border:0;background:#F70F79;color:#fff;font:500 16px var(--sans);width:100%;cursor:pointer}
+.cm .lnk{height:40px;border:0;background:transparent;color:#6B7280;font:500 14px var(--sans);cursor:pointer;align-self:center}
+.cm.shake{animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+@media (prefers-reduced-motion:reduce){.cm,.cm-scrim,.cm-hole{transition:none}.cm-hole::after{animation:none}.cm.shake{animation:none}}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:24px 32px;align-items:start}
+.stg{display:flex;flex-direction:column;gap:8px}.stg .cap{font-family:var(--mono);font-size:12px;color:var(--text-2)}.stg .cap b{color:var(--text);font-weight:500}
+.ctl{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:12px}.ctl button{font-family:var(--sans);font-size:13px;padding:6px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);cursor:pointer}
+.logline{font-family:var(--mono);font-size:12px;color:var(--text-2);min-height:16px;margin-top:8px}
+.tip{position:absolute;background:#374151;color:#fff;font-size:12px;padding:8px 12px;border-radius:8px}.tip::after{content:"";position:absolute;left:50%;bottom:-6px;width:12px;height:12px;background:#374151;transform:translateX(-50%) rotate(45deg)}
+__NAVCSS__</style>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · Coachmark</small></div></div>
+    __SITENAV__
+    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#anatomy">Anatomy</a><a href="#live">Live tour</a><a href="#rules">Rules</a><a href="#dont">Don't</a><a href="#figma">Figma changes</a></nav>
+    <div class="rail-foot">Rendered from tokens.json · spec in components/coachmark.md</div>
+  </aside>
+  <main class="main">
+    <header id="overview">
+      <div class="eyebrow">Core component</div><h1>Coachmark</h1>
+      <p class="lede">Point and say. The first time a screen shows her something new, a Coachmark dims everything else, lights the one thing, and speaks one sentence about it in her language. Then it never comes back for that thing. It is the app's only tooltip.</p>
+      <div class="meta"><span class="chip status">Proposed</span><span class="chip">Tier 1 · Core</span><span class="chip"><code>SnabbitCoachmark</code></span><span class="chip">point · tour ≤ 3</span><span class="chip">Voice first</span><span class="chip">Replaces Tooltips</span></div>
+    </header>
+
+    <section id="anatomy">
+      <header><div class="eyebrow">Parts</div><h2>Anatomy</h2><p>Scrim at 60 % with a <b>spotlight</b> cut around the target (+ 8 dp, pulsing ring twice). The target stays live. A <b>bubble</b> on <code>bgPrimary</code>, 296 dp wide, 12 dp from the target, arrow pointing at its centre: an optional pictogram, one <code>BodyLg</code> sentence, a <b>speaker</b> that replays the voice, and one way out — <em>Got it</em>, or the target itself.</p></header>
+      <div class="stage"><div class="grid2" id="anat-grid"></div></div>
+    </section>
+
+    <section id="live">
+      <header><div class="eyebrow">Try it</div><h2>Live tour</h2><p>First launch after onboarding: three stops — availability, the tab bar, SOS. The bubble sits below a target in the top half and above one in the bottom half. Tapping the scrim does <em>not</em> dismiss (the bubble shakes instead); the availability stop is <code>do-it</code> — flipping the switch is the way out.</p></header>
+      <div class="demo" style="align-items:flex-start;flex-wrap:wrap;gap:28px"><div class="ph" id="ph"></div><div class="card" style="max-width:340px"><h4>Controls</h4><div class="ctl"><button id="start">Start tour</button><button id="single">Point: check-in camera</button><button id="mute">Toggle sound</button></div><div class="logline" id="log">Tour shows once per account. "Show me again" lives in Saathi → Help.</div></div></div>
+    </section>
+
+    <section id="rules">
+      <header><div class="eyebrow">When</div><h2>Rules</h2></header>
+      <ol class="rules"><li><b>Once.</b> Per control, per account, on any device. Replay from Saathi → Help.</li><li><b>One at a time.</b> One Coachmark or tour per screen visit; the next feature waits for the next visit.</li><li><b>Never</b> during a job alert, a running Timer, check-in or OTP; never while an error or offline Banner shows; never on the very first screen of the first launch.</li><li><b>Never over SOS.</b> SOS is never under a scrim — it is either the target or it stays lit and live outside.</li><li>The scrim does not dismiss. A slip of the thumb must not lose the guidance.</li><li>Voice plays automatically 300 ms after the bubble settles; the speaker replays. With sound off, the speaker shows <code>speaker-slash</code> and the one sentence carries the meaning.</li><li>Three stops is the ceiling. Four sentences means a redesign or a how-to clip.</li></ol>
+    </section>
+
+    <section id="dont">
+      <header><div class="eyebrow">Common mistakes</div><h2>Don't</h2></header>
+      <div class="stage"><div class="grid2" id="dont-grid"></div></div>
+    </section>
+
+    <section id="figma">
+      <header><div class="eyebrow">Reconciliation</div><h2>What changes in Figma</h2></header>
+      <ol class="rules"><li>Tooltips → Coachmark: Placement (Below / Above), Media (None / Picto), WayOut (Do-it / Got-it), Counter (None / n of 3), Sound (On / Muted). Bubble bgPrimary, text BodyLg.</li><li>Delete Colored Tooltip. Delete the four side-arrow variants.</li><li>Add a Coachmark / Overlay frame — scrim + spotlight mask — to compose over screen mocks.</li><li>Any mock that annotates a value with a tooltip ("This includes all bonuses") → info BottomSheet or speaker-high beside the label.</li></ol>
+      <p class="sub" style="margin-top:14px">Result: ~10 variants replacing 8, and a first-run pattern every screen mock can show. Token proposal: <code>overlay.scrim</code> = bgInverse @ 60 %, shared with BottomSheet.</p>
+    </section>
+  </main>
+</div>
+
+<script id="tokens-json" type="application/json">__TOKENS__</script>
+<script>
+(function(){
+const T=JSON.parse(document.getElementById("tokens-json").textContent); const $=s=>document.querySelector(s);
+const ICO={spk:'M155.51,24.81a8,8,0,0,0-8.42.88L77.25,80H32A16,16,0,0,0,16,96v64a16,16,0,0,0,16,16H77.25l69.84,54.31A8,8,0,0,0,160,224V32A8,8,0,0,0,155.51,24.81ZM32,96H72v64H32ZM144,207.64,88,164.09V91.91l56-43.55Zm54-106.08a40,40,0,0,1,0,52.88,8,8,0,0,1-12-10.58,24,24,0,0,0,0-31.72,8,8,0,0,1,12-10.58ZM248,128a79.9,79.9,0,0,1-20.37,53.34,8,8,0,0,1-11.92-10.67,64,64,0,0,0,0-85.33,8,8,0,1,1,11.92-10.67A79.83,79.83,0,0,1,248,128Z',spkf:'M160,32.25V223.69a8.29,8.29,0,0,1-3.91,7.18,8,8,0,0,1-9-.56l-65.57-51A4,4,0,0,1,80,176.16V79.84a4,4,0,0,1,1.55-3.15l65.57-51a8,8,0,0,1,10,.16A8.27,8.27,0,0,1,160,32.25ZM60,80H32A16,16,0,0,0,16,96v64a16,16,0,0,0,16,16H60a4,4,0,0,0,4-4V84A4,4,0,0,0,60,80Zm126.77,20.84a8,8,0,0,0-.72,11.3,24,24,0,0,1,0,31.72,8,8,0,1,0,12,10.58,40,40,0,0,0,0-52.88A8,8,0,0,0,186.74,100.84Zm40.89-26.17a8,8,0,1,0-11.92,10.66,64,64,0,0,1,0,85.34,8,8,0,1,0,11.92,10.66,80,80,0,0,0,0-106.66Z',mute:'M53.92,34.62A8,8,0,1,0,42.08,45.38L73.55,80H32A16,16,0,0,0,16,96v64a16,16,0,0,0,16,16H77.25l69.84,54.31A8,8,0,0,0,160,224V175.09l42.08,46.29a8,8,0,1,0,11.84-10.76ZM32,96H72v64H32ZM144,207.64,88,164.09V95.89l56,61.6Zm42-63.77a24,24,0,0,0,0-31.72,8,8,0,1,1,12-10.57,40,40,0,0,1,0,52.88,8,8,0,0,1-12-10.59Zm-80.16-76a8,8,0,0,1,1.4-11.23l39.85-31A8,8,0,0,1,160,32v74.83a8,8,0,0,1-16,0V48.36l-26.94,21A8,8,0,0,1,105.84,67.91ZM248,128a79.9,79.9,0,0,1-20.37,53.34,8,8,0,0,1-11.92-10.67,64,64,0,0,0,0-85.33,8,8,0,1,1,11.92-10.67A79.83,79.83,0,0,1,248,128Z',siren:'M120,16V8a8,8,0,0,1,16,0v8a8,8,0,0,1-16,0Zm80,32a8,8,0,0,0,5.66-2.34l8-8a8,8,0,0,0-11.32-11.32l-8,8A8,8,0,0,0,200,48ZM50.34,45.66A8,8,0,0,0,61.66,34.34l-8-8A8,8,0,0,0,42.34,37.66ZM232,176v24a16,16,0,0,1-16,16H40a16,16,0,0,1-16-16V176a16,16,0,0,1,16-16V128a88,88,0,0,1,88.67-88c48.15.36,87.33,40.29,87.33,89v31A16,16,0,0,1,232,176ZM134.68,87.89C153.67,91.08,168,108.32,168,128a8,8,0,0,0,16,0c0-27.4-20.07-51.43-46.68-55.89a8,8,0,1,0-2.64,15.78ZM216,200V176H40v24H216Z',spray:'M200,80a8,8,0,0,0,8-8,56.06,56.06,0,0,0-56-56H80A16,16,0,0,0,64,32V80a24,24,0,0,1-24,24,8,8,0,0,0,0,16A40,40,0,0,0,80,80h32v24.62a23.87,23.87,0,0,1-9,18.74L87,136.15a39.79,39.79,0,0,0-15,31.23V224a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V211.47A270.88,270.88,0,0,0,174,80ZM80,32h72a40.08,40.08,0,0,1,39.2,32H80ZM192,211.47V224H88V167.38a23.87,23.87,0,0,1,9-18.74l16-12.79a39.79,39.79,0,0,0,15-31.23V80h27.52A254.86,254.86,0,0,1,192,211.47Z',sprayf:'M200,80a8,8,0,0,0,8-8,56.06,56.06,0,0,0-56-56H80A16,16,0,0,0,64,32V80a24,24,0,0,1-24,24,8,8,0,0,0,0,16A40,40,0,0,0,80,80h32v24.62a23.87,23.87,0,0,1-9,18.74L87,136.15a39.79,39.79,0,0,0-15,31.23V224a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V211.47A270.88,270.88,0,0,0,174,80ZM80,32h72a40.08,40.08,0,0,1,39.2,32H80Z',inr:'M208,80a8,8,0,0,1-8,8H167.85c.09,1.32.15,2.65.15,4a60.07,60.07,0,0,1-60,60H92.69l72.69,66.08a8,8,0,1,1-10.76,11.84l-88-80A8,8,0,0,1,72,136h36a44.05,44.05,0,0,0,44-44c0-1.35-.07-2.68-.19-4H72a8,8,0,0,1,0-16h75.17A44,44,0,0,0,108,48H72a8,8,0,0,1,0-16H200a8,8,0,0,1,0,16H148.74a60.13,60.13,0,0,1,15.82,24H200A8,8,0,0,1,208,80Z',users:'M117.25,157.92a60,60,0,1,0-66.5,0A95.83,95.83,0,0,0,3.53,195.63a8,8,0,1,0,13.4,8.74,80,80,0,0,1,134.14,0,8,8,0,0,0,13.4-8.74A95.83,95.83,0,0,0,117.25,157.92ZM40,108a44,44,0,1,1,44,44A44.05,44.05,0,0,1,40,108Zm210.14,98.7a8,8,0,0,1-11.07-2.33A79.83,79.83,0,0,0,172,168a8,8,0,0,1,0-16,44,44,0,1,0-16.34-84.87,8,8,0,1,1-5.94-14.85,60,60,0,0,1,55.53,105.64,95.83,95.83,0,0,1,47.22,37.71A8,8,0,0,1,250.14,206.7Z',uc:'M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24ZM74.08,197.5a64,64,0,0,1,107.84,0,87.83,87.83,0,0,1-107.84,0ZM96,120a32,32,0,1,1,32,32A32,32,0,0,1,96,120Zm97.76,66.41a79.66,79.66,0,0,0-36.06-28.75,48,48,0,1,0-59.4,0,79.66,79.66,0,0,0-36.06,28.75,88,88,0,1,1,131.52,0Z',info:'M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z',power:'M120,128V48a8,8,0,0,1,16,0v80a8,8,0,0,1-16,0Zm60.37-78.7a8,8,0,0,0-8.74,13.4C194.74,77.77,208,101.57,208,128a80,80,0,0,1-160,0c0-26.43,13.26-50.23,36.37-65.3a8,8,0,0,0-8.74-13.4C47.9,67.38,32,96.06,32,128a96,96,0,0,0,192,0C224,96.06,208.1,67.38,180.37,49.3Z'};
+const svg=n=>`<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="${ICO[n]}"/></svg>`;
+const home=(o={})=>`<div class="sb"><span>9:41</span><span>▂▄▆ 4G ▮</span></div><div class="hn"><span class="wm">snabbit</span><span class="ha"><span class="disc" style="background:transparent"><span class="coin"></span></span><span class="lbl">240</span></span><span class="ha sos" id="sos"><span class="disc">${svg('siren')}</span><span class="lbl">SOS</span></span></div><div class="body"><div class="greet">Namaste, Radhika<small>Monday · no jobs yet</small></div><div class="avail" id="avail"><div class="t">Ready for jobs<small>Off — you won't get job alerts</small></div><span class="sw ${o.on?'on':''}" id="sw"></span></div><div class="cardx">Today's jobs appear here</div><div class="cardx">Next job</div></div><div class="tb" id="tb"><div class="tab on"><span class="ind">${svg('sprayf')}</span>Home</div><div class="tab"><span class="ind">${svg('inr')}</span>Earnings</div><div class="tab"><span class="ind">${svg('users')}</span>Refer</div><div class="tab"><span class="ind">${svg('uc')}</span>Profile</div></div>`;
+let muted=false;
+function bubble(o){return `<div class="cm ${o.place}" role="dialog" aria-modal="true"><span class="arrow" style="left:${o.ax}px"></span><div class="msg">${o.pic?`<span class="pic">${svg(o.pic)}</span>`:''}<p>${o.text}</p></div><div class="foot"><button class="spk ${muted?'muted':''}" aria-label="Hear again">${svg(muted?'mute':'spk')}${muted?'Sound off':'Hear again'}</button>${o.counter?`<span class="cnt">${o.counter}</span>`:''}</div>${o.wayout==='got-it'?`<button class="btn">${o.last?'Got it':'Next'}</button>`:`<button class="lnk">Got it</button>`}</div>`;}
+// static anatomy
+$('#anat-grid').innerHTML=[
+ `<div class="stg"><div class="ph short">${home()}<div class="cm-scrim on"></div><div class="cm-hole on" style="left:8px;top:148px;width:344px;height:82px"></div>${bubble({place:'below',ax:140,pic:'power',text:'Turn this on when you are ready for jobs.',wayout:'do-it'}).replace('class="cm below"','class="cm below on" style="top:242px"')}</div><div class="cap"><b>point · do-it</b> · target in the top half → bubble below · flipping the switch dismisses · <em>Got it</em> as a quiet link for later</div></div>`,
+ `<div class="stg"><div class="ph short">${home()}<div class="cm-scrim on"></div><div class="cm-hole on" style="left:0;top:424px;width:360px;height:76px;border-radius:0"></div>${bubble({place:'above',ax:140,text:'Everything is here — jobs, money, help.',wayout:'got-it',counter:'2 of 3'}).replace('class="cm above"','class="cm above on" style="top:222px"')}</div><div class="cap"><b>tour stop · got-it</b> · target in the bottom half → bubble above · counter · <em>Next</em></div></div>`].join('');
+// live
+let step=-1,tour=[];
+const STOPS=[
+ {sel:'#avail',pad:8,text:'Turn this on when you are ready for jobs.',pic:'power',wayout:'do-it',say:'availability · do-it: flipping the switch ends this stop'},
+ {sel:'#tb',pad:0,text:'Everything is here — jobs, money, help.',wayout:'got-it',say:'tab bar · Next'},
+ {sel:'#sos',pad:8,text:'This is SOS. Hold it if you feel unsafe.',wayout:'got-it',say:'SOS · the only time SOS is under a spotlight — never under the scrim'}];
+const ph=$('#ph');
+function render(){ph.innerHTML=home({on:swOn})+`<div class="cm-scrim" id="scrim"></div><div class="cm-hole" id="hole"></div>`;
+ ph.querySelector('#sw').onclick=()=>{swOn=!swOn;ph.querySelector('#sw').classList.toggle('on',swOn);if(step>-1&&tour[step].sel==='#avail'){$('#log').textContent='switch flipped → do-it way out · voice stops · next stop in 150 ms';setTimeout(next,300);}else $('#log').textContent=`availability ${swOn?'on':'off'}`;};
+ $('#scrim').onclick=()=>{const b=ph.querySelector('.cm');if(b){b.classList.remove('shake');void b.offsetWidth;b.classList.add('shake');$('#log').textContent='scrim tapped → bubble shakes, nothing dismissed (a slip of the thumb must not lose the guidance)';}};}
+let swOn=false;render();
+function show(st,i,n){const t=ph.querySelector(st.sel);const r=t.getBoundingClientRect(),pr=ph.getBoundingClientRect();const x=r.left-pr.left-st.pad,y=r.top-pr.top-st.pad,w=r.width+2*st.pad,h=r.height+2*st.pad;
+ const hole=$('#hole');hole.style.cssText=`left:${x}px;top:${y}px;width:${w}px;height:${h}px;border-radius:${st.pad?16:0}px`;hole.classList.remove('on');void hole.offsetWidth;hole.classList.add('on');$('#scrim').classList.add('on');
+ const cx=x+w/2,below=(y+h/2)<320;ph.querySelectorAll('.cm').forEach(e=>e.remove());
+ const ax=Math.max(24,Math.min(296-24,cx-32))-8;const el=document.createElement('div');el.innerHTML=bubble({place:below?'below':'above',ax,pic:st.pic,text:st.text,wayout:st.wayout,counter:n>1?`${i+1} of ${n}`:'',last:i===n-1});const b=el.firstChild;ph.appendChild(b);
+ if(below)b.style.top=(y+h+12)+'px';else b.style.top=(y-12-b.offsetHeight)+'px';requestAnimationFrame(()=>b.classList.add('on'));
+ b.querySelector('.btn,.lnk').onclick=next;b.querySelector('.spk').onclick=()=>{$('#log').textContent=muted?'sound is off — the sentence is the transcript':'replaying: "'+st.text+'"';};
+ $('#log').textContent=`stop ${i+1}${n>1?' of '+n:''} · ${st.say} · ${muted?'muted: speaker-slash':'voice plays 300 ms after settle'}`;}
+function next(){step++;if(step>=tour.length){end();return;}show(tour[step],step,tour.length);}
+function end(){step=-1;tour=[];$('#scrim').classList.remove('on');$('#hole').classList.remove('on');ph.querySelectorAll('.cm').forEach(e=>{e.classList.remove('on');setTimeout(()=>e.remove(),200);});$('#log').textContent='done · marked seen for this account · never shows again here';}
+$('#start').onclick=()=>{tour=STOPS.slice();step=-1;next();};
+$('#single').onclick=()=>{tour=[{sel:'.cardx',pad:8,text:'Tap here to take your check-in photo.',pic:'power',wayout:'got-it',say:'single point coachmark on a card'}];step=-1;next();};
+$('#mute').onclick=()=>{muted=!muted;$('#log').textContent=`sound ${muted?'off → speaker shows speaker-slash; text carries the meaning':'on'}`;if(step>-1)show(tour[step],step,tour.length);};
+// donts
+$('#dont-grid').innerHTML=[
+ `<div class="stg"><div class="ph short">${home()}<span style="position:absolute;top:168px;right:36px;width:24px;height:24px;color:#374151">${svg('info')}</span><div class="tip" style="top:120px;right:20px">Includes all bonuses</div></div><span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">An (i) that opens a tooltip. A 24 dp target hiding a sentence for later fails P3 and the research — guidance is on first use, spoken, at the thing. Explaining a value is an info sheet or a speaker beside the label.</div></div>`,
+ `<div class="stg"><div class="ph short nosafe">${home()}<div class="cm-scrim on"></div>${bubble({place:'below',ax:60,text:'Turn this on for jobs.',wayout:'got-it'}).replace('class="cm below"','class="cm below on" style="top:200px;width:200px;left:12px;padding:12px"')}${bubble({place:'above',ax:120,text:'Your coins.',wayout:'got-it'}).replace('class="cm above"','class="cm above on" style="top:90px;width:150px;left:200px;padding:12px"')}</div><span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">Two coachmarks at once, and SOS under the scrim. One at a time; SOS is never dimmed — it is the target or it stays lit and live.</div></div>`,
+ `<div class="stg"><div class="ph short">${home()}<div class="cm-scrim on"></div><div class="cm-hole on" style="left:8px;top:148px;width:344px;height:82px"></div><div class="cm below on" style="top:242px;background:#374151;color:#fff"><span class="arrow" style="left:132px;background:#374151"></span><div class="msg"><p style="color:#fff;font-size:12px;line-height:16px">New! Pro tip: Availability toggle lets you set your online status so that the dispatch system can route incoming job requests to you in real time.</p></div><div class="foot"><span></span><button class="lnk" style="color:#fff">×</button></div></div></div><span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">Dark bubble, Caption text, three sentences of feature-speak, no voice, an × to close. One BodyLg sentence in spoken register, a speaker, <em>Got it</em>.</div></div>`].join('');
+const links=[...document.querySelectorAll('#nav a')];const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-20% 0px -70% 0px'});targets.forEach(t=>io.observe(t));}
+})();
+</script>

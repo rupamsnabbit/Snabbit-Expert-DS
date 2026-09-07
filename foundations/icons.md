@@ -18,12 +18,13 @@ Status: **seed**. Populated fully during the Button, Tab bar and Job-alert specs
 | `user-circle` | Profile tab | regular / fill when selected | Bottom tab bar |
 | `siren` | SOS | fill | SOS control — this icon is used for nothing else |
 | `shield-check` | Shield / Kavach active | fill | In-job header |
-| `speaker-high` | Play spoken guidance | regular | Voice prompt |
+| `speaker-high` | Play / replay spoken guidance | regular · fill while playing | Voice prompt, Coachmark, HeaderNav trailing |
+| `speaker-slash` | Sound is off | regular | Coachmark muted state |
 | `wifi-slash` | Offline | regular | Offline banner |
 | `warning-circle` | Warning / attention | regular | Banner, Toast |
 | `x-circle` | Error | regular | Banner, Toast, TextField |
 | `check-circle` | Success | fill | Banner, Toast, celebration |
-| `info` | Information | regular | Banner, Tooltip |
+| `info` | Information | regular | Banner `info` tone only — never as an (i) tooltip trigger |
 | `caret-right` | Navigate into | regular | ListItem trailing |
 | `caret-left` | Back | regular | HeaderNav |
 | `arrow-clockwise` | Retry / refresh | regular | Error states |
