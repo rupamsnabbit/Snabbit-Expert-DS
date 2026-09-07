@@ -223,7 +223,8 @@ def trow(r):
             f'<td class="tgt">{e(r["target"])}</td><td class="note">{e(r["note"])}</td></tr>')
 tiles = "".join(f'<button class="tile" data-tier="{k}" type="button"><b>{counts[k]}</b><span>{e(n)}</span></button>' for k,(n,d) in TIER.items())
 legend = "".join(f'<div class="lg"><span class="pill {k}">{e(n)}</span><span>{e(d)}</span></div>' for k,(n,d) in TIER.items())
-page = f"""<title>Snabbit Expert Figma Audit</title>
+page = f"""<meta charset="utf-8">
+<title>Snabbit Expert Figma Audit</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>

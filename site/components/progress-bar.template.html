@@ -1,0 +1,162 @@
+<meta charset="utf-8">
+<title>Snabbit Expert ProgressBar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>__BASECSS__
+.pb{display:flex;flex-direction:column;gap:8px;font-family:var(--sans);color:#111827;width:100%}
+.pb .lrow{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.pb .lab{font-size:12px;line-height:16px;color:#374151}.pb .val{font-size:16px;line-height:24px;font-weight:600;font-variant-numeric:tabular-nums;color:#111827;display:flex;align-items:center;gap:4px}.pb .val svg{width:16px;height:16px}
+.pb.L .lab{font-size:16px;line-height:24px}.pb.L .val{font-size:20px;line-height:28px}
+.pb.S .lab,.pb.S .val{font-size:12px;line-height:16px;font-weight:500}
+.pb .trk{position:relative;height:8px;border-radius:999px;background:#F3F4F6}
+.pb.S .trk{height:4px}.pb.L .trk{height:12px}
+.pb .fill{position:absolute;left:0;top:0;bottom:0;border-radius:999px;background:#F70F79;transition:width .3s ease-out}
+.pb.t-success .fill{background:#10B981}.pb.t-success .val{color:#059669}
+.pb.t-neutral .fill{background:#E5E7EB}.pb.t-neutral .val,.pb.t-neutral .lab{color:#9CA3AF}
+.pb.t-tier .fill{background:var(--tier,#F70F79)}
+.pb .seg{display:flex;gap:4px}.pb .seg span{flex:1;height:8px;border-radius:999px;background:#F3F4F6}.pb .seg span.on{background:#F70F79}.pb.t-success .seg span.on{background:#10B981}
+.pb .ms{position:absolute;top:50%;width:12px;height:12px;border-radius:50%;transform:translate(-50%,-50%);background:#fff;box-shadow:inset 0 0 0 2px #E5E7EB}.pb .ms.on{background:#F70F79;box-shadow:0 0 0 2px #fff}
+.pb.L .ms{width:16px;height:16px}
+.pb .mslab{position:relative;height:14px;margin-top:-2px}.pb .mslab span{position:absolute;transform:translateX(-50%);font-size:10px;line-height:14px;color:#6B7280;white-space:nowrap}
+.pb .goal{position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:24px;height:24px}.pb.L .goal{width:32px;height:32px;right:-16px}
+.pb .trk.hasgoal{margin-right:12px}.pb.L .trk.hasgoal{margin-right:16px}
+.ast{border-radius:50%;width:100%;height:100%;display:grid;place-items:center;position:relative}
+.ast.coin{background:radial-gradient(circle at 35% 35%,#FDE68A,#F59E0B 60%,#B45309)}
+.ast.gold{background:radial-gradient(circle at 35% 35%,#FDE68A,#D97706 60%,#92400E)}
+.ast.silver{background:radial-gradient(circle at 35% 35%,#F9FAFB,#9CA3AF 60%,#4B5563)}
+.ast.blue{background:radial-gradient(circle at 35% 35%,#DBEAFE,#60A5FA 60%,#1D4ED8)}
+.ast.pink{background:radial-gradient(circle at 35% 35%,#FBCFE8,#EC4899 60%,#9D174D)}
+.ast.bronze{background:radial-gradient(circle at 35% 35%,#E7D3C3,#8C6B4F 60%,#3B2A1E)}
+.ast.locked{filter:grayscale(1) brightness(1.15)}.ast .lk{position:absolute;right:-4px;bottom:-4px;width:14px;height:14px;border-radius:50%;background:#fff;display:grid;place-items:center;color:#6B7280;box-shadow:0 0 0 1px #E5E7EB}.ast .lk svg{width:9px;height:9px}
+.ast.lit{box-shadow:0 0 0 3px #FEF1F7,0 0 12px rgba(247,15,121,.35)}
+.ast.pulse{animation:pulse .4s ease-out}
+@keyframes pulse{50%{transform:scale(1.15)}}
+@media (prefers-reduced-motion:reduce){.pb .fill{transition:none}.ast.pulse{animation:none}}
+.cardx{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px;width:328px;display:flex;flex-direction:column;gap:12px;color:#111827;font-family:var(--sans)}
+.cardx .hd{display:flex;align-items:center;gap:12px}.cardx .hd .ic{width:40px;height:40px;flex:none}.cardx .hd .t{font-size:16px;font-weight:500}.cardx .hd .s{font-size:14px;color:#6B7280}
+.cardx.tierhd{padding:0;overflow:hidden}.cardx.tierhd .bar{padding:12px 16px;color:#fff;font-weight:600;font-size:14px;display:flex;align-items:center;gap:8px}.cardx.tierhd .bar .ic{width:20px;height:20px}.cardx.tierhd .in{padding:16px}
+.li{display:flex;align-items:center;gap:12px;min-height:64px;padding:8px 16px;background:#fff;border:1px solid #E5E7EB;border-radius:12px;width:328px;font-family:var(--sans);color:#111827}.li .tx{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}.li .tt{font-size:16px}.li .pb{gap:4px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(328px,1fr));gap:24px 32px;align-items:start}
+.stg{display:flex;flex-direction:column;gap:8px}.stg .cap{font-family:var(--mono);font-size:12px;color:var(--text-2)}.stg .cap b{color:var(--text);font-weight:500}
+.ctl{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:12px}.ctl button{font-family:var(--sans);font-size:13px;padding:6px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);cursor:pointer}
+.logline{font-family:var(--mono);font-size:12px;color:var(--text-2);min-height:16px;margin-top:8px}
+.trail{position:relative;height:56px;display:flex;align-items:center;padding:0 20px}
+.trail .line{position:absolute;left:36px;right:36px;height:6px;border-radius:3px;background:#F3F4F6;top:50%;transform:translateY(-50%)}.trail .line .f{height:100%;border-radius:3px;background:linear-gradient(90deg,#8C6B4F,#9CA3AF)}
+.trail .nodes{position:relative;display:flex;justify-content:space-between;width:100%}.trail .nodes .n{width:40px;height:40px;position:relative}.trail .nodes .n .av{position:absolute;left:50%;bottom:-16px;transform:translateX(-50%);width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,#8C6B4F,#3B2A1E);box-shadow:0 0 0 2px #fff}
+__NAVCSS__</style>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · ProgressBar</small></div></div>
+    __SITENAV__
+    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#kinds">Kinds &amp; sizes</a><a href="#tones">Tones</a><a href="#markers">Markers</a><a href="#live">Live</a><a href="#comp">Compositions</a><a href="#dont">Don't</a><a href="#figma">Figma changes</a></nav>
+    <div class="rail-foot">Rendered from tokens.json · spec in components/progress-bar.md</div>
+  </aside>
+  <main class="main">
+    <header id="overview">
+      <div class="eyebrow">Core component</div><h1>ProgressBar</h1>
+      <p class="lede">How far she has come toward something she can name — the next tier, this week's coins, five jobs today. A filling track with the goal at the end. Never a loading indicator, never a percentage.</p>
+      <div class="meta"><span class="chip status">Proposed</span><span class="chip">Tier 1 · Core</span><span class="chip"><code>SnabbitProgressBar</code></span><span class="chip">linear · segmented</span><span class="chip">value = "4 of 20"</span></div>
+    </header>
+
+    <section id="kinds">
+      <header><div class="eyebrow">Shape</div><h2>Kinds &amp; sizes</h2><p><b>Linear</b> for a continuous quantity, <b>segmented</b> (2–7) for a count of equal things. Three sizes; the label row is part of the component so the value is never left out. The value is always a number and a noun — <em>4 of 20 coins</em> — never <code>%</code>.</p></header>
+      <div class="stage"><div class="grid2" id="kinds-grid"></div></div>
+    </section>
+
+    <section id="tones">
+      <header><div class="eyebrow">Computed</div><h2>Tones</h2><p>Tone follows the value: <b>brand</b> while she is on the way, <b>success</b> when the goal is reached (fill turns green, a check joins the value, the asset lights), <b>neutral</b> for a track that is locked or not yet open. Never warning or error — a bar that turns red is a punishment; a shortfall is told by a Banner.</p></header>
+      <div class="stage"><div class="grid2" id="tones-grid"></div></div>
+    </section>
+
+    <section id="markers">
+      <header><div class="eyebrow">Slots</div><h2>Markers</h2><p>A <b>goal</b> asset at the end of the track (metallic layer — coin, tier badge), lit when reached, grey with a lock when not yet available. <b>Milestones</b> are dots on the track at their values with <code>Small</code> labels beneath — the one place <code>Small</code> is allowed, because the value line above carries the meaning.</p></header>
+      <div class="stage"><div class="grid2" id="markers-grid"></div></div>
+    </section>
+
+    <section id="live">
+      <header><div class="eyebrow">Try it</div><h2>Live</h2><p>Fill animates 300 ms from the previous value. Reaching the goal completes the fill, then the asset pulses once with the <em>coin</em> sound and a medium haptic. A decrease animates down silently — the Banner that caused it does the talking.</p></header>
+      <div class="demo" style="align-items:flex-start;flex-wrap:wrap;gap:28px"><div class="cardx" id="livecard"></div><div class="card" style="max-width:340px"><h4>Controls</h4><div class="ctl"><button data-d="1">+1 coin</button><button data-d="4">+4 coins</button><button data-d="-3">−3 (red card)</button><button data-d="reset">Reset</button></div><div class="logline" id="log"></div></div></div>
+    </section>
+
+    <section id="comp">
+      <header><div class="eyebrow">Tier 2</div><h2>Compositions</h2><p>The Figma <em>Progress Cards</em> and <em>TIER PROGRESS</em> frames become three compositions built from Card, ListItem and ProgressBar. Only here may the fill take the colour of the <em>next</em> tier's asset — because the asset is right there at the end of the track.</p></header>
+      <div class="stage"><div class="grid2" id="comp-grid"></div></div>
+    </section>
+
+    <section id="dont">
+      <header><div class="eyebrow">Common mistakes</div><h2>Don't</h2></header>
+      <div class="stage"><div class="grid2" id="dont-grid"></div></div>
+    </section>
+
+    <section id="figma">
+      <header><div class="eyebrow">Reconciliation</div><h2>What changes in Figma</h2></header>
+      <ol class="rules"><li>Progress Bar → ProgressBar: Kind (Linear / Segmented), Size (S / M / L), Marker (None / Goal / Milestones), Tone (Brand / Success / Neutral). Fill level is a number property, not a variant. Bind track to bgTertiary, fill to bgBrand / iconSuccess.</li><li>Delete the dark-grey and light-grey fill variants; delete the <b>Progress Buttons</b> frame — a filling button is the Button's hold-to-confirm state.</li><li>Progress Cards → TierProgressCard (Card + ProgressBar M goal) and WeeklyGoalCard (ProgressBar M milestones).</li><li>TIER PROGRESS → TierRail composition: ProgressBar L with five tier assets as milestones and the Avatar position marker.</li><li>Progress Stat – List → ListItem with ProgressBar S trailing.</li></ol>
+      <p class="sub" style="margin-top:14px">Result: ~12 variants replacing 34 + 16 + 5 + 8 frames.</p>
+    </section>
+  </main>
+</div>
+
+<script id="tokens-json" type="application/json">__TOKENS__</script>
+<script>
+(function(){
+const T=JSON.parse(document.getElementById("tokens-json").textContent); const $=s=>document.querySelector(s);
+const ICO={check:'M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z',lock:'M208,80H176V56a48,48,0,0,0-96,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM96,56a32,32,0,0,1,64,0V80H96Z',checkc:'M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,85.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z',caret:'M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z'};
+const svg=n=>`<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="${ICO[n]}"/></svg>`;
+const asset=(kind,o={})=>`<span class="ast ${kind} ${o.locked?'locked':''} ${o.lit?'lit':''} ${o.pulse?'pulse':''}" title="${o.name||kind}">${o.locked?`<span class="lk">${svg('lock')}</span>`:''}</span>`;
+function pb(o){ // {label,value,goal,noun,size,kind,count,goalAsset,milestones:[{at,label}],tone,tier}
+ const size=o.size||'M', pct=Math.max(0,Math.min(100,o.value/o.goal*100));
+ const tone=o.tone||(o.value>=o.goal?'success':'brand');
+ const done=o.value>=o.goal;
+ const valTxt=tone==='neutral'?(o.lockedText||'Locked'):done?`${svg('check')}Done · ${o.goal} of ${o.goal}`:`${o.value} of ${o.goal}${o.noun?' '+o.noun:''}`;
+ let track='';
+ if(o.kind==='segmented'){track=`<div class="seg" role="progressbar" aria-valuenow="${o.value}" aria-valuemax="${o.goal}">${Array.from({length:o.goal},(_,i)=>`<span class="${i<o.value?'on':''}"></span>`).join('')}</div>`;}
+ else{
+  const ms=(o.milestones||[]).map(m=>`<span class="ms ${o.value>=m.at?'on':''}" style="left:${m.at/o.goal*100}%"></span>`).join('');
+  const goal=o.goalAsset?`<span class="goal">${asset(o.goalAsset,{locked:tone==='neutral',lit:done,pulse:o.pulse,name:o.goalName})}</span>`:'';
+  track=`<div class="trk ${o.goalAsset?'hasgoal':''}" role="progressbar" aria-valuenow="${o.value}" aria-valuemax="${o.goal}"><div class="fill" style="width:${pct}%"></div>${ms}${goal}</div>`;
+  if(o.milestones&&o.milestones.some(m=>m.label))track+=`<div class="mslab">${o.milestones.map(m=>`<span style="left:${m.at/o.goal*100}%">${m.label||''}</span>`).join('')}</div>`;
+ }
+ return `<div class="pb ${size} t-${tone} ${o.tier?'t-tier':''}" ${o.tier?`style="--tier:${o.tier}"`:''}>${o.noLabel?'':`<div class="lrow"><span class="lab">${o.label}</span><span class="val">${valTxt}</span></div>`}${track}</div>`;}
+const W=(cap,html,w)=>`<div class="stg"><div style="width:${w||328}px">${html}</div><div class="cap">${cap}</div></div>`;
+$('#kinds-grid').innerHTML=[
+ W('<b>linear · M</b> · default · 8 dp track',pb({label:'Snabbit coins this week',value:4,goal:20,noun:'coins'})),
+ W('<b>segmented · M</b> · 5 equal things · 4 dp gaps',pb({label:'Jobs today',value:3,goal:5,kind:'segmented'})),
+ W('<b>linear · S</b> · 4 dp · inside rows and compact cards',pb({label:'Upload',value:2,goal:3,size:'S',noun:'files'})),
+ W('<b>segmented · M</b> · 7 · streak week',pb({label:'Streak this week',value:5,goal:7,kind:'segmented',noun:'days'})),
+ W('<b>linear · L</b> · 12 dp · hero tier progress',pb({label:'To Gold tier',value:1240,goal:3000,size:'L',noun:'coins',goalAsset:'gold',goalName:'Gold tier'})),
+ W('<b>linear · M</b> · empty · the track alone says "nothing yet, here is the goal"',pb({label:'Snabbit coins this week',value:0,goal:20,noun:'coins',goalAsset:'coin'}))].join('');
+$('#tones-grid').innerHTML=[
+ W('<b>brand</b> · 0 &lt; value &lt; goal',pb({label:'Snabbit coins this week',value:12,goal:20,noun:'coins',goalAsset:'coin'})),
+ W('<b>success</b> · value ≥ goal · green fill · check · asset lit',pb({label:'Snabbit coins this week',value:20,goal:20,noun:'coins',goalAsset:'coin'})),
+ W('<b>neutral</b> · locked · reason in the value line · lock on the asset',pb({label:'Week 3 coins',value:0,goal:20,tone:'neutral',lockedText:'Opens Monday',goalAsset:'coin'})),
+ W('<b>success · segmented</b>',pb({label:'Jobs today',value:5,goal:5,kind:'segmented'}))].join('');
+$('#markers-grid').innerHTML=[
+ W('<b>goal</b> · coin asset at the end, overlapping the track by half',pb({label:'Snabbit coins this week',value:7,goal:20,noun:'coins',goalAsset:'coin'})),
+ W('<b>goal · locked</b> · grey asset + lock-simple',pb({label:'To Diamond tier',value:0,goal:6000,tone:'neutral',lockedText:'Unlocks after Gold',goalAsset:'blue',goalName:'Diamond tier'})),
+ W('<b>milestones</b> · weeks of a month · Small labels beneath',pb({label:'Coins this month',value:34,goal:80,noun:'coins',goalAsset:'coin',milestones:[{at:20,label:'Week 1'},{at:40,label:'Week 2'},{at:60,label:'Week 3'}]})),
+ W('<b>milestones · L</b> · reached dots are brand with a white ring',pb({label:'To Gold tier',value:2100,goal:3000,size:'L',noun:'coins',goalAsset:'gold',goalName:'Gold tier',milestones:[{at:1000},{at:2000}]}))].join('');
+// live
+let v=14,goal=20,prev=14;
+function live(pulse){$('#livecard').innerHTML=`<div class="hd"><span class="ic">${asset('coin')}</span><div><div class="t">Snabbit coins</div><div class="s">This week</div></div></div>${pb({label:'To your weekly bonus',value:v,goal,noun:'coins',goalAsset:'coin',pulse})}`;}
+live();
+document.querySelectorAll('.ctl button').forEach(b=>b.onclick=()=>{const d=b.dataset.d;prev=v;if(d==='reset'){v=14;live();$('#log').textContent='reset · 14 of 20';return;}v=Math.max(0,Math.min(goal,v+Number(d)));const reached=prev<goal&&v>=goal;live(reached);
+ $('#log').textContent=reached?`goal reached · fill completes → asset pulses 400 ms · coin sound · medium haptic · spoken "Goal reached, 20 coins"`:Number(d)<0?`${v} of 20 · animates down 300 ms · no sound — the Banner explains the red card`:`${v} of 20 · fill 300 ms ease-out · spoken once "${v} of 20 coins"`;});
+// compositions
+const tierNames=['No tier','Silver','Gold','Diamond','Pink Diamond'],tierCls=['bronze','silver','gold','blue','pink'];
+const tierRail=(cur)=>`<div class="trail"><div class="line"><div class="f" style="width:${cur/4*100}%"></div></div><div class="nodes">${tierCls.map((c,i)=>`<span class="n">${asset(c,{locked:i>cur,lit:i===cur,name:tierNames[i]})}${i===cur?'<span class="av"></span>':''}</span>`).join('')}</div></div>`;
+$('#comp-grid').innerHTML=[
+ `<div class="stg"><div class="cardx tierhd"><div class="bar" style="background:linear-gradient(90deg,#92400E,#D97706)"><span class="ic">${asset('gold')}</span>Gold tier</div><div class="in">${pb({label:'Snabbit coins to Diamond',value:20,goal:60,noun:'',goalAsset:'blue',goalName:'Diamond tier',tier:'#1D4ED8'})}</div></div><div class="cap"><b>TierProgressCard</b> · Card + ProgressBar M goal · header colour from the current tier asset; fill takes the <em>next</em> tier's colour</div></div>`,
+ `<div class="stg"><div class="cardx"><div class="hd"><span class="ic">${asset('coin')}</span><div><div class="t">4 Snabbit coins earned</div><div class="s">This month</div></div></div>${pb({label:'Coins this month',value:34,goal:80,noun:'coins',goalAsset:'coin',milestones:[{at:20,label:'Week 1'},{at:40,label:'Week 2'},{at:60,label:'Week 3'}]})}</div><div class="cap"><b>WeeklyGoalCard</b> · Card + ProgressBar M milestones</div></div>`,
+ `<div class="stg"><div class="cardx" style="gap:4px"><div class="hd" style="margin-bottom:4px"><div><div class="t">Your tier</div><div class="s">Gold · 1,240 more coins to Diamond</div></div></div>${tierRail(2)}</div><div class="cap"><b>TierRail</b> · ProgressBar L with five tier assets as milestones · Avatar XS marks her position · locked tiers grey with lock</div></div>`,
+ `<div class="stg"><div class="li"><span style="width:40px;height:40px;flex:none">${asset('coin')}</span><div class="tx"><span class="tt">Coins this week</span>${pb({label:'',value:12,goal:20,size:'S',noun:'coins',noLabel:true})}</div><span style="font-size:14px;font-weight:600;font-variant-numeric:tabular-nums">12 of 20</span><span style="width:20px;height:20px;color:#6B7280">${svg('caret')}</span></div><div class="cap"><b>ListItem + ProgressBar S</b> · label row dropped only because the value sits beside it</div></div>`].join('');
+// donts
+$('#dont-grid').innerHTML=[
+ `<div class="stg"><div style="width:328px"><div class="pb M"><div class="lrow"><span class="lab">Weekly progress</span><span class="val">65%</span></div><div class="trk"><div class="fill" style="width:65%"></div></div></div></div><span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">A percentage. She counts coins and jobs, not hundredths; <em>13 of 20 coins</em> says what to do next, 65 % does not.</div></div>`,
+ `<div class="stg"><div style="width:328px"><div class="pb M"><div class="lrow"><span class="lab">Jobs this week</span><span class="val" style="color:#DC2626">2 of 6</span></div><div class="trk"><div class="fill" style="width:33%;background:#DC2626"></div></div></div></div><span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">A red bar for "behind". A bar that turns red is a punishment; a shortfall is told by a Banner with what to do, and the bar stays brand.</div></div>`,
+ `<div class="stg"><div style="width:328px"><div class="pb M"><div class="lrow"><span class="lab">Loading jobs…</span></div><div class="trk"><div class="fill" style="width:40%;opacity:.5"></div></div></div></div><span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">A loading bar. If the end is unknown there is nothing to progress toward — use a Skeleton (loading) or a Timer (waiting).</div></div>`,
+ `<div class="stg"><div style="width:328px"><button style="width:100%;height:56px;border-radius:12px;border:0;background:linear-gradient(90deg,#F70F79 50%,#FBCFE8 50%);color:#fff;font:600 16px var(--sans)">Accept job</button></div><span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">A button half-filled with progress (Figma "Progress Buttons"). A control and a status must not look alike — the only filling button is hold-to-confirm, specified in Button.</div></div>`].join('');
+const links=[...document.querySelectorAll('#nav a')];const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-20% 0px -70% 0px'});targets.forEach(t=>io.observe(t));}
+})();
+</script>

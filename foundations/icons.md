@@ -28,6 +28,11 @@ Status: **seed**. Populated fully during the Button, Tab bar and Job-alert specs
 | `caret-left` | Back | regular | HeaderNav |
 | `arrow-clockwise` | Retry / refresh | regular | Error states |
 | `camera` | Take photo / selfie | regular | Check-in, documents |
+| `user-plus` | Register / add expert | regular | Stepper (onboarding), Refer |
+| `identification-card` | ID proof / documents | regular | Stepper, Profile documents |
+| `bank` | Bank account | regular | Stepper, Earnings payout |
+| `graduation-cap` | Training | regular | Stepper, Hub |
+| `lock-simple` | Locked / not yet available | fill | Stepper node badge, ProgressBar goal, tier rail |
 | `phone` | Call | regular | Job card, contact |
 | `trophy` | Tier / contest | regular / fill when earned | Tier badge, contest |
 | `fire` | Streak | fill | Streak chip |

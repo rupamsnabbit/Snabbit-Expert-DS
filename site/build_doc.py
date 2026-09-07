@@ -42,7 +42,8 @@ for sid, txt, subs in nav:
         num = re.match(r"^(\d+)\.", stxt)
         page_nav += f'<a class="sub" href="#{ssid}">{"<b>"+num.group(1)+"</b> " if num else ""}{short}</a>'
 
-page = f"""<title>{TITLE}</title>
+page = f"""<meta charset="utf-8">
+<title>{TITLE}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>

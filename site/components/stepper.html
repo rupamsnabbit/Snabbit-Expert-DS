@@ -1,0 +1,218 @@
+<meta charset="utf-8">
+<title>Snabbit Expert Stepper</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{--bg:#FFFFFF;--bg-2:#F9FAFB;--bg-3:#F3F4F6;--text:#111827;--text-body:#374151;--text-2:#6B7280;--text-3:#9CA3AF;--border:#E5E7EB;--border-subtle:#F3F4F6;--brand:#F70F79;--brand-wash:#FEF1F7;--brand-ink:#97094A;--focus:#3B82F6;--ok:#059669;--ok-wash:#ECFDF5;--bad:#DC2626;--bad-wash:#FEF2F2;
+--sans:"Outfit",ui-sans-serif,system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111827;--bg-2:#1F2937;--bg-3:#374151;--text:#F9FAFB;--text-body:#E5E7EB;--text-2:#9CA3AF;--text-3:#6B7280;--border:#374151;--border-subtle:#1F2937;--brand:#F65CA1;--brand-wash:rgba(247,15,121,.14);--brand-ink:#FBC9DF;--ok:#34D399;--ok-wash:rgba(16,185,129,.14);--bad:#F87171;--bad-wash:rgba(239,68,68,.14)}}
+:root[data-theme="dark"]{--bg:#111827;--bg-2:#1F2937;--bg-3:#374151;--text:#F9FAFB;--text-body:#E5E7EB;--text-2:#9CA3AF;--text-3:#6B7280;--border:#374151;--border-subtle:#1F2937;--brand:#F65CA1;--brand-wash:rgba(247,15,121,.14);--brand-ink:#FBC9DF;--ok:#34D399;--ok-wash:rgba(16,185,129,.14);--bad:#F87171;--bad-wash:rgba(239,68,68,.14)}
+*{box-sizing:border-box} html{scroll-behavior:smooth;scroll-padding-top:24px} @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} .sbtn,.sbtn *{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--text-body);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+code{font-family:var(--mono);font-size:.86em;background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--text)}
+button{font:inherit} :focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+.shell{display:grid;grid-template-columns:232px minmax(0,1fr);min-height:100vh}
+.rail{position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--border);padding:24px 16px 32px;background:var(--bg);display:flex;flex-direction:column;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;padding:0 8px}.brand-mark{width:28px;height:28px;border-radius:8px;background:var(--brand);display:grid;place-items:center;flex:none}.brand-mark span{width:12px;height:12px;border-radius:3px;background:#fff;transform:rotate(45deg)}
+.brand b{font-weight:600;color:var(--text);font-size:15px;line-height:1.2;display:block}.brand small{color:var(--text-2);font-size:12px}
+.nav{display:flex;flex-direction:column;gap:2px}.nav .grp{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);padding:12px 8px 4px;font-weight:500}
+.nav a{display:block;padding:6px 8px;border-radius:6px;text-decoration:none;color:var(--text-body);font-size:13.5px}.nav a:hover{background:var(--bg-2);color:var(--text)}.nav a.on{background:var(--brand-wash);color:var(--brand-ink);font-weight:500}
+.rail-foot{margin-top:auto;padding:0 8px;font-size:12px;color:var(--text-3);line-height:1.5}
+.main{padding:40px 56px 96px;max-width:1080px;width:100%}
+.eyebrow{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);font-weight:600}
+h1{font-size:40px;line-height:1.1;font-weight:600;color:var(--text);margin:8px 0 12px;letter-spacing:-.015em}
+.lede{font-size:17px;color:var(--text-2);max-width:62ch;margin:0}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}.chip{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border:1px solid var(--border);border-radius:999px;font-size:12.5px;color:var(--text-body)}
+.chip.status{background:#FEF3C7;color:#B45309;border-color:transparent;font-weight:600}
+section{padding-top:64px} section>header{margin-bottom:20px;max-width:68ch}
+h2{font-size:26px;line-height:1.2;font-weight:600;color:var(--text);margin:6px 0 8px;letter-spacing:-.01em} h3{font-size:16px;font-weight:600;color:var(--text);margin:32px 0 12px}
+section>header p,.sub{color:var(--text-2);margin:0;font-size:15px}
+.rules{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:6px;max-width:68ch}.rules li{padding-left:18px;position:relative;font-size:14px}.rules li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:2px;background:var(--brand)}
+
+/* stage */
+.stage{background:#FFFFFF;border:1px solid var(--border);border-radius:12px;padding:24px;color:#111827}
+.stage.dark{background:#F9FAFB}
+.matrix{display:grid;gap:14px 20px;align-items:center}
+.matrix .h{font-family:var(--mono);font-size:11.5px;color:#6B7280;text-transform:uppercase;letter-spacing:.06em}
+.matrix .r{font-family:var(--mono);font-size:12.5px;color:#111827;white-space:nowrap}
+.matrix .r small{display:block;color:#9CA3AF;font-size:11px;text-transform:none;letter-spacing:0}
+.na{width:24px;height:2px;background:#E5E7EB;border-radius:1px}
+.sizes{display:flex;gap:28px;align-items:flex-end;flex-wrap:wrap}
+.szd{display:flex;flex-direction:column;gap:10px;align-items:flex-start}.szd .lbl{font-family:var(--mono);font-size:12px;color:var(--text-2)}.szd .lbl b{color:var(--text);font-weight:500}
+
+/* the button itself — everything from tokens via CSS vars set by JS */
+.sbtn{display:inline-flex;align-items:center;justify-content:center;border:0;cursor:pointer;white-space:nowrap;font-family:var(--sans);position:relative;overflow:hidden;
+  height:var(--h);padding:0 var(--px);border-radius:var(--r);font-size:var(--fs);font-weight:var(--fw);line-height:1;gap:var(--gap);
+  background:var(--fill,transparent);color:var(--ink);box-shadow:inset 0 0 0 var(--bw,0) var(--bc,transparent);transition:background .1s ease-out,box-shadow .1s}
+.sbtn.full{width:100%}
+.sbtn:active:not(.disabled):not(.loading){background:var(--fill-p)}
+.sbtn.pressed{background:var(--fill-p)}
+.sbtn.focused{outline:2px solid #3B82F6;outline-offset:2px}
+.sbtn.disabled{cursor:not-allowed}
+.sbtn svg{width:var(--ic);height:var(--ic);flex:none}
+.sbtn .spin{width:var(--ic);height:var(--ic);border-radius:50%;border:2px solid currentColor;border-right-color:transparent;animation:sp .7s linear infinite;flex:none}
+@keyframes sp{to{transform:rotate(360deg)}}
+.sbtn .hf{position:absolute;inset:0;background:rgba(0,0,0,.18);transform-origin:left;transform:scaleX(0)}
+.sbtn.holding .hf{transform:scaleX(1);transition:transform .6s linear}
+.sbtn>*{position:relative}
+.demo{display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start}
+.demo .card{flex:1;min-width:260px;border:1px solid var(--border);border-radius:12px;padding:18px;background:var(--bg)}
+.demo .card h4{margin:0 0 6px;font-size:14px;color:var(--text)}.demo .card p{margin:0 0 14px;font-size:13px;color:var(--text-2)}
+.demo .live{display:flex;gap:12px;align-items:center;flex-wrap:wrap;background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px;color:#111827}
+.logline{font-family:var(--mono);font-size:12px;color:var(--text-2);margin-top:10px;min-height:16px}
+
+/* phone mock */
+.phones{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.ph{border:1px solid var(--border);border-radius:16px;overflow:hidden;background:#fff;color:#111827}
+.ph .bar{padding:10px 16px;border-bottom:1px solid #F3F4F6;font-size:12px;color:#6B7280;display:flex;justify-content:space-between}
+.ph .bar b{font-weight:600}
+.ph .body{padding:16px;min-height:220px;display:flex;flex-direction:column;gap:12px}
+.ph .body .hd{font-size:20px;font-weight:600;line-height:28px}.ph .body .tx{font-size:14px;color:#374151;line-height:20px}
+.ph .foot{padding:12px 16px 24px;border-top:1px solid #F3F4F6;display:flex;flex-direction:column;gap:12px}
+.ph .foot.row{flex-direction:row}
+.verdict{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin:12px 0 6px}
+.verdict.ok{background:var(--ok-wash);color:var(--ok)}.verdict.bad{background:var(--bad-wash);color:var(--bad)}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px}table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{text-align:left;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);font-weight:500;padding:10px 14px;background:var(--bg-2);border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:9px 14px;border-bottom:1px solid var(--border-subtle);vertical-align:top}tr:last-child td{border-bottom:0}
+td.tk{font-family:var(--mono);font-size:12.5px;color:var(--text)}
+.sw{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-2px;margin-right:6px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(8px);background:var(--text);color:var(--bg);padding:8px 14px;border-radius:8px;font-size:13px;opacity:0;pointer-events:none;transition:opacity .15s,transform .15s;font-family:var(--mono)}.toast.show{opacity:1;transform:translateX(-50%)}
+@media (max-width:900px){.shell{grid-template-columns:1fr}.rail{position:static;height:auto;border-right:0;border-bottom:1px solid var(--border);padding:16px}.nav{flex-direction:row;flex-wrap:wrap;gap:4px}.nav .grp,.rail-foot{display:none}.main{padding:32px 20px 80px}h1{font-size:32px}}
+
+.srail{display:flex;width:328px;font-family:var(--sans);color:#111827;position:relative;padding:4px 0}
+.srail .st{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;position:relative;min-width:0}
+.srail .st .nd{width:32px;height:32px;border-radius:50%;background:#F3F4F6;color:#9CA3AF;display:grid;place-items:center;position:relative;z-index:1;transition:box-shadow .3s}.srail .st .nd svg{width:18px;height:18px}
+.srail .st.done .nd{background:#10B981;color:#fff}
+.srail .st.current .nd{background:#FEF1F7;color:#F70F79;box-shadow:0 0 0 2px #F70F79}
+.srail .st.attention .nd{background:#FFFBEB;color:#F59E0B;box-shadow:0 0 0 2px #F59E0B}
+.srail .st .lb{font-size:12px;line-height:16px;font-weight:500;color:#374151;text-align:center;max-width:100%;padding:0 2px}
+.srail .st.done .lb{color:#059669}.srail .st.upcoming .lb,.srail .st.locked .lb{color:#6B7280}
+.srail .st::before,.srail .st::after{content:"";position:absolute;top:19px;height:2px;background:#E5E7EB;width:50%}
+.srail .st::before{left:0}.srail .st::after{right:0}
+.srail .st:first-child::before,.srail .st:last-child::after{display:none}
+.srail .st.done::before,.srail .st.done::after,.srail .st.current::before,.srail .st.attention::before{background:#F70F79}
+.srail .st .lk{position:absolute;right:-3px;bottom:-3px;width:14px;height:14px;border-radius:50%;background:#fff;color:#6B7280;display:grid;place-items:center;box-shadow:0 0 0 1px #E5E7EB}.srail .st .lk svg{width:9px;height:9px}
+.slist{width:328px;background:#fff;border:1px solid #E5E7EB;border-radius:12px;overflow:hidden;font-family:var(--sans);color:#111827}
+.srow{display:flex;gap:12px;padding:14px 16px;min-height:72px;align-items:flex-start;cursor:pointer;position:relative}.srow+.srow{border-top:1px solid #F3F4F6}
+.srow .nd{width:40px;height:40px;border-radius:50%;background:#F3F4F6;color:#9CA3AF;display:grid;place-items:center;flex:none;position:relative}.srow .nd svg{width:20px;height:20px}
+.srow .tx{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.srow .eb{font-size:12px;line-height:16px;color:#6B7280}.srow .tt{font-size:18px;line-height:24px;font-weight:500;color:#111827}.srow .ds{font-size:14px;line-height:20px;color:#6B7280}
+.srow .cr{width:24px;height:24px;color:#9CA3AF;align-self:center}
+.srow.done .nd{background:transparent;color:#10B981}.srow.done .nd svg{width:40px;height:40px}.srow.done .eb{color:#059669;font-weight:500}
+.srow.current{background:#FEF1F7}.srow.current .nd{background:#fff;color:#F70F79;box-shadow:0 0 0 2px #F70F79}
+.srow.upcoming .tt,.srow.locked .tt{color:#6B7280}.srow.upcoming .eb,.srow.locked .eb{color:#9CA3AF}
+.srow.attention{background:#FFFBEB}.srow.attention .nd{background:#fff;color:#F59E0B;box-shadow:0 0 0 2px #F59E0B}.srow.attention .eb{color:#D97706;font-weight:500}
+.srow .lk{position:absolute;right:-2px;bottom:-2px;width:16px;height:16px;border-radius:50%;background:#fff;color:#6B7280;display:grid;place-items:center;box-shadow:0 0 0 1px #E5E7EB}.srow .lk svg{width:10px;height:10px}
+.sbtn{margin-top:10px;height:48px;border-radius:10px;border:0;background:#F70F79;color:#fff;font:500 16px var(--sans);display:flex;align-items:center;justify-content:center;gap:6px;width:100%;cursor:pointer}.sbtn svg{width:18px;height:18px}
+.sbtn.warn{background:#F70F79}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(328px,1fr));gap:24px 32px;align-items:start}
+.stg{display:flex;flex-direction:column;gap:8px}.stg .cap{font-family:var(--mono);font-size:12px;color:var(--text-2)}.stg .cap b{color:var(--text);font-weight:500}
+.mx{display:grid;grid-template-columns:110px repeat(5,1fr);gap:14px 10px;align-items:center}
+.mx .h{font-family:var(--mono);font-size:11px;color:var(--text-2);text-transform:uppercase;letter-spacing:.05em;text-align:center}.mx .r{font-family:var(--mono);font-size:12.5px;color:var(--text)}
+.mx .c{display:flex;justify-content:center;align-items:center;background:#fff;border-radius:10px;border:1px solid #E5E7EB;padding:10px 4px;min-height:84px}
+.mx .c .srail{width:100%;padding:0}.mx .c .srail .st::before,.mx .c .srail .st::after{display:none}
+.scr{width:360px;border:1px solid #E5E7EB;border-radius:20px;overflow:hidden;background:#F9FAFB;color:#111827;font-family:var(--sans)}
+.scr .hn{height:56px;background:#fff;display:flex;align-items:center;padding:0 16px;font-size:18px;font-weight:500;gap:8px}
+.scr .body{padding:16px;display:flex;flex-direction:column;gap:16px}
+.toast{position:absolute;left:16px;right:16px;bottom:16px;background:#111827;color:#fff;border-radius:12px;padding:12px 16px;font-size:14px;opacity:0;transition:opacity .2s}.toast.on{opacity:1}
+.logline{font-family:var(--mono);font-size:12px;color:var(--text-2);min-height:16px;margin-top:8px}
+@media (prefers-reduced-motion:reduce){.srail .st .nd{transition:none}}
+
+.sitenav{display:flex;flex-direction:column;gap:2px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.sitenav .grp{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);padding:10px 8px 4px;font-weight:500}
+.sitenav a{display:block;padding:5px 8px;border-radius:6px;text-decoration:none;color:var(--text-body);font-size:13.5px;border:0}
+.sitenav a:hover{background:var(--bg-2);color:var(--text)} .sitenav a.on{color:var(--brand-ink);background:var(--brand-wash);font-weight:500}
+@media (max-width:900px){.sitenav{flex-direction:row;flex-wrap:wrap;gap:4px;border-bottom:0;padding-bottom:0}.sitenav .grp{display:none}}
+</style>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · Stepper</small></div></div>
+    <nav class="sitenav" aria-label="Site"><div class="grp">Foundations</div><a href="../index.html">Tokens</a><a href="../principles.html">Principles</a><a href="../extending.html">Extending</a><a href="../icons.html">Icons</a><a href="../assets.html">Assets</a><div class="grp">Components</div><a href="../components/button.html">Button</a><a href="../components/icon-button.html">IconButton</a><a href="../components/tag.html">Tag</a><a href="../components/text-field.html">TextField</a><a href="../components/selection-controls.html">Checkbox · Radio · Switch</a><a href="../components/amount.html">Amount</a><a href="../components/timer.html">Timer</a><a href="../components/feedback.html">Banner · Toast · Snackbar</a><a href="../components/chip.html">Chip</a><a href="../components/avatar.html">Avatar</a><a href="../components/badge.html">Badge</a><a href="../components/card.html">Card</a><a href="../components/list-item.html">ListItem</a><a href="../components/selection-card.html">SelectionCard</a><a href="../components/bottom-sheet.html">BottomSheet</a><a href="../components/header-nav.html">HeaderNav</a><a href="../components/bottom-tab-bar.html">BottomTabBar</a><a href="../components/progress-bar.html">ProgressBar</a><a class="on" href="../components/stepper.html">Stepper</a><div class="grp">Research</div><a href="../benchmark.html">Benchmark</a><a href="../audit.html">Figma audit</a></nav>
+    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#layouts">Layouts</a><a href="#states">States</a><a href="#live">Live</a><a href="#dont">Don't</a><a href="#figma">Figma changes</a></nav>
+    <div class="rail-foot">Rendered from tokens.json · spec in components/stepper.md</div>
+  </aside>
+  <main class="main">
+    <header id="overview">
+      <div class="eyebrow">Core component</div><h1>Stepper</h1>
+      <p class="lede">A short list of things to do, in order, with one of them lit. Onboarding, going live, a first check-in. It makes a multi-day process feel like a short list — and points at exactly one next step.</p>
+      <div class="meta"><span class="chip status">Proposed</span><span class="chip">Tier 1 · Core</span><span class="chip"><code>SnabbitStepper</code></span><span class="chip">rail · list</span><span class="chip">One Button, on the current step</span></div>
+    </header>
+
+    <section id="layouts">
+      <header><div class="eyebrow">Two layouts</div><h2>Rail and list</h2><p>The <b>rail</b> says <em>where am I</em>: 2–5 nodes with icon and label, non-interactive, at the top of a flow. The <b>list</b> says <em>what do I do</em>: one row per step inside a Card; only the current row carries a Button. More than five steps is always a list.</p></header>
+      <div class="stage"><div class="grid2" id="layouts-grid"></div></div>
+    </section>
+
+    <section id="states">
+      <header><div class="eyebrow">Five states</div><h2>States</h2><p><b>Done</b> is a green check and the word <em>Done</em>. <b>Current</b> is a brand ring, a brand wash and the Button. <b>Upcoming</b> and <b>locked</b> are grey <em>with a reason</em> — a grey thing with no reason is a broken thing (P5); the lock says her own action won't open it yet. <b>Attention</b> is a step that came back (ID photo rejected): amber ring, and it takes over as the one action.</p></header>
+      <div class="stage"><div class="mx" id="mx"></div></div>
+      <div class="stage" style="margin-top:16px"><div class="grid2" id="rows-grid"></div></div>
+    </section>
+
+    <section id="live">
+      <header><div class="eyebrow">Try it</div><h2>Live</h2><p>Complete the current step: the node turns to a check (300 ms), the connector fills, the next row lights and its Button appears; <em>success</em> sound and a medium haptic once. Tap an upcoming row to see the Toast.</p></header>
+      <div class="demo" style="align-items:flex-start;flex-wrap:wrap;gap:28px"><div class="scr" id="ph" style="position:relative"></div><div class="card" style="max-width:340px"><h4>Rules</h4><p>Steps complete in order; the Stepper is told each state, it never infers. The rail is never tappable — wanting to jump to a step is the list. Spoken on entry: "Step 2 of 4, ID proof".</p><div class="logline" id="log"></div></div></div>
+    </section>
+
+    <section id="dont">
+      <header><div class="eyebrow">Common mistakes</div><h2>Don't</h2></header>
+      <div class="stage"><div class="grid2" id="dont-grid"></div></div>
+    </section>
+
+    <section id="figma">
+      <header><div class="eyebrow">Reconciliation</div><h2>What changes in Figma</h2></header>
+      <ol class="rules"><li>"Step Indicatorss" → Stepper / Rail: Steps (2–5), per-step State (Done / Current / Upcoming / Locked / Attention). Phosphor instances; labels always on.</li><li>Onboarding Step Card → Stepper / List / Row: State (same five), booleans Description, Button. Remove the pink-border variant; current = ring + wash. Compose four rows into a Stepper / List example.</li><li>Bind node fills to bgBrandSubtle / bgTertiary / iconSuccess, rings to borderBrand / borderWarning.</li></ol>
+      <p class="sub" style="margin-top:14px">Result: ~14 variants replacing 3 + 4 frames — one component where there were two unrelated ones.</p>
+    </section>
+  </main>
+</div>
+
+<script id="tokens-json" type="application/json">{"$schema":"https://design-tokens.github.io/community-group/format/","meta":{"name":"Snabbit Expert Design Tokens","package":"com.snabbit:design-system","version":"0.19.0","platform":"Compose Multiplatform (Android + iOS)","source":"tokens/DESIGN_TOKENS.md","themeApi":"SnabbitTheme","modes":["light"],"notes":["The installed package is canonical. If this file and the package disagree, the package wins and this file must be updated in the same change.","Dark mode is not defined in 0.19.0. Semantic names are mode-ready; a dark mapping is the next token task.","Palette names (pink600, gray700) are allowed only while building a semantic token the package does not yet expose.","Decisions: Outfit only (Indic falls back to system face). Phosphor Icons only \u2014 regular by default, fill for selected/active."]},"color":{"palette":{"pink":{"50":"#FEF1F7","100":"#FDE4EF","200":"#FBC9DF","300":"#F9AECF","400":"#F65CA1","500":"#F4368D","600":"#F70F79","700":"#C70C61","800":"#97094A","900":"#670632"},"gray":{"50":"#F9FAFB","100":"#F3F4F6","200":"#E5E7EB","300":"#D1D5DB","400":"#9CA3AF","500":"#6B7280","600":"#4B5563","700":"#374151","800":"#1F2937","900":"#111827"},"green":{"50":"#ECFDF5","100":"#D1FAE5","200":"#A7F3D0","300":"#6EE7B7","400":"#34D399","500":"#10B981","600":"#059669","700":"#047857"},"red":{"50":"#FEF2F2","100":"#FEE2E2","200":"#FECACA","300":"#FCA5A5","400":"#F87171","500":"#EF4444","600":"#DC2626","700":"#B91C1C"},"yellow":{"50":"#FFFBEB","100":"#FEF3C7","200":"#FDE68A","300":"#FCD34D","400":"#FBBF24","500":"#F59E0B","600":"#D97706","700":"#B45309"},"blue":{"50":"#EFF6FF","100":"#DBEAFE","200":"#BFDBFE","300":"#93C5FD","400":"#60A5FA","500":"#3B82F6","600":"#2563EB","700":"#1D4ED8"}},"semantic":{"text":[{"name":"textPrimary","ref":"gray.900","value":"#111827","use":"Titles and highest-emphasis content"},{"name":"textBody","ref":"gray.700","value":"#374151","use":"Default readable content"},{"name":"textSecondary","ref":"gray.500","value":"#6B7280","use":"Supporting content and metadata"},{"name":"textTertiary","ref":"gray.400","value":"#9CA3AF","use":"Low-emphasis, non-essential metadata"},{"name":"textDisabled","ref":"gray.300","value":"#D1D5DB","use":"Disabled labels only"},{"name":"textInverse","ref":"white","value":"#FFFFFF","use":"Text on dark or brand fills"},{"name":"textBrand","ref":"pink.600","value":"#F70F79","use":"Brand-colored text and links"},{"name":"textSuccess","ref":"green.600","value":"#059669","use":"Success text and strong positive amount"},{"name":"textWarning","ref":"yellow.600","value":"#D97706","use":"Attention or waiting text"},{"name":"textError","ref":"red.600","value":"#DC2626","use":"Error or destructive message"},{"name":"textInfo","ref":"blue.600","value":"#2563EB","use":"Informational message and link-like status"}],"background":[{"name":"bgPrimary","ref":"white","value":"#FFFFFF","use":"Screen and card surfaces"},{"name":"bgSecondary","ref":"gray.50","value":"#F9FAFB","use":"Subtle grouped surface"},{"name":"bgTertiary","ref":"gray.100","value":"#F3F4F6","use":"Muted/header surface"},{"name":"bgInverse","ref":"gray.900","value":"#111827","use":"Dark high-contrast surface, scrim base"},{"name":"bgBrand","ref":"pink.600","value":"#F70F79","use":"Primary brand fill"},{"name":"bgBrandSubtle","ref":"pink.50","value":"#FEF1F7","use":"Soft brand callout or selected wash"},{"name":"bgSuccess","ref":"green.50","value":"#ECFDF5","use":"Success callout"},{"name":"bgSuccessSubtle","ref":"green.100","value":"#D1FAE5","use":"Success emphasis"},{"name":"bgWarning","ref":"yellow.50","value":"#FFFBEB","use":"Warning callout"},{"name":"bgWarningSubtle","ref":"yellow.100","value":"#FEF3C7","use":"Warning emphasis"},{"name":"bgError","ref":"red.50","value":"#FEF2F2","use":"Error callout"},{"name":"bgErrorSubtle","ref":"red.100","value":"#FEE2E2","use":"Error emphasis"},{"name":"bgInfo","ref":"blue.50","value":"#EFF6FF","use":"Informational callout"}],"border":[{"name":"borderDefault","ref":"gray.200","value":"#E5E7EB","use":"Standard structural border"},{"name":"borderSubtle","ref":"gray.100","value":"#F3F4F6","use":"Low-emphasis card boundary"},{"name":"borderStrong","ref":"gray.500","value":"#6B7280","use":"Strong neutral separation"},{"name":"borderBrand","ref":"pink.600","value":"#F70F79","use":"Selected or brand emphasis boundary"},{"name":"borderFocus","ref":"blue.500","value":"#3B82F6","use":"Keyboard/input focus"},{"name":"borderSuccess","ref":"green.500","value":"#10B981","use":"Success boundary"},{"name":"borderWarning","ref":"yellow.500","value":"#F59E0B","use":"Warning boundary"},{"name":"borderError","ref":"red.500","value":"#EF4444","use":"Error boundary"}],"icon":[{"name":"iconBrand","ref":"pink.600","value":"#F70F79","use":"Brand-colored icon"},{"name":"iconSuccess","ref":"green.500","value":"#10B981","use":"Success icon"},{"name":"iconWarning","ref":"yellow.500","value":"#F59E0B","use":"Warning icon"},{"name":"iconError","ref":"red.500","value":"#EF4444","use":"Error icon"}],"interactive":[{"name":"interactiveDefault","ref":"pink.600","value":"#F70F79","use":"Primary brand action, resting"},{"name":"interactiveHover","ref":"pink.500","value":"#F4368D","use":"Hover / loading \u2014 package-controlled"},{"name":"interactivePressed","ref":"pink.700","value":"#C70C61","use":"Pressed \u2014 package-controlled"}]}},"typography":{"fontFamily":{"compose":"Outfit","legacyFlutter":"Metropolis","indicFallback":"system"},"rule":"Outfit is the only type family. It covers Latin and numerals; Devanagari and Kannada glyphs fall back to the platform system face. Do not add another family.","scale":[{"name":"Display","size":32,"lineHeight":40,"weight":600,"weightName":"SemiBold","use":"Rare hero result or safety state"},{"name":"Heading1","size":28,"lineHeight":37.3,"weight":600,"weightName":"SemiBold","use":"High-salience screen title"},{"name":"Heading2","size":24,"lineHeight":32,"weight":600,"weightName":"SemiBold","use":"Major section or result"},{"name":"Heading3","size":20,"lineHeight":28,"weight":600,"weightName":"SemiBold","use":"Card or section title"},{"name":"Title","size":18,"lineHeight":24,"weight":500,"weightName":"Medium","use":"Navigation title or prominent label"},{"name":"BodyLg","size":16,"lineHeight":24,"weight":400,"weightName":"Regular","use":"Primary explanation"},{"name":"BodyMd","size":14,"lineHeight":20,"weight":400,"weightName":"Regular","use":"Default supporting content"},{"name":"Caption","size":12,"lineHeight":16,"weight":400,"weightName":"Regular","use":"Metadata and helper content"},{"name":"Small","size":10,"lineHeight":14,"weight":400,"weightName":"Regular","use":"Compact, non-essential metadata only"},{"name":"ButtonLg","size":16,"lineHeight":16,"weight":600,"weightName":"SemiBold","use":"Large CTA"},{"name":"ButtonMd","size":14,"lineHeight":14,"weight":600,"weightName":"SemiBold","use":"Standard/compact CTA"}],"rules":["Use sentence case for UI text.","Use at most three hierarchy levels on one screen.","Do not use Small for actions, errors, payment status, safety guidance, or essential instructions.","Respect system font scaling and verify two-line labels and titles."],"indic":{"scripts":["Devanagari","Kannada"],"lineHeightMultiplier":1.15,"note":"Indic ascenders/descenders exceed Outfit metrics. Multiply the scale's line height by 1.15 for text containers that may hold Hindi, Marathi or Kannada; never truncate."}},"spacing":{"unit":"dp","scale":[{"name":"0","value":0,"use":"Intentional flush alignment"},{"name":"1","value":2,"use":"Optical correction only"},{"name":"2","value":4,"use":"Tight icon/text or inline gap"},{"name":"3","value":8,"use":"Small internal gap"},{"name":"4","value":12,"use":"Standard internal gap"},{"name":"5","value":16,"use":"Default component padding and screen margin"},{"name":"6","value":20,"use":"Large component padding"},{"name":"7","value":24,"use":"Section gap or spacious screen margin"},{"name":"8","value":32,"use":"Large section separation"},{"name":"9","value":40,"use":"Major separation"},{"name":"10","value":48,"use":"Touch target or major separation"},{"name":"11","value":64,"use":"Rare hero separation"}],"aliases":{"componentPadding":[4,8,16,24,32],"componentGap":[4,8,12,16],"layoutPadding":[16,24,32],"layoutGap":[16,24,32]},"forbidden":[6,10,14,18,22],"rule":"Do not add arbitrary 6, 10, 14, 18, or 22 dp layout values. A value owned by a design-system component (6 dp tag gap, 10 dp medium-button radius) is valid only through that component."},"radius":{"unit":"dp","scale":[{"name":"none","value":0,"use":"Dividers and intentionally square joins"},{"name":"sm","value":4,"use":"Small controls and tags"},{"name":"md","value":8,"use":"Inputs and compact controls"},{"name":"lg","value":12,"use":"Default card and large control"},{"name":"xl","value":16,"use":"Selected card, sheet, prominent surface"},{"name":"xxl","value":24,"use":"Large hero surface only"},{"name":"full","value":9999,"use":"Pill, avatar, circle"}]},"borderWidth":{"unit":"dp","scale":[{"name":"thin","value":1,"use":"Default structural border"},{"name":"thick","value":1.5,"use":"Emphasised border"},{"name":"thicker","value":2,"use":"Selection or strong emphasis \u2014 not routine decoration"}]},"elevation":{"unit":"dp","rule":"The package exposes no global shadow scale in 0.19.0. Default is flat with border/background hierarchy.","scale":[{"name":"flat","value":0,"use":"Screens, cards, buttons, app bars"},{"name":"floating","value":4,"use":"Floating map/control surface already established in app code"},{"name":"modal","value":null,"use":"Component-owned \u2014 use SnabbitBottomSheet; do not recreate its scrim/elevation"}]},"icon":{"library":"Phosphor Icons","rule":"Phosphor only. No other icon set, no custom glyphs. One Phosphor icon = one meaning in the app, recorded in foundations/icons.md.","weights":{"default":"regular","selected":"fill","emphasis":"bold","never":["thin","light","duotone"]},"unit":"dp","sizes":[16,20,24,32,40],"defaultAction":24,"mediumControl":20,"minTouchTarget":48,"buttonOwned":{"XS":16,"S":18,"M":20,"L":24}},"button":{"unit":"dp","sizes":[{"name":"XS","height":32,"paddingX":12,"radius":6,"icon":16,"labelSize":12,"labelWeight":500,"labelWeightName":"Medium"},{"name":"S","height":40,"paddingX":16,"radius":8,"icon":18,"labelSize":14,"labelWeight":500,"labelWeightName":"Medium"},{"name":"M","height":48,"paddingX":20,"radius":10,"icon":20,"labelSize":16,"labelWeight":600,"labelWeightName":"SemiBold"},{"name":"L","height":56,"paddingX":24,"radius":12,"icon":24,"labelSize":16,"labelWeight":600,"labelWeightName":"SemiBold"}],"rules":["Prefer M for standard actions and L for full-width bottom actions.","XS and S need a 48 dp parent hit area when interactive.","Loading keeps the label visible and adds a spinner.","Disabled and loading states must block duplicate taps."]},"grid":{"unit":"dp","baselineViewport":{"width":360,"height":800},"verifyWidths":[320,360,412],"screenMargin":16,"spaciousMargin":24,"nestedPadding":[12,16],"sectionGap":[24,32],"bottomActionPadding":16,"rules":["Use one horizontal margin consistently within a screen.","Cards align to the screen grid.","Bottom actions use 16 dp horizontal/top padding plus the system safe-area inset.","Keep scroll content clear of a persistent footer by the footer height plus safe area.","Do not center long form content in a fixed-width column on phone surfaces."]},"governance":{"addingAToken":["Confirm the package has no semantic token for the need.","Check this document and the closest existing pattern.","Record the proposed name, value, purpose, affected states, contrast, and migration plan in a component brief.","Prefer adding the token to the design-system package. If temporarily local, isolate it in the app design-system layer, not a feature file.","Update this file, the component library, and affected screenshots in the same change."]},"illustration":{"purple":null,"yellow":["yellow.300","yellow.400"],"note":"Accent hues used only inside illustration assets (foundations/assets.md). purple: hex to be read from the Snabbit Assets Figma file and locked; until then no new asset introduces a purple."}}</script>
+<script>
+(function(){
+const T=JSON.parse(document.getElementById("tokens-json").textContent); const $=s=>document.querySelector(s);
+const ICO={check:'M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z',checkc:'M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,85.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z',lock:'M208,80H176V56a48,48,0,0,0-96,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM96,56a32,32,0,0,1,64,0V80H96Z',id:'M200,112a8,8,0,0,1-8,8H152a8,8,0,0,1,0-16h40A8,8,0,0,1,200,112Zm-8,24H152a8,8,0,0,0,0,16h40a8,8,0,0,0,0-16Zm40-80V200a16,16,0,0,1-16,16H40a16,16,0,0,1-16-16V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56ZM216,200V56H40V200H216Zm-80.26-34a8,8,0,1,1-15.5,4c-2.63-10.26-13.06-18-24.25-18s-21.61,7.74-24.25,18a8,8,0,1,1-15.5-4,39.84,39.84,0,0,1,17.19-23.34,32,32,0,1,1,45.12,0A39.76,39.76,0,0,1,135.75,166ZM96,136a16,16,0,1,0-16-16A16,16,0,0,0,96,136Z',bank:'M24,104H48v64H32a8,8,0,0,0,0,16H224a8,8,0,0,0,0-16H208V104h24a8,8,0,0,0,4.19-14.81l-104-64a8,8,0,0,0-8.38,0l-104,64A8,8,0,0,0,24,104Zm40,0H96v64H64Zm80,0v64H112V104Zm48,64H160V104h32ZM128,41.39,203.74,88H52.26ZM248,208a8,8,0,0,1-8,8H16a8,8,0,0,1,0-16H240A8,8,0,0,1,248,208Z',cap:'M251.76,88.94l-120-64a8,8,0,0,0-7.52,0l-120,64a8,8,0,0,0,0,14.12L32,117.87v48.42a15.91,15.91,0,0,0,4.06,10.65C49.16,191.53,78.51,216,128,216a130,130,0,0,0,48-8.76V240a8,8,0,0,0,16,0V199.51a115.63,115.63,0,0,0,27.94-22.57A15.91,15.91,0,0,0,224,166.29V117.87l27.76-14.81a8,8,0,0,0,0-14.12ZM128,200c-43.27,0-68.72-21.14-80-33.71V126.4l76.24,40.66a8,8,0,0,0,7.52,0L176,143.47v46.34C163.4,195.69,147.52,200,128,200Zm80-33.75a97.83,97.83,0,0,1-16,14.25V134.93l16-8.53ZM188,118.94l-.22-.13-56-29.87a8,8,0,0,0-7.52,14.12L171,128l-43,22.93L25,96,128,41.07,231,96Z',userplus:'M256,136a8,8,0,0,1-8,8H232v16a8,8,0,0,1-16,0V144H200a8,8,0,0,1,0-16h16V112a8,8,0,0,1,16,0v16h16A8,8,0,0,1,256,136Zm-57.87,58.85a8,8,0,0,1-12.26,10.3C165.75,181.19,138.09,168,108,168s-57.75,13.19-77.87,37.15a8,8,0,0,1-12.25-10.3c14.94-17.78,33.52-30.41,54.17-37.17a68,68,0,1,1,71.9,0C164.6,164.44,183.18,177.07,198.13,194.85ZM108,152a52,52,0,1,0-52-52A52.06,52.06,0,0,0,108,152Z',caret:'M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z',camera:'M208,56H180.28L166.65,35.56A8,8,0,0,0,160,32H96a8,8,0,0,0-6.65,3.56L75.71,56H48A24,24,0,0,0,24,80V192a24,24,0,0,0,24,24H208a24,24,0,0,0,24-24V80A24,24,0,0,0,208,56Zm8,136a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V80a8,8,0,0,1,8-8H80a8,8,0,0,0,6.66-3.56L100.28,48h55.43l13.63,20.44A8,8,0,0,0,176,72h32a8,8,0,0,1,8,8ZM128,88a44,44,0,1,0,44,44A44.05,44.05,0,0,0,128,88Zm0,72a28,28,0,1,1,28-28A28,28,0,0,1,128,160Z'};
+const svg=n=>`<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="${ICO[n]}"/></svg>`;
+const STEPS=[{i:'userplus',t:'Register',d:'Your name, phone and area'},{i:'id',t:'ID proof',d:'Aadhaar card and a clear photo'},{i:'bank',t:'Bank account',d:'Where your payouts go'},{i:'cap',t:'Training',d:'One day at the Hub'}];
+const railNode=(s,st)=>`<div class="st ${st}"><span class="nd">${st==='done'?svg('check'):svg(s.i)}${st==='locked'?`<span class="lk">${svg('lock')}</span>`:''}</span><span class="lb">${s.t}</span></div>`;
+const rail=(states,steps)=>`<div class="srail" role="img" aria-label="${states.filter(s=>s==='done').length} of ${states.length} steps done">${(steps||STEPS).map((s,i)=>railNode(s,states[i])).join('')}</div>`;
+const EB={done:()=>'Done',current:(n)=>`Step ${n}`,upcoming:(n,r)=>`Step ${n} · ${r||'After the step before'}`,locked:(n,r)=>`Step ${n} · ${r||'Trainer will call'}`,attention:()=>'Needs a fix'};
+const low=t=>/^[A-Z]{2}/.test(t)?t:t.charAt(0).toLowerCase()+t.slice(1);
+const row=(s,st,n,o={})=>`<div class="srow ${st}" data-i="${n-1}" role="listitem"><span class="nd">${st==='done'?svg('checkc'):svg(s.i)}${st==='locked'?`<span class="lk">${svg('lock')}</span>`:''}</span><div class="tx"><span class="eb">${EB[st](n,o.reason)}</span><span class="tt">${s.t}</span>${o.desc&&(st==='current'||st==='attention')?`<span class="ds">${s.d}</span>`:''}${st==='current'?`<button class="sbtn">${o.verb||'Start'} ${low(s.t)}${svg('caret')}</button>`:st==='attention'?`<button class="sbtn">Fix ${low(s.t)}${svg('caret')}</button>`:''}</div>${st==='done'?`<span class="cr">${svg('caret')}</span>`:''}</div>`;
+const list=(states,o={})=>`<div class="slist" role="list">${STEPS.map((s,i)=>row(s,states[i],i+1,{desc:o.desc,reason:o.reasons&&o.reasons[i]})).join('')}</div>`;
+const W=(cap,html)=>`<div class="stg">${html}<div class="cap">${cap}</div></div>`;
+$('#layouts-grid').innerHTML=[
+ W('<b>rail</b> · 4 steps · 1 done, current lit · labels always under the nodes',rail(['done','current','upcoming','upcoming'])),
+ W('<b>rail</b> · 2 steps · the Figma indicator, with states',rail(['done','current'],[STEPS[0],STEPS[1]])),
+ W('<b>list</b> · same four steps · only the current row has the Button and the description',list(['done','current','upcoming','locked'],{desc:1,reasons:[null,null,'After ID proof','Trainer will call']})),
+ W('<b>list</b> · everything done · collapses to one summary row',`<div class="slist">${row({i:'check',t:'All 4 steps done'},'done',1)}</div>`)].join('');
+const ST=['done','current','upcoming','locked','attention'];
+$('#mx').innerHTML=`<div></div>${ST.map(h=>`<div class="h">${h}</div>`).join('')}<div class="r">rail node</div>${ST.map(st=>`<div class="c"><div class="srail">${railNode(STEPS[1],st)}</div></div>`).join('')}`;
+$('#rows-grid').innerHTML=[
+ W('<b>done</b> · check-circle iconSuccess · "Done" textSuccess · tappable to review',`<div class="slist">${row(STEPS[0],'done',1)}</div>`),
+ W('<b>current</b> · bgBrandSubtle wash · borderBrand ring · the one Button',`<div class="slist">${row(STEPS[1],'current',2,{desc:1})}</div>`),
+ W('<b>upcoming</b> · grey with a reason · tap → Toast "Finish ID proof first"',`<div class="slist">${row(STEPS[2],'upcoming',3,{reason:'After ID proof'})}</div>`),
+ W('<b>locked</b> · reason + lock-simple · time or someone else unlocks it',`<div class="slist">${row(STEPS[3],'locked',4,{reason:'Trainer will call'})}</div>`),
+ W('<b>attention</b> · came back · amber ring and wash · takes over as the one action',`<div class="slist">${row(STEPS[1],'attention',2,{desc:1})}</div>`)].join('');
+// live
+let states=['done','current','upcoming','locked'];const reasons=[null,null,'After ID proof','Trainer will call'];
+function ph(){$('#ph').innerHTML=`<div class="hn">Get ready to work</div><div class="body">${rail(states)}${list(states,{desc:1,reasons})}</div><div class="toast" id="toast"></div>`;
+ $('#ph').querySelectorAll('.srow').forEach(r=>r.onclick=()=>{const i=+r.dataset.i,st=states[i];
+  if(st==='current'){states[i]='done';const nx=states.indexOf('upcoming');if(nx>-1)states[nx]='current';else{const lk=states.indexOf('locked');if(lk>-1)states[lk]='current';}ph();$('#log').textContent=`step ${i+1} done · node → check 300 ms · connector fills · row ${i+2} current · success sound · medium haptic`;if(states.every(s=>s==='done'))$('#log').textContent+=' · all done → summary row';return;}
+  if(st==='done'){$('#log').textContent=`step ${i+1} opened read-only`;return;}
+  toast(st==='locked'?`${STEPS[i].t}: ${reasons[i]||'not yet'}`:`Finish ${STEPS[states.indexOf('current')]?.t||'the current step'} first`);$('#log').textContent=`${st} row tapped → Toast, no navigation`;});
+ $('#ph').querySelectorAll('.sbtn').forEach(b=>b.onclick=e=>{e.stopPropagation();b.closest('.srow').click();});}
+let tt;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),2200);}
+ph();
+// donts
+$('#dont-grid').innerHTML=[
+ `<div class="stg"><div class="slist">${STEPS.slice(0,3).map((s,i)=>row(s,i===0?'done':'current',i+1)).join('')}</div><span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">Two current rows, two Buttons. A new expert who sees two things to do does neither (P2). One current step, one Button.</div></div>`,
+ `<div class="stg"><div class="srail">${STEPS.map((s,i)=>`<div class="st ${i===0?'done':i===1?'current':'upcoming'}"><span class="nd">${i===0?svg('check'):svg(s.i)}</span></div>`).join('')}</div><span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">Rail without labels. A bank icon is not "Bank account" to someone in her first week; labels are always under the nodes.</div></div>`,
+ `<div class="stg"><div class="slist">${row(STEPS[0],'done',1)}${row(STEPS[1],'current',2)}<div class="srow upcoming"><span class="nd">${svg('bank')}</span><div class="tx"><span class="eb">Step 3</span><span class="tt">Bank account</span></div></div><div class="srow upcoming"><span class="nd">${svg('cap')}</span><div class="tx"><span class="eb">Step 4</span><span class="tt">Training</span></div></div></div><span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">Grey steps with no reason. "Why can't I tap this?" is answered in the eyebrow — <em>After ID proof</em>, <em>Trainer will call</em> — never left to a lock or a shade of grey.</div></div>`,
+ `<div class="stg"><div class="srail">${STEPS.map((s,i)=>`<div class="st ${i<2?'done':i===2?'current':'upcoming'}"><span class="nd" style="font:600 14px var(--sans)">${i+1}</span><span class="lb">${s.t}</span></div>`).join('')}</div><span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">Numbered circles instead of icons. Digits are fine in the eyebrow (<em>Step 2</em>), but the node should carry the meaning — the ID card, the bank — so the rail reads without the words.</div></div>`].join('');
+const links=[...document.querySelectorAll('#nav a')];const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-20% 0px -70% 0px'});targets.forEach(t=>io.observe(t));}
+})();
+</script>

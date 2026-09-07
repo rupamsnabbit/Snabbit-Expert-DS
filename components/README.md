@@ -21,3 +21,5 @@ One spec per core component. `button.md` is the template. Status per component: 
 | BottomSheet | Proposed | `bottom-sheet.md` | `site/components/bottom-sheet.html` |
 | HeaderNav | Proposed | `header-nav.md` | `site/components/header-nav.html` |
 | BottomTabBar | Proposed | `bottom-tab-bar.md` | `site/components/bottom-tab-bar.html` |
+| ProgressBar | Proposed | `progress-bar.md` | `site/components/progress-bar.html` |
+| Stepper | Proposed | `stepper.md` | `site/components/stepper.html` |
