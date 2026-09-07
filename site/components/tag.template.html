@@ -1,0 +1,102 @@
+<title>Snabbit Expert Tag</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>__BASECSS__
+.stag{display:inline-flex;align-items:center;gap:var(--g);height:var(--h);padding:0 var(--px);border-radius:4px;font-family:var(--sans);font-size:var(--fs);font-weight:500;line-height:1;white-space:nowrap;background:var(--fill,transparent);color:var(--ink);box-shadow:inset 0 0 0 var(--bw,0) var(--bc,transparent)}
+.stag svg{width:var(--ic);height:var(--ic);flex:none}
+.cardx{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px;width:328px;color:#111827;display:flex;flex-direction:column;gap:10px}
+.cardx .row{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.cardx .t{font-size:18px;font-weight:500;line-height:24px}.cardx .m{font-size:14px;color:#374151;line-height:20px}
+.cardx .tags{display:flex;gap:6px;flex-wrap:wrap}
+__NAVCSS__</style>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · Tag</small></div></div>
+    __SITENAV__
+    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#tones">Tones × styles</a><a href="#sizes">Sizes</a><a href="#usage">In context</a><a href="#tokens">Tokens used</a><a href="#figma">Figma changes</a></nav>
+    <div class="rail-foot">Rendered from tokens.json · spec in components/tag.md</div>
+  </aside>
+  <main class="main">
+    <header id="overview">
+      <div class="eyebrow">Core component</div><h1>Tag</h1>
+      <p class="lede">Labels a thing with its status or category. Read, not tapped — anything tappable that looks like a tag is a Chip or an XS Button.</p>
+      <div class="meta"><span class="chip status">Proposed</span><span class="chip">Tier 1 · Core</span><span class="chip"><code>SnabbitTag</code></span><span class="chip">6 tones × 3 styles × 3 sizes</span><span class="chip">Not interactive</span></div>
+    </header>
+
+    <section id="tones">
+      <header><div class="eyebrow">Meaning × emphasis</div><h2>Tones × styles</h2><p>Tone is meaning — success is done or paid, warning is waiting, error is failed or penalised, info is a fact to notice, brand is new, neutral is a category. <b>Soft</b> is the default; solid is for the one status that must dominate a card. Warning · solid fails contrast and is not allowed.</p></header>
+      <div class="stage" id="tm"></div>
+      <ul class="rules"><li><b>Purple is gone.</b> It isn't in the palette; if it meant tier, tier is <code>TierBadge</code>.</li><li><b>Status tags carry an icon.</b> Colour alone never carries meaning (P1).</li><li><b>At most two tags per card, one solid.</b></li></ul>
+    </section>
+
+    <section id="sizes">
+      <header><div class="eyebrow">Sizing</div><h2>Sizes</h2><p>True dp. S uses the 10 sp <code>Small</code> style, which the type rules forbid for anything essential — S is for dense secondary metadata only.</p></header>
+      <div class="stage"><div class="sizes" id="sz"></div></div>
+      <div class="tbl-wrap" style="margin-top:16px"><table><thead><tr><th>Size</th><th>Height</th><th>Pad X</th><th>Label</th><th>Icon</th><th>Gap</th><th>Use</th></tr></thead><tbody id="sztbl"></tbody></table></div>
+    </section>
+
+    <section id="usage">
+      <header><div class="eyebrow">On the screen</div><h2>In context</h2><p>Job cards at 328 dp (360 minus margins). Placement diagrams, not final cards.</p></header>
+      <div class="phones" id="ctx"></div>
+    </section>
+
+    <section id="tokens">
+      <header><div class="eyebrow">Traceability</div><h2>Tokens used</h2><p>Six values have no semantic token yet and are proposed (marked).</p></header>
+      <div class="tbl-wrap"><table><thead><tr><th>Where</th><th>Token</th><th>Value</th></tr></thead><tbody id="tk"></tbody></table></div>
+    </section>
+
+    <section id="figma">
+      <header><div class="eyebrow">Reconciliation</div><h2>What changes in Figma</h2></header>
+      <ol class="rules"><li>Delete the purple set. <code>Color</code> → <code>Tone</code> (Brand / Neutral / Success / Warning / Error / Info); <code>Style</code> → Solid / Soft / Outline.</li><li>Four sizes → L / M / S; delete the duplicate 12 sp row.</li><li>Remove Warning · Solid.</li><li>Rebind to semantic variables; soft text to the proposed <code>*Strong</code> tokens.</li><li>Icon becomes a boolean, leading only.</li></ol>
+      <p class="sub" style="margin-top:14px">Result: 51 variants instead of 84.</p>
+    </section>
+  </main>
+</div>
+
+<script id="tokens-json" type="application/json">__TOKENS__</script>
+<script>
+(function(){
+const T=JSON.parse(document.getElementById("tokens-json").textContent); const $=s=>document.querySelector(s);
+const sem={}; Object.values(T.color.semantic).flat().forEach(t=>sem[t.name]=t.value); const P=T.color.palette;
+const prop={textSuccessStrong:P.green['700'],textWarningStrong:P.yellow['700'],textErrorStrong:P.red['700'],textInfoStrong:P.blue['700'],bgInfoSubtle:P.blue['100'],bgNeutralStrong:P.gray['800']};
+const ICO={'check-circle':'M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z',
+ clock:'M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z',
+ 'warning-circle':'M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm-8-80V80a8,8,0,0,1,16,0v56a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,172Z',
+ 'x-circle':'M165.66,101.66,139.31,128l26.35,26.34a8,8,0,0,1-11.32,11.32L128,139.31l-26.34,26.35a8,8,0,0,1-11.32-11.32L116.69,128,90.34,101.66a8,8,0,0,1,11.32-11.32L128,116.69l26.34-26.35a8,8,0,0,1,11.32,11.32ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z',
+ info:'M144,176a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Zm120,44A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z',
+ sparkle:'M208,144a15.78,15.78,0,0,1-10.42,14.94l-51.65,19-19,51.61a15.92,15.92,0,0,1-29.88,0L78,178l-51.62-19a15.92,15.92,0,0,1,0-29.88l51.65-19,19-51.61a15.92,15.92,0,0,1,29.88,0l19,51.65,51.61,19A15.78,15.78,0,0,1,208,144Zm-16,0-51.65-19a15.9,15.9,0,0,1-9.37-9.37L112,64,93,115.63a15.9,15.9,0,0,1-9.37,9.37L32,144l51.63,19a15.9,15.9,0,0,1,9.37,9.37L112,224l19-51.63a15.9,15.9,0,0,1,9.37-9.37Z',
+ broom:'M235.5,216.81c-22.56-11-35.5-34.58-35.5-64.8V134.73a15.94,15.94,0,0,0-10.09-14.87L165,110a8,8,0,0,1-4.48-10.34l21.32-53a28,28,0,0,0-16.1-37,28.14,28.14,0,0,0-35.82,16,.61.61,0,0,0,0,.12L108.9,79a8,8,0,0,1-10.37,4.49L73.11,73.14A15.89,15.89,0,0,0,55.74,76.8C34.68,98.45,24,123.75,24,152a111.45,111.45,0,0,0,31.18,77.53A8,8,0,0,0,61,232H232a8,8,0,0,0,3.5-15.19ZM67.14,88l25.41,10.3a24,24,0,0,0,31.23-13.45l21-53c2.56-6.11,9.47-9.27,15.43-7a12,12,0,0,1,6.88,15.92L145.69,93.76a24,24,0,0,0,13.43,31.14L184,134.73V152c0,.33,0,.66,0,1L55.77,101.71A108.84,108.84,0,0,1,67.14,88Zm48,128a87.53,87.53,0,0,1-24.34-42,8,8,0,0,0-15.49,4,105.16,105.16,0,0,0,18.36,38H64.44A95.54,95.54,0,0,1,40,152a85.9,85.9,0,0,1,7.73-36.29l137.8,55.12c3,18,10.56,33.48,21.89,45.16Z'};
+const svg=n=>`<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="${ICO[n]}"/></svg>`;
+const TONES={brand:{solid:[sem.interactiveDefault,sem.textInverse],soft:[sem.bgBrandSubtle,sem.textBrand],outline:[sem.borderBrand,sem.textBrand]},
+ neutral:{solid:[prop.bgNeutralStrong,sem.textInverse],soft:[sem.bgTertiary,sem.textBody],outline:[sem.borderStrong,sem.textBody]},
+ success:{solid:[sem.textSuccess,sem.textInverse],soft:[sem.bgSuccessSubtle,prop.textSuccessStrong],outline:[sem.borderSuccess,sem.textSuccess]},
+ warning:{solid:null,soft:[sem.bgWarningSubtle,prop.textWarningStrong],outline:[sem.borderWarning,sem.textWarning]},
+ error:{solid:[sem.textError,sem.textInverse],soft:[sem.bgErrorSubtle,prop.textErrorStrong],outline:[sem.borderError,sem.textError]},
+ info:{solid:[sem.textInfo,sem.textInverse],soft:[prop.bgInfoSubtle,prop.textInfoStrong],outline:[sem.borderFocus,sem.textInfo]}};
+const LBL={brand:'New',neutral:'Cleaning',success:'Paid',warning:'Pending',error:'Late',info:'Lunch break'};
+const IC={brand:'sparkle',neutral:'broom',success:'check-circle',warning:'warning-circle',error:'clock',info:'info'};
+const SZ={L:{h:28,px:8,fs:14,ic:16,g:4},M:{h:24,px:6,fs:12,ic:14,g:4},S:{h:20,px:4,fs:10,ic:12,g:2}};
+function tag(tone,style,size='M',label,icon=true){const c=TONES[tone][style]; if(!c) return '<span class="na" title="not allowed"></span>'; const s=SZ[size];
+  const st=style==='outline'?`--fill:#fff;--bw:1px;--bc:${c[0]};--ink:${c[1]}`:`--fill:${c[0]};--ink:${c[1]}`;
+  return `<span class="stag" style="--h:${s.h}px;--px:${s.px}px;--fs:${s.fs}px;--ic:${s.ic}px;--g:${s.g}px;${st}">${icon&&IC[tone]?svg(IC[tone]):''}${label||LBL[tone]}</span>`;}
+const STY=['soft','solid','outline'];
+let m=`<div class="matrix" style="grid-template-columns:110px repeat(3,1fr)"><div></div>${STY.map(s=>`<div class="h">${s}${s==='soft'?' · default':''}</div>`).join('')}`;
+Object.keys(TONES).forEach(t=>{m+=`<div class="r">${t}</div>`+STY.map(s=>`<div>${tag(t,s,'M')}${t==='warning'&&s==='solid'?'<div style="font-size:11px;color:#9CA3AF;margin-top:6px">3.2:1 — not allowed</div>':''}</div>`).join('');});
+$('#tm').innerHTML=m+'</div>';
+$('#sz').innerHTML=['L','M','S'].map(k=>`<div class="szd">${tag('success','soft',k)}<div class="lbl"><b>${k}</b> · ${SZ[k].h} dp</div></div>`).join('')+`<div class="szd">${tag('neutral','soft','M','Cleaning',false)}<div class="lbl">category · icon optional</div></div>`;
+const USE={L:'Card headers, job status — must not be missed',M:'Default in lists and cards',S:'Dense secondary metadata only · never payment, safety, errors'}; const TY={L:'BodyMd 14 Medium',M:'Caption 12 Medium',S:'Small 10 Medium'};
+$('#sztbl').innerHTML=['L','M','S'].map(k=>`<tr><td class="tk">${k}</td><td class="tk">${SZ[k].h}</td><td class="tk">${SZ[k].px}</td><td class="tk">${TY[k]}</td><td class="tk">${SZ[k].ic}</td><td class="tk">${SZ[k].g}</td><td>${USE[k]}</td></tr>`).join('');
+const card=(tags,t,mth)=>`<div class="cardx"><div class="row"><div class="t">${t}</div>${tags[0]||''}</div><div class="m">${mth}</div>${tags.length>1?`<div class="tags">${tags.slice(1).join('')}</div>`:''}</div>`;
+$('#ctx').innerHTML=[
+ `<div>${card([tag('success','solid','L','Paid'),tag('neutral','soft','M','Cleaning')],'Job · 2 hr','Koramangala · ₹450 · Today 9:30 am')}<span class="verdict ok">Do</span><div class="sub" style="font-size:13.5px">One solid status the expert must see, one soft category. Icon on the status.</div></div>`,
+ `<div>${card([tag('warning','soft','L','Pending'),tag('neutral','soft','M','Cleaning'),tag('info','soft','M','Lunch break')],'Job · 2 hr','Koramangala · ₹450 · Today 9:30 am')}<span class="verdict ok">Do</span><div class="sub" style="font-size:13.5px">Warning is soft or outline — never solid. Two soft tags is the limit.</div></div>`,
+ `<div>${card([tag('error','solid','L','Late'),tag('success','solid','M','Paid'),tag('brand','solid','M','New'),tag('info','solid','S','Lunch')],'Job · 2 hr','Koramangala · ₹450 · Today 9:30 am')}<span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">Four tags, all solid, one at S for a status. Nothing is highlighted and the important one is illegible.</div></div>`,
+ `<div>${card([`<span class="stag" style="--h:24px;--px:6px;--fs:12px;--ic:14px;--g:4px;--fill:#7C3AED;--ink:#fff">Gold</span>`,tag('neutral','soft','M','Cleaning')],'Job · 2 hr','Koramangala · ₹450 · Today 9:30 am')}<span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">A purple tag for tier. Purple isn't in the palette, and tier is <code>TierBadge</code>, not a tag.</div></div>`].join('');
+const rows=[['Brand solid fill','interactiveDefault'],['Brand soft fill','bgBrandSubtle'],['Brand text / outline','textBrand'],['Neutral soft fill','bgTertiary'],['Neutral text','textBody'],['Neutral outline','borderStrong'],['Success solid fill / text','textSuccess'],['Success soft fill','bgSuccessSubtle'],['Success outline','borderSuccess'],['Warning soft fill','bgWarningSubtle'],['Warning outline','borderWarning'],['Warning text','textWarning'],['Error solid fill / text','textError'],['Error soft fill','bgErrorSubtle'],['Error outline','borderError'],['Info solid fill / text','textInfo'],['Info outline','borderFocus'],['Inverse label','textInverse']];
+const pr=[['Neutral solid fill','bgNeutralStrong','gray.800'],['Success soft text','textSuccessStrong','green.700'],['Warning soft text','textWarningStrong','yellow.700'],['Error soft text','textErrorStrong','red.700'],['Info soft text','textInfoStrong','blue.700'],['Info soft fill','bgInfoSubtle','blue.100']];
+$('#tk').innerHTML=rows.map(([w,t])=>`<tr><td>${w}</td><td class="tk">${t}</td><td class="tk"><span class="sw" style="background:${sem[t]}"></span>${sem[t]}</td></tr>`).join('')+pr.map(([w,t,p])=>`<tr><td>${w}</td><td class="tk">${t} <span style="color:#B45309;font-family:var(--sans);font-size:11px;font-weight:600">proposed</span></td><td class="tk"><span class="sw" style="background:${prop[t]}"></span>${prop[t]} (${p})</td></tr>`).join('');
+const links=[...document.querySelectorAll('#nav a')];const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-20% 0px -70% 0px'});targets.forEach(t=>io.observe(t));}
+})();
+</script>
