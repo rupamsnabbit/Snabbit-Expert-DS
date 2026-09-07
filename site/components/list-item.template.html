@@ -1,0 +1,154 @@
+<title>Snabbit Expert ListItem</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>__BASECSS__
+.list{background:#fff;border:1px solid #E5E7EB;border-radius:12px;overflow:hidden;width:328px;color:#111827;font-family:var(--sans)}
+.list.bleed{border:0;border-radius:0;width:360px}
+.li{display:flex;align-items:center;gap:12px;min-height:56px;padding:8px 16px;position:relative;cursor:default}
+.li.nav,.li.selrow{cursor:pointer}.li.nav:active,.li.selrow:active{background:#F9FAFB}
+.li.press{background:#F9FAFB}.li.selected{background:#FEF1F7}.li.dis{opacity:1}.li.dis .tt,.li.dis .ds,.li.dis .tr,.li.dis .ld{color:#9CA3AF!important}.li.dis .ld{opacity:.4}
+.li.two{align-items:flex-start;padding-top:12px;padding-bottom:12px}
+.li+.li::before{content:"";position:absolute;left:var(--inset,68px);right:0;top:0;height:1px;background:#F3F4F6}
+.li .ld{flex:none;width:40px;height:40px;display:grid;place-items:center;color:#374151}
+.li .ld.icon svg{width:24px;height:24px}
+.li .ld.box{border-radius:8px;background:var(--bx,#FEF1F7);color:var(--bi,#F70F79)}.li .ld.box svg{width:20px;height:20px}
+.li .ld.av{border-radius:50%;background:#FEF3C7;color:#B45309;font-weight:600;font-size:14px}
+.li .ld.ctl{width:24px}
+.li .body{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.li .tt{font-size:16px;line-height:24px;color:#111827;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.li .ds{font-size:14px;line-height:20px;color:#6B7280}
+.li .st{display:flex;align-items:center;gap:6px;font-size:14px;line-height:20px;color:var(--sc)}.li .st svg{width:16px;height:16px;flex:none}
+.li .tr{flex:none;display:flex;align-items:center;gap:4px;color:#111827}
+.li .tr .am{font-variant-numeric:tabular-nums;font-weight:600;font-size:16px}.li .tr .am.pos{color:#059669}.li .tr .am.neg{color:#DC2626}.li .tr .am.lk{color:#9CA3AF;display:inline-flex;gap:4px;align-items:center}.li .tr .am svg{width:16px;height:16px}
+.li .tr .caret{width:20px;height:20px;color:#9CA3AF}
+.li .tr .meta{font-size:12px;color:#6B7280}
+.li .tr .eye{width:40px;height:40px;border-radius:8px;display:grid;place-items:center;color:#374151;border:0;background:transparent;cursor:pointer}.li .tr .eye svg{width:20px;height:20px}
+.tagm{display:inline-flex;align-items:center;gap:4px;height:24px;padding:0 6px;border-radius:4px;font-size:12px;font-weight:500}
+.sw{width:52px;height:32px;border-radius:999px;background:#6B7280;position:relative}.sw .kn{position:absolute;top:4px;left:4px;width:24px;height:24px;border-radius:50%;background:#fff;display:grid;place-items:center}.sw .kn svg{width:14px;height:14px;color:#6B7280}.sw.on{background:#F70F79}.sw.on .kn{left:24px}.sw.on .kn svg{color:#F70F79}
+.cb{width:24px;height:24px;border-radius:4px;box-shadow:inset 0 0 0 1.5px #6B7280;display:grid;place-items:center}.cb.on{background:#F70F79;box-shadow:none}.cb svg{width:16px;height:16px;color:#fff}
+.sk{background:linear-gradient(90deg,#F3F4F6 25%,#E5E7EB 50%,#F3F4F6 75%);background-size:200% 100%;animation:sh 1.2s linear infinite;border-radius:6px;height:14px}
+@keyframes sh{to{background-position:-200% 0}}
+@media (prefers-reduced-motion:reduce){.sk{animation:none}}
+.sec{font-size:14px;font-weight:500;color:#6B7280;padding:16px 16px 8px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(328px,1fr));gap:24px 32px;align-items:start}
+.stg{display:flex;flex-direction:column;gap:8px}.stg .cap{font-family:var(--mono);font-size:12px;color:#6B7280}.stg .cap b{color:#111827;font-weight:500}
+.mx{display:grid;grid-template-columns:repeat(auto-fill,minmax(328px,1fr));gap:16px 24px}
+.ibtn{width:40px;height:40px;border-radius:8px;display:grid;place-items:center;color:#F70F79;box-shadow:inset 0 0 0 1.5px #F70F79;background:#fff}.ibtn svg{width:18px;height:18px}
+.info{width:16px;height:16px;color:#9CA3AF;display:inline-block;vertical-align:-3px;margin-left:4px}
+.blur{filter:blur(5px);user-select:none}
+__NAVCSS__</style>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · ListItem</small></div></div>
+    __SITENAV__
+    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#heights">Heights &amp; lines</a><a href="#slots">Slots</a><a href="#states">States</a><a href="#live">Live lists</a><a href="#dont">Don't</a><a href="#figma">Figma changes</a></nav>
+    <div class="rail-foot">Rendered from tokens.json · spec in components/list-item.md</div>
+  </aside>
+  <main class="main">
+    <header id="overview">
+      <div class="eyebrow">Core component</div><h1>ListItem</h1>
+      <p class="lede">One row in a list: a leading thing, a title with optional lines, a trailing thing, a divider. Eleven Figma frames are all this row with different things in the slots. Tall enough to tap, calm enough to scan, honest about status.</p>
+      <div class="meta"><span class="chip status">Proposed</span><span class="chip">Tier 1 · Core</span><span class="chip"><code>SnabbitListItem</code></span><span class="chip">56 · 64 · 72 dp</span><span class="chip">Replaces 11 frames</span></div>
+    </header>
+
+    <section id="heights">
+      <header><div class="eyebrow">Sizing</div><h2>Heights &amp; lines</h2><p>Title only 56; with a description 64; with two lines or a 40 dp leading 72. Title is BodyLg 16 — the row is what she reads, so it gets the reading size. Three lines maximum; more is a Card.</p></header>
+      <div class="stage"><div class="grid2" id="heights"></div></div>
+    </section>
+
+    <section id="slots">
+      <header><div class="eyebrow">Composition</div><h2>Slots</h2><p>Leading: icon, tonal icon box, avatar, badge, checkbox/radio, pictogram, or none. Trailing: Amount, Tag, caret, Amount + caret, Switch, meta, or one IconButton. Never two trailing elements except Amount + caret; never a Button in a row.</p></header>
+      <div class="stage"><div class="mx" id="slots-grid"></div></div>
+    </section>
+
+    <section id="states">
+      <header><div class="eyebrow">Behaviour</div><h2>States</h2><p>Status is a line with an icon and words in the status colour — never a red label alone. Loading is three skeleton rows. No swipe actions: a gesture must never be the only path.</p></header>
+      <div class="stage"><div class="grid2" id="states-grid"></div></div>
+    </section>
+
+    <section id="live">
+      <header><div class="eyebrow">In context</div><h2>Live lists</h2><p>A full-bleed jobs list with section headers, and the earnings breakdown from Figma rebuilt — including the hidden value, which is now <code>₹••••</code> with an eye, not a blur. Tap the eye. Toggle the switch row.</p></header>
+      <div class="stage"><div class="grid2" id="live-grid"></div></div>
+    </section>
+
+    <section id="dont">
+      <header><div class="eyebrow">Common mistakes</div><h2>Don't</h2></header>
+      <div class="stage"><div class="grid2" id="dont-grid"></div></div>
+    </section>
+
+    <section id="figma">
+      <header><div class="eyebrow">Reconciliation</div><h2>What changes in Figma</h2></header>
+      <ol class="rules"><li>Merge List Items, ListItem / meta and List into ListItem: Leading (None / Icon / Icon box / Avatar / Badge / Checkbox / Radio / Pictogram), Lines (1 / 2 / 3), Trailing (None / Caret / Amount / Amount+Caret / Tag / Switch / Meta / IconButton), State, boolean Divider.</li><li>Delete every (i) info icon; move its text into the description line.</li><li>Replace blurred values and "Show" chips with Amount hidden + eye.</li><li>Rebuild the eight domain list frames as compositions on their feature pages.</li><li>Add List section header and Skeleton row.</li><li>Bind text, dividers and washes to tokens.</li></ol>
+    </section>
+  </main>
+</div>
+
+<script id="tokens-json" type="application/json">__TOKENS__</script>
+<script>
+(function(){
+const T=JSON.parse(document.getElementById("tokens-json").textContent); const $=s=>document.querySelector(s);
+const sem={}; Object.values(T.color.semantic).flat().forEach(t=>sem[t.name]=t.value); const P=T.color.palette;
+const ICO={caret:'M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z',broom:'M235.5,216.81c-22.56-11-35.5-34.58-35.5-64.8V134.73a15.94,15.94,0,0,0-10.09-14.87L165,110a8,8,0,0,1-4.48-10.34l21.32-53a28,28,0,0,0-16.1-37,28.14,28.14,0,0,0-35.82,16,.61.61,0,0,0,0,.12L108.9,79a8,8,0,0,1-10.37,4.49L73.11,73.14A15.89,15.89,0,0,0,55.74,76.8C34.68,98.45,24,123.75,24,152a111.45,111.45,0,0,0,31.18,77.53A8,8,0,0,0,61,232H232a8,8,0,0,0,3.5-15.19ZM67.14,88l25.41,10.3a24,24,0,0,0,31.23-13.45l21-53c2.56-6.11,9.47-9.27,15.43-7a12,12,0,0,1,6.88,15.92L145.69,93.76a24,24,0,0,0,13.43,31.14L184,134.73V152c0,.33,0,.66,0,1L55.77,101.71A108.84,108.84,0,0,1,67.14,88Zm48,128a87.53,87.53,0,0,1-24.34-42,8,8,0,0,0-15.49,4,105.16,105.16,0,0,0,18.36,38H64.44A95.54,95.54,0,0,1,40,152a85.9,85.9,0,0,1,7.73-36.29l137.8,55.12c3,18,10.56,33.48,21.89,45.16Z',pot:'M88,48V16a8,8,0,0,1,16,0V48a8,8,0,0,1-16,0Zm40,8a8,8,0,0,0,8-8V16a8,8,0,0,0-16,0V48A8,8,0,0,0,128,56Zm32,0a8,8,0,0,0,8-8V16a8,8,0,0,0-16,0V48A8,8,0,0,0,160,56Zm92.8,46.4L224,124v60a32,32,0,0,1-32,32H64a32,32,0,0,1-32-32V124L3.2,102.4a8,8,0,0,1,9.6-12.8L32,104V88a8,8,0,0,1,8-8H216a8,8,0,0,1,8,8v16l19.2-14.4a8,8,0,0,1,9.6,12.8ZM208,96H48v88a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16Z',bank:'M24,104H232a8,8,0,0,0,4.19-14.81l-104-64a8,8,0,0,0-8.38,0l-104,64A8,8,0,0,0,24,104Zm104-62.61L203.72,88H52.28ZM248,208H232V184a8,8,0,0,0,0-16V120H216v48a8,8,0,0,0,0,16v24H184V184a8,8,0,0,0,0-16V120H168v48a8,8,0,0,0,0,16v24H136V184a8,8,0,0,0,0-16V120H120v48a8,8,0,0,0,0,16v24H88V184a8,8,0,0,0,0-16V120H72v48a8,8,0,0,0,0,16v24H40V184a8,8,0,0,0,0-16V120H24v48a8,8,0,0,0,0,16v24H8a8,8,0,0,0,0,16H248a8,8,0,0,0,0-16Z',bell:'M221.8,175.94C216.25,166.38,208,139.33,208,104a80,80,0,1,0-160,0c0,35.34-8.26,62.38-13.81,71.94A16,16,0,0,0,48,200H88.81a40,40,0,0,0,78.38,0H208a16,16,0,0,0,13.8-24.06ZM128,216a24,24,0,0,1-22.62-16h45.24A24,24,0,0,1,128,216ZM48,184c7.7-13.24,16-43.92,16-80a64,64,0,1,1,128,0c0,36.05,8.28,66.73,16,80Z',translate:'M239.15,212.42l-56-112a8,8,0,0,0-14.31,0l-21.71,43.43A88,88,0,0,1,100,126.93,103.65,103.65,0,0,0,127.69,64H152a8,8,0,0,0,0-16H96V32a8,8,0,0,0-16,0V48H24a8,8,0,0,0,0,16h87.63A87.76,87.76,0,0,1,88,116.35a87.74,87.74,0,0,1-19-31,8,8,0,1,0-15.08,5.34A103.63,103.63,0,0,0,76,127a87.55,87.55,0,0,1-52,17,8,8,0,0,0,0,16,103.46,103.46,0,0,0,64-22.08,104.18,104.18,0,0,0,51.44,21.31l-26.6,53.19a8,8,0,0,0,14.31,7.16L140.94,192h70.11l13.79,27.58A8,8,0,0,0,232,224a8,8,0,0,0,7.15-11.58ZM148.94,176,176,121.89,203.05,176Z',phone:'M222.37,158.46l-47.11-21.11-.13-.06a16,16,0,0,0-15.17,1.4,8.12,8.12,0,0,0-.75.56L134.87,160c-15.42-7.49-31.34-23.29-38.83-38.51l20.78-24.71c.2-.25.39-.5.57-.77a16,16,0,0,0,1.32-15.06l0-.12L97.54,33.64a16,16,0,0,0-16.62-9.52A56.26,56.26,0,0,0,32,80c0,79.4,64.6,144,144,144a56.26,56.26,0,0,0,55.88-48.92A16,16,0,0,0,222.37,158.46ZM176,208A128.14,128.14,0,0,1,48,80,40.2,40.2,0,0,1,82.87,40a.61.61,0,0,0,0,.12l21,47L83.2,111.86a6.13,6.13,0,0,0-.57.77,16,16,0,0,0-1,15.7c9.06,18.53,27.73,37.06,46.46,46.11a16,16,0,0,0,15.75-1.14,8.44,8.44,0,0,0,.74-.56L168.89,152l47,21.05h0s.08,0,.11,0A40.21,40.21,0,0,1,176,208Z',check:'M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z',x:'M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z',cc:'M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z',wc:'M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm-8-80V80a8,8,0,0,1,16,0v56a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,172Z',xc:'M165.66,101.66,139.31,128l26.35,26.34a8,8,0,0,1-11.32,11.32L128,139.31l-26.34,26.35a8,8,0,0,1-11.32-11.32L116.69,128,90.34,101.66a8,8,0,0,1,11.32-11.32L128,116.69l26.34-26.35a8,8,0,0,1,11.32,11.32ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z',lock:'M208,80H176V56a48,48,0,0,0-96,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM96,56a32,32,0,0,1,64,0V80H96ZM208,208H48V96H208V208Zm-68-56a12,12,0,1,1-12-12A12,12,0,0,1,140,152Z',eye:'M247.31,124.76c-.35-.79-8.82-19.58-27.65-38.41C194.57,61.26,162.88,48,128,48S61.43,61.26,36.34,86.35C17.51,105.18,9,124,8.69,124.76a8,8,0,0,0,0,6.5c.35.79,8.82,19.57,27.65,38.4C61.43,194.74,93.12,208,128,208s66.57-13.26,91.66-38.34c18.83-18.83,27.3-37.61,27.65-38.4A8,8,0,0,0,247.31,124.76ZM128,192c-30.78,0-57.67-11.19-79.93-33.25A133.47,133.47,0,0,1,25,128,133.33,133.33,0,0,1,48.07,97.25C70.33,75.19,97.22,64,128,64s57.67,11.19,79.93,33.25A133.46,133.46,0,0,1,231.05,128C223.84,141.46,192.43,192,128,192Zm0-112a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Z',eyeoff:'M53.92,34.62A8,8,0,1,0,42.08,45.38L61.32,66.55C25,88.84,9.38,123.2,8.69,124.76a8,8,0,0,0,0,6.5c.35.79,8.82,19.57,27.65,38.4C61.43,194.74,93.12,208,128,208a127.11,127.11,0,0,0,52.07-10.83l22,24.21a8,8,0,1,0,11.84-10.76Zm47.33,75.84,41.67,45.85a32,32,0,0,1-41.67-45.85ZM128,192c-30.78,0-57.67-11.19-79.93-33.25A133.16,133.16,0,0,1,25,128c4.69-8.79,19.66-33.39,47.35-49.38l18,19.75a48,48,0,0,0,63.66,70l14.73,16.2A112,112,0,0,1,128,192Zm6-95.43a8,8,0,0,1,3-15.72,48.16,48.16,0,0,1,38.77,42.64,8,8,0,0,1-7.22,8.71,6.39,6.39,0,0,1-.75,0,8,8,0,0,1-8-7.26A32.09,32.09,0,0,0,134,96.57Zm113.28,34.69c-.42.94-10.55,23.37-33.36,43.8a8,8,0,1,1-10.67-11.92A132.77,132.77,0,0,0,231.05,128a133.15,133.15,0,0,0-23.12-30.77C185.67,75.19,158.78,64,128,64a118.37,118.37,0,0,0-19.36,1.57A8.15,8.15,0,0,1,107,65.6a8,8,0,0,1-1.22-15.83A134.46,134.46,0,0,1,128,48c34.88,0,66.57,13.26,91.66,38.35,18.83,18.83,27.3,37.62,27.65,38.41A8,8,0,0,1,247.31,131.26Z',info:'M144,176a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Zm120,44A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z',trash:'M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z'};
+const svg=n=>`<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="${ICO[n]}"/></svg>`;
+const hexb=`<svg viewBox="0 0 64 64" aria-hidden="true" style="width:40px;height:40px"><defs><linearGradient id="gb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F5C6A0"/><stop offset=".55" stop-color="#C2703F"/><stop offset="1" stop-color="#7C3E12"/></linearGradient></defs><path d="M32 3l25 14.5v29L32 61 7 46.5v-29z" fill="url(#gb)"/><path d="M32 20l3.5 7.2 7.9 1.1-5.7 5.6 1.4 7.9L32 38l-7.1 3.8 1.4-7.9-5.7-5.6 7.9-1.1z" fill="#fff" opacity=".95"/></svg>`;
+const tag=(t,tone)=>{const m={success:[sem.bgSuccessSubtle,P.green['700'],'cc'],warning:[sem.bgWarningSubtle,P.yellow['700'],'wc'],error:[sem.bgErrorSubtle,P.red['700'],'xc'],neutral:[sem.bgTertiary,sem.textBody],brand:[sem.bgBrandSubtle,sem.textBrand]}[tone];return `<span class="tagm" style="background:${m[0]};color:${m[1]}">${m[2]?svg(m[2]).replace('<svg','<svg style="width:14px;height:14px"'):''}${t}</span>`;};
+const STC={success:[sem.textSuccess,'cc'],warning:[sem.textWarning,'wc'],error:[sem.textError,'xc']};
+function li(o){ // lead:{kind,icon,text,bx,bi}, title, desc, status:{tone,text}, trail:{kind,...}, kind, state, id
+ const L=o.lead;let lead='',inset=68;
+ if(!L){inset=16;} else if(L.kind==='icon')lead=`<span class="ld icon">${svg(L.icon)}</span>`;
+ else if(L.kind==='box')lead=`<span class="ld box" style="${L.bx?`--bx:${L.bx};--bi:${L.bi}`:''}">${svg(L.icon)}</span>`;
+ else if(L.kind==='av')lead=`<span class="ld av">${L.text}</span>`;
+ else if(L.kind==='badge')lead=`<span class="ld">${hexb}</span>`;
+ else if(L.kind==='cb'){lead=`<span class="ld ctl"><span class="cb ${L.on?'on':''}">${L.on?svg('check'):''}</span></span>`;inset=52;}
+ const Tt=o.trail;let tr='';
+ if(Tt){const k=Tt.kind;
+  if(k==='caret')tr=svg('caret').replace('<svg','<svg class="caret"');
+  else if(k==='amount')tr=`<span class="am ${Tt.cls||''}">${Tt.cls==='lk'?svg('lock'):''}${Tt.v}</span>`;
+  else if(k==='amount-caret')tr=`<span class="am ${Tt.cls||''}">${Tt.v}</span>${svg('caret').replace('<svg','<svg class="caret"')}`;
+  else if(k==='tag')tr=tag(Tt.v,Tt.tone);
+  else if(k==='switch')tr=`<span class="sw ${Tt.on?'on':''}" data-sw><span class="kn">${svg(Tt.on?'check':'x')}</span></span>`;
+  else if(k==='meta')tr=`<span class="meta">${Tt.v}</span>`;
+  else if(k==='ibtn')tr=`<span class="ibtn">${svg(Tt.icon)}</span>`;
+  else if(k==='hidden')tr=`<span class="am" data-amt="${Tt.v}">₹••••</span><button class="eye" aria-label="Show amount" data-eye>${svg('eye')}</button>`;
+  else if(k==='blur')tr=`<span class="am blur">${Tt.v}</span>${svg('caret').replace('<svg','<svg class="caret"')}`;}
+ const lines=(o.desc?1:0)+(o.status?1:0);
+ const st=o.status?`<span class="st" style="--sc:${STC[o.status.tone][0]}">${svg(STC[o.status.tone][1])}<span>${o.status.text}</span></span>`:'';
+ return `<div class="li ${o.kind||''} ${o.state||''} ${lines||(L&&L.kind!=='icon'&&L.kind!=='cb')?'two':''}" style="--inset:${inset}px" ${o.id?`id="${o.id}"`:''}>${lead}<span class="body"><span class="tt">${o.title}${o.info?`<span class="info">${svg('info')}</span>`:''}</span>${o.desc?`<span class="ds">${o.desc}</span>`:''}${st}</span>${tr?`<span class="tr">${tr}</span>`:''}</div>`;}
+const list=(rows,bleed)=>`<div class="list ${bleed?'bleed':''}">${rows.join('')}</div>`;
+const W=(cap,html)=>`<div class="stg">${html}<div class="cap">${cap}</div></div>`;
+$('#heights').innerHTML=[
+ W('<b>56</b> · title only',list([li({lead:{kind:'icon',icon:'bell'},title:'Notifications',trail:{kind:'caret'},kind:'nav'})])),
+ W('<b>64</b> · title + description',list([li({lead:{kind:'icon',icon:'bank'},title:'Bank account',desc:'HDFC ····4821',trail:{kind:'caret'},kind:'nav'})])),
+ W('<b>72</b> · title + description + status · 40 dp leading',list([li({lead:{kind:'box',icon:'broom'},title:'Cleaning · 2 hr',desc:'Koramangala · 9:30 am',status:{tone:'success',text:'Paid on Friday'},trail:{kind:'amount',v:'₹450'}})]))].join('');
+$('#slots-grid').innerHTML=[
+ W('leading <b>icon</b> · trailing <b>caret</b>',list([li({lead:{kind:'icon',icon:'translate'},title:'Language',desc:'हिन्दी',trail:{kind:'caret'},kind:'nav'})])),
+ W('leading <b>icon box</b> · trailing <b>Amount</b>',list([li({lead:{kind:'box',icon:'pot'},title:'Cooking · 1 hr',desc:'HSR Layout · 12:00 pm',trail:{kind:'amount',v:'₹300'}})])),
+ W('leading <b>avatar</b> · trailing <b>meta</b>',list([li({lead:{kind:'av',text:'MK'},title:'Meera K',desc:'Customer · 1.2 km',trail:{kind:'meta',v:'9:30 am'},kind:'nav'})])),
+ W('leading <b>badge</b> · trailing <b>Amount locked</b>',list([li({lead:{kind:'badge'},title:'Weekly bonus',desc:'Complete 3 more jobs',trail:{kind:'amount',v:'₹200',cls:'lk'}})])),
+ W('leading <b>checkbox</b> · selection row',list([li({lead:{kind:'cb',on:1},title:'Laundry & ironing',kind:'selrow'})])),
+ W('trailing <b>Tag</b>',list([li({lead:{kind:'box',icon:'broom'},title:'Cleaning · 2 hr',desc:'Yesterday · 2:00 pm',trail:{kind:'tag',v:'Paid',tone:'success'}})])),
+ W('trailing <b>Switch</b> · whole row toggles',list([li({lead:{kind:'icon',icon:'bell'},title:'Job alerts',desc:'Sound and vibration',trail:{kind:'switch',on:1},kind:'selrow'})])),
+ W('trailing <b>Amount + caret</b>',list([li({title:'Total this week',trail:{kind:'amount-caret',v:'₹6,450'},kind:'nav'})])),
+ W('trailing <b>IconButton</b> · row not tappable',list([li({lead:{kind:'av',text:'MK'},title:'Meera K',desc:'Customer',trail:{kind:'ibtn',icon:'phone'}})])),
+ W('<b>no leading</b> · settings sub-item',list([li({title:'About Snabbit',trail:{kind:'caret'},kind:'nav'})]))].join('');
+$('#states-grid').innerHTML=[
+ W('<b>pressed</b> · bgSecondary wash',list([li({lead:{kind:'icon',icon:'bank'},title:'Bank account',desc:'HDFC ····4821',trail:{kind:'caret'},kind:'nav',state:'press'})])),
+ W('<b>selected</b> · in a Select sheet · fill + check',list([li({lead:{kind:'cb',on:1},title:'हिन्दी',desc:'Hindi',state:'selected',kind:'selrow'})])),
+ W('<b>disabled</b> · says why',list([li({lead:{kind:'icon',icon:'bank'},title:'Change bank account',desc:'Not during a payout cycle',trail:{kind:'caret'},state:'dis'})])),
+ W('<b>status lines</b> · icon + colour + words',list([li({lead:{kind:'box',icon:'broom'},title:'Cleaning · 2 hr',status:{tone:'success',text:'Paid on Friday'},trail:{kind:'amount',v:'₹450'}}),li({lead:{kind:'box',icon:'pot',bx:sem.bgWarningSubtle,bi:P.yellow['700']},title:'Cooking · 1 hr',status:{tone:'warning',text:'Pending — customer confirms by 8 pm'},trail:{kind:'amount',v:'₹300'}}),li({lead:{kind:'box',icon:'broom',bx:sem.bgErrorSubtle,bi:P.red['700']},title:'Cleaning · 1 hr',status:{tone:'error',text:'Missed check-in'},trail:{kind:'amount',v:'−₹50',cls:'neg'}})])),
+ W('<b>loading</b> · three skeleton rows',list([1,2,3].map(()=>`<div class="li two"><span class="ld"><span class="sk" style="width:40px;height:40px;border-radius:8px"></span></span><span class="body"><span class="sk" style="width:60%"></span><span class="sk" style="width:40%"></span></span><span class="tr"><span class="sk" style="width:48px"></span></span></div>`)))].join('');
+$('#live-grid').innerHTML=[
+ W('<b>full-bleed list</b> · section headers · navigational',`<div class="list bleed" style="border:1px solid #E5E7EB;border-radius:16px"><div class="sec">Today</div>${li({lead:{kind:'box',icon:'broom'},title:'Cleaning · 2 hr',desc:'Koramangala · 9:30 am',trail:{kind:'amount-caret',v:'₹450'},kind:'nav'})}${li({lead:{kind:'box',icon:'pot'},title:'Cooking · 1 hr',desc:'HSR Layout · 12:00 pm',trail:{kind:'amount-caret',v:'₹300'},kind:'nav'})}<div class="sec">Earlier</div>${li({lead:{kind:'box',icon:'broom'},title:'Cleaning · 1 hr',desc:'Yesterday · 2:00 pm',status:{tone:'success',text:'Paid'},trail:{kind:'amount-caret',v:'₹250'},kind:'nav'})}</div>`),
+ W('<b>earnings breakdown</b> · hidden value → tap the eye · description replaces the (i)',`<div class="list" id="earn">${li({lead:{kind:'badge'},title:'Karma bonus',desc:'For 5-star ratings this week',trail:{kind:'hidden',v:'₹120'}})}${li({lead:{kind:'badge'},title:'Joining bonus',desc:'Paid after your 10th job',trail:{kind:'amount',v:'₹500',cls:'lk'}})}${li({lead:{kind:'badge'},title:'Winback bonus',desc:'Unlocked yesterday',status:{tone:'success',text:'Added to Friday’s payout'},trail:{kind:'amount',v:'+₹200',cls:'pos'}})}</div>`),
+ W('<b>settings</b> · switch rows toggle on tap',`<div class="list" id="set">${li({lead:{kind:'icon',icon:'bell'},title:'Job alerts',desc:'Sound and vibration',trail:{kind:'switch',on:1},kind:'selrow'})}${li({lead:{kind:'icon',icon:'bell'},title:'Reminders',desc:'15 min before a job',trail:{kind:'switch',on:0},kind:'selrow'})}${li({lead:{kind:'icon',icon:'translate'},title:'Language',desc:'हिन्दी',trail:{kind:'caret'},kind:'nav'})}</div>`)].join('');
+// eye toggle
+$('#earn').querySelectorAll('[data-eye]').forEach(b=>{b.onclick=()=>{const a=b.previousElementSibling;const shown=a.textContent!=='₹••••';a.textContent=shown?'₹••••':a.dataset.amt;b.innerHTML=svg(shown?'eye':'eyeoff');};});
+$('#set').querySelectorAll('.li.selrow').forEach(r=>{const s=r.querySelector('[data-sw]');if(!s)return;r.onclick=()=>{const on=!s.classList.contains('on');s.classList.toggle('on',on);s.querySelector('.kn').innerHTML=svg(on?'check':'x');};});
+$('#dont-grid').innerHTML=[
+ `<div class="stg">${list([li({lead:{kind:'badge'},title:'Karma bonus',info:1,trail:{kind:'blur',v:'₹120'}}),li({lead:{kind:'badge'},title:'Label',info:1,status:{tone:'error',text:''},trail:{kind:'amount',v:'₹Value'}})])}<span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">An (i) hiding the explanation behind a 16 dp target; a blurred value that looks like a rendering bug; a red helper line with no icon or words. Explanation goes in the description; hidden is ₹•••• + eye; status is icon + words.</div></div>`,
+ `<div class="stg">${list([li({lead:{kind:'box',icon:'broom'},title:'Cleaning · 2 hr',desc:'Koramangala · 9:30 am',trail:{kind:'ibtn',icon:'trash'}}),`<div class="li" style="min-height:44px;font-size:13px;padding:4px 16px"><span class="ld icon" style="width:24px">${svg('bank')}</span><span class="body"><span class="tt" style="font-size:13px">Bank account · HDFC ····4821 · Radhika Sharma · verified · primary</span></span>${svg('caret').replace('<svg','<svg class="caret"')}</div>`])}<span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">A trash IconButton in a row (destructive without a label — not in the allowed set); a 44 dp row with 13 sp text cramming everything into the title. Rows are ≥ 56 with a 16 sp title; the rest goes in the description or the detail screen.</div></div>`].join('');
+const links=[...document.querySelectorAll('#nav a')];const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-20% 0px -70% 0px'});targets.forEach(t=>io.observe(t));}
+})();
+</script>
