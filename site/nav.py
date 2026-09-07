@@ -1,7 +1,7 @@
 """Shared site navigation. Every builder imports nav_html(depth)."""
 PAGES = [
   ("Foundations", [("index.html","Tokens"),("principles.html","Principles"),("extending.html","Extending"),("icons.html","Icons"),("assets.html","Assets")]),
-  ("Components",  [("components/button.html","Button"),("components/icon-button.html","IconButton"),("components/tag.html","Tag"),("components/text-field.html","TextField"),("components/selection-controls.html","Checkbox · Radio · Switch"),("components/amount.html","Amount"),("components/timer.html","Timer")]),
+  ("Components",  [("components/button.html","Button"),("components/icon-button.html","IconButton"),("components/tag.html","Tag"),("components/text-field.html","TextField"),("components/selection-controls.html","Checkbox · Radio · Switch"),("components/amount.html","Amount"),("components/timer.html","Timer"),("components/feedback.html","Banner · Toast · Snackbar")]),
   ("Research",    [("benchmark.html","Benchmark"),("audit.html","Figma audit")]),
 ]
 def nav_html(depth=0, current=None):

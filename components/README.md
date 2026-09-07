@@ -11,3 +11,4 @@ One spec per core component. `button.md` is the template. Status per component: 
 | Checkbox · Radio · Switch | Proposed | `selection-controls.md` | `site/components/selection-controls.html` |
 | Amount | Proposed | `amount.md` | `site/components/amount.html` |
 | Timer | Proposed | `timer.md` | `site/components/timer.html` |
+| Banner · Toast · Snackbar | Proposed | `feedback.md` | `site/components/feedback.html` |
