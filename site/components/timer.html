@@ -1,0 +1,184 @@
+<title>Snabbit Expert Timer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{--bg:#FFFFFF;--bg-2:#F9FAFB;--bg-3:#F3F4F6;--text:#111827;--text-body:#374151;--text-2:#6B7280;--text-3:#9CA3AF;--border:#E5E7EB;--border-subtle:#F3F4F6;--brand:#F70F79;--brand-wash:#FEF1F7;--brand-ink:#97094A;--focus:#3B82F6;--ok:#059669;--ok-wash:#ECFDF5;--bad:#DC2626;--bad-wash:#FEF2F2;
+--sans:"Outfit",ui-sans-serif,system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111827;--bg-2:#1F2937;--bg-3:#374151;--text:#F9FAFB;--text-body:#E5E7EB;--text-2:#9CA3AF;--text-3:#6B7280;--border:#374151;--border-subtle:#1F2937;--brand:#F65CA1;--brand-wash:rgba(247,15,121,.14);--brand-ink:#FBC9DF;--ok:#34D399;--ok-wash:rgba(16,185,129,.14);--bad:#F87171;--bad-wash:rgba(239,68,68,.14)}}
+:root[data-theme="dark"]{--bg:#111827;--bg-2:#1F2937;--bg-3:#374151;--text:#F9FAFB;--text-body:#E5E7EB;--text-2:#9CA3AF;--text-3:#6B7280;--border:#374151;--border-subtle:#1F2937;--brand:#F65CA1;--brand-wash:rgba(247,15,121,.14);--brand-ink:#FBC9DF;--ok:#34D399;--ok-wash:rgba(16,185,129,.14);--bad:#F87171;--bad-wash:rgba(239,68,68,.14)}
+*{box-sizing:border-box} html{scroll-behavior:smooth;scroll-padding-top:24px} @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} .sbtn,.sbtn *{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--text-body);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+code{font-family:var(--mono);font-size:.86em;background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--text)}
+button{font:inherit} :focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+.shell{display:grid;grid-template-columns:232px minmax(0,1fr);min-height:100vh}
+.rail{position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--border);padding:24px 16px 32px;background:var(--bg);display:flex;flex-direction:column;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;padding:0 8px}.brand-mark{width:28px;height:28px;border-radius:8px;background:var(--brand);display:grid;place-items:center;flex:none}.brand-mark span{width:12px;height:12px;border-radius:3px;background:#fff;transform:rotate(45deg)}
+.brand b{font-weight:600;color:var(--text);font-size:15px;line-height:1.2;display:block}.brand small{color:var(--text-2);font-size:12px}
+.nav{display:flex;flex-direction:column;gap:2px}.nav .grp{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);padding:12px 8px 4px;font-weight:500}
+.nav a{display:block;padding:6px 8px;border-radius:6px;text-decoration:none;color:var(--text-body);font-size:13.5px}.nav a:hover{background:var(--bg-2);color:var(--text)}.nav a.on{background:var(--brand-wash);color:var(--brand-ink);font-weight:500}
+.rail-foot{margin-top:auto;padding:0 8px;font-size:12px;color:var(--text-3);line-height:1.5}
+.main{padding:40px 56px 96px;max-width:1080px;width:100%}
+.eyebrow{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);font-weight:600}
+h1{font-size:40px;line-height:1.1;font-weight:600;color:var(--text);margin:8px 0 12px;letter-spacing:-.015em}
+.lede{font-size:17px;color:var(--text-2);max-width:62ch;margin:0}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}.chip{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border:1px solid var(--border);border-radius:999px;font-size:12.5px;color:var(--text-body)}
+.chip.status{background:#FEF3C7;color:#B45309;border-color:transparent;font-weight:600}
+section{padding-top:64px} section>header{margin-bottom:20px;max-width:68ch}
+h2{font-size:26px;line-height:1.2;font-weight:600;color:var(--text);margin:6px 0 8px;letter-spacing:-.01em} h3{font-size:16px;font-weight:600;color:var(--text);margin:32px 0 12px}
+section>header p,.sub{color:var(--text-2);margin:0;font-size:15px}
+.rules{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:6px;max-width:68ch}.rules li{padding-left:18px;position:relative;font-size:14px}.rules li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:2px;background:var(--brand)}
+
+/* stage */
+.stage{background:#FFFFFF;border:1px solid var(--border);border-radius:12px;padding:24px;color:#111827}
+.stage.dark{background:#F9FAFB}
+.matrix{display:grid;gap:14px 20px;align-items:center}
+.matrix .h{font-family:var(--mono);font-size:11.5px;color:#6B7280;text-transform:uppercase;letter-spacing:.06em}
+.matrix .r{font-family:var(--mono);font-size:12.5px;color:#111827;white-space:nowrap}
+.matrix .r small{display:block;color:#9CA3AF;font-size:11px;text-transform:none;letter-spacing:0}
+.na{width:24px;height:2px;background:#E5E7EB;border-radius:1px}
+.sizes{display:flex;gap:28px;align-items:flex-end;flex-wrap:wrap}
+.szd{display:flex;flex-direction:column;gap:10px;align-items:flex-start}.szd .lbl{font-family:var(--mono);font-size:12px;color:#6B7280}.szd .lbl b{color:#111827;font-weight:500}
+
+/* the button itself — everything from tokens via CSS vars set by JS */
+.sbtn{display:inline-flex;align-items:center;justify-content:center;border:0;cursor:pointer;white-space:nowrap;font-family:var(--sans);position:relative;overflow:hidden;
+  height:var(--h);padding:0 var(--px);border-radius:var(--r);font-size:var(--fs);font-weight:var(--fw);line-height:1;gap:var(--gap);
+  background:var(--fill,transparent);color:var(--ink);box-shadow:inset 0 0 0 var(--bw,0) var(--bc,transparent);transition:background .1s ease-out,box-shadow .1s}
+.sbtn.full{width:100%}
+.sbtn:active:not(.disabled):not(.loading){background:var(--fill-p)}
+.sbtn.pressed{background:var(--fill-p)}
+.sbtn.focused{outline:2px solid #3B82F6;outline-offset:2px}
+.sbtn.disabled{cursor:not-allowed}
+.sbtn svg{width:var(--ic);height:var(--ic);flex:none}
+.sbtn .spin{width:var(--ic);height:var(--ic);border-radius:50%;border:2px solid currentColor;border-right-color:transparent;animation:sp .7s linear infinite;flex:none}
+@keyframes sp{to{transform:rotate(360deg)}}
+.sbtn .hf{position:absolute;inset:0;background:rgba(0,0,0,.18);transform-origin:left;transform:scaleX(0)}
+.sbtn.holding .hf{transform:scaleX(1);transition:transform .6s linear}
+.sbtn>*{position:relative}
+.demo{display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start}
+.demo .card{flex:1;min-width:260px;border:1px solid var(--border);border-radius:12px;padding:18px;background:var(--bg)}
+.demo .card h4{margin:0 0 6px;font-size:14px;color:var(--text)}.demo .card p{margin:0 0 14px;font-size:13px;color:var(--text-2)}
+.demo .live{display:flex;gap:12px;align-items:center;flex-wrap:wrap;background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px;color:#111827}
+.logline{font-family:var(--mono);font-size:12px;color:var(--text-2);margin-top:10px;min-height:16px}
+
+/* phone mock */
+.phones{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.ph{border:1px solid var(--border);border-radius:16px;overflow:hidden;background:#fff;color:#111827}
+.ph .bar{padding:10px 16px;border-bottom:1px solid #F3F4F6;font-size:12px;color:#6B7280;display:flex;justify-content:space-between}
+.ph .bar b{font-weight:600}
+.ph .body{padding:16px;min-height:220px;display:flex;flex-direction:column;gap:12px}
+.ph .body .hd{font-size:20px;font-weight:600;line-height:28px}.ph .body .tx{font-size:14px;color:#374151;line-height:20px}
+.ph .foot{padding:12px 16px 24px;border-top:1px solid #F3F4F6;display:flex;flex-direction:column;gap:12px}
+.ph .foot.row{flex-direction:row}
+.verdict{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin:12px 0 6px}
+.verdict.ok{background:var(--ok-wash);color:var(--ok)}.verdict.bad{background:var(--bad-wash);color:var(--bad)}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px}table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{text-align:left;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);font-weight:500;padding:10px 14px;background:var(--bg-2);border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:9px 14px;border-bottom:1px solid var(--border-subtle);vertical-align:top}tr:last-child td{border-bottom:0}
+td.tk{font-family:var(--mono);font-size:12.5px;color:var(--text)}
+.sw{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-2px;margin-right:6px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(8px);background:var(--text);color:var(--bg);padding:8px 14px;border-radius:8px;font-size:13px;opacity:0;pointer-events:none;transition:opacity .15s,transform .15s;font-family:var(--mono)}.toast.show{opacity:1;transform:translateX(-50%)}
+@media (max-width:900px){.shell{grid-template-columns:1fr}.rail{position:static;height:auto;border-right:0;border-bottom:1px solid var(--border);padding:16px}.nav{flex-direction:row;flex-wrap:wrap;gap:4px}.nav .grp,.rail-foot{display:none}.main{padding:32px 20px 80px}h1{font-size:32px}}
+
+.tmr{position:relative;display:inline-grid;place-items:center;font-family:var(--sans);color:#111827}
+.tmr svg.ring{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.tmr .in{display:flex;flex-direction:column;align-items:center;gap:0;position:relative;padding:8px 20px}
+.tmr .lb{color:#6B7280}
+.tmr .dg{font-variant-numeric:tabular-nums;font-weight:600;line-height:1;color:var(--ink)}
+.tmr .dg small{font-size:.5em;font-weight:400;color:#6B7280;margin-left:4px}
+.tmr.L{min-width:200px;height:88px}.tmr.L .dg{font-size:32px;line-height:40px}.tmr.L .lb{font-size:14px;line-height:20px}
+.tmr.M{min-width:132px;height:56px}.tmr.M .dg{font-size:20px;line-height:24px}.tmr.M .lb{font-size:12px;line-height:14px}
+.tmr.pulse .dg{animation:pl 1s ease-in-out infinite}@keyframes pl{50%{transform:scale(1.06)}}
+@media (prefers-reduced-motion:reduce){.tmr.pulse .dg{animation:none;font-weight:700}}
+.grid3{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:24px 28px;align-items:end}
+.stg{display:flex;flex-direction:column;gap:10px;align-items:flex-start}.stg .cap{font-family:var(--mono);font-size:12px;color:#6B7280}.stg .cap b{color:#111827;font-weight:500}
+.alert{width:328px;border:1px solid #E5E7EB;border-radius:16px;background:#fff;color:#111827;padding:20px 16px 16px;display:flex;flex-direction:column;gap:14px;align-items:stretch}
+.alert .hd{font-size:24px;font-weight:600;line-height:32px;text-align:center}
+.alert .facts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.alert .f{display:flex;gap:8px;align-items:center;font-size:16px;color:#374151}.alert .f svg{width:20px;height:20px;color:#6B7280}
+.alert .ctr{display:flex;justify-content:center}
+.logline{font-family:var(--mono);font-size:12px;color:var(--text-2);min-height:16px}
+.thr{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:13.5px;align-items:center;max-width:520px}
+.thr .sw{width:14px;height:14px;border-radius:4px;display:inline-block;vertical-align:-2px;margin-right:6px}
+
+.sitenav{display:flex;flex-direction:column;gap:2px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.sitenav .grp{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);padding:10px 8px 4px;font-weight:500}
+.sitenav a{display:block;padding:5px 8px;border-radius:6px;text-decoration:none;color:var(--text-body);font-size:13.5px;border:0}
+.sitenav a:hover{background:var(--bg-2);color:var(--text)} .sitenav a.on{color:var(--brand-ink);background:var(--brand-wash);font-weight:500}
+@media (max-width:900px){.sitenav{flex-direction:row;flex-wrap:wrap;gap:4px;border-bottom:0;padding-bottom:0}.sitenav .grp{display:none}}
+</style>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · Timer</small></div></div>
+    <nav class="sitenav" aria-label="Site"><div class="grp">Foundations</div><a href="../index.html">Tokens</a><a href="../principles.html">Principles</a><a href="../extending.html">Extending</a><a href="../icons.html">Icons</a><a href="../assets.html">Assets</a><div class="grp">Components</div><a href="../components/button.html">Button</a><a href="../components/icon-button.html">IconButton</a><a href="../components/tag.html">Tag</a><a href="../components/text-field.html">TextField</a><a href="../components/selection-controls.html">Checkbox · Radio · Switch</a><a href="../components/amount.html">Amount</a><a class="on" href="../components/timer.html">Timer</a><div class="grp">Research</div><a href="../benchmark.html">Benchmark</a><a href="../audit.html">Figma audit</a></nav>
+    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#tones">Tones</a><a href="#modes">Modes &amp; sizes</a><a href="#live">Live: job alert</a><a href="#figma">Figma changes</a></nav>
+    <div class="rail-foot">Rendered from tokens.json · spec in components/timer.md</div>
+  </aside>
+  <main class="main">
+    <header id="overview">
+      <div class="eyebrow">Core component</div><h1>Timer</h1>
+      <p class="lede">Time as a shape. A pill whose stroke drains as time runs out, digits inside, one word above saying what the time is for. It runs the three moments that decide whether she gets paid.</p>
+      <div class="meta"><span class="chip status">Proposed</span><span class="chip">Tier 1 · Core</span><span class="chip"><code>SnabbitTimer</code></span><span class="chip">3 modes × 2 sizes</span><span class="chip">Tone computed, never chosen</span></div>
+    </header>
+
+    <section id="tones">
+      <header><div class="eyebrow">Urgency</div><h2>Tones</h2><p>Colour is a function of time remaining, never set by hand — so urgency means the same thing on every screen. Every tone change is also a sound and, past 60 s, a haptic. The stroke length, digits and sound change together; colour is never alone.</p></header>
+      <div class="stage"><div class="grid3" id="tones-grid"></div></div>
+      <div class="thr" style="margin-top:18px" id="thr"></div>
+    </section>
+
+    <section id="modes">
+      <header><div class="eyebrow">Forms</div><h2>Modes &amp; sizes</h2><p>Countdown drains, elapsed fills, deadline has no stroke at all — a time you cannot run out of should not look like one you can. L for full-screen moments, M for cards and headers.</p></header>
+      <div class="stage"><div class="grid3" id="modes-grid"></div></div>
+    </section>
+
+    <section id="live">
+      <header><div class="eyebrow">Try it</div><h2>Live: the job alert</h2><p>A 30-second window. Watch the tone change at 15 s and 6 s, the pulse under 10 s, and what happens at zero. The Timer sits directly above the accept Button — not around it; a ring around a 56 dp button is too thin to read at arm's length.</p></header>
+      <div class="demo"><div class="card" style="max-width:380px"><div class="live" style="display:block;padding:0;border:0" id="alert"></div><div class="logline" id="log"></div></div>
+      <div class="card"><h4>Why this form</h4><p>The existing Figma Timer already had the right idea — ring, digits, urgency colour. What changes: the colour is computed from time remaining instead of chosen per instance, digits drop the leading zero (<code>4:23</code> not <code>04:23</code>), the label goes to sentence case, and the "Login by 6:45 am" variant becomes a separate <em>deadline</em> mode with no draining stroke.</p><p>Placement diagram, not the final screen — the full job-alert pattern arrives once Amount, Timer and the pictograms are all specified.</p></div></div>
+    </section>
+
+    <section id="figma">
+      <header><div class="eyebrow">Reconciliation</div><h2>What changes in Figma</h2></header>
+      <ol class="rules"><li>Merge the three Timer frames. Properties: Mode (Countdown / Elapsed / Deadline), Size (L / M), Tone (Calm / Attention / Urgent / Expired — documentation only; computed in code).</li><li>Digits <code>m:ss</code> / <code>mm:ss</code> / <code>h:mm:ss</code>, no leading zero on the first group.</li><li>Label to sentence case, BodyMd (L) / Caption (M).</li><li>Deadline: borderBrand outline, no progress stroke, digits textBrand.</li><li>Bind stroke and digits to status tokens, track to borderDefault.</li></ol>
+      <p class="sub" style="margin-top:14px">Result: ~18 variants.</p>
+    </section>
+  </main>
+</div>
+
+<script id="tokens-json" type="application/json">{"$schema":"https://design-tokens.github.io/community-group/format/","meta":{"name":"Snabbit Expert Design Tokens","package":"com.snabbit:design-system","version":"0.19.0","platform":"Compose Multiplatform (Android + iOS)","source":"tokens/DESIGN_TOKENS.md","themeApi":"SnabbitTheme","modes":["light"],"notes":["The installed package is canonical. If this file and the package disagree, the package wins and this file must be updated in the same change.","Dark mode is not defined in 0.19.0. Semantic names are mode-ready; a dark mapping is the next token task.","Palette names (pink600, gray700) are allowed only while building a semantic token the package does not yet expose.","Decisions: Outfit only (Indic falls back to system face). Phosphor Icons only \u2014 regular by default, fill for selected/active."]},"color":{"palette":{"pink":{"50":"#FEF1F7","100":"#FDE4EF","200":"#FBC9DF","300":"#F9AECF","400":"#F65CA1","500":"#F4368D","600":"#F70F79","700":"#C70C61","800":"#97094A","900":"#670632"},"gray":{"50":"#F9FAFB","100":"#F3F4F6","200":"#E5E7EB","300":"#D1D5DB","400":"#9CA3AF","500":"#6B7280","600":"#4B5563","700":"#374151","800":"#1F2937","900":"#111827"},"green":{"50":"#ECFDF5","100":"#D1FAE5","200":"#A7F3D0","300":"#6EE7B7","400":"#34D399","500":"#10B981","600":"#059669","700":"#047857"},"red":{"50":"#FEF2F2","100":"#FEE2E2","200":"#FECACA","300":"#FCA5A5","400":"#F87171","500":"#EF4444","600":"#DC2626","700":"#B91C1C"},"yellow":{"50":"#FFFBEB","100":"#FEF3C7","200":"#FDE68A","300":"#FCD34D","400":"#FBBF24","500":"#F59E0B","600":"#D97706","700":"#B45309"},"blue":{"50":"#EFF6FF","100":"#DBEAFE","200":"#BFDBFE","300":"#93C5FD","400":"#60A5FA","500":"#3B82F6","600":"#2563EB","700":"#1D4ED8"}},"semantic":{"text":[{"name":"textPrimary","ref":"gray.900","value":"#111827","use":"Titles and highest-emphasis content"},{"name":"textBody","ref":"gray.700","value":"#374151","use":"Default readable content"},{"name":"textSecondary","ref":"gray.500","value":"#6B7280","use":"Supporting content and metadata"},{"name":"textTertiary","ref":"gray.400","value":"#9CA3AF","use":"Low-emphasis, non-essential metadata"},{"name":"textDisabled","ref":"gray.300","value":"#D1D5DB","use":"Disabled labels only"},{"name":"textInverse","ref":"white","value":"#FFFFFF","use":"Text on dark or brand fills"},{"name":"textBrand","ref":"pink.600","value":"#F70F79","use":"Brand-colored text and links"},{"name":"textSuccess","ref":"green.600","value":"#059669","use":"Success text and strong positive amount"},{"name":"textWarning","ref":"yellow.600","value":"#D97706","use":"Attention or waiting text"},{"name":"textError","ref":"red.600","value":"#DC2626","use":"Error or destructive message"},{"name":"textInfo","ref":"blue.600","value":"#2563EB","use":"Informational message and link-like status"}],"background":[{"name":"bgPrimary","ref":"white","value":"#FFFFFF","use":"Screen and card surfaces"},{"name":"bgSecondary","ref":"gray.50","value":"#F9FAFB","use":"Subtle grouped surface"},{"name":"bgTertiary","ref":"gray.100","value":"#F3F4F6","use":"Muted/header surface"},{"name":"bgInverse","ref":"gray.900","value":"#111827","use":"Dark high-contrast surface, scrim base"},{"name":"bgBrand","ref":"pink.600","value":"#F70F79","use":"Primary brand fill"},{"name":"bgBrandSubtle","ref":"pink.50","value":"#FEF1F7","use":"Soft brand callout or selected wash"},{"name":"bgSuccess","ref":"green.50","value":"#ECFDF5","use":"Success callout"},{"name":"bgSuccessSubtle","ref":"green.100","value":"#D1FAE5","use":"Success emphasis"},{"name":"bgWarning","ref":"yellow.50","value":"#FFFBEB","use":"Warning callout"},{"name":"bgWarningSubtle","ref":"yellow.100","value":"#FEF3C7","use":"Warning emphasis"},{"name":"bgError","ref":"red.50","value":"#FEF2F2","use":"Error callout"},{"name":"bgErrorSubtle","ref":"red.100","value":"#FEE2E2","use":"Error emphasis"},{"name":"bgInfo","ref":"blue.50","value":"#EFF6FF","use":"Informational callout"}],"border":[{"name":"borderDefault","ref":"gray.200","value":"#E5E7EB","use":"Standard structural border"},{"name":"borderSubtle","ref":"gray.100","value":"#F3F4F6","use":"Low-emphasis card boundary"},{"name":"borderStrong","ref":"gray.500","value":"#6B7280","use":"Strong neutral separation"},{"name":"borderBrand","ref":"pink.600","value":"#F70F79","use":"Selected or brand emphasis boundary"},{"name":"borderFocus","ref":"blue.500","value":"#3B82F6","use":"Keyboard/input focus"},{"name":"borderSuccess","ref":"green.500","value":"#10B981","use":"Success boundary"},{"name":"borderWarning","ref":"yellow.500","value":"#F59E0B","use":"Warning boundary"},{"name":"borderError","ref":"red.500","value":"#EF4444","use":"Error boundary"}],"icon":[{"name":"iconBrand","ref":"pink.600","value":"#F70F79","use":"Brand-colored icon"},{"name":"iconSuccess","ref":"green.500","value":"#10B981","use":"Success icon"},{"name":"iconWarning","ref":"yellow.500","value":"#F59E0B","use":"Warning icon"},{"name":"iconError","ref":"red.500","value":"#EF4444","use":"Error icon"}],"interactive":[{"name":"interactiveDefault","ref":"pink.600","value":"#F70F79","use":"Primary brand action, resting"},{"name":"interactiveHover","ref":"pink.500","value":"#F4368D","use":"Hover / loading \u2014 package-controlled"},{"name":"interactivePressed","ref":"pink.700","value":"#C70C61","use":"Pressed \u2014 package-controlled"}]}},"typography":{"fontFamily":{"compose":"Outfit","legacyFlutter":"Metropolis","indicFallback":"system"},"rule":"Outfit is the only type family. It covers Latin and numerals; Devanagari and Kannada glyphs fall back to the platform system face. Do not add another family.","scale":[{"name":"Display","size":32,"lineHeight":40,"weight":600,"weightName":"SemiBold","use":"Rare hero result or safety state"},{"name":"Heading1","size":28,"lineHeight":37.3,"weight":600,"weightName":"SemiBold","use":"High-salience screen title"},{"name":"Heading2","size":24,"lineHeight":32,"weight":600,"weightName":"SemiBold","use":"Major section or result"},{"name":"Heading3","size":20,"lineHeight":28,"weight":600,"weightName":"SemiBold","use":"Card or section title"},{"name":"Title","size":18,"lineHeight":24,"weight":500,"weightName":"Medium","use":"Navigation title or prominent label"},{"name":"BodyLg","size":16,"lineHeight":24,"weight":400,"weightName":"Regular","use":"Primary explanation"},{"name":"BodyMd","size":14,"lineHeight":20,"weight":400,"weightName":"Regular","use":"Default supporting content"},{"name":"Caption","size":12,"lineHeight":16,"weight":400,"weightName":"Regular","use":"Metadata and helper content"},{"name":"Small","size":10,"lineHeight":14,"weight":400,"weightName":"Regular","use":"Compact, non-essential metadata only"},{"name":"ButtonLg","size":16,"lineHeight":16,"weight":600,"weightName":"SemiBold","use":"Large CTA"},{"name":"ButtonMd","size":14,"lineHeight":14,"weight":600,"weightName":"SemiBold","use":"Standard/compact CTA"}],"rules":["Use sentence case for UI text.","Use at most three hierarchy levels on one screen.","Do not use Small for actions, errors, payment status, safety guidance, or essential instructions.","Respect system font scaling and verify two-line labels and titles."],"indic":{"scripts":["Devanagari","Kannada"],"lineHeightMultiplier":1.15,"note":"Indic ascenders/descenders exceed Outfit metrics. Multiply the scale's line height by 1.15 for text containers that may hold Hindi, Marathi or Kannada; never truncate."}},"spacing":{"unit":"dp","scale":[{"name":"0","value":0,"use":"Intentional flush alignment"},{"name":"1","value":2,"use":"Optical correction only"},{"name":"2","value":4,"use":"Tight icon/text or inline gap"},{"name":"3","value":8,"use":"Small internal gap"},{"name":"4","value":12,"use":"Standard internal gap"},{"name":"5","value":16,"use":"Default component padding and screen margin"},{"name":"6","value":20,"use":"Large component padding"},{"name":"7","value":24,"use":"Section gap or spacious screen margin"},{"name":"8","value":32,"use":"Large section separation"},{"name":"9","value":40,"use":"Major separation"},{"name":"10","value":48,"use":"Touch target or major separation"},{"name":"11","value":64,"use":"Rare hero separation"}],"aliases":{"componentPadding":[4,8,16,24,32],"componentGap":[4,8,12,16],"layoutPadding":[16,24,32],"layoutGap":[16,24,32]},"forbidden":[6,10,14,18,22],"rule":"Do not add arbitrary 6, 10, 14, 18, or 22 dp layout values. A value owned by a design-system component (6 dp tag gap, 10 dp medium-button radius) is valid only through that component."},"radius":{"unit":"dp","scale":[{"name":"none","value":0,"use":"Dividers and intentionally square joins"},{"name":"sm","value":4,"use":"Small controls and tags"},{"name":"md","value":8,"use":"Inputs and compact controls"},{"name":"lg","value":12,"use":"Default card and large control"},{"name":"xl","value":16,"use":"Selected card, sheet, prominent surface"},{"name":"xxl","value":24,"use":"Large hero surface only"},{"name":"full","value":9999,"use":"Pill, avatar, circle"}]},"borderWidth":{"unit":"dp","scale":[{"name":"thin","value":1,"use":"Default structural border"},{"name":"thick","value":1.5,"use":"Emphasised border"},{"name":"thicker","value":2,"use":"Selection or strong emphasis \u2014 not routine decoration"}]},"elevation":{"unit":"dp","rule":"The package exposes no global shadow scale in 0.19.0. Default is flat with border/background hierarchy.","scale":[{"name":"flat","value":0,"use":"Screens, cards, buttons, app bars"},{"name":"floating","value":4,"use":"Floating map/control surface already established in app code"},{"name":"modal","value":null,"use":"Component-owned \u2014 use SnabbitBottomSheet; do not recreate its scrim/elevation"}]},"icon":{"library":"Phosphor Icons","rule":"Phosphor only. No other icon set, no custom glyphs. One Phosphor icon = one meaning in the app, recorded in foundations/icons.md.","weights":{"default":"regular","selected":"fill","emphasis":"bold","never":["thin","light","duotone"]},"unit":"dp","sizes":[16,20,24,32,40],"defaultAction":24,"mediumControl":20,"minTouchTarget":48,"buttonOwned":{"XS":16,"S":18,"M":20,"L":24}},"button":{"unit":"dp","sizes":[{"name":"XS","height":32,"paddingX":12,"radius":6,"icon":16,"labelSize":12,"labelWeight":500,"labelWeightName":"Medium"},{"name":"S","height":40,"paddingX":16,"radius":8,"icon":18,"labelSize":14,"labelWeight":500,"labelWeightName":"Medium"},{"name":"M","height":48,"paddingX":20,"radius":10,"icon":20,"labelSize":16,"labelWeight":600,"labelWeightName":"SemiBold"},{"name":"L","height":56,"paddingX":24,"radius":12,"icon":24,"labelSize":16,"labelWeight":600,"labelWeightName":"SemiBold"}],"rules":["Prefer M for standard actions and L for full-width bottom actions.","XS and S need a 48 dp parent hit area when interactive.","Loading keeps the label visible and adds a spinner.","Disabled and loading states must block duplicate taps."]},"grid":{"unit":"dp","baselineViewport":{"width":360,"height":800},"verifyWidths":[320,360,412],"screenMargin":16,"spaciousMargin":24,"nestedPadding":[12,16],"sectionGap":[24,32],"bottomActionPadding":16,"rules":["Use one horizontal margin consistently within a screen.","Cards align to the screen grid.","Bottom actions use 16 dp horizontal/top padding plus the system safe-area inset.","Keep scroll content clear of a persistent footer by the footer height plus safe area.","Do not center long form content in a fixed-width column on phone surfaces."]},"governance":{"addingAToken":["Confirm the package has no semantic token for the need.","Check this document and the closest existing pattern.","Record the proposed name, value, purpose, affected states, contrast, and migration plan in a component brief.","Prefer adding the token to the design-system package. If temporarily local, isolate it in the app design-system layer, not a feature file.","Update this file, the component library, and affected screenshots in the same change."]},"illustration":{"purple":null,"yellow":["yellow.300","yellow.400"],"note":"Accent hues used only inside illustration assets (foundations/assets.md). purple: hex to be read from the Snabbit Assets Figma file and locked; until then no new asset introduces a purple."}}</script>
+<script>
+(function(){
+const T=JSON.parse(document.getElementById("tokens-json").textContent); const $=s=>document.querySelector(s);
+const sem={}; Object.values(T.color.semantic).flat().forEach(t=>sem[t.name]=t.value);
+const TONE={calm:{s:sem.iconSuccess,d:sem.textSuccess},attention:{s:sem.iconWarning,d:sem.textWarning},urgent:{s:sem.iconError,d:sem.textError},expired:{s:'transparent',d:sem.textTertiary},deadline:{s:sem.borderBrand,d:sem.textBrand}};
+const fmtT=s=>{s=Math.max(0,Math.round(s));const h=Math.floor(s/3600),m=Math.floor(s%3600/60),x=s%60;return h?`${h}:${String(m).padStart(2,'0')}:${String(x).padStart(2,'0')}`:`${m}:${String(x).padStart(2,'0')}`;};
+function toneFor(rem,total){if(rem<=0)return'expired';if(rem/total<=.2||rem<=60)return'urgent';if(rem/total<=.5||rem<=300)return'attention';return'calm';}
+// pill ring path: total perimeter for a rounded rect of w×h with r=h/2
+function timer(o){ // {size,label,secs,total,mode,tone,id,sub}
+ const L=o.size!=='M'; const w=L?200:132,h=L?88:56,sw=L?6:4,r=h/2; const tone=o.tone||(o.mode==='deadline'?'deadline':toneFor(o.secs,o.total||o.secs)); const c=TONE[tone];
+ const per=2*(w-h)+Math.PI*(h-sw); const frac=o.mode==='deadline'?0:o.mode==='elapsed'?Math.min(1,o.secs/(o.total||1)):Math.max(0,Math.min(1,o.secs/(o.total||1)));
+ const inset=sw/2; const rr=r-inset; const path=`M ${w/2} ${inset} H ${w-r} A ${rr} ${rr} 0 0 1 ${w-r} ${h-inset} H ${r} A ${rr} ${rr} 0 0 1 ${r} ${inset} Z`;
+ const digits=o.mode==='deadline'?`${o.clock}<small>${o.ampm}</small>`:fmtT(o.secs);
+ return `<div class="tmr ${L?'L':'M'} ${tone==='urgent'&&o.secs<=10?'pulse':''}" ${o.id?`id="${o.id}"`:''} style="--ink:${c.d};width:${w}px;height:${h}px" role="timer" aria-label="${o.label} ${digits}">
+ <svg class="ring" viewBox="0 0 ${w} ${h}"><path d="${path}" fill="none" stroke="${o.mode==='deadline'?sem.borderBrand:sem.borderDefault}" stroke-width="${sw}"/>${o.mode==='deadline'?'':`<path class="prog" d="${path}" fill="none" stroke="${c.s}" stroke-width="${sw}" stroke-linecap="round" stroke-dasharray="${per}" stroke-dashoffset="${per*(1-frac)}"/>`}</svg>
+ <div class="in"><span class="lb">${o.label}</span><span class="dg">${digits}</span></div></div>`;}
+const W=(cap,html)=>`<div class="stg">${html}<div class="cap">${cap}</div></div>`;
+$('#tones-grid').innerHTML=[W('<b>calm</b> · &gt; 50 % left',timer({label:'Arrive within',secs:1260,total:1800})),W('<b>attention</b> · ≤ 50 % or ≤ 5 min',timer({label:'Arrive within',secs:263,total:1800})),W('<b>urgent</b> · ≤ 20 % or ≤ 60 s',timer({label:'Arrive within',secs:48,total:1800})),W('<b>expired</b> · label becomes the outcome',timer({label:"Time's up",secs:0,total:1800}))].join('');
+$('#thr').innerHTML=`<span><span class="sw" style="background:${sem.iconSuccess}"></span>calm</span><span>more than half the window left · no sound</span><span><span class="sw" style="background:${sem.iconWarning}"></span>attention</span><span>half gone, or under 5 minutes · <code>soft-tick</code></span><span><span class="sw" style="background:${sem.iconError}"></span>urgent</span><span>a fifth left, or under 60 seconds · <code>urgent-tick</code> + medium haptic · pulse under 10 s</span><span><span class="sw" style="background:${sem.borderDefault}"></span>expired</span><span><code>timeout</code> sound · stroke gone · label says what happened</span>`;
+$('#modes-grid').innerHTML=[W('<b>countdown · L</b> · drains',timer({label:'Accept within',secs:24,total:30})),W('<b>countdown · M</b> · cards, headers',timer({size:'M',label:'Login within',secs:263,total:600})),W('<b>elapsed · M</b> · fills · calm unless over limit',timer({size:'M',mode:'elapsed',label:'Working for',secs:5050,total:7200,tone:'calm'})),W('<b>elapsed · over limit</b> → attention',timer({size:'M',mode:'elapsed',label:'Overtime',secs:1380,total:1380,tone:'attention'})),W('<b>deadline · L</b> · clock time, no stroke',timer({mode:'deadline',label:'Login by',clock:'6:45',ampm:'am'})),W('<b>deadline · M</b>',timer({size:'M',mode:'deadline',label:'Job starts at',clock:'9:30',ampm:'am'}))].join('');
+// live alert
+const ICO={pin:'M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z',clock:'M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z',broom:'M235.5,216.81c-22.56-11-35.5-34.58-35.5-64.8V134.73a15.94,15.94,0,0,0-10.09-14.87L165,110a8,8,0,0,1-4.48-10.34l21.32-53a28,28,0,0,0-16.1-37,28.14,28.14,0,0,0-35.82,16,.61.61,0,0,0,0,.12L108.9,79a8,8,0,0,1-10.37,4.49L73.11,73.14A15.89,15.89,0,0,0,55.74,76.8C34.68,98.45,24,123.75,24,152a111.45,111.45,0,0,0,31.18,77.53A8,8,0,0,0,61,232H232a8,8,0,0,0,3.5-15.19ZM67.14,88l25.41,10.3a24,24,0,0,0,31.23-13.45l21-53c2.56-6.11,9.47-9.27,15.43-7a12,12,0,0,1,6.88,15.92L145.69,93.76a24,24,0,0,0,13.43,31.14L184,134.73V152c0,.33,0,.66,0,1L55.77,101.71A108.84,108.84,0,0,1,67.14,88Zm48,128a87.53,87.53,0,0,1-24.34-42,8,8,0,0,0-15.49,4,105.16,105.16,0,0,0,18.36,38H64.44A95.54,95.54,0,0,1,40,152a85.9,85.9,0,0,1,7.73-36.29l137.8,55.12c3,18,10.56,33.48,21.89,45.16Z',rupee:'M216,72H160.62a48.14,48.14,0,0,0-19.05-24H208a8,8,0,0,0,0-16H64a8,8,0,0,0,0,16h48a32,32,0,0,1,29.95,24H64a8,8,0,0,0,0,16h77.95A32,32,0,0,1,112,112H64a8,8,0,0,0-6.09,13.19l90.5,105.59a8,8,0,1,0,12.15-10.41L82.32,128H112a48.07,48.07,0,0,0,47.74-40H216a8,8,0,0,0,0-16Z',check:'M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z'};
+const svg=n=>`<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="${ICO[n]}"/></svg>`;
+let rem=30,total=30,tm=null,last='';
+function render(){const tone=toneFor(rem,total);
+ $('#alert').innerHTML=`<div class="alert"><div class="hd">New job</div><div class="facts"><div class="f">${svg('pin')}1.2 km</div><div class="f">${svg('clock')}2 hr</div><div class="f">${svg('broom')}Cleaning</div><div class="f" style="color:#111827;font-weight:600">${svg('rupee')}450</div></div><div class="ctr">${timer({label:rem>0?'Accept within':"Time's up",secs:rem,total})}</div>
+ <button class="sbtn full" style="--h:56px;--px:24px;--r:12px;--fs:16px;--fw:600;--ic:24px;--gap:8px;--fill:${rem>0?sem.interactiveDefault:sem.bgTertiary};--ink:${rem>0?sem.textInverse:sem.textTertiary};--fill-p:${sem.interactivePressed}" ${rem>0?'':'aria-disabled="true"'}>${svg('check')}<span class="lb">${rem>0?'Accept job':'Job went to another expert'}</span></button>
+ <button class="sbtn" id="restart" style="--h:40px;--px:16px;--r:8px;--fs:14px;--fw:500;--ic:18px;--gap:6px;--fill:transparent;--ink:${sem.textBody};--fill-p:${sem.bgSecondary};align-self:center"><span class="lb">Restart 30 s</span></button></div>`;
+ if(tone!==last){const msg={calm:'calm',attention:'attention → soft-tick',urgent:'urgent → urgent-tick + medium haptic',expired:'expired → timeout sound'}[tone];$('#log').textContent=msg;last=tone;}
+ $('#restart').onclick=()=>{rem=30;last='';render();};}
+render(); tm=setInterval(()=>{if(rem>0){rem--;render();}},1000);
+const links=[...document.querySelectorAll('#nav a')];const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-20% 0px -70% 0px'});targets.forEach(t=>io.observe(t));}
+})();
+</script>

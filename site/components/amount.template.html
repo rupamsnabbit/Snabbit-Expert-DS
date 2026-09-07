@@ -1,0 +1,104 @@
+<title>Snabbit Expert Amount</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>__BASECSS__
+.amt{display:inline-flex;flex-direction:column;gap:2px;color:#111827;font-family:var(--sans)}
+.amt .lbl{font-size:14px;line-height:20px;color:#6B7280}
+.amt .v{display:inline-flex;align-items:baseline;gap:2px;font-variant-numeric:tabular-nums;font-weight:var(--fw,600);color:var(--ink,#111827);line-height:1.1}
+.amt .v .cur{font-size:var(--cs);font-weight:500}.amt .v .d{font-size:var(--ds)}.amt .v .dec{font-size:var(--cs)}.amt .v .sg{font-size:var(--ds)}
+.amt .v svg{width:var(--ic,16px);height:var(--ic,16px);align-self:center;margin-right:2px}
+.amt .v .unit{font-size:var(--cs);color:#6B7280;font-weight:500;margin-left:2px}
+.amt .cap{font-size:12px;line-height:16px;color:#6B7280}
+.amt.muted .v{text-decoration:line-through;text-decoration-thickness:2px}
+.amt .sk{display:inline-block;height:calc(var(--ds)*1.1);width:calc(var(--ds)*3.6);border-radius:6px;background:linear-gradient(90deg,#F3F4F6 25%,#E5E7EB 50%,#F3F4F6 75%);background-size:200% 100%;animation:sh 1.2s linear infinite}
+@keyframes sh{to{background-position:-200% 0}}
+.grid3{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:24px 28px}
+.stg{display:flex;flex-direction:column;gap:8px}.stg .cap2{font-family:var(--mono);font-size:12px;color:#6B7280}.stg .cap2 b{color:#111827;font-weight:500}
+.fmt{display:flex;gap:12px;align-items:center;flex-wrap:wrap;background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px;color:#111827}
+.fmt input{height:48px;border:1px solid #E5E7EB;border-radius:10px;padding:0 14px;font:inherit;font-size:16px;width:180px;color:#111827}
+.rowx{display:flex;justify-content:space-between;align-items:center;width:328px;padding:12px 0;border-bottom:1px solid #F3F4F6;color:#111827}
+.rowx .t{font-size:16px}.rowx .s{font-size:14px;color:#6B7280}
+.cardx{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px;width:328px;color:#111827}
+__NAVCSS__</style>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · Amount</small></div></div>
+    __SITENAV__
+    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#sizes">Sizes</a><a href="#tones">Tones &amp; signs</a><a href="#states">States</a><a href="#format">Formatting</a><a href="#context">In context</a><a href="#figma">Figma changes</a></nav>
+    <div class="rail-foot">Rendered from tokens.json · spec in components/amount.md</div>
+  </aside>
+  <main class="main">
+    <header id="overview">
+      <div class="eyebrow">Core component</div><h1>Amount</h1>
+      <p class="lede">The primary number on most screens — what a job pays, what today earned, what reached her bank. One component so the ₹, grouping, size, colour and sign are always the same.</p>
+      <div class="meta"><span class="chip status">Proposed</span><span class="chip">Tier 1 · Core</span><span class="chip"><code>SnabbitAmount</code></span><span class="chip">4 sizes × 5 tones × 6 states</span><span class="chip">Indian grouping · tabular</span></div>
+    </header>
+
+    <section id="sizes">
+      <header><div class="eyebrow">Sizing</div><h2>Sizes</h2><p>The ₹ sits one type step below the digits and aligns to their cap height, so the number reads first. One <code>hero</code> per screen.</p></header>
+      <div class="stage"><div class="grid3" id="sz"></div></div>
+    </section>
+
+    <section id="tones">
+      <header><div class="eyebrow">Meaning</div><h2>Tones &amp; signs</h2><p>Sign is a property of the value, not typed into copy. Positive and negative differ by colour <em>and</em> sign <em>and</em> an arrow icon when the number stands alone — never colour alone.</p></header>
+      <div class="stage"><div class="grid3" id="tn"></div></div>
+    </section>
+
+    <section id="states">
+      <header><div class="eyebrow">Behaviour</div><h2>States</h2><p>A loading amount is never <code>₹0</code> — zero is a real, alarming number to someone paid by the job. A locked amount says how to unlock it.</p></header>
+      <div class="stage"><div class="grid3" id="st"></div></div>
+    </section>
+
+    <section id="format">
+      <header><div class="eyebrow">Rules</div><h2>Formatting</h2><p>Type any number. Indian grouping, no paise unless non-zero, Latin numerals in every language.</p></header>
+      <div class="fmt"><input id="fin" inputmode="decimal" value="125000" aria-label="Amount to format"><div id="fout"></div></div>
+      <ul class="rules"><li><code>₹</code> always — never Rs, INR or /-.</li><li>Groups: <code>1,250</code> · <code>12,500</code> · <code>1,25,000</code> · <code>12,50,000</code>.</li><li>Ranges <code>₹400–450</code>; rates <code>₹169/hr</code> with the unit in textSecondary.</li><li>Read aloud as words — "four hundred and fifty rupees" — never digit by digit.</li></ul>
+    </section>
+
+    <section id="context">
+      <header><div class="eyebrow">On the screen</div><h2>In context</h2><p>Placement diagrams, not final screens.</p></header>
+      <div class="phones" id="ctx"></div>
+    </section>
+
+    <section id="figma">
+      <header><div class="eyebrow">Reconciliation</div><h2>What changes in Figma</h2></header>
+      <ol class="rules"><li>Rename Value → Amount. Properties: Size (Hero / Lg / Md / Sm), Tone (Default / Positive / Negative / Brand / Muted), State (Default / Locked / Loading / Hidden / Estimated), booleans Label, Caption, Trailing chevron.</li><li>₹ as its own text layer one step smaller, cap-aligned.</li><li>Replace every hand-typed ₹ in Earnings, Payout and Job card frames with an Amount instance.</li><li>Bind digits to the type scale and colours to semantic variables.</li></ol>
+    </section>
+  </main>
+</div>
+
+<script id="tokens-json" type="application/json">__TOKENS__</script>
+<script>
+(function(){
+const T=JSON.parse(document.getElementById("tokens-json").textContent); const $=s=>document.querySelector(s);
+const sem={}; Object.values(T.color.semantic).flat().forEach(t=>sem[t.name]=t.value);
+const ICO={up:'M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z',
+ down:'M200,88V192a8,8,0,0,1-8,8H88a8,8,0,0,1,0-16h84.69L58.34,69.66A8,8,0,0,1,69.66,58.34L184,172.69V88a8,8,0,0,1,16,0Z',
+ lock:'M208,80H176V56a48,48,0,0,0-96,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM96,56a32,32,0,0,1,64,0V80H96ZM208,208H48V96H208V208Zm-68-56a12,12,0,1,1-12-12A12,12,0,0,1,140,152Z',
+ lockopen:'M208,80H96V56a32,32,0,0,1,32-32c15.37,0,29.2,11,32.16,25.59a8,8,0,0,0,15.68-3.18C171.32,24.15,151.2,8,128,8A48.05,48.05,0,0,0,80,56V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80Zm0,128H48V96H208V208Zm-68-56a12,12,0,1,1-12-12A12,12,0,0,1,140,152Z',
+ eye:'M247.31,124.76c-.35-.79-8.82-19.58-27.65-38.41C194.57,61.26,162.88,48,128,48S61.43,61.26,36.34,86.35C17.51,105.18,9,124,8.69,124.76a8,8,0,0,0,0,6.5c.35.79,8.82,19.57,27.65,38.4C61.43,194.74,93.12,208,128,208s66.57-13.26,91.66-38.34c18.83-18.83,27.3-37.61,27.65-38.4A8,8,0,0,0,247.31,124.76ZM128,192c-30.78,0-57.67-11.19-79.93-33.25A133.47,133.47,0,0,1,25,128,133.33,133.33,0,0,1,48.07,97.25C70.33,75.19,97.22,64,128,64s57.67,11.19,79.93,33.25A133.46,133.46,0,0,1,231.05,128C223.84,141.46,192.43,192,128,192Zm0-112a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Z',
+ caret:'M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z'};
+const svg=n=>`<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="${ICO[n]}"/></svg>`;
+const SZ={hero:{ds:32,cs:24,fw:600,ic:24},lg:{ds:24,cs:18,fw:600,ic:20},md:{ds:16,cs:14,fw:600,ic:16},sm:{ds:14,cs:12,fw:500,ic:14}};
+const TONE={default:sem.textPrimary,positive:sem.textSuccess,negative:sem.textError,brand:sem.textBrand,muted:sem.textSecondary};
+function fmt(n){const neg=n<0;n=Math.abs(n);let [i,d]=n.toFixed(2).split('.');let last3=i.slice(-3),rest=i.slice(0,-3);if(rest)rest=rest.replace(/\B(?=(\d{2})+(?!\d))/g,',')+',';return {int:rest+last3,dec:d==='00'?'':'.'+d,neg};}
+function amt(o){const s=SZ[o.size||'md'];const f=fmt(o.value||0);const tone=o.tone||'default';
+ let ink=TONE[tone]; let lead='';let sign='';
+ if(tone==='positive'){sign='+';if(o.icon!==false)lead=svg('up');} if(tone==='negative'){sign='−';if(o.icon!==false)lead=svg('down');}
+ if(o.state==='locked'){ink=sem.textTertiary;lead=svg('lock');sign='';} if(o.state==='unlocked'){ink=sem.textSuccess;lead=svg('lockopen');}
+ const val=o.state==='loading'?`<span class="sk"></span>`:o.state==='hidden'?`<span class="cur">₹</span><span class="d">••••</span>${svg('eye')}`:
+  `${lead}${sign?`<span class="sg">${sign}</span>`:''}<span class="cur">${o.state==='estimated'?'~':''}₹</span><span class="d">${f.int}</span>${f.dec?`<span class="dec">${f.dec}</span>`:''}${o.unit?`<span class="unit">${o.unit}</span>`:''}${o.chev?svg('caret'):''}`;
+ return `<div class="amt ${o.state==='struck'?'muted':''}" style="--ds:${s.ds}px;--cs:${s.cs}px;--fw:${s.fw};--ic:${s.ic}px;--ink:${ink}">${o.label?`<span class="lbl">${o.label}</span>`:''}<span class="v" style="color:${ink}">${val}</span>${o.cap?`<span class="cap">${o.cap}</span>`:''}</div>`;}
+const W=(cap,html)=>`<div class="stg">${html}<div class="cap2">${cap}</div></div>`;
+$('#sz').innerHTML=[W('<b>hero</b> · Display 32 · one per screen',amt({size:'hero',value:1250,label:"Today's earnings"})),W('<b>lg</b> · Heading2 24 · card headline',amt({size:'lg',value:450})),W('<b>md</b> · BodyLg 16 · list rows',amt({size:'md',value:450})),W('<b>sm</b> · BodyMd 14 · inline',amt({size:'sm',value:450}))].join('');
+$('#tn').innerHTML=[W('<b>default</b>',amt({size:'lg',value:450})),W('<b>positive</b> · + and arrow',amt({size:'lg',value:50,tone:'positive'})),W('<b>negative</b> · true minus',amt({size:'lg',value:-50,tone:'negative'})),W('<b>brand</b> · incentive on offer',amt({size:'lg',value:50,tone:'brand',label:'Earn extra'})),W('<b>muted</b> · past / estimate',amt({size:'lg',value:400,tone:'muted'})),W('<b>struck</b> · old rate',amt({size:'lg',value:400,tone:'muted',state:'struck'}))].join('');
+$('#st').innerHTML=[W('<b>locked</b> · caption says how',amt({size:'lg',value:200,state:'locked',label:'Weekly bonus',cap:'Complete 3 more jobs'})),W('<b>unlocked</b> · ≤1.5 s then positive',amt({size:'lg',value:200,state:'unlocked',label:'Weekly bonus',cap:'Unlocked!'})),W('<b>loading</b> · skeleton, never ₹0',amt({size:'lg',value:0,state:'loading',label:"Today's earnings"})),W('<b>hidden</b> · eye to reveal',amt({size:'lg',value:12500,state:'hidden',label:'Balance'})),W('<b>estimated</b> · ~ + muted + caption',amt({size:'lg',value:450,state:'estimated',tone:'muted',cap:'Estimated'})),W('<b>rate</b> · unit in textSecondary',amt({size:'lg',value:169,unit:'/hr'}))].join('');
+const fin=$('#fin'),fout=$('#fout');const upd=()=>{const n=parseFloat(fin.value.replace(/[^\d.-]/g,''))||0;fout.innerHTML=amt({size:'hero',value:n});};fin.addEventListener('input',upd);upd();
+$('#ctx').innerHTML=[
+ `<div><div class="cardx"><div style="font-size:14px;color:#6B7280">Today</div>${amt({size:'hero',value:1250})}<div style="margin-top:12px">${['Cleaning · 2 hr|450|default','On-time bonus|50|positive','Late check-in|-50|negative','Cooking · 1 hr|800|default'].map(r=>{const [t,v,tn]=r.split('|');return `<div class="rowx"><span class="t">${t}</span>${amt({size:'md',value:+v,tone:tn,icon:false})}</div>`}).join('')}</div></div><span class="verdict ok">Do</span><div class="sub" style="font-size:13.5px">One hero, then md rows with tabular digits so columns align. Bonus and penalty carry sign and colour; in a list the arrow icon is dropped because the row label already names it.</div></div>`,
+ `<div><div class="cardx"><div style="font-size:14px;color:#6B7280">Today</div><div style="font-size:32px;font-weight:600">Rs. 1250/-</div><div style="margin-top:12px"><div class="rowx"><span class="t">Late check-in</span><span style="color:#DC2626;font-size:16px;font-weight:600">(50)</span></div><div class="rowx"><span class="t">Weekly bonus</span><span style="font-size:16px;font-weight:600">₹0</span></div></div></div><span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px"><em>Rs. /-</em> instead of ₹; a penalty in parentheses; and a locked bonus shown as ₹0 — which reads as "you earned nothing".</div></div>`].join('');
+const links=[...document.querySelectorAll('#nav a')];const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-20% 0px -70% 0px'});targets.forEach(t=>io.observe(t));}
+})();
+</script>
