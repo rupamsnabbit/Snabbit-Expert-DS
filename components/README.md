@@ -8,3 +8,4 @@ One spec per core component. `button.md` is the template. Status per component: 
 | IconButton | Proposed | `icon-button.md` | `site/components/icon-button.html` |
 | Tag | Proposed | `tag.md` | `site/components/tag.html` |
 | TextField | Proposed | `text-field.md` | `site/components/text-field.html` |
+| Checkbox · Radio · Switch | Proposed | `selection-controls.md` | `site/components/selection-controls.html` |
