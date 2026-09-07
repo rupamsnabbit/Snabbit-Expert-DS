@@ -1,0 +1,465 @@
+<title>Snabbit Expert Principles</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --bg-2:#F9FAFB; --bg-3:#F3F4F6;
+  --text:#111827; --text-body:#374151; --text-2:#6B7280; --text-3:#9CA3AF;
+  --border:#E5E7EB; --border-subtle:#F3F4F6;
+  --brand:#F70F79; --brand-wash:#FEF1F7; --brand-ink:#97094A;
+  --ok:#059669; --ok-wash:#ECFDF5; --focus:#3B82F6;
+  --sans:"Outfit",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+    --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+    --border:#374151; --border-subtle:#1F2937;
+    --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+    --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+  --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+  --border:#374151; --border-subtle:#1F2937;
+  --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+  --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--text-body);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+code{font-family:var(--mono);font-size:.85em;background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--text)}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+.shell{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}
+.rail{position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--border);padding:24px 16px 32px;background:var(--bg);display:flex;flex-direction:column;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;padding:0 8px}
+.brand-mark{width:28px;height:28px;border-radius:8px;background:var(--brand);display:grid;place-items:center;flex:none}
+.brand-mark span{width:12px;height:12px;border-radius:3px;background:#fff;transform:rotate(45deg)}
+.brand b{font-weight:600;color:var(--text);font-size:15px;line-height:1.2;display:block}
+.brand small{color:var(--text-2);font-size:12px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:block;padding:6px 8px;border-radius:6px;text-decoration:none;color:var(--text);font-size:13.5px;font-weight:500}
+.nav a.sub{font-weight:400;color:var(--text-body);padding-left:14px;font-size:13px}
+.nav a.sub b{font-family:var(--mono);font-weight:500;color:var(--text-3);font-size:11.5px;margin-right:2px}
+.nav a:hover{background:var(--bg-2)}
+.nav a.on{background:var(--brand-wash);color:var(--brand-ink)}
+.rail-foot{margin-top:auto;padding:0 8px;font-size:12px;color:var(--text-3);line-height:1.5}
+.main{padding:40px 56px 96px;max-width:860px;width:100%}
+.eyebrow{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);font-weight:600}
+h1{font-size:40px;line-height:1.1;font-weight:600;color:var(--text);margin:8px 0 12px;letter-spacing:-.015em;text-wrap:balance}
+.lede{font-size:18px;color:var(--text-2);max-width:60ch;margin:0 0 8px}
+.lede strong{color:var(--text);font-weight:500}
+h2{font-size:26px;line-height:1.2;font-weight:600;color:var(--text);margin:72px 0 16px;letter-spacing:-.01em;text-wrap:balance;padding-top:24px;border-top:1px solid var(--border)}
+h3{font-size:20px;font-weight:600;color:var(--text);margin:48px 0 8px;letter-spacing:-.005em}
+h3::before{content:"";display:block;width:32px;height:3px;background:var(--brand);border-radius:2px;margin-bottom:14px}
+p{margin:0 0 14px;max-width:66ch}
+h3 + p{font-size:17px;color:var(--text);font-weight:500}
+p.why{color:var(--text-2);font-size:15px;padding-left:14px;border-left:2px solid var(--border)}
+p.why::before{content:"Why · ";color:var(--text-3);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+p.lbl{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2);font-weight:600;margin:22px 0 8px}
+strong{color:var(--text);font-weight:600}
+em{font-style:italic}
+ul,ol{margin:0 0 14px;padding-left:0;list-style:none;max-width:68ch}
+ul li{position:relative;padding-left:20px;margin:6px 0;font-size:15.5px}
+ul li::before{content:"";position:absolute;left:0;top:11px;width:9px;height:2px;background:var(--brand)}
+ul li.chk{padding-left:30px}
+ul li.chk::before{width:16px;height:16px;top:4px;background:var(--bg);border:1.5px solid var(--text-3);border-radius:4px}
+ol{counter-reset:s}
+ol li{counter-increment:s;display:grid;grid-template-columns:32px 1fr;gap:12px;margin:10px 0;font-size:15.5px}
+ol li::before{content:counter(s);width:28px;height:28px;border-radius:50%;background:var(--brand-wash);color:var(--brand-ink);font-weight:600;font-size:13px;display:grid;place-items:center;margin-top:1px}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px;margin:8px 0 20px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);font-weight:500;padding:10px 14px;background:var(--bg-2);border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:10px 14px;border-bottom:1px solid var(--border-subtle);vertical-align:top;color:var(--text-body)}
+tr:last-child td{border-bottom:0}
+td:first-child{color:var(--text);font-weight:500;white-space:nowrap}
+hr{display:none}
+
+.sitenav{display:flex;flex-direction:column;gap:2px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.sitenav .grp{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);padding:10px 8px 4px;font-weight:500}
+.sitenav a{display:block;padding:5px 8px;border-radius:6px;text-decoration:none;color:var(--text-body);font-size:13.5px;border:0}
+.sitenav a:hover{background:var(--bg-2);color:var(--text)} .sitenav a.on{color:var(--brand-ink);background:var(--brand-wash);font-weight:500}
+@media (max-width:900px){.sitenav{flex-direction:row;flex-wrap:wrap;gap:4px;border-bottom:0;padding-bottom:0}.sitenav .grp{display:none}}
+
+@media (max-width:900px){
+  .shell{grid-template-columns:1fr}
+  .rail{position:static;height:auto;border-right:0;border-bottom:1px solid var(--border);padding:16px}
+  .nav{flex-direction:row;flex-wrap:wrap;gap:4px} .nav a.sub{padding-left:8px} .rail-foot{display:none}
+  .main{padding:32px 20px 80px} h1{font-size:32px} h2{margin-top:56px}
+}
+</style>
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Design principles</small></div></div>
+    <nav class="sitenav" aria-label="Site"><div class="grp">Foundations</div><a href="index.html">Tokens</a><a class="on" href="principles.html">Principles</a><a href="extending.html">Extending</a><a href="icons.html">Icons</a><a href="assets.html">Assets</a><div class="grp">Components</div><a href="components/button.html">Button</a><div class="grp">Research</div><a href="benchmark.html">Benchmark</a><a href="audit.html">Figma audit</a></nav><nav class="nav" id="nav"><a href="#who-we-design-for">Who we design for</a><a href="#the-principles">The principles</a><a class="sub" href="#1-show-first-then-say"><b>1</b> Show first, then say</a><a class="sub" href="#2-one-next-action"><b>2</b> One next action</a><a class="sub" href="#3-big-forgiving-one-handed"><b>3</b> Big, forgiving, one-handed</a><a class="sub" href="#4-sound-and-voice-are-part-of-the-interface"><b>4</b> Sound and voice are part of the interface</a><a class="sub" href="#5-every-state-is-visible-and-honest"><b>5</b> Every state is visible and honest</a><a class="sub" href="#6-warm-proud-encouraging"><b>6</b> Warm, proud, encouraging</a><a class="sub" href="#7-safe-by-default"><b>7</b> Safe by default</a><a class="sub" href="#8-fast-on-a-10k-phone"><b>8</b> Fast on a ₹10k phone</a><a class="sub" href="#9-four-scripts-one-voice"><b>9</b> Four scripts, one voice</a><a href="#the-reference-case-a-new-job-arrives">The reference case: a new job arrives</a><a href="#component-acceptance-checklist">Component acceptance checklist</a><a href="#vocabulary">Vocabulary</a><a href="#how-to-use-this-document">How to use this document</a></nav>
+    <div class="rail-foot">Snabbit Expert Design System · generated from principles/PRINCIPLES.md</div>
+  </aside>
+  <main class="main">
+    <header>
+      <div class="eyebrow">Snabbit Expert · Mobile</div>
+      <h1>Design principles</h1>
+      <p class="lede">The rules every screen and component in the Expert app must satisfy. Tokens say *what values* to use; these principles say *what the experience must do* for the person holding the phone. A component that follows the tokens but fails a principle is not done.</p>
+    </header>
+    <h2 id="who-we-design-for">Who we design for</h2>
+<p>An expert is an adult professional — most often a woman from the same neighbourhood as her customers — who was doing this work informally before Snabbit and now does it on a schedule, in uniform, with a phone as her dispatcher.</p>
+<p><strong>She reads slowly, in her own script.</strong> Hindi, Kannada or Marathi first; some English. Short, familiar words work. Sentences, abbreviations and anything she has to <em>work out</em> do not. She is not illiterate and must never be treated as if she were — but the app must never <em>depend</em> on reading to be safe or to earn.</p>
+<p><strong>Her phone is a ₹8–15k Android.</strong> Small screen, older OS, limited RAM, cracked glass more often than not. Data is prepaid and sometimes runs out mid-shift. Network drops in lifts, basements and stairwells — exactly where she spends her day.</p>
+<p><strong>She is usually moving.</strong> Walking or on an e-bike between homes in a sub-1 km cluster, in sunlight, one-handed, bag on the other shoulder. Inside a home her hands are wet or soapy. The app is glanced at, not studied.</p>
+<p><strong>Her income depends on the app.</strong> Punctuality, attendance and quality incentives make the difference between ₹10k and ₹35k a month. Every job accepted, every check-in on time, every tier climbed is real money. Getting this wrong is not a UX bug; it is her rent.</p>
+<p><strong>She is motivated by progress she can see.</strong> Tiers, streaks, contests and celebrations work — they are how she knows she is doing well. The app should be a warm, encouraging colleague who is proud of her, not a neutral tool and not a nag.</p>
+<p><strong>The hardest moment is a new job arriving.</strong> A full-screen alert with a sound and a countdown, while she may be finishing another task or crossing a road. She has seconds to understand <em>where, what, how long, how much</em> and to accept without a mistake.</p>
+<hr />
+<h2 id="the-principles">The principles</h2>
+<h3 id="1-show-first-then-say">1. Show first, then say</h3>
+<p>Meaning is carried by icon, colour, shape and sound <em>together</em>. Text confirms; it never carries meaning alone.</p>
+<p class="why">she reads slowly and glances quickly. If understanding waits for reading, she is slower than the countdown, slower than the customer at the door, slower than the expert next to her.</p>
+<p class="lbl">Rules</p>
+<ul>
+<li>Every state (success, warning, error, selected, disabled, in-progress) is expressed by at least two of: colour, icon, shape, motion. Never colour alone; never text alone.</li>
+<li>Every action button has an icon, or is the only button on the screen.</li>
+<li>Icons are Phosphor Icons only — <code>regular</code> by default, <code>fill</code> when selected or active — with one meaning each. The same icon never means two things; two icons never mean the same thing.</li>
+<li>Amounts, times and distances are large and numeric (<code>Heading2</code> or bigger for the primary figure), with the unit shown as a symbol or short word (₹, min, km).</li>
+<li>Text is short, sentence case, in the expert's language. One idea per line. No abbreviations she was not taught in training.</li>
+</ul>
+<p class="lbl">Checks</p>
+<ul>
+<li class="chk">Cover the text: can a first-week expert still tell what this screen is for and what to do?</li>
+<li class="chk">Set the screen to greyscale: are all states still distinguishable?</li>
+<li class="chk">Is every icon on this screen in the approved set, with its meaning recorded?</li>
+</ul>
+<h3 id="2-one-next-action">2. One next action</h3>
+<p>Every screen has exactly one thing she is meant to do next, and it is the biggest, brightest, lowest thing on the screen.</p>
+<p class="why">under time pressure and on the move, choice is cost. The app is her dispatcher; a dispatcher tells you the next step.</p>
+<p class="lbl">Rules</p>
+<ul>
+<li>One primary action per screen, full-width at the bottom (<code>SnabbitButton</code> L, 56 dp) above the safe area. Secondary actions are visually quieter and never adjacent to the primary in the same row.</li>
+<li>The primary action states its outcome as a verb: <em>Accept job</em>, <em>Start work</em>, <em>Mark done</em>. Never <em>OK</em>, <em>Submit</em>, <em>Continue</em>.</li>
+<li>Everything on the screen either helps her decide to take the action or is removed.</li>
+<li>Where two outcomes are both legitimate (accept / decline), the safer or more common one is primary; the other is secondary and placed away from it, not mirrored beside it.</li>
+</ul>
+<p class="lbl">Checks</p>
+<ul>
+<li class="chk">Can you name the one action this screen exists for?</li>
+<li class="chk">Is it reachable with the thumb of the hand holding the phone?</li>
+<li class="chk">Is anything on the screen not helping her take that action?</li>
+</ul>
+<h3 id="3-big-forgiving-one-handed">3. Big, forgiving, one-handed</h3>
+<p>Targets are large, spaced, and impossible to hit by accident when the mistake is expensive.</p>
+<p class="why">moving, one-handed, wet fingers, cracked screen, small phone. Mis-taps are the normal case, not the edge case.</p>
+<p class="lbl">Rules</p>
+<ul>
+<li>Interactive targets are ≥ 48 × 48 dp; primary actions ≥ 56 dp tall. Adjacent targets have ≥ 8 dp between them.</li>
+<li>Anything irreversible or costly (decline a job, cancel, end shift, report an issue about a customer) needs a second deliberate gesture: a hold, a slide, or a confirmation sheet with the consequence shown. Accepting a job is <em>not</em> protected — accepting is the desired outcome and must be one tap.</li>
+<li>Primary actions live in the bottom third of the screen. Nothing she must tap frequently sits in the top corners.</li>
+<li>No swipe-only, long-press-only or drag-only interactions for anything essential. Gestures are shortcuts, never the only path.</li>
+<li>Scrolling is vertical only. Horizontal carousels are for browsing, never for required content.</li>
+</ul>
+<p class="lbl">Checks</p>
+<ul>
+<li class="chk">Every tap target ≥ 48 dp, every primary ≥ 56 dp?</li>
+<li class="chk">Is every costly action protected by a second gesture, and every desired action not?</li>
+<li class="chk">Can the whole task be done with one thumb, phone held in the left hand?</li>
+</ul>
+<h3 id="4-sound-and-voice-are-part-of-the-interface">4. Sound and voice are part of the interface</h3>
+<p>Audio is a first-class channel with the same design care as visuals — not a notification afterthought.</p>
+<p class="why">her phone is in a pocket or bag most of the shift, her eyes are on the work, and she processes spoken language faster than written.</p>
+<p class="lbl">Rules</p>
+<ul>
+<li>Every time-critical event (new job, job about to start, running late, shift ending, payout credited) has a distinct sound. Sounds are a small, consistent family: the <em>new job</em> sound is never used for anything else.</li>
+<li>Spoken guidance is available in the expert's chosen language for every flow an expert does alone for the first time (onboarding, first check-in, first payout) and for every error she must recover from.</li>
+<li>Audio never carries meaning that is <em>not also</em> on screen; the screen never carries essential meaning that has no audio path on a first-time flow.</li>
+<li>Sound respects the phone: honours silent mode except for the new-job alert and SOS, which are the two things she has told us she always wants to hear.</li>
+<li>Spoken copy is written as speech — short, warm, one instruction at a time — and reviewed by a native speaker of each language before ship.</li>
+</ul>
+<p class="lbl">Checks</p>
+<ul>
+<li class="chk">Does this flow have a sound or voice for its key moments, and is each sound unique to its meaning?</li>
+<li class="chk">Can a first-time expert complete this flow with the screen described to her aloud?</li>
+<li class="chk">Has the spoken copy been heard, not just read, in all four languages?</li>
+</ul>
+<h3 id="5-every-state-is-visible-and-honest">5. Every state is visible and honest</h3>
+<p>Loading, offline, empty, error and success each look distinct, say what is happening, and say what to do.</p>
+<p class="why">patchy data and low balance are her normal. A spinner with no explanation, or a screen that silently shows stale data, costs her a job or a check-in.</p>
+<p class="lbl">Rules</p>
+<ul>
+<li>Every screen that loads data designs five states: loading, loaded, empty, error, offline. None is optional.</li>
+<li>Offline is a persistent, calm banner — not a modal — and the app keeps working with what it has. Actions that need the network say so <em>before</em> she taps, not after.</li>
+<li>Errors name the problem in her words and give one recovery action. Never a code, never "something went wrong", never blame.</li>
+<li>Anything time-based (countdown, job start, shift end) is shown as a shape that changes — a ring, a bar — not only as digits.</li>
+<li>Success is confirmed on screen and by sound. She should never wonder whether the tap worked.</li>
+<li>Duplicate taps are blocked while an action is in flight; the button shows a spinner <em>and keeps its label</em> so she knows what is happening.</li>
+</ul>
+<p class="lbl">Checks</p>
+<ul>
+<li class="chk">Are all five states designed and reviewed for this screen?</li>
+<li class="chk">Does every error tell her what happened and what to do, in her language?</li>
+<li class="chk">Toggle airplane mode: does the app say so and keep working?</li>
+</ul>
+<h3 id="6-warm-proud-encouraging">6. Warm, proud, encouraging</h3>
+<p>The app is glad to see her and proud of her progress. Gamification is core, not decoration — and it lifts her toward the next action rather than distracting from it.</p>
+<p class="why">tiers, streaks and contests are how she measures her own work. Recognition is retention, and retention is her income stability and ours.</p>
+<p class="lbl">Rules</p>
+<ul>
+<li>Every win — job done, on-time streak, tier up, payout — gets a moment: a sound, a visual, a warm line. Moments are brief (≤ 1.5 s) and never block the next action.</li>
+<li>Progress is always visible as a shape: how far to the next tier, how many jobs to the bonus, where she stands in the contest. Numbers accompany the shape, never replace it.</li>
+<li>Tier colours (<code>TierColors</code>) are used only for tier. They never stand in for status colours (success, warning, error), and status colours never stand in for tier.</li>
+<li>Misses are handled with dignity: state the fact, show the way back, no red shouting, no streak-broken shame screens. She is an adult professional having a hard day, not a player who lost.</li>
+<li>Copy is warm and specific: <em>3 more jobs to Gold</em> beats <em>Keep going!</em>. No exclamation-mark spam, no emoji as content.</li>
+<li>Nudges are helpful and rare. A nudge appears when it changes what she should do next; it never repeats what she has already seen.</li>
+</ul>
+<p class="lbl">Checks</p>
+<ul>
+<li class="chk">Does the celebration finish on its own and leave the next action visible?</li>
+<li class="chk">Can she see, as a shape, how far she is from the next reward?</li>
+<li class="chk">Read the miss-state copy aloud: would you say this to a colleague?</li>
+</ul>
+<h3 id="7-safe-by-default">7. Safe by default</h3>
+<p>Safety controls are always reachable, always recognisable, and work under stress without reading.</p>
+<p class="why">she enters strangers' homes alone. SOS and Shield are the promise that makes the job possible.</p>
+<p class="lbl">Rules</p>
+<ul>
+<li>SOS is reachable from every in-job screen in at most two taps, always in the same place, always the same shape and colour. It is never behind a menu, a scroll or a sheet.</li>
+<li>SOS is protected against accidental trigger by a hold or slide — never a plain tap — and confirms activation with sound, vibration and a full-screen state.</li>
+<li>Safety copy and audio are the calmest in the app. Short, steady, present tense: <em>Help is on the way. Stay on the line.</em></li>
+<li>Location, recording and consent states are shown plainly and continuously while active. Nothing about safety is hidden or implied.</li>
+<li>Safety flows are tested on the smallest supported screen, one-handed, with the screen partly obscured.</li>
+</ul>
+<p class="lbl">Checks</p>
+<ul>
+<li class="chk">From this screen, how many taps to SOS? Same place and shape as everywhere else?</li>
+<li class="chk">Can SOS be triggered by accident? Can it be triggered without reading?</li>
+<li class="chk">Is every active safety state (recording, sharing location) visibly on screen?</li>
+</ul>
+<h3 id="8-fast-on-a-10k-phone">8. Fast on a ₹10k phone</h3>
+<p>Performance is a design requirement. If it is slow on the cheapest phone in the fleet, it is broken.</p>
+<p class="why">a job alert that renders two seconds late is a job lost. Animations that stutter make the app feel untrustworthy at exactly the moment she needs to trust it.</p>
+<p class="lbl">Rules</p>
+<ul>
+<li>Baseline device for review: a 2–3 GB RAM Android on a 360 × 800 dp screen, on a throttled 3G profile. Every screen is checked there, not only on the designer's phone.</li>
+<li>First meaningful content ≤ 1 s on baseline. The new-job alert renders its accept action before anything else on the screen.</li>
+<li>Images are sized for the screen, cached, and never required for understanding. A screen with no images loaded is still fully usable.</li>
+<li>Motion is short (≤ 300 ms for transitions), purposeful, and honours reduced-motion settings. No ambient or decorative animation on in-job screens.</li>
+<li>Payloads are small; the app works on data left over at the end of the month.</li>
+</ul>
+<p class="lbl">Checks</p>
+<ul>
+<li class="chk">Tested on the baseline device and network profile?</li>
+<li class="chk">With images blocked, is the screen still understandable and operable?</li>
+<li class="chk">Does the primary action render first?</li>
+</ul>
+<h3 id="9-four-scripts-one-voice">9. Four scripts, one voice</h3>
+<p>Hindi, Kannada, Marathi and English are equal citizens. Layout is designed for the longest and tallest of them.</p>
+<p class="why">the app switches language per expert. A layout that only works in English is a layout that only works for the minority.</p>
+<p class="lbl">Rules</p>
+<ul>
+<li>Every text container is designed for the longest translation and verified at a large system font size. Text wraps; it is never truncated or clipped. Two-line labels are normal.</li>
+<li>Outfit is the only family; Devanagari and Kannada fall back to the system face. Containers that may hold those scripts use line height × 1.15 — the scale's line heights are minimums for them.</li>
+<li>Numbers, currency and time use the same numerals and formats across languages (₹1,250 · 45 min · 9:30 am). Amounts are never spelled out.</li>
+<li>Copy is written in plain, spoken register and translated by native speakers who have met an expert. No literal translation of English idiom.</li>
+<li>Language choice is one tap from settings and offered with the language's own name in its own script.</li>
+</ul>
+<p class="lbl">Checks</p>
+<ul>
+<li class="chk">Reviewed in all four languages at the largest supported font size?</li>
+<li class="chk">Any clipped, truncated or overflowing text?</li>
+<li class="chk">Are numerals and formats identical across languages?</li>
+</ul>
+<hr />
+<h2 id="the-reference-case-a-new-job-arrives">The reference case: a new job arrives</h2>
+<p>How the principles combine on the highest-stakes screen. Use this as the model for every other time-critical flow.</p>
+<ol>
+<li><strong>Sound first.</strong> The unique new-job sound plays, overriding silent mode. It loops gently until she responds or the window closes. (P4)</li>
+<li><strong>Full-screen, accept-first.</strong> The screen takes over. The accept button renders first — full-width, 56 dp, brand pink, labelled <em>Accept job</em> with a check icon — at the bottom, under the thumb. (P2, P3, P8)</li>
+<li><strong>Decide in a glance.</strong> Four facts, large, icon-led, top to bottom: distance (📍 icon + <em>1.2 km</em>), duration (clock icon + <em>2 hr</em>), task type (task icon + name), earnings (₹ icon + amount in <code>Heading1</code>). Nothing else. (P1)</li>
+<li><strong>Time as a shape.</strong> The countdown is a ring around the accept button that shrinks and changes colour as time runs out, with the seconds inside. It is never only digits. (P5)</li>
+<li><strong>Decline is safe and separate.</strong> <em>Not now</em> is a text button above the accept, quieter, needing a deliberate hold. Declining is costly; it is protected. Accepting is one tap. (P3)</li>
+<li><strong>Confirm loudly.</strong> On accept: the accept sound, a brief celebration, the next screen with the route. She never wonders whether it worked. (P5, P6)</li>
+<li><strong>Offline is honest.</strong> If the network drops, the alert says so and does not pretend she can accept. (P5)</li>
+<li><strong>Works in every language.</strong> Every label fits in Kannada at large font. Amounts use the same numerals everywhere. (P9)</li>
+</ol>
+<hr />
+<h2 id="component-acceptance-checklist">Component acceptance checklist</h2>
+<p>Every new component, before it is merged, answers yes to all of these. Machine-checkable rows are marked ⚙.</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Check</th>
+<th>Principle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>⚙ All interactive targets ≥ 48 × 48 dp; primary actions ≥ 56 dp</td>
+<td>3</td>
+</tr>
+<tr>
+<td>2</td>
+<td>⚙ Uses only semantic tokens — no raw hex, dp or sp</td>
+<td>Tokens</td>
+</tr>
+<tr>
+<td>3</td>
+<td>⚙ Text uses the type scale; no custom sizes or families</td>
+<td>Tokens, 9</td>
+</tr>
+<tr>
+<td>4</td>
+<td>⚙ Every state expressed by ≥ 2 of colour / icon / shape / motion</td>
+<td>1</td>
+</tr>
+<tr>
+<td>5</td>
+<td>⚙ Loading, empty, error, offline states implemented (where data loads)</td>
+<td>5</td>
+</tr>
+<tr>
+<td>6</td>
+<td>⚙ Duplicate taps blocked while in flight; label stays visible</td>
+<td>5</td>
+</tr>
+<tr>
+<td>7</td>
+<td>⚙ Text wraps; nothing truncated at largest font in all four languages</td>
+<td>9</td>
+</tr>
+<tr>
+<td>8</td>
+<td>⚙ Honours reduced-motion; transitions ≤ 300 ms</td>
+<td>8</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Meaning survives with text covered</td>
+<td>1</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Meaning survives in greyscale</td>
+<td>1</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Costly actions protected; desired actions one tap</td>
+<td>3</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Key moments have a sound / voice, unique to their meaning</td>
+<td>4</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Error copy names the problem and one recovery, in her words</td>
+<td>5</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Tier colours used only for tier; status colours only for status</td>
+<td>6</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Copy reviewed aloud by a native speaker in each language</td>
+<td>9</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Reviewed on the baseline device and network profile</td>
+<td>8</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="vocabulary">Vocabulary</h2>
+<p>Use these words everywhere — UI, code, docs, training. Do not introduce synonyms.</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Say</th>
+<th>Not</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Expert</td>
+<td>worker, runner, helper, maid</td>
+<td><em>Runner</em> survives in package names only</td>
+</tr>
+<tr>
+<td>Job</td>
+<td>booking, order, task, gig</td>
+<td>A single customer visit</td>
+</tr>
+<tr>
+<td>Shift</td>
+<td>slot, session</td>
+<td>The block of hours she has chosen to work</td>
+</tr>
+<tr>
+<td>Check in / Check out</td>
+<td>login, punch, attendance</td>
+<td>Arriving at / leaving a customer's home</td>
+</tr>
+<tr>
+<td>Earnings</td>
+<td>income, wallet balance</td>
+<td>What she has earned</td>
+</tr>
+<tr>
+<td>Payout</td>
+<td>settlement, transfer</td>
+<td>Money reaching her bank</td>
+</tr>
+<tr>
+<td>Tier</td>
+<td>level, rank, badge</td>
+<td>Bronze / Silver / Gold etc.</td>
+</tr>
+<tr>
+<td>Streak</td>
+<td>run, chain</td>
+<td>Consecutive on-time or attended days</td>
+</tr>
+<tr>
+<td>SOS</td>
+<td>emergency, panic</td>
+<td>The safety trigger</td>
+</tr>
+<tr>
+<td>Shield</td>
+<td>safety mode, Kavach</td>
+<td>The in-job safety feature set</td>
+</tr>
+<tr>
+<td>Hub</td>
+<td>centre, office</td>
+<td>The physical training / support location</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="how-to-use-this-document">How to use this document</h2>
+<ul>
+<li><strong>Designing:</strong> start every brief by naming the one next action and the two channels (visual + audio) that carry each state.</li>
+<li><strong>Building:</strong> run the acceptance checklist before opening a PR; paste the ticked list in the PR description.</li>
+<li><strong>Reviewing (human or AI):</strong> cite the principle number when requesting a change — <em>fails P3: decline is adjacent to accept</em>.</li>
+<li><strong>Changing this document:</strong> a principle changes only with evidence from experts — field observation, support tickets, or hub feedback — recorded in the change.</li>
+</ul>
+  </main>
+</div>
+<script>
+(function(){
+const links=[...document.querySelectorAll('#nav a')];
+const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-10% 0px -80% 0px'});
+  targets.forEach(t=>io.observe(t));
+}
+})();
+</script>

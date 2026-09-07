@@ -1,0 +1,328 @@
+<title>Snabbit Expert Benchmark</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --bg-2:#F9FAFB; --bg-3:#F3F4F6;
+  --text:#111827; --text-body:#374151; --text-2:#6B7280; --text-3:#9CA3AF;
+  --border:#E5E7EB; --border-subtle:#F3F4F6;
+  --brand:#F70F79; --brand-wash:#FEF1F7; --brand-ink:#97094A;
+  --ok:#059669; --ok-wash:#ECFDF5; --focus:#3B82F6;
+  --sans:"Outfit",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+    --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+    --border:#374151; --border-subtle:#1F2937;
+    --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+    --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+  --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+  --border:#374151; --border-subtle:#1F2937;
+  --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+  --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--text-body);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+code{font-family:var(--mono);font-size:.85em;background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--text)}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+.shell{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}
+.rail{position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--border);padding:24px 16px 32px;background:var(--bg);display:flex;flex-direction:column;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;padding:0 8px}
+.brand-mark{width:28px;height:28px;border-radius:8px;background:var(--brand);display:grid;place-items:center;flex:none}
+.brand-mark span{width:12px;height:12px;border-radius:3px;background:#fff;transform:rotate(45deg)}
+.brand b{font-weight:600;color:var(--text);font-size:15px;line-height:1.2;display:block}
+.brand small{color:var(--text-2);font-size:12px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:block;padding:6px 8px;border-radius:6px;text-decoration:none;color:var(--text);font-size:13.5px;font-weight:500}
+.nav a.sub{font-weight:400;color:var(--text-body);padding-left:14px;font-size:13px}
+.nav a.sub b{font-family:var(--mono);font-weight:500;color:var(--text-3);font-size:11.5px;margin-right:2px}
+.nav a:hover{background:var(--bg-2)}
+.nav a.on{background:var(--brand-wash);color:var(--brand-ink)}
+.rail-foot{margin-top:auto;padding:0 8px;font-size:12px;color:var(--text-3);line-height:1.5}
+.main{padding:40px 56px 96px;max-width:860px;width:100%}
+.eyebrow{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);font-weight:600}
+h1{font-size:40px;line-height:1.1;font-weight:600;color:var(--text);margin:8px 0 12px;letter-spacing:-.015em;text-wrap:balance}
+.lede{font-size:18px;color:var(--text-2);max-width:60ch;margin:0 0 8px}
+.lede strong{color:var(--text);font-weight:500}
+h2{font-size:26px;line-height:1.2;font-weight:600;color:var(--text);margin:72px 0 16px;letter-spacing:-.01em;text-wrap:balance;padding-top:24px;border-top:1px solid var(--border)}
+h3{font-size:20px;font-weight:600;color:var(--text);margin:48px 0 8px;letter-spacing:-.005em}
+h3::before{content:"";display:block;width:32px;height:3px;background:var(--brand);border-radius:2px;margin-bottom:14px}
+p{margin:0 0 14px;max-width:66ch}
+h3 + p{font-size:17px;color:var(--text);font-weight:500}
+p.why{color:var(--text-2);font-size:15px;padding-left:14px;border-left:2px solid var(--border)}
+p.why::before{content:"Why · ";color:var(--text-3);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+p.lbl{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2);font-weight:600;margin:22px 0 8px}
+strong{color:var(--text);font-weight:600}
+em{font-style:italic}
+ul,ol{margin:0 0 14px;padding-left:0;list-style:none;max-width:68ch}
+ul li{position:relative;padding-left:20px;margin:6px 0;font-size:15.5px}
+ul li::before{content:"";position:absolute;left:0;top:11px;width:9px;height:2px;background:var(--brand)}
+ul li.chk{padding-left:30px}
+ul li.chk::before{width:16px;height:16px;top:4px;background:var(--bg);border:1.5px solid var(--text-3);border-radius:4px}
+ol{counter-reset:s}
+ol li{counter-increment:s;display:grid;grid-template-columns:32px 1fr;gap:12px;margin:10px 0;font-size:15.5px}
+ol li::before{content:counter(s);width:28px;height:28px;border-radius:50%;background:var(--brand-wash);color:var(--brand-ink);font-weight:600;font-size:13px;display:grid;place-items:center;margin-top:1px}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px;margin:8px 0 20px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);font-weight:500;padding:10px 14px;background:var(--bg-2);border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:10px 14px;border-bottom:1px solid var(--border-subtle);vertical-align:top;color:var(--text-body)}
+tr:last-child td{border-bottom:0}
+td:first-child{color:var(--text);font-weight:500;white-space:nowrap}
+hr{display:none}
+
+.sitenav{display:flex;flex-direction:column;gap:2px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.sitenav .grp{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);padding:10px 8px 4px;font-weight:500}
+.sitenav a{display:block;padding:5px 8px;border-radius:6px;text-decoration:none;color:var(--text-body);font-size:13.5px;border:0}
+.sitenav a:hover{background:var(--bg-2);color:var(--text)} .sitenav a.on{color:var(--brand-ink);background:var(--brand-wash);font-weight:500}
+@media (max-width:900px){.sitenav{flex-direction:row;flex-wrap:wrap;gap:4px;border-bottom:0;padding-bottom:0}.sitenav .grp{display:none}}
+
+@media (max-width:900px){
+  .shell{grid-template-columns:1fr}
+  .rail{position:static;height:auto;border-right:0;border-bottom:1px solid var(--border);padding:16px}
+  .nav{flex-direction:row;flex-wrap:wrap;gap:4px} .nav a.sub{padding-left:8px} .rail-foot{display:none}
+  .main{padding:32px 20px 80px} h1{font-size:32px} h2{margin-top:56px}
+}
+</style>
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Benchmark</small></div></div>
+    <nav class="sitenav" aria-label="Site"><div class="grp">Foundations</div><a href="index.html">Tokens</a><a href="principles.html">Principles</a><a href="extending.html">Extending</a><a href="icons.html">Icons</a><a href="assets.html">Assets</a><div class="grp">Components</div><a href="components/button.html">Button</a><div class="grp">Research</div><a class="on" href="benchmark.html">Benchmark</a><a href="audit.html">Figma audit</a></nav><nav class="nav" id="nav"><a href="#1-components-we-are-missing">1. Components we are missing</a><a href="#2-foundations-we-are-missing">2. Foundations we are missing</a><a href="#3-patterns">3. Patterns</a><a href="#4-governance-what-the-case-studies-say">4. Governance — what the case studies say</a><a href="#5-what-the-low-literacy-research-adds">5. What the low-literacy research adds</a><a href="#6-revised-plan">6. Revised plan</a></nav>
+    <div class="rail-foot">Snabbit Expert Design System · generated from audit/BENCHMARK.md</div>
+  </aside>
+  <main class="main">
+    <header>
+      <div class="eyebrow">Snabbit Expert · Mobile</div>
+      <h1>Benchmark</h1>
+      <p class="lede">Compared the proposed Snabbit Expert core set (30 components, from `FIGMA_AUDIT.md`) against mature mobile design systems, then filtered every gap through the expert persona and the nine principles. Not everything they have belongs here; some things we need, nobody has.</p>
+    </header>
+    <h2 id="1-components-we-are-missing">1. Components we are missing</h2>
+<p>Ranked by how directly a principle demands it. <strong>P0</strong> = a principle cannot be met without it; <strong>P1</strong> = every mature system has it and we will need it within the first ten screens; <strong>P2</strong> = useful, build on demand.</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Component</th>
+<th>Who has it</th>
+<th>Why we need it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P0</td>
+<td><strong>Offline banner</strong></td>
+<td>— (Uber/Gojek handle inline)</td>
+<td>P5: offline is a persistent calm banner, not a modal. Patchy data is the expert's normal.</td>
+</tr>
+<tr>
+<td>P0</td>
+<td><strong>SOS control</strong></td>
+<td>— (Uber has in-app, undocumented)</td>
+<td>P7: reachable in ≤2 taps from every in-job screen, same place, hold/slide protected. Nobody documents this as a component; we must.</td>
+</tr>
+<tr>
+<td>P0</td>
+<td><strong>Voice prompt / audio bubble</strong></td>
+<td>—</td>
+<td>P4: spoken guidance is a first-class channel. Needs a visible affordance: "tap to hear again", playing state, language. Unique to us.</td>
+</tr>
+<tr>
+<td>P0</td>
+<td><strong>Dialog / confirmation sheet</strong></td>
+<td>M3 Dialog, Base Dialog &amp; Modal, Asphalt Alert</td>
+<td>P3: costly actions need a second deliberate gesture with the consequence shown. Ours is a bottom sheet, never a centred modal (thumb reach).</td>
+</tr>
+<tr>
+<td>P0</td>
+<td><strong>Permission sheet</strong></td>
+<td>— (M3 relies on OS)</td>
+<td>Camera, location, contacts, notifications, overlay — the app asks often. One consistent, illustrated, spoken sheet that explains <em>why</em> before the OS prompt. The old app repo had ad-hoc versions of this.</td>
+</tr>
+<tr>
+<td>P0</td>
+<td><strong>Switch / Toggle</strong></td>
+<td>All</td>
+<td>Basic control; missing entirely. Availability on/off, shift on/off.</td>
+</tr>
+<tr>
+<td>P0</td>
+<td><strong>Snackbar (with action)</strong></td>
+<td>M3, Base</td>
+<td>P5: confirm success on screen; undo where possible. Toast (which we have) is passive; Snackbar carries one action.</td>
+</tr>
+<tr>
+<td>P0</td>
+<td><strong>Empty state</strong></td>
+<td>Base, M3 (pattern)</td>
+<td>P5: one of the five mandatory states. Illustration + one line + one action.</td>
+</tr>
+<tr>
+<td>P0</td>
+<td><strong>Skeleton / Spinner</strong></td>
+<td>Base (Progress indicator), M3 (Loading indicator)</td>
+<td>P5 and P8: loading must be visible and cheap. Skeleton for lists and cards, spinner inside buttons.</td>
+</tr>
+<tr>
+<td>P0</td>
+<td><strong>Coachmark</strong></td>
+<td>Asphalt</td>
+<td>Microsoft Research: low-literate users struggle with transfer of learning. Point-and-say guidance on first use — with audio — is how features get discovered.</td>
+</tr>
+<tr>
+<td>P1</td>
+<td><strong>Tabs / Segmented control</strong></td>
+<td>M3 Tabs &amp; Segmented buttons, Base</td>
+<td>Earnings (today/week/month), history filters. Max 3 segments, icon + label.</td>
+</tr>
+<tr>
+<td>P1</td>
+<td><strong>Numeric keypad</strong></td>
+<td>Asphalt Keyboard</td>
+<td>OTP, amounts, phone numbers. Large keys, one purpose; the OS keyboard is too small and too full.</td>
+</tr>
+<tr>
+<td>P1</td>
+<td><strong>Amount / number display</strong></td>
+<td>— (we have "Value")</td>
+<td>Earnings, payouts, timers: the primary figure on most screens. Own component so ₹, tabular numerals, size and colour are always right.</td>
+</tr>
+<tr>
+<td>P1</td>
+<td><strong>Pagination indicator</strong></td>
+<td>Asphalt Indicator, M3 Carousel</td>
+<td>Dots for banner carousels and onboarding.</td>
+</tr>
+<tr>
+<td>P1</td>
+<td><strong>Floating action button</strong></td>
+<td>M3 FAB</td>
+<td>Map screens only: recentre, call. Not a general pattern (P2: one primary action at the bottom).</td>
+</tr>
+<tr>
+<td>P1</td>
+<td><strong>Map marker</strong></td>
+<td>Asphalt Marker</td>
+<td>Job location, hub, expert position. Consistent pin family.</td>
+</tr>
+<tr>
+<td>P1</td>
+<td><strong>Menu / Select</strong></td>
+<td>M3 Menus, Base Select</td>
+<td>On mobile this is a bottom sheet list with radio. Language picker, shift picker.</td>
+</tr>
+<tr>
+<td>P1</td>
+<td><strong>Media container</strong></td>
+<td>—</td>
+<td>Photos of the home, selfie, document capture: one component with loading, error and retake states.</td>
+</tr>
+<tr>
+<td>P1</td>
+<td><strong>Stepper / Progress steps</strong></td>
+<td>M3, Base</td>
+<td>We have "Step Indicatorss"; formalise for onboarding and go-live.</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>Time picker</td>
+<td>M3</td>
+<td>Shift start. Probably a Select in practice.</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>Popover</td>
+<td>Base</td>
+<td>Rarely; tooltips cover most cases.</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>Data table</td>
+<td>Base, M3</td>
+<td>Not on phone. Use ListItem rows.</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>Drawer / Navigation rail</td>
+<td>M3, Base</td>
+<td>Not for a 360 dp phone with a bottom tab bar. Skip.</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>Breadcrumb, Tree view, Pagination</td>
+<td>Base</td>
+<td>Web components. Skip.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Revised core set: 30 → 46.</strong> The 16 additions are the P0 and P1 rows above (Stepper already counted).</p>
+<hr />
+<h2 id="2-foundations-we-are-missing">2. Foundations we are missing</h2>
+<p>Uber Base documents 18 foundations; we have three (colour, type, spacing/shape). What is missing, in order of urgency:</p>
+<p><strong>Iconography.</strong> <em>Decided 2026-09-07: Phosphor Icons only.</em> P1 says every state and every action carries an icon with exactly one meaning. The library is settled; what is missing is the weight rule and the meaning register. Asphalt and Base both publish one. This is the single largest foundation gap: without it "show first, then say" cannot be enforced. Deliverable: <code>foundations/icons.md</code> + an icon sheet in Figma with one semantic name per glyph, sizes 16–40, and the meaning written next to each.</p>
+<p><strong>Indic typography.</strong> <em>Decided 2026-09-07: Outfit only; Indic scripts fall back to the system face, with line height × 1.15.</em> Outfit is a Latin-only face. The app ships in Hindi, Kannada and Marathi. Today either the OS falls back silently (different face, different metrics per phone) or text is rendered in whatever the platform picks. A system that says "Outfit only" while serving three Indic scripts has an undefined type scale for most of its users. Decision needed: a companion family with Devanagari and Kannada coverage (Noto Sans Devanagari / Noto Sans Kannada are the safe choice; Baloo 2 / Baloo Tamma 2 pair better with Outfit's rounded geometry), with line-height adjustments per script in <code>tokens.json</code>. P9 depends on this.</p>
+<p><strong>Sound and haptics.</strong> No mature system documents this because none of them treats audio as a primary channel. We do (P4). Needs: a named sound family (new job, job starting, running late, shift end, payout, success, error, SOS), a haptic pattern per sound, rules for silent-mode override, and spoken-copy guidelines. Deliverable: <code>foundations/sound.md</code> + the assets.</p>
+<p><strong>Motion.</strong> Uber and M3 both publish duration and easing tokens. P8 sets ≤300 ms and reduced-motion; the celebration moment (P6) needs a defined curve. Deliverable: <code>duration.short/medium/long</code> and <code>easing.standard/emphasized</code> in <code>tokens.json</code>.</p>
+<p><strong>Illustration.</strong> <em>Decided 2026-09-07: two layers (flat illustration / metallic rewards) continuing the existing Snabbit Assets system — see <code>foundations/assets.md</code>.</em> Every system with a persona like ours (Asphalt especially) leans on illustration for empty states, permissions, onboarding and coachmarks. The Figma file has a handful of "Illustration – List Items" and a mascot in Avatars. Needs a style guide: line weight, palette from tokens, how the expert is depicted (adult, dignified, in uniform), and a library of the twenty scenes we will need.</p>
+<p><strong>Content and voice.</strong> Uber has "Voice and tone" and "Writing for components". We have a vocabulary table and copy rules scattered through the principles. Consolidate into <code>foundations/content.md</code>: voice, spoken vs written register, sentence patterns for each state, translation workflow, and per-language length budgets.</p>
+<p><strong>Accessibility.</strong> Base publishes it as a foundation. Ours is spread across P1, P3, P9. Consolidate: contrast targets (and the exception list — <code>textTertiary</code> fails on white), touch targets, font scaling behaviour, screen-reader labels, reduced motion. Short, but one place.</p>
+<p><strong>Elevation.</strong> Currently "flat, package-owned". Fine for 0.19.0; document the two exceptions (floating map controls, bottom sheet scrim) and stop.</p>
+<p><strong>Data visualisation.</strong> Base has it. We will need exactly two charts: earnings over time and progress toward a goal. Define them as components (bar strip, progress ring) rather than a foundation.</p>
+<hr />
+<h2 id="3-patterns">3. Patterns</h2>
+<p>Every mature system separates <em>components</em> from <em>patterns</em> (Base has a Patterns section; M3 documents them per component). Our audit found screen fragments living on the Components page because there was nowhere else to put them. Create <code>patterns/</code> and start with the ones the principles already name:</p>
+<ol>
+<li><strong>New job alert</strong> — the reference case in <code>PRINCIPLES.md</code>. Timer + Amount + Button + sound.</li>
+<li><strong>Check-in / check-out</strong> — selfie, location, time; the flow money depends on.</li>
+<li><strong>Costly-action confirmation</strong> — Dialog sheet with consequence shown; hold-to-confirm variant.</li>
+<li><strong>Permission request</strong> — Permission sheet → OS prompt → denied-state recovery.</li>
+<li><strong>Offline</strong> — banner, what still works, what is queued.</li>
+<li><strong>Loading / empty / error</strong> — the five-state rule made concrete per screen type (list, card, detail).</li>
+<li><strong>First-run guidance</strong> — Coachmarks + voice, when they appear, when they stop.</li>
+<li><strong>Celebration</strong> — the ≤1.5 s moment: sound, motion, copy, and what stays tappable.</li>
+<li><strong>Earnings breakdown</strong> — Amount + ListItem + Tabs; the trust screen.</li>
+<li><strong>Bottom action bar</strong> — the fixed primary action above the safe area (the "Bottom Sticky" frame).</li>
+</ol>
+<hr />
+<h2 id="4-governance-what-the-case-studies-say">4. Governance — what the case studies say</h2>
+<p>The Asphalt retrospective is blunt: <em>"Design systems aren't a design problem — they're an adoption problem."</em> Gojek reached 77k weekly component insertions across 20+ teams not by policing but by workshops, self-serve docs, design-system reviews before engineering handoff, and absorbing what teams built on their own into the system. Their "adoption is negotiated" is exactly our rule of three.</p>
+<p>What we should add, that they and Base have and we do not:</p>
+<ul>
+<li><strong>Component status.</strong> Every component shows Planned / Beta / Stable / Deprecated on its page. Engineers stop guessing which Figma frame is real.</li>
+<li><strong>Changelog.</strong> One file, dated entries, what changed in tokens or a component and why. Base publishes one; ours becomes the record the acceptance checklist points at.</li>
+<li><strong>Lint.</strong> Asphalt shipped lint plugins. For us: a detekt/ktlint rule in the app repo that fails on raw <code>Color(0x…)</code>, raw <code>.dp</code> outside the design-system layer, and <code>TextStyle(</code> outside the theme. This is how "tokens only" becomes enforceable rather than reviewed.</li>
+<li><strong>Design review before handoff.</strong> A short step in <code>EXTENDING.md</code>: nothing Tier 3 reaches engineering without the brief and the ticked checklist.</li>
+</ul>
+<hr />
+<h2 id="5-what-the-low-literacy-research-adds">5. What the low-literacy research adds</h2>
+<p>Microsoft Research's programme (700+ field hours, 570 participants, India among the sites; job-search, health and mobile banking apps) found that non-textual interfaces combining voice, video and graphics were strongly preferred and that first-time non-literate users could complete tasks with them. Two findings matter beyond "use icons":</p>
+<p><strong>Transfer of learning is weak.</strong> A pattern learned on one screen does not automatically carry to another. For us: consistency is not aesthetics, it is usability. The same icon, same place, same sound, every time — and Coachmarks with voice whenever something new appears. This also argues for a <em>smaller</em> core set used everywhere over a larger one used precisely.</p>
+<p><strong>Hierarchical navigation is hard.</strong> Nested menus and deep trees fail. For us: bottom tab bar with ≤5 destinations, at most two levels deep anywhere, no hamburger menu, no nested settings. Search and Select are flat lists, not trees.</p>
+<p>They also validated <strong>video</strong> as a channel. A short "how-to clip" component — 10-second looping demonstration for a task step, with voice — would fit onboarding, go-live and the first check-in. Add as P1 alongside Coachmark.</p>
+<hr />
+<h2 id="6-revised-plan">6. Revised plan</h2>
+<p><strong>Core set: 46 components</strong> (30 from the audit + 16 additions), built in this order: Button → IconButton → Tag/Badge → TextField → Checkbox/Radio/Switch → Chip → Amount → Timer → Toast/Snackbar → Banner (incl. Offline) → Dialog sheet → Permission sheet → Card/SelectionCard → ListItem → BottomSheet → HeaderNav/BottomTabBar → Tabs → Empty/Skeleton → Coachmark/Voice prompt → SOS → the rest.</p>
+<p><strong>Foundations to add: 7</strong> — icons, Indic type, sound &amp; haptics, motion, illustration, content, accessibility.</p>
+<p><strong>Patterns: 10</strong> in <code>patterns/</code>, starting with the new-job alert.</p>
+<p><strong>Governance: 4</strong> — status, changelog, lint, review step.</p>
+<p>Both blocking decisions are made (see <code>DECISIONS.md</code>): Outfit only with system fallback for Indic, and Phosphor Icons only. Next: the Phosphor meaning register in <code>foundations/icons.md</code>, then Button.</p>
+<hr />
+<p>Sources: <a href="https://m3.material.io/components">Material Design 3 components</a> · <a href="https://designsystems.surf/design-systems/uber">Uber Base — components and foundations</a> · <a href="https://base.uber.com/">Uber Base</a> · <a href="https://asphalt.gojek.io/pages/components.html">Asphalt Aloha — components</a> · <a href="https://emje.vercel.app/posts/asphalt-dls">Beyond Components — Scaling the Asphalt Design System</a> · <a href="https://www.microsoft.com/en-us/research/project/uis-low-literate-users/">Microsoft Research — UIs for Low-Literate Users</a></p>
+  </main>
+</div>
+<script>
+(function(){
+const links=[...document.querySelectorAll('#nav a')];
+const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-10% 0px -80% 0px'});
+  targets.forEach(t=>io.observe(t));
+}
+})();
+</script>

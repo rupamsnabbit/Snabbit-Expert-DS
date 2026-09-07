@@ -1,0 +1,284 @@
+<title>Snabbit Expert Icons</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --bg-2:#F9FAFB; --bg-3:#F3F4F6;
+  --text:#111827; --text-body:#374151; --text-2:#6B7280; --text-3:#9CA3AF;
+  --border:#E5E7EB; --border-subtle:#F3F4F6;
+  --brand:#F70F79; --brand-wash:#FEF1F7; --brand-ink:#97094A;
+  --ok:#059669; --ok-wash:#ECFDF5; --focus:#3B82F6;
+  --sans:"Outfit",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+    --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+    --border:#374151; --border-subtle:#1F2937;
+    --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+    --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+  --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+  --border:#374151; --border-subtle:#1F2937;
+  --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+  --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--text-body);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+code{font-family:var(--mono);font-size:.85em;background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--text)}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+.shell{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}
+.rail{position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--border);padding:24px 16px 32px;background:var(--bg);display:flex;flex-direction:column;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;padding:0 8px}
+.brand-mark{width:28px;height:28px;border-radius:8px;background:var(--brand);display:grid;place-items:center;flex:none}
+.brand-mark span{width:12px;height:12px;border-radius:3px;background:#fff;transform:rotate(45deg)}
+.brand b{font-weight:600;color:var(--text);font-size:15px;line-height:1.2;display:block}
+.brand small{color:var(--text-2);font-size:12px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:block;padding:6px 8px;border-radius:6px;text-decoration:none;color:var(--text);font-size:13.5px;font-weight:500}
+.nav a.sub{font-weight:400;color:var(--text-body);padding-left:14px;font-size:13px}
+.nav a.sub b{font-family:var(--mono);font-weight:500;color:var(--text-3);font-size:11.5px;margin-right:2px}
+.nav a:hover{background:var(--bg-2)}
+.nav a.on{background:var(--brand-wash);color:var(--brand-ink)}
+.rail-foot{margin-top:auto;padding:0 8px;font-size:12px;color:var(--text-3);line-height:1.5}
+.main{padding:40px 56px 96px;max-width:860px;width:100%}
+.eyebrow{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);font-weight:600}
+h1{font-size:40px;line-height:1.1;font-weight:600;color:var(--text);margin:8px 0 12px;letter-spacing:-.015em;text-wrap:balance}
+.lede{font-size:18px;color:var(--text-2);max-width:60ch;margin:0 0 8px}
+.lede strong{color:var(--text);font-weight:500}
+h2{font-size:26px;line-height:1.2;font-weight:600;color:var(--text);margin:72px 0 16px;letter-spacing:-.01em;text-wrap:balance;padding-top:24px;border-top:1px solid var(--border)}
+h3{font-size:20px;font-weight:600;color:var(--text);margin:48px 0 8px;letter-spacing:-.005em}
+h3::before{content:"";display:block;width:32px;height:3px;background:var(--brand);border-radius:2px;margin-bottom:14px}
+p{margin:0 0 14px;max-width:66ch}
+h3 + p{font-size:17px;color:var(--text);font-weight:500}
+p.why{color:var(--text-2);font-size:15px;padding-left:14px;border-left:2px solid var(--border)}
+p.why::before{content:"Why · ";color:var(--text-3);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+p.lbl{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2);font-weight:600;margin:22px 0 8px}
+strong{color:var(--text);font-weight:600}
+em{font-style:italic}
+ul,ol{margin:0 0 14px;padding-left:0;list-style:none;max-width:68ch}
+ul li{position:relative;padding-left:20px;margin:6px 0;font-size:15.5px}
+ul li::before{content:"";position:absolute;left:0;top:11px;width:9px;height:2px;background:var(--brand)}
+ul li.chk{padding-left:30px}
+ul li.chk::before{width:16px;height:16px;top:4px;background:var(--bg);border:1.5px solid var(--text-3);border-radius:4px}
+ol{counter-reset:s}
+ol li{counter-increment:s;display:grid;grid-template-columns:32px 1fr;gap:12px;margin:10px 0;font-size:15.5px}
+ol li::before{content:counter(s);width:28px;height:28px;border-radius:50%;background:var(--brand-wash);color:var(--brand-ink);font-weight:600;font-size:13px;display:grid;place-items:center;margin-top:1px}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px;margin:8px 0 20px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);font-weight:500;padding:10px 14px;background:var(--bg-2);border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:10px 14px;border-bottom:1px solid var(--border-subtle);vertical-align:top;color:var(--text-body)}
+tr:last-child td{border-bottom:0}
+td:first-child{color:var(--text);font-weight:500;white-space:nowrap}
+hr{display:none}
+
+.sitenav{display:flex;flex-direction:column;gap:2px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.sitenav .grp{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);padding:10px 8px 4px;font-weight:500}
+.sitenav a{display:block;padding:5px 8px;border-radius:6px;text-decoration:none;color:var(--text-body);font-size:13.5px;border:0}
+.sitenav a:hover{background:var(--bg-2);color:var(--text)} .sitenav a.on{color:var(--brand-ink);background:var(--brand-wash);font-weight:500}
+@media (max-width:900px){.sitenav{flex-direction:row;flex-wrap:wrap;gap:4px;border-bottom:0;padding-bottom:0}.sitenav .grp{display:none}}
+
+@media (max-width:900px){
+  .shell{grid-template-columns:1fr}
+  .rail{position:static;height:auto;border-right:0;border-bottom:1px solid var(--border);padding:16px}
+  .nav{flex-direction:row;flex-wrap:wrap;gap:4px} .nav a.sub{padding-left:8px} .rail-foot{display:none}
+  .main{padding:32px 20px 80px} h1{font-size:32px} h2{margin-top:56px}
+}
+</style>
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Icons</small></div></div>
+    <nav class="sitenav" aria-label="Site"><div class="grp">Foundations</div><a href="index.html">Tokens</a><a href="principles.html">Principles</a><a href="extending.html">Extending</a><a class="on" href="icons.html">Icons</a><a href="assets.html">Assets</a><div class="grp">Components</div><a href="components/button.html">Button</a><div class="grp">Research</div><a href="benchmark.html">Benchmark</a><a href="audit.html">Figma audit</a></nav><nav class="nav" id="nav"></nav>
+    <div class="rail-foot">Snabbit Expert Design System · generated from foundations/icons.md</div>
+  </aside>
+  <main class="main">
+    <header>
+      <div class="eyebrow">Snabbit Expert · Mobile</div>
+      <h1>Icons — Phosphor meaning register</h1>
+      <p class="lede">Phosphor Icons only (see `DECISIONS.md`). Weight `regular` by default, `fill` for selected/active, `bold` for emphasis. Sizes 16 / 20 / 24 / 32 / 40 dp; 24 for actions, 20 in medium controls; hit area ≥ 48 dp.</p>
+    </header>
+    <h1>Icons — Phosphor meaning register</h1>
+<p>Phosphor Icons only (see <code>DECISIONS.md</code>). Weight <code>regular</code> by default, <code>fill</code> for selected/active, <code>bold</code> for emphasis. Sizes 16 / 20 / 24 / 32 / 40 dp; 24 for actions, 20 in medium controls; hit area ≥ 48 dp.</p>
+<p><strong>One icon, one meaning.</strong> Before using an icon, find its meaning here. If the meaning is missing, add a row — the Phosphor name, the Snabbit meaning, where it appears — in the same change. Never reuse a registered icon for a second meaning; never add a second icon for a registered meaning.</p>
+<p>Status: <strong>seed</strong>. Populated fully during the Button, Tab bar and Job-alert specs. Rows below are the ones the principles and the reference case already need.</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Phosphor icon</th>
+<th>Meaning in the Expert app</th>
+<th>Weight</th>
+<th>Appears in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>check</code></td>
+<td>Confirm / accept / done</td>
+<td>regular</td>
+<td>Accept job, Mark done</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td>Close / dismiss</td>
+<td>regular</td>
+<td>Sheets, banners</td>
+</tr>
+<tr>
+<td><code>map-pin</code></td>
+<td>Job location / distance</td>
+<td>regular</td>
+<td>Job alert, job card</td>
+</tr>
+<tr>
+<td><code>clock</code></td>
+<td>Duration / time</td>
+<td>regular</td>
+<td>Job alert, shift</td>
+</tr>
+<tr>
+<td><code>currency-inr</code></td>
+<td>Earnings / amount</td>
+<td>regular</td>
+<td>Job alert, earnings, payout</td>
+</tr>
+<tr>
+<td><code>house</code></td>
+<td>Home tab</td>
+<td>regular / fill when selected</td>
+<td>Bottom tab bar</td>
+</tr>
+<tr>
+<td><code>wallet</code></td>
+<td>Earnings tab</td>
+<td>regular / fill when selected</td>
+<td>Bottom tab bar</td>
+</tr>
+<tr>
+<td><code>user</code></td>
+<td>Profile tab</td>
+<td>regular / fill when selected</td>
+<td>Bottom tab bar</td>
+</tr>
+<tr>
+<td><code>siren</code></td>
+<td>SOS</td>
+<td>fill</td>
+<td>SOS control — this icon is used for nothing else</td>
+</tr>
+<tr>
+<td><code>shield-check</code></td>
+<td>Shield / Kavach active</td>
+<td>fill</td>
+<td>In-job header</td>
+</tr>
+<tr>
+<td><code>speaker-high</code></td>
+<td>Play spoken guidance</td>
+<td>regular</td>
+<td>Voice prompt</td>
+</tr>
+<tr>
+<td><code>wifi-slash</code></td>
+<td>Offline</td>
+<td>regular</td>
+<td>Offline banner</td>
+</tr>
+<tr>
+<td><code>warning-circle</code></td>
+<td>Warning / attention</td>
+<td>regular</td>
+<td>Banner, Toast</td>
+</tr>
+<tr>
+<td><code>x-circle</code></td>
+<td>Error</td>
+<td>regular</td>
+<td>Banner, Toast, TextField</td>
+</tr>
+<tr>
+<td><code>check-circle</code></td>
+<td>Success</td>
+<td>fill</td>
+<td>Banner, Toast, celebration</td>
+</tr>
+<tr>
+<td><code>info</code></td>
+<td>Information</td>
+<td>regular</td>
+<td>Banner, Tooltip</td>
+</tr>
+<tr>
+<td><code>caret-right</code></td>
+<td>Navigate into</td>
+<td>regular</td>
+<td>ListItem trailing</td>
+</tr>
+<tr>
+<td><code>caret-left</code></td>
+<td>Back</td>
+<td>regular</td>
+<td>HeaderNav</td>
+</tr>
+<tr>
+<td><code>arrow-clockwise</code></td>
+<td>Retry / refresh</td>
+<td>regular</td>
+<td>Error states</td>
+</tr>
+<tr>
+<td><code>camera</code></td>
+<td>Take photo / selfie</td>
+<td>regular</td>
+<td>Check-in, documents</td>
+</tr>
+<tr>
+<td><code>phone</code></td>
+<td>Call</td>
+<td>regular</td>
+<td>Job card, contact</td>
+</tr>
+<tr>
+<td><code>trophy</code></td>
+<td>Tier / contest</td>
+<td>regular / fill when earned</td>
+<td>Tier badge, contest</td>
+</tr>
+<tr>
+<td><code>fire</code></td>
+<td>Streak</td>
+<td>fill</td>
+<td>Streak chip</td>
+</tr>
+<tr>
+<td><code>coin</code></td>
+<td>Snabbit coins</td>
+<td>fill</td>
+<td>CoinChip</td>
+</tr>
+<tr>
+<td><code>translate</code></td>
+<td>Change language</td>
+<td>regular</td>
+<td>Settings</td>
+</tr>
+</tbody>
+</table></div>
+<p>Not icons: smileys for Rating and the mascot are illustrations, not Phosphor glyphs — they live in the illustration library.</p>
+  </main>
+</div>
+<script>
+(function(){
+const links=[...document.querySelectorAll('#nav a')];
+const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-10% 0px -80% 0px'});
+  targets.forEach(t=>io.observe(t));
+}
+})();
+</script>

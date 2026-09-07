@@ -1,0 +1,328 @@
+<title>Snabbit Expert Assets</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --bg-2:#F9FAFB; --bg-3:#F3F4F6;
+  --text:#111827; --text-body:#374151; --text-2:#6B7280; --text-3:#9CA3AF;
+  --border:#E5E7EB; --border-subtle:#F3F4F6;
+  --brand:#F70F79; --brand-wash:#FEF1F7; --brand-ink:#97094A;
+  --ok:#059669; --ok-wash:#ECFDF5; --focus:#3B82F6;
+  --sans:"Outfit",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+    --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+    --border:#374151; --border-subtle:#1F2937;
+    --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+    --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+  --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+  --border:#374151; --border-subtle:#1F2937;
+  --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+  --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--text-body);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+code{font-family:var(--mono);font-size:.85em;background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--text)}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+.shell{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}
+.rail{position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--border);padding:24px 16px 32px;background:var(--bg);display:flex;flex-direction:column;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;padding:0 8px}
+.brand-mark{width:28px;height:28px;border-radius:8px;background:var(--brand);display:grid;place-items:center;flex:none}
+.brand-mark span{width:12px;height:12px;border-radius:3px;background:#fff;transform:rotate(45deg)}
+.brand b{font-weight:600;color:var(--text);font-size:15px;line-height:1.2;display:block}
+.brand small{color:var(--text-2);font-size:12px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:block;padding:6px 8px;border-radius:6px;text-decoration:none;color:var(--text);font-size:13.5px;font-weight:500}
+.nav a.sub{font-weight:400;color:var(--text-body);padding-left:14px;font-size:13px}
+.nav a.sub b{font-family:var(--mono);font-weight:500;color:var(--text-3);font-size:11.5px;margin-right:2px}
+.nav a:hover{background:var(--bg-2)}
+.nav a.on{background:var(--brand-wash);color:var(--brand-ink)}
+.rail-foot{margin-top:auto;padding:0 8px;font-size:12px;color:var(--text-3);line-height:1.5}
+.main{padding:40px 56px 96px;max-width:860px;width:100%}
+.eyebrow{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);font-weight:600}
+h1{font-size:40px;line-height:1.1;font-weight:600;color:var(--text);margin:8px 0 12px;letter-spacing:-.015em;text-wrap:balance}
+.lede{font-size:18px;color:var(--text-2);max-width:60ch;margin:0 0 8px}
+.lede strong{color:var(--text);font-weight:500}
+h2{font-size:26px;line-height:1.2;font-weight:600;color:var(--text);margin:72px 0 16px;letter-spacing:-.01em;text-wrap:balance;padding-top:24px;border-top:1px solid var(--border)}
+h3{font-size:20px;font-weight:600;color:var(--text);margin:48px 0 8px;letter-spacing:-.005em}
+h3::before{content:"";display:block;width:32px;height:3px;background:var(--brand);border-radius:2px;margin-bottom:14px}
+p{margin:0 0 14px;max-width:66ch}
+h3 + p{font-size:17px;color:var(--text);font-weight:500}
+p.why{color:var(--text-2);font-size:15px;padding-left:14px;border-left:2px solid var(--border)}
+p.why::before{content:"Why · ";color:var(--text-3);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+p.lbl{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2);font-weight:600;margin:22px 0 8px}
+strong{color:var(--text);font-weight:600}
+em{font-style:italic}
+ul,ol{margin:0 0 14px;padding-left:0;list-style:none;max-width:68ch}
+ul li{position:relative;padding-left:20px;margin:6px 0;font-size:15.5px}
+ul li::before{content:"";position:absolute;left:0;top:11px;width:9px;height:2px;background:var(--brand)}
+ul li.chk{padding-left:30px}
+ul li.chk::before{width:16px;height:16px;top:4px;background:var(--bg);border:1.5px solid var(--text-3);border-radius:4px}
+ol{counter-reset:s}
+ol li{counter-increment:s;display:grid;grid-template-columns:32px 1fr;gap:12px;margin:10px 0;font-size:15.5px}
+ol li::before{content:counter(s);width:28px;height:28px;border-radius:50%;background:var(--brand-wash);color:var(--brand-ink);font-weight:600;font-size:13px;display:grid;place-items:center;margin-top:1px}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px;margin:8px 0 20px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);font-weight:500;padding:10px 14px;background:var(--bg-2);border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:10px 14px;border-bottom:1px solid var(--border-subtle);vertical-align:top;color:var(--text-body)}
+tr:last-child td{border-bottom:0}
+td:first-child{color:var(--text);font-weight:500;white-space:nowrap}
+hr{display:none}
+
+.sitenav{display:flex;flex-direction:column;gap:2px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.sitenav .grp{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);padding:10px 8px 4px;font-weight:500}
+.sitenav a{display:block;padding:5px 8px;border-radius:6px;text-decoration:none;color:var(--text-body);font-size:13.5px;border:0}
+.sitenav a:hover{background:var(--bg-2);color:var(--text)} .sitenav a.on{color:var(--brand-ink);background:var(--brand-wash);font-weight:500}
+@media (max-width:900px){.sitenav{flex-direction:row;flex-wrap:wrap;gap:4px;border-bottom:0;padding-bottom:0}.sitenav .grp{display:none}}
+
+@media (max-width:900px){
+  .shell{grid-template-columns:1fr}
+  .rail{position:static;height:auto;border-right:0;border-bottom:1px solid var(--border);padding:16px}
+  .nav{flex-direction:row;flex-wrap:wrap;gap:4px} .nav a.sub{padding-left:8px} .rail-foot{display:none}
+  .main{padding:32px 20px 80px} h1{font-size:32px} h2{margin-top:56px}
+}
+</style>
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Assets</small></div></div>
+    <nav class="sitenav" aria-label="Site"><div class="grp">Foundations</div><a href="index.html">Tokens</a><a href="principles.html">Principles</a><a href="extending.html">Extending</a><a href="icons.html">Icons</a><a class="on" href="assets.html">Assets</a><div class="grp">Components</div><a href="components/button.html">Button</a><div class="grp">Research</div><a href="benchmark.html">Benchmark</a><a href="audit.html">Figma audit</a></nav><nav class="nav" id="nav"><a href="#the-two-layers">The two layers</a><a href="#classes-and-their-register">Classes and their register</a><a class="sub" href="#1-scenes-asset-scene"><b>1</b> Scenes — asset/scene/*</a><a class="sub" href="#2-pictograms-asset-picto"><b>2</b> Pictograms — asset/picto/*</a><a class="sub" href="#3-characters-asset-character"><b>3</b> Characters — asset/character/*</a><a class="sub" href="#4-rewards-asset-reward-asset-badge-asset-tier"><b>4</b> Rewards — asset/reward/*, asset/badge/*, asset/tier/*</a><a class="sub" href="#5-faces-asset-face"><b>5</b> Faces — asset/face/*</a><a class="sub" href="#6-attendance-and-job-state-marks-asset-state"><b>6</b> Attendance and job-state marks — asset/state/*</a><a href="#the-style-lock-checked-before-any-asset-is-registered">The style lock — checked before any asset is registered</a><a href="#reference-sheet">Reference sheet</a><a class="sub" href="#style-prompts-for-ai-generation">Style prompts (for AI generation)</a><a href="#formats-and-performance-p8">Formats and performance (P8)</a><a href="#process-for-a-new-asset">Process for a new asset</a><a href="#migration-and-housekeeping">Migration and housekeeping</a></nav>
+    <div class="rail-foot">Snabbit Expert Design System · generated from foundations/assets.md</div>
+  </aside>
+  <main class="main">
+    <header>
+      <div class="eyebrow">Snabbit Expert · Mobile</div>
+      <h1>Assets — illustration, pictograms, characters, rewards</h1>
+      <p class="lede">Coins, red cards, badges, status pictograms, service scenes, the expert characters. Not icons (icons are Phosphor, see `icons.md`) — assets are pictorial, coloured, and carry meaning on their own. For an expert who reads slowly, a red card is not decoration: it *is* the message. So assets are governed like icons — one asset, one meaning, one canonical file — plus a style lock so that a hundred of them look like one world.</p>
+    </header>
+    <h2 id="the-two-layers">The two layers</h2>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Used for</th>
+<th>Look</th>
+<th>Never used for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Illustration</strong> — flat vector, soft gradient shading, no outlines</td>
+<td>Scenes, status pictograms, characters, empty states, permissions, coachmarks</td>
+<td>Pink / purple / yellow palette on a pink stage; one light from top-left; sparkles as the only flourish</td>
+<td>Rewards, currency, rank</td>
+</tr>
+<tr>
+<td><strong>Reward</strong> — metallic 3D</td>
+<td>Badges, tiers, bonuses, coins, red cards</td>
+<td>Glossy hexagons and discs, star-and-laurel motif, strong specular highlight, soft glow on dark</td>
+<td>Information, status, anything not earned or lost</td>
+</tr>
+</tbody>
+</table></div>
+<p>The rule the expert learns without being told: <em>if it shines, it's about what I earned.</em> That contrast is the whole point — do not make an informational pictogram glossy, and do not flatten a badge.</p>
+<hr />
+<h2 id="classes-and-their-register">Classes and their register</h2>
+<p>Names are <code>asset/&lt;class&gt;/&lt;name&gt;</code>. One asset, one meaning. Before making one, look here; if the meaning exists, use it. If not, add the row in the same change.</p>
+<h3 id="1-scenes-asset-scene">1. Scenes — <code>asset/scene/*</code></h3>
+<p>Square, pink-tiled floor and wall as the stage, one or two objects, sparkles. Existing: cleaning (bucket, mop), bathroom (toilet), kitchen-clean (spray, cloth), laundry (basket, iron), dishes (rack, plates), cooking (vegetables, board), shelves (books, plant), fridge, magic (wand, star). Sizes 96 · 160 · 240 dp. WebP.</p>
+<p>Used for: service categories, empty states, onboarding, the Permission sheet. New scenes needed: no-jobs, offline, permission-camera, permission-location, permission-contacts, permission-notifications, payout-success.</p>
+<h3 id="2-pictograms-asset-picto">2. Pictograms — <code>asset/picto/*</code></h3>
+<p>The middle class between a Phosphor icon and a scene. A <strong>pink disc</strong> (<code>pink.100</code>), a <strong>magenta object</strong> (<code>pink.500–600</code> with a lighter face), and an optional <strong>status dot</strong> bottom-right — green check (<code>green.500</code>) or red cross (<code>red.500</code>). Sizes 40 · 64 dp. SVG preferred.</p>
+<p>Existing (~30): cash-in-hand, ok-hand, calendar-✓, calendar-✗, door-enter, door-exit (several), profile-blocked, phone-location, megaphone (two), alarm-✓, document-not-eligible, document-eligible, expert-with-tablet, search-document-✗, search-document-✓, id-card-✗, id-card-✓, id-back-✓, bank-✗, phone-✗, route, timer, phone-map-✓, wallet-coins.</p>
+<p>Rule: the object says <em>what</em>, the dot says <em>status</em>. A pictogram without a dot is neutral. Never colour the object itself green or red — status is only ever the dot, so the same object can carry both outcomes.</p>
+<h3 id="3-characters-asset-character">3. Characters — <code>asset/character/*</code></h3>
+<p>Semi-realistic flat vector, adult proportions, calm confident expressions, brown skin tones varied across scenes. Uniforms identify the role and are exact:</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Uniform</th>
+<th>Existing poses</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>House help (expert)</td>
+<td>Pink tunic with black trim, black trousers, hair in a bun</td>
+<td>Namaste (full), portrait</td>
+</tr>
+<tr>
+<td>Cook (expert)</td>
+<td>Pink chef shirt, black trousers</td>
+<td>Man full, woman full</td>
+</tr>
+<tr>
+<td>Trainer</td>
+<td>White polo, white cap, tablet</td>
+<td>Half-body with tablet</td>
+</tr>
+</tbody>
+</table></div>
+<p>Scene compositions exist: meeting a customer, hand-washing, selfie, showing ID (18+), reviewing tasks on phone, high-five, portrait-✓ / portrait-✗. Sizes 96 · 160 · 240 · full-screen. WebP.</p>
+<p>Rule (P-persona): the expert is always competent and dignified — working, greeting, celebrating, learning. Never confused, scolded, or the butt of a joke. Distress appears only as <em>concern</em> in safety contexts, and the trainer or support is always in frame with her.</p>
+<h3 id="4-rewards-asset-reward-asset-badge-asset-tier">4. Rewards — <code>asset/reward/*</code>, <code>asset/badge/*</code>, <code>asset/tier/*</code></h3>
+<p>Metallic 3D: hexagonal badges with a star and laurel, discs for coins, cards for penalties. Strong top-left specular, darker rim, optional soft glow on dark backgrounds. Sizes 40 · 64 · 96 · 160 dp. WebP; Lottie for the earn moment.</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Asset</th>
+<th>Meaning</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>asset/reward/snabbit-coin</code></td>
+<td>Snabbit coin (reward currency)</td>
+<td>The <strong>pink "S" coin</strong>. Current.</td>
+</tr>
+<tr>
+<td><code>asset/reward/gold-coin</code></td>
+<td>—</td>
+<td><strong>Deprecated</strong> ("old" in the source file). Do not use in new work.</td>
+</tr>
+<tr>
+<td><code>asset/reward/red-card</code></td>
+<td>Attendance penalty</td>
+<td>Red card with ✗. Variants: <code>-50</code> amount, <code>full-shift</code> (thumbs down). Only meaning of a red card in the app; never generic error.</td>
+</tr>
+<tr>
+<td><code>asset/badge/silver</code> · <code>gold</code> · <code>blue</code> · <code>bronze</code> · <code>purple</code></td>
+<td>Achievement badges (star + laurel hex)</td>
+<td>Map each to one achievement; record here when assigned.</td>
+</tr>
+<tr>
+<td><code>asset/badge/shakti-classic</code> · <code>shakti-super</code> · <code>shakti-premium</code></td>
+<td>Shakti Bonus tiers (blue hex, letter S / C / P)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>asset/badge/winback</code></td>
+<td>Winback bonus (bronze hex)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>asset/badge/joining</code></td>
+<td>Joining bonus (purple hex)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>asset/tier/bronze</code> … <code>pink-diamond</code>, <code>asset/tier/locked</code></td>
+<td>Expert tier gems</td>
+<td>From the DS file; same metallic layer.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="5-faces-asset-face">5. Faces — <code>asset/face/*</code></h3>
+<p>Rating scale, five steps, angry → very happy. Keep the <strong>coloured, soft-shaded</strong> set only (illustration layer); delete the outline and grey sets. 40 · 64 dp, SVG.</p>
+<h3 id="6-attendance-and-job-state-marks-asset-state">6. Attendance and job-state marks — <code>asset/state/*</code></h3>
+<p>The source file has a family of 258 × 258 marks: login, logout, emergency-logout, no-show, false, attendance-change, attendance-question, overtime, job-denied, lunch, plus small 40 dp PROGRESS steps. These are pictogram-layer assets and should be normalised to the pictogram rule (pink disc, magenta object, status dot). Register each when its screen is specified.</p>
+<hr />
+<h2 id="the-style-lock-checked-before-any-asset-is-registered">The style lock — checked before any asset is registered</h2>
+<p><strong>Illustration layer (scenes, pictograms, characters, faces)</strong></p>
+<ol>
+<li>Colour from tokens. Pinks are <code>pink.50–600</code>; purples and yellows are the two accent hues already in the scenes — record their hexes as <code>illustration.purple</code> and <code>illustration.yellow</code> in <code>tokens.json</code> so they stop being re-picked; greens/reds only as status dots.</li>
+<li>Flat vector with <strong>soft gradient shading</strong>, no outline strokes, one light from top-left. Shadows are a darker tint of the object's colour on the stage, never grey.</li>
+<li>Sparkles (four-point stars, <code>yellow.300–400</code>) are the only flourish. No confetti, no motion lines, no drop shadows onto the page.</li>
+<li>Pictograms: pink disc + magenta object + status dot. Nothing else in the disc.</li>
+<li>Characters: exact uniforms, adult proportions, dignified. Skin tones vary.</li>
+</ol>
+<p><strong>Reward layer (badges, tiers, coins, cards)</strong></p>
+<ol>
+<li>Metallic 3D: hexagon or disc, star-and-laurel motif for badges, specular highlight top-left, darker rim, optional soft glow.</li>
+<li>Metal colours are fixed per meaning (silver, gold, bronze, blue, purple, pink) — no new metals.</li>
+<li>Nothing informational is ever rendered in this layer.</li>
+</ol>
+<p><strong>Both layers</strong></p>
+<ul>
+<li>No text inside assets except a single numeral or letter that is the asset's identity (the <code>-50</code> card, the S/C/P badges). Words cannot be translated.</li>
+<li>Assets ship on the grid: 40 · 64 · 96 · 160 · 240 dp, detail simplified as size drops.</li>
+<li>No asset is <em>required</em> to understand a screen — the number, label and Phosphor icon beside it carry the meaning if the image fails (P1, P8).</li>
+<li><strong>Phosphor only for icons.</strong> The source file contains at least one Streamline icon (<code>Time-Clock-Hand</code>). Icons inside assets are drawn shapes, not imported icon-set glyphs; standalone icons are Phosphor.</li>
+</ul>
+<hr />
+<h2 id="reference-sheet">Reference sheet</h2>
+<p>The six assets that define each layer. Kept as a locked frame named <strong>Reference sheet</strong> on the Assets page, exported to <code>references/asset-reference-sheet.png</code>.</p>
+<p>Illustration layer: (1) cleaning scene — stage, shading, sparkle standard; (2) <code>calendar-✓</code> pictogram — disc/object/dot standard; (3) house-help portrait — face and uniform standard.
+Reward layer: (4) gold star badge — the metallic standard; (5) Snabbit coin — disc rendering and glow; (6) red card <code>-50</code> — a flat object in the metallic layer.</p>
+<h3 id="style-prompts-for-ai-generation">Style prompts (for AI generation)</h3>
+<p>Paste with the reference sheet image. Fill the <code>&lt;&gt;</code>. Generate ≥ 1024 px square; downscale to the grid. Reject and regenerate — never retouch — anything with outlines, a second light, grey shadows, text, or a hue outside the palette.</p>
+<p><strong>Scene.</strong> Flat vector illustration of <code>&lt;objects&gt;</code> on a pink tiled floor against a pink tiled wall, soft gradient shading, no outline strokes, single soft light from top-left, small four-point yellow sparkles, palette <code>&lt;pink/purple/yellow hexes&gt;</code>, centred, fills ~75% of a square canvas, no text. Match the reference sheet exactly in shading, palette and stage.</p>
+<p><strong>Pictogram.</strong> Flat vector pictogram of <code>&lt;object&gt;</code> in magenta (<code>#F70F79</code> with lighter <code>#F4368D</code> face), centred inside a pale pink circle (<code>#FDE4EF</code>), soft gradient shading, no outlines, <code>&lt;optional: small green check / red cross badge at bottom-right&gt;</code>, plain white background, no text.</p>
+<p><strong>Character.</strong> Semi-realistic flat vector illustration of an adult Indian woman, <code>&lt;role uniform exactly as described in the Characters table&gt;</code>, <code>&lt;pose/action&gt;</code>, calm confident expression, soft gradient shading, no outlines, plain background, no text. Dignified and competent.</p>
+<p><strong>Reward.</strong> Glossy metallic 3D <code>&lt;hexagonal badge with star and laurel | disc coin | card&gt;</code> in <code>&lt;metal colour&gt;</code>, strong specular highlight top-left, darker rim, soft glow, dark neutral background for preview, centred, no text except <code>&lt;numeral/letter if any&gt;</code>.</p>
+<hr />
+<h2 id="formats-and-performance-p8">Formats and performance (P8)</h2>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Kind</th>
+<th>Format</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pictograms, faces, small scenes</td>
+<td>SVG / vector drawable</td>
+<td>Preferred; they are flat</td>
+</tr>
+<tr>
+<td>Scenes, characters</td>
+<td>WebP q80, transparent</td>
+<td>Never PNG; 1× at largest used size, or 2× for ≤ 96 dp</td>
+</tr>
+<tr>
+<td>Rewards</td>
+<td>WebP q85</td>
+<td>Gloss needs the bits</td>
+</tr>
+<tr>
+<td>Animated (earn moment, coin drop, celebration)</td>
+<td>Lottie or Rive</td>
+<td>≤ 60 frames, ≤ 100 KB, ≤ 1.5 s (P6), still fallback at last frame</td>
+</tr>
+</tbody>
+</table></div>
+<p>Budget: ≤ 30 KB per still pictogram/face, ≤ 80 KB per scene or character, ≤ 100 KB per animation, ≤ 2 MB bundled total. Export names mirror registry names: <code>asset_picto_calendar_ok_64.svg</code>.</p>
+<hr />
+<h2 id="process-for-a-new-asset">Process for a new asset</h2>
+<ol>
+<li>Check the register — does the meaning exist? Use it.</li>
+<li>Name the meaning in one sentence, and which layer it belongs to (informational → illustration; earned/lost → reward).</li>
+<li>Make it from the reference sheet with the matching style prompt, or brief the designer with the same.</li>
+<li>Check the style lock for its layer.</li>
+<li>Register it, export at the grid sizes, place it on the Assets page.</li>
+<li>Tier it like a component: one feature = local; third feature promotes it to shared.</li>
+</ol>
+<hr />
+<h2 id="migration-and-housekeeping">Migration and housekeeping</h2>
+<ul>
+<li>Move everything from the <em>Snabbit Assets</em> file's two sections into the design-system file on an <strong>Assets</strong> page, organised by class. The assets file stays as the archive.</li>
+<li>Delete the outline and grey smiley sets. Mark <code>gold-coin</code> deprecated; new work uses <code>snabbit-coin</code>.</li>
+<li>Normalise the 258 × 258 attendance marks to the pictogram rule as their screens are specified.</li>
+<li>Replace the Streamline clock glyph with a drawn shape or Phosphor <code>clock</code>.</li>
+<li>Record <code>illustration.purple</code> and <code>illustration.yellow</code> hexes in <code>tokens.json</code> from the existing scenes.</li>
+<li>Lock the reference sheet before Coachmark and Empty state are specified — both depend on it.</li>
+</ul>
+  </main>
+</div>
+<script>
+(function(){
+const links=[...document.querySelectorAll('#nav a')];
+const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-10% 0px -80% 0px'});
+  targets.forEach(t=>io.observe(t));
+}
+})();
+</script>

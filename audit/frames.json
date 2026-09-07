@@ -1,0 +1,3062 @@
+[
+ {
+  "kind": "frame",
+  "id": "2:8530",
+  "name": "Buttons",
+  "w": 8485.0,
+  "h": 2394.0,
+  "syms": [
+   "\ud83c\udfa8 Style=Primary, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=Default, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Text Button, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=Default, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Link Button, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=Default, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Text Button, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=Default, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Link Button, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=Default, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Filled, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=Default, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Destructive, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=Default, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Destructive, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=Default, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Success, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=Default, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Success, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=Default, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Destructive, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=Default, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Success, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=Default, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Stroke, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=Default, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Neutral - Filled, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=Default, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Stroke, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=Default, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Tertiary, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=Default, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Tertiary, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=Default, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Primary, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=Default, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Secondary, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=Default, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Secondary, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=Default, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Primary, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=Default, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Text Button, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=Default, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Link Button, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=Default, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Text Button, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=Default, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Link Button, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=Default, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Filled, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=Default, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Destructive, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=Default, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Success, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=Default, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Destructive, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=Default, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Success, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=Default, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Stroke, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=Default, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Neutral - Filled, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=Default, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Stroke, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=Default, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Tertiary, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=Default, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Tertiary, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=Default, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Primary, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=Default, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Secondary, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=Default, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Secondary, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=Default, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Primary, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=Default, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Text Button, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=Default, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Link Button, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=Default, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Text Button, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=Default, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Link Button, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=Default, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Filled, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=Default, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Destructive, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=Default, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Success, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=Default, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Destructive, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=Default, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Success, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=Default, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Stroke, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=Default, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Neutral - Filled, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=Default, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Stroke, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=Default, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Tertiary, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=Default, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Tertiary, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=Default, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Primary, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=Default, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Secondary, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=Default, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Secondary, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=Default, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Primary, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=Default, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Text Button, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=Default, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Link Button, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=Default, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Text Button, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=Default, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Link Button, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=Default, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Filled, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=Default, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Destructive, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=Default, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Success, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=Default, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Destructive, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=Default, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Success, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=Default, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Stroke, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=Default, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Neutral - Filled, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=Default, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Stroke, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=Default, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Tertiary, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=Default, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Tertiary, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=Default, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Primary, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=Default, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Secondary, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=Default, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Secondary, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=Default, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Primary, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Text Button, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Link Button, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Text Button, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Link Button, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Filled, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Destructive, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Success, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Destructive, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Success, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Stroke, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Neutral - Filled, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Stroke, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Tertiary, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Tertiary, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Primary, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Secondary, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Secondary, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Primary, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Text Button, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Link Button, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Text Button, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Link Button, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Filled, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Destructive, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Success, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Destructive, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Success, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Stroke, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Neutral - Filled, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Stroke, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Tertiary, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Tertiary, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Primary, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Secondary, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Secondary, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Primary, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Text Button, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Link Button, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Text Button, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Link Button, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Filled, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Destructive, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Success, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Destructive, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Success, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Stroke, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Neutral - Filled, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Stroke, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Tertiary, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Tertiary, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Primary, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Secondary, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Secondary, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Primary, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Text Button, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Link Button, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Text Button, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Link Button, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Filled, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Destructive, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Success, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Destructive, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Success, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Stroke, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Neutral - Filled, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Stroke, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Tertiary, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Tertiary, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Primary, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Secondary, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Secondary, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u2194\ufe0f Icon Both, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Primary, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Primary, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Loading",
+   "\ud83c\udfa8 Style=Text Button, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Link Button, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Text Button, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Link Button, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Filled, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Destructive, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Success, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Destructive, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Success, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Stroke, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Neutral - Filled, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Stroke, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Tertiary, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Tertiary, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Primary, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Secondary, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Secondary, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Primary, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Primary, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Loading",
+   "\ud83c\udfa8 Style=Text Button, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Link Button, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Text Button, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Link Button, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Filled, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Destructive, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Success, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Destructive, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Success, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Stroke, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Neutral - Filled, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Stroke, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Tertiary, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Tertiary, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Primary, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Secondary, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Secondary, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Primary, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Primary, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Loading",
+   "\ud83c\udfa8 Style=Text Button, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Link Button, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Text Button, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Link Button, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Filled, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Destructive, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Success, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Destructive, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Success, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Stroke, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Neutral - Filled, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Stroke, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Tertiary, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Tertiary, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Primary, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Secondary, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Secondary, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Primary, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Primary, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Loading",
+   "\ud83c\udfa8 Style=Text Button, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Link Button, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Text Button, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Link Button, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Filled, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Destructive, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Success, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Destructive, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Success, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Stroke, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Neutral - Filled, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Stroke, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Tertiary, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Tertiary, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Primary, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Secondary, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Secondary, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u2b05\ufe0f Icon Left, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Primary, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Text Button, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Link Button, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Text Button, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Link Button, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Filled, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Destructive, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Success, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Destructive, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Success, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Stroke, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Neutral - Filled, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Stroke, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Tertiary, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Tertiary, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Primary, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Secondary, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Secondary, \ud83d\udccf Size=56 - L, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Primary, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Text Button, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Link Button, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Text Button, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Link Button, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Filled, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Destructive, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Success, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Destructive, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Success, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Stroke, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Neutral - Filled, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Stroke, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Tertiary, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Tertiary, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Primary, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Secondary, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Secondary, \ud83d\udccf Size=48 - M, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Primary, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Text Button, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Link Button, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Text Button, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Link Button, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Filled, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Destructive, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Success, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Destructive, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Success, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Stroke, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Neutral - Filled, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Stroke, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Tertiary, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Tertiary, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Primary, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Secondary, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Secondary, \ud83d\udccf Size=40 - S, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Primary, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Text Button, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Link Button, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Text Button, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Link Button, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Filled, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Destructive, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Success, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Destructive, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Success, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Stroke, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Neutral - Filled, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Neutral - Stroke, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Tertiary, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Tertiary, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Primary, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Disabled",
+   "\ud83c\udfa8 Style=Secondary, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Active",
+   "\ud83c\udfa8 Style=Secondary, \ud83d\udccf Size=32 - XS, \ud83e\udde9 Content=\u27a1\ufe0f Icon Right, \u26a1 State=Disabled"
+  ],
+  "children": 294
+ },
+ {
+  "kind": "frame",
+  "id": "8:116",
+  "name": "TopNav",
+  "w": 433.0,
+  "h": 485.0,
+  "syms": [
+   "Property 1=Default",
+   "Property 1=With Button",
+   "Property 1=With secondary text",
+   "Property 1=Header",
+   "Property 1=Logo",
+   "Property 1=Search"
+  ],
+  "children": 6
+ },
+ {
+  "kind": "frame",
+  "id": "7:1574",
+  "name": "Tags",
+  "w": 3361.0,
+  "h": 249.0,
+  "syms": [
+   "\ud83c\udfa8 Style=Filled, \ud83d\udccf Size=32 - L, \ud83c\udf08 Color=Primary (Brand)",
+   "\ud83c\udfa8 Style=Filled, \ud83d\udccf Size=32 - L, \ud83c\udf08 Color=Neutral",
+   "\ud83c\udfa8 Style=Filled, \ud83d\udccf Size=32 - L, \ud83c\udf08 Color=Success",
+   "\ud83c\udfa8 Style=Filled, \ud83d\udccf Size=32 - L, \ud83c\udf08 Color=Warning",
+   "\ud83c\udfa8 Style=Filled, \ud83d\udccf Size=32 - L, \ud83c\udf08 Color=Error",
+   "\ud83c\udfa8 Style=Filled, \ud83d\udccf Size=32 - L, \ud83c\udf08 Color=Info",
+   "\ud83c\udfa8 Style=Filled, \ud83d\udccf Size=32 - L, \ud83c\udf08 Color=Purple",
+   "\ud83c\udfa8 Style=Filled, \ud83d\udccf Size=28 - M, \ud83c\udf08 Color=Primary (Brand)",
+   "\ud83c\udfa8 Style=Filled, \ud83d\udccf Size=28 - M, \ud83c\udf08 Color=Neutral",
+   "\ud83c\udfa8 Style=Filled, \ud83d\udccf Size=28 - M, \ud83c\udf08 Color=Success",
+   "\ud83c\udfa8 Style=Filled, \ud83d\udccf Size=28 - M, \ud83c\udf08 Color=Warning",
+   "\ud83c\udfa8 Style=Filled, \ud83d\udccf Size=28 - M, \ud83c\udf08 Color=Error",
+   "\ud83c\udfa8 Style=Filled, \ud83d\udccf Size=28 - M, \ud83c\udf08 Color=Info",
+   "\ud83c\udfa8 Style=Filled, \ud83d\udccf Size=28 - M, \ud83c\udf08 Color=Purple",
+   "\ud83c\udfa8 Style=Filled, \ud83d\udccf Size=24 - S, \ud83c\udf08 Color=Primary (Brand)",
+   "\ud83c\udfa8 Style=Filled, \ud83d\udccf Size=24 - S, \ud83c\udf08 Color=Neutral",
+   "\ud83c\udfa8 Style=Filled, \ud83d\udccf Size=24 - S, \ud83c\udf08 Color=Success",
+   "\ud83c\udfa8 Style=Filled, \ud83d\udccf Size=24 - S, \ud83c\udf08 Color=Warning",
+   "\ud83c\udfa8 Style=Filled, \ud83d\udccf Size=24 - S, \ud83c\udf08 Color=Error",
+   "\ud83c\udfa8 Style=Filled, \ud83d\udccf Size=24 - S, \ud83c\udf08 Color=Info",
+   "\ud83c\udfa8 Style=Filled, \ud83d\udccf Size=24 - S, \ud83c\udf08 Color=Purple",
+   "\ud83c\udfa8 Style=Filled, \ud83d\udccf Size=20 - XS, \ud83c\udf08 Color=Primary (Brand)",
+   "\ud83c\udfa8 Style=Filled, \ud83d\udccf Size=20 - XS, \ud83c\udf08 Color=Neutral",
+   "\ud83c\udfa8 Style=Filled, \ud83d\udccf Size=20 - XS, \ud83c\udf08 Color=Success",
+   "\ud83c\udfa8 Style=Filled, \ud83d\udccf Size=20 - XS, \ud83c\udf08 Color=Warning",
+   "\ud83c\udfa8 Style=Filled, \ud83d\udccf Size=20 - XS, \ud83c\udf08 Color=Error",
+   "\ud83c\udfa8 Style=Filled, \ud83d\udccf Size=20 - XS, \ud83c\udf08 Color=Info",
+   "\ud83c\udfa8 Style=Filled, \ud83d\udccf Size=20 - XS, \ud83c\udf08 Color=Purple",
+   "\ud83c\udfa8 Style=Soft, \ud83d\udccf Size=32 - L, \ud83c\udf08 Color=Primary (Brand)",
+   "\ud83c\udfa8 Style=Soft, \ud83d\udccf Size=32 - L, \ud83c\udf08 Color=Neutral",
+   "\ud83c\udfa8 Style=Soft, \ud83d\udccf Size=32 - L, \ud83c\udf08 Color=Success",
+   "\ud83c\udfa8 Style=Soft, \ud83d\udccf Size=32 - L, \ud83c\udf08 Color=Warning",
+   "\ud83c\udfa8 Style=Soft, \ud83d\udccf Size=32 - L, \ud83c\udf08 Color=Error",
+   "\ud83c\udfa8 Style=Soft, \ud83d\udccf Size=32 - L, \ud83c\udf08 Color=Info",
+   "\ud83c\udfa8 Style=Soft, \ud83d\udccf Size=32 - L, \ud83c\udf08 Color=Purple",
+   "\ud83c\udfa8 Style=Soft, \ud83d\udccf Size=28 - M, \ud83c\udf08 Color=Primary (Brand)",
+   "\ud83c\udfa8 Style=Soft, \ud83d\udccf Size=28 - M, \ud83c\udf08 Color=Neutral",
+   "\ud83c\udfa8 Style=Soft, \ud83d\udccf Size=28 - M, \ud83c\udf08 Color=Success",
+   "\ud83c\udfa8 Style=Soft, \ud83d\udccf Size=28 - M, \ud83c\udf08 Color=Warning",
+   "\ud83c\udfa8 Style=Soft, \ud83d\udccf Size=28 - M, \ud83c\udf08 Color=Error",
+   "\ud83c\udfa8 Style=Soft, \ud83d\udccf Size=28 - M, \ud83c\udf08 Color=Info",
+   "\ud83c\udfa8 Style=Soft, \ud83d\udccf Size=28 - M, \ud83c\udf08 Color=Purple",
+   "\ud83c\udfa8 Style=Soft, \ud83d\udccf Size=24 - S, \ud83c\udf08 Color=Primary (Brand)",
+   "\ud83c\udfa8 Style=Soft, \ud83d\udccf Size=24 - S, \ud83c\udf08 Color=Neutral",
+   "\ud83c\udfa8 Style=Soft, \ud83d\udccf Size=24 - S, \ud83c\udf08 Color=Success",
+   "\ud83c\udfa8 Style=Soft, \ud83d\udccf Size=24 - S, \ud83c\udf08 Color=Warning",
+   "\ud83c\udfa8 Style=Soft, \ud83d\udccf Size=24 - S, \ud83c\udf08 Color=Error",
+   "\ud83c\udfa8 Style=Soft, \ud83d\udccf Size=24 - S, \ud83c\udf08 Color=Info",
+   "\ud83c\udfa8 Style=Soft, \ud83d\udccf Size=24 - S, \ud83c\udf08 Color=Purple",
+   "\ud83c\udfa8 Style=Soft, \ud83d\udccf Size=20 - XS, \ud83c\udf08 Color=Primary (Brand)",
+   "\ud83c\udfa8 Style=Soft, \ud83d\udccf Size=20 - XS, \ud83c\udf08 Color=Neutral",
+   "\ud83c\udfa8 Style=Soft, \ud83d\udccf Size=20 - XS, \ud83c\udf08 Color=Success",
+   "\ud83c\udfa8 Style=Soft, \ud83d\udccf Size=20 - XS, \ud83c\udf08 Color=Warning",
+   "\ud83c\udfa8 Style=Soft, \ud83d\udccf Size=20 - XS, \ud83c\udf08 Color=Error",
+   "\ud83c\udfa8 Style=Soft, \ud83d\udccf Size=20 - XS, \ud83c\udf08 Color=Info",
+   "\ud83c\udfa8 Style=Soft, \ud83d\udccf Size=20 - XS, \ud83c\udf08 Color=Purple",
+   "\ud83c\udfa8 Style=Outline, \ud83d\udccf Size=32 - L, \ud83c\udf08 Color=Primary (Brand)",
+   "\ud83c\udfa8 Style=Outline, \ud83d\udccf Size=32 - L, \ud83c\udf08 Color=Neutral",
+   "\ud83c\udfa8 Style=Outline, \ud83d\udccf Size=32 - L, \ud83c\udf08 Color=Success",
+   "\ud83c\udfa8 Style=Outline, \ud83d\udccf Size=32 - L, \ud83c\udf08 Color=Warning",
+   "\ud83c\udfa8 Style=Outline, \ud83d\udccf Size=32 - L, \ud83c\udf08 Color=Error",
+   "\ud83c\udfa8 Style=Outline, \ud83d\udccf Size=32 - L, \ud83c\udf08 Color=Info",
+   "\ud83c\udfa8 Style=Outline, \ud83d\udccf Size=32 - L, \ud83c\udf08 Color=Purple",
+   "\ud83c\udfa8 Style=Outline, \ud83d\udccf Size=28 - M, \ud83c\udf08 Color=Primary (Brand)",
+   "\ud83c\udfa8 Style=Outline, \ud83d\udccf Size=28 - M, \ud83c\udf08 Color=Neutral",
+   "\ud83c\udfa8 Style=Outline, \ud83d\udccf Size=28 - M, \ud83c\udf08 Color=Success",
+   "\ud83c\udfa8 Style=Outline, \ud83d\udccf Size=28 - M, \ud83c\udf08 Color=Warning",
+   "\ud83c\udfa8 Style=Outline, \ud83d\udccf Size=28 - M, \ud83c\udf08 Color=Error",
+   "\ud83c\udfa8 Style=Outline, \ud83d\udccf Size=28 - M, \ud83c\udf08 Color=Info",
+   "\ud83c\udfa8 Style=Outline, \ud83d\udccf Size=28 - M, \ud83c\udf08 Color=Purple",
+   "\ud83c\udfa8 Style=Outline, \ud83d\udccf Size=24 - S, \ud83c\udf08 Color=Primary (Brand)",
+   "\ud83c\udfa8 Style=Outline, \ud83d\udccf Size=24 - S, \ud83c\udf08 Color=Neutral",
+   "\ud83c\udfa8 Style=Outline, \ud83d\udccf Size=24 - S, \ud83c\udf08 Color=Success",
+   "\ud83c\udfa8 Style=Outline, \ud83d\udccf Size=24 - S, \ud83c\udf08 Color=Warning",
+   "\ud83c\udfa8 Style=Outline, \ud83d\udccf Size=24 - S, \ud83c\udf08 Color=Error",
+   "\ud83c\udfa8 Style=Outline, \ud83d\udccf Size=24 - S, \ud83c\udf08 Color=Info",
+   "\ud83c\udfa8 Style=Outline, \ud83d\udccf Size=24 - S, \ud83c\udf08 Color=Purple",
+   "\ud83c\udfa8 Style=Outline, \ud83d\udccf Size=20 - XS, \ud83c\udf08 Color=Primary (Brand)",
+   "\ud83c\udfa8 Style=Outline, \ud83d\udccf Size=20 - XS, \ud83c\udf08 Color=Neutral",
+   "\ud83c\udfa8 Style=Outline, \ud83d\udccf Size=20 - XS, \ud83c\udf08 Color=Success",
+   "\ud83c\udfa8 Style=Outline, \ud83d\udccf Size=20 - XS, \ud83c\udf08 Color=Warning",
+   "\ud83c\udfa8 Style=Outline, \ud83d\udccf Size=20 - XS, \ud83c\udf08 Color=Error",
+   "\ud83c\udfa8 Style=Outline, \ud83d\udccf Size=20 - XS, \ud83c\udf08 Color=Info",
+   "\ud83c\udfa8 Style=Outline, \ud83d\udccf Size=20 - XS, \ud83c\udf08 Color=Purple"
+  ],
+  "children": 84
+ },
+ {
+  "kind": "frame",
+  "id": "9:2148",
+  "name": "Button Groups",
+  "w": 405.5,
+  "h": 2775.0,
+  "syms": [
+   "State=Single Primary Button (Full Width)",
+   "State=Two Buttons Side by Side",
+   "State=Two Buttons Stacked",
+   "State=Primary Button + Text Link",
+   "State=Button with Icon",
+   "State=Three Buttons Side by Side",
+   "State=Three Buttons Stacked",
+   "State=Destructive Action",
+   "State=Loading State",
+   "State=Disabled State",
+   "State=Fixed Bottom Button",
+   "State=Floating Action Button",
+   "State=Icon-Only Buttons",
+   "State=Complete Action Stack",
+   "State=Asymmetric Layout (70/30 Split)"
+  ],
+  "children": 15
+ },
+ {
+  "kind": "frame",
+  "id": "10:2334",
+  "name": "Simple Selection Cards",
+  "w": 791.0,
+  "h": 196.0,
+  "syms": [
+   "\ud83d\udd18 Type=\ud83d\udd18 Radio, \u2728 State=Unselected",
+   "\ud83d\udd18 Type=\u2611\ufe0f Checkbox, \u2728 State=Unselected",
+   "\ud83d\udd18 Type=\ud83d\udd18 Radio, \u2728 State=Selected",
+   "\ud83d\udd18 Type=\u2611\ufe0f Checkbox, \u2728 State=Selected"
+  ],
+  "children": 4
+ },
+ {
+  "kind": "frame",
+  "id": "19:133",
+  "name": "Selection Cards with Description",
+  "w": 838.0,
+  "h": 478.0,
+  "syms": [
+   "State=Earnings, Type=Preference Selection",
+   "State=Earnings Highlight, Type=Preference Selection",
+   "State=Location, Type=Preference Selection",
+   "State=Incentive Highlight, Type=Preference Selection",
+   "State=Default, Type=Location Selection",
+   "State=Selected, Type=Location Selection"
+  ],
+  "children": 6
+ },
+ {
+  "kind": "frame",
+  "id": "10:2585",
+  "name": "Date Selection Cards",
+  "w": 401.0,
+  "h": 219.0,
+  "syms": [
+   "State=Slected",
+   "State=Unselected"
+  ],
+  "children": 2
+ },
+ {
+  "kind": "frame",
+  "id": "10:2791",
+  "name": "Complex Selection Cards",
+  "w": 401.0,
+  "h": 356.0,
+  "syms": [
+   "State=1",
+   "State=2"
+  ],
+  "children": 2
+ },
+ {
+  "kind": "instance",
+  "id": "2231:7109",
+  "name": "Check box",
+  "w": 20.0,
+  "h": 20.0,
+  "syms": [],
+  "children": 0
+ },
+ {
+  "kind": "frame",
+  "id": "8:1091",
+  "name": "Radio button",
+  "w": 940.0,
+  "h": 176.0,
+  "syms": [
+   "Selected=No, Property=Error, Size=20px",
+   "Selected=No, Property=Error, Size=16px",
+   "Selected=No, Property=Error, Size=24px",
+   "Selected=Yes, Property=Disabled, Size=20px",
+   "Selected=Yes, Property=Disabled, Size=16px",
+   "Selected=Yes, Property=Disabled, Size=24px",
+   "Selected=No, Property=Disabled, Size=20px",
+   "Selected=No, Property=Disabled, Size=16px",
+   "Selected=No, Property=Disabled, Size=24px",
+   "Selected=Yes, Property=Default, Size=24px",
+   "Selected=No, Property=Default, Size=20px",
+   "Selected=Yes, Property=Default, Size=20px",
+   "Selected=No, Property=Default, Size=16px",
+   "Selected=Yes, Property=Default, Size=16px",
+   "Selected=No, Property=Default, Size=24px"
+  ],
+  "children": 15
+ },
+ {
+  "kind": "frame",
+  "id": "8:1322",
+  "name": "Check box",
+  "w": 1628.0,
+  "h": 304.0,
+  "syms": [
+   "Selected=Yes, Size=20, States=Disabled",
+   "Selected=Yes, Size=16, States=Disabled",
+   "Selected=No, Size=20, States=Disabled",
+   "Selected=No, Size=16, States=Disabled",
+   "Selected=No, Size=20, States=Error",
+   "Selected=No, Size=16, States=Error",
+   "Selected=No, Size=24, States=Error",
+   "Selected=No, Size=24, States=Disabled",
+   "Selected=No, Size=16, States=Default",
+   "Selected=Yes, Size=16, States=Default",
+   "Selected=Yes, Size=16, States=Interim",
+   "Selected=No, Size=20, States=Default",
+   "Selected=Yes, Size=20, States=Default",
+   "Selected=Yes, Size=20, States=Interim",
+   "Selected=Yes, Size=24, States=Default",
+   "Selected=Yes, Size=24, States=Disabled",
+   "Selected=No, Size=24, States=Default",
+   "Selected=Yes, Size=24, States=Interim"
+  ],
+  "children": 18
+ },
+ {
+  "kind": "frame",
+  "id": "29:2995",
+  "name": "Building Blocks",
+  "w": 433.0,
+  "h": 178.0,
+  "syms": [
+   "Property 1=Status Bar",
+   "Property 1=Home Indicator"
+  ],
+  "children": 2
+ },
+ {
+  "kind": "frame",
+  "id": "44:108",
+  "name": "Input field",
+  "w": 1313.0,
+  "h": 827.0,
+  "syms": [
+   "Size=40, States=Default",
+   "Size=40, States=Filled",
+   "Size=40, States=Focus",
+   "Size=40, States=Error",
+   "Size=40, States=Disabled",
+   "Size=48, States=Default",
+   "Size=48, States=Filled",
+   "Size=48, States=Focus",
+   "Size=48, States=Error",
+   "Size=48, States=Disabled",
+   "Size=56, States=Default",
+   "Size=56, States=Filled",
+   "Size=56, States=Focus",
+   "Size=56, States=Error",
+   "Size=56, States=Disabled"
+  ],
+  "children": 15
+ },
+ {
+  "kind": "frame",
+  "id": "44:280",
+  "name": "Mobile and OTP",
+  "w": 943.0,
+  "h": 448.0,
+  "syms": [
+   "Property 1=Mobile",
+   "Property 1=Mobile Filled",
+   "Property 1=OTP",
+   "Property 1=OTP Filled"
+  ],
+  "children": 4
+ },
+ {
+  "kind": "frame",
+  "id": "75:500",
+  "name": "Selectable Card",
+  "w": 894.0,
+  "h": 281.0,
+  "syms": [
+   "Variant=UPI, Active=Yes",
+   "Variant=Bank Details, Active=Yes",
+   "Variant=UPI, Active=No",
+   "Variant=Bank Details, Active=No"
+  ],
+  "children": 4
+ },
+ {
+  "kind": "frame",
+  "id": "83:119",
+  "name": "Divider",
+  "w": 489.0,
+  "h": 302.0,
+  "syms": [
+   "\ud83e\udde9 Type=Line",
+   "\ud83e\udde9 Type=Dotted",
+   "\ud83e\udde9 Type=Line Spacing",
+   "\ud83e\udde9 Type=Text &amp; Line Divider",
+   "\ud83e\udde9 Type=Divider with chevron"
+  ],
+  "children": 5
+ },
+ {
+  "kind": "frame",
+  "id": "89:99",
+  "name": "DOB Selection",
+  "w": 401.0,
+  "h": 257.0,
+  "syms": [
+   "Property 1=Frame 2147239614",
+   "Property 1=Frame 2147239615"
+  ],
+  "children": 2
+ },
+ {
+  "kind": "frame",
+  "id": "89:129",
+  "name": "Number Input",
+  "w": 185.0,
+  "h": 104.0,
+  "syms": [
+   "Active=No",
+   "Active=Yes"
+  ],
+  "children": 2
+ },
+ {
+  "kind": "frame",
+  "id": "122:145",
+  "name": "Selection Chips",
+  "w": 186.0,
+  "h": 76.0,
+  "syms": [
+   "Selected=Yes",
+   "Selected=No"
+  ],
+  "children": 2
+ },
+ {
+  "kind": "frame",
+  "id": "134:1465",
+  "name": "Training Timer Cards",
+  "w": 401.0,
+  "h": 555.0,
+  "syms": [
+   "Property 1=Default",
+   "Property 1=Variant2"
+  ],
+  "children": 2
+ },
+ {
+  "kind": "frame",
+  "id": "371:2306",
+  "name": "Date",
+  "w": 76.0,
+  "h": 172.0,
+  "syms": [
+   "Property 1=Default",
+   "Property 1=No fill",
+   "Property 1=Gray"
+  ],
+  "children": 3
+ },
+ {
+  "kind": "frame",
+  "id": "379:6040",
+  "name": "Cards - States",
+  "w": 1425.5,
+  "h": 284.0,
+  "syms": [
+   "States=Base Card - Elevated",
+   "States=Base Card - Selected",
+   "States=Base Card - Dashed",
+   "States=Base Card"
+  ],
+  "children": 4
+ },
+ {
+  "kind": "frame",
+  "id": "371:6294",
+  "name": "Timers",
+  "w": 896.0,
+  "h": 326.0,
+  "syms": [
+   "State=Red, Size=Default",
+   "State=Green, Size=Default",
+   "State=Green, Size=Large",
+   "State=Yellow, Size=Large",
+   "State=Yellow, Size=Large",
+   "State=Yellow + extra, Size=Large",
+   "State=Yellow, Size=Default",
+   "State=Login Time, Size=Default"
+  ],
+  "children": 8
+ },
+ {
+  "kind": "frame",
+  "id": "2477:7134",
+  "name": "Timers",
+  "w": 196.0,
+  "h": 98.0,
+  "syms": [],
+  "children": 2
+ },
+ {
+  "kind": "frame",
+  "id": "2477:7141",
+  "name": "Timers",
+  "w": 196.0,
+  "h": 98.0,
+  "syms": [],
+  "children": 2
+ },
+ {
+  "kind": "frame",
+  "id": "519:2495",
+  "name": "Toast",
+  "w": 822.0,
+  "h": 301.0,
+  "syms": [
+   "State=Success, Style=Light",
+   "State=Blue, Style=Dark",
+   "State=Failed, Style=Light",
+   "State=Red, Style=Dark",
+   "State=Bad Internet, Style=Middle",
+   "State=No internet, Style=Middle",
+   "State=Storage, Style=Light"
+  ],
+  "children": 7
+ },
+ {
+  "kind": "frame",
+  "id": "531:2478",
+  "name": "Summary Card",
+  "w": 404.0,
+  "h": 666.0,
+  "syms": [
+   "Name=Top Green Card",
+   "Name=Grey Card",
+   "Name=Red Card",
+   "Name=Green Card",
+   "Name=Bottom Green Card",
+   "Name=Bottom Green Card + Lock"
+  ],
+  "children": 6
+ },
+ {
+  "kind": "frame",
+  "id": "531:2544",
+  "name": "Coins &amp; Card - Chips",
+  "w": 528.0,
+  "h": 328.0,
+  "syms": [
+   "Type=Coin, State=Filled, Count=1, Size=28px",
+   "Type=Coin, State=Filled, Count=Text, Size=32px",
+   "Type=Coin, State=Filled, Count=Text, Size=40px",
+   "Type=Coin, State=Stroke, Count=1, Size=24px",
+   "Type=Coin, State=Stroke, Count=Text, Size=24px",
+   "Type=Coin, State=Filled, Count=Text, Size=20px",
+   "Type=Card, State=Filled, Count=1, Size=28px",
+   "Type=Card, State=Filled, Count=Text, Size=32px",
+   "Type=Card, State=Filled, Count=Text, Size=40px",
+   "Type=Card, State=Stroke, Count=1, Size=24px",
+   "Type=Card, State=Stroke, Count=Text, Size=24px",
+   "Type=Card, State=Filled, Count=Text, Size=20px",
+   "Type=Coin, State=Filled, Count=2, Size=28px",
+   "Type=Coin, State=Stroke, Count=2, Size=24px",
+   "Type=Card, State=Filled, Count=2, Size=28px",
+   "Type=Card, State=Stroke, Count=2, Size=24px",
+   "Type=Coin, State=Filled, Count=3, Size=28px",
+   "Type=Coin, State=Stroke, Count=3, Size=24px",
+   "Type=Card, State=Filled, Count=3, Size=28px",
+   "Type=Card, State=Stroke, Count=3, Size=24px",
+   "Type=Coin, State=Filled, Count=4, Size=28px",
+   "Type=Coin, State=Stroke, Count=4, Size=24px",
+   "Type=Card, State=Filled, Count=4, Size=28px",
+   "Type=Card, State=Stroke, Count=4, Size=24px"
+  ],
+  "children": 24
+ },
+ {
+  "kind": "frame",
+  "id": "537:4277",
+  "name": "Value",
+  "w": 153.0,
+  "h": 334.0,
+  "syms": [
+   "Property 1=No Lock, Type=16px Text",
+   "Property 1=No Lock, Type=14px Text",
+   "Property 1=With Lock, Type=16px Text",
+   "Property 1=With Lock, Type=14px Text",
+   "Property 1=Locked, Type=16px Text",
+   "Property 1=Locked, Type=14px Text"
+  ],
+  "children": 6
+ },
+ {
+  "kind": "frame",
+  "id": "537:4754",
+  "name": "Account Item",
+  "w": 790.92578125,
+  "h": 338.0431823730469,
+  "syms": [
+   "Type=Bank Account, State=Unfilled",
+   "Type=Pan Card, State=Unfilled",
+   "Type=Bank Account, State=Filled",
+   "Type=Pan Card, State=Filled",
+   "Type=Bank Account, State=Primary details"
+  ],
+  "children": 5
+ },
+ {
+  "kind": "frame",
+  "id": "545:2614",
+  "name": "Lock",
+  "w": 77.0,
+  "h": 56.0,
+  "syms": [
+   "Property 1=Lock",
+   "Property 1=Open"
+  ],
+  "children": 2
+ },
+ {
+  "kind": "frame",
+  "id": "537:4918",
+  "name": "Tooltips",
+  "w": 184.0,
+  "h": 329.0,
+  "syms": [
+   "State=Top Left",
+   "State=Top Right",
+   "State=Top-Center",
+   "State=Down-Center",
+   "State=Left",
+   "State=Right"
+  ],
+  "children": 6
+ },
+ {
+  "kind": "frame",
+  "id": "537:5021",
+  "name": "List Items - Payout",
+  "w": 782.0,
+  "h": 334.0,
+  "syms": [
+   "State=Unlocked",
+   "State=Locked",
+   "State=Blurred",
+   "State=With Helper - Red",
+   "State=Bonuses",
+   "State=With Helper - Yellow",
+   "State=Default",
+   "State=Show Button"
+  ],
+  "children": 8
+ },
+ {
+  "kind": "frame",
+  "id": "542:3934",
+  "name": "Pay Summary - List",
+  "w": 369.0,
+  "h": 344.0,
+  "syms": [
+   "State=Default",
+   "State=With Subheader",
+   "State=Locked",
+   "State=Green",
+   "State=Coin Badge",
+   "State=Inactive"
+  ],
+  "children": 6
+ },
+ {
+  "kind": "frame",
+  "id": "545:2768",
+  "name": "Pay Summary - Icons",
+  "w": 60.0,
+  "h": 220.0,
+  "syms": [
+   "Name=Cash",
+   "Name=Payout",
+   "Name=Loan",
+   "Name=Uniform",
+   "Name=Bonus",
+   "Name=Remaining Payout"
+  ],
+  "children": 6
+ },
+ {
+  "kind": "frame",
+  "id": "579:2665",
+  "name": "List Items",
+  "w": 402.0,
+  "h": 284.0,
+  "syms": [
+   "Property 1=Early Payout",
+   "Property 1=Payout Histroy",
+   "Property 1=Referral Earnings"
+  ],
+  "children": 3
+ },
+ {
+  "kind": "frame",
+  "id": "582:2702",
+  "name": "Attendance Card",
+  "w": 2019.0,
+  "h": 425.0,
+  "syms": [
+   "State=present-full, Type=Present",
+   "State=present-updated, Type=Present",
+   "State=present-missed-logout, Type=Present",
+   "State=present-missed-login, Type=Present",
+   "State=absent-no-show, Type=Absent",
+   "State=present-warning-login, Type=Present",
+   "State=absent-false, Type=Absent",
+   "State=present-partial, Type=Present",
+   "State=present-warning-logout, Type=Present"
+  ],
+  "children": 9
+ },
+ {
+  "kind": "frame",
+  "id": "609:3882",
+  "name": "Attendance List Item",
+  "w": 401.0,
+  "h": 415.0,
+  "syms": [
+   "State=present-full",
+   "State=present-missed",
+   "State=absent-loss",
+   "State=present-partial",
+   "State=absent-zero"
+  ],
+  "children": 5
+ },
+ {
+  "kind": "frame",
+  "id": "609:6107",
+  "name": "ListItem / meta",
+  "w": 370.0,
+  "h": 191.0,
+  "syms": [
+   "State=default",
+   "State=disabled"
+  ],
+  "children": 2
+ },
+ {
+  "kind": "frame",
+  "id": "609:6820",
+  "name": "Coins &amp; Cards - Small",
+  "w": 241.0,
+  "h": 245.0,
+  "syms": [
+   "State=Red Card, Size=20px",
+   "State=Red Card, Size=16px",
+   "State=Coins, Size=20px",
+   "State=Coins, Size=16px",
+   "State=Coins, Size=Large",
+   "State=Red Card, Size=Large"
+  ],
+  "children": 6
+ },
+ {
+  "kind": "frame",
+  "id": "637:4266",
+  "name": "Breakdown List",
+  "w": 370.0,
+  "h": 203.0,
+  "syms": [
+   "State=No - Sub",
+   "State=Subheader",
+   "State=Points"
+  ],
+  "children": 3
+ },
+ {
+  "kind": "frame",
+  "id": "666:3266",
+  "name": "Progress Stat - List",
+  "w": 804.0,
+  "h": 293.0,
+  "syms": [
+   "State=linear, Inactive=No, Type=Normal",
+   "State=linear, Inactive=No, Type=Bonuses",
+   "State=linear, Inactive=Yes, Type=Normal",
+   "State=linear, Inactive=Yes, Type=Bonuses",
+   "State=segmented, Inactive=No, Type=Normal",
+   "State=segmented, Inactive=No, Type=Bonuses",
+   "State=segmented, Inactive=Yes, Type=Normal",
+   "State=segmented, Inactive=Yes, Type=Bonuses"
+  ],
+  "children": 8
+ },
+ {
+  "kind": "frame",
+  "id": "666:3301",
+  "name": "Icons_Karma Bonus",
+  "w": 86.0,
+  "h": 188.0,
+  "syms": [
+   "State=Full Shit",
+   "State=Ratings",
+   "State=Sunday"
+  ],
+  "children": 3
+ },
+ {
+  "kind": "frame",
+  "id": "666:3317",
+  "name": "Progress Bar",
+  "w": 672.0,
+  "h": 620.0,
+  "syms": [
+   "States=1, Style=segmented, Type=Simple",
+   "States=1, Style=segmented, Type=Strips",
+   "States=0, Style=segmented, Type=Simple",
+   "States=0, Style=segmented, Type=Strips",
+   "States=2, Style=segmented, Type=Simple",
+   "States=2, Style=segmented, Type=Strips",
+   "States=3, Style=segmented, Type=Simple",
+   "States=3, Style=segmented, Type=Strips",
+   "States=4, Style=segmented, Type=Simple",
+   "States=4, Style=segmented, Type=Strips",
+   "States=5, Style=segmented, Type=Simple",
+   "States=5, Style=segmented, Type=Strips",
+   "States=1, Style=linear, Type=Simple",
+   "States=1, Style=linear, Type=Strips",
+   "States=0, Style=linear, Type=Simple",
+   "States=0, Style=linear, Type=Strips",
+   "States=2, Style=linear, Type=Simple",
+   "States=2, Style=linear, Type=Strips",
+   "States=3, Style=linear, Type=Simple",
+   "States=3, Style=linear, Type=Strips",
+   "States=4, Style=linear, Type=Simple",
+   "States=5, Style=linear, Type=Simple",
+   "States=6, Style=linear, Type=Simple",
+   "States=7, Style=linear, Type=Simple",
+   "States=8, Style=linear, Type=Simple",
+   "States=9, Style=linear, Type=Simple",
+   "States=10, Style=linear, Type=Simple",
+   "States=4, Style=linear, Type=Strips",
+   "States=5, Style=linear, Type=Strips",
+   "States=6, Style=linear, Type=Strips",
+   "States=7, Style=linear, Type=Strips",
+   "States=8, Style=linear, Type=Strips",
+   "States=9, Style=linear, Type=Strips",
+   "States=10, Style=linear, Type=Strips"
+  ],
+  "children": 34
+ },
+ {
+  "kind": "frame",
+  "id": "666:3358",
+  "name": "Badges Groups",
+  "w": 136.0,
+  "h": 185.0,
+  "syms": [
+   "State=Bronze",
+   "State=Silver",
+   "State=Gold",
+   "State=Winning Bonus",
+   "State=Joining Bonus"
+  ],
+  "children": 5
+ },
+ {
+  "kind": "frame",
+  "id": "666:3389",
+  "name": "Status Banner",
+  "w": 822.0,
+  "h": 341.0,
+  "syms": [
+   "Type=success, State=bronze",
+   "Type=success, State=silver",
+   "Type=success, State=gold",
+   "Type=success, State=Confetti",
+   "Type=toast, State=no bonus",
+   "Type=toast, State=ratings - info",
+   "Type=toast, State=ratings - check",
+   "Type=info, State=blue",
+   "Type=info, State=pink",
+   "Type=Badge - Parent, State=Money Strip"
+  ],
+  "children": 10
+ },
+ {
+  "kind": "frame",
+  "id": "685:4021",
+  "name": "Badge - Parent",
+  "w": 595.0,
+  "h": 201.0,
+  "syms": [
+   "State=Winning, Size=24",
+   "State=Winning, Size=36",
+   "State=Gold, Size=24",
+   "State=Gold, Size=36",
+   "State=Silver, Size=24",
+   "State=Silver, Size=36",
+   "State=Bronze, Size=24",
+   "State=Bronze, Size=36",
+   "State=Joining, Size=24",
+   "State=Joining, Size=36",
+   "State=Vishwaas, Size=36",
+   "State=Vishwaas, Size=24"
+  ],
+  "children": 12
+ },
+ {
+  "kind": "frame",
+  "id": "692:8941",
+  "name": "Frame 2147242534",
+  "w": 8485.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "692:8943",
+  "name": "Frame 2147242535",
+  "w": 3361.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "692:10624",
+  "name": "Frame 2147242550",
+  "w": 1033.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "692:8945",
+  "name": "Frame 2147242536",
+  "w": 3144.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "692:8947",
+  "name": "Frame 2147242537",
+  "w": 922.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "692:8949",
+  "name": "Frame 2147242538",
+  "w": 1628.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "692:8951",
+  "name": "Frame 2147242539",
+  "w": 2320.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "692:8953",
+  "name": "Frame 2147242540",
+  "w": 865.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "692:8955",
+  "name": "Frame 2147242541",
+  "w": 1426.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "692:8957",
+  "name": "Frame 2147242542",
+  "w": 1426.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "692:8959",
+  "name": "Frame 2147242543",
+  "w": 822.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "692:8961",
+  "name": "Frame 2147242544",
+  "w": 1546.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "692:8963",
+  "name": "Frame 2147242545",
+  "w": 1546.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "692:8967",
+  "name": "Frame 2147242547",
+  "w": 1549.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1535:11789",
+  "name": "Frame 2147243586",
+  "w": 1549.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "692:8969",
+  "name": "Frame 2147242548",
+  "w": 2019.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "692:8971",
+  "name": "Frame 2147242549",
+  "w": 2083.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "715:12734",
+  "name": "Frame 2147242552",
+  "w": 953.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "827:5143",
+  "name": "Frame 2147242577",
+  "w": 1253.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "894:6369",
+  "name": "Frame 2147242604",
+  "w": 807.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "974:5124",
+  "name": "Frame 2147242605",
+  "w": 1266.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1237:11121",
+  "name": "Frame 2147242976",
+  "w": 572.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1492:10696",
+  "name": "Frame 2147243554",
+  "w": 1852.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1492:10708",
+  "name": "Frame 2147243559",
+  "w": 1852.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1492:10704",
+  "name": "Frame 2147243557",
+  "w": 1852.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1492:10700",
+  "name": "Frame 2147243555",
+  "w": 1852.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1492:10710",
+  "name": "Frame 2147243560",
+  "w": 1852.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1492:10702",
+  "name": "Frame 2147243556",
+  "w": 1852.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1492:10706",
+  "name": "Frame 2147243558",
+  "w": 1056.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1492:10712",
+  "name": "Frame 2147243561",
+  "w": 1546.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1492:10714",
+  "name": "Frame 2147243562",
+  "w": 1346.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1532:12616",
+  "name": "Frame 2147243583",
+  "w": 1139.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1537:11605",
+  "name": "Frame 2147243588",
+  "w": 1388.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1537:11841",
+  "name": "Frame 2147243589",
+  "w": 1992.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1533:11508",
+  "name": "Frame 2147243584",
+  "w": 828.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1533:11596",
+  "name": "Frame 2147243585",
+  "w": 2248.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1535:12158",
+  "name": "Frame 2147243587",
+  "w": 1040.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1550:11862",
+  "name": "Frame 2147243599",
+  "w": 614.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1580:6359",
+  "name": "Frame 2147243606",
+  "w": 1158.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1580:6467",
+  "name": "Frame 2147243607",
+  "w": 1153.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1580:6675",
+  "name": "Frame 2147243608",
+  "w": 948.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1582:9158",
+  "name": "Frame 2147243609",
+  "w": 1064.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1589:6548",
+  "name": "Frame 2147243610",
+  "w": 1064.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1594:6481",
+  "name": "Frame 2147243611",
+  "w": 1064.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1598:7305",
+  "name": "Frame 2147243612",
+  "w": 1064.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1598:7792",
+  "name": "Frame 2147243613",
+  "w": 1064.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1786:6801",
+  "name": "Frame 2147243614",
+  "w": 1064.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "692:8965",
+  "name": "Frame 2147242546",
+  "w": 684.0,
+  "h": 279.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "756:3520",
+  "name": "Frame 2147241471",
+  "w": 353.0,
+  "h": 36.0,
+  "syms": [],
+  "children": 3
+ },
+ {
+  "kind": "frame",
+  "id": "756:3531",
+  "name": "Date Picker",
+  "w": 433.0,
+  "h": 124.0,
+  "syms": [
+   "State=Month",
+   "State=Location +Month"
+  ],
+  "children": 2
+ },
+ {
+  "kind": "frame",
+  "id": "758:4507",
+  "name": "Frame 2147242575",
+  "w": 40.0,
+  "h": 40.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "758:4509",
+  "name": "Frame 2147242576",
+  "w": 40.0,
+  "h": 40.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "758:4947",
+  "name": "Coins &amp; Cards - Groups",
+  "w": 703.0,
+  "h": 451.0,
+  "syms": [
+   "State=Coins, Count=1",
+   "State=Coins, Count=2",
+   "State=Coins, Count=3",
+   "State=Cards, Count=1",
+   "State=Cards, Count=2",
+   "State=Cards, Count=3"
+  ],
+  "children": 6
+ },
+ {
+  "kind": "frame",
+  "id": "827:5161",
+  "name": "Day Properties",
+  "w": 300.0,
+  "h": 92.0,
+  "syms": [
+   "State=Hidden",
+   "State=Disabled",
+   "State=Active",
+   "State=Available",
+   "State=Unavailable"
+  ],
+  "children": 5
+ },
+ {
+  "kind": "frame",
+  "id": "827:5182",
+  "name": "Calendar",
+  "w": 1253.0,
+  "h": 528.0,
+  "syms": [
+   "Property 1=Frame 2147242719",
+   "Property 1=Frame 2147242727",
+   "Property 1=Frame 2147242738"
+  ],
+  "children": 3
+ },
+ {
+  "kind": "frame",
+  "id": "862:4989",
+  "name": "Illustration - List Items",
+  "w": 256.0,
+  "h": 80.0,
+  "syms": [
+   "State=Payout",
+   "State=History",
+   "State=Referral Earnings",
+   "State=Bank",
+   "State=PAN"
+  ],
+  "children": 5
+ },
+ {
+  "kind": "frame",
+  "id": "869:4920",
+  "name": "Day Strip",
+  "w": 75.00108337402344,
+  "h": 104.0,
+  "syms": [
+   "State=Gray",
+   "State=Blue",
+   "State=Pink"
+  ],
+  "children": 3
+ },
+ {
+  "kind": "frame",
+  "id": "894:7348",
+  "name": "Accordion",
+  "w": 401.0,
+  "h": 252.0,
+  "syms": [
+   "State=Expanded",
+   "State=Collapsed"
+  ],
+  "children": 2
+ },
+ {
+  "kind": "frame",
+  "id": "974:5706",
+  "name": "Table Components",
+  "w": 834.0,
+  "h": 527.0,
+  "syms": [
+   "Name=\ud83d\udcbc  Shift Table",
+   "Name=\ud83d\udcca Incentives Section",
+   "Name=\ud83e\udde9 Top",
+   "Name=\ud83d\udcb0 Base Section",
+   "Name=\u2705 Rules Section",
+   "Name=\ud83d\udcc6 Days Table",
+   "Name=\ud83d\udcc6 Days Table II"
+  ],
+  "children": 7
+ },
+ {
+  "kind": "symbol",
+  "id": "975:6015",
+  "name": "Frame 2147242975",
+  "w": 110.0,
+  "h": 76.0,
+  "syms": [],
+  "children": 0
+ },
+ {
+  "kind": "frame",
+  "id": "975:6018",
+  "name": "Icons Group",
+  "w": 152.0,
+  "h": 152.0,
+  "syms": [
+   "Property 1=2",
+   "Property 1=1",
+   "Property 1=3",
+   "Property 1=4"
+  ],
+  "children": 4
+ },
+ {
+  "kind": "frame",
+  "id": "1075:6268",
+  "name": "Training centre",
+  "w": 401.0,
+  "h": 376.0,
+  "syms": [
+   "State=Training Center Card",
+   "State=Expanded Training Center Card"
+  ],
+  "children": 2
+ },
+ {
+  "kind": "frame",
+  "id": "2232:7174",
+  "name": "Training centre",
+  "w": 362.0,
+  "h": 246.0,
+  "syms": [],
+  "children": 2
+ },
+ {
+  "kind": "frame",
+  "id": "1075:6540",
+  "name": "Shift Selection Card",
+  "w": 813.0,
+  "h": 718.0,
+  "syms": [
+   "State=8 hours, Mode=No, Type=Detailed",
+   "State=8 hours, Mode=Yes, Type=Detailed",
+   "State=4 hours, Mode=No, Type=Detailed",
+   "State=Full time, Mode=No, Type=Compact",
+   "State=Part time, Mode=No, Type=Compact",
+   "State=Full time, Mode=Yes, Type=Compact",
+   "State=Part time, Mode=Yes, Type=Compact",
+   "State=4 hours, Mode=Yes, Type=Detailed"
+  ],
+  "children": 8
+ },
+ {
+  "kind": "frame",
+  "id": "1075:8182",
+  "name": "Onboarding Step Card",
+  "w": 369.0,
+  "h": 429.0,
+  "syms": [
+   "State=Active State",
+   "State=Locked State",
+   "State=Upcoming State",
+   "State=Completed State"
+  ],
+  "children": 4
+ },
+ {
+  "kind": "frame",
+  "id": "1075:8388",
+  "name": "Step Indicatorss",
+  "w": 212.5,
+  "h": 80.0,
+  "syms": [
+   "State=Upcoming State",
+   "State=Step Connector",
+   "State=Completed State"
+  ],
+  "children": 3
+ },
+ {
+  "kind": "frame",
+  "id": "1075:9887",
+  "name": "Selection Pill",
+  "w": 401.0,
+  "h": 178.0,
+  "syms": [
+   "Upload Method Card=Default State",
+   "Upload Method Card=Selected State"
+  ],
+  "children": 2
+ },
+ {
+  "kind": "frame",
+  "id": "1075:9974",
+  "name": "Document Upload Card",
+  "w": 634.9765625,
+  "h": 208.0,
+  "syms": [
+   "State=Default State",
+   "State=Uploaded State",
+   "State=Active State"
+  ],
+  "children": 3
+ },
+ {
+  "kind": "frame",
+  "id": "1075:10055",
+  "name": "Tip Image Container",
+  "w": 326.6668395996094,
+  "h": 260.0531921386719,
+  "syms": [
+   "State=Valid State",
+   "State=Photocopy Error State",
+   "State=Glare Error State",
+   "State=Visibility Error State"
+  ],
+  "children": 4
+ },
+ {
+  "kind": "frame",
+  "id": "1234:6423",
+  "name": "Avatars",
+  "w": 892.0,
+  "h": 679.0,
+  "syms": [
+   "1\ufe0f\u20e3 Size=80, 2\ufe0f\u20e3 Style=Image, \ud83d\udc64 Persona=Default",
+   "1\ufe0f\u20e3 Size=80, 2\ufe0f\u20e3 Style=Image, \ud83d\udc64 Persona=Female",
+   "1\ufe0f\u20e3 Size=80, 2\ufe0f\u20e3 Style=Image, \ud83d\udc64 Persona=Male",
+   "1\ufe0f\u20e3 Size=80, 2\ufe0f\u20e3 Style=Mascot, \ud83d\udc64 Persona=Default",
+   "1\ufe0f\u20e3 Size=80, 2\ufe0f\u20e3 Style=Letter, \ud83d\udc64 Persona=Default",
+   "1\ufe0f\u20e3 Size=72, 2\ufe0f\u20e3 Style=Image, \ud83d\udc64 Persona=Default",
+   "1\ufe0f\u20e3 Size=72, 2\ufe0f\u20e3 Style=Image, \ud83d\udc64 Persona=Female",
+   "1\ufe0f\u20e3 Size=72, 2\ufe0f\u20e3 Style=Image, \ud83d\udc64 Persona=Male",
+   "1\ufe0f\u20e3 Size=72, 2\ufe0f\u20e3 Style=Mascot, \ud83d\udc64 Persona=Default",
+   "1\ufe0f\u20e3 Size=72, 2\ufe0f\u20e3 Style=Letter, \ud83d\udc64 Persona=Default",
+   "1\ufe0f\u20e3 Size=64, 2\ufe0f\u20e3 Style=Image, \ud83d\udc64 Persona=Default",
+   "1\ufe0f\u20e3 Size=64, 2\ufe0f\u20e3 Style=Image, \ud83d\udc64 Persona=Female",
+   "1\ufe0f\u20e3 Size=64, 2\ufe0f\u20e3 Style=Image, \ud83d\udc64 Persona=Male",
+   "1\ufe0f\u20e3 Size=64, 2\ufe0f\u20e3 Style=Mascot, \ud83d\udc64 Persona=Default",
+   "1\ufe0f\u20e3 Size=64, 2\ufe0f\u20e3 Style=Letter, \ud83d\udc64 Persona=Default",
+   "1\ufe0f\u20e3 Size=56, 2\ufe0f\u20e3 Style=Image, \ud83d\udc64 Persona=Default",
+   "1\ufe0f\u20e3 Size=56, 2\ufe0f\u20e3 Style=Image, \ud83d\udc64 Persona=Female",
+   "1\ufe0f\u20e3 Size=56, 2\ufe0f\u20e3 Style=Image, \ud83d\udc64 Persona=Male",
+   "1\ufe0f\u20e3 Size=56, 2\ufe0f\u20e3 Style=Mascot, \ud83d\udc64 Persona=Default",
+   "1\ufe0f\u20e3 Size=56, 2\ufe0f\u20e3 Style=Letter, \ud83d\udc64 Persona=Default",
+   "1\ufe0f\u20e3 Size=48, 2\ufe0f\u20e3 Style=Image, \ud83d\udc64 Persona=Default",
+   "1\ufe0f\u20e3 Size=48, 2\ufe0f\u20e3 Style=Image, \ud83d\udc64 Persona=Female",
+   "1\ufe0f\u20e3 Size=48, 2\ufe0f\u20e3 Style=Image, \ud83d\udc64 Persona=Male",
+   "1\ufe0f\u20e3 Size=48, 2\ufe0f\u20e3 Style=Mascot, \ud83d\udc64 Persona=Default",
+   "1\ufe0f\u20e3 Size=48, 2\ufe0f\u20e3 Style=Letter, \ud83d\udc64 Persona=Default",
+   "1\ufe0f\u20e3 Size=40, 2\ufe0f\u20e3 Style=Image, \ud83d\udc64 Persona=Default",
+   "1\ufe0f\u20e3 Size=40, 2\ufe0f\u20e3 Style=Image, \ud83d\udc64 Persona=Female",
+   "1\ufe0f\u20e3 Size=40, 2\ufe0f\u20e3 Style=Image, \ud83d\udc64 Persona=Male",
+   "1\ufe0f\u20e3 Size=40, 2\ufe0f\u20e3 Style=Mascot, \ud83d\udc64 Persona=Default",
+   "1\ufe0f\u20e3 Size=40, 2\ufe0f\u20e3 Style=Letter, \ud83d\udc64 Persona=Default",
+   "1\ufe0f\u20e3 Size=32, 2\ufe0f\u20e3 Style=Image, \ud83d\udc64 Persona=Default",
+   "1\ufe0f\u20e3 Size=32, 2\ufe0f\u20e3 Style=Image, \ud83d\udc64 Persona=Female",
+   "1\ufe0f\u20e3 Size=32, 2\ufe0f\u20e3 Style=Image, \ud83d\udc64 Persona=Male",
+   "1\ufe0f\u20e3 Size=32, 2\ufe0f\u20e3 Style=Mascot, \ud83d\udc64 Persona=Default",
+   "1\ufe0f\u20e3 Size=32, 2\ufe0f\u20e3 Style=Letter, \ud83d\udc64 Persona=Default",
+   "1\ufe0f\u20e3 Size=24, 2\ufe0f\u20e3 Style=Image, \ud83d\udc64 Persona=Default",
+   "1\ufe0f\u20e3 Size=24, 2\ufe0f\u20e3 Style=Image, \ud83d\udc64 Persona=Female",
+   "1\ufe0f\u20e3 Size=24, 2\ufe0f\u20e3 Style=Image, \ud83d\udc64 Persona=Male",
+   "1\ufe0f\u20e3 Size=24, 2\ufe0f\u20e3 Style=Mascot, \ud83d\udc64 Persona=Default",
+   "1\ufe0f\u20e3 Size=24, 2\ufe0f\u20e3 Style=Letter, \ud83d\udc64 Persona=Default",
+   "1\ufe0f\u20e3 Size=20, 2\ufe0f\u20e3 Style=Image, \ud83d\udc64 Persona=Default",
+   "1\ufe0f\u20e3 Size=20, 2\ufe0f\u20e3 Style=Image, \ud83d\udc64 Persona=Female",
+   "1\ufe0f\u20e3 Size=20, 2\ufe0f\u20e3 Style=Image, \ud83d\udc64 Persona=Male",
+   "1\ufe0f\u20e3 Size=20, 2\ufe0f\u20e3 Style=Mascot, \ud83d\udc64 Persona=Default",
+   "1\ufe0f\u20e3 Size=20, 2\ufe0f\u20e3 Style=Letter, \ud83d\udc64 Persona=Default"
+  ],
+  "children": 45
+ },
+ {
+  "kind": "frame",
+  "id": "1236:8652",
+  "name": "Slider",
+  "w": 433.0,
+  "h": 378.0,
+  "syms": [
+   "\ud83d\udcaf Percentage=0%",
+   "\ud83d\udcaf Percentage=25%",
+   "\ud83d\udcaf Percentage=50%",
+   "\ud83d\udcaf Percentage=75%",
+   "\ud83d\udcaf Percentage=100%"
+  ],
+  "children": 5
+ },
+ {
+  "kind": "frame",
+  "id": "1237:8893",
+  "name": "Box",
+  "w": 369.0,
+  "h": 132.0,
+  "syms": [
+   "Property 1=Default",
+   "Property 1=Variant2"
+  ],
+  "children": 2
+ },
+ {
+  "kind": "frame",
+  "id": "1237:10853",
+  "name": "Service Selection Card",
+  "w": 828.0,
+  "h": 334.0,
+  "syms": [
+   "State=Selected, Type=Househelp",
+   "State=Selected, Type=Homecooks",
+   "State=Default, Type=Househelp",
+   "State=Default, Type=Homecooks"
+  ],
+  "children": 4
+ },
+ {
+  "kind": "section",
+  "id": "1289:7830",
+  "name": "Guidelines",
+  "w": 4732.0,
+  "h": 6852.0,
+  "syms": [],
+  "children": 3
+ },
+ {
+  "kind": "frame",
+  "id": "1490:11066",
+  "name": "Earnings Accordion",
+  "w": 393.0,
+  "h": 455.6000061035156,
+  "syms": [
+   "Property 1=Frame 2147243423",
+   "Property 1=Frame 2147243435"
+  ],
+  "children": 2
+ },
+ {
+  "kind": "frame",
+  "id": "1490:11346",
+  "name": "Kavach Card",
+  "w": 393.0,
+  "h": 796.0,
+  "syms": [
+   "State=With Kavach",
+   "State=Without Kavach",
+   "State=Kavach Open"
+  ],
+  "children": 3
+ },
+ {
+  "kind": "frame",
+  "id": "1491:9039",
+  "name": "Smileys",
+  "w": 1253.0,
+  "h": 98.0,
+  "syms": [
+   "States=Very Dissatisfied, Type=Active",
+   "States=Dissatisfied, Type=Active",
+   "States=Okay, Type=Active",
+   "States=Happy, Type=Active",
+   "States=Delighted, Type=Active",
+   "States=Very Dissatisfied, Type=Stroke",
+   "States=Dissatisfied, Type=Stroke",
+   "States=Okay, Type=Stroke",
+   "States=Happy, Type=Stroke",
+   "States=Delighted, Type=Stroke",
+   "States=Very Dissatisfied, Type=In-active",
+   "States=Dissatisfied, Type=In-active",
+   "States=Okay, Type=In-active",
+   "States=Happy, Type=In-active",
+   "States=Delighted, Type=In-active"
+  ],
+  "children": 15
+ },
+ {
+  "kind": "frame",
+  "id": "1491:10192",
+  "name": "Categories",
+  "w": 824.0003051757812,
+  "h": 444.0,
+  "syms": [
+   "Name=Floor, State=On",
+   "Name=Dusting, State=On",
+   "Name=Bathroom, State=On",
+   "Name=Laundry, State=On",
+   "Name=Cleaning, State=On",
+   "Name=Kitchen, State=On",
+   "Name=Organising, State=On",
+   "Name=Fridge, State=On",
+   "Name=Others, State=On",
+   "Name=Floor, State=Off",
+   "Name=Dusting, State=Off",
+   "Name=Bathroom, State=Off",
+   "Name=Laundry, State=Off",
+   "Name=Cleaning, State=Off",
+   "Name=Kitchen, State=Off",
+   "Name=Organising, State=Off",
+   "Name=Fridge, State=Off",
+   "Name=Others, State=Off"
+  ],
+  "children": 18
+ },
+ {
+  "kind": "frame",
+  "id": "1491:12676",
+  "name": "Widgets",
+  "w": 1422.0,
+  "h": 236.0,
+  "syms": [
+   "State=Horizontal",
+   "State=Vertical",
+   "State=Customer Preference"
+  ],
+  "children": 3
+ },
+ {
+  "kind": "frame",
+  "id": "1491:12793",
+  "name": "Text Box",
+  "w": 799.0,
+  "h": 143.0,
+  "syms": [
+   "State=Uniflled",
+   "State=Filled"
+  ],
+  "children": 2
+ },
+ {
+  "kind": "frame",
+  "id": "1491:13181",
+  "name": "Navigation Card",
+  "w": 393.0,
+  "h": 995.0,
+  "syms": [
+   "States=Default",
+   "States=Notification",
+   "States=Hotspot",
+   "States=Frame 2147243437"
+  ],
+  "children": 4
+ },
+ {
+  "kind": "frame",
+  "id": "1491:13010",
+  "name": "Metric Card",
+  "w": 367.0,
+  "h": 355.0,
+  "syms": [
+   "State=Earnings",
+   "State=State4",
+   "State=Earned",
+   "State=State3"
+  ],
+  "children": 4
+ },
+ {
+  "kind": "frame",
+  "id": "1491:13660",
+  "name": "Progress Buttons",
+  "w": 2089.0,
+  "h": 187.0,
+  "syms": [
+   "State=Empty button, Type=Checkin",
+   "State=Small fill from right, Type=Checkin",
+   "State=Half fill, Type=Checkin",
+   "State=Large fill, Type=Checkin",
+   "State=Full fill, Type=Checkin",
+   "State=Empty button, Type=Accept",
+   "State=Small fill from right, Type=Accept",
+   "State=Half fill, Type=Accept",
+   "State=Large fill, Type=Accept",
+   "State=Full fill, Type=Accept"
+  ],
+  "children": 10
+ },
+ {
+  "kind": "frame",
+  "id": "1491:14507",
+  "name": "Earnings Card",
+  "w": 1968.0,
+  "h": 391.0,
+  "syms": [
+   "State=Collapsed",
+   "State=State4",
+   "State=Expanded",
+   "State=Earnigs change",
+   "State=Long distance",
+   "State=Frame 2147242617"
+  ],
+  "children": 6
+ },
+ {
+  "kind": "frame",
+  "id": "1491:14586",
+  "name": "Block. unblock buttons",
+  "w": 401.0,
+  "h": 192.0,
+  "syms": [
+   "State=Block",
+   "State=Unblock"
+  ],
+  "children": 2
+ },
+ {
+  "kind": "frame",
+  "id": "1491:15247",
+  "name": "Home navigation bar nav",
+  "w": 1852.0,
+  "h": 201.0,
+  "syms": [
+   "State=Wallet",
+   "State=Help",
+   "State=Tier page",
+   "State=Rewards",
+   "State=Notification"
+  ],
+  "children": 5
+ },
+ {
+  "kind": "frame",
+  "id": "1491:17604",
+  "name": "Search Box",
+  "w": 393.0,
+  "h": 312.0,
+  "syms": [
+   "State=Horizontal",
+   "State=Vertical"
+  ],
+  "children": 2
+ },
+ {
+  "kind": "frame",
+  "id": "1491:19268",
+  "name": "Chat Card",
+  "w": 401.0,
+  "h": 595.0,
+  "syms": [
+   "State=Quick Reply Card",
+   "State=Customer Message Card"
+  ],
+  "children": 2
+ },
+ {
+  "kind": "frame",
+  "id": "1491:14153",
+  "name": "Carousel Strip",
+  "w": 433.0,
+  "h": 388.0,
+  "syms": [
+   "State=1",
+   "State=2",
+   "State=3"
+  ],
+  "children": 3
+ },
+ {
+  "kind": "frame",
+  "id": "1491:17618",
+  "name": "Colored Tooltip",
+  "w": 361.0,
+  "h": 162.0,
+  "syms": [
+   "State=Orange",
+   "State=Green"
+  ],
+  "children": 2
+ },
+ {
+  "kind": "symbol",
+  "id": "1534:11661",
+  "name": "Referee pfp",
+  "w": 48.0,
+  "h": 48.0,
+  "syms": [],
+  "children": 0
+ },
+ {
+  "kind": "frame",
+  "id": "1533:11507",
+  "name": "Job States",
+  "w": 401.0,
+  "h": 269.0,
+  "syms": [
+   "States=New job",
+   "States=Check In",
+   "States=Job in Progress",
+   "States=Job Completed"
+  ],
+  "children": 4
+ },
+ {
+  "kind": "frame",
+  "id": "1533:11600",
+  "name": "Bottom check-in / Acceptance screen",
+  "w": 1317.0,
+  "h": 289.0,
+  "syms": [
+   "Property 1=Red state",
+   "Property 1=Default",
+   "Property 1=Variant3"
+  ],
+  "children": 3
+ },
+ {
+  "kind": "frame",
+  "id": "1534:11534",
+  "name": "Remind buttons ",
+  "w": 226.0,
+  "h": 76.0,
+  "syms": [
+   "Property 1=WhatApp icon",
+   "Property 1=Call button",
+   "Property 1=Variant4"
+  ],
+  "children": 3
+ },
+ {
+  "kind": "frame",
+  "id": "1534:11821",
+  "name": "Component 24",
+  "w": 401.0,
+  "h": 939.0,
+  "syms": [
+   "Property 1=Partial Claim",
+   "Property 1=Full Claim",
+   "Property 1=Claimed",
+   "Property 1=Processing Claim",
+   "Property 1=Pending",
+   "Property 1=Variant6"
+  ],
+  "children": 6
+ },
+ {
+  "kind": "frame",
+  "id": "1535:12163",
+  "name": "Bottom Sheets",
+  "w": 3675.0,
+  "h": 1366.0,
+  "syms": [
+   "State=Icon + Text input",
+   "State=OTP",
+   "State=Mobile",
+   "State=With banner",
+   "State=Slot",
+   "State=Buttons",
+   "State=Icon + button group",
+   "State=Kavach",
+   "State=Battery low",
+   "State=Frame 2147243565",
+   "State=Frame 2147243611",
+   "State=Default",
+   "State=Frame 2147243612",
+   "State=Frame 2147243612",
+   "State=Emergency logout"
+  ],
+  "children": 15
+ },
+ {
+  "kind": "symbol",
+  "id": "1825:6967",
+  "name": "Bottom Sheets",
+  "w": 393.0,
+  "h": 394.0,
+  "syms": [],
+  "children": 0
+ },
+ {
+  "kind": "frame",
+  "id": "1537:11688",
+  "name": "Banner +CTA",
+  "w": 433.0,
+  "h": 378.0,
+  "syms": [
+   "Property 1=Default"
+  ],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1537:11829",
+  "name": "Referral list",
+  "w": 401.0,
+  "h": 408.0,
+  "syms": [
+   "Property 1=1st",
+   "Property 1=2nd",
+   "Property 1=3rd",
+   "Property 1=Normal",
+   "Property 1=You"
+  ],
+  "children": 5
+ },
+ {
+  "kind": "frame",
+  "id": "1537:11919",
+  "name": "Bottom Sticky",
+  "w": 433.0,
+  "h": 408.0,
+  "syms": [
+   "Property 1=Default",
+   "Property 1=No nudge"
+  ],
+  "children": 2
+ },
+ {
+  "kind": "frame",
+  "id": "1540:12241",
+  "name": "Contest Rules",
+  "w": 401.0,
+  "h": 116.0,
+  "syms": [
+   "Property 1=1"
+  ],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1540:12259",
+  "name": "Rule number ",
+  "w": 80.0,
+  "h": 344.0,
+  "syms": [
+   "Rule Number=1",
+   "Rule Number=2",
+   "Rule Number=3",
+   "Rule Number=4"
+  ],
+  "children": 4
+ },
+ {
+  "kind": "frame",
+  "id": "1543:12452",
+  "name": "Contest fyi",
+  "w": 401.0,
+  "h": 112.0,
+  "syms": [
+   "Property 1=Default"
+  ],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1543:13779",
+  "name": "Contest Banner ",
+  "w": 433.0,
+  "h": 1192.0,
+  "syms": [
+   "Property 1=Default",
+   "Property 1=Contest ended"
+  ],
+  "children": 2
+ },
+ {
+  "kind": "frame",
+  "id": "1543:13869",
+  "name": "Contest Page Hero",
+  "w": 433.0,
+  "h": 326.0,
+  "syms": [
+   "Property 1=Default"
+  ],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1545:11729",
+  "name": "Invite card",
+  "w": 365.0,
+  "h": 183.0,
+  "syms": [
+   "Property 1=after",
+   "Property 1=before"
+  ],
+  "children": 2
+ },
+ {
+  "kind": "frame",
+  "id": "1548:12258",
+  "name": "PIP",
+  "w": 186.0,
+  "h": 191.0,
+  "syms": [
+   "Property 1=Default"
+  ],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1550:11779",
+  "name": "Frame 2147243598",
+  "w": 191.0,
+  "h": 169.0,
+  "syms": [
+   "Cross"
+  ],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1550:11864",
+  "name": "Rating",
+  "w": 401.0,
+  "h": 476.0,
+  "syms": [
+   "State=Unselected",
+   "State=Very Happy",
+   "State=Angry",
+   "State=Sad",
+   "State=Neutral",
+   "State=Happy"
+  ],
+  "children": 6
+ },
+ {
+  "kind": "frame",
+  "id": "1558:11868",
+  "name": "Transaction states",
+  "w": 341.0,
+  "h": 954.0,
+  "syms": [
+   "Property 1=Success",
+   "Property 1=Processing",
+   "Property 1=Failed"
+  ],
+  "children": 3
+ },
+ {
+  "kind": "frame",
+  "id": "1560:11849",
+  "name": "Contact List",
+  "w": 401.0,
+  "h": 82.0,
+  "syms": [
+   "Property 1=Default"
+  ],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1564:12441",
+  "name": "Over the app",
+  "w": 401.0,
+  "h": 1268.0,
+  "syms": [
+   "Property 1=Default",
+   "Property 1=Variant2"
+  ],
+  "children": 2
+ },
+ {
+  "kind": "frame",
+  "id": "1568:12063",
+  "name": "Message Container",
+  "w": 820.0,
+  "h": 74.0,
+  "syms": [
+   "Property 1=Quick reply",
+   "Property 1=Default",
+   "Property 1=Customer reply I",
+   "Property 1=Customer reply II"
+  ],
+  "children": 4
+ },
+ {
+  "kind": "frame",
+  "id": "1568:14840",
+  "name": "Frame 2147243605",
+  "w": 1004.0,
+  "h": 1191.0,
+  "syms": [],
+  "children": 10
+ },
+ {
+  "kind": "frame",
+  "id": "1574:8439",
+  "name": "Manual Referral ",
+  "w": 802.0,
+  "h": 356.0,
+  "syms": [
+   "Property 1=Unclicked",
+   "Property 1=Clicked"
+  ],
+  "children": 2
+ },
+ {
+  "kind": "frame",
+  "id": "1580:6419",
+  "name": "Attendance",
+  "w": 780.0,
+  "h": 1034.0,
+  "syms": [
+   "Property 1=Default",
+   "Property 1=Present + Login",
+   "Property 1=Absent",
+   "Property 1=Present+Nudge",
+   "Property 1=Absent Today",
+   "Property 1=On leave",
+   "Property 1=Leave ending today"
+  ],
+  "children": 7
+ },
+ {
+  "kind": "frame",
+  "id": "1580:6548",
+  "name": "Navigation Card",
+  "w": 433.0,
+  "h": 348.0,
+  "syms": [
+   "State=Home",
+   "State=Earnings",
+   "State=Refer",
+   "State=Profile"
+  ],
+  "children": 4
+ },
+ {
+  "kind": "frame",
+  "id": "1580:8199",
+  "name": "Banners",
+  "w": 379.0,
+  "h": 191.0,
+  "syms": [
+   "Property 1=Default"
+  ],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1581:6683",
+  "name": "Nudge",
+  "w": 393.0,
+  "h": 281.0,
+  "syms": [
+   "Property 1=Redcard",
+   "Property 1=Gold coin attachment",
+   "Property 1=Container"
+  ],
+  "children": 3
+ },
+ {
+  "kind": "frame",
+  "id": "1582:7227",
+  "name": "Component 39",
+  "w": 151.0,
+  "h": 90.0,
+  "syms": [
+   "Property 1=Saathi selection",
+   "Property 1=Saathi"
+  ],
+  "children": 2
+ },
+ {
+  "kind": "frame",
+  "id": "1582:7327",
+  "name": "Maps",
+  "w": 433.0,
+  "h": 442.0,
+  "syms": [
+   "State=Default"
+  ],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1582:7472",
+  "name": "Map widget",
+  "w": 401.0,
+  "h": 502.0,
+  "syms": [
+   "State=Seva",
+   "State=Lunch",
+   "State=Logout",
+   "State=Searching for jobs"
+  ],
+  "children": 4
+ },
+ {
+  "kind": "frame",
+  "id": "1589:7952",
+  "name": "Contact Card",
+  "w": 150.0,
+  "h": 206.0,
+  "syms": [
+   "Property 1=Default"
+  ],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1594:6484",
+  "name": "Camera Preview",
+  "w": 393.0,
+  "h": 1637.0,
+  "syms": [
+   "Property 1=Default",
+   "Property 1=Error",
+   "Property 1=Login successful"
+  ],
+  "children": 3
+ },
+ {
+  "kind": "frame",
+  "id": "1598:7354",
+  "name": "List",
+  "w": 1596.0,
+  "h": 387.0,
+  "syms": [
+   "State=For Profile",
+   "State=Earnings Card",
+   "State=Content + Button"
+  ],
+  "children": 3
+ },
+ {
+  "kind": "frame",
+  "id": "1598:7553",
+  "name": "Calendar",
+  "w": 1160.0,
+  "h": 704.0,
+  "syms": [
+   "Property 1=Default",
+   "Property 1=Variant3",
+   "Property 1=Variant3"
+  ],
+  "children": 3
+ },
+ {
+  "kind": "frame",
+  "id": "1616:9990",
+  "name": "Banner ",
+  "w": 401.0,
+  "h": 386.0,
+  "syms": [
+   "Property 1=Banner placeholder",
+   "Property 1=referral banner"
+  ],
+  "children": 2
+ },
+ {
+  "kind": "frame",
+  "id": "1678:6892",
+  "name": "States",
+  "w": 392.0,
+  "h": 201.7999267578125,
+  "syms": [
+   "Property 1=Default",
+   "Property 1=Variant2",
+   "Property 1=Variant3"
+  ],
+  "children": 3
+ },
+ {
+  "kind": "frame",
+  "id": "1679:6881",
+  "name": "Navigation Button",
+  "w": 91.0,
+  "h": 102.0,
+  "syms": [
+   "Property 1=Default"
+  ],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1708:6952",
+  "name": "Frame 2147241321",
+  "w": 361.0,
+  "h": 64.0,
+  "syms": [
+   "Property 1=Default"
+  ],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1786:6804",
+  "name": "Banner carousel",
+  "w": 401.0,
+  "h": 238.0,
+  "syms": [
+   "Property 1=Default"
+  ],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1820:6826",
+  "name": "Frame 2147243617",
+  "w": 548.0,
+  "h": 159.0,
+  "syms": [],
+  "children": 1
+ },
+ {
+  "kind": "frame",
+  "id": "1825:6970",
+  "name": "Icon Buttons",
+  "w": 6281.0,
+  "h": 371.0,
+  "syms": [
+   "Property 1=Success, Property 2=56 - L, Property 3=\ud83d\udd18 Icon Only, Property 4=Active",
+   "Property 1=Success, Property 2=56 - L, Property 3=\ud83d\udd18 Icon Only, Property 4=Disabled",
+   "Property 1=Success, Property 2=48 - M, Property 3=\ud83d\udd18 Icon Only, Property 4=Active",
+   "Property 1=Success, Property 2=48 - M, Property 3=\ud83d\udd18 Icon Only, Property 4=Disabled",
+   "Property 1=Success, Property 2=40 - S, Property 3=\ud83d\udd18 Icon Only, Property 4=Active",
+   "Property 1=Success, Property 2=40 - S, Property 3=\ud83d\udd18 Icon Only, Property 4=Disabled",
+   "Property 1=Success, Property 2=32 - XS, Property 3=\ud83d\udd18 Icon Only, Property 4=Active",
+   "Property 1=Success, Property 2=32 - XS, Property 3=\ud83d\udd18 Icon Only, Property 4=Disabled",
+   "Property 1=Neutral - Filled, Property 2=56 - L, Property 3=\ud83d\udd18 Icon Only, Property 4=Active",
+   "Property 1=Destructive, Property 2=56 - L, Property 3=\ud83d\udd18 Icon Only, Property 4=Active",
+   "Property 1=Destructive, Property 2=56 - L, Property 3=\ud83d\udd18 Icon Only, Property 4=Disabled",
+   "Property 1=Neutral - Stroke, Property 2=56 - L, Property 3=\ud83d\udd18 Icon Only, Property 4=Active",
+   "Property 1=Neutral - Filled, Property 2=56 - L, Property 3=\ud83d\udd18 Icon Only, Property 4=Disabled",
+   "Property 1=Neutral - Stroke, Property 2=56 - L, Property 3=\ud83d\udd18 Icon Only, Property 4=Disabled",
+   "Property 1=Neutral - Filled, Property 2=48 - M, Property 3=\ud83d\udd18 Icon Only, Property 4=Active",
+   "Property 1=Destructive, Property 2=48 - M, Property 3=\ud83d\udd18 Icon Only, Property 4=Active",
+   "Property 1=Destructive, Property 2=48 - M, Property 3=\ud83d\udd18 Icon Only, Property 4=Disabled",
+   "Property 1=Neutral - Stroke, Property 2=48 - M, Property 3=\ud83d\udd18 Icon Only, Property 4=Active",
+   "Property 1=Neutral - Filled, Property 2=48 - M, Property 3=\ud83d\udd18 Icon Only, Property 4=Disabled",
+   "Property 1=Neutral - Stroke, Property 2=48 - M, Property 3=\ud83d\udd18 Icon Only, Property 4=Disabled",
+   "Property 1=Neutral - Filled, Property 2=40 - S, Property 3=\ud83d\udd18 Icon Only, Property 4=Active",
+   "Property 1=Destructive, Property 2=40 - S, Property 3=\ud83d\udd18 Icon Only, Property 4=Active",
+   "Property 1=Destructive, Property 2=40 - S, Property 3=\ud83d\udd18 Icon Only, Property 4=Disabled",
+   "Property 1=Neutral - Stroke, Property 2=40 - S, Property 3=\ud83d\udd18 Icon Only, Property 4=Active",
+   "Property 1=Neutral - Filled, Property 2=40 - S, Property 3=\ud83d\udd18 Icon Only, Property 4=Disabled",
+   "Property 1=Neutral - Stroke, Property 2=40 - S, Property 3=\ud83d\udd18 Icon Only, Property 4=Disabled",
+   "Property 1=Neutral - Filled, Property 2=32 - XS, Property 3=\ud83d\udd18 Icon Only, Property 4=Active",
+   "Property 1=Destructive, Property 2=32 - XS, Property 3=\ud83d\udd18 Icon Only, Property 4=Active",
+   "Property 1=Destructive, Property 2=32 - XS, Property 3=\ud83d\udd18 Icon Only, Property 4=Disabled",
+   "Property 1=Neutral - Stroke, Property 2=32 - XS, Property 3=\ud83d\udd18 Icon Only, Property 4=Active",
+   "Property 1=Neutral - Filled, Property 2=32 - XS, Property 3=\ud83d\udd18 Icon Only, Property 4=Disabled",
+   "Property 1=Neutral - Stroke, Property 2=32 - XS, Property 3=\ud83d\udd18 Icon Only, Property 4=Disabled",
+   "Property 1=Primary, Property 2=56 - L, Property 3=\ud83d\udd18 Icon Only, Property 4=Active",
+   "Property 1=Teritiary, Property 2=56 - L, Property 3=\ud83d\udd18 Icon Only, Property 4=Active",
+   "Property 1=Tertiary, Property 2=56 - L, Property 3=\ud83d\udd18 Icon Only, Property 4=Active",
+   "Property 1=Tertiary, Property 2=56 - L, Property 3=\ud83d\udd18 Icon Only, Property 4=Disabled",
+   "Property 1=Primary, Property 2=56 - L, Property 3=\ud83d\udd18 Icon Only, Property 4=Disabled",
+   "Property 1=Secondary, Property 2=56 - L, Property 3=\ud83d\udd18 Icon Only, Property 4=Active",
+   "Property 1=Secondary, Property 2=56 - L, Property 3=\ud83d\udd18 Icon Only, Property 4=Disabled",
+   "Property 1=Primary, Property 2=48 - M, Property 3=\ud83d\udd18 Icon Only, Property 4=Active",
+   "Property 1=Teritiary, Property 2=48 - M, Property 3=\ud83d\udd18 Icon Only, Property 4=Active",
+   "Property 1=Tertiary, Property 2=48 - M, Property 3=\ud83d\udd18 Icon Only, Property 4=Active",
+   "Property 1=Tertiary, Property 2=48 - M, Property 3=\ud83d\udd18 Icon Only, Property 4=Disabled",
+   "Property 1=Primary, Property 2=48 - M, Property 3=\ud83d\udd18 Icon Only, Property 4=Disabled",
+   "Property 1=Secondary, Property 2=48 - M, Property 3=\ud83d\udd18 Icon Only, Property 4=Active",
+   "Property 1=Secondary, Property 2=48 - M, Property 3=\ud83d\udd18 Icon Only, Property 4=Disabled",
+   "Property 1=Primary, Property 2=40 - S, Property 3=\ud83d\udd18 Icon Only, Property 4=Active",
+   "Property 1=Teritiary, Property 2=40 - S, Property 3=\ud83d\udd18 Icon Only, Property 4=Active",
+   "Property 1=Tertiary, Property 2=40 - S, Property 3=\ud83d\udd18 Icon Only, Property 4=Active",
+   "Property 1=Tertiary, Property 2=40 - S, Property 3=\ud83d\udd18 Icon Only, Property 4=Disabled",
+   "Property 1=Primary, Property 2=40 - S, Property 3=\ud83d\udd18 Icon Only, Property 4=Disabled",
+   "Property 1=Secondary, Property 2=40 - S, Property 3=\ud83d\udd18 Icon Only, Property 4=Active",
+   "Property 1=Secondary, Property 2=40 - S, Property 3=\ud83d\udd18 Icon Only, Property 4=Disabled",
+   "Property 1=Primary, Property 2=32 - XS, Property 3=\ud83d\udd18 Icon Only, Property 4=Active",
+   "Property 1=Teritiary, Property 2=32 - XS, Property 3=\ud83d\udd18 Icon Only, Property 4=Active",
+   "Property 1=Tertiary, Property 2=32 - XS, Property 3=\ud83d\udd18 Icon Only, Property 4=Active",
+   "Property 1=Tertiary, Property 2=32 - XS, Property 3=\ud83d\udd18 Icon Only, Property 4=Disabled",
+   "Property 1=Primary, Property 2=32 - XS, Property 3=\ud83d\udd18 Icon Only, Property 4=Disabled",
+   "Property 1=Secondary, Property 2=32 - XS, Property 3=\ud83d\udd18 Icon Only, Property 4=Active",
+   "Property 1=Secondary, Property 2=32 - XS, Property 3=\ud83d\udd18 Icon Only, Property 4=Disabled"
+  ],
+  "children": 60
+ },
+ {
+  "kind": "instance",
+  "id": "1847:7050",
+  "name": "Kavach Card",
+  "w": 353.0,
+  "h": 237.0,
+  "syms": [],
+  "children": 0
+ },
+ {
+  "kind": "frame",
+  "id": "1847:9094",
+  "name": "Frame",
+  "w": 393.0,
+  "h": 852.0,
+  "syms": [],
+  "children": 3
+ },
+ {
+  "kind": "instance",
+  "id": "1847:9629",
+  "name": "Earnings Card",
+  "w": 353.0,
+  "h": 292.6000061035156,
+  "syms": [],
+  "children": 0
+ },
+ {
+  "kind": "frame",
+  "id": "1847:10754",
+  "name": "Frame 2147239652",
+  "w": 393.0,
+  "h": 756.0,
+  "syms": [],
+  "children": 2
+ },
+ {
+  "kind": "frame",
+  "id": "1847:11099",
+  "name": "Icon Buttons",
+  "w": 975.0,
+  "h": 116.0,
+  "syms": [
+   "Property 1=Default",
+   "Property 1=Variant8",
+   "Property 1=Variant12",
+   "Property 1=Default",
+   "Property 1=Variant7",
+   "Property 1=Variant11",
+   "Property 1=Default",
+   "Property 1=Variant6",
+   "Property 1=Variant10",
+   "Property 1=Default",
+   "Property 1=Variant5",
+   "Property 1=Variant9"
+  ],
+  "children": 12
+ },
+ {
+  "kind": "frame",
+  "id": "2485:7676",
+  "name": "Tier",
+  "w": 324.0,
+  "h": 249.0,
+  "syms": [
+   "Tiers=No Tier, Use at=Progress bar",
+   "Tiers=Silver, Use at=Progress bar",
+   "Tiers=Gold, Use at=Progress bar",
+   "Tiers=Diamond, Use at=Progress bar",
+   "Tiers=Pink Diamond, Use at=Progress bar",
+   "Tiers=Silver, Use at=Icons",
+   "Tiers=Gold, Use at=Icons",
+   "Tiers=Diamond, Use at=Icons",
+   "Tiers=Pink Diamond, Use at=Icons",
+   "Tiers=Avatar, Use at=Icons",
+   "Tiers=Lock, Use at=Icons",
+   "Tiers=No Tier, Use at=Icons"
+  ],
+  "children": 12
+ },
+ {
+  "kind": "frame",
+  "id": "2488:8490",
+  "name": "TIER PROGRESS",
+  "w": 401.0,
+  "h": 413.0,
+  "syms": [
+   "States=Gold",
+   "States=Diamond",
+   "States=Pink Diamond",
+   "States=Silver",
+   "States=No tier"
+  ],
+  "children": 5
+ },
+ {
+  "kind": "frame",
+  "id": "2489:8412",
+  "name": "Progress Cards",
+  "w": 1374.0,
+  "h": 997.0,
+  "syms": [
+   "Property 1=Gold, Weeks=Week 1, Goal=Gold",
+   "Property 1=Silver, Weeks=Week 1, Goal=Gold",
+   "Property 1=Gold, Weeks=Week 1, Goal=Diamond",
+   "Property 1=Silver, Weeks=Week 1, Goal=Diamond",
+   "Property 1=Gold, Weeks=Week 2, Goal=Gold",
+   "Property 1=Gold, Weeks=Week 2, Goal=Diamond",
+   "Property 1=Diamond, Weeks=Week 1, Goal=Diamond",
+   "Property 1=Diamond, Weeks=Week 2, Goal=Diamond",
+   "Property 1=Diamond, Weeks=Week 3, Goal=Pink Diamond",
+   "Property 1=Pink Diamond, Weeks=Week 1, Goal=Pink Diamond",
+   "Property 1=No tier, Weeks=Week 1, Goal=Silver",
+   "Property 1=No tier",
+   "Property 1=Silver",
+   "Property 1=Gold",
+   "Property 1=Diamond",
+   "Property 1=Pink Diamond"
+  ],
+  "children": 16
+ },
+ {
+  "kind": "frame",
+  "id": "2637:8327",
+  "name": "Frame 2147243863",
+  "w": 68.0,
+  "h": 20.0,
+  "syms": [],
+  "children": 2
+ },
+ {
+  "kind": "frame",
+  "id": "2492:8230",
+  "name": "Reel",
+  "w": 236.0,
+  "h": 130.0,
+  "syms": [
+   "Property 1=Active",
+   "Property 1=Watched"
+  ],
+  "children": 2
+ },
+ {
+  "kind": "text",
+  "id": "2517:8253",
+  "name": "TIER",
+  "w": 26.0,
+  "h": 16.0,
+  "syms": [],
+  "children": 0
+ },
+ {
+  "kind": "text",
+  "id": "2517:8255",
+  "name": "TIER",
+  "w": 26.0,
+  "h": 16.0,
+  "syms": [],
+  "children": 0
+ },
+ {
+  "kind": "text",
+  "id": "2517:8257",
+  "name": "TIER",
+  "w": 26.0,
+  "h": 16.0,
+  "syms": [],
+  "children": 0
+ },
+ {
+  "kind": "text",
+  "id": "2538:8312",
+  "name": "TIER",
+  "w": 26.0,
+  "h": 16.0,
+  "syms": [],
+  "children": 0
+ },
+ {
+  "kind": "text",
+  "id": "2517:8259",
+  "name": "TIER",
+  "w": 26.0,
+  "h": 16.0,
+  "syms": [],
+  "children": 0
+ },
+ {
+  "kind": "text",
+  "id": "2538:8313",
+  "name": "TIER",
+  "w": 26.0,
+  "h": 16.0,
+  "syms": [],
+  "children": 0
+ },
+ {
+  "kind": "text",
+  "id": "2517:8254",
+  "name": "GOLD -01",
+  "w": 55.0,
+  "h": 16.0,
+  "syms": [],
+  "children": 0
+ },
+ {
+  "kind": "text",
+  "id": "2517:8256",
+  "name": "DIAMOND - 01",
+  "w": 80.0,
+  "h": 16.0,
+  "syms": [],
+  "children": 0
+ },
+ {
+  "kind": "text",
+  "id": "2517:8258",
+  "name": "DIAMOND - 02",
+  "w": 83.0,
+  "h": 16.0,
+  "syms": [],
+  "children": 0
+ },
+ {
+  "kind": "text",
+  "id": "2538:8314",
+  "name": "NO TIER - 01",
+  "w": 69.0,
+  "h": 16.0,
+  "syms": [],
+  "children": 0
+ },
+ {
+  "kind": "text",
+  "id": "2517:8260",
+  "name": "PINK DIAMOND - 01",
+  "w": 110.0,
+  "h": 16.0,
+  "syms": [],
+  "children": 0
+ },
+ {
+  "kind": "text",
+  "id": "2538:8315",
+  "name": "NO TIER - 02",
+  "w": 71.0,
+  "h": 16.0,
+  "syms": [],
+  "children": 0
+ },
+ {
+  "kind": "frame",
+  "id": "2524:8298",
+  "name": "Slider",
+  "w": 840.0,
+  "h": 86.0,
+  "syms": [
+   "Property 1=Selected",
+   "Property 1=Default"
+  ],
+  "children": 2
+ },
+ {
+  "kind": "frame",
+  "id": "2539:8337",
+  "name": "SNABBIT COIN",
+  "w": 64.0,
+  "h": 108.0,
+  "syms": [
+   "Property 1=Default",
+   "Property 1=Variant3"
+  ],
+  "children": 2
+ }
+]

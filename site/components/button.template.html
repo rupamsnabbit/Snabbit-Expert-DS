@@ -1,0 +1,257 @@
+<title>Snabbit Expert Button</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{--bg:#FFFFFF;--bg-2:#F9FAFB;--bg-3:#F3F4F6;--text:#111827;--text-body:#374151;--text-2:#6B7280;--text-3:#9CA3AF;--border:#E5E7EB;--border-subtle:#F3F4F6;--brand:#F70F79;--brand-wash:#FEF1F7;--brand-ink:#97094A;--focus:#3B82F6;--ok:#059669;--ok-wash:#ECFDF5;--bad:#DC2626;--bad-wash:#FEF2F2;
+--sans:"Outfit",ui-sans-serif,system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111827;--bg-2:#1F2937;--bg-3:#374151;--text:#F9FAFB;--text-body:#E5E7EB;--text-2:#9CA3AF;--text-3:#6B7280;--border:#374151;--border-subtle:#1F2937;--brand:#F65CA1;--brand-wash:rgba(247,15,121,.14);--brand-ink:#FBC9DF;--ok:#34D399;--ok-wash:rgba(16,185,129,.14);--bad:#F87171;--bad-wash:rgba(239,68,68,.14)}}
+:root[data-theme="dark"]{--bg:#111827;--bg-2:#1F2937;--bg-3:#374151;--text:#F9FAFB;--text-body:#E5E7EB;--text-2:#9CA3AF;--text-3:#6B7280;--border:#374151;--border-subtle:#1F2937;--brand:#F65CA1;--brand-wash:rgba(247,15,121,.14);--brand-ink:#FBC9DF;--ok:#34D399;--ok-wash:rgba(16,185,129,.14);--bad:#F87171;--bad-wash:rgba(239,68,68,.14)}
+*{box-sizing:border-box} html{scroll-behavior:smooth;scroll-padding-top:24px} @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} .sbtn,.sbtn *{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--text-body);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+code{font-family:var(--mono);font-size:.86em;background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--text)}
+button{font:inherit} :focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+.shell{display:grid;grid-template-columns:232px minmax(0,1fr);min-height:100vh}
+.rail{position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--border);padding:24px 16px 32px;background:var(--bg);display:flex;flex-direction:column;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;padding:0 8px}.brand-mark{width:28px;height:28px;border-radius:8px;background:var(--brand);display:grid;place-items:center;flex:none}.brand-mark span{width:12px;height:12px;border-radius:3px;background:#fff;transform:rotate(45deg)}
+.brand b{font-weight:600;color:var(--text);font-size:15px;line-height:1.2;display:block}.brand small{color:var(--text-2);font-size:12px}
+.nav{display:flex;flex-direction:column;gap:2px}.nav .grp{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);padding:12px 8px 4px;font-weight:500}
+.nav a{display:block;padding:6px 8px;border-radius:6px;text-decoration:none;color:var(--text-body);font-size:13.5px}.nav a:hover{background:var(--bg-2);color:var(--text)}.nav a.on{background:var(--brand-wash);color:var(--brand-ink);font-weight:500}
+.rail-foot{margin-top:auto;padding:0 8px;font-size:12px;color:var(--text-3);line-height:1.5}
+.main{padding:40px 56px 96px;max-width:1080px;width:100%}
+.eyebrow{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);font-weight:600}
+h1{font-size:40px;line-height:1.1;font-weight:600;color:var(--text);margin:8px 0 12px;letter-spacing:-.015em}
+.lede{font-size:17px;color:var(--text-2);max-width:62ch;margin:0}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}.chip{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border:1px solid var(--border);border-radius:999px;font-size:12.5px;color:var(--text-body)}
+.chip.status{background:#FEF3C7;color:#B45309;border-color:transparent;font-weight:600}
+section{padding-top:64px} section>header{margin-bottom:20px;max-width:68ch}
+h2{font-size:26px;line-height:1.2;font-weight:600;color:var(--text);margin:6px 0 8px;letter-spacing:-.01em} h3{font-size:16px;font-weight:600;color:var(--text);margin:32px 0 12px}
+section>header p,.sub{color:var(--text-2);margin:0;font-size:15px}
+.rules{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:6px;max-width:68ch}.rules li{padding-left:18px;position:relative;font-size:14px}.rules li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:2px;background:var(--brand)}
+
+/* stage */
+.stage{background:#FFFFFF;border:1px solid var(--border);border-radius:12px;padding:24px;color:#111827}
+.stage.dark{background:#F9FAFB}
+.matrix{display:grid;gap:14px 20px;align-items:center}
+.matrix .h{font-family:var(--mono);font-size:11.5px;color:#6B7280;text-transform:uppercase;letter-spacing:.06em}
+.matrix .r{font-family:var(--mono);font-size:12.5px;color:#111827;white-space:nowrap}
+.matrix .r small{display:block;color:#9CA3AF;font-size:11px;text-transform:none;letter-spacing:0}
+.na{width:24px;height:2px;background:#E5E7EB;border-radius:1px}
+.sizes{display:flex;gap:28px;align-items:flex-end;flex-wrap:wrap}
+.szd{display:flex;flex-direction:column;gap:10px;align-items:flex-start}.szd .lbl{font-family:var(--mono);font-size:12px;color:#6B7280}.szd .lbl b{color:#111827;font-weight:500}
+
+/* the button itself — everything from tokens via CSS vars set by JS */
+.sbtn{display:inline-flex;align-items:center;justify-content:center;border:0;cursor:pointer;white-space:nowrap;font-family:var(--sans);position:relative;overflow:hidden;
+  height:var(--h);padding:0 var(--px);border-radius:var(--r);font-size:var(--fs);font-weight:var(--fw);line-height:1;gap:var(--gap);
+  background:var(--fill,transparent);color:var(--ink);box-shadow:inset 0 0 0 var(--bw,0) var(--bc,transparent);transition:background .1s ease-out,box-shadow .1s}
+.sbtn.full{width:100%}
+.sbtn:active:not(.disabled):not(.loading){background:var(--fill-p)}
+.sbtn.pressed{background:var(--fill-p)}
+.sbtn.focused{outline:2px solid #3B82F6;outline-offset:2px}
+.sbtn.disabled{cursor:not-allowed}
+.sbtn svg{width:var(--ic);height:var(--ic);flex:none}
+.sbtn .spin{width:var(--ic);height:var(--ic);border-radius:50%;border:2px solid currentColor;border-right-color:transparent;animation:sp .7s linear infinite;flex:none}
+@keyframes sp{to{transform:rotate(360deg)}}
+.sbtn .hf{position:absolute;inset:0;background:rgba(0,0,0,.18);transform-origin:left;transform:scaleX(0)}
+.sbtn.holding .hf{transform:scaleX(1);transition:transform .6s linear}
+.sbtn>*{position:relative}
+.demo{display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start}
+.demo .card{flex:1;min-width:260px;border:1px solid var(--border);border-radius:12px;padding:18px;background:var(--bg)}
+.demo .card h4{margin:0 0 6px;font-size:14px;color:var(--text)}.demo .card p{margin:0 0 14px;font-size:13px;color:var(--text-2)}
+.demo .live{display:flex;gap:12px;align-items:center;flex-wrap:wrap;background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px;color:#111827}
+.logline{font-family:var(--mono);font-size:12px;color:var(--text-2);margin-top:10px;min-height:16px}
+
+/* phone mock */
+.phones{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.ph{border:1px solid var(--border);border-radius:16px;overflow:hidden;background:#fff;color:#111827}
+.ph .bar{padding:10px 16px;border-bottom:1px solid #F3F4F6;font-size:12px;color:#6B7280;display:flex;justify-content:space-between}
+.ph .bar b{font-weight:600}
+.ph .body{padding:16px;min-height:220px;display:flex;flex-direction:column;gap:12px}
+.ph .body .hd{font-size:20px;font-weight:600;line-height:28px}.ph .body .tx{font-size:14px;color:#374151;line-height:20px}
+.ph .foot{padding:12px 16px 24px;border-top:1px solid #F3F4F6;display:flex;flex-direction:column;gap:12px}
+.ph .foot.row{flex-direction:row}
+.verdict{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin:12px 0 6px}
+.verdict.ok{background:var(--ok-wash);color:var(--ok)}.verdict.bad{background:var(--bad-wash);color:var(--bad)}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px}table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{text-align:left;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);font-weight:500;padding:10px 14px;background:var(--bg-2);border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:9px 14px;border-bottom:1px solid var(--border-subtle);vertical-align:top}tr:last-child td{border-bottom:0}
+td.tk{font-family:var(--mono);font-size:12.5px;color:var(--text)}
+.sw{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-2px;margin-right:6px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(8px);background:var(--text);color:var(--bg);padding:8px 14px;border-radius:8px;font-size:13px;opacity:0;pointer-events:none;transition:opacity .15s,transform .15s;font-family:var(--mono)}.toast.show{opacity:1;transform:translateX(-50%)}
+@media (max-width:900px){.shell{grid-template-columns:1fr}.rail{position:static;height:auto;border-right:0;border-bottom:1px solid var(--border);padding:16px}.nav{flex-direction:row;flex-wrap:wrap;gap:4px}.nav .grp,.rail-foot{display:none}.main{padding:32px 20px 80px}h1{font-size:32px}}
+__NAVCSS__</style>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · Button</small></div></div>
+    __SITENAV__
+    <nav class="nav" id="nav">
+      <div class="grp">On this page</div>
+      <a href="#overview">Overview</a><a href="#variants">Variants × tones</a><a href="#sizes">Sizes</a><a href="#states">States &amp; behaviour</a><a href="#placement">Placement</a><a href="#tokens">Tokens used</a><a href="#figma">Figma changes</a>
+    </nav>
+    <div class="rail-foot">Rendered from tokens.json · spec in components/button.md</div>
+  </aside>
+
+  <main class="main">
+    <header id="overview">
+      <div class="eyebrow">Core component</div>
+      <h1>Button</h1>
+      <p class="lede">The one thing on a screen the expert is meant to do next. Big, says what will happen, never lets a tap go unanswered.</p>
+      <div class="meta"><span class="chip status">Proposed</span><span class="chip">Tier 1 · Core</span><span class="chip"><code>SnabbitButton</code></span><span class="chip">4 variants × 3 tones × 4 sizes</span><span class="chip">Icons: Phosphor regular</span></div>
+    </header>
+
+    <section id="variants">
+      <header><div class="eyebrow">Emphasis × meaning</div><h2>Variants × tones</h2>
+        <p>A <em>variant</em> is how much the action matters on this screen. A <em>tone</em> is what kind of action it is. Greyed cells are combinations that are not allowed — nothing neutral is ever the one next action, and danger is filled only inside a confirmation sheet.</p></header>
+      <div class="stage" id="vt"></div>
+      <ul class="rules">
+        <li><b>Success is not a variant.</b> Green is a status colour; a green button makes the action look like a result (P6).</li>
+        <li><b>Link is not a button.</b> Inline text links become a small <code>Link</code> component.</li>
+        <li><b>Icon on one side only.</b> Leading says what the action is; trailing only for direction (P1).</li>
+      </ul>
+    </section>
+
+    <section id="sizes">
+      <header><div class="eyebrow">Sizing</div><h2>Sizes</h2><p>Rendered at true dp (1 dp = 1 px). Each size owns height, padding, radius, icon and label; nothing inside the component overrides them.</p></header>
+      <div class="stage"><div class="sizes" id="sz"></div></div>
+      <div class="tbl-wrap" style="margin-top:16px"><table><thead><tr><th>Size</th><th>Height</th><th>Pad X</th><th>Radius</th><th>Icon</th><th>Gap</th><th>Label</th><th>Use</th></tr></thead><tbody id="sztbl"></tbody></table></div>
+    </section>
+
+    <section id="states">
+      <header><div class="eyebrow">Behaviour</div><h2>States</h2><p>Five states, and a hold gesture for anything that loses the expert money or a job. Try them — these are live.</p></header>
+      <div class="stage"><div class="matrix" id="st"></div></div>
+      <h3>Live behaviour</h3>
+      <div class="demo">
+        <div class="card"><h4>Loading keeps the label</h4><p>Tap once. The spinner takes the icon slot, the label stays, further taps are ignored until it clears (P5).</p><div class="live" id="d-load"></div><div class="logline" id="l-load"></div></div>
+        <div class="card"><h4>Hold to confirm (danger)</h4><p>Press and hold 600 ms. Let go early and nothing happens. Completing changes the label to the outcome (P3).</p><div class="live" id="d-hold"></div><div class="logline" id="l-hold"></div></div>
+        <div class="card"><h4>Duplicate-tap guard</h4><p>Tap as fast as you can. Only one click registers per 300 ms.</p><div class="live" id="d-guard"></div><div class="logline" id="l-guard"></div></div>
+      </div>
+    </section>
+
+    <section id="placement">
+      <header><div class="eyebrow">On the screen</div><h2>Placement</h2><p>The rules from P2 and P3, shown on a 360 dp phone.</p></header>
+      <p class="sub" style="margin:-8px 0 16px;font-size:13px"><b style="color:var(--text)">Placement diagrams, not final screens.</b> They show only where the button goes. The real job-alert screen is designed as a pattern once Timer, Amount and the pictograms exist, and replaces these.</p>
+      <div class="phones" id="phones"></div>
+    </section>
+
+    <section id="tokens">
+      <header><div class="eyebrow">Traceability</div><h2>Tokens used</h2><p>Every colour in this component, by name. Two pressed fills have no semantic token yet and are proposed.</p></header>
+      <div class="tbl-wrap"><table><thead><tr><th>Where</th><th>Token</th><th>Value</th></tr></thead><tbody id="tokens-tbl"></tbody></table></div>
+    </section>
+
+    <section id="figma">
+      <header><div class="eyebrow">Reconciliation</div><h2>What changes in Figma</h2></header>
+      <ol class="rules" style="counter-reset:n">
+        <li>Rename <code>Style</code> → <code>Variant</code> (Primary / Secondary / Tertiary / Ghost); add <code>Tone</code> (Brand / Neutral / Danger). Delete Success, Link, Neutral Filled, Neutral Stroke, Text.</li>
+        <li><code>State</code>: add Pressed, Focused, Loading; add a <code>Hold</code> boolean on Danger.</li>
+        <li><code>Content</code>: delete Icon Both.</li>
+        <li>Rebind every fill, stroke and text colour to semantic variables; text styles to <code>ButtonLg</code> / <code>ButtonMd</code>.</li>
+        <li>Disabled: <code>bgTertiary</code> fill + <code>textTertiary</code> label instead of the pink-200 wash.</li>
+        <li>Move Button Groups, Progress Buttons, Block/Unblock off the Components page.</li>
+      </ol>
+      <p class="sub" style="margin-top:14px">Result: ~90 variants instead of 294.</p>
+    </section>
+  </main>
+</div>
+<div class="toast" id="toast"></div>
+
+<script id="tokens-json" type="application/json">__TOKENS__</script>
+<script>
+(function(){
+const T=JSON.parse(document.getElementById("tokens-json").textContent);
+const $=s=>document.querySelector(s);
+const sem={}; Object.values(T.color.semantic).flat().forEach(t=>sem[t.name]=t.value);
+const P=T.color.palette;
+// component-owned pressed fills (proposed tokens)
+const prop={bgBrandSubtlePressed:P.pink['100'],bgTertiaryPressed:P.gray['200']};
+
+// Phosphor regular paths (viewBox 0 0 256 256)
+const ICO={
+ check:'M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z',
+ x:'M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z',
+ phone:'M222.37,158.46l-47.11-21.11-.13-.06a16,16,0,0,0-15.17,1.4,8.12,8.12,0,0,0-.75.56L134.87,160c-15.42-7.49-31.34-23.29-38.83-38.51l20.78-24.71c.2-.25.39-.5.57-.77a16,16,0,0,0,1.32-15.06l0-.12L97.54,33.64a16,16,0,0,0-16.62-9.52A56.26,56.26,0,0,0,32,80c0,79.4,64.6,144,144,144a56.26,56.26,0,0,0,55.88-48.92A16,16,0,0,0,222.37,158.46ZM176,208A128.14,128.14,0,0,1,48,80,40.2,40.2,0,0,1,82.87,40a.61.61,0,0,0,0,.12l21,47L83.2,111.86a6.13,6.13,0,0,0-.57.77,16,16,0,0,0-1,15.7c9.06,18.53,27.73,37.06,46.46,46.11a16,16,0,0,0,15.75-1.14,8.44,8.44,0,0,0,.74-.56L168.89,152l47,21.05h0s.08,0,.11,0A40.21,40.21,0,0,1,176,208Z',
+ caret:'M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z'};
+const svg=(n)=>`<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="${ICO[n]}"/></svg>`;
+
+// colour table: variant×tone → {fill, ink, bw, bc, fillP}
+const C={
+ 'primary|brand':  {fill:sem.interactiveDefault, ink:sem.textInverse, fillP:sem.interactivePressed},
+ 'primary|danger': {fill:sem.borderError, ink:sem.textInverse, fillP:sem.textError, note:'confirmation sheet only'},
+ 'secondary|brand':{fill:sem.bgPrimary, ink:sem.textBrand, bw:1.5, bc:sem.borderBrand, fillP:sem.bgBrandSubtle},
+ 'secondary|neutral':{fill:sem.bgPrimary, ink:sem.textBody, bw:1.5, bc:sem.borderStrong, fillP:sem.bgSecondary},
+ 'secondary|danger':{fill:sem.bgPrimary, ink:sem.textError, bw:1.5, bc:sem.borderError, fillP:sem.bgError},
+ 'tertiary|brand': {fill:sem.bgBrandSubtle, ink:sem.textBrand, fillP:prop.bgBrandSubtlePressed},
+ 'tertiary|neutral':{fill:sem.bgTertiary, ink:sem.textBody, fillP:prop.bgTertiaryPressed},
+ 'ghost|brand':    {fill:'transparent', ink:sem.textBrand, fillP:sem.bgBrandSubtle},
+ 'ghost|neutral':  {fill:'transparent', ink:sem.textBody, fillP:sem.bgSecondary},
+ 'ghost|danger':   {fill:'transparent', ink:sem.textError, fillP:sem.bgError},
+};
+const DIS={fill:sem.bgTertiary, ink:sem.textTertiary};
+const SZ={}; T.button.sizes.forEach(s=>SZ[s.name]=s);
+const GAP={L:8,M:8,S:6,XS:4};
+
+function btn(o){ // {v,t,size,label,icon,trail,state,full,cls}
+  const s=SZ[o.size||'M']; let c=C[o.v+'|'+o.t]; if(!c) return `<span class="na"></span>`;
+  const dis=o.state==='disabled'; const col=dis?{...c,fill:DIS.fill,ink:DIS.ink,bw:0}:c;
+  const style=`--h:${s.height}px;--px:${s.paddingX}px;--r:${s.radius}px;--fs:${s.labelSize}px;--fw:${s.labelWeight};--ic:${s.icon}px;--gap:${GAP[s.name]}px;--fill:${col.fill};--ink:${col.ink};--bw:${col.bw||0}px;--bc:${col.bc||'transparent'};--fill-p:${c.fillP}`;
+  const ico=o.state==='loading'?'<span class="spin"></span>':(o.icon?svg(o.icon):'');
+  const cls=['sbtn',o.state||'',o.full?'full':'',o.cls||''].join(' ');
+  return `<button type="button" class="${cls}" style="${style}" ${dis?'aria-disabled="true"':''} ${o.id?`id="${o.id}"`:''}>${o.hold?'<span class="hf"></span>':''}${o.trail?'':ico}<span class="lb">${o.label||'Accept job'}</span>${o.trail?svg(o.trail):''}</button>`;
+}
+
+// ---- variants × tones matrix
+const V=['primary','secondary','tertiary','ghost'], TN=['brand','neutral','danger'];
+const LBL={brand:'Accept job',neutral:'View details',danger:'Decline'}, IC={brand:'check',neutral:null,danger:'x'};
+let m=`<div class="matrix" style="grid-template-columns:120px repeat(3,1fr)"><div></div>${TN.map(t=>`<div class="h">${t}</div>`).join('')}`;
+V.forEach(v=>{m+=`<div class="r">${v}</div>`+TN.map(t=>{const c=C[v+'|'+t];return `<div>${c?btn({v,t,size:'M',label:LBL[t],icon:IC[t]}):'<span class="na" title="not allowed"></span>'}${c&&c.note?`<div style="font-size:11px;color:#9CA3AF;margin-top:6px">${c.note}</div>`:''}</div>`;}).join('');});
+$('#vt').innerHTML=m+'</div>';
+
+// ---- sizes
+$('#sz').innerHTML=['L','M','S','XS'].map(k=>`<div class="szd">${btn({v:'primary',t:'brand',size:k,icon:'check'})}<div class="lbl"><b>${k}</b> · ${SZ[k].height} dp</div></div>`).join('')
+ +`<div class="szd">${btn({v:'secondary',t:'brand',size:'M',icon:null,trail:'caret',label:'Next'})}<div class="lbl">trailing = direction only</div></div>`;
+const USE={L:'Full-width bottom action — the default',M:'In-content, cards, sheets',S:'List rows, dense cards · 48 dp parent hit area',XS:'Tags with action · never primary'};
+$('#sztbl').innerHTML=['L','M','S','XS'].map(k=>{const s=SZ[k];return `<tr><td class="tk">${k}</td><td class="tk">${s.height}</td><td class="tk">${s.paddingX}</td><td class="tk">${s.radius}</td><td class="tk">${s.icon}</td><td class="tk">${GAP[k]}</td><td class="tk">${s.labelSize} sp ${s.labelWeightName}</td><td>${USE[k]}</td></tr>`}).join('');
+
+// ---- states matrix
+const ST=['default','pressed','focused','disabled','loading'];
+let sm=`<div style="display:contents"></div>`; sm=`<div></div>${ST.map(s=>`<div class="h">${s}</div>`).join('')}`;
+[['primary','brand'],['secondary','brand'],['tertiary','brand'],['ghost','neutral'],['secondary','danger']].forEach(([v,t])=>{
+  sm+=`<div class="r">${v}<small>${t}</small></div>`+ST.map(s=>`<div>${btn({v,t,size:'M',label:LBL[t],icon:IC[t],state:s})}</div>`).join('');
+});
+$('#st').innerHTML=sm; $('#st').style.gridTemplateColumns='120px repeat(5,1fr)';
+
+// ---- live demos
+$('#d-load').innerHTML=btn({v:'primary',t:'brand',size:'L',icon:'check',id:'b-load'});
+const bl=$('#b-load'); let busy=false;
+bl.addEventListener('click',()=>{ if(busy){$('#l-load').textContent='tap ignored — loading';return;} busy=true; bl.classList.add('loading'); bl.querySelector('svg').outerHTML='<span class="spin"></span>'; $('#l-load').textContent='loading… label stays visible';
+  setTimeout(()=>{busy=false;bl.classList.remove('loading');bl.querySelector('.spin').outerHTML=svg('check');$('#l-load').textContent='done — confirm sound plays here';},1600);});
+
+$('#d-hold').innerHTML=btn({v:'secondary',t:'danger',size:'L',icon:'x',label:'Decline job',hold:true,id:'b-hold'});
+const bh=$('#b-hold'); let ht=null;
+const start=e=>{e.preventDefault(); if(bh.dataset.done)return; bh.classList.add('holding'); $('#l-hold').textContent='holding… release to cancel'; ht=setTimeout(()=>{bh.dataset.done=1;bh.querySelector('.lb').textContent='Declined';bh.classList.remove('holding');$('#l-hold').textContent='committed — medium haptic, commit sound';setTimeout(()=>{delete bh.dataset.done;bh.querySelector('.lb').textContent='Decline job';$('#l-hold').textContent='';},1800);},600);};
+const stop=()=>{ if(ht){clearTimeout(ht);ht=null;} if(!bh.dataset.done){bh.classList.remove('holding'); if($('#l-hold').textContent.startsWith('holding'))$('#l-hold').textContent='released early — nothing happened';}};
+['pointerdown'].forEach(ev=>bh.addEventListener(ev,start)); ['pointerup','pointerleave','pointercancel'].forEach(ev=>bh.addEventListener(ev,stop));
+
+$('#d-guard').innerHTML=btn({v:'tertiary',t:'brand',size:'M',icon:'phone',label:'Call customer',id:'b-guard'});
+let last=0,n=0,ign=0; $('#b-guard').addEventListener('click',()=>{const now=Date.now(); if(now-last<300){ign++;} else {n++;last=now;} $('#l-guard').textContent=`${n} registered · ${ign} ignored`;});
+
+// ---- placement phones
+const phone=(title,body,foot,ok,why)=>`<div><div class="ph"><div class="bar"><b>${title}</b><span>360 dp</span></div><div class="body">${body}</div><div class="foot${foot.row?' row':''}">${foot.html}</div></div><span class="verdict ${ok?'ok':'bad'}">${ok?'Do':"Don't"}</span><div class="sub" style="font-size:13.5px">${why}</div></div>`;
+const jb=`<div class="hd">New job · 1.2 km</div><div class="tx">2 hours · Cleaning · ₹450</div>`;
+$('#phones').innerHTML=[
+ phone('Job alert',jb,{html:btn({v:'ghost',t:'danger',size:'M',label:'Not now',icon:'x'})+btn({v:'primary',t:'brand',size:'L',icon:'check',full:1})},true,'One primary, L, full width, at the bottom. Decline is a quiet ghost <em>above</em> it, not beside it. (P2, P3)'),
+ phone('Job alert',jb,{row:1,html:btn({v:'primary',t:'danger',size:'L',label:'Decline',icon:'x',full:1})+btn({v:'primary',t:'brand',size:'L',icon:'check',full:1})},false,'Two filled primaries side by side. A thumb on a moving e-bike hits the wrong one. Danger is only filled inside a confirmation sheet.'),
+ phone('Job done',`<div class="hd">Job complete</div><div class="tx">₹450 added to today’s earnings</div>`,{html:btn({v:'primary',t:'brand',size:'L',label:'Mark done',icon:'check',full:1})},true,'Verb label that names the outcome. Not <em>OK</em>, not <em>Submit</em>.'),
+ phone('Job done',`<div class="hd">Job complete</div><div class="tx">₹450 added to today’s earnings</div>`,{html:`<button class="sbtn full" style="--h:56px;--px:24px;--r:12px;--fs:16px;--fw:600;--ic:24px;--gap:8px;--fill:${P.green['600']};--ink:#fff;--fill-p:${P.green['700']}">${svg('check')}<span class="lb">OK</span></button>`},false,'A green button says <em>result</em>, not <em>action</em> — and <em>OK</em> says nothing. Success is a status colour. (P6)')
+].join('');
+
+// ---- tokens table
+const rows=[['Primary · brand fill','interactiveDefault'],['Primary · brand pressed','interactivePressed'],['Primary label','textInverse'],['Primary · danger fill','borderError'],['Primary · danger pressed','textError'],['Secondary · brand border','borderBrand'],['Secondary · neutral border','borderStrong'],['Secondary · danger border','borderError'],['Secondary fill','bgPrimary'],['Tertiary · brand fill','bgBrandSubtle'],['Tertiary · neutral fill','bgTertiary'],['Brand label / icon','textBrand'],['Neutral label / icon','textBody'],['Danger label / icon','textError'],['Pressed wash · brand','bgBrandSubtle'],['Pressed wash · neutral','bgSecondary'],['Pressed wash · danger','bgError'],['Disabled fill','bgTertiary'],['Disabled label','textTertiary'],['Focus ring','borderFocus']];
+$('#tokens-tbl').innerHTML=rows.map(([w,t])=>`<tr><td>${w}</td><td class="tk">${t}</td><td class="tk"><span class="sw" style="background:${sem[t]}"></span>${sem[t]}</td></tr>`).join('')
+ +`<tr><td>Tertiary · brand pressed</td><td class="tk">bgBrandSubtlePressed <span style="color:#B45309;font-family:var(--sans);font-size:11px;font-weight:600">proposed</span></td><td class="tk"><span class="sw" style="background:${prop.bgBrandSubtlePressed}"></span>${prop.bgBrandSubtlePressed} (pink.100)</td></tr>`
+ +`<tr><td>Tertiary · neutral pressed</td><td class="tk">bgTertiaryPressed <span style="color:#B45309;font-family:var(--sans);font-size:11px;font-weight:600">proposed</span></td><td class="tk"><span class="sw" style="background:${prop.bgTertiaryPressed}"></span>${prop.bgTertiaryPressed} (gray.200)</td></tr>`;
+
+// nav highlight
+const links=[...document.querySelectorAll('#nav a')];const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-20% 0px -70% 0px'});targets.forEach(t=>io.observe(t));}
+})();
+</script>

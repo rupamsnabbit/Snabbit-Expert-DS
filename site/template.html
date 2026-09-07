@@ -1,0 +1,503 @@
+<title>Snabbit Expert Tokens</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --bg-2:#F9FAFB; --bg-3:#F3F4F6;
+  --text:#111827; --text-body:#374151; --text-2:#6B7280; --text-3:#9CA3AF;
+  --border:#E5E7EB; --border-subtle:#F3F4F6; --border-strong:#6B7280;
+  --brand:#F70F79; --brand-hover:#F4368D; --brand-pressed:#C70C61; --brand-wash:#FEF1F7; --brand-ink:#97094A;
+  --focus:#3B82F6;
+  --swatch-ring:rgba(17,24,39,.08);
+  --sans:"Outfit",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+    --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+    --border:#374151; --border-subtle:#1F2937; --border-strong:#9CA3AF;
+    --brand:#F65CA1; --brand-hover:#F9AECF; --brand-pressed:#F4368D; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+    --swatch-ring:rgba(255,255,255,.12);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+  --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+  --border:#374151; --border-subtle:#1F2937; --border-strong:#9CA3AF;
+  --brand:#F65CA1; --brand-hover:#F9AECF; --brand-pressed:#F4368D; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+  --swatch-ring:rgba(255,255,255,.12);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--text-body);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+code,.mono{font-family:var(--mono);font-size:.86em}
+button{font:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+
+/* ---- shell ---- */
+.shell{display:grid;grid-template-columns:232px minmax(0,1fr);min-height:100vh}
+.rail{position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--border);padding:24px 16px 32px;background:var(--bg);display:flex;flex-direction:column;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;padding:0 8px}
+.brand-mark{width:28px;height:28px;border-radius:8px;background:var(--brand);display:grid;place-items:center;flex:none}
+.brand-mark span{width:12px;height:12px;border-radius:3px;background:#fff;transform:rotate(45deg)}
+.brand b{font-weight:600;color:var(--text);font-size:15px;line-height:1.2;display:block}
+.brand small{color:var(--text-2);font-size:12px}
+.search{position:relative}
+.search input{width:100%;height:36px;border:1px solid var(--border);border-radius:8px;background:var(--bg-2);color:var(--text);padding:0 10px 0 32px;font-size:13px}
+.search input::placeholder{color:var(--text-3)}
+.search svg{position:absolute;left:10px;top:10px;width:16px;height:16px;color:var(--text-3)}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav .grp{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);padding:12px 8px 4px;font-weight:500}
+.nav a{display:block;padding:6px 8px;border-radius:6px;text-decoration:none;color:var(--text-body);font-size:13.5px}
+.nav a:hover{background:var(--bg-2);color:var(--text)}
+.nav a.on{background:var(--brand-wash);color:var(--brand-ink);font-weight:500}
+.rail-foot{margin-top:auto;padding:0 8px;font-size:12px;color:var(--text-3);line-height:1.5}
+.main{padding:40px 56px 96px;max-width:1040px;width:100%}
+
+/* ---- header ---- */
+.eyebrow{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);font-weight:600}
+h1{font-size:40px;line-height:1.1;font-weight:600;color:var(--text);margin:8px 0 12px;letter-spacing:-.015em;text-wrap:balance}
+.lede{font-size:17px;color:var(--text-2);max-width:60ch;margin:0}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.chip{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border:1px solid var(--border);border-radius:999px;font-size:12.5px;color:var(--text-body);background:var(--bg)}
+.chip .dot{width:7px;height:7px;border-radius:50%;background:var(--brand)}
+.chip.mono{font-family:var(--mono);font-size:12px}
+.note{border-left:2px solid var(--brand);background:var(--brand-wash);padding:12px 16px;border-radius:0 8px 8px 0;font-size:14px;color:var(--text-body);margin:24px 0 0;max-width:72ch}
+.note b{color:var(--text)}
+
+/* ---- sections ---- */
+section{padding-top:64px}
+section > header{margin-bottom:24px;max-width:68ch}
+h2{font-size:26px;line-height:1.2;font-weight:600;color:var(--text);margin:6px 0 8px;letter-spacing:-.01em;text-wrap:balance}
+h3{font-size:16px;font-weight:600;color:var(--text);margin:32px 0 12px}
+section > header p, .sub{color:var(--text-2);margin:0;font-size:15px}
+.rules{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:6px;max-width:68ch}
+.rules li{padding-left:18px;position:relative;font-size:14px;color:var(--text-body)}
+.rules li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:2px;background:var(--brand)}
+
+/* ---- tables ---- */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);font-weight:500;padding:10px 14px;background:var(--bg-2);border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:11px 14px;border-bottom:1px solid var(--border-subtle);vertical-align:middle;color:var(--text-body)}
+tr:last-child td{border-bottom:0}
+td.num{font-variant-numeric:tabular-nums;font-family:var(--mono);font-size:13px;color:var(--text);white-space:nowrap}
+td .use{color:var(--text-2)}
+
+/* token name = copyable */
+.tk{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:12.5px;color:var(--text);background:var(--bg-2);border:1px solid var(--border);border-radius:6px;padding:2px 8px;cursor:pointer;white-space:nowrap;transition:border-color .12s}
+.tk:hover{border-color:var(--brand)}
+.tk.copied{border-color:var(--brand);background:var(--brand-wash);color:var(--brand-ink)}
+.tk svg{width:12px;height:12px;opacity:.5}
+
+/* ---- color ---- */
+.sw{width:36px;height:36px;border-radius:8px;box-shadow:inset 0 0 0 1px var(--swatch-ring);flex:none}
+.sw-cell{display:flex;align-items:center;gap:12px}
+.hex{font-family:var(--mono);font-size:12.5px;color:var(--text-2);cursor:pointer}
+.hex:hover{color:var(--brand)}
+.ref{font-family:var(--mono);font-size:12px;color:var(--text-3)}
+.contrast{display:inline-flex;align-items:center;gap:6px;font-variant-numeric:tabular-nums;font-family:var(--mono);font-size:12px;color:var(--text-2)}
+.contrast .badge{font-family:var(--sans);font-size:10.5px;font-weight:600;letter-spacing:.04em;padding:1px 6px;border-radius:4px;background:var(--bg-3);color:var(--text-body)}
+.contrast .badge.aaa{background:#D1FAE5;color:#047857}
+.contrast .badge.aa{background:#DBEAFE;color:#1D4ED8}
+.contrast .badge.lg{background:#FEF3C7;color:#B45309}
+.contrast .badge.fail{background:#FEE2E2;color:#B91C1C}
+.palette{display:grid;gap:14px}
+.pal-row{display:grid;grid-template-columns:72px 1fr;gap:12px;align-items:center}
+.pal-name{font-size:13px;font-weight:500;color:var(--text);text-transform:capitalize}
+.pal-steps{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:4px}
+.step{aspect-ratio:1/1.15;border-radius:6px;position:relative;cursor:pointer;box-shadow:inset 0 0 0 1px var(--swatch-ring);display:flex;flex-direction:column;justify-content:flex-end;padding:5px;overflow:hidden}
+.step small{font-family:var(--mono);font-size:9.5px;line-height:1.25;display:block}
+.step .s{font-weight:500}
+.step.empty{background:repeating-linear-gradient(45deg,var(--bg-2) 0 4px,transparent 4px 8px);cursor:default;box-shadow:inset 0 0 0 1px var(--border)}
+.step.brandstep::after{content:"";position:absolute;top:5px;right:5px;width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 0 1.5px rgba(0,0,0,.25)}
+
+/* ---- type ---- */
+.type-list{display:grid;gap:0;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.type-row{display:grid;grid-template-columns:150px minmax(0,1fr) 190px;gap:24px;padding:18px 20px;border-bottom:1px solid var(--border-subtle);align-items:center}
+.type-row:last-child{border-bottom:0}
+.type-row .spec{color:var(--text);font-family:var(--sans);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.type-meta{font-family:var(--mono);font-size:12px;color:var(--text-2);font-variant-numeric:tabular-nums;line-height:1.7}
+.type-meta b{color:var(--text);font-weight:500}
+.type-use{font-size:12.5px;color:var(--text-2);margin-top:2px;font-family:var(--sans)}
+
+/* ---- spacing ---- */
+.space-list{display:grid;gap:8px}
+.space-row{display:grid;grid-template-columns:44px 64px minmax(0,1fr);gap:16px;align-items:center;font-size:13.5px}
+.space-row .bar{height:20px;background:var(--brand);border-radius:3px;position:relative;opacity:.9}
+.space-row .bar.zero{width:1px!important;background:var(--border-strong)}
+.space-row .u{color:var(--text-2);margin-left:10px;font-size:12.5px}
+.alias-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:20px}
+.alias{border:1px solid var(--border);border-radius:10px;padding:14px 16px;background:var(--bg-2)}
+.alias h4{margin:0 0 8px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);font-weight:500}
+.alias .vals{display:flex;gap:6px;flex-wrap:wrap}
+.alias .vals span{font-family:var(--mono);font-size:12.5px;color:var(--text);background:var(--bg);border:1px solid var(--border);border-radius:5px;padding:2px 7px}
+.forbid{margin-top:16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:13.5px;color:var(--text-body)}
+.forbid span{font-family:var(--mono);font-size:12.5px;color:#B91C1C;background:#FEF2F2;border:1px solid #FECACA;border-radius:5px;padding:2px 7px;text-decoration:line-through}
+
+/* ---- radius / borders ---- */
+.shape-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:12px}
+.shape{border:1px solid var(--border);border-radius:12px;padding:16px 14px;display:flex;flex-direction:column;gap:12px;background:var(--bg)}
+.shape .box{width:64px;height:64px;background:var(--brand-wash);border:2px solid var(--brand);align-self:flex-start}
+.shape .nm{font-family:var(--mono);font-size:13px;color:var(--text);font-weight:500}
+.shape .v{font-family:var(--mono);font-size:12px;color:var(--text-2)}
+.shape .u{font-size:12px;color:var(--text-2);line-height:1.4}
+.bw-list{display:grid;gap:12px;margin-top:8px;max-width:520px}
+.bw-row{display:grid;grid-template-columns:90px 1fr 60px;gap:16px;align-items:center;font-size:13.5px}
+.bw-row .line{height:0;border-top-style:solid;border-color:var(--text)}
+
+/* ---- buttons ---- */
+.btn-stage{display:flex;flex-wrap:wrap;gap:24px;align-items:flex-end;padding:28px;border:1px solid var(--border);border-radius:12px;background:var(--bg-2)}
+.btn-demo{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.sbtn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--brand);color:#fff;border:0;font-family:var(--sans);cursor:default;white-space:nowrap}
+.sbtn:hover{background:var(--brand-hover)}
+.sbtn:active{background:var(--brand-pressed)}
+.sbtn svg{flex:none}
+.btn-demo .lbl{font-family:var(--mono);font-size:12px;color:var(--text-2)}
+.btn-demo .lbl b{color:var(--text);font-weight:500}
+
+/* ---- icons ---- */
+.icon-row{display:flex;gap:28px;align-items:flex-end;flex-wrap:wrap;padding:24px;border:1px solid var(--border);border-radius:12px}
+.icon-demo{display:flex;flex-direction:column;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;color:var(--text-2)}
+.icon-demo .ic{color:var(--text);display:grid;place-items:center}
+.icon-demo.target .ic{border:1px dashed var(--brand);border-radius:8px;width:48px;height:48px}
+
+/* ---- grid ---- */
+.phone-wrap{display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:start}
+.phone{width:360px;height:420px;border:1px solid var(--border);border-radius:16px;background:var(--bg);position:relative;overflow:hidden;flex:none}
+.phone .m{position:absolute;top:0;bottom:0;width:16px;background:var(--brand-wash);border-inline:1px dashed var(--brand)}
+.phone .m.l{left:0}.phone .m.r{right:0}
+.phone .card{position:absolute;left:16px;right:16px;border:1px solid var(--border);border-radius:12px;background:var(--bg-2)}
+.phone .lbl{position:absolute;font-family:var(--mono);font-size:10.5px;color:var(--brand);background:var(--bg);padding:0 3px}
+.phone .foot{position:absolute;left:0;right:0;bottom:0;height:88px;border-top:1px solid var(--border);background:var(--bg);padding:16px 16px 24px}
+.phone .foot .b{height:48px;border-radius:10px;background:var(--brand)}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:8px 20px;font-size:14px;align-content:start}
+.kv dt{color:var(--text-2)}
+.kv dd{margin:0;color:var(--text);font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums}
+
+/* ---- governance ---- */
+.steps{counter-reset:s;list-style:none;margin:0;padding:0;display:grid;gap:12px;max-width:68ch}
+.steps li{counter-increment:s;display:grid;grid-template-columns:32px 1fr;gap:12px;font-size:14.5px;color:var(--text-body)}
+.steps li::before{content:counter(s);width:28px;height:28px;border-radius:50%;background:var(--brand-wash);color:var(--brand-ink);font-weight:600;font-size:13px;display:grid;place-items:center}
+
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(8px);background:var(--text);color:var(--bg);padding:8px 14px;border-radius:8px;font-size:13px;opacity:0;pointer-events:none;transition:opacity .15s,transform .15s;font-family:var(--mono)}
+.toast.show{opacity:1;transform:translateX(-50%)}
+.hidden{display:none!important}
+.empty-msg{color:var(--text-2);font-size:14px;padding:16px 0}
+
+@media (max-width:900px){
+  .shell{grid-template-columns:1fr}
+  .rail{position:static;height:auto;border-right:0;border-bottom:1px solid var(--border);padding:16px}
+  .nav{flex-direction:row;flex-wrap:wrap;gap:4px}
+  .nav .grp{display:none}
+  .rail-foot{display:none}
+  .main{padding:32px 20px 80px}
+  h1{font-size:32px}
+  .type-row{grid-template-columns:1fr;gap:8px}
+  .phone-wrap{grid-template-columns:1fr}
+  .phone{width:100%;max-width:360px}
+}
+__NAVCSS__</style>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand">
+      <div class="brand-mark"><span></span></div>
+      <div><b>Snabbit Expert</b><small>Design tokens</small></div>
+    </div>
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="Filter tokens…" aria-label="Filter tokens" autocomplete="off">
+    </div>
+    __SITENAV__
+    <nav class="nav" id="nav">
+      <div class="grp">On this page</div>
+      <a href="#overview">Overview</a>
+      <a href="#color">Color</a>
+      <a href="#typography">Typography</a>
+      <a href="#spacing">Spacing</a>
+      <a href="#radius">Radius &amp; borders</a>
+      <a href="#elevation">Elevation</a>
+      <div class="grp">Sizing</div>
+      <a href="#icons">Icons &amp; touch targets</a>
+      <a href="#buttons">Button sizes</a>
+      <a href="#grid">Grid &amp; margins</a>
+      <div class="grp">Process</div>
+      <a href="#governance">Adding a token</a>
+    </nav>
+    <div class="rail-foot" id="foot"></div>
+  </aside>
+
+  <main class="main">
+    <header id="overview">
+      <div class="eyebrow">Snabbit Expert · Mobile</div>
+      <h1>Design tokens</h1>
+      <p class="lede">The named values every Expert-app screen is built from. Use the semantic name, never the raw hex or dp, so a change here reaches every screen at once.</p>
+      <div class="meta" id="meta"></div>
+      <div class="note" id="note"></div>
+    </header>
+
+    <section id="color">
+      <header>
+        <div class="eyebrow">Color</div>
+        <h2>Semantic colors</h2>
+        <p>Pick by role — what the color <em>does</em> on screen — not by hue. Contrast is measured against <code>bgPrimary</code> (#FFFFFF) for text tokens.</p>
+      </header>
+      <div id="semantic"></div>
+
+      <h3>Core palette</h3>
+      <p class="sub">Reference only. Palette steps are allowed while building a semantic token the package doesn't expose yet — the dot marks the brand step.</p>
+      <div class="palette" id="palette" style="margin-top:16px"></div>
+    </section>
+
+    <section id="typography">
+      <header>
+        <div class="eyebrow">Typography</div>
+        <h2>Type scale</h2>
+        <p id="type-rule"></p>
+      </header>
+      <div class="type-list" id="type"></div>
+      <ul class="rules" id="type-rules"></ul>
+    </section>
+
+    <section id="spacing">
+      <header>
+        <div class="eyebrow">Spacing</div>
+        <h2>Spacing scale</h2>
+        <p>Twelve steps in dp, drawn at 1 dp = 1 px. Names are the step index, so <code>spacing.5</code> is always 16 dp.</p>
+      </header>
+      <div class="space-list" id="space"></div>
+      <div class="alias-grid" id="aliases"></div>
+      <div class="forbid" id="forbid"></div>
+    </section>
+
+    <section id="radius">
+      <header>
+        <div class="eyebrow">Shape</div>
+        <h2>Corner radius &amp; border width</h2>
+        <p>Radius grows with the surface's prominence. Border width is for meaning — selection, emphasis — not decoration.</p>
+      </header>
+      <div class="shape-grid" id="radii"></div>
+      <h3>Border width</h3>
+      <div class="bw-list" id="bw"></div>
+    </section>
+
+    <section id="elevation">
+      <header>
+        <div class="eyebrow">Depth</div>
+        <h2>Elevation</h2>
+        <p id="elev-rule"></p>
+      </header>
+      <div class="tbl-wrap"><table><thead><tr><th>Token</th><th>Value</th><th>Use</th></tr></thead><tbody id="elev"></tbody></table></div>
+    </section>
+
+    <section id="icons">
+      <header>
+        <div class="eyebrow">Sizing</div>
+        <h2>Icons &amp; touch targets</h2>
+        <p id="icon-lib"></p><p>Visual size and hit area are different things. An icon can be 16 dp; the thing you tap can never be under 48 × 48 dp.</p>
+      </header>
+      <div class="icon-row" id="icons-row"></div>
+      <ul class="rules" id="icon-rules"></ul>
+    </section>
+
+    <section id="buttons">
+      <header>
+        <div class="eyebrow">Sizing</div>
+        <h2>Button sizes</h2>
+        <p>Rendered at true dp. Each size owns its height, padding, radius, icon and label — do not override them inside <code>SnabbitButton</code>.</p>
+      </header>
+      <div class="btn-stage" id="btns"></div>
+      <div class="tbl-wrap" style="margin-top:20px"><table><thead><tr><th>Size</th><th>Height</th><th>Padding X</th><th>Radius</th><th>Icon</th><th>Label</th></tr></thead><tbody id="btn-tbl"></tbody></table></div>
+      <ul class="rules" id="btn-rules"></ul>
+    </section>
+
+    <section id="grid">
+      <header>
+        <div class="eyebrow">Layout</div>
+        <h2>Grid, margins &amp; safe areas</h2>
+        <p>Baseline review viewport is 360 × 800 dp. The 16 dp margin is the default; 24 dp is a deliberate choice for a spacious task layout, never mixed on one screen.</p>
+      </header>
+      <div class="phone-wrap">
+        <div class="phone" aria-hidden="true">
+          <div class="m l"></div><div class="m r"></div>
+          <span class="lbl" style="left:22px;top:12px">16 dp</span>
+          <span class="lbl" style="right:22px;top:12px">16 dp</span>
+          <div class="card" style="top:40px;height:96px"></div>
+          <span class="lbl" style="left:24px;top:146px">24 dp section gap</span>
+          <div class="card" style="top:160px;height:120px"></div>
+          <div class="foot"><div class="b"></div></div>
+          <span class="lbl" style="left:24px;bottom:72px">16 dp + safe area</span>
+        </div>
+        <dl class="kv" id="grid-kv"></dl>
+      </div>
+      <ul class="rules" id="grid-rules"></ul>
+    </section>
+
+    <section id="governance">
+      <header>
+        <div class="eyebrow">Process</div>
+        <h2>Adding or changing a token</h2>
+        <p>Tokens change rarely and deliberately. The order matters: look for an existing token first, propose before you add, and update everything in one change.</p>
+      </header>
+      <ol class="steps" id="gov"></ol>
+    </section>
+  </main>
+</div>
+<div class="toast" id="toast">Copied</div>
+
+<script id="tokens" type="application/json">__TOKENS__</script>
+<script>
+(function(){
+const T = JSON.parse(document.getElementById('tokens').textContent);
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const copyIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>';
+const tk = (name) => `<button class="tk" data-copy="${esc(name)}" type="button">${esc(name)}${copyIcon}</button>`;
+const hex = (v) => `<span class="hex" data-copy="${esc(v)}" role="button" tabindex="0">${esc(v)}</span>`;
+
+// ---- contrast (WCAG 2) ----
+function lum(h){const c=h.replace('#','');const r=parseInt(c.slice(0,2),16)/255,g=parseInt(c.slice(2,4),16)/255,b=parseInt(c.slice(4,6),16)/255;const f=x=>x<=.03928?x/12.92:Math.pow((x+.055)/1.055,2.4);return .2126*f(r)+.7152*f(g)+.0722*f(b);}
+function ratio(a,b){const l1=lum(a),l2=lum(b);return (Math.max(l1,l2)+.05)/(Math.min(l1,l2)+.05);}
+function badge(r){if(r>=7)return['aaa','AAA'];if(r>=4.5)return['aa','AA'];if(r>=3)return['lg','AA large'];return['fail','Fail'];}
+
+// ---- header ----
+const m=T.meta;
+$('#meta').innerHTML = [
+  `<span class="chip"><span class="dot"></span>${esc(m.package)}</span>`,
+  `<span class="chip mono">v${esc(m.version)}</span>`,
+  `<span class="chip">${esc(m.platform)}</span>`,
+  `<span class="chip mono">${esc(m.themeApi)}</span>`,
+  `<span class="chip">Modes: ${m.modes.join(', ')}</span>`
+].join('');
+$('#note').innerHTML = `<b>Contract.</b> ${esc(m.notes[0])} <br><b>Dark mode.</b> ${esc(m.notes[1])}`;
+$('#foot').textContent = `${m.name} · v${m.version} · generated from tokens.json`;
+
+// ---- semantic colors ----
+const groups = [['text','Text'],['background','Background'],['border','Border'],['icon','Icon'],['interactive','Interactive']];
+$('#semantic').innerHTML = groups.map(([k,label])=>{
+  const rows = T.color.semantic[k].map(t=>{
+    let c='';
+    if(k==='text'){ if(t.name==='textInverse'){c='<td class="contrast"><span class="badge">on bgInverse</span></td>';}
+      else{const r=ratio(t.value,'#FFFFFF');const [cls,lbl]=badge(r);c=`<td><span class="contrast">${r.toFixed(2)}:1 <span class="badge ${cls}">${lbl}</span></span></td>`;}}
+    else c='<td></td>';
+    const swStyle = t.value==='#FFFFFF' ? 'background:#FFFFFF' : `background:${t.value}`;
+    return `<tr class="f" data-f="${esc(t.name+' '+t.value+' '+t.use+' '+t.ref).toLowerCase()}">
+      <td><div class="sw-cell"><span class="sw" style="${swStyle}"></span>${tk(t.name)}</div></td>
+      <td>${hex(t.value)}</td><td><span class="ref">${esc(t.ref)}</span></td>${c}<td class="use">${esc(t.use)}</td></tr>`;
+  }).join('');
+  const th = k==='text' ? '<th>Contrast on white</th>' : '<th></th>';
+  return `<h3>${label}</h3><div class="tbl-wrap"><table><thead><tr><th>Token</th><th>Value</th><th>Ref</th>${th}<th>Use</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+}).join('');
+
+// ---- palette ----
+const steps=['50','100','200','300','400','500','600','700','800','900'];
+$('#palette').innerHTML = Object.entries(T.color.palette).map(([fam,vals])=>`
+  <div class="pal-row f" data-f="${fam} ${Object.values(vals).join(' ').toLowerCase()}"><div class="pal-name">${fam}</div><div class="pal-steps">${steps.map(s=>{
+    const v=vals[s]; if(!v) return '<div class="step empty" aria-hidden="true"></div>';
+    const dark = lum(v) < .35; const col = dark ? 'rgba(255,255,255,.92)' : 'rgba(17,24,39,.85)';
+    const brand = fam==='pink'&&s==='600';
+    return `<div class="step${brand?' brandstep':''}" style="background:${v};color:${col}" data-copy="${v}" title="${fam}${s} ${v}" role="button" tabindex="0"><small class="s">${s}</small><small>${v.slice(1)}</small></div>`;
+  }).join('')}</div></div>`).join('');
+
+// ---- typography ----
+$('#type-rule').textContent = T.typography.rule;
+$('#type').innerHTML = T.typography.scale.map(t=>`
+  <div class="type-row f" data-f="${esc(t.name+' '+t.size+' '+t.weightName+' '+t.use).toLowerCase()}">
+    <div>${tk(t.name)}<div class="type-use">${esc(t.use)}</div></div>
+    <div class="spec" style="font-size:${t.size}px;line-height:${t.lineHeight}px;font-weight:${t.weight}">Job starts in 20 minutes</div>
+    <div class="type-meta"><b>${t.size}</b> / ${t.lineHeight} sp<br>${esc(t.weightName)} ${t.weight}</div>
+  </div>`).join('');
+$('#type-rules').innerHTML = T.typography.rules.map(r=>`<li>${esc(r)}</li>`).join('');
+
+// ---- spacing ----
+$('#space').innerHTML = T.spacing.scale.map(s=>`
+  <div class="space-row f" data-f="spacing ${s.name} ${s.value}dp ${esc(s.use).toLowerCase()}">
+    ${tk('spacing.'+s.name)}<span class="mono" style="color:var(--text);font-variant-numeric:tabular-nums">${s.value} dp</span>
+    <div style="display:flex;align-items:center"><div class="bar${s.value===0?' zero':''}" style="width:${s.value}px"></div><span class="u">${esc(s.use)}</span></div>
+  </div>`).join('');
+const al=T.spacing.aliases;
+const alNames={componentPadding:'Component padding',componentGap:'Component gap',layoutPadding:'Layout padding',layoutGap:'Layout gap'};
+$('#aliases').innerHTML = Object.entries(al).map(([k,v])=>`<div class="alias"><h4>${alNames[k]}</h4><div class="vals">${v.map(x=>`<span>${x}</span>`).join('')}</div></div>`).join('');
+$('#forbid').innerHTML = `Not layout values: ${T.spacing.forbidden.map(x=>`<span>${x} dp</span>`).join('')} <span style="all:unset;color:var(--text-2);font-size:13px">— valid only inside the component that owns them (6 dp tag gap, 10 dp M-button radius).</span>`;
+
+// ---- radius / border ----
+$('#radii').innerHTML = T.radius.scale.map(r=>`
+  <div class="shape f" data-f="radius ${r.name} ${r.value} ${esc(r.use).toLowerCase()}">
+    <div class="box" style="border-radius:${Math.min(r.value,32)}px"></div>
+    <div><div class="nm">${esc(r.name)}</div><div class="v">${r.value===9999?'9999 (full)':r.value+' dp'}</div></div>
+    <div class="u">${esc(r.use)}</div>
+  </div>`).join('');
+$('#bw').innerHTML = T.borderWidth.scale.map(b=>`
+  <div class="bw-row f" data-f="border ${b.name} ${b.value}">${tk('border.'+b.name)}<div class="line" style="border-top-width:${b.value}px"></div><span class="mono" style="color:var(--text-2)">${b.value} dp</span></div>`).join('');
+
+// ---- elevation ----
+$('#elev-rule').textContent = T.elevation.rule;
+$('#elev').innerHTML = T.elevation.scale.map(e=>`<tr class="f" data-f="elevation ${e.name}"><td>${tk('elevation.'+e.name)}</td><td class="num">${e.value===null?'—':e.value+' dp'}</td><td class="use">${esc(e.use)}</td></tr>`).join('');
+
+// ---- icons ----
+const I=T.icon;
+const svgIcon = (s)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>`;
+$('#icons-row').innerHTML = I.sizes.map(s=>`<div class="icon-demo"><div class="ic">${svgIcon(s)}</div>${s} dp</div>`).join('') +
+  `<div class="icon-demo target"><div class="ic">${svgIcon(I.defaultAction)}</div>${I.minTouchTarget}×${I.minTouchTarget} hit area</div>`;
+$('#icon-lib').innerHTML = `<b style="color:var(--text)">${esc(I.library)} only.</b> Weight <code>${esc(I.weights.default)}</code> by default, <code>${esc(I.weights.selected)}</code> for selected/active, <code>${esc(I.weights.emphasis)}</code> for emphasis; never ${I.weights.never.map(w=>'<code>'+esc(w)+'</code>').join(', ')}. One icon, one meaning — see <code>foundations/icons.md</code>.`;
+$('#icon-rules').innerHTML = [
+  `Use ${I.defaultAction} dp for normal navigation and action icons; ${I.mediumControl} dp inside medium controls.`,
+  `Interactive targets are at least ${I.minTouchTarget} × ${I.minTouchTarget} dp, even when the visual icon is smaller.`,
+  `Button-owned icon sizes are ${Object.entries(I.buttonOwned).map(([k,v])=>`${v} dp (${k})`).join(', ')} — do not override inside SnabbitButton.`
+].map(r=>`<li>${esc(r)}</li>`).join('');
+
+// ---- buttons ----
+const chk = (s)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>`;
+$('#btns').innerHTML = T.button.sizes.map(b=>`
+  <div class="btn-demo">
+    <button class="sbtn" type="button" style="height:${b.height}px;padding:0 ${b.paddingX}px;border-radius:${b.radius}px;font-size:${b.labelSize}px;font-weight:${b.labelWeight}">${chk(b.icon)}Accept job</button>
+    <div class="lbl"><b>${b.name}</b> · ${b.height} dp</div>
+  </div>`).join('');
+$('#btn-tbl').innerHTML = T.button.sizes.map(b=>`<tr class="f" data-f="button ${b.name.toLowerCase()} ${b.height}"><td>${tk('SnabbitButton.'+b.name)}</td><td class="num">${b.height} dp</td><td class="num">${b.paddingX} dp</td><td class="num">${b.radius} dp</td><td class="num">${b.icon} dp</td><td class="num">${b.labelSize} sp ${esc(b.labelWeightName)}</td></tr>`).join('');
+$('#btn-rules').innerHTML = T.button.rules.map(r=>`<li>${esc(r)}</li>`).join('');
+
+// ---- grid ----
+const G=T.grid;
+$('#grid-kv').innerHTML = [
+  ['Baseline viewport',`${G.baselineViewport.width} × ${G.baselineViewport.height} dp`],
+  ['Also verify',G.verifyWidths.map(w=>w+' dp').join(' · ')],
+  ['Screen margin',`${G.screenMargin} dp`],
+  ['Spacious margin',`${G.spaciousMargin} dp`],
+  ['Nested padding',G.nestedPadding.join(' / ')+' dp'],
+  ['Section gap',G.sectionGap.join(' / ')+' dp'],
+  ['Bottom action padding',`${G.bottomActionPadding} dp + safe area`]
+].map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join('');
+$('#grid-rules').innerHTML = G.rules.map(r=>`<li>${esc(r)}</li>`).join('');
+
+// ---- governance ----
+$('#gov').innerHTML = T.governance.addingAToken.map(s=>`<li><span>${esc(s)}</span></li>`).join('');
+
+// ---- copy ----
+let tt;
+function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),1400);}
+document.addEventListener('click',e=>{
+  const el=e.target.closest('[data-copy]'); if(!el) return;
+  const v=el.getAttribute('data-copy');
+  (navigator.clipboard?navigator.clipboard.writeText(v):Promise.reject()).then(()=>{toast('Copied '+v);el.classList.add('copied');setTimeout(()=>el.classList.remove('copied'),900);}).catch(()=>toast(v));
+});
+document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('[data-copy]:not(button)')){e.preventDefault();e.target.click();}});
+
+// ---- filter ----
+$('#q').addEventListener('input',e=>{
+  const q=e.target.value.trim().toLowerCase();
+  document.querySelectorAll('.f').forEach(el=>{el.classList.toggle('hidden', q && !el.dataset.f.includes(q));});
+});
+
+// ---- active nav ----
+const links=[...document.querySelectorAll('#nav a')];
+const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-20% 0px -70% 0px'});
+  targets.forEach(t=>io.observe(t));
+}
+})();
+</script>

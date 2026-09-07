@@ -1,0 +1,204 @@
+<title>Snabbit Expert Extending</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --bg-2:#F9FAFB; --bg-3:#F3F4F6;
+  --text:#111827; --text-body:#374151; --text-2:#6B7280; --text-3:#9CA3AF;
+  --border:#E5E7EB; --border-subtle:#F3F4F6;
+  --brand:#F70F79; --brand-wash:#FEF1F7; --brand-ink:#97094A;
+  --ok:#059669; --ok-wash:#ECFDF5; --focus:#3B82F6;
+  --sans:"Outfit",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+    --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+    --border:#374151; --border-subtle:#1F2937;
+    --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+    --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+  --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+  --border:#374151; --border-subtle:#1F2937;
+  --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+  --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--text-body);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+code{font-family:var(--mono);font-size:.85em;background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--text)}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+.shell{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}
+.rail{position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--border);padding:24px 16px 32px;background:var(--bg);display:flex;flex-direction:column;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;padding:0 8px}
+.brand-mark{width:28px;height:28px;border-radius:8px;background:var(--brand);display:grid;place-items:center;flex:none}
+.brand-mark span{width:12px;height:12px;border-radius:3px;background:#fff;transform:rotate(45deg)}
+.brand b{font-weight:600;color:var(--text);font-size:15px;line-height:1.2;display:block}
+.brand small{color:var(--text-2);font-size:12px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:block;padding:6px 8px;border-radius:6px;text-decoration:none;color:var(--text);font-size:13.5px;font-weight:500}
+.nav a.sub{font-weight:400;color:var(--text-body);padding-left:14px;font-size:13px}
+.nav a.sub b{font-family:var(--mono);font-weight:500;color:var(--text-3);font-size:11.5px;margin-right:2px}
+.nav a:hover{background:var(--bg-2)}
+.nav a.on{background:var(--brand-wash);color:var(--brand-ink)}
+.rail-foot{margin-top:auto;padding:0 8px;font-size:12px;color:var(--text-3);line-height:1.5}
+.main{padding:40px 56px 96px;max-width:860px;width:100%}
+.eyebrow{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);font-weight:600}
+h1{font-size:40px;line-height:1.1;font-weight:600;color:var(--text);margin:8px 0 12px;letter-spacing:-.015em;text-wrap:balance}
+.lede{font-size:18px;color:var(--text-2);max-width:60ch;margin:0 0 8px}
+.lede strong{color:var(--text);font-weight:500}
+h2{font-size:26px;line-height:1.2;font-weight:600;color:var(--text);margin:72px 0 16px;letter-spacing:-.01em;text-wrap:balance;padding-top:24px;border-top:1px solid var(--border)}
+h3{font-size:20px;font-weight:600;color:var(--text);margin:48px 0 8px;letter-spacing:-.005em}
+h3::before{content:"";display:block;width:32px;height:3px;background:var(--brand);border-radius:2px;margin-bottom:14px}
+p{margin:0 0 14px;max-width:66ch}
+h3 + p{font-size:17px;color:var(--text);font-weight:500}
+p.why{color:var(--text-2);font-size:15px;padding-left:14px;border-left:2px solid var(--border)}
+p.why::before{content:"Why · ";color:var(--text-3);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+p.lbl{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2);font-weight:600;margin:22px 0 8px}
+strong{color:var(--text);font-weight:600}
+em{font-style:italic}
+ul,ol{margin:0 0 14px;padding-left:0;list-style:none;max-width:68ch}
+ul li{position:relative;padding-left:20px;margin:6px 0;font-size:15.5px}
+ul li::before{content:"";position:absolute;left:0;top:11px;width:9px;height:2px;background:var(--brand)}
+ul li.chk{padding-left:30px}
+ul li.chk::before{width:16px;height:16px;top:4px;background:var(--bg);border:1.5px solid var(--text-3);border-radius:4px}
+ol{counter-reset:s}
+ol li{counter-increment:s;display:grid;grid-template-columns:32px 1fr;gap:12px;margin:10px 0;font-size:15.5px}
+ol li::before{content:counter(s);width:28px;height:28px;border-radius:50%;background:var(--brand-wash);color:var(--brand-ink);font-weight:600;font-size:13px;display:grid;place-items:center;margin-top:1px}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px;margin:8px 0 20px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);font-weight:500;padding:10px 14px;background:var(--bg-2);border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:10px 14px;border-bottom:1px solid var(--border-subtle);vertical-align:top;color:var(--text-body)}
+tr:last-child td{border-bottom:0}
+td:first-child{color:var(--text);font-weight:500;white-space:nowrap}
+hr{display:none}
+
+.sitenav{display:flex;flex-direction:column;gap:2px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.sitenav .grp{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);padding:10px 8px 4px;font-weight:500}
+.sitenav a{display:block;padding:5px 8px;border-radius:6px;text-decoration:none;color:var(--text-body);font-size:13.5px;border:0}
+.sitenav a:hover{background:var(--bg-2);color:var(--text)} .sitenav a.on{color:var(--brand-ink);background:var(--brand-wash);font-weight:500}
+@media (max-width:900px){.sitenav{flex-direction:row;flex-wrap:wrap;gap:4px;border-bottom:0;padding-bottom:0}.sitenav .grp{display:none}}
+
+@media (max-width:900px){
+  .shell{grid-template-columns:1fr}
+  .rail{position:static;height:auto;border-right:0;border-bottom:1px solid var(--border);padding:16px}
+  .nav{flex-direction:row;flex-wrap:wrap;gap:4px} .nav a.sub{padding-left:8px} .rail-foot{display:none}
+  .main{padding:32px 20px 80px} h1{font-size:32px} h2{margin-top:56px}
+}
+</style>
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Extending the system</small></div></div>
+    <nav class="sitenav" aria-label="Site"><div class="grp">Foundations</div><a href="index.html">Tokens</a><a href="principles.html">Principles</a><a class="on" href="extending.html">Extending</a><a href="icons.html">Icons</a><a href="assets.html">Assets</a><div class="grp">Components</div><a href="components/button.html">Button</a><div class="grp">Research</div><a href="benchmark.html">Benchmark</a><a href="audit.html">Figma audit</a></nav><nav class="nav" id="nav"><a href="#the-one-rule">The one rule</a><a href="#three-tiers">Three tiers</a><a class="sub" href="#tier-1-core">Tier 1 — Core</a><a class="sub" href="#tier-2-composition">Tier 2 — Composition</a><a class="sub" href="#tier-3-local-component">Tier 3 — Local component</a><a class="sub" href="#the-rule-of-three">The rule of three</a><a class="sub" href="#tier-0-not-allowed">Tier 0 — Not allowed</a><a href="#the-reference-read">The reference read</a><a href="#changing-core">Changing core</a><a href="#brief-template-tier-3-or-a-change-to-core">Brief template (Tier 3, or a change to core)</a><a href="#idea">Idea</a><a href="#why-not-existing">Why not existing</a><a href="#reference-if-any">Reference (if any)</a><a href="#translation">Translation</a><a href="#deviations">Deviations</a><a href="#principles-checklist">Principles checklist</a><a href="#promotion">Promotion</a><a href="#decision-tree">Decision tree</a><a href="#references-folder">References folder</a></nav>
+    <div class="rail-foot">Snabbit Expert Design System · generated from principles/EXTENDING.md</div>
+  </aside>
+  <main class="main">
+    <header>
+      <div class="eyebrow">Snabbit Expert · Mobile</div>
+      <h1>Extending the system</h1>
+      <p class="lede">How to build something the design system does not already have — from a Figma exploration, a screenshot, a Mobbin or Pinterest reference, a PRD, or a hunch — without the result drifting from the Expert app.</p>
+    </header>
+    <h2 id="the-one-rule">The one rule</h2>
+<p><strong>Translate, don't transplant.</strong> A reference gives the <em>idea</em> — layout, hierarchy, information order, interaction, motion, a state you had not thought of. The system gives the <em>expression</em> — tokens, components, copy voice, and the principles. Every new thing borrows ideas freely and expresses them only in system terms.</p>
+<p>What may be borrowed from a reference: structure, proportion, sequencing, gestures, transitions, what information is shown and in what order, how a state is handled.</p>
+<p>What may never be borrowed: colours, type faces or sizes, radii, spacing values, shadows, icon styles, illustration styles, copy, or a dependence on reading that the expert does not have.</p>
+<hr />
+<h2 id="three-tiers">Three tiers</h2>
+<p>Every piece of UI is one of these. Name the tier in the brief and in the PR.</p>
+<h3 id="tier-1-core">Tier 1 — Core</h3>
+<p>A system component: Button, Tag, Input, Checkbox, Bottom sheet, Toast, Avatar, Progress bar, Tier badge, and so on. Lives in <code>components/</code>, in the Figma <strong>Components</strong> page, and in the <code>design-system</code> package.</p>
+<p>Use as-is. Do not detach, restyle or fork. If a core component does not fit, that is information about the component — open a change request against it (see <em>Changing core</em> below), do not work around it.</p>
+<h3 id="tier-2-composition">Tier 2 — Composition</h3>
+<p>A new arrangement of core components and tokens. A new card is a container using <code>radius.lg</code>, <code>borderDefault</code> and <code>spacing.5</code>, holding a <code>Heading3</code>, a <code>Tag</code> and a <code>SnabbitButton</code>. Most "I need something new" is this.</p>
+<p>Allowed without approval. Conditions: only core components and tokens inside; passes the principles checklist; lives in the feature's namespace (<code>Contest / Hero</code>, <code>Earnings / Breakdown</code>), never on the Components page. No brief needed beyond the feature's own.</p>
+<h3 id="tier-3-local-component">Tier 3 — Local component</h3>
+<p>Something new that is not a composition — a countdown ring, a map widget, a selfie preview, a coin animation, a custom slider.</p>
+<p>Allowed with four conditions:
+1. <strong>Tokens only.</strong> No new colour, radius, type size, spacing value or shadow. If a token is missing, propose the token (see <code>tokens/DESIGN_TOKENS.md</code> → <em>Adding or changing a token</em>); do not hard-code.
+2. <strong>Principles pass.</strong> Runs the full component acceptance checklist in <code>PRINCIPLES.md</code>.
+3. <strong>Namespaced.</strong> Lives in the feature's namespace in Figma and code. Never on the Components page, never in <code>core/designsystem</code>.
+4. <strong>Briefed.</strong> Has a brief (template below) saying what it is, why no core component or composition worked, and what it borrows from where.</p>
+<h3 id="the-rule-of-three">The rule of three</h3>
+<p>The third time a Tier 3 component is used or copied by a <em>different</em> feature, it is promoted to Tier 1: it gets a spec in <code>components/</code>, a Figma component with semantic variables, and a package implementation. Until then it stays local. This is how the system grows from real need instead of speculation.</p>
+<h3 id="tier-0-not-allowed">Tier 0 — Not allowed</h3>
+<p>A detached, hand-styled, unnamed frame or composable that lives nowhere and follows nothing. Any of: a raw hex or dp in feature code, a text style not in the scale, a colour not in the palette, a "Frame 2147242534", a component copied and edited rather than composed. Reviewers reject these; agents must not produce them.</p>
+<hr />
+<h2 id="the-reference-read">The reference read</h2>
+<p>When the input is a screenshot or reference (Mobbin, Pinterest, Dribbble, a competitor, a customer-app screen), do this <strong>before</strong> drawing or coding anything. Write it down; it is the first half of the brief.</p>
+<p><strong>1. Name the idea.</strong> In one sentence, what problem does this reference solve and how? <em>"Shows earnings as a stacked bar so the split between base and incentive is visible at a glance."</em> Not "a nice earnings card".</p>
+<p><strong>2. Separate idea from expression.</strong> List what is borrowable (structure, order, interaction, state handling) and what is the reference's own skin (its colours, type, radius, illustration, copy). Only the first list travels.</p>
+<p><strong>3. Run it against the expert.</strong> Check the idea against <code>PRINCIPLES.md</code> §Who we design for. The most common failures: depends on reading fluently; targets too small; text-dense; assumes fast data or a large screen; colour alone carries meaning; celebration or nudge blocks the next action. For each failure, state the change that fixes it. If the idea <em>cannot</em> survive these changes, say so and stop — a different idea is needed.</p>
+<p><strong>4. Place it in a tier.</strong> Is it a composition of existing core parts (Tier 2)? A new local component (Tier 3)? A change to an existing core component (see below)? Name it.</p>
+<p><strong>5. Translate.</strong> Rebuild the idea in system terms: every colour a semantic token, every size from the type scale, every gap from the spacing scale, every control a core component. Copy rewritten in the Snabbit voice (warm, specific, sentence case, one idea per line) in all four languages' worth of room.</p>
+<p><strong>6. Show side by side.</strong> Present the reference and the translation together so the borrowing is visible and the differences are deliberate. Every difference from the reference is a sentence: <em>"Enlarged the amount to Heading1 and added the ₹ icon because P1."</em></p>
+<p>An agent asked to "make it like this but not strictly the design system" does steps 1–6 and delivers step 6. It does not skip to a restyled copy of the screenshot.</p>
+<hr />
+<h2 id="changing-core">Changing core</h2>
+<p>Sometimes the right outcome of a reference read is that a Tier 1 component should change — Button needs a loading state, Tag needs a count. That is welcome. The path:</p>
+<ol>
+<li>Write what is missing and which principle or use case demands it.</li>
+<li>Propose the change against the component's spec in <code>components/</code>, including every state and token affected.</li>
+<li>Update spec, Figma component and package together in one change, with the component page in <code>site/</code> regenerated.</li>
+<li>Never fork a core component to get the change into one feature faster. A fork is Tier 0.</li>
+</ol>
+<hr />
+<h2 id="brief-template-tier-3-or-a-change-to-core">Brief template (Tier 3, or a change to core)</h2>
+<p>Keep it to one screen. Put it in <code>briefs/&lt;feature&gt;-&lt;component&gt;.md</code>.</p>
+<p>```</p>
+<h1><Feature> / <Component></h1>
+<p>Tier: 3 (local)  |  or: change to core <Component>
+Owner: <name>  ·  Date: <yyyy-mm-dd></p>
+<h2 id="idea">Idea</h2>
+<p>One sentence: the problem and how this solves it.</p>
+<h2 id="why-not-existing">Why not existing</h2>
+<p>Which core components / compositions were tried and why they don't fit.</p>
+<h2 id="reference-if-any">Reference (if any)</h2>
+<p>Source, screenshot filename in references/, and the reference read (steps 1–4).</p>
+<h2 id="translation">Translation</h2>
+<p>Tokens used (every colour, type, spacing, radius by name).
+Core components inside it.
+States: default / pressed / disabled / loading / error / offline / empty (as applicable).
+Audio or voice moments.</p>
+<h2 id="deviations">Deviations</h2>
+<p>Each as one sentence: "Breaks from <system rule> on <X> because <Y>." Empty is the goal.</p>
+<h2 id="principles-checklist">Principles checklist</h2>
+<p>Paste the 16-row checklist from PRINCIPLES.md, ticked honestly.</p>
+<h2 id="promotion">Promotion</h2>
+<p>Where else this might be used. Promote to core on third use.
+```</p>
+<hr />
+<h2 id="decision-tree">Decision tree</h2>
+<p><code>Need something that doesn't exist?
+│
+├─ Can it be built only from core components + tokens?
+│    └─ Yes → Tier 2 composition. Build it in the feature namespace. Done.
+│
+├─ Does an existing core component almost fit?
+│    └─ Yes → Change to core. Propose against its spec. Don't fork.
+│
+├─ Is it genuinely new?
+│    └─ Yes → Tier 3 local. Tokens only, principles pass, namespaced, briefed.
+│              Third use elsewhere → promote to core.
+│
+└─ Starting from a screenshot / reference?
+     └─ Reference read first (steps 1–6), then re-enter this tree.</code></p>
+<hr />
+<h2 id="references-folder">References folder</h2>
+<p>Keep the reasoning, not just the result. <code>references/</code> holds each reference screenshot with a short <code>.md</code> beside it: source, date, the reference read, and which brief or component it fed. When someone asks "why does the earnings card look like that", the answer is on disk.</p>
+  </main>
+</div>
+<script>
+(function(){
+const links=[...document.querySelectorAll('#nav a')];
+const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-10% 0px -80% 0px'});
+  targets.forEach(t=>io.observe(t));
+}
+})();
+</script>
