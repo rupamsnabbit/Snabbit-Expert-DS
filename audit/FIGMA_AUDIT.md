@@ -39,7 +39,6 @@ Toggle / Switch, Spinner / loading indicator, Skeleton, Dialog / Alert, Empty st
 | [Cards - States](https://www.figma.com/design/QjXqQZVAqLoRmH1j7foH1I/Expert-App---Design-System-2.O?node-id=379-6040) | 4 | Card | Cards – States (4) is the base card. |
 | [Check box](https://www.figma.com/design/QjXqQZVAqLoRmH1j7foH1I/Expert-App---Design-System-2.O?node-id=8-1322) | 18 | Checkbox | 18 variants, fine. |
 | [Selection Chips](https://www.figma.com/design/QjXqQZVAqLoRmH1j7foH1I/Expert-App---Design-System-2.O?node-id=122-145) | 2 | Chip | Merge with Selection Pill. |
-| [Selection Pill](https://www.figma.com/design/QjXqQZVAqLoRmH1j7foH1I/Expert-App---Design-System-2.O?node-id=1075-9887) | 2 | Chip | Selection Pill — merge with Selection Chips. |
 | [Coins & Card - Chips](https://www.figma.com/design/QjXqQZVAqLoRmH1j7foH1I/Expert-App---Design-System-2.O?node-id=531-2544) | 24 | CoinChip | 24 variants. Reward currency chip. |
 | [Coins & Cards - Small](https://www.figma.com/design/QjXqQZVAqLoRmH1j7foH1I/Expert-App---Design-System-2.O?node-id=609-6820) | 6 | CoinChip | Coins & Cards – Small — size variant of CoinChip. |
 | [Calendar](https://www.figma.com/design/QjXqQZVAqLoRmH1j7foH1I/Expert-App---Design-System-2.O?node-id=827-5182) | 3 | DatePicker | Calendar (3) — merge with 1598:7553. |
@@ -62,6 +61,7 @@ Toggle / Switch, Spinner / loading indicator, Skeleton, Dialog / Alert, Empty st
 | [Date Selection Cards](https://www.figma.com/design/QjXqQZVAqLoRmH1j7foH1I/Expert-App---Design-System-2.O?node-id=10-2585) | 2 | SelectionCard | Date Selection — variant. |
 | [Selectable Card](https://www.figma.com/design/QjXqQZVAqLoRmH1j7foH1I/Expert-App---Design-System-2.O?node-id=75-500) | 4 | SelectionCard | Selectable Card — duplicate concept, merge. |
 | [Selection Cards with Description](https://www.figma.com/design/QjXqQZVAqLoRmH1j7foH1I/Expert-App---Design-System-2.O?node-id=19-133) | 6 | SelectionCard | with Description — variant. |
+| [Selection Pill](https://www.figma.com/design/QjXqQZVAqLoRmH1j7foH1I/Expert-App---Design-System-2.O?node-id=1075-9887) | 2 | SelectionCard | Selection Pill (Camera / Gallery) — a full-width option row with icon; reclassified from Chip to SelectionCard during the Chip spec. |
 | [Simple Selection Cards](https://www.figma.com/design/QjXqQZVAqLoRmH1j7foH1I/Expert-App---Design-System-2.O?node-id=10-2334) | 4 | SelectionCard | Simple Selection Cards — base. Absorb the 6 other selection-card frames as variants. |
 | [Slider](https://www.figma.com/design/QjXqQZVAqLoRmH1j7foH1I/Expert-App---Design-System-2.O?node-id=1236-8652) | 5 | Slider | 💯 Percentage variants. Merge with 2524:8298; confirm whether interactive or display-only. |
 | [Slider](https://www.figma.com/design/QjXqQZVAqLoRmH1j7foH1I/Expert-App---Design-System-2.O?node-id=2524-8298) | 2 | Slider | Second Slider frame. Merge. |

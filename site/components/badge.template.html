@@ -1,0 +1,119 @@
+<title>Snabbit Expert Badge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>__BASECSS__
+.host{position:relative;display:inline-grid;place-items:center;width:48px;height:48px;border-radius:10px;color:#374151;background:#fff}
+.host svg{width:24px;height:24px}
+.bdg{position:absolute;top:-6px;right:-6px;min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:var(--bf);color:#fff;font-family:var(--sans);font-size:12px;font-weight:600;display:grid;place-items:center;box-shadow:0 0 0 2px #fff;line-height:1;font-variant-numeric:tabular-nums;animation:pop .15s ease-out}
+.bdg.dot{min-width:10px;width:10px;height:10px;padding:0;top:-3px;right:-3px}
+@keyframes pop{from{transform:scale(.6);opacity:0}}
+@media (prefers-reduced-motion:reduce){.bdg{animation:none}.ab.just .hex{animation:none}}
+.tab{display:flex;flex-direction:column;align-items:center;gap:4px;width:72px;padding:8px 0;color:#6B7280;font-family:var(--sans);font-size:12px;position:relative}
+.tab .ic{position:relative;width:24px;height:24px}.tab svg{width:24px;height:24px}
+.tab.on{color:#F70F79}
+.tabbar{display:flex;justify-content:space-around;width:360px;border-top:1px solid #E5E7EB;background:#fff;padding-bottom:8px}
+/* achievement */
+.ab{display:inline-flex;flex-direction:column;align-items:center;gap:6px;position:relative;font-family:var(--sans)}
+.ab .hex{width:var(--s);height:var(--s);position:relative;display:grid;place-items:center}
+.ab .hex svg{width:100%;height:100%}
+.ab.locked .hex svg.art{filter:grayscale(1);opacity:.6}
+.ab .lk{position:absolute;right:-2px;bottom:-2px;width:20px;height:20px;border-radius:50%;background:#fff;display:grid;place-items:center;color:#6B7280;box-shadow:0 0 0 1px #E5E7EB}.ab .lk svg{width:14px;height:14px}
+.ab .ring{position:absolute;inset:-6px;width:auto;height:auto}
+.ab .lbl{font-size:12px;color:#374151}.ab.locked .lbl{color:#9CA3AF}
+.ab.equipped .hex{box-shadow:0 0 0 2px #F70F79;border-radius:50%}
+.ab.just .hex{animation:earn .6s cubic-bezier(.2,.8,.2,1)}
+@keyframes earn{0%{transform:scale(.8);opacity:.4}60%{transform:scale(1.08)}100%{transform:scale(1)}}
+.ab .spk{position:absolute;inset:-14px;pointer-events:none}
+.ab.just .spk i{position:absolute;width:6px;height:6px;border-radius:50%;background:#FBBF24;animation:sp2 .9s ease-out forwards}
+@keyframes sp2{to{transform:translate(var(--x),var(--y)) scale(0);opacity:0}}
+.grid3{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:24px 28px;align-items:end}
+.stg{display:flex;flex-direction:column;gap:10px;align-items:flex-start}.stg .cap{font-family:var(--mono);font-size:12px;color:#6B7280}.stg .cap b{color:#111827;font-weight:500}
+.split{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.sp{border:1px solid var(--border);border-radius:12px;padding:14px 16px;background:var(--bg)}.sp .k{font-size:12px;color:var(--brand);font-weight:600;letter-spacing:.06em;text-transform:uppercase}.sp h4{margin:4px 0 6px;font-size:16px;color:var(--text)}.sp p{margin:0;font-size:13.5px;color:var(--text-2);line-height:1.5}
+.strip{display:flex;gap:12px;align-items:flex-end;background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px;width:328px;color:#111827}
+.strip .more{font-size:14px;color:#6B7280;align-self:center;margin-left:auto}
+__NAVCSS__</style>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · Badge</small></div></div>
+    __SITENAV__
+    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#badge">Badge — count · dot</a><a href="#rules">Badge rules</a><a href="#ach">AchievementBadge</a><a href="#figma">Figma changes</a></nav>
+    <div class="rail-foot">Rendered from tokens.json · spec in components/badge.md</div>
+  </aside>
+  <main class="main">
+    <header id="overview">
+      <div class="eyebrow">Core components</div><h1>Badge</h1>
+      <p class="lede">"Badge" means two different things in the Figma file and in every design system. This page splits them: a tiny count or dot pinned to something else, and the metallic hexagon she earned.</p>
+      <div class="meta"><span class="chip status">Proposed</span><span class="chip">Tier 1 · Core</span><span class="chip"><code>SnabbitBadge</code></span><span class="chip"><code>SnabbitAchievementBadge</code></span><span class="chip">Figma "Badge – Parent" → AchievementBadge</span></div>
+      <div class="split" style="margin-top:20px">
+        <div class="sp"><div class="k">Badge</div><h4>A nudge to look</h4><p>Count or dot on the corner of an IconButton, tab, avatar or card. Information, never a target. Clears the moment the thing is seen.</p></div>
+        <div class="sp"><div class="k">AchievementBadge</div><h4>A thing she earned</h4><p>A reward-layer asset (metallic hex) with a size, a state and a label. The artwork comes only from the asset register; the component only places it.</p></div>
+      </div>
+    </header>
+
+    <section id="badge">
+      <header><div class="eyebrow">Part 1</div><h2>Badge — count · dot</h2><p>Pinned top-right with a 2 dp white ring so it separates from any host. Count ≤ 9 then <code>9+</code> — two digits is the most she should read at 12 sp in a corner. Prefer the dot: fewer digits, same information.</p></header>
+      <div class="stage"><div class="grid3" id="bd"></div></div>
+      <h3>On a tab bar</h3>
+      <div class="stage" style="padding:0;overflow:hidden;width:362px"><div class="tabbar" id="tabs"></div></div>
+    </section>
+
+    <section id="rules">
+      <header><div class="eyebrow">Discipline</div><h2>Badge rules</h2></header>
+      <ul class="rules">
+        <li><b>One badge per host, three badged hosts per screen</b> (tab bar included). More is noise, not nudging — P6 says nudges are rare.</li>
+        <li><b>Never success tone.</b> A badge asks her to look; a finished thing needs no nudge.</li>
+        <li><b>Never money.</b> An amount is an <code>Amount</code>.</li>
+        <li><b>Clears when seen.</b> A badge that lingers trains her to ignore badges.</li>
+        <li>Announced with the host: "Chat, 3 unread". A dot announces "new".</li>
+      </ul>
+    </section>
+
+    <section id="ach">
+      <header><div class="eyebrow">Part 2</div><h2>AchievementBadge</h2><p>Four sizes, five states. A locked badge is greyscale with a lock <em>and</em> a label saying how to earn it — a grey hexagon alone is a mystery, not motivation. Tap <em>Earn it</em> to see the ≤ 1.5 s celebration.</p></header>
+      <div class="stage"><div class="grid3" id="ab"></div></div>
+      <h3>Sizes</h3>
+      <div class="stage"><div class="grid3" id="abs"></div></div>
+      <h3>Strip (composition — lives with the profile pattern)</h3>
+      <div class="stage"><div class="strip" id="strip"></div></div>
+    </section>
+
+    <section id="figma">
+      <header><div class="eyebrow">Reconciliation</div><h2>What changes in Figma</h2></header>
+      <ol class="rules"><li>Rename Badge – Parent → <b>AchievementBadge</b>: Asset (swap from Assets page), Size (24 / 40 / 64 / 96), State (Earned / Locked / In progress / Just earned / Equipped), boolean Label.</li><li>Create <b>Badge</b>: Kind (Dot / Count), Tone (Brand / Error / Neutral), Count. Nest into IconButton, BottomTabBar item, Avatar.</li><li>Badges Groups → a composition on the profile pattern, not a component.</li><li>Bind fills to semantic variables; count to Caption SemiBold.</li></ol>
+      <p class="sub" style="margin-top:14px">Result: Badge 6 · AchievementBadge 20 (asset swapped, not multiplied).</p>
+    </section>
+  </main>
+</div>
+
+<script id="tokens-json" type="application/json">__TOKENS__</script>
+<script>
+(function(){
+const T=JSON.parse(document.getElementById("tokens-json").textContent); const $=s=>document.querySelector(s);
+const sem={}; Object.values(T.color.semantic).flat().forEach(t=>sem[t.name]=t.value); const P=T.color.palette;
+const ICO={chat:'M216,48H40A16,16,0,0,0,24,64V224a15.85,15.85,0,0,0,9.24,14.5A16.13,16.13,0,0,0,40,240a15.89,15.89,0,0,0,10.25-3.78l.09-.07L83,208H216a16,16,0,0,0,16-16V64A16,16,0,0,0,216,48ZM40,224h0ZM216,192H82.5a16,16,0,0,0-10.3,3.75l-.12.11L40,224V64H216Z',bell:'M221.8,175.94C216.25,166.38,208,139.33,208,104a80,80,0,1,0-160,0c0,35.34-8.26,62.38-13.81,71.94A16,16,0,0,0,48,200H88.81a40,40,0,0,0,78.38,0H208a16,16,0,0,0,13.8-24.06ZM128,216a24,24,0,0,1-22.62-16h45.24A24,24,0,0,1,128,216ZM48,184c7.7-13.24,16-43.92,16-80a64,64,0,1,1,128,0c0,36.05,8.28,66.73,16,80Z',house:'M240,208H224V136l2.34,2.34A8,8,0,0,0,237.66,127L139.31,28.68a16,16,0,0,0-22.62,0L18.34,127a8,8,0,0,0,11.32,11.31L32,136v72H16a8,8,0,0,0,0,16H240a8,8,0,0,0,0-16ZM48,120l80-80,80,80v88H160V152a8,8,0,0,0-8-8H104a8,8,0,0,0-8,8v56H48Zm64,88V160h32v48Z',wallet:'M216,64H56a8,8,0,0,1,0-16H192a8,8,0,0,0,0-16H56A24,24,0,0,0,32,56V184a24,24,0,0,0,24,24H216a16,16,0,0,0,16-16V80A16,16,0,0,0,216,64Zm0,128H56a8,8,0,0,1-8-8V78.63A23.84,23.84,0,0,0,56,80H216Zm-48-60a12,12,0,1,1,12,12A12,12,0,0,1,168,132Z',trophy:'M232,64H208V56a16,16,0,0,0-16-16H64A16,16,0,0,0,48,56v8H24A16,16,0,0,0,8,80V96a40,40,0,0,0,40,40h3.65A80.13,80.13,0,0,0,120,191.61V216H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16H136V191.58c31.94-3.23,58.44-25.64,68.08-55.58H208a40,40,0,0,0,40-40V80A16,16,0,0,0,232,64ZM48,120A24,24,0,0,1,24,96V80H48v32q0,4,.39,8Zm144-8.9c0,35.52-28.49,64.64-63.51,64.9H128a64,64,0,0,1-64-64V56H192ZM232,96a24,24,0,0,1-24,24h-.5a81.81,81.81,0,0,0,.5-8.9V80h24Z',user:'M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z',lock:'M208,80H176V56a48,48,0,0,0-96,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM96,56a32,32,0,0,1,64,0V80H96ZM208,208H48V96H208V208Zm-68-56a12,12,0,1,1-12-12A12,12,0,0,1,140,152Z',check:'M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z'};
+const svg=n=>`<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="${ICO[n]}"/></svg>`;
+const TONE={brand:sem.bgBrand,error:sem.borderError,neutral:sem.borderStrong};
+const badge=(o)=>o.kind==='dot'?`<span class="bdg dot" style="--bf:${TONE[o.tone||'brand']}" aria-label="new"></span>`:`<span class="bdg" style="--bf:${TONE[o.tone||'brand']}">${o.count>9?'9+':o.count}</span>`;
+const host=(icon,b)=>`<span class="host">${svg(icon)}${b||''}</span>`;
+const W=(cap,html)=>`<div class="stg">${html}<div class="cap">${cap}</div></div>`;
+$('#bd').innerHTML=[W('<b>count · brand</b>',host('chat',badge({count:3}))),W('<b>count</b> · 9+ cap',host('chat',badge({count:27}))),W('<b>dot · brand</b> · preferred',host('bell',badge({kind:'dot'}))),W('<b>count · error</b> · needs fixing',host('user',badge({count:1,tone:'error'}))),W('<b>count · neutral</b> · informational',host('wallet',badge({count:5,tone:'neutral'}))),W('<b>host disabled</b> · badge hides',`<span class="host" style="color:#9CA3AF">${svg('chat')}</span>`)].join('');
+const tabs=[['house','Home',1],['wallet','Earnings',0,{kind:'dot'}],['trophy','Rewards',0,{count:2}],['chat','Chat',0,{count:12}],['user','Profile',0]];
+$('#tabs').innerHTML=tabs.map(([i,l,on,b])=>`<div class="tab ${on?'on':''}"><span class="ic">${svg(i)}${b?badge(b):''}</span><span>${l}</span></div>`).join('');
+// achievement hex (stand-in for asset/badge/*): metallic gradient
+const hex=(metal,s)=>{const g={gold:['#FDE68A','#F59E0B','#B45309'],silver:['#F3F4F6','#9CA3AF','#4B5563'],bronze:['#F5C6A0','#C2703F','#7C3E12'],blue:['#BFDBFE','#3B82F6','#1E3A8A'],purple:['#E9D5FF','#8B5CF6','#4C1D95']}[metal];const id='g'+metal+Math.random().toString(36).slice(2,6);
+ return `<svg class="art" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${g[0]}"/><stop offset=".55" stop-color="${g[1]}"/><stop offset="1" stop-color="${g[2]}"/></linearGradient></defs><path d="M32 3l25 14.5v29L32 61 7 46.5v-29z" fill="url(#${id})"/><path d="M32 12l17 10v20L32 52 15 42V22z" fill="rgba(255,255,255,.18)"/><path d="M32 20l3.5 7.2 7.9 1.1-5.7 5.6 1.4 7.9L32 38l-7.1 3.8 1.4-7.9-5.7-5.6 7.9-1.1z" fill="#fff" opacity=".95"/></svg>`;};
+function ab(o){const s=o.size||64;const st=o.state||'earned';
+ const ring=st==='progress'?`<svg class="ring" viewBox="0 0 100 100"><circle cx="50" cy="50" r="47" fill="none" stroke="${sem.borderDefault}" stroke-width="3"/><circle cx="50" cy="50" r="47" fill="none" stroke="${sem.interactiveDefault}" stroke-width="3" stroke-linecap="round" stroke-dasharray="${2*Math.PI*47}" stroke-dashoffset="${2*Math.PI*47*(1-(o.progress||.6))}" transform="rotate(-90 50 50)"/></svg>`:'';
+ const lk=(st==='locked'||st==='progress')?`<span class="lk">${svg('lock')}</span>`:'';
+ const spk=st==='just'?`<span class="spk">${Array.from({length:8},(_,i)=>`<i style="left:50%;top:50%;--x:${Math.cos(i*Math.PI/4)*34}px;--y:${Math.sin(i*Math.PI/4)*34}px"></i>`).join('')}</span>`:'';
+ return `<span class="ab ${st==='locked'||st==='progress'?'locked':''} ${st==='equipped'?'equipped':''} ${st==='just'?'just':''}" ${o.id?`id="${o.id}"`:''}><span class="hex" style="--s:${s}px">${ring}${hex(o.metal||'gold')}${lk}${spk}</span>${o.label!==undefined?`<span class="lbl">${o.label}</span>`:''}</span>`;}
+$('#ab').innerHTML=[W('<b>earned</b>',ab({metal:'gold',label:'Gold star'})),W('<b>locked</b> · greyscale + lock + how',ab({metal:'silver',state:'locked',label:'3 more jobs'})),W('<b>in progress</b> · ring shows how close',ab({metal:'bronze',state:'progress',progress:.7,label:'7 of 10 jobs'})),W('<b>equipped</b> · the one on her profile',ab({metal:'blue',state:'equipped',label:'Shakti Premium'})),`<div class="stg"><span id="justwrap">${ab({metal:'gold',state:'locked',label:'1 more job',id:'just'})}</span><button class="sbtn" id="earn" style="--h:40px;--px:16px;--r:8px;--fs:14px;--fw:500;--ic:18px;--gap:6px;--fill:${sem.bgBrandSubtle};--ink:${sem.textBrand};--fill-p:${P.pink['100']}"><span class="lb">Earn it</span></button><div class="cap"><b>just earned</b> · ≤ 1.5 s · earn sound</div></div>`].join('');
+$('#earn').onclick=()=>{$('#justwrap').innerHTML=ab({metal:'gold',state:'just',label:'Gold star',id:'just'});setTimeout(()=>{$('#justwrap').innerHTML=ab({metal:'gold',state:'earned',label:'Gold star',id:'just'});},1500);};
+$('#abs').innerHTML=[96,64,40,24].map(s=>W(`<b>${s}</b> dp`,ab({metal:'gold',size:s}))).join('');
+$('#strip').innerHTML=ab({metal:'bronze',size:40})+ab({metal:'silver',size:40})+ab({metal:'gold',size:40})+ab({metal:'blue',size:40,state:'progress',progress:.4})+ab({metal:'purple',size:40,state:'locked'})+`<span class="more">+3 more</span>`;
+const links=[...document.querySelectorAll('#nav a')];const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-20% 0px -70% 0px'});targets.forEach(t=>io.observe(t));}
+})();
+</script>

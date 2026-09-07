@@ -31,7 +31,7 @@ C = [
  ("1491:17604","CORE","TextField · Search","Fold into TextField with leading icon + clear."),
  ("89:99","COMP","TextField + DatePicker","DOB Selection — composition."),
  ("122:145","CORE","Chip","Merge with Selection Pill."),
- ("1075:9887","CORE","Chip","Selection Pill — merge with Selection Chips."),
+ ("1075:9887","CORE","SelectionCard","Selection Pill (Camera / Gallery) — a full-width option row with icon; reclassified from Chip to SelectionCard during the Chip spec."),
  ("1236:8652","CORE","Slider","💯 Percentage variants. Merge with 2524:8298; confirm whether interactive or display-only."),
  ("2524:8298","CORE","Slider","Second Slider frame. Merge."),
  # ---- feedback & status

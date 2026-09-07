@@ -1,0 +1,112 @@
+<title>Snabbit Expert Avatar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>__BASECSS__
+.av{position:relative;display:inline-grid;place-items:center;width:var(--s);height:var(--s);border-radius:50%;background:var(--bg,#F3F4F6);color:var(--ink,#374151);font-family:var(--sans);font-weight:600;overflow:visible;flex:none}
+.av .in{width:100%;height:100%;border-radius:50%;overflow:hidden;display:grid;place-items:center;background:inherit}
+.av .in svg.ph{width:60%;height:60%;color:#9CA3AF}
+.av .in .ini{font-size:var(--fs);line-height:1}
+.av .in .ill{width:100%;height:100%}
+.av .dot{position:absolute;right:0;bottom:0;width:var(--d);height:var(--d);border-radius:50%;background:var(--dc);box-shadow:0 0 0 2px #fff}
+.av .ver{position:absolute;right:-2px;bottom:-2px;width:var(--v);height:var(--v);border-radius:50%;background:#fff;display:grid;place-items:center;color:#10B981}.av .ver svg{width:100%;height:100%}
+.av.load .in{background:linear-gradient(90deg,#F3F4F6 25%,#E5E7EB 50%,#F3F4F6 75%);background-size:200% 100%;animation:sh 1.2s linear infinite}
+@keyframes sh{to{background-position:-200% 0}}
+.av.dis{opacity:.4;filter:grayscale(1)}
+.av.sel{box-shadow:0 0 0 2px #fff,0 0 0 4px #F70F79}
+.av.sel .chk{position:absolute;right:-2px;bottom:-2px;width:20px;height:20px;border-radius:50%;background:#F70F79;color:#fff;display:grid;place-items:center;box-shadow:0 0 0 2px #fff}.av.sel .chk svg{width:12px;height:12px}
+.grp{display:flex;align-items:center}.grp .av{margin-left:-8px;box-shadow:0 0 0 2px #fff}.grp .av:first-child{margin-left:0}
+.grp .more{margin-left:-8px;width:32px;height:32px;border-radius:50%;background:#F3F4F6;color:#374151;font-size:12px;font-weight:600;display:grid;place-items:center;box-shadow:0 0 0 2px #fff;font-family:var(--sans)}
+.grid3{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:24px 28px;align-items:end}
+.stg{display:flex;flex-direction:column;gap:10px;align-items:flex-start}.stg .cap{font-family:var(--mono);font-size:12px;color:#6B7280}.stg .cap b{color:#111827;font-weight:500}
+.sizes{display:flex;gap:28px;align-items:flex-end;flex-wrap:wrap}
+.hash{display:flex;gap:16px;align-items:center;flex-wrap:wrap;background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px;color:#111827}
+.hash input{height:48px;border:1px solid #E5E7EB;border-radius:10px;padding:0 14px;font:inherit;font-size:16px;width:220px;color:#111827}
+.rowx{display:flex;align-items:center;gap:12px;width:328px;padding:10px 0;border-bottom:1px solid #F3F4F6;color:#111827;font-family:var(--sans)}
+.rowx .n{font-size:16px;font-weight:500}.rowx .s{font-size:14px;color:#6B7280}
+.fallback{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.fallback .arr{color:#9CA3AF;font-size:18px}
+__NAVCSS__</style>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · Avatar</small></div></div>
+    __SITENAV__
+    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#sizes">Sizes</a><a href="#sources">Sources &amp; fallback</a><a href="#status">Status &amp; verified</a><a href="#states">States &amp; groups</a><a href="#context">In context</a><a href="#figma">Figma changes</a></nav>
+    <div class="rail-foot">Rendered from tokens.json · spec in components/avatar.md</div>
+  </aside>
+  <main class="main">
+    <header id="overview">
+      <div class="eyebrow">Core component</div><h1>Avatar</h1>
+      <p class="lede">A face in a circle. When reading is slow, a face is the fastest way to say <em>who</em> — so the avatar has to be reliable when there's no photo, honest about verification, and never used for anything that isn't a person.</p>
+      <div class="meta"><span class="chip status">Proposed</span><span class="chip">Tier 1 · Core</span><span class="chip"><code>SnabbitAvatar</code></span><span class="chip">5 sizes · 4 sources</span><span class="chip">People only</span></div>
+    </header>
+
+    <section id="sizes">
+      <header><div class="eyebrow">Sizing</div><h2>Sizes</h2><p>Nine sizes become five, on the asset grid: 24 list meta · 32 rows and chat · 40 cards and header · 56 profile row and contest ranks · 96 profile hero and selfie confirm.</p></header>
+      <div class="stage"><div class="sizes" id="sz"></div></div>
+    </section>
+
+    <section id="sources">
+      <header><div class="eyebrow">When there's no photo</div><h2>Sources &amp; fallback</h2><p>Photo → initials → illustration → placeholder. A photo that fails falls to <b>initials</b>, not to the grey glyph. Initials get a colour from the name, so the same person is always the same colour.</p></header>
+      <div class="stage"><div class="fallback" id="fb"></div></div>
+      <h3>Deterministic initials colour</h3>
+      <div class="hash"><input id="nm" value="Radhika Sharma" aria-label="Name"><div id="hashout" style="display:flex;gap:12px;align-items:center"></div><span class="sub" style="font-size:13px">Type a name — same name, same wash, every time. Six washes, text in the 700 step.</span></div>
+    </section>
+
+    <section id="status">
+      <header><div class="eyebrow">Two facts about a person</div><h2>Status &amp; verified</h2><p>Who is available and who is verified. The dot has a 2 dp white ring so it reads on any photo; the verified mark is Phosphor <code>seal-check</code> filled. Status colour is never alone — the name row always says it in words too.</p></header>
+      <div class="stage"><div class="grid3" id="st"></div></div>
+    </section>
+
+    <section id="states">
+      <header><div class="eyebrow">Behaviour</div><h2>States &amp; groups</h2></header>
+      <div class="stage"><div class="grid3" id="sts"></div></div>
+    </section>
+
+    <section id="context">
+      <header><div class="eyebrow">On the screen</div><h2>In context</h2><p>Placement diagrams, not final screens.</p></header>
+      <div class="phones" id="ctx"></div>
+    </section>
+
+    <section id="figma">
+      <header><div class="eyebrow">Reconciliation</div><h2>What changes in Figma</h2></header>
+      <ol class="rules"><li>Nine sizes → 24 / 32 / 40 / 56 / 96. Properties: Source (Photo / Initials / Illustration / Placeholder), Persona (illustration only), Status (None / Online / Busy / Offline), boolean Verified, State (Default / Loading / Disabled / Selected).</li><li>Initials backgrounds bound to the six washes; text to the 700 steps.</li><li>Illustration variants use the character portrait assets from the Assets page.</li><li>Add Avatar group (3 + count).</li></ol>
+    </section>
+  </main>
+</div>
+
+<script id="tokens-json" type="application/json">__TOKENS__</script>
+<script>
+(function(){
+const T=JSON.parse(document.getElementById("tokens-json").textContent); const $=s=>document.querySelector(s);
+const sem={}; Object.values(T.color.semantic).flat().forEach(t=>sem[t.name]=t.value); const P=T.color.palette;
+const ICO={user:'M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z',
+ seal:'M225.86,102.82c-3.77-3.94-7.67-8-9.14-11.57-1.36-3.27-1.44-8.69-1.52-13.94-.15-9.76-.31-20.82-8-28.51s-18.75-7.85-28.51-8c-5.25-.08-10.67-.16-13.94-1.52-3.56-1.47-7.63-5.37-11.57-9.14C146.28,23.51,138.44,16,128,16s-18.27,7.51-25.18,14.14c-3.94,3.77-8,7.67-11.57,9.14C88,40.64,82.56,40.72,77.31,40.8c-9.76.15-20.82.31-28.51,8S41,67.55,40.8,77.31c-.08,5.25-.16,10.67-1.52,13.94-1.47,3.56-5.37,7.63-9.14,11.57C23.51,109.72,16,117.56,16,128s7.51,18.27,14.14,25.18c3.77,3.94,7.67,8,9.14,11.57,1.36,3.27,1.44,8.69,1.52,13.94.15,9.76.31,20.82,8,28.51s18.75,7.85,28.51,8c5.25.08,10.67.16,13.94,1.52,3.56,1.47,7.63,5.37,11.57,9.14C109.72,232.49,117.56,240,128,240s18.27-7.51,25.18-14.14c3.94-3.77,8-7.67,11.57-9.14,3.27-1.36,8.69-1.44,13.94-1.52,9.76-.15,20.82-.31,28.51-8s7.85-18.75,8-28.51c.08-5.25.16-10.67,1.52-13.94,1.47-3.56,5.37-7.63,9.14-11.57C232.49,146.28,240,138.44,240,128S232.49,109.73,225.86,102.82Zm-52.2,6.84-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z',
+ check:'M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z'};
+const svg=n=>`<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="${ICO[n]}"/></svg>`;
+// simple illustrated portrait stand-in (real one is asset/character/* portrait)
+const ill=(f)=>`<svg class="ill" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" fill="${P.pink['100']}"/><circle cx="32" cy="26" r="13" fill="#C98A5E"/><path d="M19 25c0-9 6-15 13-15s13 6 13 15c-3-5-8-7-13-7s-10 2-13 7z" fill="#2B2118"/>${f?'<circle cx="32" cy="10" r="5" fill="#2B2118"/>':'<rect x="25" y="30" width="14" height="3" rx="1.5" fill="#2B2118"/>'}<path d="M10 64c2-14 11-21 22-21s20 7 22 21z" fill="${sem.interactiveDefault}"/><path d="M28 43l4 6 4-6" fill="#111827"/></svg>`;
+const WASH=[[sem.bgBrandSubtle,P.pink['700']],[sem.bgSuccessSubtle,P.green['700']],[sem.bgWarningSubtle,P.yellow['700']],[P.blue['100'],P.blue['700']],[sem.bgTertiary,P.gray['700']],[P.pink['100'],P.pink['800']]];
+const hash=s=>{let h=0;for(const c of s)h=(h*31+c.charCodeAt(0))>>>0;return h%WASH.length;};
+const FS={24:12,32:14,40:14,56:20,96:32};
+function av(o){const s=o.size||40;const [bg,ink]=WASH[hash(o.name||'')];let inner='';const src=o.src||'initials';
+ if(src==='photo')inner=`<div style="width:100%;height:100%;background:linear-gradient(135deg,#8C6B4F,#3B2A1E)"></div>`;
+ else if(src==='initials'){const parts=(o.name||'').trim().split(/\s+/);const ini=s<32?(parts[0]||'')[0]||'':((parts[0]||'')[0]||'')+((parts[1]||'')[0]||'');inner=`<span class="ini">${ini.toUpperCase()}</span>`;}
+ else if(src==='illustration')inner=ill(o.persona!=='man');
+ else inner=svg('user').replace('<svg','<svg class="ph"');
+ const st=src==='initials'?`--bg:${bg};--ink:${ink}`:src==='placeholder'?`--bg:${sem.bgTertiary}`:`--bg:${P.pink['100']}`;
+ const dot=o.status?`<span class="dot" style="--d:${Math.max(8,s*.25)}px;--dc:${{online:sem.iconSuccess,busy:sem.iconWarning,offline:sem.borderStrong}[o.status]}"></span>`:'';
+ const ver=o.verified?`<span class="ver" style="--v:${Math.max(16,s*.4)}px">${svg('seal')}</span>`:'';
+ return `<span class="av ${o.state||''}" style="--s:${s}px;--fs:${FS[s]||14}px;${st}" role="img" aria-label="${o.name||'person'}${o.status?', '+o.status:''}${o.verified?', verified':''}"><span class="in">${o.state==='load'?'':inner}</span>${o.state==='load'?'':dot}${o.state==='load'?'':(o.verified?ver:'')}${o.state==='sel'?`<span class="chk">${svg('check')}</span>`:''}</span>`;}
+const W=(cap,html)=>`<div class="stg">${html}<div class="cap">${cap}</div></div>`;
+$('#sz').innerHTML=[96,56,40,32,24].map(s=>W(`<b>${s}</b> dp`,av({size:s,src:'photo',name:'Radhika Sharma'}))).join('')+[96,56,40,32,24].map(s=>W(`initials ${s<32?'· one letter':''}`,av({size:s,name:'Radhika Sharma'}))).join('');
+$('#fb').innerHTML=`${av({size:56,src:'photo',name:'Radhika Sharma'})}<span class="arr">→</span>${av({size:56,name:'Radhika Sharma'})}<span class="arr">→</span>${av({size:56,src:'illustration',name:'Radhika Sharma'})}<span class="arr">→</span>${av({size:56,src:'placeholder'})}<div style="display:flex;flex-direction:column;gap:2px;margin-left:12px;font-size:13px;color:#6B7280"><span><b style="color:#111827">photo</b> verified selfie</span><span><b style="color:#111827">initials</b> name-coloured wash</span><span><b style="color:#111827">illustration</b> before selfie is verified; training; empty states</span><span><b style="color:#111827">placeholder</b> loading, or no name at all</span></div>`;
+const nm=$('#nm');const upd=()=>{const n=nm.value||' ';$('#hashout').innerHTML=av({size:56,name:n})+av({size:40,name:n})+av({size:32,name:n})+av({size:24,name:n});};nm.addEventListener('input',upd);upd();
+$('#st').innerHTML=[W('<b>online</b> · available now',av({size:56,src:'photo',name:'Radhika',status:'online'})),W('<b>busy</b> · on a job',av({size:56,src:'photo',name:'Radhika',status:'busy'})),W('<b>offline</b>',av({size:56,src:'photo',name:'Radhika',status:'offline'})),W('<b>verified</b> · seal-check fill',av({size:56,src:'photo',name:'Radhika',verified:1})),W('<b>verified + status</b> → mark wins, status to a Tag',av({size:56,src:'photo',name:'Radhika',verified:1})),W('<b>illustration</b> · trainer persona',av({size:56,src:'illustration',persona:'man'}))].join('');
+$('#sts').innerHTML=[W('<b>loading</b> · skeleton',av({size:56,state:'load'})),W('<b>disabled</b> · blocked customer',av({size:56,src:'photo',name:'x',state:'dis'})),W('<b>selected</b> · in a picker',av({size:56,src:'photo',name:'x',state:'sel'})),W('<b>group</b> · 3 + count · expert on top',`<div class="grp">${av({size:32,name:'Meera K'})}${av({size:32,name:'Anil P'})}${av({size:32,src:'photo',name:'Radhika'})}<span class="more">+4</span></div>`)].join('');
+$('#ctx').innerHTML=[
+ `<div><div style="width:328px;background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:4px 16px">${[['Radhika Sharma','You · Gold tier','photo',{verified:1}],['Meera K','Customer · 1.2 km','initials',{}],['Anil P','Trainer · Koramangala hub','illustration',{persona:'man',verified:1}]].map(([n,s,src,o])=>`<div class="rowx">${av({size:40,src,name:n,...o})}<div><div class="n">${n}</div><div class="s">${s}</div></div></div>`).join('')}</div><span class="verdict ok">Do</span><div class="sub" style="font-size:13.5px">40 dp in rows. Customer without a photo gets initials, not a grey glyph. Verified mark on the expert and the trainer; status said in words in the row.</div></div>`,
+ `<div><div style="width:328px;background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:4px 16px"><div class="rowx"><span class="av" style="--s:40px;--bg:#FEF1F7"><span class="in" style="color:#F70F79;font-size:18px">₹</span></span><div><div class="n">Snabbit coins</div><div class="s">240 coins</div></div></div><div class="rowx">${av({size:40,src:'placeholder'})}<div><div class="n">Meera K</div><div class="s">Customer</div></div></div><div class="rowx"><span class="av" style="--s:40px;--bg:#fff;box-shadow:0 0 0 3px #F70F79"><span class="in" style="background:linear-gradient(135deg,#8C6B4F,#3B2A1E)"></span></span><div><div class="n">Radhika Sharma</div><div class="s">You</div></div></div></div><span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">A circle for coins (people only); a grey placeholder for a known customer (should be initials); a decorative pink ring that collides with the selected state.</div></div>`].join('');
+const links=[...document.querySelectorAll('#nav a')];const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-20% 0px -70% 0px'});targets.forEach(t=>io.observe(t));}
+})();
+</script>
