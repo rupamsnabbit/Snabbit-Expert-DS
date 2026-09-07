@@ -1,0 +1,247 @@
+<title>Snabbit Expert TextField</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{--bg:#FFFFFF;--bg-2:#F9FAFB;--bg-3:#F3F4F6;--text:#111827;--text-body:#374151;--text-2:#6B7280;--text-3:#9CA3AF;--border:#E5E7EB;--border-subtle:#F3F4F6;--brand:#F70F79;--brand-wash:#FEF1F7;--brand-ink:#97094A;--focus:#3B82F6;--ok:#059669;--ok-wash:#ECFDF5;--bad:#DC2626;--bad-wash:#FEF2F2;
+--sans:"Outfit",ui-sans-serif,system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111827;--bg-2:#1F2937;--bg-3:#374151;--text:#F9FAFB;--text-body:#E5E7EB;--text-2:#9CA3AF;--text-3:#6B7280;--border:#374151;--border-subtle:#1F2937;--brand:#F65CA1;--brand-wash:rgba(247,15,121,.14);--brand-ink:#FBC9DF;--ok:#34D399;--ok-wash:rgba(16,185,129,.14);--bad:#F87171;--bad-wash:rgba(239,68,68,.14)}}
+:root[data-theme="dark"]{--bg:#111827;--bg-2:#1F2937;--bg-3:#374151;--text:#F9FAFB;--text-body:#E5E7EB;--text-2:#9CA3AF;--text-3:#6B7280;--border:#374151;--border-subtle:#1F2937;--brand:#F65CA1;--brand-wash:rgba(247,15,121,.14);--brand-ink:#FBC9DF;--ok:#34D399;--ok-wash:rgba(16,185,129,.14);--bad:#F87171;--bad-wash:rgba(239,68,68,.14)}
+*{box-sizing:border-box} html{scroll-behavior:smooth;scroll-padding-top:24px} @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} .sbtn,.sbtn *{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--text-body);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+code{font-family:var(--mono);font-size:.86em;background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--text)}
+button{font:inherit} :focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+.shell{display:grid;grid-template-columns:232px minmax(0,1fr);min-height:100vh}
+.rail{position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--border);padding:24px 16px 32px;background:var(--bg);display:flex;flex-direction:column;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;padding:0 8px}.brand-mark{width:28px;height:28px;border-radius:8px;background:var(--brand);display:grid;place-items:center;flex:none}.brand-mark span{width:12px;height:12px;border-radius:3px;background:#fff;transform:rotate(45deg)}
+.brand b{font-weight:600;color:var(--text);font-size:15px;line-height:1.2;display:block}.brand small{color:var(--text-2);font-size:12px}
+.nav{display:flex;flex-direction:column;gap:2px}.nav .grp{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);padding:12px 8px 4px;font-weight:500}
+.nav a{display:block;padding:6px 8px;border-radius:6px;text-decoration:none;color:var(--text-body);font-size:13.5px}.nav a:hover{background:var(--bg-2);color:var(--text)}.nav a.on{background:var(--brand-wash);color:var(--brand-ink);font-weight:500}
+.rail-foot{margin-top:auto;padding:0 8px;font-size:12px;color:var(--text-3);line-height:1.5}
+.main{padding:40px 56px 96px;max-width:1080px;width:100%}
+.eyebrow{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);font-weight:600}
+h1{font-size:40px;line-height:1.1;font-weight:600;color:var(--text);margin:8px 0 12px;letter-spacing:-.015em}
+.lede{font-size:17px;color:var(--text-2);max-width:62ch;margin:0}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}.chip{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border:1px solid var(--border);border-radius:999px;font-size:12.5px;color:var(--text-body)}
+.chip.status{background:#FEF3C7;color:#B45309;border-color:transparent;font-weight:600}
+section{padding-top:64px} section>header{margin-bottom:20px;max-width:68ch}
+h2{font-size:26px;line-height:1.2;font-weight:600;color:var(--text);margin:6px 0 8px;letter-spacing:-.01em} h3{font-size:16px;font-weight:600;color:var(--text);margin:32px 0 12px}
+section>header p,.sub{color:var(--text-2);margin:0;font-size:15px}
+.rules{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:6px;max-width:68ch}.rules li{padding-left:18px;position:relative;font-size:14px}.rules li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:2px;background:var(--brand)}
+
+/* stage */
+.stage{background:#FFFFFF;border:1px solid var(--border);border-radius:12px;padding:24px;color:#111827}
+.stage.dark{background:#F9FAFB}
+.matrix{display:grid;gap:14px 20px;align-items:center}
+.matrix .h{font-family:var(--mono);font-size:11.5px;color:#6B7280;text-transform:uppercase;letter-spacing:.06em}
+.matrix .r{font-family:var(--mono);font-size:12.5px;color:#111827;white-space:nowrap}
+.matrix .r small{display:block;color:#9CA3AF;font-size:11px;text-transform:none;letter-spacing:0}
+.na{width:24px;height:2px;background:#E5E7EB;border-radius:1px}
+.sizes{display:flex;gap:28px;align-items:flex-end;flex-wrap:wrap}
+.szd{display:flex;flex-direction:column;gap:10px;align-items:flex-start}.szd .lbl{font-family:var(--mono);font-size:12px;color:#6B7280}.szd .lbl b{color:#111827;font-weight:500}
+
+/* the button itself — everything from tokens via CSS vars set by JS */
+.sbtn{display:inline-flex;align-items:center;justify-content:center;border:0;cursor:pointer;white-space:nowrap;font-family:var(--sans);position:relative;overflow:hidden;
+  height:var(--h);padding:0 var(--px);border-radius:var(--r);font-size:var(--fs);font-weight:var(--fw);line-height:1;gap:var(--gap);
+  background:var(--fill,transparent);color:var(--ink);box-shadow:inset 0 0 0 var(--bw,0) var(--bc,transparent);transition:background .1s ease-out,box-shadow .1s}
+.sbtn.full{width:100%}
+.sbtn:active:not(.disabled):not(.loading){background:var(--fill-p)}
+.sbtn.pressed{background:var(--fill-p)}
+.sbtn.focused{outline:2px solid #3B82F6;outline-offset:2px}
+.sbtn.disabled{cursor:not-allowed}
+.sbtn svg{width:var(--ic);height:var(--ic);flex:none}
+.sbtn .spin{width:var(--ic);height:var(--ic);border-radius:50%;border:2px solid currentColor;border-right-color:transparent;animation:sp .7s linear infinite;flex:none}
+@keyframes sp{to{transform:rotate(360deg)}}
+.sbtn .hf{position:absolute;inset:0;background:rgba(0,0,0,.18);transform-origin:left;transform:scaleX(0)}
+.sbtn.holding .hf{transform:scaleX(1);transition:transform .6s linear}
+.sbtn>*{position:relative}
+.demo{display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start}
+.demo .card{flex:1;min-width:260px;border:1px solid var(--border);border-radius:12px;padding:18px;background:var(--bg)}
+.demo .card h4{margin:0 0 6px;font-size:14px;color:var(--text)}.demo .card p{margin:0 0 14px;font-size:13px;color:var(--text-2)}
+.demo .live{display:flex;gap:12px;align-items:center;flex-wrap:wrap;background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px;color:#111827}
+.logline{font-family:var(--mono);font-size:12px;color:var(--text-2);margin-top:10px;min-height:16px}
+
+/* phone mock */
+.phones{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.ph{border:1px solid var(--border);border-radius:16px;overflow:hidden;background:#fff;color:#111827}
+.ph .bar{padding:10px 16px;border-bottom:1px solid #F3F4F6;font-size:12px;color:#6B7280;display:flex;justify-content:space-between}
+.ph .bar b{font-weight:600}
+.ph .body{padding:16px;min-height:220px;display:flex;flex-direction:column;gap:12px}
+.ph .body .hd{font-size:20px;font-weight:600;line-height:28px}.ph .body .tx{font-size:14px;color:#374151;line-height:20px}
+.ph .foot{padding:12px 16px 24px;border-top:1px solid #F3F4F6;display:flex;flex-direction:column;gap:12px}
+.ph .foot.row{flex-direction:row}
+.verdict{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin:12px 0 6px}
+.verdict.ok{background:var(--ok-wash);color:var(--ok)}.verdict.bad{background:var(--bad-wash);color:var(--bad)}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px}table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{text-align:left;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);font-weight:500;padding:10px 14px;background:var(--bg-2);border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:9px 14px;border-bottom:1px solid var(--border-subtle);vertical-align:top}tr:last-child td{border-bottom:0}
+td.tk{font-family:var(--mono);font-size:12.5px;color:var(--text)}
+.sw{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-2px;margin-right:6px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(8px);background:var(--text);color:var(--bg);padding:8px 14px;border-radius:8px;font-size:13px;opacity:0;pointer-events:none;transition:opacity .15s,transform .15s;font-family:var(--mono)}.toast.show{opacity:1;transform:translateX(-50%)}
+@media (max-width:900px){.shell{grid-template-columns:1fr}.rail{position:static;height:auto;border-right:0;border-bottom:1px solid var(--border);padding:16px}.nav{flex-direction:row;flex-wrap:wrap;gap:4px}.nav .grp,.rail-foot{display:none}.main{padding:32px 20px 80px}h1{font-size:32px}}
+
+.tf{display:flex;flex-direction:column;gap:8px;width:328px;color:#111827;font-family:var(--sans)}
+.tf .lb{font-size:14px;line-height:20px;font-weight:500;color:#374151}
+.tf .box{display:flex;align-items:center;gap:12px;height:var(--h,56px);padding:0 16px;border-radius:12px;background:var(--fill,#fff);box-shadow:inset 0 0 0 var(--bw,1px) var(--bc,#E5E7EB);position:relative}
+.tf .box svg.lead{width:20px;height:20px;flex:none;color:#6B7280}
+.tf .pre{font-size:16px;color:#374151;margin-right:-4px}
+.tf input,.tf textarea{flex:1;min-width:0;border:0;outline:0;background:transparent;font:inherit;font-size:16px;line-height:24px;color:#111827;padding:0;caret-color:#F70F79}
+.tf input::placeholder,.tf textarea::placeholder{color:#9CA3AF}
+.tf .box.dis input{color:#9CA3AF}
+.tf .trail{display:flex;align-items:center;gap:6px;flex:none}
+.tf .trail>span>svg{width:20px;height:20px;display:block}
+.tf .chg{border:0;background:transparent;color:#F70F79;font:inherit;font-size:14px;font-weight:500;padding:0 6px;height:40px;border-radius:8px;cursor:pointer}
+.tf .chg.dis{color:#9CA3AF;cursor:default}
+.tf .clr{width:32px;height:32px;border:0;background:transparent;border-radius:6px;display:grid;place-items:center;color:#374151;cursor:pointer}
+.tf .clr svg{width:16px;height:16px}
+.tf .help{display:flex;align-items:flex-start;gap:6px;font-size:14px;line-height:20px;color:#6B7280}
+.tf .help svg{width:16px;height:16px;flex:none;margin-top:2px}
+.tf .help.err{color:#DC2626}.tf .help.ok{color:#059669}.tf .help.dis{color:#9CA3AF}
+.tf .help .rs{color:#F70F79;font-weight:500;cursor:pointer;border:0;background:none;font:inherit;padding:0}
+.tf .help .rs[disabled]{color:#9CA3AF;cursor:default}
+.tf .otp{display:flex;gap:8px}
+.tf .otp input{width:48px;height:56px;border-radius:12px;box-shadow:inset 0 0 0 1px #E5E7EB;text-align:center;font-size:20px;font-weight:600;background:#fff;flex:none}
+.tf .otp input:focus{box-shadow:inset 0 0 0 2px #F70F79}
+.tf .otp.err input{box-shadow:inset 0 0 0 2px #EF4444}
+.tf .otp.shake{animation:shk .12s linear 2}
+@keyframes shk{25%{transform:translateX(-3px)}75%{transform:translateX(3px)}}
+@media (prefers-reduced-motion:reduce){.tf .otp.shake{animation:none}}
+.tf textarea{resize:none;height:calc(24px*3);padding:14px 0}
+.tf .box.multi{height:auto;align-items:flex-start;padding-right:16px}
+.tf .cnt{position:absolute;right:12px;bottom:8px;font-size:12px;color:#9CA3AF;font-variant-numeric:tabular-nums}
+.tf .box.search{background:#F9FAFB;box-shadow:none}
+.tf .spin{width:18px;height:18px;border-radius:50%;border:2px solid #6B7280;border-right-color:transparent;animation:sp .7s linear infinite}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(328px,1fr));gap:28px 32px}
+.stg{display:flex;flex-direction:column;gap:6px}.stg .cap{font-family:var(--mono);font-size:12px;color:#6B7280}.stg .cap b{color:#111827;font-weight:500}
+
+.sitenav{display:flex;flex-direction:column;gap:2px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.sitenav .grp{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);padding:10px 8px 4px;font-weight:500}
+.sitenav a{display:block;padding:5px 8px;border-radius:6px;text-decoration:none;color:var(--text-body);font-size:13.5px;border:0}
+.sitenav a:hover{background:var(--bg-2);color:var(--text)} .sitenav a.on{color:var(--brand-ink);background:var(--brand-wash);font-weight:500}
+@media (max-width:900px){.sitenav{flex-direction:row;flex-wrap:wrap;gap:4px;border-bottom:0;padding-bottom:0}.sitenav .grp{display:none}}
+</style>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · TextField</small></div></div>
+    <nav class="sitenav" aria-label="Site"><div class="grp">Foundations</div><a href="../index.html">Tokens</a><a href="../principles.html">Principles</a><a href="../extending.html">Extending</a><a href="../icons.html">Icons</a><a href="../assets.html">Assets</a><div class="grp">Components</div><a href="../components/button.html">Button</a><a href="../components/icon-button.html">IconButton</a><a href="../components/tag.html">Tag</a><a class="on" href="../components/text-field.html">TextField</a><div class="grp">Research</div><a href="../benchmark.html">Benchmark</a><a href="../audit.html">Figma audit</a></nav>
+    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#kinds">Kinds</a><a href="#states">States</a><a href="#live">Live behaviour</a><a href="#content">Content rules</a><a href="#figma">Figma changes</a></nav>
+    <div class="rail-foot">Rendered from tokens.json · spec in components/text-field.md</div>
+  </aside>
+  <main class="main">
+    <header id="overview">
+      <div class="eyebrow">Core component</div><h1>TextField</h1>
+      <p class="lede">One component for everything the expert types. Five Figma frames become one field with a <code>kind</code> — same label, border, error and helper everywhere, so learning one means learning all.</p>
+      <div class="meta"><span class="chip status">Proposed</span><span class="chip">Tier 1 · Core</span><span class="chip"><code>SnabbitTextField</code></span><span class="chip">7 kinds × 2 sizes × 7 states</span><span class="chip">Replaces 5 frames</span></div>
+    </header>
+
+    <section id="kinds">
+      <header><div class="eyebrow">One component</div><h2>Kinds</h2><p>Every kind shares the same anatomy: label above (always visible), 56 dp field, optional leading Phosphor icon, one trailing slot, helper line below at 14 sp. Search is the only kind allowed without a label — its icon and placement are the label.</p></header>
+      <div class="stage"><div class="grid2" id="kinds-grid"></div></div>
+    </section>
+
+    <section id="states">
+      <header><div class="eyebrow">Behaviour</div><h2>States</h2><p>Error is carried by three channels — border, icon, message — and appears on blur or submit, never on every keystroke. Verified data is read-only until <em>Change</em> is tapped.</p></header>
+      <div class="stage"><div class="grid2" id="states-grid"></div></div>
+    </section>
+
+    <section id="live">
+      <header><div class="eyebrow">Try it</div><h2>Live behaviour</h2><p>Real inputs. Phone formats as you type and validates on blur; OTP auto-advances and shakes on a wrong code (try anything except 123456); the counter tracks the note.</p></header>
+      <div class="stage"><div class="grid2" id="live-grid"></div></div>
+    </section>
+
+    <section id="content">
+      <header><div class="eyebrow">Words</div><h2>Content rules</h2></header>
+      <div class="tbl-wrap"><table><thead><tr><th>Part</th><th>Rule</th><th>Do</th><th>Don't</th></tr></thead><tbody>
+        <tr><td>Label</td><td>Noun, sentence case, ≤ 20 chars, always visible</td><td>Mobile number</td><td>Enter your mobile number here</td></tr>
+        <tr><td>Placeholder</td><td>An example of a valid value, never the instruction</td><td>98765 43210</td><td>Type number</td></tr>
+        <tr><td>Helper</td><td>One line ≤ 40 chars: what happens, or the format</td><td>We'll send an OTP to this number</td><td>Required field *</td></tr>
+        <tr><td>Error</td><td>The problem and the fix, no blame</td><td>Enter all 10 digits</td><td>Invalid input</td></tr>
+        <tr><td>Leading icon</td><td>Means the content; from the register</td><td><code>phone</code> on a phone field</td><td>A decorative sparkle</td></tr>
+      </tbody></table></div>
+    </section>
+
+    <section id="figma">
+      <header><div class="eyebrow">Reconciliation</div><h2>What changes in Figma</h2></header>
+      <ol class="rules"><li>Merge Input field, Mobile and OTP, Number Input, Text Box, Search Box into one component with <code>Kind</code>, <code>Size</code>, <code>State</code>, and booleans for leading icon and helper.</li><li>Field height 56 (L) / 48 (M), radius 12, padding 16.</li><li>Disabled: grey the <em>Change</em> action and drop the verified check.</li><li>Helper and error to <code>BodyMd</code>; error line gets <code>x-circle</code>.</li><li>OTP: <code>Boxes</code> 4 / 6; add error and filled states; <em>Resend</em> as a ghost Button in the helper.</li><li>Rebind to semantic variables.</li></ol>
+    </section>
+  </main>
+</div>
+
+<script id="tokens-json" type="application/json">{"$schema":"https://design-tokens.github.io/community-group/format/","meta":{"name":"Snabbit Expert Design Tokens","package":"com.snabbit:design-system","version":"0.19.0","platform":"Compose Multiplatform (Android + iOS)","source":"tokens/DESIGN_TOKENS.md","themeApi":"SnabbitTheme","modes":["light"],"notes":["The installed package is canonical. If this file and the package disagree, the package wins and this file must be updated in the same change.","Dark mode is not defined in 0.19.0. Semantic names are mode-ready; a dark mapping is the next token task.","Palette names (pink600, gray700) are allowed only while building a semantic token the package does not yet expose.","Decisions: Outfit only (Indic falls back to system face). Phosphor Icons only \u2014 regular by default, fill for selected/active."]},"color":{"palette":{"pink":{"50":"#FEF1F7","100":"#FDE4EF","200":"#FBC9DF","300":"#F9AECF","400":"#F65CA1","500":"#F4368D","600":"#F70F79","700":"#C70C61","800":"#97094A","900":"#670632"},"gray":{"50":"#F9FAFB","100":"#F3F4F6","200":"#E5E7EB","300":"#D1D5DB","400":"#9CA3AF","500":"#6B7280","600":"#4B5563","700":"#374151","800":"#1F2937","900":"#111827"},"green":{"50":"#ECFDF5","100":"#D1FAE5","200":"#A7F3D0","300":"#6EE7B7","400":"#34D399","500":"#10B981","600":"#059669","700":"#047857"},"red":{"50":"#FEF2F2","100":"#FEE2E2","200":"#FECACA","300":"#FCA5A5","400":"#F87171","500":"#EF4444","600":"#DC2626","700":"#B91C1C"},"yellow":{"50":"#FFFBEB","100":"#FEF3C7","200":"#FDE68A","300":"#FCD34D","400":"#FBBF24","500":"#F59E0B","600":"#D97706","700":"#B45309"},"blue":{"50":"#EFF6FF","100":"#DBEAFE","200":"#BFDBFE","300":"#93C5FD","400":"#60A5FA","500":"#3B82F6","600":"#2563EB","700":"#1D4ED8"}},"semantic":{"text":[{"name":"textPrimary","ref":"gray.900","value":"#111827","use":"Titles and highest-emphasis content"},{"name":"textBody","ref":"gray.700","value":"#374151","use":"Default readable content"},{"name":"textSecondary","ref":"gray.500","value":"#6B7280","use":"Supporting content and metadata"},{"name":"textTertiary","ref":"gray.400","value":"#9CA3AF","use":"Low-emphasis, non-essential metadata"},{"name":"textDisabled","ref":"gray.300","value":"#D1D5DB","use":"Disabled labels only"},{"name":"textInverse","ref":"white","value":"#FFFFFF","use":"Text on dark or brand fills"},{"name":"textBrand","ref":"pink.600","value":"#F70F79","use":"Brand-colored text and links"},{"name":"textSuccess","ref":"green.600","value":"#059669","use":"Success text and strong positive amount"},{"name":"textWarning","ref":"yellow.600","value":"#D97706","use":"Attention or waiting text"},{"name":"textError","ref":"red.600","value":"#DC2626","use":"Error or destructive message"},{"name":"textInfo","ref":"blue.600","value":"#2563EB","use":"Informational message and link-like status"}],"background":[{"name":"bgPrimary","ref":"white","value":"#FFFFFF","use":"Screen and card surfaces"},{"name":"bgSecondary","ref":"gray.50","value":"#F9FAFB","use":"Subtle grouped surface"},{"name":"bgTertiary","ref":"gray.100","value":"#F3F4F6","use":"Muted/header surface"},{"name":"bgInverse","ref":"gray.900","value":"#111827","use":"Dark high-contrast surface, scrim base"},{"name":"bgBrand","ref":"pink.600","value":"#F70F79","use":"Primary brand fill"},{"name":"bgBrandSubtle","ref":"pink.50","value":"#FEF1F7","use":"Soft brand callout or selected wash"},{"name":"bgSuccess","ref":"green.50","value":"#ECFDF5","use":"Success callout"},{"name":"bgSuccessSubtle","ref":"green.100","value":"#D1FAE5","use":"Success emphasis"},{"name":"bgWarning","ref":"yellow.50","value":"#FFFBEB","use":"Warning callout"},{"name":"bgWarningSubtle","ref":"yellow.100","value":"#FEF3C7","use":"Warning emphasis"},{"name":"bgError","ref":"red.50","value":"#FEF2F2","use":"Error callout"},{"name":"bgErrorSubtle","ref":"red.100","value":"#FEE2E2","use":"Error emphasis"},{"name":"bgInfo","ref":"blue.50","value":"#EFF6FF","use":"Informational callout"}],"border":[{"name":"borderDefault","ref":"gray.200","value":"#E5E7EB","use":"Standard structural border"},{"name":"borderSubtle","ref":"gray.100","value":"#F3F4F6","use":"Low-emphasis card boundary"},{"name":"borderStrong","ref":"gray.500","value":"#6B7280","use":"Strong neutral separation"},{"name":"borderBrand","ref":"pink.600","value":"#F70F79","use":"Selected or brand emphasis boundary"},{"name":"borderFocus","ref":"blue.500","value":"#3B82F6","use":"Keyboard/input focus"},{"name":"borderSuccess","ref":"green.500","value":"#10B981","use":"Success boundary"},{"name":"borderWarning","ref":"yellow.500","value":"#F59E0B","use":"Warning boundary"},{"name":"borderError","ref":"red.500","value":"#EF4444","use":"Error boundary"}],"icon":[{"name":"iconBrand","ref":"pink.600","value":"#F70F79","use":"Brand-colored icon"},{"name":"iconSuccess","ref":"green.500","value":"#10B981","use":"Success icon"},{"name":"iconWarning","ref":"yellow.500","value":"#F59E0B","use":"Warning icon"},{"name":"iconError","ref":"red.500","value":"#EF4444","use":"Error icon"}],"interactive":[{"name":"interactiveDefault","ref":"pink.600","value":"#F70F79","use":"Primary brand action, resting"},{"name":"interactiveHover","ref":"pink.500","value":"#F4368D","use":"Hover / loading \u2014 package-controlled"},{"name":"interactivePressed","ref":"pink.700","value":"#C70C61","use":"Pressed \u2014 package-controlled"}]}},"typography":{"fontFamily":{"compose":"Outfit","legacyFlutter":"Metropolis","indicFallback":"system"},"rule":"Outfit is the only type family. It covers Latin and numerals; Devanagari and Kannada glyphs fall back to the platform system face. Do not add another family.","scale":[{"name":"Display","size":32,"lineHeight":40,"weight":600,"weightName":"SemiBold","use":"Rare hero result or safety state"},{"name":"Heading1","size":28,"lineHeight":37.3,"weight":600,"weightName":"SemiBold","use":"High-salience screen title"},{"name":"Heading2","size":24,"lineHeight":32,"weight":600,"weightName":"SemiBold","use":"Major section or result"},{"name":"Heading3","size":20,"lineHeight":28,"weight":600,"weightName":"SemiBold","use":"Card or section title"},{"name":"Title","size":18,"lineHeight":24,"weight":500,"weightName":"Medium","use":"Navigation title or prominent label"},{"name":"BodyLg","size":16,"lineHeight":24,"weight":400,"weightName":"Regular","use":"Primary explanation"},{"name":"BodyMd","size":14,"lineHeight":20,"weight":400,"weightName":"Regular","use":"Default supporting content"},{"name":"Caption","size":12,"lineHeight":16,"weight":400,"weightName":"Regular","use":"Metadata and helper content"},{"name":"Small","size":10,"lineHeight":14,"weight":400,"weightName":"Regular","use":"Compact, non-essential metadata only"},{"name":"ButtonLg","size":16,"lineHeight":16,"weight":600,"weightName":"SemiBold","use":"Large CTA"},{"name":"ButtonMd","size":14,"lineHeight":14,"weight":600,"weightName":"SemiBold","use":"Standard/compact CTA"}],"rules":["Use sentence case for UI text.","Use at most three hierarchy levels on one screen.","Do not use Small for actions, errors, payment status, safety guidance, or essential instructions.","Respect system font scaling and verify two-line labels and titles."],"indic":{"scripts":["Devanagari","Kannada"],"lineHeightMultiplier":1.15,"note":"Indic ascenders/descenders exceed Outfit metrics. Multiply the scale's line height by 1.15 for text containers that may hold Hindi, Marathi or Kannada; never truncate."}},"spacing":{"unit":"dp","scale":[{"name":"0","value":0,"use":"Intentional flush alignment"},{"name":"1","value":2,"use":"Optical correction only"},{"name":"2","value":4,"use":"Tight icon/text or inline gap"},{"name":"3","value":8,"use":"Small internal gap"},{"name":"4","value":12,"use":"Standard internal gap"},{"name":"5","value":16,"use":"Default component padding and screen margin"},{"name":"6","value":20,"use":"Large component padding"},{"name":"7","value":24,"use":"Section gap or spacious screen margin"},{"name":"8","value":32,"use":"Large section separation"},{"name":"9","value":40,"use":"Major separation"},{"name":"10","value":48,"use":"Touch target or major separation"},{"name":"11","value":64,"use":"Rare hero separation"}],"aliases":{"componentPadding":[4,8,16,24,32],"componentGap":[4,8,12,16],"layoutPadding":[16,24,32],"layoutGap":[16,24,32]},"forbidden":[6,10,14,18,22],"rule":"Do not add arbitrary 6, 10, 14, 18, or 22 dp layout values. A value owned by a design-system component (6 dp tag gap, 10 dp medium-button radius) is valid only through that component."},"radius":{"unit":"dp","scale":[{"name":"none","value":0,"use":"Dividers and intentionally square joins"},{"name":"sm","value":4,"use":"Small controls and tags"},{"name":"md","value":8,"use":"Inputs and compact controls"},{"name":"lg","value":12,"use":"Default card and large control"},{"name":"xl","value":16,"use":"Selected card, sheet, prominent surface"},{"name":"xxl","value":24,"use":"Large hero surface only"},{"name":"full","value":9999,"use":"Pill, avatar, circle"}]},"borderWidth":{"unit":"dp","scale":[{"name":"thin","value":1,"use":"Default structural border"},{"name":"thick","value":1.5,"use":"Emphasised border"},{"name":"thicker","value":2,"use":"Selection or strong emphasis \u2014 not routine decoration"}]},"elevation":{"unit":"dp","rule":"The package exposes no global shadow scale in 0.19.0. Default is flat with border/background hierarchy.","scale":[{"name":"flat","value":0,"use":"Screens, cards, buttons, app bars"},{"name":"floating","value":4,"use":"Floating map/control surface already established in app code"},{"name":"modal","value":null,"use":"Component-owned \u2014 use SnabbitBottomSheet; do not recreate its scrim/elevation"}]},"icon":{"library":"Phosphor Icons","rule":"Phosphor only. No other icon set, no custom glyphs. One Phosphor icon = one meaning in the app, recorded in foundations/icons.md.","weights":{"default":"regular","selected":"fill","emphasis":"bold","never":["thin","light","duotone"]},"unit":"dp","sizes":[16,20,24,32,40],"defaultAction":24,"mediumControl":20,"minTouchTarget":48,"buttonOwned":{"XS":16,"S":18,"M":20,"L":24}},"button":{"unit":"dp","sizes":[{"name":"XS","height":32,"paddingX":12,"radius":6,"icon":16,"labelSize":12,"labelWeight":500,"labelWeightName":"Medium"},{"name":"S","height":40,"paddingX":16,"radius":8,"icon":18,"labelSize":14,"labelWeight":500,"labelWeightName":"Medium"},{"name":"M","height":48,"paddingX":20,"radius":10,"icon":20,"labelSize":16,"labelWeight":600,"labelWeightName":"SemiBold"},{"name":"L","height":56,"paddingX":24,"radius":12,"icon":24,"labelSize":16,"labelWeight":600,"labelWeightName":"SemiBold"}],"rules":["Prefer M for standard actions and L for full-width bottom actions.","XS and S need a 48 dp parent hit area when interactive.","Loading keeps the label visible and adds a spinner.","Disabled and loading states must block duplicate taps."]},"grid":{"unit":"dp","baselineViewport":{"width":360,"height":800},"verifyWidths":[320,360,412],"screenMargin":16,"spaciousMargin":24,"nestedPadding":[12,16],"sectionGap":[24,32],"bottomActionPadding":16,"rules":["Use one horizontal margin consistently within a screen.","Cards align to the screen grid.","Bottom actions use 16 dp horizontal/top padding plus the system safe-area inset.","Keep scroll content clear of a persistent footer by the footer height plus safe area.","Do not center long form content in a fixed-width column on phone surfaces."]},"governance":{"addingAToken":["Confirm the package has no semantic token for the need.","Check this document and the closest existing pattern.","Record the proposed name, value, purpose, affected states, contrast, and migration plan in a component brief.","Prefer adding the token to the design-system package. If temporarily local, isolate it in the app design-system layer, not a feature file.","Update this file, the component library, and affected screenshots in the same change."]},"illustration":{"purple":null,"yellow":["yellow.300","yellow.400"],"note":"Accent hues used only inside illustration assets (foundations/assets.md). purple: hex to be read from the Snabbit Assets Figma file and locked; until then no new asset introduces a purple."}}</script>
+<script>
+(function(){
+const T=JSON.parse(document.getElementById("tokens-json").textContent); const $=s=>document.querySelector(s);
+const sem={}; Object.values(T.color.semantic).flat().forEach(t=>sem[t.name]=t.value);
+const ICO={user:'M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z',
+ phone:'M222.37,158.46l-47.11-21.11-.13-.06a16,16,0,0,0-15.17,1.4,8.12,8.12,0,0,0-.75.56L134.87,160c-15.42-7.49-31.34-23.29-38.83-38.51l20.78-24.71c.2-.25.39-.5.57-.77a16,16,0,0,0,1.32-15.06l0-.12L97.54,33.64a16,16,0,0,0-16.62-9.52A56.26,56.26,0,0,0,32,80c0,79.4,64.6,144,144,144a56.26,56.26,0,0,0,55.88-48.92A16,16,0,0,0,222.37,158.46ZM176,208A128.14,128.14,0,0,1,48,80,40.2,40.2,0,0,1,82.87,40a.61.61,0,0,0,0,.12l21,47L83.2,111.86a6.13,6.13,0,0,0-.57.77,16,16,0,0,0-1,15.7c9.06,18.53,27.73,37.06,46.46,46.11a16,16,0,0,0,15.75-1.14,8.44,8.44,0,0,0,.74-.56L168.89,152l47,21.05h0s.08,0,.11,0A40.21,40.21,0,0,1,176,208Z',
+ idcard:'M200,112a8,8,0,0,1-8,8H152a8,8,0,0,1,0-16h40A8,8,0,0,1,200,112Zm-8,24H152a8,8,0,0,0,0,16h40a8,8,0,0,0,0-16Zm40-80V200a16,16,0,0,1-16,16H40a16,16,0,0,1-16-16V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56ZM216,200V56H40V200H216Zm-80.26-34a8,8,0,1,1-15.5,4c-2.63-10.26-13.06-18-24.25-18s-21.61,7.74-24.25,18a8,8,0,1,1-15.5-4,39.84,39.84,0,0,1,17.19-23.34,32,32,0,1,1,45.12,0A39.76,39.76,0,0,1,135.75,166ZM96,136a16,16,0,1,0-16-16A16,16,0,0,0,96,136Z',
+ rupee:'M216,72H160.62a48.14,48.14,0,0,0-19.05-24H208a8,8,0,0,0,0-16H64a8,8,0,0,0,0,16h48a32,32,0,0,1,29.95,24H64a8,8,0,0,0,0,16h77.95A32,32,0,0,1,112,112H64a8,8,0,0,0-6.09,13.19l90.5,105.59a8,8,0,1,0,12.15-10.41L82.32,128H112a48.07,48.07,0,0,0,47.74-40H216a8,8,0,0,0,0-16Z',
+ mag:'M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z',
+ x:'M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z',
+ xc:'M165.66,101.66,139.31,128l26.35,26.34a8,8,0,0,1-11.32,11.32L128,139.31l-26.34,26.35a8,8,0,0,1-11.32-11.32L116.69,128,90.34,101.66a8,8,0,0,1,11.32-11.32L128,116.69l26.34-26.35a8,8,0,0,1,11.32,11.32ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z',
+ cc:'M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z',
+ ccf:'M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,85.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z',
+ info:'M144,176a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Zm120,44A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z'};
+const svg=(n,c)=>`<svg class="${c||''}" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="${ICO[n]}"/></svg>`;
+const B={def:`--bw:1px;--bc:${sem.borderDefault}`,foc:`--bw:2px;--bc:${sem.borderBrand}`,err:`--bw:2px;--bc:${sem.borderError}`,dis:`--bw:1px;--bc:${sem.borderDefault};--fill:${sem.bgTertiary}`};
+function field(o){ // {label,icon,pre,val,ph,trail,help,helpKind,state,kind,size,id}
+  const st=B[o.state||'def']; const dis=o.state==='dis';
+  const tr=o.trail==='clear'?`<button class="clr" aria-label="Clear">${svg('x')}</button>`
+    :o.trail==='verified'?`<span style="color:${sem.iconSuccess}">${svg('ccf')}</span><button class="chg ${dis?'dis':''}">Change</button>`
+    :o.trail==='change'?`<button class="chg ${dis?'dis':''}">Change</button>`
+    :o.trail==='spin'?`<span class="spin"></span>`:o.trail?`<span class="pre" style="margin:0">${o.trail}</span>`:'';
+  const hk=o.helpKind||''; const hi=hk==='err'?svg('xc'):hk==='ok'?svg('cc'):'';
+  const help=o.help!==undefined?`<div class="help ${hk} ${dis?'dis':''}">${hi}<span>${o.help}</span></div>`:'';
+  const cls=`box ${o.kind==='search'?'search':''} ${dis?'dis':''}`;
+  return `<div class="tf" ${o.id?`id="${o.id}"`:''}>${o.label?`<div class="lb">${o.label}</div>`:''}<div class="${cls}" style="${st};${o.size==='M'?'--h:48px':''}">${o.icon?svg(o.icon,'lead'):''}${o.pre?`<span class="pre">${o.pre}</span>`:''}<input type="text" value="${o.val||''}" placeholder="${o.ph||''}" ${dis?'disabled':''} ${o.inputmode?`inputmode="${o.inputmode}"`:''} aria-label="${o.label||o.ph||''}">${tr?`<div class="trail">${tr}</div>`:''}</div>${help}</div>`;}
+function otp(o){return `<div class="tf" ${o.id?`id="${o.id}"`:''}><div class="lb">Enter OTP</div><div class="otp ${o.err?'err':''}">${Array.from({length:6},(_,i)=>`<input inputmode="numeric" maxlength="1" aria-label="digit ${i+1} of 6" value="${o.vals?o.vals[i]||'':''}">`).join('')}</div><div class="help ${o.err?'err':''}">${o.err?svg('xc'):''}<span>${o.help}</span></div></div>`;}
+function multi(o){return `<div class="tf" ${o.id?`id="${o.id}"`:''}><div class="lb">${o.label}</div><div class="box multi" style="${B.def}"><textarea placeholder="${o.ph}" maxlength="${o.max}" aria-label="${o.label}">${o.val||''}</textarea><span class="cnt">${(o.val||'').length}/${o.max}</span></div><div class="help"><span>${o.help}</span></div></div>`;}
+const W=(cap,html)=>`<div class="stg">${html}<div class="cap">${cap}</div></div>`;
+
+$('#kinds-grid').innerHTML=[
+ W('<b>text</b> · leading icon · helper',field({label:'Full name',icon:'user',ph:'Radhika Sharma',help:'This will appear on your profile'})),
+ W('<b>phone</b> · fixed +91 prefix',field({label:'Mobile number',icon:'phone',pre:'+91',ph:'98765 43210',help:"We'll send an OTP to this number",inputmode:'numeric'})),
+ W('<b>otp</b> · 6 boxes · auto-advance',otp({help:'Resend OTP in 29 s'})),
+ W('<b>number</b> · unit suffix',field({label:'Hours per day',val:'8',trail:'hr',help:'You can change this any week'})),
+ W('<b>amount</b> · ₹ prefix · Indian grouping',field({label:'Amount',icon:'rupee',pre:'₹',val:'1,25,000',help:'Tabular numerals, no paise unless typed'})),
+ W('<b>search</b> · no label · bgSecondary',field({kind:'search',icon:'mag',ph:'Search jobs',trail:'clear'})),
+ W('<b>multiline</b> · grows 3→6 lines · counter',multi({label:'Note for the customer',ph:'Anything they should know',max:120,help:'Optional'})),
+ W('<b>size M</b> · 48 dp · dense sheets only',field({label:'PAN number',icon:'idcard',ph:'ABCDE1234F',size:'M'}))
+].join('');
+
+$('#states-grid').innerHTML=[
+ W('<b>default</b>',field({label:'Mobile number',icon:'phone',pre:'+91',ph:'98765 43210',help:"We'll send an OTP to this number"})),
+ W('<b>focused</b> · borderBrand 2 dp · clear appears',field({label:'Mobile number',icon:'phone',pre:'+91',val:'98765 4',state:'foc',trail:'clear',help:"We'll send an OTP to this number"})),
+ W('<b>filled</b>',field({label:'Mobile number',icon:'phone',pre:'+91',val:'98765 43210',trail:'clear',help:"We'll send an OTP to this number"})),
+ W('<b>error</b> · border + icon + message',field({label:'Mobile number',icon:'phone',pre:'+91',val:'98765 4',state:'err',trail:'clear',help:'Enter all 10 digits',helpKind:'err'})),
+ W('<b>verified</b> · read-only until Change',field({label:'Mobile number',icon:'phone',pre:'+91',val:'98765 43210',trail:'verified',help:'Verified',helpKind:'ok'})),
+ W('<b>loading</b> · validating',field({label:'PAN number',icon:'idcard',val:'ABCDE1234F',trail:'spin',help:'Checking…'})),
+ W('<b>disabled</b> · Change greyed too',field({label:'Mobile number',icon:'phone',pre:'+91',val:'98765 43210',state:'dis',trail:'change',help:"Can't be changed during a job"})),
+ W('<b>otp · error</b> · shake once, all borders red',otp({vals:'482913',err:true,help:'Wrong code. Check the SMS and try again'}))
+].join('');
+
+$('#live-grid').innerHTML=[
+ W('<b>phone</b> · type, then tap elsewhere',field({id:'lp',label:'Mobile number',icon:'phone',pre:'+91',ph:'98765 43210',help:"We'll send an OTP to this number",inputmode:'numeric'})),
+ W('<b>otp</b> · 123456 is correct',otp({id:'lo',help:'Resend OTP in <button class="rs" disabled>30 s</button>'})),
+ W('<b>multiline</b> · counter',multi({id:'lm',label:'Note for the customer',ph:'Anything they should know',max:120,help:'Optional'}))
+].join('');
+
+// phone live
+const lp=$('#lp'), pi=lp.querySelector('input'), pbox=lp.querySelector('.box'), phelp=lp.querySelector('.help');
+const setState=(el,s)=>{el.style.cssText=B[s];};
+pi.addEventListener('focus',()=>{setState(pbox,'foc');});
+pi.addEventListener('input',()=>{let d=pi.value.replace(/\D/g,'').slice(0,10); pi.value=d.length>5?d.slice(0,5)+' '+d.slice(5):d; setState(pbox,'foc'); phelp.className='help'; phelp.innerHTML="<span>We'll send an OTP to this number</span>";});
+pi.addEventListener('blur',()=>{const d=pi.value.replace(/\D/g,''); if(d.length===0){setState(pbox,'def');} else if(d.length<10){setState(pbox,'err');phelp.className='help err';phelp.innerHTML=svg('xc')+'<span>Enter all 10 digits</span>';} else {setState(pbox,'def');phelp.className='help ok';phelp.innerHTML=svg('cc')+'<span>Looks good</span>';}});
+// otp live
+const lo=$('#lo'), boxes=[...lo.querySelectorAll('.otp input')], og=lo.querySelector('.otp'), oh=lo.querySelector('.help');
+boxes.forEach((b,i)=>{b.addEventListener('input',()=>{b.value=b.value.replace(/\D/g,'').slice(-1); og.classList.remove('err'); if(b.value&&i<5)boxes[i+1].focus(); if(boxes.every(x=>x.value)){const code=boxes.map(x=>x.value).join(''); if(code==='123456'){oh.className='help ok';oh.innerHTML=svg('cc')+'<span>Verified</span>';} else {og.classList.add('err','shake');setTimeout(()=>og.classList.remove('shake'),300);oh.className='help err';oh.innerHTML=svg('xc')+'<span>Wrong code. Check the SMS and try again</span>';}}});
+ b.addEventListener('keydown',e=>{if(e.key==='Backspace'&&!b.value&&i>0){boxes[i-1].focus();boxes[i-1].value='';}});
+ b.addEventListener('paste',e=>{const t=(e.clipboardData.getData('text')||'').replace(/\D/g,'').slice(0,6); if(t.length){e.preventDefault();[...t].forEach((c,j)=>boxes[j].value=c);boxes[Math.min(t.length,5)].focus();boxes[5].dispatchEvent(new Event('input'));}});});
+let left=30; const rs=lo.querySelector('.rs'); const tick=setInterval(()=>{left--; if(left<=0){clearInterval(tick);rs.disabled=false;rs.textContent='Resend OTP';oh.querySelector('span').childNodes[0].textContent="Didn't receive? ";} else rs.textContent=left+' s';},1000);
+// multiline counter
+const lm=$('#lm'), ta=lm.querySelector('textarea'), cnt=lm.querySelector('.cnt'); ta.addEventListener('input',()=>{cnt.textContent=ta.value.length+'/120'; ta.style.height='auto'; ta.style.height=Math.min(Math.max(ta.scrollHeight,72),144)+'px';});
+
+const links=[...document.querySelectorAll('#nav a')];const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-20% 0px -70% 0px'});targets.forEach(t=>io.observe(t));}
+})();
+</script>

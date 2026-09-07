@@ -1,0 +1,164 @@
+<title>Snabbit Expert TextField</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>__BASECSS__
+.tf{display:flex;flex-direction:column;gap:8px;width:328px;color:#111827;font-family:var(--sans)}
+.tf .lb{font-size:14px;line-height:20px;font-weight:500;color:#374151}
+.tf .box{display:flex;align-items:center;gap:12px;height:var(--h,56px);padding:0 16px;border-radius:12px;background:var(--fill,#fff);box-shadow:inset 0 0 0 var(--bw,1px) var(--bc,#E5E7EB);position:relative}
+.tf .box svg.lead{width:20px;height:20px;flex:none;color:#6B7280}
+.tf .pre{font-size:16px;color:#374151;margin-right:-4px}
+.tf input,.tf textarea{flex:1;min-width:0;border:0;outline:0;background:transparent;font:inherit;font-size:16px;line-height:24px;color:#111827;padding:0;caret-color:#F70F79}
+.tf input::placeholder,.tf textarea::placeholder{color:#9CA3AF}
+.tf .box.dis input{color:#9CA3AF}
+.tf .trail{display:flex;align-items:center;gap:6px;flex:none}
+.tf .trail>span>svg{width:20px;height:20px;display:block}
+.tf .chg{border:0;background:transparent;color:#F70F79;font:inherit;font-size:14px;font-weight:500;padding:0 6px;height:40px;border-radius:8px;cursor:pointer}
+.tf .chg.dis{color:#9CA3AF;cursor:default}
+.tf .clr{width:32px;height:32px;border:0;background:transparent;border-radius:6px;display:grid;place-items:center;color:#374151;cursor:pointer}
+.tf .clr svg{width:16px;height:16px}
+.tf .help{display:flex;align-items:flex-start;gap:6px;font-size:14px;line-height:20px;color:#6B7280}
+.tf .help svg{width:16px;height:16px;flex:none;margin-top:2px}
+.tf .help.err{color:#DC2626}.tf .help.ok{color:#059669}.tf .help.dis{color:#9CA3AF}
+.tf .help .rs{color:#F70F79;font-weight:500;cursor:pointer;border:0;background:none;font:inherit;padding:0}
+.tf .help .rs[disabled]{color:#9CA3AF;cursor:default}
+.tf .otp{display:flex;gap:8px}
+.tf .otp input{width:48px;height:56px;border-radius:12px;box-shadow:inset 0 0 0 1px #E5E7EB;text-align:center;font-size:20px;font-weight:600;background:#fff;flex:none}
+.tf .otp input:focus{box-shadow:inset 0 0 0 2px #F70F79}
+.tf .otp.err input{box-shadow:inset 0 0 0 2px #EF4444}
+.tf .otp.shake{animation:shk .12s linear 2}
+@keyframes shk{25%{transform:translateX(-3px)}75%{transform:translateX(3px)}}
+@media (prefers-reduced-motion:reduce){.tf .otp.shake{animation:none}}
+.tf textarea{resize:none;height:calc(24px*3);padding:14px 0}
+.tf .box.multi{height:auto;align-items:flex-start;padding-right:16px}
+.tf .cnt{position:absolute;right:12px;bottom:8px;font-size:12px;color:#9CA3AF;font-variant-numeric:tabular-nums}
+.tf .box.search{background:#F9FAFB;box-shadow:none}
+.tf .spin{width:18px;height:18px;border-radius:50%;border:2px solid #6B7280;border-right-color:transparent;animation:sp .7s linear infinite}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(328px,1fr));gap:28px 32px}
+.stg{display:flex;flex-direction:column;gap:6px}.stg .cap{font-family:var(--mono);font-size:12px;color:#6B7280}.stg .cap b{color:#111827;font-weight:500}
+__NAVCSS__</style>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · TextField</small></div></div>
+    __SITENAV__
+    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#kinds">Kinds</a><a href="#states">States</a><a href="#live">Live behaviour</a><a href="#content">Content rules</a><a href="#figma">Figma changes</a></nav>
+    <div class="rail-foot">Rendered from tokens.json · spec in components/text-field.md</div>
+  </aside>
+  <main class="main">
+    <header id="overview">
+      <div class="eyebrow">Core component</div><h1>TextField</h1>
+      <p class="lede">One component for everything the expert types. Five Figma frames become one field with a <code>kind</code> — same label, border, error and helper everywhere, so learning one means learning all.</p>
+      <div class="meta"><span class="chip status">Proposed</span><span class="chip">Tier 1 · Core</span><span class="chip"><code>SnabbitTextField</code></span><span class="chip">7 kinds × 2 sizes × 7 states</span><span class="chip">Replaces 5 frames</span></div>
+    </header>
+
+    <section id="kinds">
+      <header><div class="eyebrow">One component</div><h2>Kinds</h2><p>Every kind shares the same anatomy: label above (always visible), 56 dp field, optional leading Phosphor icon, one trailing slot, helper line below at 14 sp. Search is the only kind allowed without a label — its icon and placement are the label.</p></header>
+      <div class="stage"><div class="grid2" id="kinds-grid"></div></div>
+    </section>
+
+    <section id="states">
+      <header><div class="eyebrow">Behaviour</div><h2>States</h2><p>Error is carried by three channels — border, icon, message — and appears on blur or submit, never on every keystroke. Verified data is read-only until <em>Change</em> is tapped.</p></header>
+      <div class="stage"><div class="grid2" id="states-grid"></div></div>
+    </section>
+
+    <section id="live">
+      <header><div class="eyebrow">Try it</div><h2>Live behaviour</h2><p>Real inputs. Phone formats as you type and validates on blur; OTP auto-advances and shakes on a wrong code (try anything except 123456); the counter tracks the note.</p></header>
+      <div class="stage"><div class="grid2" id="live-grid"></div></div>
+    </section>
+
+    <section id="content">
+      <header><div class="eyebrow">Words</div><h2>Content rules</h2></header>
+      <div class="tbl-wrap"><table><thead><tr><th>Part</th><th>Rule</th><th>Do</th><th>Don't</th></tr></thead><tbody>
+        <tr><td>Label</td><td>Noun, sentence case, ≤ 20 chars, always visible</td><td>Mobile number</td><td>Enter your mobile number here</td></tr>
+        <tr><td>Placeholder</td><td>An example of a valid value, never the instruction</td><td>98765 43210</td><td>Type number</td></tr>
+        <tr><td>Helper</td><td>One line ≤ 40 chars: what happens, or the format</td><td>We'll send an OTP to this number</td><td>Required field *</td></tr>
+        <tr><td>Error</td><td>The problem and the fix, no blame</td><td>Enter all 10 digits</td><td>Invalid input</td></tr>
+        <tr><td>Leading icon</td><td>Means the content; from the register</td><td><code>phone</code> on a phone field</td><td>A decorative sparkle</td></tr>
+      </tbody></table></div>
+    </section>
+
+    <section id="figma">
+      <header><div class="eyebrow">Reconciliation</div><h2>What changes in Figma</h2></header>
+      <ol class="rules"><li>Merge Input field, Mobile and OTP, Number Input, Text Box, Search Box into one component with <code>Kind</code>, <code>Size</code>, <code>State</code>, and booleans for leading icon and helper.</li><li>Field height 56 (L) / 48 (M), radius 12, padding 16.</li><li>Disabled: grey the <em>Change</em> action and drop the verified check.</li><li>Helper and error to <code>BodyMd</code>; error line gets <code>x-circle</code>.</li><li>OTP: <code>Boxes</code> 4 / 6; add error and filled states; <em>Resend</em> as a ghost Button in the helper.</li><li>Rebind to semantic variables.</li></ol>
+    </section>
+  </main>
+</div>
+
+<script id="tokens-json" type="application/json">__TOKENS__</script>
+<script>
+(function(){
+const T=JSON.parse(document.getElementById("tokens-json").textContent); const $=s=>document.querySelector(s);
+const sem={}; Object.values(T.color.semantic).flat().forEach(t=>sem[t.name]=t.value);
+const ICO={user:'M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z',
+ phone:'M222.37,158.46l-47.11-21.11-.13-.06a16,16,0,0,0-15.17,1.4,8.12,8.12,0,0,0-.75.56L134.87,160c-15.42-7.49-31.34-23.29-38.83-38.51l20.78-24.71c.2-.25.39-.5.57-.77a16,16,0,0,0,1.32-15.06l0-.12L97.54,33.64a16,16,0,0,0-16.62-9.52A56.26,56.26,0,0,0,32,80c0,79.4,64.6,144,144,144a56.26,56.26,0,0,0,55.88-48.92A16,16,0,0,0,222.37,158.46ZM176,208A128.14,128.14,0,0,1,48,80,40.2,40.2,0,0,1,82.87,40a.61.61,0,0,0,0,.12l21,47L83.2,111.86a6.13,6.13,0,0,0-.57.77,16,16,0,0,0-1,15.7c9.06,18.53,27.73,37.06,46.46,46.11a16,16,0,0,0,15.75-1.14,8.44,8.44,0,0,0,.74-.56L168.89,152l47,21.05h0s.08,0,.11,0A40.21,40.21,0,0,1,176,208Z',
+ idcard:'M200,112a8,8,0,0,1-8,8H152a8,8,0,0,1,0-16h40A8,8,0,0,1,200,112Zm-8,24H152a8,8,0,0,0,0,16h40a8,8,0,0,0,0-16Zm40-80V200a16,16,0,0,1-16,16H40a16,16,0,0,1-16-16V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56ZM216,200V56H40V200H216Zm-80.26-34a8,8,0,1,1-15.5,4c-2.63-10.26-13.06-18-24.25-18s-21.61,7.74-24.25,18a8,8,0,1,1-15.5-4,39.84,39.84,0,0,1,17.19-23.34,32,32,0,1,1,45.12,0A39.76,39.76,0,0,1,135.75,166ZM96,136a16,16,0,1,0-16-16A16,16,0,0,0,96,136Z',
+ rupee:'M216,72H160.62a48.14,48.14,0,0,0-19.05-24H208a8,8,0,0,0,0-16H64a8,8,0,0,0,0,16h48a32,32,0,0,1,29.95,24H64a8,8,0,0,0,0,16h77.95A32,32,0,0,1,112,112H64a8,8,0,0,0-6.09,13.19l90.5,105.59a8,8,0,1,0,12.15-10.41L82.32,128H112a48.07,48.07,0,0,0,47.74-40H216a8,8,0,0,0,0-16Z',
+ mag:'M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z',
+ x:'M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z',
+ xc:'M165.66,101.66,139.31,128l26.35,26.34a8,8,0,0,1-11.32,11.32L128,139.31l-26.34,26.35a8,8,0,0,1-11.32-11.32L116.69,128,90.34,101.66a8,8,0,0,1,11.32-11.32L128,116.69l26.34-26.35a8,8,0,0,1,11.32,11.32ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z',
+ cc:'M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z',
+ ccf:'M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,85.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z',
+ info:'M144,176a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Zm120,44A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z'};
+const svg=(n,c)=>`<svg class="${c||''}" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="${ICO[n]}"/></svg>`;
+const B={def:`--bw:1px;--bc:${sem.borderDefault}`,foc:`--bw:2px;--bc:${sem.borderBrand}`,err:`--bw:2px;--bc:${sem.borderError}`,dis:`--bw:1px;--bc:${sem.borderDefault};--fill:${sem.bgTertiary}`};
+function field(o){ // {label,icon,pre,val,ph,trail,help,helpKind,state,kind,size,id}
+  const st=B[o.state||'def']; const dis=o.state==='dis';
+  const tr=o.trail==='clear'?`<button class="clr" aria-label="Clear">${svg('x')}</button>`
+    :o.trail==='verified'?`<span style="color:${sem.iconSuccess}">${svg('ccf')}</span><button class="chg ${dis?'dis':''}">Change</button>`
+    :o.trail==='change'?`<button class="chg ${dis?'dis':''}">Change</button>`
+    :o.trail==='spin'?`<span class="spin"></span>`:o.trail?`<span class="pre" style="margin:0">${o.trail}</span>`:'';
+  const hk=o.helpKind||''; const hi=hk==='err'?svg('xc'):hk==='ok'?svg('cc'):'';
+  const help=o.help!==undefined?`<div class="help ${hk} ${dis?'dis':''}">${hi}<span>${o.help}</span></div>`:'';
+  const cls=`box ${o.kind==='search'?'search':''} ${dis?'dis':''}`;
+  return `<div class="tf" ${o.id?`id="${o.id}"`:''}>${o.label?`<div class="lb">${o.label}</div>`:''}<div class="${cls}" style="${st};${o.size==='M'?'--h:48px':''}">${o.icon?svg(o.icon,'lead'):''}${o.pre?`<span class="pre">${o.pre}</span>`:''}<input type="text" value="${o.val||''}" placeholder="${o.ph||''}" ${dis?'disabled':''} ${o.inputmode?`inputmode="${o.inputmode}"`:''} aria-label="${o.label||o.ph||''}">${tr?`<div class="trail">${tr}</div>`:''}</div>${help}</div>`;}
+function otp(o){return `<div class="tf" ${o.id?`id="${o.id}"`:''}><div class="lb">Enter OTP</div><div class="otp ${o.err?'err':''}">${Array.from({length:6},(_,i)=>`<input inputmode="numeric" maxlength="1" aria-label="digit ${i+1} of 6" value="${o.vals?o.vals[i]||'':''}">`).join('')}</div><div class="help ${o.err?'err':''}">${o.err?svg('xc'):''}<span>${o.help}</span></div></div>`;}
+function multi(o){return `<div class="tf" ${o.id?`id="${o.id}"`:''}><div class="lb">${o.label}</div><div class="box multi" style="${B.def}"><textarea placeholder="${o.ph}" maxlength="${o.max}" aria-label="${o.label}">${o.val||''}</textarea><span class="cnt">${(o.val||'').length}/${o.max}</span></div><div class="help"><span>${o.help}</span></div></div>`;}
+const W=(cap,html)=>`<div class="stg">${html}<div class="cap">${cap}</div></div>`;
+
+$('#kinds-grid').innerHTML=[
+ W('<b>text</b> · leading icon · helper',field({label:'Full name',icon:'user',ph:'Radhika Sharma',help:'This will appear on your profile'})),
+ W('<b>phone</b> · fixed +91 prefix',field({label:'Mobile number',icon:'phone',pre:'+91',ph:'98765 43210',help:"We'll send an OTP to this number",inputmode:'numeric'})),
+ W('<b>otp</b> · 6 boxes · auto-advance',otp({help:'Resend OTP in 29 s'})),
+ W('<b>number</b> · unit suffix',field({label:'Hours per day',val:'8',trail:'hr',help:'You can change this any week'})),
+ W('<b>amount</b> · ₹ prefix · Indian grouping',field({label:'Amount',icon:'rupee',pre:'₹',val:'1,25,000',help:'Tabular numerals, no paise unless typed'})),
+ W('<b>search</b> · no label · bgSecondary',field({kind:'search',icon:'mag',ph:'Search jobs',trail:'clear'})),
+ W('<b>multiline</b> · grows 3→6 lines · counter',multi({label:'Note for the customer',ph:'Anything they should know',max:120,help:'Optional'})),
+ W('<b>size M</b> · 48 dp · dense sheets only',field({label:'PAN number',icon:'idcard',ph:'ABCDE1234F',size:'M'}))
+].join('');
+
+$('#states-grid').innerHTML=[
+ W('<b>default</b>',field({label:'Mobile number',icon:'phone',pre:'+91',ph:'98765 43210',help:"We'll send an OTP to this number"})),
+ W('<b>focused</b> · borderBrand 2 dp · clear appears',field({label:'Mobile number',icon:'phone',pre:'+91',val:'98765 4',state:'foc',trail:'clear',help:"We'll send an OTP to this number"})),
+ W('<b>filled</b>',field({label:'Mobile number',icon:'phone',pre:'+91',val:'98765 43210',trail:'clear',help:"We'll send an OTP to this number"})),
+ W('<b>error</b> · border + icon + message',field({label:'Mobile number',icon:'phone',pre:'+91',val:'98765 4',state:'err',trail:'clear',help:'Enter all 10 digits',helpKind:'err'})),
+ W('<b>verified</b> · read-only until Change',field({label:'Mobile number',icon:'phone',pre:'+91',val:'98765 43210',trail:'verified',help:'Verified',helpKind:'ok'})),
+ W('<b>loading</b> · validating',field({label:'PAN number',icon:'idcard',val:'ABCDE1234F',trail:'spin',help:'Checking…'})),
+ W('<b>disabled</b> · Change greyed too',field({label:'Mobile number',icon:'phone',pre:'+91',val:'98765 43210',state:'dis',trail:'change',help:"Can't be changed during a job"})),
+ W('<b>otp · error</b> · shake once, all borders red',otp({vals:'482913',err:true,help:'Wrong code. Check the SMS and try again'}))
+].join('');
+
+$('#live-grid').innerHTML=[
+ W('<b>phone</b> · type, then tap elsewhere',field({id:'lp',label:'Mobile number',icon:'phone',pre:'+91',ph:'98765 43210',help:"We'll send an OTP to this number",inputmode:'numeric'})),
+ W('<b>otp</b> · 123456 is correct',otp({id:'lo',help:'Resend OTP in <button class="rs" disabled>30 s</button>'})),
+ W('<b>multiline</b> · counter',multi({id:'lm',label:'Note for the customer',ph:'Anything they should know',max:120,help:'Optional'}))
+].join('');
+
+// phone live
+const lp=$('#lp'), pi=lp.querySelector('input'), pbox=lp.querySelector('.box'), phelp=lp.querySelector('.help');
+const setState=(el,s)=>{el.style.cssText=B[s];};
+pi.addEventListener('focus',()=>{setState(pbox,'foc');});
+pi.addEventListener('input',()=>{let d=pi.value.replace(/\D/g,'').slice(0,10); pi.value=d.length>5?d.slice(0,5)+' '+d.slice(5):d; setState(pbox,'foc'); phelp.className='help'; phelp.innerHTML="<span>We'll send an OTP to this number</span>";});
+pi.addEventListener('blur',()=>{const d=pi.value.replace(/\D/g,''); if(d.length===0){setState(pbox,'def');} else if(d.length<10){setState(pbox,'err');phelp.className='help err';phelp.innerHTML=svg('xc')+'<span>Enter all 10 digits</span>';} else {setState(pbox,'def');phelp.className='help ok';phelp.innerHTML=svg('cc')+'<span>Looks good</span>';}});
+// otp live
+const lo=$('#lo'), boxes=[...lo.querySelectorAll('.otp input')], og=lo.querySelector('.otp'), oh=lo.querySelector('.help');
+boxes.forEach((b,i)=>{b.addEventListener('input',()=>{b.value=b.value.replace(/\D/g,'').slice(-1); og.classList.remove('err'); if(b.value&&i<5)boxes[i+1].focus(); if(boxes.every(x=>x.value)){const code=boxes.map(x=>x.value).join(''); if(code==='123456'){oh.className='help ok';oh.innerHTML=svg('cc')+'<span>Verified</span>';} else {og.classList.add('err','shake');setTimeout(()=>og.classList.remove('shake'),300);oh.className='help err';oh.innerHTML=svg('xc')+'<span>Wrong code. Check the SMS and try again</span>';}}});
+ b.addEventListener('keydown',e=>{if(e.key==='Backspace'&&!b.value&&i>0){boxes[i-1].focus();boxes[i-1].value='';}});
+ b.addEventListener('paste',e=>{const t=(e.clipboardData.getData('text')||'').replace(/\D/g,'').slice(0,6); if(t.length){e.preventDefault();[...t].forEach((c,j)=>boxes[j].value=c);boxes[Math.min(t.length,5)].focus();boxes[5].dispatchEvent(new Event('input'));}});});
+let left=30; const rs=lo.querySelector('.rs'); const tick=setInterval(()=>{left--; if(left<=0){clearInterval(tick);rs.disabled=false;rs.textContent='Resend OTP';oh.querySelector('span').childNodes[0].textContent="Didn't receive? ";} else rs.textContent=left+' s';},1000);
+// multiline counter
+const lm=$('#lm'), ta=lm.querySelector('textarea'), cnt=lm.querySelector('.cnt'); ta.addEventListener('input',()=>{cnt.textContent=ta.value.length+'/120'; ta.style.height='auto'; ta.style.height=Math.min(Math.max(ta.scrollHeight,72),144)+'px';});
+
+const links=[...document.querySelectorAll('#nav a')];const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-20% 0px -70% 0px'});targets.forEach(t=>io.observe(t));}
+})();
+</script>
