@@ -1,0 +1,122 @@
+<title>Snabbit Expert SelectionCard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>__BASECSS__
+.sc{display:flex;gap:12px;align-items:flex-start;width:328px;padding:16px;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1px #E5E7EB;color:#111827;font-family:var(--sans);cursor:pointer;position:relative;user-select:none;transition:box-shadow .1s}
+.sc:active{background:#F9FAFB}
+.sc.sel{box-shadow:inset 0 0 0 2px #F70F79}
+.sc.press{background:#F9FAFB}
+.sc.dis{cursor:default}.sc.dis .t,.sc.dis .d,.sc.dis .f{color:#9CA3AF!important}.sc.dis .asset{opacity:.4}
+.sc.err{box-shadow:inset 0 0 0 2px #EF4444}
+.sc .ctl{width:24px;height:24px;flex:none;display:grid;place-items:center;margin-top:0}
+.rd{width:24px;height:24px;border-radius:50%;box-shadow:inset 0 0 0 1.5px #6B7280;background:#fff;display:grid;place-items:center}.rd.on{box-shadow:inset 0 0 0 2px #F70F79}.rd.on::after{content:"";width:12px;height:12px;border-radius:50%;background:#F70F79}.rd.dis{box-shadow:inset 0 0 0 1.5px #E5E7EB;background:#F3F4F6}
+.cb{width:24px;height:24px;border-radius:4px;box-shadow:inset 0 0 0 1.5px #6B7280;background:#fff;display:grid;place-items:center}.cb.on{background:#F70F79;box-shadow:none}.cb svg{width:16px;height:16px;color:#fff}.cb.dis{box-shadow:inset 0 0 0 1.5px #E5E7EB;background:#F3F4F6}
+.sc .body{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+.sc .t{font-size:16px;line-height:24px;font-weight:500}
+.sc .d{font-size:14px;line-height:20px;color:#6B7280}
+.sc .facts{display:flex;flex-direction:column;gap:4px;margin-top:4px}
+.sc .f{display:flex;align-items:center;gap:8px;font-size:14px;line-height:20px;color:#374151}.sc .f svg{width:20px;height:20px;color:#6B7280;flex:none}
+.sc .f .amt{font-variant-numeric:tabular-nums;font-weight:600;color:#111827}
+.sc .lead{width:24px;height:24px;color:#374151;flex:none}.sc .lead svg{width:24px;height:24px}
+.sc .asset{width:64px;height:64px;flex:none;position:relative}
+.sc .asset .chk{position:absolute;right:-4px;bottom:-4px;width:20px;height:20px;border-radius:50%;background:#F70F79;color:#fff;display:grid;place-items:center;box-shadow:0 0 0 2px #fff}.sc .asset .chk svg{width:12px;height:12px}
+.sc .rec{position:absolute;top:-10px;right:12px;height:20px;padding:0 6px;border-radius:4px;background:#FEF1F7;color:#F70F79;font-size:11px;font-weight:600;display:inline-flex;align-items:center}
+.dt{width:72px;height:88px;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:8px;text-align:center}
+.dt .wd{font-size:12px;color:#6B7280;line-height:16px}.dt .dy{font-size:24px;font-weight:600;line-height:32px}.dt .mo{font-size:12px;color:#6B7280;line-height:16px}
+.dt.sel .dy{color:#F70F79}
+.dt .ctl{display:none}
+.strip{display:flex;gap:8px;overflow-x:auto;padding:4px 0;scrollbar-width:none}.strip::-webkit-scrollbar{display:none}
+.grp{display:flex;flex-direction:column;gap:12px}
+.gerr{display:flex;gap:6px;align-items:center;color:#DC2626;font-size:14px}.gerr svg{width:16px;height:16px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(328px,1fr));gap:24px 32px;align-items:start}
+.stg{display:flex;flex-direction:column;gap:8px}.stg .cap{font-family:var(--mono);font-size:12px;color:var(--text-2)}.stg .cap b{color:var(--text);font-weight:500}
+.ctrls{display:flex;gap:8px;margin-bottom:12px}
+.ph{width:360px;border:1px solid #E5E7EB;border-radius:20px;background:#F9FAFB;padding:16px;display:flex;flex-direction:column;gap:12px;color:#111827;font-family:var(--sans)}
+.ph .q{font-size:20px;font-weight:600;line-height:28px}
+__NAVCSS__</style>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · SelectionCard</small></div></div>
+    __SITENAV__
+    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#variants">Variants</a><a href="#states">States</a><a href="#live">Live group</a><a href="#dont">Don't</a><a href="#figma">Figma changes</a></nav>
+    <div class="rail-foot">Rendered from tokens.json · spec in components/selection-card.md</div>
+  </aside>
+  <main class="main">
+    <header id="overview">
+      <div class="eyebrow">Core component</div><h1>SelectionCard</h1>
+      <p class="lede">A Card that behaves like a Radio or a Checkbox. For options that need more than a label — a description, a price, an illustration, two facts. The card is the tap target; the control inside shows the state.</p>
+      <div class="meta"><span class="chip status">Proposed</span><span class="chip">Tier 1 · Core</span><span class="chip"><code>SnabbitSelectionCard</code></span><span class="chip">compact · rich · date</span><span class="chip">Replaces 8 frames</span></div>
+    </header>
+
+    <section id="variants">
+      <header><div class="eyebrow">Three shapes</div><h2>Variants</h2><p>Control always leading, top-left — the same place as a Radio row. <b>Compact</b> for one-line options with an icon; <b>rich</b> for options she compares, with facts and a 64 dp asset; <b>date</b> for picking a day, in a strip of ≤ 7.</p></header>
+      <div class="stage"><div class="grid2" id="variants-grid"></div></div>
+    </section>
+
+    <section id="states">
+      <header><div class="eyebrow">Behaviour</div><h2>States</h2><p>Selected is border + control + a check badge on the asset — three channels. The fill stays white; a pink wash across several multi-selected cards is loud. At most one <em>Recommended</em> per group.</p></header>
+      <div class="stage"><div class="grid2" id="states-grid"></div></div>
+    </section>
+
+    <section id="live">
+      <header><div class="eyebrow">Try it</div><h2>Live group</h2><p>Switch between single and multi. Groups start empty; the primary Button below commits. Nothing navigates on select.</p></header>
+      <div class="ctrls" id="ctrls"></div>
+      <div class="stage" style="display:flex;justify-content:center"><div class="ph" id="ph"></div></div>
+    </section>
+
+    <section id="dont">
+      <header><div class="eyebrow">Common mistakes</div><h2>Don't</h2></header>
+      <div class="stage"><div class="grid2" id="dont-grid"></div></div>
+    </section>
+
+    <section id="figma">
+      <header><div class="eyebrow">Reconciliation</div><h2>What changes in Figma</h2></header>
+      <ol class="rules"><li>Merge the six selection frames into SelectionCard: Variant (Compact / Rich / Date), Mode (Single / Multi), State, booleans Description, Facts, Asset, Recommended.</li><li>Control leading top-left; delete the bottom-divider layout.</li><li>Selected = borderBrand 2 + control + check badge on the asset.</li><li>Facts to textBody with Phosphor icons; amounts as Amount.</li><li>Selection Pill → Compact; Service and Shift cards → Rich instances on feature pages.</li></ol>
+      <p class="sub" style="margin-top:14px">Result: ~30 variants replacing 8 frames.</p>
+    </section>
+  </main>
+</div>
+
+<script id="tokens-json" type="application/json">__TOKENS__</script>
+<script>
+(function(){
+const T=JSON.parse(document.getElementById("tokens-json").textContent); const $=s=>document.querySelector(s);
+const sem={}; Object.values(T.color.semantic).flat().forEach(t=>sem[t.name]=t.value); const P=T.color.palette;
+const ICO={check:'M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z',clock:'M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z',rupee:'M216,72H160.62a48.14,48.14,0,0,0-19.05-24H208a8,8,0,0,0,0-16H64a8,8,0,0,0,0,16h48a32,32,0,0,1,29.95,24H64a8,8,0,0,0,0,16h77.95A32,32,0,0,1,112,112H64a8,8,0,0,0-6.09,13.19l90.5,105.59a8,8,0,1,0,12.15-10.41L82.32,128H112a48.07,48.07,0,0,0,47.74-40H216a8,8,0,0,0,0-16Z',camera:'M208,56H180.28L166.65,35.56A8,8,0,0,0,160,32H96a8,8,0,0,0-6.65,3.56L75.71,56H48A24,24,0,0,0,24,80V192a24,24,0,0,0,24,24H208a24,24,0,0,0,24-24V80A24,24,0,0,0,208,56Zm8,136a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V80a8,8,0,0,1,8-8H80a8,8,0,0,0,6.66-3.56L100.28,48h55.43l13.63,20.44A8,8,0,0,0,176,72h32a8,8,0,0,1,8,8ZM128,88a44,44,0,1,0,44,44A44.05,44.05,0,0,0,128,88Zm0,72a28,28,0,1,1,28-28A28,28,0,0,1,128,160Z',image:'M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,16V158.75l-26.07-26.06a16,16,0,0,0-22.63,0l-20,20-44-44a16,16,0,0,0-22.62,0L40,149.37V56ZM40,172l52-52,80,80H40Zm176,28H194.63l-36-36,20-20L216,181.38V200ZM144,100a12,12,0,1,1,12,12A12,12,0,0,1,144,100Z',xc:'M165.66,101.66,139.31,128l26.35,26.34a8,8,0,0,1-11.32,11.32L128,139.31l-26.34,26.35a8,8,0,0,1-11.32-11.32L116.69,128,90.34,101.66a8,8,0,0,1,11.32-11.32L128,116.69l26.34-26.35a8,8,0,0,1,11.32,11.32ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z'};
+const svg=n=>`<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="${ICO[n]}"/></svg>`;
+// clock-face pictogram (stand-in for asset/picto/*): pink disc, magenta hands, filled sector = hours
+const clockAsset=(frac)=>{const a=frac*360,r=22,cx=32,cy=32,x=cx+r*Math.sin(a*Math.PI/180),y=cy-r*Math.cos(a*Math.PI/180),lg=a>180?1:0;return `<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="${P.pink['100']}"/><circle cx="32" cy="32" r="24" fill="#fff" stroke="${P.gray['300']}" stroke-width="2"/><path d="M32 32 L32 10 A22 22 0 ${lg} 1 ${x.toFixed(1)} ${y.toFixed(1)} Z" fill="${P.pink['300']}"/><path d="M32 32V14M32 32l10 6" stroke="${sem.interactiveDefault}" stroke-width="3" stroke-linecap="round"/><circle cx="32" cy="32" r="3" fill="${sem.interactiveDefault}"/></svg>`;};
+const ctl=(mode,on,dis)=>mode==='multi'?`<span class="cb ${on?'on':''} ${dis?'dis':''}">${on?svg('check'):''}</span>`:`<span class="rd ${on?'on':''} ${dis?'dis':''}"></span>`;
+function card(o){ // variant, mode, sel, dis, err, press, title, desc, facts[[icon,text,amt?]], asset(frac), lead icon, rec, id
+ const cls=['sc',o.variant==='date'?'dt':'',o.sel?'sel':'',o.dis?'dis':'',o.err?'err':'',o.press?'press':''].join(' ');
+ if(o.variant==='date')return `<div class="${cls}" data-id="${o.id||''}" role="radio" aria-checked="${!!o.sel}"><span class="ctl">${ctl('single',o.sel,o.dis)}</span><span class="wd">${o.wd}</span><span class="dy">${o.dy}</span><span class="mo">${o.mo}</span></div>`;
+ const facts=o.facts?`<div class="facts">${o.facts.map(([i,t,a])=>`<div class="f">${svg(i)}<span>${a?`<span class="amt">${a}</span> `:''}${t}</span></div>`).join('')}</div>`:'';
+ const asset=o.asset!=null?`<div class="asset">${clockAsset(o.asset)}${o.sel?`<span class="chk">${svg('check')}</span>`:''}</div>`:'';
+ return `<div class="${cls}" data-id="${o.id||''}" role="${o.mode==='multi'?'checkbox':'radio'}" aria-checked="${!!o.sel}">${o.rec?'<span class="rec">Recommended</span>':''}<span class="ctl">${ctl(o.mode,o.sel,o.dis)}</span>${o.lead?`<span class="lead">${svg(o.lead)}</span>`:''}<span class="body"><span class="t">${o.title}</span>${o.desc?`<span class="d">${o.desc}</span>`:''}${facts}</span>${asset}</div>`;}
+const W=(cap,html)=>`<div class="stg">${html}<div class="cap">${cap}</div></div>`;
+$('#variants-grid').innerHTML=[
+ W('<b>compact</b> · control · icon · title · description',`<div class="grp">${card({variant:'compact',lead:'camera',title:'Camera',desc:'Take a photo now',sel:1})}${card({variant:'compact',lead:'image',title:'Gallery',desc:'Choose an existing photo'})}</div>`),
+ W('<b>rich</b> · facts + 64 dp asset',card({variant:'rich',title:'Full time',desc:'10 to 12 hours daily',facts:[['rupee','/ month','₹20K – ₹30K'],['clock','8+ hours daily']],asset:.5,sel:1})),
+ W('<b>date</b> · 72 × 88 · strip of ≤ 7 · today first',`<div class="strip">${[['Mon','7','Sep',1],['Tue','8','Sep'],['Wed','9','Sep'],['Thu','10','Sep'],['Fri','11','Sep'],['Sat','12','Sep'],['Sun','13','Sep']].map(([w,d,m,s])=>card({variant:'date',wd:w,dy:d,mo:m,sel:s})).join('')}</div>`)].join('');
+$('#states-grid').innerHTML=[
+ W('<b>default</b>',card({variant:'rich',title:'Part time',desc:'4 to 6 hours daily',facts:[['rupee','/ month','₹10K – ₹12K']],asset:.25})),
+ W('<b>selected</b> · border 2 + control + check badge',card({variant:'rich',title:'Part time',desc:'4 to 6 hours daily',facts:[['rupee','/ month','₹10K – ₹12K']],asset:.25,sel:1})),
+ W('<b>pressed</b>',card({variant:'rich',title:'Part time',desc:'4 to 6 hours daily',facts:[['rupee','/ month','₹10K – ₹12K']],asset:.25,press:1})),
+ W('<b>disabled</b> · description says why',card({variant:'rich',title:'Night shift',desc:'Not available in your area yet',asset:.75,dis:1})),
+ W('<b>recommended</b> · one per group · Tag, not colour',card({variant:'rich',title:'Full time',desc:'Most experts choose this',facts:[['rupee','/ month','₹20K – ₹30K'],['clock','8+ hours daily']],asset:.5,rec:1})),
+ W('<b>group error</b> · every unselected card + one line',`<div class="grp">${card({variant:'compact',lead:'camera',title:'Camera',err:1})}${card({variant:'compact',lead:'image',title:'Gallery',err:1})}<div class="gerr">${svg('xc')}<span>Choose how to add the photo</span></div></div>`)].join('');
+// live
+let mode='single',sel=new Set();
+const OPTS=[{id:'ft',title:'Full time',desc:'10 to 12 hours daily',facts:[['rupee','/ month','₹20K – ₹30K'],['clock','8+ hours daily']],asset:.5,rec:1},{id:'pt',title:'Part time',desc:'4 to 6 hours daily',facts:[['rupee','/ month','₹10K – ₹12K'],['clock','4+ hours daily']],asset:.25},{id:'wk',title:'Weekends only',desc:'Sat and Sun',facts:[['rupee','/ month','₹6K – ₹8K']],asset:.15}];
+function ph(){$('#ph').innerHTML=`<div class="q">${mode==='single'?'How do you want to work?':'Which shifts can you take?'}</div><div class="grp">${OPTS.map(o=>card({...o,variant:'rich',mode,sel:sel.has(o.id)})).join('')}</div><button class="sbtn full" style="--h:56px;--px:24px;--r:12px;--fs:16px;--fw:600;--ic:24px;--gap:8px;--fill:${sem.interactiveDefault};--ink:#fff;--fill-p:${sem.interactivePressed}">${svg('check')}<span class="lb">${mode==='single'?'Continue':`Save ${sel.size} shift${sel.size===1?'':'s'}`}</span></button>`;
+ $('#ph').querySelectorAll('.sc').forEach(c=>c.onclick=()=>{const id=c.dataset.id;if(mode==='single'){sel=new Set([id]);}else{sel.has(id)?sel.delete(id):sel.add(id);}ph();});}
+function ctrls(){$('#ctrls').innerHTML=['single','multi'].map(m=>`<button class="sbtn" data-m="${m}" style="--h:36px;--px:14px;--r:999px;--fs:13px;--fw:500;--ic:16px;--gap:6px;--fill:${mode===m?sem.bgBrandSubtle:'#fff'};--ink:${mode===m?sem.textBrand:sem.textBody};--bw:1px;--bc:${mode===m?sem.borderBrand:sem.borderDefault};--fill-p:${sem.bgSecondary}"><span class="lb">${m==='single'?'Single (radio)':'Multi (checkbox)'}</span></button>`).join('');$('#ctrls').querySelectorAll('button').forEach(b=>b.onclick=()=>{mode=b.dataset.m;sel=new Set();ctrls();ph();});}
+ctrls();ph();
+$('#dont-grid').innerHTML=[
+ `<div class="stg"><div class="sc sel" style="flex-direction:column;gap:0;padding:0"><div style="display:flex;gap:12px;padding:16px;width:100%"><span class="body"><span class="f" style="color:${P.green['600']}">${svg('rupee')}<span style="color:${P.green['600']};font-weight:600">Earn ₹20K – ₹30K / month</span></span><span class="f">${svg('clock')}<span>8+ hours daily</span></span></span><div class="asset">${clockAsset(.5)}</div></div><div style="border-top:1px solid #F3F4F6;width:100%;padding:12px 16px;display:flex;gap:12px;align-items:center"><span class="rd on"></span><span class="t">Work Full Time</span></div></div><span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">Control at the bottom after a divider — not where it is in every other selection row. Green earnings text reads as "good news", not as a fact. Selected shown by border only.</div></div>`,
+ `<div class="stg"><div class="grp">${card({variant:'compact',title:'UPI',sel:1})}${card({variant:'compact',title:'Bank transfer',sel:1})}${card({variant:'compact',title:'Cash',sel:1})}${card({variant:'compact',title:'Cheque'})}${card({variant:'compact',title:'Wallet'})}${card({variant:'compact',title:'Other'})}</div><span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">Six cards, three pre-selected, in a single-select group. More than five options is a Select sheet; groups start empty; radios can't have three on.</div></div>`].join('');
+const links=[...document.querySelectorAll('#nav a')];const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-20% 0px -70% 0px'});targets.forEach(t=>io.observe(t));}
+})();
+</script>

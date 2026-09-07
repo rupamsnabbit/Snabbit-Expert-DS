@@ -1,0 +1,205 @@
+<title>Snabbit Expert SelectionCard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{--bg:#FFFFFF;--bg-2:#F9FAFB;--bg-3:#F3F4F6;--text:#111827;--text-body:#374151;--text-2:#6B7280;--text-3:#9CA3AF;--border:#E5E7EB;--border-subtle:#F3F4F6;--brand:#F70F79;--brand-wash:#FEF1F7;--brand-ink:#97094A;--focus:#3B82F6;--ok:#059669;--ok-wash:#ECFDF5;--bad:#DC2626;--bad-wash:#FEF2F2;
+--sans:"Outfit",ui-sans-serif,system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111827;--bg-2:#1F2937;--bg-3:#374151;--text:#F9FAFB;--text-body:#E5E7EB;--text-2:#9CA3AF;--text-3:#6B7280;--border:#374151;--border-subtle:#1F2937;--brand:#F65CA1;--brand-wash:rgba(247,15,121,.14);--brand-ink:#FBC9DF;--ok:#34D399;--ok-wash:rgba(16,185,129,.14);--bad:#F87171;--bad-wash:rgba(239,68,68,.14)}}
+:root[data-theme="dark"]{--bg:#111827;--bg-2:#1F2937;--bg-3:#374151;--text:#F9FAFB;--text-body:#E5E7EB;--text-2:#9CA3AF;--text-3:#6B7280;--border:#374151;--border-subtle:#1F2937;--brand:#F65CA1;--brand-wash:rgba(247,15,121,.14);--brand-ink:#FBC9DF;--ok:#34D399;--ok-wash:rgba(16,185,129,.14);--bad:#F87171;--bad-wash:rgba(239,68,68,.14)}
+*{box-sizing:border-box} html{scroll-behavior:smooth;scroll-padding-top:24px} @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} .sbtn,.sbtn *{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--text-body);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+code{font-family:var(--mono);font-size:.86em;background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--text)}
+button{font:inherit} :focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+.shell{display:grid;grid-template-columns:232px minmax(0,1fr);min-height:100vh}
+.rail{position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--border);padding:24px 16px 32px;background:var(--bg);display:flex;flex-direction:column;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;padding:0 8px}.brand-mark{width:28px;height:28px;border-radius:8px;background:var(--brand);display:grid;place-items:center;flex:none}.brand-mark span{width:12px;height:12px;border-radius:3px;background:#fff;transform:rotate(45deg)}
+.brand b{font-weight:600;color:var(--text);font-size:15px;line-height:1.2;display:block}.brand small{color:var(--text-2);font-size:12px}
+.nav{display:flex;flex-direction:column;gap:2px}.nav .grp{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);padding:12px 8px 4px;font-weight:500}
+.nav a{display:block;padding:6px 8px;border-radius:6px;text-decoration:none;color:var(--text-body);font-size:13.5px}.nav a:hover{background:var(--bg-2);color:var(--text)}.nav a.on{background:var(--brand-wash);color:var(--brand-ink);font-weight:500}
+.rail-foot{margin-top:auto;padding:0 8px;font-size:12px;color:var(--text-3);line-height:1.5}
+.main{padding:40px 56px 96px;max-width:1080px;width:100%}
+.eyebrow{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);font-weight:600}
+h1{font-size:40px;line-height:1.1;font-weight:600;color:var(--text);margin:8px 0 12px;letter-spacing:-.015em}
+.lede{font-size:17px;color:var(--text-2);max-width:62ch;margin:0}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}.chip{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border:1px solid var(--border);border-radius:999px;font-size:12.5px;color:var(--text-body)}
+.chip.status{background:#FEF3C7;color:#B45309;border-color:transparent;font-weight:600}
+section{padding-top:64px} section>header{margin-bottom:20px;max-width:68ch}
+h2{font-size:26px;line-height:1.2;font-weight:600;color:var(--text);margin:6px 0 8px;letter-spacing:-.01em} h3{font-size:16px;font-weight:600;color:var(--text);margin:32px 0 12px}
+section>header p,.sub{color:var(--text-2);margin:0;font-size:15px}
+.rules{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:6px;max-width:68ch}.rules li{padding-left:18px;position:relative;font-size:14px}.rules li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:2px;background:var(--brand)}
+
+/* stage */
+.stage{background:#FFFFFF;border:1px solid var(--border);border-radius:12px;padding:24px;color:#111827}
+.stage.dark{background:#F9FAFB}
+.matrix{display:grid;gap:14px 20px;align-items:center}
+.matrix .h{font-family:var(--mono);font-size:11.5px;color:#6B7280;text-transform:uppercase;letter-spacing:.06em}
+.matrix .r{font-family:var(--mono);font-size:12.5px;color:#111827;white-space:nowrap}
+.matrix .r small{display:block;color:#9CA3AF;font-size:11px;text-transform:none;letter-spacing:0}
+.na{width:24px;height:2px;background:#E5E7EB;border-radius:1px}
+.sizes{display:flex;gap:28px;align-items:flex-end;flex-wrap:wrap}
+.szd{display:flex;flex-direction:column;gap:10px;align-items:flex-start}.szd .lbl{font-family:var(--mono);font-size:12px;color:var(--text-2)}.szd .lbl b{color:var(--text);font-weight:500}
+
+/* the button itself — everything from tokens via CSS vars set by JS */
+.sbtn{display:inline-flex;align-items:center;justify-content:center;border:0;cursor:pointer;white-space:nowrap;font-family:var(--sans);position:relative;overflow:hidden;
+  height:var(--h);padding:0 var(--px);border-radius:var(--r);font-size:var(--fs);font-weight:var(--fw);line-height:1;gap:var(--gap);
+  background:var(--fill,transparent);color:var(--ink);box-shadow:inset 0 0 0 var(--bw,0) var(--bc,transparent);transition:background .1s ease-out,box-shadow .1s}
+.sbtn.full{width:100%}
+.sbtn:active:not(.disabled):not(.loading){background:var(--fill-p)}
+.sbtn.pressed{background:var(--fill-p)}
+.sbtn.focused{outline:2px solid #3B82F6;outline-offset:2px}
+.sbtn.disabled{cursor:not-allowed}
+.sbtn svg{width:var(--ic);height:var(--ic);flex:none}
+.sbtn .spin{width:var(--ic);height:var(--ic);border-radius:50%;border:2px solid currentColor;border-right-color:transparent;animation:sp .7s linear infinite;flex:none}
+@keyframes sp{to{transform:rotate(360deg)}}
+.sbtn .hf{position:absolute;inset:0;background:rgba(0,0,0,.18);transform-origin:left;transform:scaleX(0)}
+.sbtn.holding .hf{transform:scaleX(1);transition:transform .6s linear}
+.sbtn>*{position:relative}
+.demo{display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start}
+.demo .card{flex:1;min-width:260px;border:1px solid var(--border);border-radius:12px;padding:18px;background:var(--bg)}
+.demo .card h4{margin:0 0 6px;font-size:14px;color:var(--text)}.demo .card p{margin:0 0 14px;font-size:13px;color:var(--text-2)}
+.demo .live{display:flex;gap:12px;align-items:center;flex-wrap:wrap;background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px;color:#111827}
+.logline{font-family:var(--mono);font-size:12px;color:var(--text-2);margin-top:10px;min-height:16px}
+
+/* phone mock */
+.phones{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.ph{border:1px solid var(--border);border-radius:16px;overflow:hidden;background:#fff;color:#111827}
+.ph .bar{padding:10px 16px;border-bottom:1px solid #F3F4F6;font-size:12px;color:#6B7280;display:flex;justify-content:space-between}
+.ph .bar b{font-weight:600}
+.ph .body{padding:16px;min-height:220px;display:flex;flex-direction:column;gap:12px}
+.ph .body .hd{font-size:20px;font-weight:600;line-height:28px}.ph .body .tx{font-size:14px;color:#374151;line-height:20px}
+.ph .foot{padding:12px 16px 24px;border-top:1px solid #F3F4F6;display:flex;flex-direction:column;gap:12px}
+.ph .foot.row{flex-direction:row}
+.verdict{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin:12px 0 6px}
+.verdict.ok{background:var(--ok-wash);color:var(--ok)}.verdict.bad{background:var(--bad-wash);color:var(--bad)}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px}table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{text-align:left;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);font-weight:500;padding:10px 14px;background:var(--bg-2);border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:9px 14px;border-bottom:1px solid var(--border-subtle);vertical-align:top}tr:last-child td{border-bottom:0}
+td.tk{font-family:var(--mono);font-size:12.5px;color:var(--text)}
+.sw{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-2px;margin-right:6px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(8px);background:var(--text);color:var(--bg);padding:8px 14px;border-radius:8px;font-size:13px;opacity:0;pointer-events:none;transition:opacity .15s,transform .15s;font-family:var(--mono)}.toast.show{opacity:1;transform:translateX(-50%)}
+@media (max-width:900px){.shell{grid-template-columns:1fr}.rail{position:static;height:auto;border-right:0;border-bottom:1px solid var(--border);padding:16px}.nav{flex-direction:row;flex-wrap:wrap;gap:4px}.nav .grp,.rail-foot{display:none}.main{padding:32px 20px 80px}h1{font-size:32px}}
+
+.sc{display:flex;gap:12px;align-items:flex-start;width:328px;padding:16px;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1px #E5E7EB;color:#111827;font-family:var(--sans);cursor:pointer;position:relative;user-select:none;transition:box-shadow .1s}
+.sc:active{background:#F9FAFB}
+.sc.sel{box-shadow:inset 0 0 0 2px #F70F79}
+.sc.press{background:#F9FAFB}
+.sc.dis{cursor:default}.sc.dis .t,.sc.dis .d,.sc.dis .f{color:#9CA3AF!important}.sc.dis .asset{opacity:.4}
+.sc.err{box-shadow:inset 0 0 0 2px #EF4444}
+.sc .ctl{width:24px;height:24px;flex:none;display:grid;place-items:center;margin-top:0}
+.rd{width:24px;height:24px;border-radius:50%;box-shadow:inset 0 0 0 1.5px #6B7280;background:#fff;display:grid;place-items:center}.rd.on{box-shadow:inset 0 0 0 2px #F70F79}.rd.on::after{content:"";width:12px;height:12px;border-radius:50%;background:#F70F79}.rd.dis{box-shadow:inset 0 0 0 1.5px #E5E7EB;background:#F3F4F6}
+.cb{width:24px;height:24px;border-radius:4px;box-shadow:inset 0 0 0 1.5px #6B7280;background:#fff;display:grid;place-items:center}.cb.on{background:#F70F79;box-shadow:none}.cb svg{width:16px;height:16px;color:#fff}.cb.dis{box-shadow:inset 0 0 0 1.5px #E5E7EB;background:#F3F4F6}
+.sc .body{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+.sc .t{font-size:16px;line-height:24px;font-weight:500}
+.sc .d{font-size:14px;line-height:20px;color:#6B7280}
+.sc .facts{display:flex;flex-direction:column;gap:4px;margin-top:4px}
+.sc .f{display:flex;align-items:center;gap:8px;font-size:14px;line-height:20px;color:#374151}.sc .f svg{width:20px;height:20px;color:#6B7280;flex:none}
+.sc .f .amt{font-variant-numeric:tabular-nums;font-weight:600;color:#111827}
+.sc .lead{width:24px;height:24px;color:#374151;flex:none}.sc .lead svg{width:24px;height:24px}
+.sc .asset{width:64px;height:64px;flex:none;position:relative}
+.sc .asset .chk{position:absolute;right:-4px;bottom:-4px;width:20px;height:20px;border-radius:50%;background:#F70F79;color:#fff;display:grid;place-items:center;box-shadow:0 0 0 2px #fff}.sc .asset .chk svg{width:12px;height:12px}
+.sc .rec{position:absolute;top:-10px;right:12px;height:20px;padding:0 6px;border-radius:4px;background:#FEF1F7;color:#F70F79;font-size:11px;font-weight:600;display:inline-flex;align-items:center}
+.dt{width:72px;height:88px;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:8px;text-align:center}
+.dt .wd{font-size:12px;color:#6B7280;line-height:16px}.dt .dy{font-size:24px;font-weight:600;line-height:32px}.dt .mo{font-size:12px;color:#6B7280;line-height:16px}
+.dt.sel .dy{color:#F70F79}
+.dt .ctl{display:none}
+.strip{display:flex;gap:8px;overflow-x:auto;padding:4px 0;scrollbar-width:none}.strip::-webkit-scrollbar{display:none}
+.grp{display:flex;flex-direction:column;gap:12px}
+.gerr{display:flex;gap:6px;align-items:center;color:#DC2626;font-size:14px}.gerr svg{width:16px;height:16px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(328px,1fr));gap:24px 32px;align-items:start}
+.stg{display:flex;flex-direction:column;gap:8px}.stg .cap{font-family:var(--mono);font-size:12px;color:var(--text-2)}.stg .cap b{color:var(--text);font-weight:500}
+.ctrls{display:flex;gap:8px;margin-bottom:12px}
+.ph{width:360px;border:1px solid #E5E7EB;border-radius:20px;background:#F9FAFB;padding:16px;display:flex;flex-direction:column;gap:12px;color:#111827;font-family:var(--sans)}
+.ph .q{font-size:20px;font-weight:600;line-height:28px}
+
+.sitenav{display:flex;flex-direction:column;gap:2px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.sitenav .grp{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);padding:10px 8px 4px;font-weight:500}
+.sitenav a{display:block;padding:5px 8px;border-radius:6px;text-decoration:none;color:var(--text-body);font-size:13.5px;border:0}
+.sitenav a:hover{background:var(--bg-2);color:var(--text)} .sitenav a.on{color:var(--brand-ink);background:var(--brand-wash);font-weight:500}
+@media (max-width:900px){.sitenav{flex-direction:row;flex-wrap:wrap;gap:4px;border-bottom:0;padding-bottom:0}.sitenav .grp{display:none}}
+</style>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · SelectionCard</small></div></div>
+    <nav class="sitenav" aria-label="Site"><div class="grp">Foundations</div><a href="../index.html">Tokens</a><a href="../principles.html">Principles</a><a href="../extending.html">Extending</a><a href="../icons.html">Icons</a><a href="../assets.html">Assets</a><div class="grp">Components</div><a href="../components/button.html">Button</a><a href="../components/icon-button.html">IconButton</a><a href="../components/tag.html">Tag</a><a href="../components/text-field.html">TextField</a><a href="../components/selection-controls.html">Checkbox · Radio · Switch</a><a href="../components/amount.html">Amount</a><a href="../components/timer.html">Timer</a><a href="../components/feedback.html">Banner · Toast · Snackbar</a><a href="../components/chip.html">Chip</a><a href="../components/avatar.html">Avatar</a><a href="../components/badge.html">Badge</a><a href="../components/card.html">Card</a><a href="../components/list-item.html">ListItem</a><a class="on" href="../components/selection-card.html">SelectionCard</a><a href="../components/bottom-sheet.html">BottomSheet</a><div class="grp">Research</div><a href="../benchmark.html">Benchmark</a><a href="../audit.html">Figma audit</a></nav>
+    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#variants">Variants</a><a href="#states">States</a><a href="#live">Live group</a><a href="#dont">Don't</a><a href="#figma">Figma changes</a></nav>
+    <div class="rail-foot">Rendered from tokens.json · spec in components/selection-card.md</div>
+  </aside>
+  <main class="main">
+    <header id="overview">
+      <div class="eyebrow">Core component</div><h1>SelectionCard</h1>
+      <p class="lede">A Card that behaves like a Radio or a Checkbox. For options that need more than a label — a description, a price, an illustration, two facts. The card is the tap target; the control inside shows the state.</p>
+      <div class="meta"><span class="chip status">Proposed</span><span class="chip">Tier 1 · Core</span><span class="chip"><code>SnabbitSelectionCard</code></span><span class="chip">compact · rich · date</span><span class="chip">Replaces 8 frames</span></div>
+    </header>
+
+    <section id="variants">
+      <header><div class="eyebrow">Three shapes</div><h2>Variants</h2><p>Control always leading, top-left — the same place as a Radio row. <b>Compact</b> for one-line options with an icon; <b>rich</b> for options she compares, with facts and a 64 dp asset; <b>date</b> for picking a day, in a strip of ≤ 7.</p></header>
+      <div class="stage"><div class="grid2" id="variants-grid"></div></div>
+    </section>
+
+    <section id="states">
+      <header><div class="eyebrow">Behaviour</div><h2>States</h2><p>Selected is border + control + a check badge on the asset — three channels. The fill stays white; a pink wash across several multi-selected cards is loud. At most one <em>Recommended</em> per group.</p></header>
+      <div class="stage"><div class="grid2" id="states-grid"></div></div>
+    </section>
+
+    <section id="live">
+      <header><div class="eyebrow">Try it</div><h2>Live group</h2><p>Switch between single and multi. Groups start empty; the primary Button below commits. Nothing navigates on select.</p></header>
+      <div class="ctrls" id="ctrls"></div>
+      <div class="stage" style="display:flex;justify-content:center"><div class="ph" id="ph"></div></div>
+    </section>
+
+    <section id="dont">
+      <header><div class="eyebrow">Common mistakes</div><h2>Don't</h2></header>
+      <div class="stage"><div class="grid2" id="dont-grid"></div></div>
+    </section>
+
+    <section id="figma">
+      <header><div class="eyebrow">Reconciliation</div><h2>What changes in Figma</h2></header>
+      <ol class="rules"><li>Merge the six selection frames into SelectionCard: Variant (Compact / Rich / Date), Mode (Single / Multi), State, booleans Description, Facts, Asset, Recommended.</li><li>Control leading top-left; delete the bottom-divider layout.</li><li>Selected = borderBrand 2 + control + check badge on the asset.</li><li>Facts to textBody with Phosphor icons; amounts as Amount.</li><li>Selection Pill → Compact; Service and Shift cards → Rich instances on feature pages.</li></ol>
+      <p class="sub" style="margin-top:14px">Result: ~30 variants replacing 8 frames.</p>
+    </section>
+  </main>
+</div>
+
+<script id="tokens-json" type="application/json">{"$schema":"https://design-tokens.github.io/community-group/format/","meta":{"name":"Snabbit Expert Design Tokens","package":"com.snabbit:design-system","version":"0.19.0","platform":"Compose Multiplatform (Android + iOS)","source":"tokens/DESIGN_TOKENS.md","themeApi":"SnabbitTheme","modes":["light"],"notes":["The installed package is canonical. If this file and the package disagree, the package wins and this file must be updated in the same change.","Dark mode is not defined in 0.19.0. Semantic names are mode-ready; a dark mapping is the next token task.","Palette names (pink600, gray700) are allowed only while building a semantic token the package does not yet expose.","Decisions: Outfit only (Indic falls back to system face). Phosphor Icons only \u2014 regular by default, fill for selected/active."]},"color":{"palette":{"pink":{"50":"#FEF1F7","100":"#FDE4EF","200":"#FBC9DF","300":"#F9AECF","400":"#F65CA1","500":"#F4368D","600":"#F70F79","700":"#C70C61","800":"#97094A","900":"#670632"},"gray":{"50":"#F9FAFB","100":"#F3F4F6","200":"#E5E7EB","300":"#D1D5DB","400":"#9CA3AF","500":"#6B7280","600":"#4B5563","700":"#374151","800":"#1F2937","900":"#111827"},"green":{"50":"#ECFDF5","100":"#D1FAE5","200":"#A7F3D0","300":"#6EE7B7","400":"#34D399","500":"#10B981","600":"#059669","700":"#047857"},"red":{"50":"#FEF2F2","100":"#FEE2E2","200":"#FECACA","300":"#FCA5A5","400":"#F87171","500":"#EF4444","600":"#DC2626","700":"#B91C1C"},"yellow":{"50":"#FFFBEB","100":"#FEF3C7","200":"#FDE68A","300":"#FCD34D","400":"#FBBF24","500":"#F59E0B","600":"#D97706","700":"#B45309"},"blue":{"50":"#EFF6FF","100":"#DBEAFE","200":"#BFDBFE","300":"#93C5FD","400":"#60A5FA","500":"#3B82F6","600":"#2563EB","700":"#1D4ED8"}},"semantic":{"text":[{"name":"textPrimary","ref":"gray.900","value":"#111827","use":"Titles and highest-emphasis content"},{"name":"textBody","ref":"gray.700","value":"#374151","use":"Default readable content"},{"name":"textSecondary","ref":"gray.500","value":"#6B7280","use":"Supporting content and metadata"},{"name":"textTertiary","ref":"gray.400","value":"#9CA3AF","use":"Low-emphasis, non-essential metadata"},{"name":"textDisabled","ref":"gray.300","value":"#D1D5DB","use":"Disabled labels only"},{"name":"textInverse","ref":"white","value":"#FFFFFF","use":"Text on dark or brand fills"},{"name":"textBrand","ref":"pink.600","value":"#F70F79","use":"Brand-colored text and links"},{"name":"textSuccess","ref":"green.600","value":"#059669","use":"Success text and strong positive amount"},{"name":"textWarning","ref":"yellow.600","value":"#D97706","use":"Attention or waiting text"},{"name":"textError","ref":"red.600","value":"#DC2626","use":"Error or destructive message"},{"name":"textInfo","ref":"blue.600","value":"#2563EB","use":"Informational message and link-like status"}],"background":[{"name":"bgPrimary","ref":"white","value":"#FFFFFF","use":"Screen and card surfaces"},{"name":"bgSecondary","ref":"gray.50","value":"#F9FAFB","use":"Subtle grouped surface"},{"name":"bgTertiary","ref":"gray.100","value":"#F3F4F6","use":"Muted/header surface"},{"name":"bgInverse","ref":"gray.900","value":"#111827","use":"Dark high-contrast surface, scrim base"},{"name":"bgBrand","ref":"pink.600","value":"#F70F79","use":"Primary brand fill"},{"name":"bgBrandSubtle","ref":"pink.50","value":"#FEF1F7","use":"Soft brand callout or selected wash"},{"name":"bgSuccess","ref":"green.50","value":"#ECFDF5","use":"Success callout"},{"name":"bgSuccessSubtle","ref":"green.100","value":"#D1FAE5","use":"Success emphasis"},{"name":"bgWarning","ref":"yellow.50","value":"#FFFBEB","use":"Warning callout"},{"name":"bgWarningSubtle","ref":"yellow.100","value":"#FEF3C7","use":"Warning emphasis"},{"name":"bgError","ref":"red.50","value":"#FEF2F2","use":"Error callout"},{"name":"bgErrorSubtle","ref":"red.100","value":"#FEE2E2","use":"Error emphasis"},{"name":"bgInfo","ref":"blue.50","value":"#EFF6FF","use":"Informational callout"}],"border":[{"name":"borderDefault","ref":"gray.200","value":"#E5E7EB","use":"Standard structural border"},{"name":"borderSubtle","ref":"gray.100","value":"#F3F4F6","use":"Low-emphasis card boundary"},{"name":"borderStrong","ref":"gray.500","value":"#6B7280","use":"Strong neutral separation"},{"name":"borderBrand","ref":"pink.600","value":"#F70F79","use":"Selected or brand emphasis boundary"},{"name":"borderFocus","ref":"blue.500","value":"#3B82F6","use":"Keyboard/input focus"},{"name":"borderSuccess","ref":"green.500","value":"#10B981","use":"Success boundary"},{"name":"borderWarning","ref":"yellow.500","value":"#F59E0B","use":"Warning boundary"},{"name":"borderError","ref":"red.500","value":"#EF4444","use":"Error boundary"}],"icon":[{"name":"iconBrand","ref":"pink.600","value":"#F70F79","use":"Brand-colored icon"},{"name":"iconSuccess","ref":"green.500","value":"#10B981","use":"Success icon"},{"name":"iconWarning","ref":"yellow.500","value":"#F59E0B","use":"Warning icon"},{"name":"iconError","ref":"red.500","value":"#EF4444","use":"Error icon"}],"interactive":[{"name":"interactiveDefault","ref":"pink.600","value":"#F70F79","use":"Primary brand action, resting"},{"name":"interactiveHover","ref":"pink.500","value":"#F4368D","use":"Hover / loading \u2014 package-controlled"},{"name":"interactivePressed","ref":"pink.700","value":"#C70C61","use":"Pressed \u2014 package-controlled"}]}},"typography":{"fontFamily":{"compose":"Outfit","legacyFlutter":"Metropolis","indicFallback":"system"},"rule":"Outfit is the only type family. It covers Latin and numerals; Devanagari and Kannada glyphs fall back to the platform system face. Do not add another family.","scale":[{"name":"Display","size":32,"lineHeight":40,"weight":600,"weightName":"SemiBold","use":"Rare hero result or safety state"},{"name":"Heading1","size":28,"lineHeight":37.3,"weight":600,"weightName":"SemiBold","use":"High-salience screen title"},{"name":"Heading2","size":24,"lineHeight":32,"weight":600,"weightName":"SemiBold","use":"Major section or result"},{"name":"Heading3","size":20,"lineHeight":28,"weight":600,"weightName":"SemiBold","use":"Card or section title"},{"name":"Title","size":18,"lineHeight":24,"weight":500,"weightName":"Medium","use":"Navigation title or prominent label"},{"name":"BodyLg","size":16,"lineHeight":24,"weight":400,"weightName":"Regular","use":"Primary explanation"},{"name":"BodyMd","size":14,"lineHeight":20,"weight":400,"weightName":"Regular","use":"Default supporting content"},{"name":"Caption","size":12,"lineHeight":16,"weight":400,"weightName":"Regular","use":"Metadata and helper content"},{"name":"Small","size":10,"lineHeight":14,"weight":400,"weightName":"Regular","use":"Compact, non-essential metadata only"},{"name":"ButtonLg","size":16,"lineHeight":16,"weight":600,"weightName":"SemiBold","use":"Large CTA"},{"name":"ButtonMd","size":14,"lineHeight":14,"weight":600,"weightName":"SemiBold","use":"Standard/compact CTA"}],"rules":["Use sentence case for UI text.","Use at most three hierarchy levels on one screen.","Do not use Small for actions, errors, payment status, safety guidance, or essential instructions.","Respect system font scaling and verify two-line labels and titles."],"indic":{"scripts":["Devanagari","Kannada"],"lineHeightMultiplier":1.15,"note":"Indic ascenders/descenders exceed Outfit metrics. Multiply the scale's line height by 1.15 for text containers that may hold Hindi, Marathi or Kannada; never truncate."}},"spacing":{"unit":"dp","scale":[{"name":"0","value":0,"use":"Intentional flush alignment"},{"name":"1","value":2,"use":"Optical correction only"},{"name":"2","value":4,"use":"Tight icon/text or inline gap"},{"name":"3","value":8,"use":"Small internal gap"},{"name":"4","value":12,"use":"Standard internal gap"},{"name":"5","value":16,"use":"Default component padding and screen margin"},{"name":"6","value":20,"use":"Large component padding"},{"name":"7","value":24,"use":"Section gap or spacious screen margin"},{"name":"8","value":32,"use":"Large section separation"},{"name":"9","value":40,"use":"Major separation"},{"name":"10","value":48,"use":"Touch target or major separation"},{"name":"11","value":64,"use":"Rare hero separation"}],"aliases":{"componentPadding":[4,8,16,24,32],"componentGap":[4,8,12,16],"layoutPadding":[16,24,32],"layoutGap":[16,24,32]},"forbidden":[6,10,14,18,22],"rule":"Do not add arbitrary 6, 10, 14, 18, or 22 dp layout values. A value owned by a design-system component (6 dp tag gap, 10 dp medium-button radius) is valid only through that component."},"radius":{"unit":"dp","scale":[{"name":"none","value":0,"use":"Dividers and intentionally square joins"},{"name":"sm","value":4,"use":"Small controls and tags"},{"name":"md","value":8,"use":"Inputs and compact controls"},{"name":"lg","value":12,"use":"Default card and large control"},{"name":"xl","value":16,"use":"Selected card, sheet, prominent surface"},{"name":"xxl","value":24,"use":"Large hero surface only"},{"name":"full","value":9999,"use":"Pill, avatar, circle"}]},"borderWidth":{"unit":"dp","scale":[{"name":"thin","value":1,"use":"Default structural border"},{"name":"thick","value":1.5,"use":"Emphasised border"},{"name":"thicker","value":2,"use":"Selection or strong emphasis \u2014 not routine decoration"}]},"elevation":{"unit":"dp","rule":"The package exposes no global shadow scale in 0.19.0. Default is flat with border/background hierarchy.","scale":[{"name":"flat","value":0,"use":"Screens, cards, buttons, app bars"},{"name":"floating","value":4,"use":"Floating map/control surface already established in app code"},{"name":"modal","value":null,"use":"Component-owned \u2014 use SnabbitBottomSheet; do not recreate its scrim/elevation"}]},"icon":{"library":"Phosphor Icons","rule":"Phosphor only. No other icon set, no custom glyphs. One Phosphor icon = one meaning in the app, recorded in foundations/icons.md.","weights":{"default":"regular","selected":"fill","emphasis":"bold","never":["thin","light","duotone"]},"unit":"dp","sizes":[16,20,24,32,40],"defaultAction":24,"mediumControl":20,"minTouchTarget":48,"buttonOwned":{"XS":16,"S":18,"M":20,"L":24}},"button":{"unit":"dp","sizes":[{"name":"XS","height":32,"paddingX":12,"radius":6,"icon":16,"labelSize":12,"labelWeight":500,"labelWeightName":"Medium"},{"name":"S","height":40,"paddingX":16,"radius":8,"icon":18,"labelSize":14,"labelWeight":500,"labelWeightName":"Medium"},{"name":"M","height":48,"paddingX":20,"radius":10,"icon":20,"labelSize":16,"labelWeight":600,"labelWeightName":"SemiBold"},{"name":"L","height":56,"paddingX":24,"radius":12,"icon":24,"labelSize":16,"labelWeight":600,"labelWeightName":"SemiBold"}],"rules":["Prefer M for standard actions and L for full-width bottom actions.","XS and S need a 48 dp parent hit area when interactive.","Loading keeps the label visible and adds a spinner.","Disabled and loading states must block duplicate taps."]},"grid":{"unit":"dp","baselineViewport":{"width":360,"height":800},"verifyWidths":[320,360,412],"screenMargin":16,"spaciousMargin":24,"nestedPadding":[12,16],"sectionGap":[24,32],"bottomActionPadding":16,"rules":["Use one horizontal margin consistently within a screen.","Cards align to the screen grid.","Bottom actions use 16 dp horizontal/top padding plus the system safe-area inset.","Keep scroll content clear of a persistent footer by the footer height plus safe area.","Do not center long form content in a fixed-width column on phone surfaces."]},"governance":{"addingAToken":["Confirm the package has no semantic token for the need.","Check this document and the closest existing pattern.","Record the proposed name, value, purpose, affected states, contrast, and migration plan in a component brief.","Prefer adding the token to the design-system package. If temporarily local, isolate it in the app design-system layer, not a feature file.","Update this file, the component library, and affected screenshots in the same change."]},"illustration":{"purple":null,"yellow":["yellow.300","yellow.400"],"note":"Accent hues used only inside illustration assets (foundations/assets.md). purple: hex to be read from the Snabbit Assets Figma file and locked; until then no new asset introduces a purple."}}</script>
+<script>
+(function(){
+const T=JSON.parse(document.getElementById("tokens-json").textContent); const $=s=>document.querySelector(s);
+const sem={}; Object.values(T.color.semantic).flat().forEach(t=>sem[t.name]=t.value); const P=T.color.palette;
+const ICO={check:'M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z',clock:'M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z',rupee:'M216,72H160.62a48.14,48.14,0,0,0-19.05-24H208a8,8,0,0,0,0-16H64a8,8,0,0,0,0,16h48a32,32,0,0,1,29.95,24H64a8,8,0,0,0,0,16h77.95A32,32,0,0,1,112,112H64a8,8,0,0,0-6.09,13.19l90.5,105.59a8,8,0,1,0,12.15-10.41L82.32,128H112a48.07,48.07,0,0,0,47.74-40H216a8,8,0,0,0,0-16Z',camera:'M208,56H180.28L166.65,35.56A8,8,0,0,0,160,32H96a8,8,0,0,0-6.65,3.56L75.71,56H48A24,24,0,0,0,24,80V192a24,24,0,0,0,24,24H208a24,24,0,0,0,24-24V80A24,24,0,0,0,208,56Zm8,136a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V80a8,8,0,0,1,8-8H80a8,8,0,0,0,6.66-3.56L100.28,48h55.43l13.63,20.44A8,8,0,0,0,176,72h32a8,8,0,0,1,8,8ZM128,88a44,44,0,1,0,44,44A44.05,44.05,0,0,0,128,88Zm0,72a28,28,0,1,1,28-28A28,28,0,0,1,128,160Z',image:'M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,16V158.75l-26.07-26.06a16,16,0,0,0-22.63,0l-20,20-44-44a16,16,0,0,0-22.62,0L40,149.37V56ZM40,172l52-52,80,80H40Zm176,28H194.63l-36-36,20-20L216,181.38V200ZM144,100a12,12,0,1,1,12,12A12,12,0,0,1,144,100Z',xc:'M165.66,101.66,139.31,128l26.35,26.34a8,8,0,0,1-11.32,11.32L128,139.31l-26.34,26.35a8,8,0,0,1-11.32-11.32L116.69,128,90.34,101.66a8,8,0,0,1,11.32-11.32L128,116.69l26.34-26.35a8,8,0,0,1,11.32,11.32ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z'};
+const svg=n=>`<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="${ICO[n]}"/></svg>`;
+// clock-face pictogram (stand-in for asset/picto/*): pink disc, magenta hands, filled sector = hours
+const clockAsset=(frac)=>{const a=frac*360,r=22,cx=32,cy=32,x=cx+r*Math.sin(a*Math.PI/180),y=cy-r*Math.cos(a*Math.PI/180),lg=a>180?1:0;return `<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="${P.pink['100']}"/><circle cx="32" cy="32" r="24" fill="#fff" stroke="${P.gray['300']}" stroke-width="2"/><path d="M32 32 L32 10 A22 22 0 ${lg} 1 ${x.toFixed(1)} ${y.toFixed(1)} Z" fill="${P.pink['300']}"/><path d="M32 32V14M32 32l10 6" stroke="${sem.interactiveDefault}" stroke-width="3" stroke-linecap="round"/><circle cx="32" cy="32" r="3" fill="${sem.interactiveDefault}"/></svg>`;};
+const ctl=(mode,on,dis)=>mode==='multi'?`<span class="cb ${on?'on':''} ${dis?'dis':''}">${on?svg('check'):''}</span>`:`<span class="rd ${on?'on':''} ${dis?'dis':''}"></span>`;
+function card(o){ // variant, mode, sel, dis, err, press, title, desc, facts[[icon,text,amt?]], asset(frac), lead icon, rec, id
+ const cls=['sc',o.variant==='date'?'dt':'',o.sel?'sel':'',o.dis?'dis':'',o.err?'err':'',o.press?'press':''].join(' ');
+ if(o.variant==='date')return `<div class="${cls}" data-id="${o.id||''}" role="radio" aria-checked="${!!o.sel}"><span class="ctl">${ctl('single',o.sel,o.dis)}</span><span class="wd">${o.wd}</span><span class="dy">${o.dy}</span><span class="mo">${o.mo}</span></div>`;
+ const facts=o.facts?`<div class="facts">${o.facts.map(([i,t,a])=>`<div class="f">${svg(i)}<span>${a?`<span class="amt">${a}</span> `:''}${t}</span></div>`).join('')}</div>`:'';
+ const asset=o.asset!=null?`<div class="asset">${clockAsset(o.asset)}${o.sel?`<span class="chk">${svg('check')}</span>`:''}</div>`:'';
+ return `<div class="${cls}" data-id="${o.id||''}" role="${o.mode==='multi'?'checkbox':'radio'}" aria-checked="${!!o.sel}">${o.rec?'<span class="rec">Recommended</span>':''}<span class="ctl">${ctl(o.mode,o.sel,o.dis)}</span>${o.lead?`<span class="lead">${svg(o.lead)}</span>`:''}<span class="body"><span class="t">${o.title}</span>${o.desc?`<span class="d">${o.desc}</span>`:''}${facts}</span>${asset}</div>`;}
+const W=(cap,html)=>`<div class="stg">${html}<div class="cap">${cap}</div></div>`;
+$('#variants-grid').innerHTML=[
+ W('<b>compact</b> · control · icon · title · description',`<div class="grp">${card({variant:'compact',lead:'camera',title:'Camera',desc:'Take a photo now',sel:1})}${card({variant:'compact',lead:'image',title:'Gallery',desc:'Choose an existing photo'})}</div>`),
+ W('<b>rich</b> · facts + 64 dp asset',card({variant:'rich',title:'Full time',desc:'10 to 12 hours daily',facts:[['rupee','/ month','₹20K – ₹30K'],['clock','8+ hours daily']],asset:.5,sel:1})),
+ W('<b>date</b> · 72 × 88 · strip of ≤ 7 · today first',`<div class="strip">${[['Mon','7','Sep',1],['Tue','8','Sep'],['Wed','9','Sep'],['Thu','10','Sep'],['Fri','11','Sep'],['Sat','12','Sep'],['Sun','13','Sep']].map(([w,d,m,s])=>card({variant:'date',wd:w,dy:d,mo:m,sel:s})).join('')}</div>`)].join('');
+$('#states-grid').innerHTML=[
+ W('<b>default</b>',card({variant:'rich',title:'Part time',desc:'4 to 6 hours daily',facts:[['rupee','/ month','₹10K – ₹12K']],asset:.25})),
+ W('<b>selected</b> · border 2 + control + check badge',card({variant:'rich',title:'Part time',desc:'4 to 6 hours daily',facts:[['rupee','/ month','₹10K – ₹12K']],asset:.25,sel:1})),
+ W('<b>pressed</b>',card({variant:'rich',title:'Part time',desc:'4 to 6 hours daily',facts:[['rupee','/ month','₹10K – ₹12K']],asset:.25,press:1})),
+ W('<b>disabled</b> · description says why',card({variant:'rich',title:'Night shift',desc:'Not available in your area yet',asset:.75,dis:1})),
+ W('<b>recommended</b> · one per group · Tag, not colour',card({variant:'rich',title:'Full time',desc:'Most experts choose this',facts:[['rupee','/ month','₹20K – ₹30K'],['clock','8+ hours daily']],asset:.5,rec:1})),
+ W('<b>group error</b> · every unselected card + one line',`<div class="grp">${card({variant:'compact',lead:'camera',title:'Camera',err:1})}${card({variant:'compact',lead:'image',title:'Gallery',err:1})}<div class="gerr">${svg('xc')}<span>Choose how to add the photo</span></div></div>`)].join('');
+// live
+let mode='single',sel=new Set();
+const OPTS=[{id:'ft',title:'Full time',desc:'10 to 12 hours daily',facts:[['rupee','/ month','₹20K – ₹30K'],['clock','8+ hours daily']],asset:.5,rec:1},{id:'pt',title:'Part time',desc:'4 to 6 hours daily',facts:[['rupee','/ month','₹10K – ₹12K'],['clock','4+ hours daily']],asset:.25},{id:'wk',title:'Weekends only',desc:'Sat and Sun',facts:[['rupee','/ month','₹6K – ₹8K']],asset:.15}];
+function ph(){$('#ph').innerHTML=`<div class="q">${mode==='single'?'How do you want to work?':'Which shifts can you take?'}</div><div class="grp">${OPTS.map(o=>card({...o,variant:'rich',mode,sel:sel.has(o.id)})).join('')}</div><button class="sbtn full" style="--h:56px;--px:24px;--r:12px;--fs:16px;--fw:600;--ic:24px;--gap:8px;--fill:${sem.interactiveDefault};--ink:#fff;--fill-p:${sem.interactivePressed}">${svg('check')}<span class="lb">${mode==='single'?'Continue':`Save ${sel.size} shift${sel.size===1?'':'s'}`}</span></button>`;
+ $('#ph').querySelectorAll('.sc').forEach(c=>c.onclick=()=>{const id=c.dataset.id;if(mode==='single'){sel=new Set([id]);}else{sel.has(id)?sel.delete(id):sel.add(id);}ph();});}
+function ctrls(){$('#ctrls').innerHTML=['single','multi'].map(m=>`<button class="sbtn" data-m="${m}" style="--h:36px;--px:14px;--r:999px;--fs:13px;--fw:500;--ic:16px;--gap:6px;--fill:${mode===m?sem.bgBrandSubtle:'#fff'};--ink:${mode===m?sem.textBrand:sem.textBody};--bw:1px;--bc:${mode===m?sem.borderBrand:sem.borderDefault};--fill-p:${sem.bgSecondary}"><span class="lb">${m==='single'?'Single (radio)':'Multi (checkbox)'}</span></button>`).join('');$('#ctrls').querySelectorAll('button').forEach(b=>b.onclick=()=>{mode=b.dataset.m;sel=new Set();ctrls();ph();});}
+ctrls();ph();
+$('#dont-grid').innerHTML=[
+ `<div class="stg"><div class="sc sel" style="flex-direction:column;gap:0;padding:0"><div style="display:flex;gap:12px;padding:16px;width:100%"><span class="body"><span class="f" style="color:${P.green['600']}">${svg('rupee')}<span style="color:${P.green['600']};font-weight:600">Earn ₹20K – ₹30K / month</span></span><span class="f">${svg('clock')}<span>8+ hours daily</span></span></span><div class="asset">${clockAsset(.5)}</div></div><div style="border-top:1px solid #F3F4F6;width:100%;padding:12px 16px;display:flex;gap:12px;align-items:center"><span class="rd on"></span><span class="t">Work Full Time</span></div></div><span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">Control at the bottom after a divider — not where it is in every other selection row. Green earnings text reads as "good news", not as a fact. Selected shown by border only.</div></div>`,
+ `<div class="stg"><div class="grp">${card({variant:'compact',title:'UPI',sel:1})}${card({variant:'compact',title:'Bank transfer',sel:1})}${card({variant:'compact',title:'Cash',sel:1})}${card({variant:'compact',title:'Cheque'})}${card({variant:'compact',title:'Wallet'})}${card({variant:'compact',title:'Other'})}</div><span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">Six cards, three pre-selected, in a single-select group. More than five options is a Select sheet; groups start empty; radios can't have three on.</div></div>`].join('');
+const links=[...document.querySelectorAll('#nav a')];const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-20% 0px -70% 0px'});targets.forEach(t=>io.observe(t));}
+})();
+</script>

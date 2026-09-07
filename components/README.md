@@ -17,3 +17,5 @@ One spec per core component. `button.md` is the template. Status per component: 
 | Badge · AchievementBadge | Proposed | `badge.md` | `site/components/badge.html` |
 | Card | Proposed | `card.md` | `site/components/card.html` |
 | ListItem | Proposed | `list-item.md` | `site/components/list-item.html` |
+| SelectionCard | Proposed | `selection-card.md` | `site/components/selection-card.html` |
+| BottomSheet | Proposed | `bottom-sheet.md` | `site/components/bottom-sheet.html` |

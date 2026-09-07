@@ -1,0 +1,133 @@
+<title>Snabbit Expert BottomSheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>__BASECSS__
+.ph{width:360px;height:640px;border:1px solid #E5E7EB;border-radius:20px;background:#F9FAFB;position:relative;overflow:hidden;color:#111827;font-family:var(--sans)}
+.ph .hdr{height:56px;display:flex;align-items:center;padding:0 16px;font-size:18px;font-weight:500;background:#fff;border-bottom:1px solid #F3F4F6}
+.ph .cnt{padding:16px;display:flex;flex-direction:column;gap:12px}
+.ph .cardx{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:6px}.ph .cardx .t{font-size:18px;font-weight:500}.ph .cardx .s{font-size:14px;color:#6B7280}
+.scrim{position:absolute;inset:0;background:rgba(17,24,39,.6);opacity:0;pointer-events:none;transition:opacity .25s}
+.scrim.on{opacity:1;pointer-events:auto}
+.sheet{position:absolute;left:0;right:0;bottom:0;background:#fff;border-radius:16px 16px 0 0;padding:24px 16px 24px;display:flex;flex-direction:column;gap:12px;transform:translateY(100%);transition:transform .25s ease-out;max-height:90%}
+.sheet.on{transform:none}
+.sheet.grab{padding-top:8px}
+.sheet .grabber{width:32px;height:4px;border-radius:2px;background:#E5E7EB;align-self:center;margin-bottom:12px}
+.sheet .x{position:absolute;top:8px;right:8px;width:48px;height:48px;border:0;background:transparent;border-radius:10px;display:grid;place-items:center;color:#374151;cursor:pointer}.sheet .x svg{width:20px;height:20px}
+.sheet .hero{align-self:center;width:120px;height:120px}
+.sheet .hero.sm{width:96px;height:96px}
+.sheet .ttl{font-size:20px;font-weight:600;line-height:28px;display:flex;align-items:flex-start;gap:8px}
+.sheet .ttl.c{justify-content:center;text-align:center}
+.sheet .x ~ .ttl:not(.c){padding-right:44px}
+.sheet .ttl .spk{width:40px;height:40px;border:0;background:transparent;color:#F70F79;border-radius:8px;display:grid;place-items:center;flex:none;margin:-6px 0;cursor:pointer}.sheet .ttl .spk svg{width:20px;height:20px}
+.sheet .bd{font-size:16px;line-height:24px;color:#374151}.sheet .bd.c{text-align:center}
+.sheet .acts{display:flex;flex-direction:column;gap:12px;margin-top:4px}
+.sheet .acts.row{flex-direction:row}.sheet .acts.row .sbtn{flex:1}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px;background:#F9FAFB;border-radius:12px}
+.facts div{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:12px;color:#374151;text-align:center;line-height:16px}
+.facts .rc{width:28px;height:36px;border-radius:4px;background:linear-gradient(135deg,#F87171,#B91C1C);display:grid;place-items:center;color:#fff;font-size:11px;font-weight:700}
+.facts svg{width:28px;height:28px;color:#6B7280}
+.rows{display:flex;flex-direction:column;margin:0 -16px}
+.row{display:flex;align-items:center;gap:12px;min-height:56px;padding:8px 16px;font-size:16px;cursor:pointer}.row+.row{border-top:1px solid #F3F4F6}.row:active{background:#F9FAFB}
+.rd{width:24px;height:24px;border-radius:50%;box-shadow:inset 0 0 0 1.5px #6B7280;display:grid;place-items:center;flex:none}.rd.on{box-shadow:inset 0 0 0 2px #F70F79}.rd.on::after{content:"";width:12px;height:12px;border-radius:50%;background:#F70F79}
+.row .sub{font-size:14px;color:#6B7280;display:block}
+.tf{display:flex;flex-direction:column;gap:8px}.tf .lb{font-size:14px;font-weight:500;color:#374151}.tf .box{display:flex;align-items:center;gap:12px;height:56px;padding:0 16px;border-radius:12px;box-shadow:inset 0 0 0 1px #E5E7EB}.tf .box:focus-within{box-shadow:inset 0 0 0 2px #F70F79}.tf input{flex:1;border:0;outline:0;font:inherit;font-size:16px;color:#111827;background:transparent}.tf .help{font-size:14px;color:#6B7280}
+.kindbar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:24px 32px;align-items:start}
+.stg{display:flex;flex-direction:column;gap:8px}.stg .cap{font-family:var(--mono);font-size:12px;color:var(--text-2)}.stg .cap b{color:var(--text);font-weight:500}
+.mini{position:relative;width:360px;height:420px;border:1px solid #E5E7EB;border-radius:20px;overflow:hidden;background:#F9FAFB;color:#111827;font-family:var(--sans)}
+.mini .scrim{opacity:1}.mini .sheet{transform:none;transition:none}
+.demo-wrap{display:flex;gap:28px;flex-wrap:wrap;align-items:flex-start}
+.logline{font-family:var(--mono);font-size:12px;color:var(--text-2);min-height:16px;margin-top:8px}
+@media (prefers-reduced-motion:reduce){.scrim,.sheet{transition:none}}
+__NAVCSS__</style>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · BottomSheet</small></div></div>
+    __SITENAV__
+    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#kinds">Kinds</a><a href="#actions">Action rules</a><a href="#live">Live</a><a href="#dont">Don't</a><a href="#figma">Figma changes</a></nav>
+    <div class="rail-foot">Rendered from tokens.json · spec in components/bottom-sheet.md</div>
+  </aside>
+  <main class="main">
+    <header id="overview">
+      <div class="eyebrow">Core component</div><h1>BottomSheet</h1>
+      <p class="lede">The only modal surface in the app. It rises from where the thumb already is; a centred box in the middle of the screen reads as "something broke". The confirmation Dialog, the Select menu, the Permission sheet and short forms all live on it.</p>
+      <div class="meta"><span class="chip status">Proposed</span><span class="chip">Tier 1 · Core</span><span class="chip"><code>SnabbitBottomSheet</code></span><span class="chip">5 kinds</span><span class="chip">No centred dialogs</span></div>
+    </header>
+
+    <section id="kinds">
+      <header><div class="eyebrow">One shell, five jobs</div><h2>Kinds</h2><p><b>Info</b> tells; <b>confirm</b> asks and cannot be dismissed by accident; <b>select</b> lists; <b>form</b> takes one input; <b>permission</b> explains why before the OS asks. Same padding, radius, title and action rules on all five.</p></header>
+      <div class="stage"><div class="grid2" id="kinds-grid"></div></div>
+    </section>
+
+    <section id="actions">
+      <header><div class="eyebrow">From the Button spec</div><h2>Action rules</h2></header>
+      <ul class="rules">
+        <li><b>Stacked, full width, L.</b> The primary or most-likely action is <em>lowest</em> — nearest the thumb.</li>
+        <li><b>Costly = secondary danger + hold.</b> Losing earnings, a penalty, logout mid-shift, blocking a customer. Never a filled red button, never one tap.</li>
+        <li><b>Side by side only in confirm</b>, only when both outcomes are legitimate and equal (Absent / Present) — both <code>secondary neutral</code>, safer on the left, neither coloured.</li>
+        <li><b>No <em>Yes / No / Okay</em>.</b> <em>Go offline</em> · <em>Stay available</em> · <em>Start job</em> · <em>Allow camera</em> · <em>Not now</em>.</li>
+        <li><b>Never three actions.</b></li>
+        <li><b>Confirm has no ✕</b>, no drag, scrim tap does nothing, back = the safe option.</li>
+      </ul>
+    </section>
+
+    <section id="live">
+      <header><div class="eyebrow">Try it</div><h2>Live</h2><p>Open each kind over a real screen. Try tapping the scrim on a confirm — nothing happens. Hold the danger button.</p></header>
+      <div class="demo-wrap"><div><div class="kindbar" id="kindbar"></div><div class="logline" id="log"></div></div><div class="ph" id="ph"></div></div>
+    </section>
+
+    <section id="dont">
+      <header><div class="eyebrow">Common mistakes</div><h2>Don't</h2></header>
+      <div class="stage"><div class="grid2" id="dont-grid"></div></div>
+    </section>
+
+    <section id="figma">
+      <header><div class="eyebrow">Reconciliation</div><h2>What changes in Figma</h2></header>
+      <ol class="rules"><li>Merge the 15 sheets into BottomSheet: Kind (Info / Confirm / Select / Form / Permission), booleans Hero, Grabber, Close, Facts strip, Secondary action.</li><li>Close ✕ moves inside the sheet, top-right, IconButton M ghost; removed on Confirm.</li><li>Green / red / status buttons → Button instances per the action rules; <em>No | Yes</em> → stacked verbs; <em>Absent | Present</em> → two secondary neutral.</li><li>Costly confirms (Emergency logout, Block, Lose earnings) → secondary danger + Hold.</li><li>Illustrations → asset instances; delete stray <code>1825:6967</code>.</li><li>Rebuild the 15 sheets as instances on their feature pages.</li></ol>
+      <p class="sub" style="margin-top:14px">Result: ~20 core variants; 15 feature sheets become compositions.</p>
+    </section>
+  </main>
+</div>
+
+<script id="tokens-json" type="application/json">__TOKENS__</script>
+<script>
+(function(){
+const T=JSON.parse(document.getElementById("tokens-json").textContent); const $=s=>document.querySelector(s);
+const sem={}; Object.values(T.color.semantic).flat().forEach(t=>sem[t.name]=t.value); const P=T.color.palette;
+const ICO={x:'M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z',check:'M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z',speaker:'M155.51,24.81a8,8,0,0,0-8.42.88L77.25,80H32A16,16,0,0,0,16,96v64a16,16,0,0,0,16,16H77.25l69.84,54.31A8,8,0,0,0,160,224V32A8,8,0,0,0,155.51,24.81ZM144,207.64,84.91,161.69A7.94,7.94,0,0,0,80,160H32V96H80a7.94,7.94,0,0,0,4.91-1.69L144,48.36ZM208,128a39.93,39.93,0,0,1-10,26.46,8,8,0,0,1-12-10.58,24,24,0,0,0,0-31.72,8,8,0,1,1,12-10.58A40,40,0,0,1,208,128Zm40,0a79.9,79.9,0,0,1-20.37,53.34,8,8,0,0,1-11.92-10.67,64,64,0,0,0,0-85.33,8,8,0,1,1,11.92-10.67A79.83,79.83,0,0,1,248,128Z',clock:'M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z',coin:'M184,89.57V84c0-25.08-37.83-44-88-44S8,58.92,8,84v40c0,20.89,26.25,37.49,64,42.46V172c0,25.08,37.83,44,88,44s88-18.92,88-44V132C248,111.3,222.58,94.68,184,89.57ZM232,132c0,13.22-30.79,28-72,28-3.73,0-7.43-.13-11.08-.37C170.49,151.77,184,139,184,124V105.74C213.87,110.19,232,122.27,232,132ZM72,150.25V126.46A183.74,183.74,0,0,0,96,128a183.74,183.74,0,0,0,24-1.54v23.79A163,163,0,0,1,96,152,163,163,0,0,1,72,150.25Zm96-40.32V124c0,8.39-12.41,17.4-32,22.87V123.5C148.91,120.37,159.84,115.71,168,109.93ZM96,56c41.21,0,72,14.78,72,28s-30.79,28-72,28S24,97.22,24,84,54.79,56,96,56ZM24,124V109.93c8.16,5.78,19.09,10.44,32,13.57v23.37C36.41,141.4,24,132.39,24,124Zm64,48v-4.17c2.63.1,5.29.17,8,.17,3.88,0,7.67-.13,11.39-.35A121.92,121.92,0,0,0,120,171.41v23.46C100.41,189.4,88,180.39,88,172Zm48,26.25V174.4a179.48,179.48,0,0,0,24,1.6,183.74,183.74,0,0,0,24-1.54v23.79a165.45,165.45,0,0,1-48,0Zm64-3.38V171.5c12.91-3.13,23.84-7.79,32-13.57V172C232,180.39,219.59,189.4,200,194.87Z',camera:'M208,56H180.28L166.65,35.56A8,8,0,0,0,160,32H96a8,8,0,0,0-6.65,3.56L75.71,56H48A24,24,0,0,0,24,80V192a24,24,0,0,0,24,24H208a24,24,0,0,0,24-24V80A24,24,0,0,0,208,56Zm8,136a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V80a8,8,0,0,1,8-8H80a8,8,0,0,0,6.66-3.56L100.28,48h55.43l13.63,20.44A8,8,0,0,0,176,72h32a8,8,0,0,1,8,8ZM128,88a44,44,0,1,0,44,44A44.05,44.05,0,0,0,128,88Zm0,72a28,28,0,1,1,28-28A28,28,0,0,1,128,160Z',cc:'M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,85.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z'};
+const svg=n=>`<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="${ICO[n]}"/></svg>`;
+// scene stand-ins (asset/scene/*): pink-stage illustration placeholders
+const scene=(icon,c)=>`<svg viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="16" fill="${P.pink['50']}"/><rect y="78" width="120" height="42" fill="${P.pink['100']}"/><g transform="translate(36 30) scale(.19)" fill="${c||sem.interactiveDefault}"><path d="${ICO[icon]}"/></g><circle cx="22" cy="24" r="3" fill="${P.yellow['400']}"/><circle cx="98" cy="40" r="2.5" fill="${P.yellow['400']}"/></svg>`;
+const btn=(l,v,o={})=>{const s={prim:`--fill:${sem.interactiveDefault};--ink:#fff;--fill-p:${sem.interactivePressed}`,ghost:`--fill:transparent;--ink:${sem.textBody};--fill-p:${sem.bgSecondary}`,danger:`--fill:#fff;--ink:${sem.textError};--bw:1.5px;--bc:${sem.borderError};--fill-p:${sem.bgError}`,neu:`--fill:#fff;--ink:${sem.textBody};--bw:1.5px;--bc:${sem.borderStrong};--fill-p:${sem.bgSecondary}`,green:`--fill:${P.green['600']};--ink:#fff;--fill-p:${P.green['700']}`,red:`--fill:${P.red['600']};--ink:#fff;--fill-p:${P.red['700']}`}[v];return `<button class="sbtn full ${o.cls||''}" ${o.id?`id="${o.id}"`:''} style="--h:${o.h||56}px;--px:24px;--r:12px;--fs:16px;--fw:600;--ic:24px;--gap:8px;${s}">${o.hold?'<span class="hf"></span>':''}${o.icon?svg(o.icon):''}<span class="lb">${l}</span></button>`;};
+function sheet(k,o={}){ // returns inner html of a sheet for kind k
+ const spk=`<button class="spk" aria-label="Hear this again">${svg('speaker')}</button>`;
+ if(k==='info')return {grab:1,close:1,html:`<div class="hero">${scene('cc',P.green['600'])}</div><div class="ttl c">Job started</div><div class="bd c">Say namaste to Meera and get started. Your timer is running.</div><div class="acts">${btn('Got it','prim')}</div>`};
+ if(k==='confirm')return {grab:0,close:0,html:`<div class="ttl">Go offline now?${spk}</div><div class="bd">You'll stop getting jobs for the rest of this shift. Today's on-time streak stays safe.</div><div class="facts"><div><span class="rc">−1</span>1 red card</div><div>${svg('clock')}Miss full shift</div><div>${svg('coin')}Lose ₹200</div></div><div class="acts">${btn('Stay available','ghost',{h:48})}${btn('Hold to go offline','danger',{hold:1,id:'hold'})}</div>`};
+ if(k==='select')return {grab:1,close:1,html:`<div class="ttl">Language</div><div class="rows">${[['हिन्दी','Hindi',1],['ಕನ್ನಡ','Kannada'],['मराठी','Marathi'],['English','']].map(([a,b,s])=>`<div class="row" data-sel><span class="rd ${s?'on':''}"></span><span style="flex:1">${a}${b?`<span class="sub">${b}</span>`:''}</span></div>`).join('')}</div>`};
+ if(k==='form')return {grab:1,close:1,html:`<div class="ttl">Enter the customer's OTP${spk}</div><div class="bd">Ask Meera for the 4-digit code on her app.</div><div class="tf"><span class="lb">OTP</span><div class="box"><input inputmode="numeric" maxlength="4" placeholder="1234" aria-label="OTP"></div><span class="help">The code is in the customer's booking</span></div><div class="acts">${btn('No OTP?','ghost',{h:48})}${btn('Start job','prim')}</div>`};
+ if(k==='permission')return {grab:1,close:1,html:`<div class="hero">${scene('camera')}</div><div class="ttl c">Camera lets you check in${spk}</div><div class="bd c">We take a selfie to confirm you've arrived. Nothing is shared with the customer.</div><div class="acts">${btn('Allow camera','prim',{icon:'camera'})}${btn('Not now','ghost',{h:48})}</div>`};}
+const W=(cap,html)=>`<div class="stg">${html}<div class="cap">${cap}</div></div>`;
+const mini=(k)=>{const s=sheet(k);return `<div class="mini"><div class="scrim"></div><div class="sheet ${s.grab?'grab':''}">${s.grab?'<span class="grabber"></span>':''}${s.close?`<button class="x" aria-label="Close">${svg('x')}</button>`:''}${s.html}</div></div>`;};
+$('#kinds-grid').innerHTML=[W('<b>info</b> · hero · one action · dismissible',mini('info')),W('<b>confirm</b> · no ✕ · consequence strip · safe above, hold below',mini('confirm')),W('<b>select</b> · radio rows · closes on pick',mini('select')),W('<b>form</b> · one TextField · keyboard-aware',mini('form')),W('<b>permission</b> · why, before the OS asks',mini('permission'))].join('');
+// live
+let open=null;
+function ph(){const s=open?sheet(open):null;
+ $('#ph').innerHTML=`<div class="hdr">Today</div><div class="cnt"><div class="cardx"><div class="t">Cleaning · 2 hr</div><div class="s">Meera K · Koramangala · 9:30 am</div></div><div class="cardx"><div class="t">Cooking · 1 hr</div><div class="s">HSR Layout · 12:00 pm</div></div></div><div class="scrim ${open?'on':''}" id="scrim"></div><div class="sheet ${open?'on':''} ${s&&s.grab?'grab':''}" id="sheet" role="dialog" aria-modal="true">${s?(s.grab?'<span class="grabber"></span>':'')+(s.close?`<button class="x" aria-label="Close">${svg('x')}</button>`:'')+s.html:''}</div>`;
+ const close=()=>{open=null;ph();};
+ $('#scrim').onclick=()=>{if(open==='confirm'){$('#log').textContent='scrim tap ignored — confirm needs a labelled choice';}else close();};
+ const x=$('#sheet .x');if(x)x.onclick=close;
+ $('#sheet').querySelectorAll('.acts .sbtn').forEach(b=>{if(b.id!=='hold')b.onclick=()=>{$('#log').textContent=`${b.querySelector('.lb').textContent} → closes`;close();};});
+ const h=$('#hold');if(h){let t;h.onpointerdown=e=>{e.preventDefault();h.classList.add('holding');$('#log').textContent='holding… release to cancel';t=setTimeout(()=>{$('#log').textContent='committed → offline · medium haptic · commit sound';close();},600);};const stop=()=>{clearTimeout(t);h.classList.remove('holding');};h.onpointerup=stop;h.onpointerleave=stop;}
+ $('#sheet').querySelectorAll('[data-sel]').forEach(r=>r.onclick=()=>{$('#log').textContent='picked → closes (single select)';close();});
+ const spk=$('#sheet .spk');if(spk)spk.onclick=()=>{$('#log').textContent='speaks title + body';};}
+$('#kindbar').innerHTML=['info','confirm','select','form','permission'].map(k=>`<button class="sbtn" data-k="${k}" style="--h:40px;--px:16px;--r:8px;--fs:14px;--fw:500;--ic:18px;--gap:6px;--fill:${sem.bgTertiary};--ink:${sem.textBody};--fill-p:${P.gray['200']}"><span class="lb">Open ${k}</span></button>`).join('');
+$('#kindbar').querySelectorAll('button').forEach(b=>b.onclick=()=>{open=b.dataset.k;$('#log').textContent=open==='confirm'?'confirm: no ✕, scrim does nothing, back = Stay available':`${open} opened · 250 ms`;ph();});
+ph();
+$('#dont-grid').innerHTML=[
+ `<div class="stg"><div class="mini"><div class="scrim"></div><button style="position:absolute;top:24px;left:50%;transform:translateX(-50%);width:32px;height:32px;border:0;background:transparent;color:#fff">${svg('x')}</button><div class="sheet"><div class="ttl c">You will lose your job earnings</div><div class="acts">${btn('Accept Job','green')}${btn('Deny','ghost',{h:48})}</div></div></div><span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">A green filled button (success is a status colour); a ✕ floating on the scrim with no visible hit area; the costly path (<em>Deny</em>) is a plain one-tap ghost; the title states a loss without saying what to do.</div></div>`,
+ `<div class="stg"><div class="mini"><div class="scrim"></div><div class="sheet"><div class="ttl c">Are you sure you want to change attendance?</div><div class="acts row">${btn('Absent','red')}${btn('Present','green')}</div></div></div><span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">Red vs green side by side — colour doing the work, and the "bad" option looks like an error button. Both are legitimate choices: two <code>secondary neutral</code>, safer on the left, neither coloured.</div></div>`].join('');
+const links=[...document.querySelectorAll('#nav a')];const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-20% 0px -70% 0px'});targets.forEach(t=>io.observe(t));}
+})();
+</script>
