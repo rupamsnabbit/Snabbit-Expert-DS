@@ -4,7 +4,7 @@ What is done and what is left, against the 46-component core set in `audit/BENCH
 
 ---
 
-## Done — 38 pages · 46 of 46 core components + 2 compositions + 1 pattern
+## Done — 39 pages · 46 of 46 core components + 2 compositions + 1 pattern
 
 | # | Page | Covers | Status |
 | --- | --- | --- | --- |
@@ -47,7 +47,7 @@ What is done and what is left, against the 46-component core set in `audit/BENCH
 | — | FAB | Folded into IconButton: floating = `L` `circle` at `elevation.floating`; shutter and recentre only; no FAB component (`icon-button.md`) | Decided |
 | 37 | Pattern · New job arrives | `patterns/new-job-alert.md` — arrive, decide, accept / decline / time's up, edges; PRINCIPLES reference case corrected | Proposed |
 
-Foundations done: tokens (`tokens/`), principles, extending, icons register, assets (two layers), motion (`foundations/motion.md`). Research done: Figma audit (204 frames), benchmark.
+Foundations done: tokens (`tokens/`), principles, extending, icons register, assets (two layers), motion (`foundations/motion.md`), type across four scripts (`foundations/type.md`). Research done: Figma audit (204 frames), benchmark.
 
 ---
 
@@ -59,15 +59,15 @@ Removed from the count (decided): Tooltip (→ Coachmark), Progress Buttons (→
 
 ---
 
-## To do — foundations (4 of 8 left) — visual first
+## To do — foundations (3 of 8 left) — visual first
 
 Order decided 2026-09-08: the visual foundations first, sound parked.
 
 | # | Foundation | Why it blocks | Status |
 | --- | --- | --- | --- |
 | 1 | **Motion tokens** | `motion.*` (10 durations, 4 easings) and `timeout.*` (14) added to tokens.json; `foundations/motion.md`; specs reconciled | **done** |
-| 2 | **Indic type rules** | Line-height ×1.15 exists in tokens; wrap, length and fallback-face rules per component not consolidated; every checklist row 7 is open | next |
-| 3 | **Accessibility standard** | Contrast, targets, focus ring, reduced motion — currently repeated per spec | after type |
+| 2 | **Indic type rules** | `foundations/type.md`: fallback faces, ×1.15 table, expansion budgets, consolidated length table, wrapping, font scale 1.3, test strings; `typography.indic` extended | **done** |
+| 3 | **Accessibility standard** | Contrast, targets, focus ring, reduced motion — currently repeated per spec | next |
 | 4 | Content guide | Voice, four languages, spoken-copy rules, vocabulary in one place | later |
 | — | Sound & haptics register | Every spec names sounds and haptics that exist nowhere as a list (`sound.sos`, `sound.newJob`, `sound.safetyCheck`, `sound.shutter`, `sound.voiceStart`; `haptic.*`) | **parked** — not visual; the proposals stay in the specs until this is picked up |
 

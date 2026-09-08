@@ -263,6 +263,8 @@ __NAVCSS__</style>
         <p id="type-rule"></p>
       </header>
       <div class="type-list" id="type"></div>
+      <h3 style="margin-top:20px">Same <code>Title</code> in four scripts — Indic lines are × 1.15</h3>
+      <div id="type-indic" style="max-width:520px"></div>
       <ul class="rules" id="type-rules"></ul>
     </section>
 
@@ -429,7 +431,8 @@ $('#type').innerHTML = T.typography.scale.map(t=>`
     <div class="spec" style="font-size:${t.size}px;line-height:${t.lineHeight}px;font-weight:${t.weight}">Job starts in 20 minutes</div>
     <div class="type-meta"><b>${t.size}</b> / ${t.lineHeight} sp<br>${esc(t.weightName)} ${t.weight}</div>
   </div>`).join('');
-$('#type-rules').innerHTML = T.typography.rules.map(r=>`<li>${esc(r)}</li>`).join('');
+$('#type-rules').innerHTML = T.typography.rules.map(r=>`<li>${esc(r)}</li>`).join('') + `<li>Indic scripts: platform fallback face, line height × ${T.typography.indic.lineHeightMultiplier}, expansion ≈ ×${T.typography.indic.expansion.hi} Hindi · ×${T.typography.indic.expansion.mr} Marathi · ×${T.typography.indic.expansion.kn} Kannada, verified at font scale ${T.typography.indic.maxFontScale} — <a href="type.html">Type · four scripts</a>.</li>`;
+$('#type-indic').innerHTML = ['Job starts in 20 minutes','काम 20 मिनट में शुरू होगा','काम 20 मिनिटांत सुरू होईल','ಕೆಲಸ 20 ನಿಮಿಷಗಳಲ್ಲಿ ಶುರುವಾಗುತ್ತದೆ'].map((x,i)=>`<div class="spec" style="font-size:18px;line-height:${i?28:24}px;font-weight:500;padding:4px 0;border-bottom:1px dashed var(--border)">${x}</div>`).join('');
 
 // ---- spacing ----
 $('#space').innerHTML = T.spacing.scale.map(s=>`

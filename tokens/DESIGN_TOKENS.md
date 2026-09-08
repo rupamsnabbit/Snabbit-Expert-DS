@@ -99,6 +99,8 @@ Rules:
 - Do not use `Small` for actions, errors, payment status, safety guidance, or essential instructions.
 - Respect system font scaling and verify two-line labels and titles.
 
+Indic scripts (Hindi, Marathi in Devanagari; Kannada): the platform face is the fallback (Noto Sans on Android, Sangam MN on iOS) — never a second bundled family, never synthesised bold or italic. Line height × 1.15; expansion budgets relative to English ≈ ×1.2 Hindi, ×1.25 Marathi, ×1.35 Kannada; layouts are verified at font scale 1.3; truncation is allowed only in the HeaderNav title, a ListItem title that opens a detail, and a MapMarker label, always read aloud in full. Numerals are Latin everywhere. Full rules: `foundations/type.md`.
+
 ## Spacing
 
 | Token | Value | Typical use |

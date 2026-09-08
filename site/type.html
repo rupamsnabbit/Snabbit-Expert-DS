@@ -1,0 +1,524 @@
+<meta charset="utf-8">
+<title>Snabbit Expert Type</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --bg-2:#F9FAFB; --bg-3:#F3F4F6;
+  --text:#111827; --text-body:#374151; --text-2:#6B7280; --text-3:#9CA3AF;
+  --border:#E5E7EB; --border-subtle:#F3F4F6;
+  --brand:#F70F79; --brand-wash:#FEF1F7; --brand-ink:#97094A;
+  --ok:#059669; --ok-wash:#ECFDF5; --focus:#3B82F6;
+  --sans:"Outfit",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+    --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+    --border:#374151; --border-subtle:#1F2937;
+    --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+    --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+  --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+  --border:#374151; --border-subtle:#1F2937;
+  --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+  --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--text-body);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+code{font-family:var(--mono);font-size:.85em;background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--text)}
+pre{background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:14px 16px;overflow-x:auto;margin:12px 0 20px} pre code{background:none;border:0;padding:0;font-size:12.5px;line-height:1.55;white-space:pre}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+.shell{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}
+.rail{position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--border);padding:24px 16px 32px;background:var(--bg);display:flex;flex-direction:column;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;padding:0 8px}
+.brand-mark{width:28px;height:28px;border-radius:8px;background:var(--brand);display:grid;place-items:center;flex:none}
+.brand-mark span{width:12px;height:12px;border-radius:3px;background:#fff;transform:rotate(45deg)}
+.brand b{font-weight:600;color:var(--text);font-size:15px;line-height:1.2;display:block}
+.brand small{color:var(--text-2);font-size:12px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:block;padding:6px 8px;border-radius:6px;text-decoration:none;color:var(--text);font-size:13.5px;font-weight:500}
+.nav a.sub{font-weight:400;color:var(--text-body);padding-left:14px;font-size:13px}
+.nav a.sub b{font-family:var(--mono);font-weight:500;color:var(--text-3);font-size:11.5px;margin-right:2px}
+.nav a:hover{background:var(--bg-2)}
+.nav a.on{background:var(--brand-wash);color:var(--brand-ink)}
+.rail-foot{margin-top:auto;padding:0 8px;font-size:12px;color:var(--text-3);line-height:1.5}
+.main{padding:40px 56px 96px;max-width:860px;width:100%}
+.eyebrow{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);font-weight:600}
+h1{font-size:40px;line-height:1.1;font-weight:600;color:var(--text);margin:8px 0 12px;letter-spacing:-.015em;text-wrap:balance}
+.lede{font-size:18px;color:var(--text-2);max-width:60ch;margin:0 0 8px}
+.lede strong{color:var(--text);font-weight:500}
+h2{font-size:26px;line-height:1.2;font-weight:600;color:var(--text);margin:72px 0 16px;letter-spacing:-.01em;text-wrap:balance;padding-top:24px;border-top:1px solid var(--border)}
+h3{font-size:20px;font-weight:600;color:var(--text);margin:48px 0 8px;letter-spacing:-.005em}
+h3::before{content:"";display:block;width:32px;height:3px;background:var(--brand);border-radius:2px;margin-bottom:14px}
+p{margin:0 0 14px;max-width:66ch}
+h3 + p{font-size:17px;color:var(--text);font-weight:500}
+p.why{color:var(--text-2);font-size:15px;padding-left:14px;border-left:2px solid var(--border)}
+p.why::before{content:"Why · ";color:var(--text-3);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+p.lbl{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2);font-weight:600;margin:22px 0 8px}
+strong{color:var(--text);font-weight:600}
+em{font-style:italic}
+ul,ol{margin:0 0 14px;padding-left:0;list-style:none;max-width:68ch}
+ul li{position:relative;padding-left:20px;margin:6px 0;font-size:15.5px}
+ul li::before{content:"";position:absolute;left:0;top:11px;width:9px;height:2px;background:var(--brand)}
+ul li.chk{padding-left:30px}
+ul li.chk::before{width:16px;height:16px;top:4px;background:var(--bg);border:1.5px solid var(--text-3);border-radius:4px}
+ol{counter-reset:s}
+ol li{counter-increment:s;display:grid;grid-template-columns:32px 1fr;gap:12px;margin:10px 0;font-size:15.5px}
+ol li::before{content:counter(s);width:28px;height:28px;border-radius:50%;background:var(--brand-wash);color:var(--brand-ink);font-weight:600;font-size:13px;display:grid;place-items:center;margin-top:1px}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px;margin:8px 0 20px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);font-weight:500;padding:10px 14px;background:var(--bg-2);border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:10px 14px;border-bottom:1px solid var(--border-subtle);vertical-align:top;color:var(--text-body)}
+tr:last-child td{border-bottom:0}
+td:first-child{color:var(--text);font-weight:500;white-space:nowrap}
+hr{display:none}
+
+.sitenav{display:flex;flex-direction:column;gap:2px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.sitenav .grp{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);padding:10px 8px 4px;font-weight:500}
+.sitenav a{display:block;padding:5px 8px;border-radius:6px;text-decoration:none;color:var(--text-body);font-size:13.5px;border:0}
+.sitenav a:hover{background:var(--bg-2);color:var(--text)} .sitenav a.on{color:var(--brand-ink);background:var(--brand-wash);font-weight:500}
+@media (max-width:900px){.sitenav{flex-direction:row;flex-wrap:wrap;gap:4px;border-bottom:0;padding-bottom:0}.sitenav .grp{display:none}}
+
+@media (max-width:900px){
+  .shell{grid-template-columns:1fr}
+  .rail{position:static;height:auto;border-right:0;border-bottom:1px solid var(--border);padding:16px}
+  .nav{flex-direction:row;flex-wrap:wrap;gap:4px} .nav a.sub{padding-left:8px} .rail-foot{display:none}
+  .main{padding:32px 20px 80px} h1{font-size:32px} h2{margin-top:56px}
+}
+</style>
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Type · four scripts</small></div></div>
+    <nav class="sitenav" aria-label="Site"><div class="grp">Foundations</div><a href="index.html">Tokens</a><a href="principles.html">Principles</a><a href="extending.html">Extending</a><a href="icons.html">Icons</a><a href="assets.html">Assets</a><a href="motion.html">Motion</a><a class="on" href="type.html">Type · four scripts</a><div class="grp">Components</div><a href="components/button.html">Button</a><a href="components/icon-button.html">IconButton</a><a href="components/tag.html">Tag</a><a href="components/text-field.html">TextField</a><a href="components/selection-controls.html">Checkbox · Radio · Switch</a><a href="components/amount.html">Amount</a><a href="components/timer.html">Timer</a><a href="components/feedback.html">Banner · Toast · Snackbar</a><a href="components/chip.html">Chip</a><a href="components/avatar.html">Avatar</a><a href="components/badge.html">Badge</a><a href="components/card.html">Card</a><a href="components/list-item.html">ListItem</a><a href="components/selection-card.html">SelectionCard</a><a href="components/bottom-sheet.html">BottomSheet</a><a href="components/header-nav.html">HeaderNav</a><a href="components/bottom-tab-bar.html">BottomTabBar</a><a href="components/progress-bar.html">ProgressBar</a><a href="components/stepper.html">Stepper</a><a href="components/coachmark.html">Coachmark</a><a href="components/sos-control.html">SOSControl</a><a href="components/accordion.html">Accordion</a><a href="components/date-picker.html">DatePicker</a><a href="components/empty-state.html">EmptyState</a><a href="components/skeleton.html">Skeleton · Spinner</a><a href="components/voice-prompt.html">VoicePrompt</a><a href="components/tabs.html">Tabs · Segmented</a><a href="components/nudge.html">Nudge</a><a href="components/numeric-keypad.html">NumericKeypad</a><a href="components/page-indicator.html">PageIndicator</a><a href="components/media-capture.html">MediaCapture</a><a href="components/map-marker.html">MapMarker · MapSnippet</a><a href="components/stat-rating-divider.html">Stat · Rating · Divider</a><a href="components/how-to-clip.html">HowToClip</a><a href="components/shield-card.html">ShieldCard</a><a href="components/job-alert.html">JobAlert</a><div class="grp">Patterns</div><a href="pattern-new-job-alert.html">New job arrives</a><div class="grp">Research</div><a href="benchmark.html">Benchmark</a><a href="audit.html">Figma audit</a><a href="roadmap.html">Roadmap</a></nav><nav class="nav" id="nav"><a href="#the-two-faces">The two faces</a><a href="#metrics-the-1-15-rule-made-concrete">Metrics — the ×1.15 rule, made concrete</a><a href="#length-budgets-are-english-the-box-is-universal">Length — budgets are English, the box is universal</a><a href="#wrapping">Wrapping</a><a href="#font-scaling">Font scaling</a><a href="#numerals-time-money">Numerals, time, money</a><a href="#test-strings">Test strings</a><a href="#checklist-row-7-restated">Checklist row 7, restated</a><a href="#reconciliation">Reconciliation</a></nav>
+    <div class="rail-foot">Snabbit Expert Design System · generated from foundations/type.md</div>
+  </aside>
+  <main class="main">
+    <header>
+      <div class="eyebrow">Snabbit Expert · Mobile</div>
+      <h1>Type across four scripts</h1>
+      <p class="lede">Hindi, Kannada, Marathi and English are equal citizens (P9): the layout is designed for the longest and tallest of them, not for English with the others squeezed in later. This page consolidates the rules that the component specs already apply one at a time — line height, fallback faces, length budgets, wrapping, truncation, font scaling — so that checklist row 7 (*text wraps; nothing truncated at the largest font in all four languages*) can be passed by measurement rather than by hope. Tokens: <code>typography.indic</code> in <code>tokens/tokens.json</code>.</p>
+    </header>
+    <h2 id="the-two-faces">The two faces</h2>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>Latin and numerals</th>
+<th>Devanagari (Hindi, Marathi) · Kannada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Face</td>
+<td><strong>Outfit</strong> 400 / 500 / 600</td>
+<td>The platform's own face: <strong>Noto Sans Devanagari / Noto Sans Kannada</strong> on Android, <strong>Devanagari Sangam MN / Kannada Sangam MN</strong> on iOS</td>
+</tr>
+<tr>
+<td>Why</td>
+<td>The brand face; covers every numeral and symbol the app uses</td>
+<td>Shipped on every phone, hinted for small screens, maintained by the OS; a bundled Indic face would cost 300–600 KB per script and still render worse than the system's (P8)</td>
+</tr>
+<tr>
+<td>Weights</td>
+<td>As the scale says</td>
+<td>400 → Regular; 500 → Medium where the face has it, else Regular; 600 → SemiBold where the face has it, else <strong>Bold</strong>. Never synthesised</td>
+</tr>
+<tr>
+<td>Italics</td>
+<td>none</td>
+<td>none — the UI never uses italics; the fallback faces have none and a slanted Devanagari is unreadable</td>
+</tr>
+</tbody>
+</table></div>
+<p class="lbl">Rules: never bundle a second family; never style the fallback to imitate Outfit (letter-spacing, fake weight); a mixed line — a Hindi label beside a <code>₹</code> amount — sets the amount in Outfit and the words in the fallback, on one baseline, because <strong>numerals are Latin in every language</strong> (<code>amount.md</code>, P9). Brand words (<em>Snabbit</em>, <em>SOS</em>) stay in Latin; the feature name <em>Kavach</em> is written in the script of the language (कवच).</p>
+<hr />
+<h2 id="metrics-the-1-15-rule-made-concrete">Metrics — the ×1.15 rule, made concrete</h2>
+<p>Devanagari carries the shirorekha and vowel signs above it and conjuncts below; Kannada is round, wide and deep. Both exceed Outfit's ascender and descender at the same size. Every container that <strong>may</strong> hold one of them (which is every container that holds a translated string) uses the scale's line height × 1.15, rounded up to the nearest 2 dp. The scale's line heights are minimums for Latin-only text (amounts, times, codes).</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Style</th>
+<th>Size</th>
+<th>Latin line height</th>
+<th>Indic line height</th>
+<th>Where the difference shows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Display</td>
+<td>32</td>
+<td>40</td>
+<td>46</td>
+<td>Job alert amount is Latin; the <em>Time's up</em> line is not</td>
+</tr>
+<tr>
+<td>Heading1</td>
+<td>28</td>
+<td>37.3</td>
+<td>44</td>
+<td>SafetyCheck question</td>
+</tr>
+<tr>
+<td>Heading2</td>
+<td>24</td>
+<td>32</td>
+<td>38</td>
+<td>Sheet titles</td>
+</tr>
+<tr>
+<td>Heading3</td>
+<td>20</td>
+<td>28</td>
+<td>32</td>
+<td>Card titles</td>
+</tr>
+<tr>
+<td>Title</td>
+<td>18</td>
+<td>24</td>
+<td>28</td>
+<td>HeaderNav title, ListItem title</td>
+</tr>
+<tr>
+<td>BodyLg</td>
+<td>16</td>
+<td>24</td>
+<td>28</td>
+<td>Body copy, Button labels in rows</td>
+</tr>
+<tr>
+<td>BodyMd</td>
+<td>14</td>
+<td>20</td>
+<td>24</td>
+<td>Supporting copy</td>
+</tr>
+<tr>
+<td>Caption</td>
+<td>12</td>
+<td>16</td>
+<td>18</td>
+<td>Metadata; the smallest size a translated string may use</td>
+</tr>
+<tr>
+<td>Small</td>
+<td>10</td>
+<td>14</td>
+<td>16</td>
+<td>Latin-only (tabular metadata); never a translated string</td>
+</tr>
+<tr>
+<td>ButtonLg</td>
+<td>16</td>
+<td>16 → container 56 / 48</td>
+<td>same</td>
+<td>Buttons are fixed-height containers; the label is centred, one line, and the container is what fits it</td>
+</tr>
+<tr>
+<td>ButtonMd</td>
+<td>14</td>
+<td>14 → container 40</td>
+<td>same</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Two consequences: a two-line <code>BodyMd</code> in Hindi is 48 dp, not 40, so ListItem rows and Stepper rows size to content, never to a fixed height; and a <code>Caption</code> in Kannada at font scale 1.3 is 15.6 sp on an 18 × 1.3 line — still legible, which is why <code>Small</code> is Latin-only.</p>
+<p>No letter-spacing anywhere (the shipped <em>ACCEPT IN</em> small caps is already retired in <code>timer.md</code>; the label is sentence case <code>BodyMd</code>). No all-caps: Indic scripts have no case, so caps would make English the odd one out. No justified text; ragged right in every script.</p>
+<hr />
+<h2 id="length-budgets-are-english-the-box-is-universal">Length — budgets are English, the box is universal</h2>
+<p>Every character budget in a component spec (<em>≤ 18 characters</em>, <em>≤ 40 chars</em>) is written for <strong>English</strong>. The translation does not get the same character count; it gets the <strong>same box</strong>. Approximate expansion at equal size:</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Language</th>
+<th>Width vs English</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hindi</td>
+<td>× 1.2</td>
+<td>Longer words, conjunct stacks are narrow but frequent</td>
+</tr>
+<tr>
+<td>Marathi</td>
+<td>× 1.25</td>
+<td>Longer inflections than Hindi</td>
+</tr>
+<tr>
+<td>Kannada</td>
+<td>× 1.35</td>
+<td>Wide round letterforms; the longest of the four almost every time</td>
+</tr>
+</tbody>
+</table></div>
+<p>So a Button budget of 18 English characters is really <em>"fits one line in a 328 dp Button at font scale 1.3 in Kannada"</em>. The Kannada string is the test string for every budget below. When it does not fit: shorten the copy in <strong>all</strong> languages (the English is probably too long as well), never shrink the type, never let one language have a different layout.</p>
+<p>Consolidated budgets (from the specs; English characters, Kannada must fit the same box):</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Text</th>
+<th>Budget</th>
+<th>Lines allowed</th>
+<th>Truncation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Button</td>
+<td>label</td>
+<td>≤ 18</td>
+<td>1</td>
+<td>never — shorten the copy</td>
+</tr>
+<tr>
+<td>BottomTabBar</td>
+<td>tab label</td>
+<td>≤ 10</td>
+<td>1</td>
+<td>never; never hidden</td>
+</tr>
+<tr>
+<td>Chip</td>
+<td>filter label</td>
+<td>≤ 12</td>
+<td>1</td>
+<td>never</td>
+</tr>
+<tr>
+<td>Chip</td>
+<td>quick reply</td>
+<td>≤ 20</td>
+<td>1</td>
+<td>never</td>
+</tr>
+<tr>
+<td>HeaderNav</td>
+<td>title</td>
+<td>≤ 24</td>
+<td>1</td>
+<td><strong>ellipsis allowed</strong>; read aloud in full</td>
+</tr>
+<tr>
+<td>ListItem</td>
+<td>title</td>
+<td>≤ 28</td>
+<td>2 (1 when it opens a detail, then ellipsis allowed)</td>
+<td>see left</td>
+</tr>
+<tr>
+<td>ListItem</td>
+<td>supporting</td>
+<td>≤ 40</td>
+<td>2</td>
+<td>never</td>
+</tr>
+<tr>
+<td>Card / ProgressBar</td>
+<td>title</td>
+<td>≤ 24</td>
+<td>2</td>
+<td>never</td>
+</tr>
+<tr>
+<td>Selection controls / SelectionCard</td>
+<td>label · description</td>
+<td>≤ 24 · ≤ 40</td>
+<td>1–2 · 2</td>
+<td>never</td>
+</tr>
+<tr>
+<td>Amount</td>
+<td>label</td>
+<td>≤ 20</td>
+<td>1</td>
+<td>never</td>
+</tr>
+<tr>
+<td>BottomSheet</td>
+<td>title · body</td>
+<td>≤ 40 · —</td>
+<td>2 · ≤ 4</td>
+<td>never</td>
+</tr>
+<tr>
+<td>Toast · Snackbar · Banner</td>
+<td>message</td>
+<td>≤ 40 · ≤ 60 · ≤ 60</td>
+<td>2</td>
+<td>never</td>
+</tr>
+<tr>
+<td>EmptyState</td>
+<td>title · body</td>
+<td>≤ 40 · ≤ 80</td>
+<td>2 · 2</td>
+<td>never</td>
+</tr>
+<tr>
+<td>Coachmark</td>
+<td>sentence</td>
+<td>≤ 60 EN / ≤ 72 HI</td>
+<td>3</td>
+<td>never</td>
+</tr>
+<tr>
+<td>Nudge</td>
+<td>line</td>
+<td>≤ 40</td>
+<td>2</td>
+<td>never</td>
+</tr>
+<tr>
+<td>Accordion</td>
+<td>FAQ question</td>
+<td>≤ 48</td>
+<td>2</td>
+<td>never</td>
+</tr>
+<tr>
+<td>MediaCapture</td>
+<td>instruction</td>
+<td>≤ 40</td>
+<td>1</td>
+<td>never</td>
+</tr>
+<tr>
+<td>HowToClip</td>
+<td>title · caption</td>
+<td>≤ 3 words · ≤ 40 per line</td>
+<td>2 · 2</td>
+<td>never</td>
+</tr>
+<tr>
+<td>MapMarker</td>
+<td>label</td>
+<td>≤ 20</td>
+<td>1</td>
+<td><strong>ellipsis allowed</strong>; read aloud in full</td>
+</tr>
+<tr>
+<td>JobAlert</td>
+<td>facts strip</td>
+<td>3 facts</td>
+<td>wraps to 2 lines before anything shrinks</td>
+<td>never</td>
+</tr>
+<tr>
+<td>Timer</td>
+<td>label</td>
+<td>2 words</td>
+<td>1</td>
+<td>never</td>
+</tr>
+</tbody>
+</table></div>
+<p>Three places may truncate, and each reads the full text aloud through its VoicePrompt or the screen reader. Nothing else truncates: not amounts, not times, not Buttons, not errors, not safety copy. If it does not fit, the spec is wrong and the copy is too long.</p>
+<hr />
+<h2 id="wrapping">Wrapping</h2>
+<ul>
+<li>Text wraps at spaces. Conjuncts, vowel signs and the <code>₹</code> + digits group never split; a time (<code>9:30 am</code>) and a distance (<code>1.2 km</code>) are one unbreakable unit.</li>
+<li>No hyphenation: Indic scripts do not hyphenate, and English hyphenation would make English the odd one out.</li>
+<li>Headings avoid a single-word last line where the copy allows; this is a copy rule, not a layout hack — never adjust tracking or size to fix it.</li>
+<li>A two-line label is normal (P9). A three-line label is a signal to shorten the copy, except body text and Coachmark sentences.</li>
+<li>Containers size to content vertically. Fixed heights exist only for Buttons (56 / 48 / 40), the tab bar (64), the header (56), keypad keys (64) and the SafetyStrip (32); in each, the text is one line by budget.</li>
+</ul>
+<hr />
+<h2 id="font-scaling">Font scaling</h2>
+<p>The app honours the system font size up to <strong>1.3 ×</strong> (<code>typography.indic.maxFontScale</code>) for layout purposes: every screen is designed at 1.0 and verified at 1.3 in Kannada. Above 1.3 the text keeps scaling (it is her setting, never overridden) and the rules are: containers grow, nothing clips, Buttons grow in height, the tab bar labels stay one line by budget, the header title truncates as allowed, scrolling appears where the screen no longer fits. Type is set in <code>sp</code>; sizes that must not scale (a <code>₹</code> glyph relative to its digits, the Timer digits inside a fixed ring) scale together as a group, never independently.</p>
+<p>At 1.3 in Kannada the following are the known tight spots and are the first things to check on any new screen: the tab bar labels, the Chip row, the Stat facts strip on the job alert, the Segmented control, and any two Buttons stacked above the safe area.</p>
+<hr />
+<h2 id="numerals-time-money">Numerals, time, money</h2>
+<p>Latin numerals in every language — <code>₹1,250</code>, <code>45 min</code>, <code>9:30 am</code>, <code>1.2 km</code> — set in Outfit, tabular where they align in columns (<code>amount.md</code>, <code>timer.md</code>). Indian digit grouping (<code>1,25,000</code>). No Devanagari or Kannada numerals, even where the OS would offer them (<code>numeric-keypad.md</code>). Time is 12-hour with a lowercase <code>am</code> / <code>pm</code> in every language; dates are <em>Mon 8 Sep</em> with the weekday and month translated and the numerals Latin.</p>
+<hr />
+<h2 id="test-strings">Test strings</h2>
+<p>Working strings for the highest-traffic labels, to be verified by native speakers who have met an expert (P9). They exist so that a designer can drop the longest one into a component and see whether it fits.</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>English</th>
+<th>Hindi</th>
+<th>Marathi</th>
+<th>Kannada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accept job</td>
+<td>काम स्वीकार करें</td>
+<td>काम स्वीकारा</td>
+<td>ಕೆಲಸ ಸ್ವೀಕರಿಸಿ</td>
+</tr>
+<tr>
+<td>Check in</td>
+<td>चेक इन करें</td>
+<td>चेक इन करा</td>
+<td>ಚೆಕ್ ಇನ್ ಮಾಡಿ</td>
+</tr>
+<tr>
+<td>Earnings</td>
+<td>कमाई</td>
+<td>कमाई</td>
+<td>ಗಳಿಕೆ</td>
+</tr>
+<tr>
+<td>Show directions</td>
+<td>रास्ता दिखाएँ</td>
+<td>रस्ता दाखवा</td>
+<td>ದಾರಿ ತೋರಿಸಿ</td>
+</tr>
+<tr>
+<td>Not now</td>
+<td>अभी नहीं</td>
+<td>आता नाही</td>
+<td>ಈಗ ಬೇಡ</td>
+</tr>
+<tr>
+<td>Recording · Location shared</td>
+<td>रिकॉर्डिंग · लोकेशन साझा</td>
+<td>रेकॉर्डिंग · लोकेशन शेअर</td>
+<td>ರೆಕಾರ್ಡಿಂಗ್ · ಸ್ಥಳ ಹಂಚಿಕೆ</td>
+</tr>
+<tr>
+<td>Are you in danger?</td>
+<td>क्या आप खतरे में हैं?</td>
+<td>तुम्ही धोक्यात आहात का?</td>
+<td>ನೀವು ಅಪಾಯದಲ್ಲಿದ್ದೀರಾ?</td>
+</tr>
+</tbody>
+</table></div>
+<p>The Kannada column is the layout test; the Marathi column is usually the longest Devanagari.</p>
+<hr />
+<h2 id="checklist-row-7-restated">Checklist row 7, restated</h2>
+<p><em>⚙ Four languages — text wraps; nothing truncated at the largest font.</em> Passes when: every translated container uses the Indic line height; the Kannada string fits the box at font scale 1.3 without shrinking; truncation happens only in the three named places and is read aloud; numerals are Latin; no caps, tracking or italics. A spec that gives a character budget without naming the Kannada test passes only provisionally — mark it ⬜ until measured.</p>
+<hr />
+<h2 id="reconciliation">Reconciliation</h2>
+<ul>
+<li><code>tokens.json</code> → <code>typography.indic</code>: fallback faces per platform, weight map, expansion factors, <code>maxFontScale</code> 1.3, the three truncation sites. <code>DESIGN_TOKENS.md</code> carries the summary.</li>
+<li>Every spec's checklist row 7 that reads <em>verify</em> or ⬜ is now measurable against this page; they are ticked one by one as the Kannada strings are dropped in (site pages carry English only).</li>
+<li>Figma: create a <em>Kannada at 1.3</em> variant of the Button, Chip, Tab bar and ListItem components with the test strings above, so the tight spots are visible in the file; set text layers to <em>auto height</em> everywhere.</li>
+<li><code>timer.md</code>: the label is <code>BodyMd</code> sentence case — the shipped <em>ACCEPT IN</em> small caps is already retired there; this page adds the reason (no caps in a four-script system).</li>
+</ul>
+  </main>
+</div>
+<script>
+(function(){
+const links=[...document.querySelectorAll('#nav a')];
+const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-10% 0px -80% 0px'});
+  targets.forEach(t=>io.observe(t));
+}
+})();
+</script>
