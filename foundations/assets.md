@@ -35,6 +35,8 @@ The middle class between a Phosphor icon and a scene. A **pink disc** (`pink.100
 
 Existing (~30): cash-in-hand, ok-hand, calendar-✓, calendar-✗, door-enter, door-exit (several), profile-blocked, phone-location, megaphone (two), alarm-✓, document-not-eligible, document-eligible, expert-with-tablet, search-document-✗, search-document-✓, id-card-✗, id-card-✓, id-back-✓, bank-✗, phone-✗, route, timer, phone-map-✓, wallet-coins.
 
+Proposed: `asset/picto/shield` — the Snabbit Shield (Kavach) mark, **Kavach blue** (feature colour, see `DESIGN_TOKENS.md` § feature colours), 32 / 96 dp — the one pictogram that is not pink, because a pink shield would read as a promotion and the safety promise must look like nothing else in the app. Decision pending (`shield-card.md`).
+
 Rule: the object says *what*, the dot says *status*. A pictogram without a dot is neutral. Never colour the object itself green or red — status is only ever the dot, so the same object can carry both outcomes.
 
 ### 3. Characters — `asset/character/*`

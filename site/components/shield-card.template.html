@@ -1,0 +1,143 @@
+<meta charset="utf-8">
+<title>Snabbit Expert ShieldCard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>__BASECSS__
+.jc{width:328px;background:#fff;border:1px solid #F3F4F6;border-radius:12px;font-family:var(--sans);color:#111827;overflow:hidden}
+.jc .jr{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid #F3F4F6;font-size:14px;color:#374151}.jc .jr svg{width:20px;height:20px;color:#6B7280;flex:none}.jc .jr b{margin-left:auto;font-weight:500;color:#111827}
+.sr{display:flex;align-items:center;gap:12px;padding:12px 16px;min-height:56px;cursor:pointer}
+.sr .mk{width:32px;height:32px;flex:none;display:grid;place-items:center}.sr .mk svg{width:32px;height:32px;color:#2563EB}
+.sr .tx{flex:1;min-width:0}.sr .tt{font-size:18px;font-weight:500;line-height:24px}.sr .st{font-size:12px;font-weight:500;color:#6B7280;display:flex;align-items:center;gap:6px;line-height:16px;flex-wrap:wrap}
+.sr .st.on{color:#374151}.sr .st.blk{color:#D97706}.sr .st svg{width:16px;height:16px;flex:none}
+.dot{width:8px;height:8px;border-radius:50%;background:#DC2626;flex:none;animation:pulse 1s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.lvl{display:inline-flex;align-items:flex-end;gap:2px;height:16px;margin-left:4px}.lvl i{display:block;width:3px;height:var(--h,4px);background:rgba(220,38,38,.6);border-radius:1px;transition:height .12s}
+.spin{width:16px;height:16px;border:2px solid #E5E7EB;border-top-color:#F70F79;border-radius:50%;animation:spin .8s linear infinite;flex:none}@keyframes spin{to{transform:rotate(360deg)}}
+.b{height:48px;padding:0 20px;border-radius:10px;font:600 16px var(--sans);display:inline-flex;align-items:center;gap:8px;border:0;cursor:pointer;flex:none}
+.b.sec{background:#fff;color:#F70F79;box-shadow:inset 0 0 0 1.5px #F70F79}.b.ter{background:transparent;color:#F70F79;padding:0 12px}.b.pri{background:#F70F79;color:#fff;width:100%;justify-content:center;height:56px;border-radius:12px}.b.dan{background:#DC2626;color:#fff;width:100%;justify-content:center;height:56px;border-radius:12px}.b.neu{background:#fff;color:#111827;box-shadow:inset 0 0 0 1.5px #E5E7EB;width:100%;justify-content:center;height:56px;border-radius:12px}.b.tneu{background:transparent;color:#374151;width:100%;justify-content:center;height:56px}
+.strip{width:328px;height:32px;display:flex;align-items:center;gap:8px;padding:0 16px;font:500 12px var(--sans);border-radius:6px}.strip.info{background:#EFF6FF;color:#2563EB}.strip.warn{background:#FFFBEB;color:#D97706}.strip .o{margin-left:auto}
+.sheet{width:328px;background:#fff;border-radius:20px 20px 12px 12px;border:1px solid #E5E7EB;font-family:var(--sans);color:#111827;overflow:hidden}
+.sheet .stage2{height:150px;display:grid;place-items:center}.sheet .stage2.info{background:linear-gradient(180deg,#EFF6FF,#fff)}.sheet .stage2.err{background:linear-gradient(180deg,#FEE2E2,#fff)}
+.sheet .stage2 svg{width:96px;height:96px}
+.sheet .bd{padding:0 20px 20px}.sheet h3{margin:4px 0 16px;font-size:24px;line-height:30px;font-weight:600;text-align:center}.sheet h3.h1{font-size:28px;line-height:34px}
+.ben{display:flex;gap:12px;align-items:flex-start;padding:8px 0}.ben svg{width:24px;height:24px;color:#2563EB;flex:none;margin-top:2px}.ben b{display:block;font-size:18px;font-weight:500;line-height:24px}.ben span{font-size:14px;color:#6B7280;line-height:20px}
+.terms{display:flex;align-items:center;gap:8px;font-size:12px;color:#6B7280;margin:12px 0 16px}.terms u{color:#2563EB;text-decoration:underline}.terms .lst{margin-left:auto;width:32px;height:32px;border-radius:8px;display:grid;place-items:center;color:#F70F79;flex:none}.terms .lst svg{width:20px;height:20px}
+.stack{display:flex;flex-direction:column;gap:8px}
+.tagi{display:inline-flex;align-items:center;gap:6px;background:#EFF6FF;color:#2563EB;font:500 12px var(--sans);padding:4px 10px;border-radius:999px;margin:12px 0 0 16px}.tagi svg{width:14px;height:14px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(328px,1fr));gap:24px 32px;align-items:start}
+.stg{display:flex;flex-direction:column;gap:8px}.stg .cap{font-family:var(--mono);font-size:12px;color:var(--text-2)}.stg .cap b{color:var(--text);font-weight:500}
+.ctl{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:12px}.ctl button{font-family:var(--sans);font-size:13px;padding:6px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);cursor:pointer}
+.logline{font-family:var(--mono);font-size:12px;color:var(--text-2);min-height:16px;margin-top:8px;white-space:pre-line}
+.old{background:#2979FF;color:#fff;font:600 12px var(--sans);padding:4px 10px;border-radius:6px;display:inline-flex;gap:4px;align-items:center}
+@media (prefers-reduced-motion:reduce){.dot{animation:none}.lvl i{height:8px!important;transition:none}}
+__NAVCSS__</style>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · ShieldCard</small></div></div>
+    __SITENAV__
+    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#row">ShieldRow · states</a><a href="#live">Row · live</a><a href="#sheets">Consent · SafetyCheck</a><a href="#rules">Rules</a><a href="#dont">Don't</a><a href="#figma">Figma changes</a></nav>
+    <div class="rail-foot">Rendered from tokens.json · spec in components/shield-card.md</div>
+  </aside>
+  <main class="main">
+    <header id="overview">
+      <div class="eyebrow">Composition</div><h1>ShieldCard <span class="sub" style="font-weight:400">(Kavach)</span></h1>
+      <p class="lede">The in-job safety feature — audio recorded, location shared, the team checks on her — composed from Card, Button, SafetyStrip, BottomSheet and VoicePrompt into one row on the job card that says, plainly and continuously, whether Shield is on. Around it: a consent sheet (once), the first-start explainer, and the safety check.</p>
+      <div class="meta"><span class="chip status">Proposed</span><span class="chip">Tier 2 · Composition</span><span class="chip"><code>SnabbitShield</code></span><span class="chip">Shipped: Kavach – Final Screens</span><span class="chip">Two decisions to confirm</span></div>
+    </header>
+
+    <section id="row">
+      <header><div class="eyebrow">Last row of the in-job Card</div><h2>ShieldRow · states</h2><p>Six states, each said in words and shown by a second channel — a pulsing <code>record</code> dot and a live level meter when on, a warning glyph and the one fix when blocked. One Button per state at most. The blue Kavach shield is the only domain-coloured pictogram in the app (to confirm).</p></header>
+      <div class="stage"><div class="grid2" id="states"></div></div>
+    </section>
+
+    <section id="live">
+      <header><div class="eyebrow">Try it</div><h2>Row · live</h2><p>Check in and watch Shield start by itself (the proposed default). Pull the battery down, run out of storage, or tap the row to open the Shield sheet with its costly-switch-off confirmation.</p></header>
+      <div class="demo" style="align-items:flex-start;flex-wrap:wrap;gap:28px"><div id="livecard"></div><div class="card" style="max-width:320px"><h4>Controls</h4><div class="ctl"><button id="chk">Check in</button><button id="bat">Battery low</button><button id="sto">No storage</button><button id="fix">Fix it</button><button id="out">Check out</button><button id="reset">Reset</button></div><div class="logline" id="log">before check-in · consent given · Shield will start at check-in</div><div id="stripbox" style="margin-top:12px"></div></div></div>
+    </section>
+
+    <section id="sheets">
+      <header><div class="eyebrow">Around the row</div><h2>Consent · SafetyCheck</h2><p>Consent once, before the first check-in, with a visible way to say no. The safety check is Shield at work: two plain-tap answers, spoken and repeated, no answer in 30 s treated as danger. <em>Help is on the way</em> is SOSControl's active screen, not a second one.</p></header>
+      <div class="stage"><div class="grid2" id="sheets-grid"></div></div>
+    </section>
+
+    <section id="rules">
+      <header><div class="eyebrow">Behaviour and content</div><h2>Rules</h2></header>
+      <ol class="rules"><li><b>Starts at check-in</b> after consent; the row reports it. A per-account Switch in Profile turns it off with a confirmation — a costly switch-off. <em>Product decision to confirm.</em></li><li><b>Never blocks work.</b> Blocked reasons are checked before check-in so the fix happens at the door; check-in is allowed either way.</li><li><b>No modal during a job.</b> Blocked and stopped live in the row with a spoken line and a Snackbar; the SafetyStrip carries the state when she leaves the screen.</li><li><b>Status says two facts:</b> <em>Recording · Location shared</em>. Never <em>Monitoring active</em>.</li><li><b>Reasons say the fix:</b> <em>Not enough storage</em> → <em>Free up space</em>.</li><li><b>Stop confirms; I am safe does not.</b> Stopping protection is costly; ending a false alarm must be easy.</li><li><b>Kavach blue on the shield mark only.</b> Every control is a system Button. <em>Decision to confirm.</em></li><li><b>Buttons:</b> Start Shield · Start again · Stop Shield · Keep it on · Yes, turn on Shield · Not now · I am in danger · I am safe. Never Activate, Start Monitoring, I will do, Yes, I agree.</li></ol>
+    </section>
+
+    <section id="dont">
+      <header><div class="eyebrow">Common mistakes</div><h2>Don't</h2></header>
+      <div class="stage"><div class="grid2" id="dont-grid"></div></div>
+    </section>
+
+    <section id="figma">
+      <header><div class="eyebrow">Reconciliation</div><h2>What changes in Figma</h2></header>
+      <ol class="rules"><li>Kavach Card (3 states) → ShieldRow inside the Job Card: State (On / Off / Starting / Blocked / Stopped / Ended); Activate → Button secondary brand M; waveform → level meter + words.</li><li>Consent → ShieldConsent: BottomSheet info full; metallic row icons → Phosphor 24; <em>Yes, I agree</em> → <em>Yes, turn on Shield</em> + <em>Not now</em>.</li><li><em>Are you in danger?</em> → SafetyCheck: BottomSheet alert; emoji removed; <em>Help is on the way</em> frames → SOSControl / Active screen instances.</li><li>Battery-low sheet and storage line → ShieldRow blocked / stopped; delete the sheet.</li><li>Add the shield kind to SafetyStrip; rebuild the activation frames on the current in-job header.</li><li>Register <code>asset/picto/shield</code>; retire the blue Button style.</li></ol>
+      <p class="sub" style="margin-top:14px">Result: ~12 variants across three components, on the current header. Token proposals: <code>sound.safetyCheck</code>, <code>timeout.safetyCheck</code> 30 000 ms, <code>asset/picto/shield</code>.</p>
+    </section>
+  </main>
+</div>
+
+<script id="tokens-json" type="application/json">__TOKENS__</script>
+<script>
+(function(){
+const $=s=>document.querySelector(s);
+const ICO={shield:'M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.26,47,25.53a8,8,0,0,0,4.2,0c1-.27,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Zm-34.32,69.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z',
+pin:'M128,16a88.1,88.1,0,0,0-88,88c0,75.3,80,132.17,83.41,134.55a8,8,0,0,0,9.18,0C136,236.17,216,179.3,216,104A88.1,88.1,0,0,0,128,16Zm0,56a32,32,0,1,1-32,32A32,32,0,0,1,128,72Z',
+warn:'M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm-8-80V80a8,8,0,0,1,16,0v56a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,172Z',
+x:'M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z',
+spk:'M155.51,24.81a8,8,0,0,0-8.42.88L77.25,80H32A16,16,0,0,0,16,96v64a16,16,0,0,0,16,16H77.25l69.84,54.31A8,8,0,0,0,160,224V32A8,8,0,0,0,155.51,24.81ZM32,96H72v64H32ZM144,207.64,88,164.09V91.91l56-43.55Zm54-106.08a40,40,0,0,1,0,52.88,8,8,0,0,1-12-10.58,24,24,0,0,0,0-31.72,8,8,0,0,1,12-10.58ZM248,128a79.9,79.9,0,0,1-20.37,53.34,8,8,0,0,1-11.92-10.67,64,64,0,0,0,0-85.33,8,8,0,1,1,11.92-10.67A79.83,79.83,0,0,1,248,128Z',
+hour:'M200,75.64V40a16,16,0,0,0-16-16H72A16,16,0,0,0,56,40V76a16.07,16.07,0,0,0,6.4,12.8L114.67,128,62.4,167.2A16.07,16.07,0,0,0,56,180v36a16,16,0,0,0,16,16H184a16,16,0,0,0,16-16V180.36a16.09,16.09,0,0,0-6.35-12.77L141.27,128l52.38-39.6A16.05,16.05,0,0,0,200,75.64ZM184,216H72V180l56-42,56,42.35Zm0-140.36L128,118,72,76V40H184Z',
+clock:'M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z',
+siren:'M120,16V8a8,8,0,0,1,16,0v8a8,8,0,0,1-16,0Zm80,32a8,8,0,0,0,5.66-2.34l8-8a8,8,0,0,0-11.32-11.32l-8,8A8,8,0,0,0,200,48ZM50.34,45.66A8,8,0,0,0,61.66,34.34l-8-8A8,8,0,0,0,42.34,37.66ZM232,176v24a16,16,0,0,1-16,16H40a16,16,0,0,1-16-16V176a16,16,0,0,1,16-16V128a88,88,0,0,1,88.67-88c48.15.36,87.33,40.29,87.33,89v31A16,16,0,0,1,232,176ZM134.68,87.89C153.67,91.08,168,108.32,168,128a8,8,0,0,0,16,0c0-27.4-20.07-51.43-46.68-55.89a8,8,0,1,0-2.64,15.78ZM216,200V176H40v24H216Z',
+caret:'M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z'};
+const svg=n=>`<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="${ICO[n]}"/></svg>`;
+const lvl=()=>`<span class="lvl" aria-hidden="true">${'<i></i>'.repeat(5)}</span>`;
+const ROWS=`<div class="jr">${svg('hour')}Duration<b>60 min</b></div><div class="jr">${svg('clock')}Start · End<b>10:00 – 11:00 AM</b></div>`;
+function row(state,o={}){
+ const S={
+  on:{st:`<span class="dot"></span>Recording · Location shared ${lvl()}`,cls:'on'},
+  off:{st:'Off for this job',btn:`<button class="b sec">Start Shield</button>`},
+  starting:{st:`<span class="spin"></span>Starting…`},
+  blocked:{st:`${svg('warn')}${o.reason||'Not enough storage'}`,cls:'blk',btn:`<button class="b ter">${o.fix||'Free up space'}</button>`},
+  stopped:{st:`${svg('warn')}Stopped · ${o.reason||'battery too low'}`,cls:'blk',btn:`<button class="b sec">Start again</button>`},
+  ended:{st:'Recording saved · 58 min'}}[state];
+ return `<div class="sr" role="button" aria-label="Shield, ${state}"><span class="mk">${svg('shield')}</span><div class="tx"><div class="tt">Shield</div><div class="st ${S.cls||''}">${S.st}</div></div>${S.btn||''}</div>`;}
+const card=(state,o)=>`<div class="jc">${o&&o.noRows?'':ROWS}${row(state,o)}</div>`;
+const W=(cap,html)=>`<div class="stg">${html}<div class="cap">${cap}</div></div>`;
+$('#states').innerHTML=[
+ W('<b>on</b> · dot pulses 1 s · meter follows the mic · row opens the Shield sheet',card('on')),
+ W('<b>off</b> · account switched auto-start off · Button secondary brand M',card('off')),
+ W('<b>starting</b> · ≤ 3 s · no Button',card('starting')),
+ W('<b>blocked</b> · reason + the one fix · checked before check-in',card('blocked')),
+ W('<b>stopped</b> · was on, then failed · Snackbar + spoken line',card('stopped')),
+ W('<b>ended</b> · after check-out',card('ended')),
+ W('<b>SafetyStrip · shield kind</b> · when she leaves the job screen while on',`<div class="strip info"><span class="dot"></span>Recording · Location shared<span class="o">Open ›</span></div>`),
+ W('<b>SafetyStrip · stopped</b> · amber until she fixes it',`<div class="strip warn">${svg('warn').replace('<svg','<svg style="width:16px;height:16px"')}Shield stopped · charge your phone<span class="o">Open ›</span></div>`)].join('');
+// live
+let st='pre',meterT;const lc=$('#livecard'),log=$('#log'),sb=$('#stripbox');
+function paint(o){lc.innerHTML=card(st==='pre'?'off':st,o);sb.innerHTML=st==='on'?`<div class="strip info" style="width:auto"><span class="dot"></span>Recording · Location shared<span class="o">Open ›</span></div><div class="cap" style="font-family:var(--mono);font-size:12px;color:var(--text-2);margin-top:6px">SafetyStrip when she leaves the screen</div>`:st==='stopped'?`<div class="strip warn" style="width:auto">Shield stopped · charge your phone<span class="o">Open ›</span></div>`:'';
+ clearInterval(meterT);if(st==='on'){meterT=setInterval(()=>{lc.querySelectorAll('.lvl i').forEach(b=>b.style.setProperty('--h',(3+Math.random()*13)+'px'));},120);}
+ const r=lc.querySelector('.sr');if(r&&st==='on'){r.onclick=()=>{log.textContent='row → Shield sheet: "Shield is on · Recording · Location shared · Since 10:04". Stop Shield = costly switch-off → "Stop Shield for this job? The safety team won\'t be able to hear you." Keep it on / Stop';};}
+ if(st==='pre'){const b=lc.querySelector('.b');if(b){b.textContent='Start Shield';b.onclick=()=>{log.textContent='Start Shield (manual) → starting…';go();};}}}
+function go(){st='starting';paint();setTimeout(()=>{if(st!=='starting')return;st='on';paint();log.textContent+='\n→ on · spoken once: "Shield is on."';},1200);}
+$('#chk').onclick=()=>{if(st!=='pre'&&st!=='off'){log.textContent='already checked in';return;}log.textContent='Check in → Shield starts by itself (proposed default)';go();};
+$('#bat').onclick=()=>{if(st==='on'){st='stopped';paint({reason:'battery too low'});log.textContent='battery < 10 % while on → stopped · Snackbar "Shield stopped" · spoken "Shield has stopped. Charge your phone." · strip turns amber';}else{st='blocked';paint({reason:'Battery too low',fix:'Charge your phone'});log.textContent='battery low before start → blocked · the fix is the Button · check-in still allowed';}};
+$('#sto').onclick=()=>{st='blocked';paint({reason:'Not enough storage',fix:'Free up space'});log.textContent='no storage → blocked · Free up space opens settings · never a modal during a job';};
+$('#fix').onclick=()=>{if(st==='blocked'||st==='stopped'){log.textContent='fixed → starting…';go();}else log.textContent='nothing to fix';};
+$('#out').onclick=()=>{st='ended';paint();log.textContent='check out → "Recording saved · 58 min" · SafetyStrip gone';};
+$('#reset').onclick=()=>{st='pre';paint();log.textContent='before check-in · consent given · Shield will start at check-in';};
+paint();
+// sheets
+$('#sheets-grid').innerHTML=[
+ W('<b>ShieldConsent</b> · BottomSheet info · once · whole sheet spoken · no ✕, the choice is the way out',`<div class="sheet"><div class="stage2 info"><span style="color:#2563EB">${svg('shield')}</span></div><div class="bd"><h3>Snabbit Shield</h3><div class="ben">${svg('shield')}<div><b>Stays with you</b><span>Records sound while you work</span></div></div><div class="ben">${svg('pin')}<div><b>Shares where you are</b><span>With the safety team, only during a job</span></div></div><div class="ben">${svg('siren')}<div><b>Checks on you</b><span>If something seems wrong, we call</span></div></div><div class="terms"><span>By turning on Shield you agree to the <u>Shield terms</u>.</span><span class="lst">${svg('spk')}</span></div><div class="stack"><button class="b pri">Yes, turn on Shield</button><button class="b tneu">Not now</button></div></div></div>`),
+ W('<b>SafetyCheck</b> · BottomSheet alert · full-volume sound + haptic · repeated every 10 s · no answer in 30 s = danger',`<div class="sheet"><span class="tagi">${svg('shield')}Shield</span><div class="stage2 err" style="height:120px"><span style="color:#DC2626">${svg('siren')}</span></div><div class="bd"><h3 class="h1">Are you in danger?</h3><div class="stack"><button class="b dan">I am in danger</button><button class="b neu">I am safe</button></div><div style="font-size:12px;color:#6B7280;text-align:center;margin-top:12px">No answer in 30 s → the safety team calls</div></div></div>`)].join('');
+$('#dont-grid').innerHTML=[
+ W('',`<div class="jc">${ROWS}<div class="sr"><span class="mk">${svg('shield')}</span><div class="tx"><div style="font-size:12px;color:#2563EB">Snabbit</div><div style="font-size:16px;font-weight:700;color:#2563EB">Kavach</div></div><span class="old">▶ Activate</span></div></div>`).replace('<div class="cap"></div>','<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">A 28 dp blue pill she must remember to tap, and no words about what is happening. Shield starts by itself; the row says <em>Recording · Location shared</em>; any Button is a system Button.</div>'),
+ W('',`<div class="sheet"><div class="stage2 err" style="height:110px"><span style="font-size:48px">🔋</span></div><div class="bd"><div style="font-size:12px;font-weight:600;color:#DC2626;text-align:center;letter-spacing:.08em">SNABBIT KAVACH IS OFF</div><h3>Battery is running low</h3><button class="b" style="background:#2979FF;color:#fff;width:100%;justify-content:center;height:56px;border-radius:12px">I will do</button></div></div>`).replace('<div class="cap"></div>','<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">A modal over a running job, for something she cannot fix from the sheet, with <em>I will do</em>. The row says <em>Stopped · battery too low</em> with <em>Start again</em>; a Snackbar and a spoken line carry the moment.</div>'),
+ W('',`<div class="sheet"><div class="bd" style="padding-top:20px"><h3 class="h1">Are you in danger?</h3><div class="stack"><button class="b dan">😰 I am in danger</button><button class="b neu">😊 I am safe</button></div></div></div>`).replace('<div class="cap"></div>','<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">Emoji as icons in the Buttons. Colour and words carry the answer; faces belong to Rating.</div>')].join('');
+const links=[...document.querySelectorAll('#nav a')];const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-20% 0px -70% 0px'});targets.forEach(t=>io.observe(t));}
+})();
+</script>

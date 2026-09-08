@@ -4,7 +4,7 @@ What is done and what is left, against the 46-component core set in `audit/BENCH
 
 ---
 
-## Done — 34 pages · 44 of 46 core components
+## Done — 35 pages · 44 of 46 core components + 1 composition
 
 | # | Page | Covers | Status |
 | --- | --- | --- | --- |
@@ -42,16 +42,16 @@ What is done and what is left, against the 46-component core set in `audit/BENCH
 | 32 | MapMarker · MapSnippet | MapMarker (job, hub, me, hotspot); MapSnippet composition | Proposed |
 | 33 | Stat · Rating · Divider | Stat (S/M/L, delta); Rating (faces: input, display); Divider (row, section, labelled) | Proposed |
 | 34 | HowToClip | HowToClip (card, player; 10–20 s, loops once, captions) | Proposed |
+| 35 | ShieldCard (Kavach) | Composition: ShieldRow (6 states), ShieldConsent, SafetyCheck; SafetyStrip `shield` kind | Proposed |
 
 Foundations done: tokens (`tokens/`), principles, extending, icons register, assets (two layers). Research done: Figma audit (204 frames), benchmark.
 
 ---
 
-## To do — components (3), in the agreed order
+## To do — components (2), in the agreed order
 
 | # | Component | Priority | Notes |
 | --- | --- | --- | --- |
-| 37 | Shield (Kavach) card | Composition | Card + SafetyStrip + *Start Shield*; after Voice prompt. |
 | 38 | Job-alert sheet | Composition | Timer + Amount + Button + Nudge; written as the first pattern. |
 | 39 | FAB (map controls) | P1 | IconButton `L` floating variant — may collapse into IconButton. |
 
@@ -88,5 +88,6 @@ Component status lifecycle in practice (nothing is Reconciled yet) · Changelog 
 - `illustration.purple` hex — waiting on a value from the Snabbit Assets file.
 - `PRINCIPLES.md` reference-case line still says the Timer is a ring around the Button; the Timer spec places it above. Fix when the job-alert pattern is written.
 - Confirm whether the `1Login` onboarding screen (navy, non-Outfit) is shipped or older — see `references/SCREENS.md`.
+- Shield: two product decisions to confirm — auto-start at check-in (vs shipped per-job *Activate*), and the Kavach-blue shield as the one domain-coloured pictogram (`shield-card.md`).
 - Figma reconciliation: every spec lists its changes; none applied yet. Until Figma matches, designers still draw from old frames.
 - Field validation: checklist rows 15–16 (copy heard aloud in four languages; device review with experts) are open on every component.

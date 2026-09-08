@@ -38,3 +38,4 @@ One spec per core component. `button.md` is the template. Status per component: 
 | MapMarker · MapSnippet | Proposed | `map-marker.md` | `site/components/map-marker.html` |
 | Stat · Rating · Divider | Proposed | `stat-rating-divider.md` | `site/components/stat-rating-divider.html` |
 | HowToClip | Proposed | `how-to-clip.md` | `site/components/how-to-clip.html` |
+| ShieldCard (Kavach) · composition | Proposed | `shield-card.md` | `site/components/shield-card.html` |

@@ -27,7 +27,7 @@ Status: **seed**. Populated fully during the Button, Tab bar and Job-alert specs
 | `arrow-counter-clockwise` | Replay | regular | HowToClip player |
 | `pause` | Pause spoken guidance | fill | VoicePrompt bar disc while playing |
 | `wifi-slash` | Offline | regular | Offline banner |
-| `warning-circle` | Warning / attention | regular | Banner, Toast |
+| `warning-circle` | Warning / attention | regular | Banner, Toast, ShieldRow blocked / stopped reason |
 | `x-circle` | Error | regular | Banner, Toast, TextField |
 | `check-circle` | Success | fill | Banner, Toast, celebration |
 | `info` | Information | regular | Banner `info` tone only — never as an (i) tooltip trigger |
