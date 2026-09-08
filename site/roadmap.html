@@ -33,6 +33,7 @@ html{scroll-behavior:smooth;scroll-padding-top:24px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body{margin:0;background:var(--bg);color:var(--text-body);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
 code{font-family:var(--mono);font-size:.85em;background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--text)}
+pre{background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:14px 16px;overflow-x:auto;margin:12px 0 20px} pre code{background:none;border:0;padding:0;font-size:12.5px;line-height:1.55;white-space:pre}
 :focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
 .shell{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}
 .rail{position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--border);padding:24px 16px 32px;background:var(--bg);display:flex;flex-direction:column;gap:20px}
@@ -95,16 +96,16 @@ hr{display:none}
 <div class="shell">
   <aside class="rail">
     <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Roadmap</small></div></div>
-    <nav class="sitenav" aria-label="Site"><div class="grp">Foundations</div><a href="index.html">Tokens</a><a href="principles.html">Principles</a><a href="extending.html">Extending</a><a href="icons.html">Icons</a><a href="assets.html">Assets</a><div class="grp">Components</div><a href="components/button.html">Button</a><a href="components/icon-button.html">IconButton</a><a href="components/tag.html">Tag</a><a href="components/text-field.html">TextField</a><a href="components/selection-controls.html">Checkbox · Radio · Switch</a><a href="components/amount.html">Amount</a><a href="components/timer.html">Timer</a><a href="components/feedback.html">Banner · Toast · Snackbar</a><a href="components/chip.html">Chip</a><a href="components/avatar.html">Avatar</a><a href="components/badge.html">Badge</a><a href="components/card.html">Card</a><a href="components/list-item.html">ListItem</a><a href="components/selection-card.html">SelectionCard</a><a href="components/bottom-sheet.html">BottomSheet</a><a href="components/header-nav.html">HeaderNav</a><a href="components/bottom-tab-bar.html">BottomTabBar</a><a href="components/progress-bar.html">ProgressBar</a><a href="components/stepper.html">Stepper</a><a href="components/coachmark.html">Coachmark</a><a href="components/sos-control.html">SOSControl</a><a href="components/accordion.html">Accordion</a><a href="components/date-picker.html">DatePicker</a><a href="components/empty-state.html">EmptyState</a><a href="components/skeleton.html">Skeleton · Spinner</a><a href="components/voice-prompt.html">VoicePrompt</a><a href="components/tabs.html">Tabs · Segmented</a><a href="components/nudge.html">Nudge</a><a href="components/numeric-keypad.html">NumericKeypad</a><a href="components/page-indicator.html">PageIndicator</a><a href="components/media-capture.html">MediaCapture</a><a href="components/map-marker.html">MapMarker · MapSnippet</a><a href="components/stat-rating-divider.html">Stat · Rating · Divider</a><a href="components/how-to-clip.html">HowToClip</a><a href="components/shield-card.html">ShieldCard</a><div class="grp">Research</div><a href="benchmark.html">Benchmark</a><a href="audit.html">Figma audit</a><a class="on" href="roadmap.html">Roadmap</a></nav><nav class="nav" id="nav"><a href="#done-35-pages-44-of-46-core-components-1-composition">Done — 35 pages · 44 of 46 core components + 1 composition</a><a href="#to-do-components-2-in-the-agreed-order">To do — components (2), in the agreed order</a><a href="#to-do-foundations-5-of-7">To do — foundations (5 of 7)</a><a href="#to-do-patterns-0-of-10">To do — patterns (0 of 10)</a><a href="#to-do-governance-0-of-4">To do — governance (0 of 4)</a><a href="#open-items">Open items</a></nav>
+    <nav class="sitenav" aria-label="Site"><div class="grp">Foundations</div><a href="index.html">Tokens</a><a href="principles.html">Principles</a><a href="extending.html">Extending</a><a href="icons.html">Icons</a><a href="assets.html">Assets</a><div class="grp">Components</div><a href="components/button.html">Button</a><a href="components/icon-button.html">IconButton</a><a href="components/tag.html">Tag</a><a href="components/text-field.html">TextField</a><a href="components/selection-controls.html">Checkbox · Radio · Switch</a><a href="components/amount.html">Amount</a><a href="components/timer.html">Timer</a><a href="components/feedback.html">Banner · Toast · Snackbar</a><a href="components/chip.html">Chip</a><a href="components/avatar.html">Avatar</a><a href="components/badge.html">Badge</a><a href="components/card.html">Card</a><a href="components/list-item.html">ListItem</a><a href="components/selection-card.html">SelectionCard</a><a href="components/bottom-sheet.html">BottomSheet</a><a href="components/header-nav.html">HeaderNav</a><a href="components/bottom-tab-bar.html">BottomTabBar</a><a href="components/progress-bar.html">ProgressBar</a><a href="components/stepper.html">Stepper</a><a href="components/coachmark.html">Coachmark</a><a href="components/sos-control.html">SOSControl</a><a href="components/accordion.html">Accordion</a><a href="components/date-picker.html">DatePicker</a><a href="components/empty-state.html">EmptyState</a><a href="components/skeleton.html">Skeleton · Spinner</a><a href="components/voice-prompt.html">VoicePrompt</a><a href="components/tabs.html">Tabs · Segmented</a><a href="components/nudge.html">Nudge</a><a href="components/numeric-keypad.html">NumericKeypad</a><a href="components/page-indicator.html">PageIndicator</a><a href="components/media-capture.html">MediaCapture</a><a href="components/map-marker.html">MapMarker · MapSnippet</a><a href="components/stat-rating-divider.html">Stat · Rating · Divider</a><a href="components/how-to-clip.html">HowToClip</a><a href="components/shield-card.html">ShieldCard</a><a href="components/job-alert.html">JobAlert</a><div class="grp">Patterns</div><a href="pattern-new-job-alert.html">New job arrives</a><div class="grp">Research</div><a href="benchmark.html">Benchmark</a><a href="audit.html">Figma audit</a><a class="on" href="roadmap.html">Roadmap</a></nav><nav class="nav" id="nav"><a href="#done-37-pages-44-of-46-core-components-2-compositions-1-pattern">Done — 37 pages · 44 of 46 core components + 2 compositions + 1 pattern</a><a href="#to-do-components-1">To do — components (1)</a><a href="#to-do-foundations-5-of-7">To do — foundations (5 of 7)</a><a href="#to-do-patterns-1-of-10-done">To do — patterns (1 of 10 done)</a><a href="#to-do-governance-0-of-4">To do — governance (0 of 4)</a><a href="#open-items">Open items</a></nav>
     <div class="rail-foot">Snabbit Expert Design System · generated from ROADMAP.md</div>
   </aside>
   <main class="main">
     <header>
       <div class="eyebrow">Snabbit Expert · Mobile</div>
       <h1>Roadmap</h1>
-      <p class="lede">What is done and what is left, against the 46-component core set in `audit/BENCHMARK.md`. Updated in the same commit as the work. Status meanings: **Proposed** (spec + live page exist) → **Reconciled** (Figma matches) → **Stable** (package ships it).</p>
+      <p class="lede">What is done and what is left, against the 46-component core set in <code>audit/BENCHMARK.md</code>. Updated in the same commit as the work. Status meanings: **Proposed** (spec + live page exist) → **Reconciled** (Figma matches) → **Stable** (package ships it).</p>
     </header>
-    <h2 id="done-35-pages-44-of-46-core-components-1-composition">Done — 35 pages · 44 of 46 core components + 1 composition</h2>
+    <h2 id="done-37-pages-44-of-46-core-components-2-compositions-1-pattern">Done — 37 pages · 44 of 46 core components + 2 compositions + 1 pattern</h2>
 <div class="tbl-wrap"><table>
 <thead>
 <tr>
@@ -325,11 +326,23 @@ hr{display:none}
 <td>Composition: ShieldRow (6 states), ShieldConsent, SafetyCheck; SafetyStrip <code>shield</code> kind</td>
 <td>Proposed</td>
 </tr>
+<tr>
+<td>36</td>
+<td>JobAlert</td>
+<td>Composition: the reference case as one screen — facts strip, earnings Card, Nudge loss, Timer L, Decline hold, Accept</td>
+<td>Proposed</td>
+</tr>
+<tr>
+<td>37</td>
+<td>Pattern · New job arrives</td>
+<td><code>patterns/new-job-alert.md</code> — arrive, decide, accept / decline / time's up, edges; PRINCIPLES reference case corrected</td>
+<td>Proposed</td>
+</tr>
 </tbody>
 </table></div>
 <p>Foundations done: tokens (<code>tokens/</code>), principles, extending, icons register, assets (two layers). Research done: Figma audit (204 frames), benchmark.</p>
 <hr />
-<h2 id="to-do-components-2-in-the-agreed-order">To do — components (2), in the agreed order</h2>
+<h2 id="to-do-components-1">To do — components (1)</h2>
 <div class="tbl-wrap"><table>
 <thead>
 <tr>
@@ -340,12 +353,6 @@ hr{display:none}
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>38</td>
-<td>Job-alert sheet</td>
-<td>Composition</td>
-<td>Timer + Amount + Button + Nudge; written as the first pattern.</td>
-</tr>
 <tr>
 <td>39</td>
 <td>FAB (map controls)</td>
@@ -394,8 +401,8 @@ hr{display:none}
 </tbody>
 </table></div>
 <hr />
-<h2 id="to-do-patterns-0-of-10">To do — patterns (0 of 10)</h2>
-<p>New-job alert (reference case, first) · Check-in / check-out · Payout · Onboarding &amp; go-live · Error recovery · Permission asking · First run (Coachmark tours) · Earnings breakdown · SOS flow (drawn in SOSControl; pattern adds what happens after) · Offline.</p>
+<h2 id="to-do-patterns-1-of-10-done">To do — patterns (1 of 10 done)</h2>
+<p>~~New-job alert~~ (done) · Check-in / check-out · Payout · Onboarding &amp; go-live · Error recovery · Permission asking · First run (Coachmark tours) · Earnings breakdown · SOS flow (drawn in SOSControl; pattern adds what happens after) · Offline.</p>
 <hr />
 <h2 id="to-do-governance-0-of-4">To do — governance (0 of 4)</h2>
 <p>Component status lifecycle in practice (nothing is Reconciled yet) · Changelog · Token/spec lint · Design-review step from <code>EXTENDING.md</code>.</p>
@@ -403,7 +410,6 @@ hr{display:none}
 <h2 id="open-items">Open items</h2>
 <ul>
 <li><code>illustration.purple</code> hex — waiting on a value from the Snabbit Assets file.</li>
-<li><code>PRINCIPLES.md</code> reference-case line still says the Timer is a ring around the Button; the Timer spec places it above. Fix when the job-alert pattern is written.</li>
 <li>Confirm whether the <code>1Login</code> onboarding screen (navy, non-Outfit) is shipped or older — see <code>references/SCREENS.md</code>.</li>
 <li>Shield: two product decisions to confirm — auto-start at check-in (vs shipped per-job <em>Activate</em>), and the Kavach-blue shield as the one domain-coloured pictogram (<code>shield-card.md</code>).</li>
 <li>Figma reconciliation: every spec lists its changes; none applied yet. Until Figma matches, designers still draw from old frames.</li>

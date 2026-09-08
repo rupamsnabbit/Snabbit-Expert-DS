@@ -4,7 +4,7 @@ What is done and what is left, against the 46-component core set in `audit/BENCH
 
 ---
 
-## Done — 35 pages · 44 of 46 core components + 1 composition
+## Done — 37 pages · 44 of 46 core components + 2 compositions + 1 pattern
 
 | # | Page | Covers | Status |
 | --- | --- | --- | --- |
@@ -43,16 +43,17 @@ What is done and what is left, against the 46-component core set in `audit/BENCH
 | 33 | Stat · Rating · Divider | Stat (S/M/L, delta); Rating (faces: input, display); Divider (row, section, labelled) | Proposed |
 | 34 | HowToClip | HowToClip (card, player; 10–20 s, loops once, captions) | Proposed |
 | 35 | ShieldCard (Kavach) | Composition: ShieldRow (6 states), ShieldConsent, SafetyCheck; SafetyStrip `shield` kind | Proposed |
+| 36 | JobAlert | Composition: the reference case as one screen — facts strip, earnings Card, Nudge loss, Timer L, Decline hold, Accept | Proposed |
+| 37 | Pattern · New job arrives | `patterns/new-job-alert.md` — arrive, decide, accept / decline / time's up, edges; PRINCIPLES reference case corrected | Proposed |
 
 Foundations done: tokens (`tokens/`), principles, extending, icons register, assets (two layers). Research done: Figma audit (204 frames), benchmark.
 
 ---
 
-## To do — components (2), in the agreed order
+## To do — components (1)
 
 | # | Component | Priority | Notes |
 | --- | --- | --- | --- |
-| 38 | Job-alert sheet | Composition | Timer + Amount + Button + Nudge; written as the first pattern. |
 | 39 | FAB (map controls) | P1 | IconButton `L` floating variant — may collapse into IconButton. |
 
 Removed from the count (decided): Tooltip (→ Coachmark), Progress Buttons (→ Button hold state), Popover, Data table, Drawer, Breadcrumb.
@@ -71,9 +72,9 @@ Removed from the count (decided): Tooltip (→ Coachmark), Progress Buttons (→
 
 ---
 
-## To do — patterns (0 of 10)
+## To do — patterns (1 of 10 done)
 
-New-job alert (reference case, first) · Check-in / check-out · Payout · Onboarding & go-live · Error recovery · Permission asking · First run (Coachmark tours) · Earnings breakdown · SOS flow (drawn in SOSControl; pattern adds what happens after) · Offline.
+~~New-job alert~~ (done) · Check-in / check-out · Payout · Onboarding & go-live · Error recovery · Permission asking · First run (Coachmark tours) · Earnings breakdown · SOS flow (drawn in SOSControl; pattern adds what happens after) · Offline.
 
 ---
 
@@ -86,7 +87,6 @@ Component status lifecycle in practice (nothing is Reconciled yet) · Changelog 
 ## Open items
 
 - `illustration.purple` hex — waiting on a value from the Snabbit Assets file.
-- `PRINCIPLES.md` reference-case line still says the Timer is a ring around the Button; the Timer spec places it above. Fix when the job-alert pattern is written.
 - Confirm whether the `1Login` onboarding screen (navy, non-Outfit) is shipped or older — see `references/SCREENS.md`.
 - Shield: two product decisions to confirm — auto-start at check-in (vs shipped per-job *Activate*), and the Kavach-blue shield as the one domain-coloured pictogram (`shield-card.md`).
 - Figma reconciliation: every spec lists its changes; none applied yet. Until Figma matches, designers still draw from old frames.

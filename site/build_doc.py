@@ -13,10 +13,11 @@ md = (root / src).read_text()
 parts = md.split("\n---\n", 1)
 body_md = parts[1] if len(parts) > 1 else md
 lede = re.search(r"^# .*?\n\n(.*?)\n\n", md, re.S).group(1)
+lede = re.sub(r"`([^`]+)`", r"<code>\1</code>", lede)
 H1 = re.match(r"^# (.*)", md).group(1).replace("Snabbit Expert — ", "")
 if H1.lower().startswith("benchmark"): H1 = "Benchmark"
 
-html = markdown.markdown(body_md, extensions=["tables", "sane_lists"])
+html = markdown.markdown(body_md, extensions=["tables", "sane_lists", "fenced_code"])
 # checklists: "- [ ] text" → styled
 html = re.sub(r"<li>\[ \] (.*?)</li>", r'<li class="chk">\1</li>', html)
 # add ids to h2/h3 and collect nav
@@ -77,6 +78,7 @@ html{{scroll-behavior:smooth;scroll-padding-top:24px}}
 @media (prefers-reduced-motion:reduce){{html{{scroll-behavior:auto}}}}
 body{{margin:0;background:var(--bg);color:var(--text-body);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}}
 code{{font-family:var(--mono);font-size:.85em;background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--text)}}
+pre{{background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:14px 16px;overflow-x:auto;margin:12px 0 20px}} pre code{{background:none;border:0;padding:0;font-size:12.5px;line-height:1.55;white-space:pre}}
 :focus-visible{{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}}
 .shell{{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}}
 .rail{{position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--border);padding:24px 16px 32px;background:var(--bg);display:flex;flex-direction:column;gap:20px}}

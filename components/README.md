@@ -39,3 +39,4 @@ One spec per core component. `button.md` is the template. Status per component: 
 | Stat · Rating · Divider | Proposed | `stat-rating-divider.md` | `site/components/stat-rating-divider.html` |
 | HowToClip | Proposed | `how-to-clip.md` | `site/components/how-to-clip.html` |
 | ShieldCard (Kavach) · composition | Proposed | `shield-card.md` | `site/components/shield-card.html` |
+| JobAlert · composition | Proposed | `job-alert.md` (flow: `patterns/new-job-alert.md`) | `site/components/job-alert.html` |

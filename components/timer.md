@@ -45,6 +45,8 @@ The tone is a function of **time remaining as a fraction of the total window**, 
 | `expired` | 0 | digits `0:00` in `textTertiary`, stroke gone, label becomes the outcome (*Time's up*) | `borderDefault` |
 | `deadline` (mode) | fixed clock time | digits `textBrand`, **no progress stroke**; ring is a plain `borderBrand` outline | — |
 
+For windows shorter than 5 minutes (the job alert's 90 s) only the percentages apply — otherwise a 90 s window would be `attention` from its first second and `urgent` for two-thirds of its life.
+
 Tone changes are also **sounds** (P4): entering `attention` plays the `soft-tick`; entering `urgent` plays the `urgent-tick` and a `medium` haptic; `expired` plays the `timeout` sound. The job-alert Timer additionally ticks audibly every second in `urgent`.
 
 Colour is never the only signal: the stroke length, the digits and the sound all change together (P1).

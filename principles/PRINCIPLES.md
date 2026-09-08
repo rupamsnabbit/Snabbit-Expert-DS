@@ -211,13 +211,13 @@ Checks
 
 ## The reference case: a new job arrives
 
-How the principles combine on the highest-stakes screen. Use this as the model for every other time-critical flow.
+How the principles combine on the highest-stakes screen. Use this as the model for every other time-critical flow. The full flow is `patterns/new-job-alert.md`; the screen is `components/job-alert.md`.
 
 1. **Sound first.** The unique new-job sound plays, overriding silent mode. It loops gently until she responds or the window closes. (P4)
 2. **Full-screen, accept-first.** The screen takes over. The accept button renders first — full-width, 56 dp, brand pink, labelled *Accept job* with a check icon — at the bottom, under the thumb. (P2, P3, P8)
 3. **Decide in a glance.** Four facts, large, icon-led, top to bottom: distance (📍 icon + *1.2 km*), duration (clock icon + *2 hr*), task type (task icon + name), earnings (₹ icon + amount in `Heading1`). Nothing else. (P1)
-4. **Time as a shape.** The countdown is a ring around the accept button that shrinks and changes colour as time runs out, with the seconds inside. It is never only digits. (P5)
-5. **Decline is safe and separate.** *Not now* is a text button above the accept, quieter, needing a deliberate hold. Declining is costly; it is protected. Accepting is one tap. (P3)
+4. **Time as a shape.** The countdown is a Timer directly above the accept button: a pill ring that drains and changes colour as time runs out, with the seconds inside. It is never only digits. (P5; see `components/timer.md`)
+5. **Decline is safe and separate.** *Decline* is a ghost button above the accept, quieter, needing a deliberate hold. Declining is costly; it is protected. Accepting is one tap. (P3)
 6. **Confirm loudly.** On accept: the accept sound, a brief celebration, the next screen with the route. She never wonders whether it worked. (P5, P6)
 7. **Offline is honest.** If the network drops, the alert says so and does not pretend she can accept. (P5)
 8. **Works in every language.** Every label fits in Kannada at large font. Amounts use the same numerals everywhere. (P9)

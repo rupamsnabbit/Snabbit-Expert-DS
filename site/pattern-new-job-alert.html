@@ -1,0 +1,218 @@
+<meta charset="utf-8">
+<title>Snabbit Expert Pattern New Job</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --bg-2:#F9FAFB; --bg-3:#F3F4F6;
+  --text:#111827; --text-body:#374151; --text-2:#6B7280; --text-3:#9CA3AF;
+  --border:#E5E7EB; --border-subtle:#F3F4F6;
+  --brand:#F70F79; --brand-wash:#FEF1F7; --brand-ink:#97094A;
+  --ok:#059669; --ok-wash:#ECFDF5; --focus:#3B82F6;
+  --sans:"Outfit",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+    --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+    --border:#374151; --border-subtle:#1F2937;
+    --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+    --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+  --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+  --border:#374151; --border-subtle:#1F2937;
+  --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+  --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--text-body);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+code{font-family:var(--mono);font-size:.85em;background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--text)}
+pre{background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:14px 16px;overflow-x:auto;margin:12px 0 20px} pre code{background:none;border:0;padding:0;font-size:12.5px;line-height:1.55;white-space:pre}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+.shell{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}
+.rail{position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--border);padding:24px 16px 32px;background:var(--bg);display:flex;flex-direction:column;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;padding:0 8px}
+.brand-mark{width:28px;height:28px;border-radius:8px;background:var(--brand);display:grid;place-items:center;flex:none}
+.brand-mark span{width:12px;height:12px;border-radius:3px;background:#fff;transform:rotate(45deg)}
+.brand b{font-weight:600;color:var(--text);font-size:15px;line-height:1.2;display:block}
+.brand small{color:var(--text-2);font-size:12px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:block;padding:6px 8px;border-radius:6px;text-decoration:none;color:var(--text);font-size:13.5px;font-weight:500}
+.nav a.sub{font-weight:400;color:var(--text-body);padding-left:14px;font-size:13px}
+.nav a.sub b{font-family:var(--mono);font-weight:500;color:var(--text-3);font-size:11.5px;margin-right:2px}
+.nav a:hover{background:var(--bg-2)}
+.nav a.on{background:var(--brand-wash);color:var(--brand-ink)}
+.rail-foot{margin-top:auto;padding:0 8px;font-size:12px;color:var(--text-3);line-height:1.5}
+.main{padding:40px 56px 96px;max-width:860px;width:100%}
+.eyebrow{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);font-weight:600}
+h1{font-size:40px;line-height:1.1;font-weight:600;color:var(--text);margin:8px 0 12px;letter-spacing:-.015em;text-wrap:balance}
+.lede{font-size:18px;color:var(--text-2);max-width:60ch;margin:0 0 8px}
+.lede strong{color:var(--text);font-weight:500}
+h2{font-size:26px;line-height:1.2;font-weight:600;color:var(--text);margin:72px 0 16px;letter-spacing:-.01em;text-wrap:balance;padding-top:24px;border-top:1px solid var(--border)}
+h3{font-size:20px;font-weight:600;color:var(--text);margin:48px 0 8px;letter-spacing:-.005em}
+h3::before{content:"";display:block;width:32px;height:3px;background:var(--brand);border-radius:2px;margin-bottom:14px}
+p{margin:0 0 14px;max-width:66ch}
+h3 + p{font-size:17px;color:var(--text);font-weight:500}
+p.why{color:var(--text-2);font-size:15px;padding-left:14px;border-left:2px solid var(--border)}
+p.why::before{content:"Why · ";color:var(--text-3);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+p.lbl{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2);font-weight:600;margin:22px 0 8px}
+strong{color:var(--text);font-weight:600}
+em{font-style:italic}
+ul,ol{margin:0 0 14px;padding-left:0;list-style:none;max-width:68ch}
+ul li{position:relative;padding-left:20px;margin:6px 0;font-size:15.5px}
+ul li::before{content:"";position:absolute;left:0;top:11px;width:9px;height:2px;background:var(--brand)}
+ul li.chk{padding-left:30px}
+ul li.chk::before{width:16px;height:16px;top:4px;background:var(--bg);border:1.5px solid var(--text-3);border-radius:4px}
+ol{counter-reset:s}
+ol li{counter-increment:s;display:grid;grid-template-columns:32px 1fr;gap:12px;margin:10px 0;font-size:15.5px}
+ol li::before{content:counter(s);width:28px;height:28px;border-radius:50%;background:var(--brand-wash);color:var(--brand-ink);font-weight:600;font-size:13px;display:grid;place-items:center;margin-top:1px}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px;margin:8px 0 20px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);font-weight:500;padding:10px 14px;background:var(--bg-2);border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:10px 14px;border-bottom:1px solid var(--border-subtle);vertical-align:top;color:var(--text-body)}
+tr:last-child td{border-bottom:0}
+td:first-child{color:var(--text);font-weight:500;white-space:nowrap}
+hr{display:none}
+
+.sitenav{display:flex;flex-direction:column;gap:2px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.sitenav .grp{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);padding:10px 8px 4px;font-weight:500}
+.sitenav a{display:block;padding:5px 8px;border-radius:6px;text-decoration:none;color:var(--text-body);font-size:13.5px;border:0}
+.sitenav a:hover{background:var(--bg-2);color:var(--text)} .sitenav a.on{color:var(--brand-ink);background:var(--brand-wash);font-weight:500}
+@media (max-width:900px){.sitenav{flex-direction:row;flex-wrap:wrap;gap:4px;border-bottom:0;padding-bottom:0}.sitenav .grp{display:none}}
+
+@media (max-width:900px){
+  .shell{grid-template-columns:1fr}
+  .rail{position:static;height:auto;border-right:0;border-bottom:1px solid var(--border);padding:16px}
+  .nav{flex-direction:row;flex-wrap:wrap;gap:4px} .nav a.sub{padding-left:8px} .rail-foot{display:none}
+  .main{padding:32px 20px 80px} h1{font-size:32px} h2{margin-top:56px}
+}
+</style>
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Pattern · New job arrives</small></div></div>
+    <nav class="sitenav" aria-label="Site"><div class="grp">Foundations</div><a href="index.html">Tokens</a><a href="principles.html">Principles</a><a href="extending.html">Extending</a><a href="icons.html">Icons</a><a href="assets.html">Assets</a><div class="grp">Components</div><a href="components/button.html">Button</a><a href="components/icon-button.html">IconButton</a><a href="components/tag.html">Tag</a><a href="components/text-field.html">TextField</a><a href="components/selection-controls.html">Checkbox · Radio · Switch</a><a href="components/amount.html">Amount</a><a href="components/timer.html">Timer</a><a href="components/feedback.html">Banner · Toast · Snackbar</a><a href="components/chip.html">Chip</a><a href="components/avatar.html">Avatar</a><a href="components/badge.html">Badge</a><a href="components/card.html">Card</a><a href="components/list-item.html">ListItem</a><a href="components/selection-card.html">SelectionCard</a><a href="components/bottom-sheet.html">BottomSheet</a><a href="components/header-nav.html">HeaderNav</a><a href="components/bottom-tab-bar.html">BottomTabBar</a><a href="components/progress-bar.html">ProgressBar</a><a href="components/stepper.html">Stepper</a><a href="components/coachmark.html">Coachmark</a><a href="components/sos-control.html">SOSControl</a><a href="components/accordion.html">Accordion</a><a href="components/date-picker.html">DatePicker</a><a href="components/empty-state.html">EmptyState</a><a href="components/skeleton.html">Skeleton · Spinner</a><a href="components/voice-prompt.html">VoicePrompt</a><a href="components/tabs.html">Tabs · Segmented</a><a href="components/nudge.html">Nudge</a><a href="components/numeric-keypad.html">NumericKeypad</a><a href="components/page-indicator.html">PageIndicator</a><a href="components/media-capture.html">MediaCapture</a><a href="components/map-marker.html">MapMarker · MapSnippet</a><a href="components/stat-rating-divider.html">Stat · Rating · Divider</a><a href="components/how-to-clip.html">HowToClip</a><a href="components/shield-card.html">ShieldCard</a><a href="components/job-alert.html">JobAlert</a><div class="grp">Patterns</div><a class="on" href="pattern-new-job-alert.html">New job arrives</a><div class="grp">Research</div><a href="benchmark.html">Benchmark</a><a href="audit.html">Figma audit</a><a href="roadmap.html">Roadmap</a></nav><nav class="nav" id="nav"><a href="#the-flow">The flow</a><a href="#1-arrive">1. Arrive</a><a href="#2-decide">2. Decide</a><a href="#3a-accept">3a. Accept</a><a href="#3b-decline">3b. Decline</a><a href="#3c-time-s-up">3c. Time's up</a><a href="#edges">Edges</a><a href="#what-this-pattern-changes-in-the-principles">What this pattern changes in the principles</a><a href="#checklist-for-the-flow">Checklist for the flow</a></nav>
+    <div class="rail-foot">Snabbit Expert Design System · generated from patterns/new-job-alert.md</div>
+  </aside>
+  <main class="main">
+    <header>
+      <div class="eyebrow">Snabbit Expert · Mobile</div>
+      <h1>Pattern — a new job arrives</h1>
+      <p class="lede">The first pattern, and the model for every time-critical flow: what happens from the moment the server offers her a job to the moment she is on her way, has declined, or has missed it. The screen itself is <code>components/job-alert.md</code>; this page is the flow around it — sound, wake, overlay, the three exits, and the edges (offline, repeat, several at once). It replaces the eight-line reference case in <code>PRINCIPLES.md</code> as the detailed version; the principles page keeps the summary.</p>
+    </header>
+    <h2 id="the-flow">The flow</h2>
+<pre><code> server offers job
+        │
+        ▼
+ 1. Arrive ── sound.newJob loops · haptic.heavy · screen wakes · full-screen takeover (or lock-screen notification with Accept job)
+        │
+        ▼
+ 2. Decide ── JobAlert: facts strip · earnings card (read aloud once) · Timer L draining · Decline (hold) · Accept job
+        │
+        ├── Accept ──► 3a. Confirm loudly ── sound.confirm · 800 ms celebration · job screen: MapSnippet + Show directions + check-in Timer
+        │
+        ├── Decline (hold) ──► 3b. Declined ── sound.commit · Toast &quot;Declined&quot; · Home; on a repeat alert the red card shows as a Snackbar
+        │
+        └── Timer 0 ──► 3c. Time's up ── 2 s · closes · &quot;This job went to someone else&quot;; on a repeat alert the red card shows as a Snackbar
+</code></pre>
+<hr />
+<h2 id="1-arrive">1. Arrive</h2>
+<ul>
+<li><strong>Sound first.</strong> <code>sound.newJob</code> starts before the screen is drawn and loops gently until she acts or the window closes. It overrides silent mode and Do Not Disturb (an OS-level alarm channel), because a missed job costs her money and the sound is the one thing she can notice with the phone in her bag (P4). Volume follows the alarm volume, never media volume.</li>
+<li><strong>Haptic</strong> <code>heavy</code> once on arrival, then <code>light</code> ticks for the last 10 s.</li>
+<li><strong>Wake and take over.</strong> In the app: the JobAlert replaces whatever is on screen, except an active SOS or Shield SafetyCheck (safety always wins, P7); the alert then waits and its Timer starts only when it is shown. Outside the app: an Android full-screen intent shows the same screen over the lock screen; on iOS a time-sensitive notification with the <strong>Accept job</strong> action opens it. The <em>Display over other apps</em> permission is asked once, in onboarding, with the <code>permission</code> BottomSheet explaining exactly this moment.</li>
+<li><strong>One at a time.</strong> If two jobs arrive together, the second waits, unseen, and its Timer starts when it is shown. A queue is never shown; she is never asked to compare.</li>
+<li><strong>Repeat alerts.</strong> If she does not respond and the server offers the same job again, the alert comes back as a <code>repeat</code> with the Nudge <code>loss</code> (red-card asset · −50 · <em>If you don't accept</em>) — the penalty is shown before it applies, never after (P5, P6).</li>
+</ul>
+<h2 id="2-decide">2. Decide</h2>
+<p>The JobAlert screen. Four facts in a glance, the money as the hero, the time as a shape, one Button under the thumb. The card is read aloud once on arrival (VoicePrompt autoplay rule), the Timer speaks at 10 s. Nothing on the screen scrolls, animates or changes except the Timer.</p>
+<p>While she decides, the header cluster stays live: Help (call the trainer) and SOS. Tapping the facts strip or the address does nothing — there is no map before acceptance, because the decision is <em>distance and money</em>, not <em>route</em> (P2).</p>
+<h2 id="3a-accept">3a. Accept</h2>
+<ul>
+<li>Accept goes <code>loading</code> (label kept) while the server confirms — ≤ 3 s; the Timer keeps running so a slow network cannot make an expired job look accepted.</li>
+<li>On success: <code>sound.confirm</code>, an 800 ms celebration (the illustration layer's <em>ok-hand</em> pictogram scaling in on a <code>bgSuccess</code> wash — reduced motion: a static check), then the <strong>job screen</strong>: HeaderNav <code>state</code> <em>Job accepted</em>, the MapSnippet with <strong>Show directions</strong>, the address with Listen, the check-in Timer in <code>countdown</code> mode (<em>Check in within · 42:10</em>), and the Shield row if consent is given.</li>
+<li>If the server says the job is gone (someone else accepted): the alert becomes <code>expired</code> with the <em>This job went to someone else</em> line and closes after 2 s. No error tone, no red — it is not her mistake.</li>
+</ul>
+<h2 id="3b-decline">3b. Decline</h2>
+<ul>
+<li>Decline is a <strong>hold</strong>: a 600 ms fill sweeps the ghost Button; releasing early cancels with no penalty and no message. Completing fires <code>sound.commit</code>, the label becomes <em>Declined</em>, and the alert closes to a Toast <em>Declined</em>.</li>
+<li>No confirmation sheet, ever: the hold is the second gesture (P3), and the consequence — if any — was already visible as the Nudge. On a <code>repeat</code> alert the red card is applied on decline and shown as a Snackbar on Home: <em>Red card · −50 · Job declined twice</em>, with <em>Why? ›</em> opening the penalties Accordion <code>faq</code>.</li>
+<li>Declining never asks for a reason. A reason picker is a Local-tier addition for a later experiment, and it would sit <strong>after</strong> the decline, never before it.</li>
+</ul>
+<h2 id="3c-time-s-up">3c. Time's up</h2>
+<ul>
+<li>At 0 the Timer shows <em>Time's up · 0:00</em>, both Buttons disappear, the line <em>This job went to someone else</em> appears, <code>sound.commit</code> plays low, and the screen closes after 2 s to wherever she was.</li>
+<li>On a <code>repeat</code> alert the red card applies and shows as the same Snackbar as 3b.</li>
+<li>No <em>You missed a job!</em> sheet, no red, no exclamation: warm and honest (P6).</li>
+</ul>
+<h2 id="edges">Edges</h2>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Edge</th>
+<th>Behaviour</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Offline when the alert arrives</td>
+<td>Alert still shows (it came by push or SMS fallback); Banner <code>error</code> <em>No connection — can't accept right now</em>; Accept <code>disabled</code> with <em>Waiting for network…</em> under it; the app retries every 3 s and enables Accept the moment it can. Decline works offline (queued).</td>
+</tr>
+<tr>
+<td>Network drops while accepting</td>
+<td>Accept stays <code>loading</code> under the 3-second rule, then becomes <code>disabled</code> with the reason; the Timer keeps running.</td>
+</tr>
+<tr>
+<td>Alert arrives during a job</td>
+<td>Not shown; the server should not offer overlapping jobs. If it does, the alert waits until check-out and is dropped if its window has passed.</td>
+</tr>
+<tr>
+<td>Alert arrives during SOS / SafetyCheck</td>
+<td>Never shown until the safety state ends (P7).</td>
+</tr>
+<tr>
+<td>Screen reader on</td>
+<td>Sound and haptic unchanged; the card is read as one block; Accept is first in the tab order.</td>
+</tr>
+<tr>
+<td>Phone at 130 % font scale</td>
+<td>Five breakdown rows still fit; the facts strip wraps to two lines; Button labels never shrink.</td>
+</tr>
+<tr>
+<td>Reduced motion</td>
+<td>Timer ring still drains (it is information); no digit pulse (digits go bold); no hold sweep (a countdown label instead); static celebration.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="what-this-pattern-changes-in-the-principles">What this pattern changes in the principles</h2>
+<p><code>PRINCIPLES.md</code> reference case, line 4, said the countdown was <em>a ring around the accept button</em>. The Timer spec placed it above the Button as a pill ring, and the shipped screens already do the same with digits alone. The principles line is updated to match: the Timer sits above the Button, the ring is the Timer's own. Line 5 is updated to name the Button <em>Decline</em> (hold), matching <code>button.md</code>.</p>
+<hr />
+<h2 id="checklist-for-the-flow">Checklist for the flow</h2>
+<ul>
+<li class="chk">Sound plays with the phone silent and in a bag; volume follows alarm volume.</li>
+<li class="chk">Full-screen takeover shows over the lock screen on the three most common phones in the fleet.</li>
+<li class="chk">The card is read aloud in Hindi, Kannada and Marathi within 4 s of arrival.</li>
+<li class="chk">Accept succeeds in one tap on a moving bus; Decline never fires by accident (hold).</li>
+<li class="chk">Repeat alert shows the red card <strong>before</strong> it applies; decline and timeout show it after.</li>
+<li class="chk">Offline: Accept says why it is disabled and enables itself when the network returns.</li>
+<li class="chk">Nothing scrolls; five rows fit at 130 % font scale on 360 × 800.</li>
+<li class="chk">Field review with experts (checklist rows 15–16) — pending.</li>
+</ul>
+  </main>
+</div>
+<script>
+(function(){
+const links=[...document.querySelectorAll('#nav a')];
+const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-10% 0px -80% 0px'});
+  targets.forEach(t=>io.observe(t));
+}
+})();
+</script>

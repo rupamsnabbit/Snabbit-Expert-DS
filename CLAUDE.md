@@ -33,6 +33,7 @@ tokens/         DESIGN_TOKENS.md (contract) · tokens.json (source of truth)
 principles/     PRINCIPLES.md · EXTENDING.md
 components/     one spec per core component (button.md, …); each has a live page site/components/<name>.template.html
 briefs/         Tier 3 / change-to-core briefs (template in EXTENDING.md)
+patterns/       one flow per file (new-job-alert.md, …); each has a page site/pattern-<name>.html built by build_doc.py
 references/     SCREENS.md (the two screen files: which pages, shipped vs proposed, open conflicts) · reference screenshots + their reads
 foundations/    icons.md (Phosphor meaning register) · assets.md (illustration style lock + register)
 DECISIONS.md    dated design decisions and their consequences
