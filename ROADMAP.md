@@ -4,7 +4,7 @@ What is done and what is left, against the 46-component core set in `audit/BENCH
 
 ---
 
-## Done — 27 pages · 35 of 46 core components
+## Done — 28 pages · 36 of 46 core components
 
 | # | Page | Covers | Status |
 | --- | --- | --- | --- |
@@ -35,16 +35,16 @@ What is done and what is left, against the 46-component core set in `audit/BENCH
 | 25 | Skeleton · Spinner | Skeleton shapes + presets; Spinner (Button, inline); 3-second rule | Proposed |
 | 26 | VoicePrompt | VoicePrompt (bar, inline); autoplay policy | Proposed |
 | 27 | Tabs · Segmented | Segmented (2–3), Tabs (3–5) | Proposed |
+| 28 | Nudge | Nudge (gain, loss, list) | Proposed |
 
 Foundations done: tokens (`tokens/`), principles, extending, icons register, assets (two layers). Research done: Figma audit (204 frames), benchmark.
 
 ---
 
-## To do — components (12), in the agreed order
+## To do — components (11), in the agreed order
 
 | # | Component | Priority | Notes |
 | --- | --- | --- | --- |
-| 28 | Nudge | P1 | Consequence strip (Figma `1581:6683`): *If not accepted −50*, *Login by 6:50 +1 coin*. Sits with the job-alert pattern. |
 | 29 | Numeric keypad | P1 | OTP, amounts, phone. Large keys. |
 | 30 | Pagination dots | P1 | Carousels, onboarding. |
 | 31 | Media container | P1 | Photo capture: loading, error, retake. |

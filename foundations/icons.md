@@ -29,6 +29,7 @@ Status: **seed**. Populated fully during the Button, Tab bar and Job-alert specs
 | `info` | Information | regular | Banner `info` tone only — never as an (i) tooltip trigger |
 | `caret-right` | Navigate into | regular | ListItem trailing |
 | `calendar-blank` | A date / choose a day | regular | Leave, shift date rows |
+| `arrow-right` | Do this → get that (gain nudge) | regular | Nudge leading icon |
 | `caret-down` | Expand / collapse | regular · rotates 180° when open | Accordion header |
 | `sun` | Summer / daytime bonus | regular | Breakdown rows (replaces the 🌞 emoji) |
 | `caret-left` | Back | regular | HeaderNav |

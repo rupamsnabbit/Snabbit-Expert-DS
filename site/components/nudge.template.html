@@ -1,0 +1,110 @@
+<meta charset="utf-8">
+<title>Snabbit Expert Nudge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>__BASECSS__
+.nd{display:flex;align-items:center;gap:10px;min-height:40px;padding:0 12px 0 8px;border-radius:8px;font-family:var(--sans);color:#111827;font-size:14px;line-height:20px;width:328px;box-sizing:border-box;transition:opacity .15s,transform .15s}
+.nd.gain{background:#FFFBEB}.nd.loss{background:#FEF2F2}
+.nd .ic{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;flex:none}.nd .ic svg{width:16px;height:16px}
+.nd.gain .ic{background:#FEF3C7;color:#D97706}.nd.loss .ic{background:#FEE2E2;color:#DC2626}
+.nd .tx{flex:1;min-width:0}
+.nd .amt{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;font-variant-numeric:tabular-nums;flex:none}
+.coin{width:20px;height:20px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#FDE68A,#F59E0B 60%,#B45309);display:inline-block;flex:none}
+.rc{width:14px;height:19px;border-radius:2px;background:linear-gradient(135deg,#F87171,#B91C1C);display:inline-block;flex:none}
+.nd.gone{opacity:0;transform:translateY(-4px)}
+.ndlist{width:328px;background:#fff;border:1px solid #E5E7EB;border-radius:12px;overflow:hidden;font-family:var(--sans)}
+.ndlist .nd{width:100%;border-radius:0;background:transparent;min-height:48px}.ndlist .nd+.nd{border-top:1px solid #F3F4F6}
+.ndlist .nd.gain .ic{background:#FEF3C7;color:#D97706}.ndlist .nd.loss .ic{background:#FEE2E2;color:#DC2626}
+.ndlist .nd .car{width:20px;height:20px;color:#9CA3AF;flex:none}
+.scr{width:360px;border:1px solid #E5E7EB;border-radius:20px;overflow:hidden;background:#F9FAFB;color:#111827;font-family:var(--sans);position:relative}
+.scr .hn{height:56px;background:#fff;display:flex;align-items:center;padding:0 16px;font-size:18px;font-weight:500}
+.scr .body{padding:16px;display:flex;flex-direction:column;gap:8px}
+.cardx{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.cardx .d{text-align:center;font-size:14px;color:#6B7280}.cardx .h{text-align:center;font-size:22px;font-weight:600}
+.pres{display:flex;align-items:center;gap:8px;color:#059669;font-weight:500;font-size:14px}.pres svg{width:20px;height:20px}
+.btn{height:56px;border-radius:12px;border:0;background:#F70F79;color:#fff;font:500 16px var(--sans);width:100%;cursor:pointer}
+.tmr{text-align:center;font-size:11px;letter-spacing:.06em;color:#6B7280;text-transform:uppercase}.tmr b{display:block;font-size:32px;line-height:36px;color:#059669;letter-spacing:0;font-variant-numeric:tabular-nums}
+.toast{position:absolute;left:16px;right:16px;bottom:16px;background:#111827;color:#fff;border-radius:12px;padding:12px 16px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none;display:flex;align-items:center;gap:8px}.toast.on{opacity:1}
+.ban{display:flex;align-items:center;gap:8px;min-height:48px;padding:8px 12px;border-radius:12px;background:#FEF2F2;color:#B91C1C;font-size:14px}.ban svg{width:20px;height:20px;flex:none}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(328px,1fr));gap:24px 32px;align-items:start}
+.stg{display:flex;flex-direction:column;gap:8px}.stg .cap{font-family:var(--mono);font-size:12px;color:var(--text-2)}.stg .cap b{color:var(--text);font-weight:500}
+.ctl{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:12px}.ctl button{font-family:var(--sans);font-size:13px;padding:6px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);cursor:pointer}
+.logline{font-family:var(--mono);font-size:12px;color:var(--text-2);min-height:16px;margin-top:8px;white-space:pre-line}
+@keyframes pop{50%{transform:scale(1.3)}}.coin.pop{animation:pop .4s ease-out}
+@media (prefers-reduced-motion:reduce){.nd{transition:none}.coin.pop{animation:none}}
+__NAVCSS__</style>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · Nudge</small></div></div>
+    __SITENAV__
+    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#kinds">Kinds</a><a href="#live">Live</a><a href="#rules">Rules</a><a href="#dont">Don't</a><a href="#figma">Figma changes</a></nav>
+    <div class="rail-foot">Rendered from tokens.json · spec in components/nudge.md</div>
+  </aside>
+  <main class="main">
+    <header id="overview">
+      <div class="eyebrow">Core component · P6</div><h1>Nudge</h1>
+      <p class="lede">One line that ties what she does next to what it is worth — a coin if she logs in by 6:40, a red card if she lets the job lapse. Always attached to the control it is about, never blocking it, gone the moment the condition is settled.</p>
+      <div class="meta"><span class="chip status">Proposed</span><span class="chip">Tier 1 · Core</span><span class="chip"><code>SnabbitNudge</code></span><span class="chip">gain · loss · list</span><span class="chip">One per screen</span><span class="chip">Attached, never floating</span></div>
+    </header>
+
+    <section id="kinds">
+      <header><div class="eyebrow">Two directions</div><h2>Kinds</h2><p><b>gain</b> on the proposed <code>bgReward</code> tint — the coin's own yellow, not a warning — with an arrow and the coin; <b>loss</b> on <code>bgError</code> with a clock or warning and the red card or a minus. Copy is condition, then consequence; the asset and count are the consequence. The <b>list</b> form stacks two or three rows for the job alert.</p></header>
+      <div class="stage"><div class="grid2" id="kinds-grid"></div></div>
+    </section>
+
+    <section id="live">
+      <header><div class="eyebrow">Try it</div><h2>Live · Home</h2><p>The shipped Home strip rebuilt: a gain Nudge under <em>Login</em>. Log in before 6:40 and the Nudge collapses while the coin moment plays; let the deadline pass and it collapses into a Banner that says what happened — the Nudge never shows a loss after the fact.</p></header>
+      <div class="demo" style="align-items:flex-start;flex-wrap:wrap;gap:28px"><div class="scr" id="ph"></div><div class="card" style="max-width:320px"><h4>Simulate</h4><div class="ctl"><button id="login">Login now</button><button id="late">Deadline passes</button><button id="reset">Reset</button></div><div class="logline" id="log">condition open · Nudge shows under Login</div></div></div>
+    </section>
+
+    <section id="rules">
+      <header><div class="eyebrow">Rare by rule</div><h2>Rules</h2></header>
+      <ol class="rules"><li><b>Attached.</b> 8 dp under the Button or card it is about, same width. Never in a header, a sheet's action area, or as a Banner.</li><li><b>One per screen.</b> A list counts as one. Two nudges is a rulebook.</li><li><b>Only while open.</b> Appears while the deadline has not passed or the choice is not made; collapses when settled — good outcomes hand off to the reward moment, bad ones to a Banner.</li><li><b>Never repeats.</b> A recurring condition (daily login) is new each day; a dismissed or acted-on Nudge does not return the same day.</li><li><b>Silent.</b> No sound, no haptic, not spoken on its own — the Button or Timer beside it already has the voice.</li><li><b>Words.</b> Condition then consequence, ≤ 40 chars; asset + count carry the amount; times as <em>6:40 am</em>; never <em>Hurry!</em></li></ol>
+    </section>
+
+    <section id="dont">
+      <header><div class="eyebrow">Common mistakes</div><h2>Don't</h2></header>
+      <div class="stage"><div class="grid2" id="dont-grid"></div></div>
+    </section>
+
+    <section id="figma">
+      <header><div class="eyebrow">Reconciliation</div><h2>What changes in Figma</h2></header>
+      <ol class="rules"><li>Nudge → Nudge: Kind (Gain / Loss), Icon (Arrow / Clock / Warning), Asset (Coin / Red card), Count. Remove the gradient; bind fills to bgReward / bgError.</li><li>Add Nudge / List (2–3 rows in a Card) and place it in the job-alert and check-in mocks.</li><li>Home mock: the Login by 6:40 AM strip becomes a gain instance directly under Login; the No Show · 5 red cards strip becomes a loss row in the job-alert list.</li></ol>
+      <p class="sub" style="margin-top:14px">Result: ~8 variants replacing 3. Token proposal: <code>bgReward</code> = yellow.50 — the reward layer's tint, distinct in meaning from bgWarning.</p>
+    </section>
+  </main>
+</div>
+
+<script id="tokens-json" type="application/json">__TOKENS__</script>
+<script>
+(function(){
+const T=JSON.parse(document.getElementById("tokens-json").textContent); const $=s=>document.querySelector(s);
+const ICO={arrow:'M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z',clock:'M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z',warn:'M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm-8-80V80a8,8,0,0,1,16,0v56a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,172Z',check:'M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,85.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z',caret:'M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z'};
+const svg=n=>`<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="${ICO[n]}"/></svg>`;
+const nd=(kind,icon,text,asset,count,o={})=>`<div class="nd ${kind}" role="note" id="${o.id||''}"><span class="ic">${svg(icon)}</span><span class="tx">${text}</span><span class="amt"><span class="${asset}"></span>${count}</span>${o.caret?`<span class="car">${svg('caret')}</span>`:''}</div>`;
+const W=(cap,html)=>`<div class="stg">${html}<div class="cap">${cap}</div></div>`;
+$('#kinds-grid').innerHTML=[
+ W('<b>gain</b> · bgReward · arrow · coin +3',nd('gain','arrow','Login by 6:40 am','coin','+3')),
+ W('<b>loss · deadline</b> · bgError · clock · −50 coins',nd('loss','clock','Accept before the timer ends','coin','−50')),
+ W('<b>loss · behaviour</b> · warning-circle · 5 red cards',nd('loss','warn','Miss this job','rc','5')),
+ W('<b>list</b> · job alert · first row is the one she can still change · rows may open an FAQ',`<div class="ndlist">${nd('gain','arrow','Accept in time','coin','+5')}${nd('loss','clock','Ignore the alert','coin','−50',{caret:1})}${nd('loss','warn','No show','rc','5',{caret:1})}</div>`)].join('');
+// live
+let state='open';const ph=$('#ph');
+function render(){ph.innerHTML=`<div class="hn">Home</div><div class="body"><div class="cardx"><span class="d">Tuesday, 7 February</span><span class="h">7:00 am – 12:00 pm</span><span class="pres">${svg('check')}Present</span><button class="btn" id="loginbtn">${state==='in'?'Logged in':'Login'}</button>${state==='open'?nd('gain','arrow','Login by 6:40 am','coin','+3',{id:'nudge'}):''}${state==='late'?`<div class="ban">${svg('warn')}Login window closed at 6:40 am. Log in now to start your shift.</div>`:''}</div><div class="cardx" style="color:#6B7280;font-size:14px">Your hotspot · Jyoti Nivas College Gate</div></div><div class="toast" id="toast"><span class="coin"></span>3 coins earned</div>`;
+ $('#loginbtn').onclick=()=>{if(state==='open')login();};}
+function login(){const n=$('#nudge');if(n)n.classList.add('gone');setTimeout(()=>{state='in';render();const t=$('#toast');t.classList.add('on');t.querySelector('.coin').classList.add('pop');setTimeout(()=>t.classList.remove('on'),2200);},150);$('#log').textContent='logged in before 6:40 → Nudge collapses 150 ms → coin moment: coin sound · Toast "3 coins earned" · Nudge does not return today';}
+$('#login').onclick=()=>{if(state==='open')login();else $('#log').textContent='condition already settled';};
+$('#late').onclick=()=>{if(state!=='open'){$('#log').textContent='condition already settled';return;}const n=$('#nudge');if(n)n.classList.add('gone');setTimeout(()=>{state='late';render();},150);$('#log').textContent='deadline passed → Nudge collapses → Banner error says what happened and what to do; the Nudge never shows the loss after the fact';};
+$('#reset').onclick=()=>{state='open';render();$('#log').textContent='new day → condition open again → Nudge shows';};
+render();
+// donts
+$('#dont-grid').innerHTML=[
+ W('',`<div class="nd loss" style="background:linear-gradient(90deg,#FEE2E2,#FCA5A5)"><span class="ic">${svg('warn')}</span><span class="tx" style="font-weight:600">Hurry! Don't miss out — accept now!!</span><span class="amt"><span class="rc" style="width:22px;height:30px;transform:rotate(-8deg)"></span>−50</span></div>`).replace('<div class="cap"></div>','<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">A gradient, a tilted card, exclamation marks, <em>Hurry!</em>. A Nudge states a condition and its worth; the Timer supplies the urgency.</div>'),
+ W('',`<div class="scr" style="width:328px"><div class="hn" style="font-size:14px;gap:8px">${nd('gain','arrow','Login by 6:40 am','coin','+3').replace('width:328px','')}</div><div class="body"><div class="cardx" style="min-height:120px;color:#6B7280">content</div></div></div>`).replace('<div class="cap"></div>','<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">A Nudge in the header, far from Login. A consequence away from its action is a rule to remember; under the Button it is a label.</div>'),
+ W('',`<div style="display:flex;flex-direction:column;gap:8px">${nd('gain','arrow','Login by 6:40 am','coin','+3')}${nd('gain','arrow','Complete 5 jobs today','coin','+10')}${nd('loss','warn','Late twice this week','rc','1')}</div>`).replace('<div class="cap"></div>','<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">Three nudges on one screen. One per screen; a list is for the job alert only. More than that is a rulebook, and rare is the point (P6).</div>'),
+ W('',nd('loss','warn','You missed the login window','coin','−3')).replace('<div class="cap"></div>','<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">A Nudge about the past. Once the condition is settled the Nudge is gone; what happened is a Banner with what to do next.</div>')].join('');
+const links=[...document.querySelectorAll('#nav a')];const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-20% 0px -70% 0px'});targets.forEach(t=>io.observe(t));}
+})();
+</script>
