@@ -1,0 +1,272 @@
+<meta charset="utf-8">
+<title>Snabbit Expert Pattern Errors</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --bg-2:#F9FAFB; --bg-3:#F3F4F6;
+  --text:#111827; --text-body:#374151; --text-2:#6B7280; --text-3:#9CA3AF;
+  --border:#E5E7EB; --border-subtle:#F3F4F6;
+  --brand:#F70F79; --brand-wash:#FEF1F7; --brand-ink:#97094A;
+  --ok:#059669; --ok-wash:#ECFDF5; --focus:#3B82F6;
+  --sans:"Outfit",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+    --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+    --border:#374151; --border-subtle:#1F2937;
+    --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+    --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+  --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+  --border:#374151; --border-subtle:#1F2937;
+  --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+  --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--text-body);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+code{font-family:var(--mono);font-size:.85em;background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--text)}
+pre{background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:14px 16px;overflow-x:auto;margin:12px 0 20px} pre code{background:none;border:0;padding:0;font-size:12.5px;line-height:1.55;white-space:pre}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+.shell{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}
+.rail{position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--border);padding:24px 16px 32px;background:var(--bg);display:flex;flex-direction:column;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;padding:0 8px}
+.brand-mark{width:28px;height:28px;border-radius:8px;background:var(--brand);display:grid;place-items:center;flex:none}
+.brand-mark span{width:12px;height:12px;border-radius:3px;background:#fff;transform:rotate(45deg)}
+.brand b{font-weight:600;color:var(--text);font-size:15px;line-height:1.2;display:block}
+.brand small{color:var(--text-2);font-size:12px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:block;padding:6px 8px;border-radius:6px;text-decoration:none;color:var(--text);font-size:13.5px;font-weight:500}
+.nav a.sub{font-weight:400;color:var(--text-body);padding-left:14px;font-size:13px}
+.nav a.sub b{font-family:var(--mono);font-weight:500;color:var(--text-3);font-size:11.5px;margin-right:2px}
+.nav a:hover{background:var(--bg-2)}
+.nav a.on{background:var(--brand-wash);color:var(--brand-ink)}
+.rail-foot{margin-top:auto;padding:0 8px;font-size:12px;color:var(--text-3);line-height:1.5}
+.main{padding:40px 56px 96px;max-width:860px;width:100%}
+.eyebrow{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);font-weight:600}
+h1{font-size:40px;line-height:1.1;font-weight:600;color:var(--text);margin:8px 0 12px;letter-spacing:-.015em;text-wrap:balance}
+.lede{font-size:18px;color:var(--text-2);max-width:60ch;margin:0 0 8px}
+.lede strong{color:var(--text);font-weight:500}
+h2{font-size:26px;line-height:1.2;font-weight:600;color:var(--text);margin:72px 0 16px;letter-spacing:-.01em;text-wrap:balance;padding-top:24px;border-top:1px solid var(--border)}
+h3{font-size:20px;font-weight:600;color:var(--text);margin:48px 0 8px;letter-spacing:-.005em}
+h3::before{content:"";display:block;width:32px;height:3px;background:var(--brand);border-radius:2px;margin-bottom:14px}
+p{margin:0 0 14px;max-width:66ch}
+h3 + p{font-size:17px;color:var(--text);font-weight:500}
+p.why{color:var(--text-2);font-size:15px;padding-left:14px;border-left:2px solid var(--border)}
+p.why::before{content:"Why · ";color:var(--text-3);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+p.lbl{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2);font-weight:600;margin:22px 0 8px}
+strong{color:var(--text);font-weight:600}
+em{font-style:italic}
+ul,ol{margin:0 0 14px;padding-left:0;list-style:none;max-width:68ch}
+ul li{position:relative;padding-left:20px;margin:6px 0;font-size:15.5px}
+ul li::before{content:"";position:absolute;left:0;top:11px;width:9px;height:2px;background:var(--brand)}
+ul li.chk{padding-left:30px}
+ul li.chk::before{width:16px;height:16px;top:4px;background:var(--bg);border:1.5px solid var(--text-3);border-radius:4px}
+ol{counter-reset:s}
+ol li{counter-increment:s;display:grid;grid-template-columns:32px 1fr;gap:12px;margin:10px 0;font-size:15.5px}
+ol li::before{content:counter(s);width:28px;height:28px;border-radius:50%;background:var(--brand-wash);color:var(--brand-ink);font-weight:600;font-size:13px;display:grid;place-items:center;margin-top:1px}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px;margin:8px 0 20px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);font-weight:500;padding:10px 14px;background:var(--bg-2);border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:10px 14px;border-bottom:1px solid var(--border-subtle);vertical-align:top;color:var(--text-body)}
+tr:last-child td{border-bottom:0}
+td:first-child{color:var(--text);font-weight:500;white-space:nowrap}
+hr{display:none}
+
+.sitenav{display:flex;flex-direction:column;gap:2px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.sitenav .grp{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);padding:10px 8px 4px;font-weight:500}
+.sitenav a{display:block;padding:5px 8px;border-radius:6px;text-decoration:none;color:var(--text-body);font-size:13.5px;border:0}
+.sitenav a:hover{background:var(--bg-2);color:var(--text)} .sitenav a.on{color:var(--brand-ink);background:var(--brand-wash);font-weight:500}
+@media (max-width:900px){.sitenav{flex-direction:row;flex-wrap:wrap;gap:4px;border-bottom:0;padding-bottom:0}.sitenav .grp{display:none}}
+
+@media (max-width:900px){
+  .shell{grid-template-columns:1fr}
+  .rail{position:static;height:auto;border-right:0;border-bottom:1px solid var(--border);padding:16px}
+  .nav{flex-direction:row;flex-wrap:wrap;gap:4px} .nav a.sub{padding-left:8px} .rail-foot{display:none}
+  .main{padding:32px 20px 80px} h1{font-size:32px} h2{margin-top:56px}
+}
+</style>
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Pattern · When something goes wrong</small></div></div>
+    <nav class="sitenav" aria-label="Site"><div class="grp">Foundations</div><a href="index.html">Tokens</a><a href="principles.html">Principles</a><a href="extending.html">Extending</a><a href="icons.html">Icons</a><a href="assets.html">Assets</a><a href="motion.html">Motion</a><a href="type.html">Type · four scripts</a><a href="accessibility.html">Accessibility</a><div class="grp">Components</div><a href="components/button.html">Button</a><a href="components/icon-button.html">IconButton</a><a href="components/tag.html">Tag</a><a href="components/text-field.html">TextField</a><a href="components/selection-controls.html">Checkbox · Radio · Switch</a><a href="components/amount.html">Amount</a><a href="components/timer.html">Timer</a><a href="components/feedback.html">Banner · Toast · Snackbar</a><a href="components/chip.html">Chip</a><a href="components/avatar.html">Avatar</a><a href="components/badge.html">Badge</a><a href="components/card.html">Card</a><a href="components/list-item.html">ListItem</a><a href="components/selection-card.html">SelectionCard</a><a href="components/bottom-sheet.html">BottomSheet</a><a href="components/header-nav.html">HeaderNav</a><a href="components/bottom-tab-bar.html">BottomTabBar</a><a href="components/progress-bar.html">ProgressBar</a><a href="components/stepper.html">Stepper</a><a href="components/coachmark.html">Coachmark</a><a href="components/sos-control.html">SOSControl</a><a href="components/accordion.html">Accordion</a><a href="components/date-picker.html">DatePicker</a><a href="components/empty-state.html">EmptyState</a><a href="components/skeleton.html">Skeleton · Spinner</a><a href="components/voice-prompt.html">VoicePrompt</a><a href="components/tabs.html">Tabs · Segmented</a><a href="components/nudge.html">Nudge</a><a href="components/numeric-keypad.html">NumericKeypad</a><a href="components/page-indicator.html">PageIndicator</a><a href="components/media-capture.html">MediaCapture</a><a href="components/map-marker.html">MapMarker · MapSnippet</a><a href="components/stat-rating-divider.html">Stat · Rating · Divider</a><a href="components/how-to-clip.html">HowToClip</a><a href="components/shield-card.html">ShieldCard</a><a href="components/job-alert.html">JobAlert</a><div class="grp">Patterns</div><a href="pattern-new-job-alert.html">New job arrives</a><a href="pattern-check-in-out.html">Check in · work · check out</a><a href="pattern-payout.html">Payout</a><a href="pattern-onboarding.html">Onboarding · go-live</a><a class="on" href="pattern-error-recovery.html">When something goes wrong</a><div class="grp">Research</div><a href="benchmark.html">Benchmark</a><a href="audit.html">Figma audit</a><a href="roadmap.html">Roadmap</a></nav><nav class="nav" id="nav"><a href="#where-the-failure-is-which-component">Where the failure is → which component</a><a href="#the-recovery-ladder">The recovery ladder</a><a href="#copy-rules">Copy rules</a><a href="#colour-and-sound">Colour and sound</a><a href="#loading-before-failing">Loading before failing</a><a href="#offline-is-a-condition-not-an-error">Offline is a condition, not an error</a><a href="#what-an-error-is-never">What an error is never</a><a href="#examples-end-to-end">Examples end to end</a><a href="#checklist-for-the-pattern">Checklist for the pattern</a></nav>
+    <div class="rail-foot">Snabbit Expert Design System · generated from patterns/error-recovery.md</div>
+  </aside>
+  <main class="main">
+    <header>
+      <div class="eyebrow">Snabbit Expert · Mobile</div>
+      <h1>Pattern — when something goes wrong</h1>
+      <p class="lede">The expert cannot read an error code, will not open a help centre, and is usually standing in someone's doorway when it happens. So every failure in the app answers three questions in her words, in this order: <strong>what happened</strong>, <strong>is my money / job / safety okay</strong>, and <strong>what do I do now</strong> — with the <em>do now</em> as one Button. This pattern says which component carries each kind of failure, the copy rules, the recovery ladder, and the list of things an error is never allowed to be. The components already exist (<code>empty-state.md</code>, <code>feedback.md</code>, <code>text-field.md</code>, <code>button.md</code>, <code>skeleton.md</code>); this page decides which one to reach for.</p>
+    </header>
+    <h2 id="where-the-failure-is-which-component">Where the failure is → which component</h2>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Level</th>
+<th>What failed</th>
+<th>Component</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A field</strong></td>
+<td>One thing she typed or chose</td>
+<td>TextField <code>error</code> line (BodyMd, icon, spoken); NumericKeypad <code>otp</code> shake; SelectionCard group error</td>
+<td><em>Phone number needs 10 digits</em> · <em>Wrong code — ask again</em> · <em>Choose how to add the photo</em></td>
+</tr>
+<tr>
+<td><strong>An action</strong></td>
+<td>A tap did not do its thing (save, send, accept, upload)</td>
+<td>Button back to <code>default</code> + <strong>Snackbar</strong> with the one recovery</td>
+<td><em>Couldn't send — Retry</em> · <em>Upload failed — Retry</em></td>
+</tr>
+<tr>
+<td><strong>A result</strong></td>
+<td>She did the thing; the check said no</td>
+<td>The component's own <code>fail</code> / <code>error</code> state with the reason and Retake / Try again</td>
+<td>MediaCapture <em>Uniform not visible → Retake</em> · Aadhaar <em>Didn't match → Try again</em></td>
+</tr>
+<tr>
+<td><strong>A screen</strong></td>
+<td>The screen's data could not load or save</td>
+<td>EmptyState <code>error</code> (<code>page</code> or <code>section</code>)</td>
+<td><em>Couldn't load your earnings · Your money is safe. The network dropped. → Try again · Call help</em></td>
+</tr>
+<tr>
+<td><strong>A condition</strong></td>
+<td>Something is wrong and stays wrong for a while</td>
+<td><strong>Banner</strong> (<code>error</code> / <code>warning</code>) at the top, inline, with its fix</td>
+<td><em>You're offline</em> · <em>Payout blocked — Add UPI</em> · <em>Shield stopped — charge your phone</em></td>
+</tr>
+<tr>
+<td><strong>A job or payment</strong></td>
+<td>Ops or the customer changed something</td>
+<td><strong>Snackbar</strong> on Home + a Banner on the thing itself; consequences shown as a Nudge <code>loss</code> <strong>before</strong> they apply</td>
+<td><em>Job cancelled by customer — See ›</em> · <em>Red card · −50 — Why? ›</em></td>
+</tr>
+<tr>
+<td><strong>A service</strong></td>
+<td>Snabbit's or a partner's backend is down</td>
+<td>Skeleton hits <code>timeout.loading</code> → EmptyState <code>error</code> with <strong>Try again</strong> / <strong>Later</strong>; the step becomes <code>attention</code> in any Stepper</td>
+<td><em>Aadhaar service is slow right now</em></td>
+</tr>
+<tr>
+<td><strong>Safety</strong></td>
+<td>Anything that touches SOS or Shield</td>
+<td>Never an error tone: ShieldRow <code>blocked</code> / <code>stopped</code> states; SOS offline path (<code>sos-control.md</code>)</td>
+<td><em>Shield can't start — not enough storage → Free up space</em></td>
+</tr>
+</tbody>
+</table></div>
+<p class="lbl">Rules that follow: a field error never becomes a Toast (she has to see it next to the field); an action error never becomes a full-screen EmptyState (the screen is fine — one thing failed); a lasting condition never becomes a Toast (it would vanish while the condition stays); a Toast never carries an error at all (Toast is for events that went right, or <em>Copied</em>).</p>
+<hr />
+<h2 id="the-recovery-ladder">The recovery ladder</h2>
+<p>Every error offers exactly <strong>one</strong> primary way out, and the ladder decides which:</p>
+<ol>
+<li><strong>Retry</strong> — when trying again could work (network, service, a photo). Button <strong>Try again</strong> / <strong>Retake</strong> / <strong>Retry</strong>; the app retries by itself first where it can (uploads, check-in, payout fetch) and only asks her when it has failed twice.</li>
+<li><strong>Fix</strong> — when she can change something. The Button <em>is</em> the fix: <strong>Add UPI or bank</strong>, <strong>Free up space</strong>, <strong>Allow camera</strong>, <strong>Charge your phone</strong> (no Button — a fact), <strong>Choose another day</strong>.</li>
+<li><strong>Alternative</strong> — when the path is closed but another exists: <strong>Call me instead</strong> (voice OTP), <strong>Choose from gallery</strong> (documents), <strong>Type the number</strong> (PAN), <strong>Check in anyway</strong> (hold, flagged).</li>
+<li><strong>Help</strong> — when nothing above applies, or after the third failure of any kind: <strong>Call help</strong> joins as <code>secondary</code>; the header's Help is live throughout.</li>
+<li><strong>Later</strong> — when it is not urgent and not hers to fix: <strong>Later</strong> / <strong>Not now</strong> as <code>ghost</code>; the item becomes <code>attention</code> in its Stepper or a Banner <code>info</code> so it is not forgotten.</li>
+</ol>
+<p>Never more than two Buttons (the ladder step + Help). Never <em>OK</em>, <em>Dismiss</em>, <em>Cancel</em> as the only way out of an error.</p>
+<hr />
+<h2 id="copy-rules">Copy rules</h2>
+<ul>
+<li><strong>Line 1 — what happened</strong>, as she would say it: <em>Couldn't send the photo</em> · <em>Wrong code</em> · <em>Aadhaar didn't match</em> · <em>You're offline</em>. Never <em>Something went wrong</em>, <em>Error 502</em>, <em>Request failed</em>, <em>Oops</em>.</li>
+<li><strong>Line 2 — is she okay</strong>, when money, a job or safety could be in doubt: <em>Your money is safe</em> · <em>Your job is still yours</em> · <em>SOS still works</em>. Say it every time it is true; it is the sentence she is waiting for.</li>
+<li><strong>Line 3 — the cause</strong>, only when it is hers to know and act on: <em>The network dropped</em> · <em>The card wasn't fully in the frame</em>. Never a cause she cannot act on (<em>server timeout</em>).</li>
+<li><strong>Button — the recovery verb</strong>: <em>Try again</em> · <em>Retake</em> · <em>Add UPI</em> · <em>Call help</em>.</li>
+<li>Spoken: line 1 and the Button, once, on appearance (<code>voice-prompt.md</code>). Errors in a field are spoken when the field loses focus, not on every keystroke.</li>
+<li>No exclamation marks, no blame (<em>You entered the wrong code</em> → <em>Wrong code — ask again</em>), no jargon (<em>OTP</em> → <em>code</em>, <em>authentication</em> → <em>login</em>, <em>transaction</em> → <em>payment</em>).</li>
+<li>Four languages: line 1 ≤ 40 chars, line 2 ≤ 60, Button ≤ 18 — see <code>type.md</code>.</li>
+</ul>
+<hr />
+<h2 id="colour-and-sound">Colour and sound</h2>
+<ul>
+<li>Red means <em>this failed</em> and nothing else (row 14): <code>textErrorStrong</code> on <code>bgError</code> for text (<code>accessibility.md</code>), <code>iconError</code> for the glyph, <code>borderError</code> for a field. The reassurance line is <code>textBody</code>, never red — the whole card is not an emergency.</li>
+<li>The EmptyState <code>error</code> pictogram carries the red ✗ dot; the object stays magenta (<code>assets.md</code>).</li>
+<li>A failure has <strong>no sound</strong> except MediaCapture's fail line and the OTP shake haptic (<code>haptic.bump</code>); the SOS and job-alert sounds are never reused. Silence plus a spoken sentence is calmer than a buzzer (P6).</li>
+</ul>
+<hr />
+<h2 id="loading-before-failing">Loading before failing</h2>
+<p>Nothing fails silently or instantly. The order is fixed by <code>motion.md</code> and <code>skeleton.md</code>: show the Skeleton or Button spinner after <code>motion.instant</code> if the answer is not already there; keep it at least <code>timeout.loadingMin</code>; at <code>timeout.loading</code> (3 s) become the honest error above with the ladder. A spinner that outlives three seconds is itself a bug.</p>
+<hr />
+<h2 id="offline-is-a-condition-not-an-error">Offline is a condition, not an error</h2>
+<p>Losing the network is the most common "error" and it is not one: the app keeps working on what it has, queues what it can (check-in, check-out, decline, photos, ratings), and says so once at the top — Banner <code>warning</code> <em>You're offline · Your work is saved and will send when you're back</em>. Things that truly need the network (accepting a job, verifying a code) disable <strong>with the reason under them</strong> and enable themselves when the network returns. The full behaviour is <code>pattern: offline</code> (to come); this page only says: never show a red error screen for the network unless there is also nothing cached to show (EmptyState <code>offline</code>).</p>
+<hr />
+<h2 id="what-an-error-is-never">What an error is never</h2>
+<ul>
+<li>A code, an ID, a stack, a percentage, a timestamp in UTC.</li>
+<li>A modal that blocks the screen for something she cannot fix from it (<code>shield-card.md</code> learned this).</li>
+<li>A Toast (it disappears; errors don't).</li>
+<li>Red text with no Button.</li>
+<li>A disabled Button with no reason under it.</li>
+<li>A dead end: every error screen has Help reachable, and after three failures Help is a Button.</li>
+<li>Louder than the problem: a failed upload is a Snackbar; only a failed payment or a lost job gets a Banner <strong>and</strong> a Snackbar.</li>
+</ul>
+<hr />
+<h2 id="examples-end-to-end">Examples end to end</h2>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Moment</th>
+<th>What she sees</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OTP wrong, third time</td>
+<td>Boxes shake (<code>motion.xfast</code>), spoken <em>Wrong code — ask again</em>; after the third: Button <strong>Resend code</strong> becomes primary and <strong>Call help</strong> appears</td>
+</tr>
+<tr>
+<td>Photo upload fails on a bus</td>
+<td>Tile <code>error</code> <em>Couldn't upload — try again</em>, photo kept locally; app retries twice by itself; Snackbar <em>Photo will upload when you're back online</em> if offline</td>
+</tr>
+<tr>
+<td>Earnings tab fails to load</td>
+<td>Skeleton → 3 s → EmptyState <code>error</code> <em>Couldn't load your earnings · Your money is safe. The network dropped.</em> → <strong>Try again</strong> · <strong>Call help</strong></td>
+</tr>
+<tr>
+<td>Payout bounced</td>
+<td>Snackbar on Home <em>Payout failed — Fix account ›</em>; Banner <code>error</code> on the payout row with <strong>Fix account</strong>; the <em>Get paid</em> Stepper returns</td>
+</tr>
+<tr>
+<td>Customer cancels mid-way to the job</td>
+<td>Snackbar <em>Job cancelled by Radhika · You'll be paid for the trip — See ›</em>; the job screen becomes a Card with the payout line; Home</td>
+</tr>
+<tr>
+<td>Aadhaar service down</td>
+<td>Skeleton → <em>Aadhaar service is slow right now</em> → <strong>Try again</strong> · <strong>Later</strong>; onboarding continues; the step shows <code>attention</code></td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="checklist-for-the-pattern">Checklist for the pattern</h2>
+<ul>
+<li class="chk">Every error on a screen answers <em>what · am I okay · what now</em> in ≤ 3 lines and one primary Button.</li>
+<li class="chk">No Toast carries an error; no Banner is used for a one-off event.</li>
+<li class="chk">Spinners never exceed 3 s without becoming an honest error.</li>
+<li class="chk">After three failures of anything, Help is a Button.</li>
+<li class="chk">Copy reviewed aloud in four languages; no <em>Oops</em>, no codes.</li>
+</ul>
+  </main>
+</div>
+<script>
+(function(){
+const links=[...document.querySelectorAll('#nav a')];
+const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-10% 0px -80% 0px'});
+  targets.forEach(t=>io.observe(t));
+}
+})();
+</script>
