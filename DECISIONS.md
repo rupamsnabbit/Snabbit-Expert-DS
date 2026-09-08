@@ -41,3 +41,11 @@ Design decisions that constrain everything downstream. One entry each, dated, wi
 **Consequence.** Experts relearn nothing: the map they know is the map. The system gains one small component (`HeaderAction`), one governed badge kind (`promo`, Refer only, live bonus only), and a rule that SOS is always the rightmost labelled action on Home and every in-job screen.
 
 **Revisit if.** Rewards outgrows the header (tier, coins, streaks, contests in one place) — then it becomes the only permitted fifth tab.
+
+## 2026-09-08 — Read the shipped screens; four header/stepper corrections
+
+**Decision.** The two screen files (*Expert App 2.0*, *Shift – Job Lifecycle DS*; pages listed in `references/SCREENS.md`) are the evidence for "what ships today" in every spec. Read against them: the Home header keeps the shipped **bell at left**; the action cluster is coins · (red cards) · Saathi · **SOS rightmost** — the one deliberate change from shipped (P7: SOS in the same place on Home and in-job). **Help** (headset) and **Saathi** (chat) are two different actions: Help is a call and appears on job screens beside SOS; Saathi is the chat and appears on Home. HeaderNav gains a **`state`** variant — centred icon + title, no back — for full-screen job states only. Stepper gains an **`unordered`** mode for independent steps (*complete them in any order*), matching the shipped Training screen.
+
+**Consequence.** Every future spec starts from a screenshot of the shipped form and records it in its *What changes* table; a departure from shipped must cite a principle. `references/SCREENS.md` says which pages and sections count as shipped.
+
+**Revisit if.** The shipped app moves SOS to the right on Home — then the P7 rule is simply met and the note above can go.

@@ -50,6 +50,10 @@ Vertical; each step is a row 72 dp (88 with a description) inside one Card with 
 
 ---
 
+## Order
+
+`ordered` (default): steps complete in sequence; one `current` row carries the Button; later rows are `upcoming` or `locked`. **`unordered`**: every unfinished row is `open` — tappable, same look as `current` without the wash, no Button inside; the screen's single primary Button (*Start training*) belongs to the flow, not to a row. The header line says so: *Finish your registration — complete them in any order* (the shipped Training screen). `unordered` has no `upcoming` or `locked` states. Use `unordered` only when the steps truly are independent (documents), never for a flow where step 3 needs step 2.
+
 ## States
 
 | State | Node | Eyebrow | Title | Row | Tap |
@@ -59,6 +63,7 @@ Vertical; each step is a row 72 dp (88 with a description) inside one Card with 
 | `upcoming` | step icon, `textTertiary`, `bgTertiary` disc | *Step n · {reason}*, `textTertiary` | `textSecondary` | `bgPrimary` | Toast: *Finish ID proof first* |
 | `locked` | as upcoming + `lock-simple` badge at bottom-right of the node | *Step n · {reason}* | `textSecondary` | `bgPrimary` | Toast with the reason |
 | `attention` | step icon, `iconWarning`, `borderWarning` ring | *Needs a fix*, `textWarning` | `textPrimary` | `bgWarning` wash | Opens the step at the problem |
+| `open` (unordered only) | step icon, `iconBrand`, `bgBrandSubtle` disc, no ring | *Step n*, `textSecondary` | `textPrimary` | `bgPrimary`, `caret-right` trailing | Opens the step |
 
 `attention` is for a step she finished that came back (ID photo rejected). It is the only state besides `current` that may carry a Button (*Fix ID photo*), and when present it is the current action — the flow cannot move on. `upcoming` and `locked` look the same except the lock; the difference is whether time or her own action unlocks it.
 
@@ -102,7 +107,7 @@ None. Node ring `borderWidth.2`; row height from the ListItem scale.
 ## Figma reconciliation
 
 1. "Step Indicatorss" → **Stepper / Rail**: `Steps` (2–5), per-step `State` (Done / Current / Upcoming / Locked / Attention). Icons as Phosphor instances; labels always on.
-2. Onboarding Step Card → **Stepper / List / Row**: `State` (same five), booleans `Description`, `Button`. Remove the pink border variant; current = ring + wash. Compose four rows into a **Stepper / List** example.
+2. Onboarding Step Card → **Stepper / List / Row**: `State` (five + Open), booleans `Description`, `Button`; list-level `Order` (Ordered / Unordered). Remove the pink border variant; current = ring + wash. Compose four rows into a **Stepper / List** example.
 3. Bind node fills to `bgBrandSubtle` / `bgTertiary` / `iconSuccess`, rings to `borderBrand` / `borderWarning`.
 
 Result: **~14 variants** replacing 3 + 4 frames, and one component where there were two unrelated ones.

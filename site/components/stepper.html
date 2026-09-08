@@ -141,7 +141,7 @@ td.tk{font-family:var(--mono);font-size:12.5px;color:var(--text)}
     </header>
 
     <section id="layouts">
-      <header><div class="eyebrow">Two layouts</div><h2>Rail and list</h2><p>The <b>rail</b> says <em>where am I</em>: 2–5 nodes with icon and label, non-interactive, at the top of a flow. The <b>list</b> says <em>what do I do</em>: one row per step inside a Card; only the current row carries a Button. More than five steps is always a list.</p></header>
+      <header><div class="eyebrow">Two layouts</div><h2>Rail and list</h2><p>The <b>rail</b> says <em>where am I</em>: 2–5 nodes with icon and label, non-interactive, at the top of a flow. The <b>list</b> says <em>what do I do</em>: one row per step inside a Card; in <b>ordered</b> mode only the current row carries a Button; in <b>unordered</b> mode (independent steps, as on the shipped Training screen) every open row is tappable and the flow owns the one Button. More than five steps is always a list.</p></header>
       <div class="stage"><div class="grid2" id="layouts-grid"></div></div>
     </section>
 
@@ -181,12 +181,14 @@ const rail=(states,steps)=>`<div class="srail" role="img" aria-label="${states.f
 const EB={done:()=>'Done',current:(n)=>`Step ${n}`,upcoming:(n,r)=>`Step ${n} · ${r||'After the step before'}`,locked:(n,r)=>`Step ${n} · ${r||'Trainer will call'}`,attention:()=>'Needs a fix'};
 const low=t=>/^[A-Z]{2}/.test(t)?t:t.charAt(0).toLowerCase()+t.slice(1);
 const row=(s,st,n,o={})=>`<div class="srow ${st}" data-i="${n-1}" role="listitem"><span class="nd">${st==='done'?svg('checkc'):svg(s.i)}${st==='locked'?`<span class="lk">${svg('lock')}</span>`:''}</span><div class="tx"><span class="eb">${EB[st](n,o.reason)}</span><span class="tt">${s.t}</span>${o.desc&&(st==='current'||st==='attention')?`<span class="ds">${s.d}</span>`:''}${st==='current'?`<button class="sbtn">${o.verb||'Start'} ${low(s.t)}${svg('caret')}</button>`:st==='attention'?`<button class="sbtn">Fix ${low(s.t)}${svg('caret')}</button>`:''}</div>${st==='done'?`<span class="cr">${svg('caret')}</span>`:''}</div>`;
+const openrow=(s,n)=>`<div class="srow" role="listitem"><span class="nd" style="background:#FEF1F7;color:#F70F79">${svg(s.i)}</span><div class="tx"><span class="eb">Step ${n}</span><span class="tt">${s.t}</span></div><span class="cr">${svg('caret')}</span></div>`;
 const list=(states,o={})=>`<div class="slist" role="list">${STEPS.map((s,i)=>row(s,states[i],i+1,{desc:o.desc,reason:o.reasons&&o.reasons[i]})).join('')}</div>`;
 const W=(cap,html)=>`<div class="stg">${html}<div class="cap">${cap}</div></div>`;
 $('#layouts-grid').innerHTML=[
  W('<b>rail</b> · 4 steps · 1 done, current lit · labels always under the nodes',rail(['done','current','upcoming','upcoming'])),
  W('<b>rail</b> · 2 steps · the Figma indicator, with states',rail(['done','current'],[STEPS[0],STEPS[1]])),
  W('<b>list</b> · same four steps · only the current row has the Button and the description',list(['done','current','upcoming','locked'],{desc:1,reasons:[null,null,'After ID proof','Trainer will call']})),
+ W('<b>list · unordered</b> · every open row tappable, no locks, no Button inside · the flow owns the one Button',`<div style="font-size:14px;color:#6B7280;margin-bottom:8px;width:328px">Finish your registration — complete them in any order</div><div class="slist">${row(STEPS[0],'done',1)}${openrow(STEPS[1],2)}${openrow(STEPS[2],3)}${openrow(STEPS[3],4)}</div>`),
  W('<b>list</b> · everything done · collapses to one summary row',`<div class="slist">${row({i:'check',t:'All 4 steps done'},'done',1)}</div>`)].join('');
 const ST=['done','current','upcoming','locked','attention'];
 $('#mx').innerHTML=`<div></div>${ST.map(h=>`<div class="h">${h}</div>`).join('')}<div class="r">rail node</div>${ST.map(st=>`<div class="c"><div class="srail">${railNode(STEPS[1],st)}</div></div>`).join('')}`;

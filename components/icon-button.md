@@ -63,7 +63,7 @@ An IconButton may use only these registered icons (nine, after `bell` was added 
 | `camera` | Take photo | Camera screens | L primary brand (floating, circle) |
 | `crosshair` | Recentre map | Map, bottom-right above the action bar | L secondary neutral (floating, circle) |
 | `translate` | Change language | Settings header | M ghost neutral |
-| `bell` | Notifications | Profile / root header trailing, with Badge — **not** on Home | M ghost neutral |
+| `bell` | Notifications | Home header left, with Badge; root header trailing | M ghost neutral |
 
 To add an icon here: it must be in `foundations/icons.md`, tested with five experts who have never seen it, and appear in the same place on every screen.
 

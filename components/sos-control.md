@@ -27,7 +27,7 @@ This spec covers the **control** (resting, holding, triggered), the **active scr
    ▐ SOS ▌  ← label pill 16 dp, bgErrorStrong (proposed) / textInverse, Caption SemiBold
 ```
 
-Identical on Home and in-job headers, always the last element on the right. `siren` is registered for this single meaning; no other component may use it. The only red solid fill in the app outside the `danger` Button belongs to this label pill.
+Identical on Home, in-job and state headers, always the last element on the right; on job screens the **Help** `HeaderAction` (headset, a call) sits immediately to its left, as shipped. `siren` is registered for this single meaning; no other component may use it. The only red solid fill in the app outside the `danger` Button belongs to this label pill.
 
 ---
 

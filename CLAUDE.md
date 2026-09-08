@@ -33,7 +33,7 @@ tokens/         DESIGN_TOKENS.md (contract) · tokens.json (source of truth)
 principles/     PRINCIPLES.md · EXTENDING.md
 components/     one spec per core component (button.md, …); each has a live page site/components/<name>.template.html
 briefs/         Tier 3 / change-to-core briefs (template in EXTENDING.md)
-references/     reference screenshots + their reference reads
+references/     SCREENS.md (the two screen files: which pages, shipped vs proposed, open conflicts) · reference screenshots + their reads
 foundations/    icons.md (Phosphor meaning register) · assets.md (illustration style lock + register)
 DECISIONS.md    dated design decisions and their consequences
 ROADMAP.md      what is done and what is left (components, foundations, patterns, governance) — update in the same commit as the work
@@ -61,7 +61,7 @@ The site deploys to GitHub Pages from `main` via `.github/workflows/pages.yml` (
 
 ## Figma
 
-Design file: *Expert App — Design System 2.O* (`QjXqQZVAqLoRmH1j7foH1I`), Components page `1:3886`. Figma is the visual source; this repository is the spec and reference implementation. Read from Figma freely; do not write to it unless the user asks. Figma variables are currently palette-level (`Pink/color-primary-600`) — map them to the semantic tokens in `tokens.json`, and flag drift when Figma and tokens disagree.
+Design file: *Expert App — Design System 2.O* (`QjXqQZVAqLoRmH1j7foH1I`), Components page `1:3886`. **Screen files** (what actually ships): *Expert App 2.0* (`Q0YzzdKk21ayyKHjvCGPzM`) and *Shift – Job Lifecycle DS* (`WEUPV9q19eAqRbkZSBj6OY`) — read only the pages listed in `references/SCREENS.md`, and treat only "Final Designs DS Compatible" sections and numbered FINAL ONBOARDING frames as shipped. Before specifying a component, screenshot its shipped form and record it in the spec's *What changes* table; a departure from the shipped screen must cite a principle. Figma is the visual source; this repository is the spec and reference implementation. Read from Figma freely; do not write to it unless the user asks. Figma variables are currently palette-level (`Pink/color-primary-600`) — map them to the semantic tokens in `tokens.json`, and flag drift when Figma and tokens disagree.
 
 ## Working style
 

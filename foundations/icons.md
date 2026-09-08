@@ -45,8 +45,9 @@ Status: **seed**. Populated fully during the Button, Tab bar and Job-alert specs
 | `fire` | Streak | fill | Streak chip |
 | `coin` | Snabbit coins | fill | CoinChip |
 | `translate` | Change language | regular | Settings |
-| `bell` | Notifications | regular | Profile / root header trailing, with Badge — not on Home |
-| `chats-circle` | Saathi / help | regular | Home header `HeaderAction`, job screens |
+| `bell` | Notifications | regular | Home header left (IconButton with Badge), root header trailing |
+| `chats-circle` | Saathi — chat with support | regular | Home header `HeaderAction` |
+| `headset` | Help — call the trainer / support line | regular | In-job and state headers `HeaderAction` |
 | `magnifying-glass` | Search | regular | TextField search, HeaderNav search |
 
 Not icons: smileys for Rating and the mascot are illustrations, not Phosphor glyphs — they live in the illustration library.

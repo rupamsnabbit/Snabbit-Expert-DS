@@ -89,6 +89,6 @@ Component status lifecycle in practice (nothing is Reconciled yet) · Changelog 
 
 - `illustration.purple` hex — waiting on a value from the Snabbit Assets file.
 - `PRINCIPLES.md` reference-case line still says the Timer is a ring around the Button; the Timer spec places it above. Fix when the job-alert pattern is written.
-- Home header: check the cluster order and the coin / red-card assets against the live app (screenshot requested).
+- Header conflicts with shipped screens (bell, Help vs Saathi, SOS position, centred in-job title) and Stepper ordering — see `references/SCREENS.md`; decisions pending.
 - Figma reconciliation: every spec lists its changes; none applied yet. Until Figma matches, designers still draw from old frames.
 - Field validation: checklist rows 15–16 (copy heard aloud in four languages; device review with experts) are open on every component.
