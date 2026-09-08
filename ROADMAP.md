@@ -4,7 +4,7 @@ What is done and what is left, against the 46-component core set in `audit/BENCH
 
 ---
 
-## Done — 28 pages · 36 of 46 core components
+## Done — 29 pages · 37 of 46 core components
 
 | # | Page | Covers | Status |
 | --- | --- | --- | --- |
@@ -36,16 +36,16 @@ What is done and what is left, against the 46-component core set in `audit/BENCH
 | 26 | VoicePrompt | VoicePrompt (bar, inline); autoplay policy | Proposed |
 | 27 | Tabs · Segmented | Segmented (2–3), Tabs (3–5) | Proposed |
 | 28 | Nudge | Nudge (gain, loss, list) | Proposed |
+| 29 | NumericKeypad | NumericKeypad (phone, otp, number, amount) | Proposed |
 
 Foundations done: tokens (`tokens/`), principles, extending, icons register, assets (two layers). Research done: Figma audit (204 frames), benchmark.
 
 ---
 
-## To do — components (11), in the agreed order
+## To do — components (10), in the agreed order
 
 | # | Component | Priority | Notes |
 | --- | --- | --- | --- |
-| 29 | Numeric keypad | P1 | OTP, amounts, phone. Large keys. |
 | 30 | Pagination dots | P1 | Carousels, onboarding. |
 | 31 | Media container | P1 | Photo capture: loading, error, retake. |
 | 32 | Map marker | P1 | Job, hub, expert position. |

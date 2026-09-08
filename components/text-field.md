@@ -77,7 +77,7 @@ Error is carried by **three channels**: border colour, icon, message (P1). Error
 - Phone: as she types, digits group `98765 43210`; the OTP field follows on the next screen with the number shown above it and *Change* beside it.
 - OTP: focus starts in box 1; each digit advances; backspace on an empty box moves back; the 6th digit submits automatically; wrong code shakes the boxes once (120 ms, reduced-motion → colour only) and turns all borders `borderError`; *Resend* is a ghost brand Button in the helper line, disabled with a countdown for 30 s.
 - Amount: `₹` prefix fixed; Indian grouping applied live; `.00` never shown unless typed.
-- Number keypad: until the `NumericKeypad` component exists, `phone`, `otp`, `number` and `amount` request the OS numeric keyboard.
+- Number keypad: `phone`, `otp`, `number` and `amount` open the in-app `NumericKeypad` (`numeric-keypad.md`), never the OS keyboard.
 - Font scaling to 130 %: label and helper wrap; the field grows in height; nothing clips.
 
 ---

@@ -32,3 +32,4 @@ One spec per core component. `button.md` is the template. Status per component: 
 | VoicePrompt | Proposed | `voice-prompt.md` | `site/components/voice-prompt.html` |
 | Tabs · Segmented | Proposed | `tabs.md` | `site/components/tabs.html` |
 | Nudge | Proposed | `nudge.md` | `site/components/nudge.html` |
+| NumericKeypad | Proposed | `numeric-keypad.md` | `site/components/numeric-keypad.html` |
