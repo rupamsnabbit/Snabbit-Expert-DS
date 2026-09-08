@@ -27,6 +27,13 @@
 .dt.sel .dy{color:#F70F79}
 .dt .ctl{display:none}
 .strip{display:flex;gap:8px;overflow-x:auto;padding:4px 0;scrollbar-width:none}.strip::-webkit-scrollbar{display:none}
+.sc.hero{flex-direction:column;gap:0;padding:0;overflow:hidden}
+.sc.hero .img{width:100%;aspect-ratio:16/9;position:relative;background:linear-gradient(180deg,#FEF1F7,#FBCFE8);display:block}
+.sc.hero .img svg.scene{width:100%;height:100%;display:block}
+.sc.hero .img .tag{position:absolute;right:12px;top:12px;background:#FEF1F7;color:#F70F79;font:500 12px var(--sans);padding:2px 8px;border-radius:999px;box-shadow:inset 0 0 0 1px #F70F79}
+.sc.hero .img .chk{position:absolute;right:12px;bottom:12px;width:24px;height:24px;border-radius:50%;background:#F70F79;color:#fff;display:grid;place-items:center;box-shadow:0 0 0 2px #fff}.sc.hero .img .chk svg{width:14px;height:14px}
+.sc.hero .row{display:flex;gap:12px;align-items:flex-start;padding:16px;width:100%}
+.sc.hero.dis .img{opacity:.4}
 .grp{display:flex;flex-direction:column;gap:12px}
 .gerr{display:flex;gap:6px;align-items:center;color:#DC2626;font-size:14px}.gerr svg{width:16px;height:16px}
 .grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(328px,1fr));gap:24px 32px;align-items:start}
@@ -40,18 +47,18 @@ __NAVCSS__</style>
   <aside class="rail">
     <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · SelectionCard</small></div></div>
     __SITENAV__
-    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#variants">Variants</a><a href="#states">States</a><a href="#live">Live group</a><a href="#dont">Don't</a><a href="#figma">Figma changes</a></nav>
+    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#variants">Variants</a><a href="#states">States</a><a href="#live">Live group</a><a href="#live-hero">Hero · multi</a><a href="#dont">Don't</a><a href="#figma">Figma changes</a></nav>
     <div class="rail-foot">Rendered from tokens.json · spec in components/selection-card.md</div>
   </aside>
   <main class="main">
     <header id="overview">
       <div class="eyebrow">Core component</div><h1>SelectionCard</h1>
       <p class="lede">A Card that behaves like a Radio or a Checkbox. For options that need more than a label — a description, a price, an illustration, two facts. The card is the tap target; the control inside shows the state.</p>
-      <div class="meta"><span class="chip status">Proposed</span><span class="chip">Tier 1 · Core</span><span class="chip"><code>SnabbitSelectionCard</code></span><span class="chip">compact · rich · date</span><span class="chip">Replaces 8 frames</span></div>
+      <div class="meta"><span class="chip status">Proposed</span><span class="chip">Tier 1 · Core</span><span class="chip"><code>SnabbitSelectionCard</code></span><span class="chip">compact · rich · date · hero</span><span class="chip">Replaces 8 frames</span></div>
     </header>
 
     <section id="variants">
-      <header><div class="eyebrow">Three shapes</div><h2>Variants</h2><p>Control always leading, top-left — the same place as a Radio row. <b>Compact</b> for one-line options with an icon; <b>rich</b> for options she compares, with facts and a 64 dp asset; <b>date</b> for picking a day, in a strip of ≤ 7.</p></header>
+      <header><div class="eyebrow">Four shapes</div><h2>Variants</h2><p>Control always leading, top-left — the same place as a Radio row. <b>Compact</b> for one-line options with an icon; <b>rich</b> for options she compares, with facts and a 64 dp asset; <b>date</b> for picking a day, in a strip of ≤ 7; <b>hero</b> when the picture is the option — image 16:9 on top, radio or checkbox under it, ≤ 3 per group.</p></header>
       <div class="stage"><div class="grid2" id="variants-grid"></div></div>
     </section>
 
@@ -64,6 +71,11 @@ __NAVCSS__</style>
       <header><div class="eyebrow">Try it</div><h2>Live group</h2><p>Switch between single and multi. Groups start empty; the primary Button below commits. Nothing navigates on select.</p></header>
       <div class="ctrls" id="ctrls"></div>
       <div class="stage" style="display:flex;justify-content:center"><div class="ph" id="ph"></div></div>
+    </section>
+
+    <section id="live-hero">
+      <header><div class="eyebrow">Try it</div><h2>Hero confirmations · multi</h2><p>The onboarding confirmations as <code>hero</code> <code>multi</code> cards: tap the picture or the row. The Button enables when all are checked — the shipped <em>Tap on the image to proceed</em> line is not needed.</p></header>
+      <div class="demo" style="align-items:flex-start;flex-wrap:wrap;gap:28px"><div class="ph" id="ph-hero"></div></div>
     </section>
 
     <section id="dont">
@@ -95,16 +107,25 @@ function card(o){ // variant, mode, sel, dis, err, press, title, desc, facts[[ic
  const facts=o.facts?`<div class="facts">${o.facts.map(([i,t,a])=>`<div class="f">${svg(i)}<span>${a?`<span class="amt">${a}</span> `:''}${t}</span></div>`).join('')}</div>`:'';
  const asset=o.asset!=null?`<div class="asset">${clockAsset(o.asset)}${o.sel?`<span class="chk">${svg('check')}</span>`:''}</div>`:'';
  return `<div class="${cls}" data-id="${o.id||''}" role="${o.mode==='multi'?'checkbox':'radio'}" aria-checked="${!!o.sel}">${o.rec?'<span class="rec">Recommended</span>':''}<span class="ctl">${ctl(o.mode,o.sel,o.dis)}</span>${o.lead?`<span class="lead">${svg(o.lead)}</span>`:''}<span class="body"><span class="t">${o.title}</span>${o.desc?`<span class="d">${o.desc}</span>`:''}${facts}</span>${asset}</div>`;}
+// scene stand-in (illustration layer): pink stage, an expert figure, a prop
+const scene=(kind)=>{const props={help:'<rect x="180" y="60" width="70" height="90" rx="6" fill="#F9A8D4"/><rect x="188" y="70" width="54" height="30" rx="3" fill="#fff" opacity=".7"/>',cook:'<ellipse cx="215" cy="130" rx="42" ry="10" fill="#C70C61"/><rect x="180" y="95" width="70" height="35" rx="8" fill="#F70F79"/><path d="M200 80q8-14 0-28M220 80q8-14 0-28" stroke="#F9A8D4" stroke-width="4" fill="none" stroke-linecap="round"/>',beauty:'<circle cx="215" cy="85" r="26" fill="#fff" opacity=".8"/><circle cx="215" cy="85" r="18" fill="#F9A8D4"/><rect x="209" y="112" width="12" height="40" rx="4" fill="#C70C61"/>',phone:'<rect x="196" y="55" width="44" height="80" rx="8" fill="#111827"/><rect x="201" y="62" width="34" height="60" rx="3" fill="#FEF1F7"/>',uniform:'<path d="M180 70l35-15 35 15-8 12-10-4v70h-34v-70l-10 4z" fill="#F70F79"/><circle cx="215" cy="98" r="4" fill="#fff"/>',centre:'<rect x="170" y="70" width="90" height="70" rx="6" fill="#FBCFE8"/><rect x="200" y="100" width="30" height="40" fill="#C70C61"/><path d="M165 72l50-28 50 28z" fill="#F70F79"/>'};
+ return `<svg class="scene" viewBox="0 0 320 180" aria-hidden="true"><ellipse cx="160" cy="165" rx="130" ry="14" fill="#F9A8D4" opacity=".6"/><circle cx="110" cy="62" r="22" fill="#C89A7B"/><path d="M75 165v-60q0-24 35-24t35 24v60z" fill="#F70F79"/><path d="M96 82h28v10h-28z" fill="#111827" opacity=".15"/>${props[kind]||''}</svg>`;};
+function hero(o){ // mode, sel, dis, title, desc, kind, tag, id
+ const cls=['sc','hero',o.sel?'sel':'',o.dis?'dis':'',o.press?'press':''].join(' ');
+ return `<div class="${cls}" data-id="${o.id||''}" role="${o.mode==='multi'?'checkbox':'radio'}" aria-checked="${!!o.sel}"><span class="img">${scene(o.kind)}${o.tag?`<span class="tag">${o.tag}</span>`:''}${o.sel?`<span class="chk">${svg('check')}</span>`:''}</span><span class="row"><span class="ctl">${ctl(o.mode,o.sel,o.dis)}</span><span class="body"><span class="t">${o.title}</span>${o.desc?`<span class="d">${o.desc}</span>`:''}</span></span></div>`;}
 const W=(cap,html)=>`<div class="stg">${html}<div class="cap">${cap}</div></div>`;
 $('#variants-grid').innerHTML=[
  W('<b>compact</b> · control · icon · title · description',`<div class="grp">${card({variant:'compact',lead:'camera',title:'Camera',desc:'Take a photo now',sel:1})}${card({variant:'compact',lead:'image',title:'Gallery',desc:'Choose an existing photo'})}</div>`),
  W('<b>rich</b> · facts + 64 dp asset',card({variant:'rich',title:'Full time',desc:'10 to 12 hours daily',facts:[['rupee','/ month','₹20K – ₹30K'],['clock','8+ hours daily']],asset:.5,sel:1})),
+ W('<b>hero · single</b> · image 16:9 on top · the picture is the option · ≤ 3 per group',`<div class="grp">${hero({mode:'single',kind:'help',title:'House help',desc:'Cleaning, mopping, laundry and other house work',sel:1})}${hero({mode:'single',kind:'beauty',title:'Beauty',desc:'Hair dyeing, hair colouring and facials',tag:'New'})}</div>`),
+ W('<b>hero · multi</b> · one big, honest checkbox — tapping the image toggles it',hero({mode:'multi',kind:'phone',title:'I have my own smartphone',desc:'You will use it for every job',sel:1})),
  W('<b>date</b> · 72 × 88 · strip of ≤ 7 · today first',`<div class="strip">${[['Mon','7','Sep',1],['Tue','8','Sep'],['Wed','9','Sep'],['Thu','10','Sep'],['Fri','11','Sep'],['Sat','12','Sep'],['Sun','13','Sep']].map(([w,d,m,s])=>card({variant:'date',wd:w,dy:d,mo:m,sel:s})).join('')}</div>`)].join('');
 $('#states-grid').innerHTML=[
  W('<b>default</b>',card({variant:'rich',title:'Part time',desc:'4 to 6 hours daily',facts:[['rupee','/ month','₹10K – ₹12K']],asset:.25})),
  W('<b>selected</b> · border 2 + control + check badge',card({variant:'rich',title:'Part time',desc:'4 to 6 hours daily',facts:[['rupee','/ month','₹10K – ₹12K']],asset:.25,sel:1})),
  W('<b>pressed</b>',card({variant:'rich',title:'Part time',desc:'4 to 6 hours daily',facts:[['rupee','/ month','₹10K – ₹12K']],asset:.25,press:1})),
  W('<b>disabled</b> · description says why',card({variant:'rich',title:'Night shift',desc:'Not available in your area yet',asset:.75,dis:1})),
+ W('<b>hero · disabled</b> · image at 40 % · description says why',hero({mode:'single',kind:'centre',title:'Whitefield centre',desc:'No slots this week',dis:1})),
  W('<b>recommended</b> · one per group · Tag, not colour',card({variant:'rich',title:'Full time',desc:'Most experts choose this',facts:[['rupee','/ month','₹20K – ₹30K'],['clock','8+ hours daily']],asset:.5,rec:1})),
  W('<b>group error</b> · every unselected card + one line',`<div class="grp">${card({variant:'compact',lead:'camera',title:'Camera',err:1})}${card({variant:'compact',lead:'image',title:'Gallery',err:1})}<div class="gerr">${svg('xc')}<span>Choose how to add the photo</span></div></div>`)].join('');
 // live
@@ -114,6 +135,11 @@ function ph(){$('#ph').innerHTML=`<div class="q">${mode==='single'?'How do you w
  $('#ph').querySelectorAll('.sc').forEach(c=>c.onclick=()=>{const id=c.dataset.id;if(mode==='single'){sel=new Set([id]);}else{sel.has(id)?sel.delete(id):sel.add(id);}ph();});}
 function ctrls(){$('#ctrls').innerHTML=['single','multi'].map(m=>`<button class="sbtn" data-m="${m}" style="--h:36px;--px:14px;--r:999px;--fs:13px;--fw:500;--ic:16px;--gap:6px;--fill:${mode===m?sem.bgBrandSubtle:'#fff'};--ink:${mode===m?sem.textBrand:sem.textBody};--bw:1px;--bc:${mode===m?sem.borderBrand:sem.borderDefault};--fill-p:${sem.bgSecondary}"><span class="lb">${m==='single'?'Single (radio)':'Multi (checkbox)'}</span></button>`).join('');$('#ctrls').querySelectorAll('button').forEach(b=>b.onclick=()=>{mode=b.dataset.m;sel=new Set();ctrls();ph();});}
 ctrls();ph();
+// hero live
+let hsel=new Set(['phone']);const HOPTS=[{id:'phone',kind:'phone',title:'I have my own smartphone',desc:'You will use it for every job'},{id:'uniform',kind:'uniform',title:'I can wear the uniform',desc:'Pink shirt and black trousers, every shift'}];
+function phh(){const all=hsel.size===HOPTS.length;$('#ph-hero').innerHTML=`<div class="q">Before you start</div><div class="grp">${HOPTS.map(o=>hero({...o,mode:'multi',sel:hsel.has(o.id)})).join('')}</div><button class="sbtn full" ${all?'':'disabled'} style="--h:56px;--px:24px;--r:12px;--fs:16px;--fw:600;--ic:24px;--gap:8px;--fill:${all?sem.interactiveDefault:'#FBCFE8'};--ink:#fff;--fill-p:${sem.interactivePressed}">${svg('check')}<span class="lb">Continue</span></button>${all?'':'<div class="sub" style="font-size:12px;text-align:center;margin-top:6px">Tick both to continue</div>'}`;
+ $('#ph-hero').querySelectorAll('.sc').forEach(c=>c.onclick=()=>{const id=c.dataset.id;hsel.has(id)?hsel.delete(id):hsel.add(id);phh();});}
+phh();
 $('#dont-grid').innerHTML=[
  `<div class="stg"><div class="sc sel" style="flex-direction:column;gap:0;padding:0"><div style="display:flex;gap:12px;padding:16px;width:100%"><span class="body"><span class="f" style="color:${P.green['600']}">${svg('rupee')}<span style="color:${P.green['600']};font-weight:600">Earn ₹20K – ₹30K / month</span></span><span class="f">${svg('clock')}<span>8+ hours daily</span></span></span><div class="asset">${clockAsset(.5)}</div></div><div style="border-top:1px solid #F3F4F6;width:100%;padding:12px 16px;display:flex;gap:12px;align-items:center"><span class="rd on"></span><span class="t">Work Full Time</span></div></div><span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">Control at the bottom after a divider — not where it is in every other selection row. Green earnings text reads as "good news", not as a fact. Selected shown by border only.</div></div>`,
  `<div class="stg"><div class="grp">${card({variant:'compact',title:'UPI',sel:1})}${card({variant:'compact',title:'Bank transfer',sel:1})}${card({variant:'compact',title:'Cash',sel:1})}${card({variant:'compact',title:'Cheque'})}${card({variant:'compact',title:'Wallet'})}${card({variant:'compact',title:'Other'})}</div><span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">Six cards, three pre-selected, in a single-select group. More than five options is a Select sheet; groups start empty; radios can't have three on.</div></div>`].join('');

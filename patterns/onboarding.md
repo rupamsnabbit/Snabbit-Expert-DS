@@ -54,8 +54,8 @@ The shipped flow is good: it is short (five steps, "2 minutes"), speaks, shows a
 | Location permission: full-screen *Allow Snabbit to access this device's location?* with a map pin and the OS dialog | BottomSheet `permission` (why, one sentence, scene asset) → OS dialog; **Not now** allowed, city then asked manually | `bottom-sheet.md` permission kind; P5 honesty |
 | *Start training in 4 simple steps · It takes 2 minutes* with the stairs illustration | Kept as a full-screen intro (scene asset, Heading1, Button **Start**); the count is whatever the variant has (5 steps TC-less) | It sets expectation — P6 |
 | *A little bit about you*: Work location with **Change**, Full name, Gender as two photo cards, *Have a referral code?* with a code field | Same fields: city as a ListItem with a `tertiary` **Change** → `select` sheet with city cards and an *Unavailable city* EmptyState; name TextField; gender as two SelectionCard `rich` with the character asset; referral as a collapsed row that opens a TextField | Component parts for every field; the *Unavailable city* screen becomes the EmptyState `empty` kind with **Notify me** |
-| *What work are you interested in?* three photo cards with a **NEW** pill on Beauty | SelectionCard `rich` × 3 with the scene asset right, Tag `brand` **New** on Beauty | Kept |
-| *Tap on the image to proceed* — a large illustration, a checkbox *I have my own smartphone* | SelectionCard `rich` full-width with the Checkbox as the control — tapping the image toggles it; title says what she is confirming (*I have my own smartphone*) | The image is a checkbox target already; making it one component makes the state visible (row 4) |
+| *What work are you interested in?* three photo cards with a **NEW** pill on Beauty | SelectionCard **`hero`** × 3 `single` — the photo is the top of the card, Tag `brand` **New** over Beauty | The picture is the option; `hero` gives it the whole width (P1) |
+| *Tap on the image to proceed* — a large illustration, a checkbox *I have my own smartphone* | SelectionCard **`hero`** `multi`, one per screen — tapping the image toggles the Checkbox; title says what she is confirming (*I have my own smartphone*); the instruction line goes | The image is a checkbox target already; one component makes the state visible (row 4) |
 | *Keep Aadhaar number ready* → DigiLocker in a WebView with **Taking you there** and a *Do not exit app now* Banner | Kept: Banner `warning` *Stay in the app — we'll bring you back*; the WebView keeps the HeaderNav so Help stays reachable; on return, a Skeleton while verifying (3-second rule) then the summary Card (name · gender · DOB · father's name · masked Aadhaar · address) with ListItem rows and Stat `S` | P5, P7: never lose the header during a third-party step |
 | *Your Aadhaar is verified!* check + summary, Button **Starting your training** | Kept; Button **Start training** | Verb, sentence case |
 | *Congratulations! You have successfully done your onboarding!* with a celebratory scene, Button **Let's train now** (dark) | Screen kept with the scene asset and `motion.celebrate`; Button `primary brand L` **Start training** | One primary style (`button.md`) |
@@ -89,7 +89,7 @@ Intro screen *Finish onboarding in 5 steps · about 2 minutes* with the stairs s
 
 ### 4. Work
 
-*What work are you interested in?* SelectionCard `rich` × 3 (House help · Cook · Beauty **New**). Then the confirmations: each a SelectionCard `rich` full-width with a Checkbox — *I have my own smartphone*, *I can wear the uniform*, *I can work 8 hours*; the image is the target; **Continue** enables when all are checked. Cook variant adds *What can you cook?* as Chips `filter` multi-select.
+*What work are you interested in?* SelectionCard `hero` × 3 `single` (House help · Cook · Beauty **New**). Then the confirmations: each a SelectionCard `hero` `multi` — *I have my own smartphone*, *I can wear the uniform*, *I can work 8 hours*; the image is the target; **Continue** enables when all are checked. Cook variant adds *What can you cook?* as Chips `filter` multi-select.
 
 ### 5. Identity
 
@@ -101,7 +101,7 @@ Intro screen *Finish onboarding in 5 steps · about 2 minutes* with the stairs s
 
 ### 6b. Training centre (TC)
 
-Pick centre: SelectionCard `rich` list with distance and next slot as facts. Pick day: SelectionCard `date` strip (≤ 7). Confirmed: the training-centre card (above) with Timer `deadline`; states *Confirmed* · *Today · reach by 9:45 am* (Timer `countdown` appears only on the day) · *Missed* (Banner `error` + **Rebook**). **Change date** / **Change centre** as `secondary` Buttons below the card; **Call trainer** always present.
+Pick centre: SelectionCard `hero` (centre photo) or `rich` list with distance and next slot as facts — `hero` when there are ≤ 3 centres. Pick day: SelectionCard `date` strip (≤ 7). Confirmed: the training-centre card (above) with Timer `deadline`; states *Confirmed* · *Today · reach by 9:45 am* (Timer `countdown` appears only on the day) · *Missed* (Banner `error` + **Rebook**). **Change date** / **Change centre** as `secondary` Buttons below the card; **Call trainer** always present.
 
 ### 7. Get paid
 
@@ -133,7 +133,7 @@ Home pre-shift: HeaderNav `home` (bell · SOS · Saathi · coins); Card *Your fi
 
 - **Five scripts, one voice.** The shipped language list has **Telugu**. `PRINCIPLES.md` P9, `type.md` and `typography.indic` say four; Telugu (a round, wide script like Kannada) joins with an expansion factor ≈ ×1.3 and the platform fallback (Noto Sans Telugu / Telugu Sangam MN). **Decision to confirm** — if Telugu is launching, the foundation updates in one commit.
 - **HowToClip `guide`** — a third form: inline 16:9 at the top of a screen, plays on tap, captions on, collapses on scroll to a 56 dp bar with the play glyph; used on form screens where a trainer's explanation beats helper text. Add to `how-to-clip.md`.
-- **SelectionCard `rich` with a Checkbox as the control** for confirmations where the image is the target — a boolean on the existing kind, not a new one.
+- **SelectionCard `hero`** — added to `selection-card.md` (image on top, single or multi) for the work cards and the confirmations.
 - **Training-centre card** is a composition (MapSnippet + Timer `deadline` + ListItems + Buttons); no new component. Record in `card.md` compositions list.
 - **Header cluster in `page` variant**: Help + Language during onboarding only.
 - `icons.md`: `translate` already registered; `graduation-cap` (hub marker) already registered.
