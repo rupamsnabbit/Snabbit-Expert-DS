@@ -4,7 +4,7 @@ What is done and what is left, against the 46-component core set in `audit/BENCH
 
 ---
 
-## Done — 42 pages · 46 of 46 core components + 2 compositions + 1 pattern
+## Done — 43 pages · 46 of 46 core components + 2 compositions + 1 pattern
 
 | # | Page | Covers | Status |
 | --- | --- | --- | --- |
@@ -45,6 +45,7 @@ What is done and what is left, against the 46-component core set in `audit/BENCH
 | 35 | ShieldCard (Kavach) | Composition: ShieldRow (6 states), ShieldConsent, SafetyCheck; SafetyStrip `shield` kind | Proposed |
 | 36 | JobAlert | Composition: the reference case as one screen — facts strip, earnings Card, Nudge loss, Timer L, Decline hold, Accept | Proposed |
 | — | FAB | Folded into IconButton: floating = `L` `circle` at `elevation.floating`; shutter and recentre only; no FAB component (`icon-button.md`) | Decided |
+| 40 | Pattern · Onboarding and go-live | `patterns/onboarding.md` — from *Self-Serve ER/AR*: TC-less and TC variants, Bank/UPI, pre-shift Home; presenter video → HowToClip `guide`; Telugu decision | Proposed |
 | 39 | Pattern · Payout | `patterns/payout.md` — statement, schedule states, get paid (UPI / PAN), early payout, history, the paid moment; from ✅ Monthly Earnings + Adjustments | Proposed |
 | 38 | Pattern · Check in, work, check out | `patterns/check-in-out.md` — four stages from shipped Final Designs, departures cited, edges (late, overtime, extension, offline, no GPS) | Proposed |
 | 37 | Pattern · New job arrives | `patterns/new-job-alert.md` — arrive, decide, accept / decline / time's up, edges; PRINCIPLES reference case corrected | Proposed |
@@ -75,9 +76,9 @@ Order decided 2026-09-08: the visual foundations first, sound parked.
 
 ---
 
-## To do — patterns (3 of 10 done)
+## To do — patterns (4 of 10 done)
 
-~~New-job alert~~ (done) · ~~Check-in / check-out~~ (done) · ~~Payout~~ (done) · Onboarding & go-live · Error recovery · Permission asking · First run (Coachmark tours) · Earnings breakdown · SOS flow (drawn in SOSControl; pattern adds what happens after) · Offline.
+~~New-job alert~~ (done) · ~~Check-in / check-out~~ (done) · ~~Payout~~ (done) · ~~Onboarding & go-live~~ (done) · Error recovery · Permission asking · First run (Coachmark tours) · Earnings breakdown · SOS flow (drawn in SOSControl; pattern adds what happens after) · Offline.
 
 ---
 
@@ -92,6 +93,8 @@ Component status lifecycle in practice (nothing is Reconciled yet) · Changelog 
 - `illustration.purple` hex — waiting on a value from the Snabbit Assets file.
 - `1Login` question superseded: onboarding evidence now comes from *Self-Serve ER/AR* (`HqmnjmxhZvyvZxmIaVMCrB`); the master file's FINAL ONBOARDING is an older iteration.
 - Shield: two product decisions to confirm — auto-start at check-in (vs shipped per-job *Activate*), and the Kavach-blue shield as the one domain-coloured pictogram (`shield-card.md`).
+- **Telugu**: the latest onboarding file offers five languages (adds Telugu). If it launches, P9 / `type.md` / `typography.indic` update from four scripts to five in one commit (`patterns/onboarding.md` follow-ups).
+- HowToClip `guide` form (inline presenter video on form screens) — add to `how-to-clip.md`.
 - Accessibility decisions: (1) primary Button label is 4.0:1 at 16 sp SemiBold — recommend ButtonLg 18 / 24 for L Buttons; (2) token release 0.20 with the `text*Strong` steps, `iconSuccess` → green.600, `iconWarning` → yellow.600 and the accumulated proposals (`foundations/accessibility.md` § Open).
 - Figma reconciliation: every spec lists its changes; none applied yet. Until Figma matches, designers still draw from old frames.
 - Field validation: checklist rows 15–16 (copy heard aloud in four languages; device review with experts) are open on every component.

@@ -1,0 +1,363 @@
+<meta charset="utf-8">
+<title>Snabbit Expert Pattern Onboarding</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --bg-2:#F9FAFB; --bg-3:#F3F4F6;
+  --text:#111827; --text-body:#374151; --text-2:#6B7280; --text-3:#9CA3AF;
+  --border:#E5E7EB; --border-subtle:#F3F4F6;
+  --brand:#F70F79; --brand-wash:#FEF1F7; --brand-ink:#97094A;
+  --ok:#059669; --ok-wash:#ECFDF5; --focus:#3B82F6;
+  --sans:"Outfit",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+    --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+    --border:#374151; --border-subtle:#1F2937;
+    --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+    --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+  --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+  --border:#374151; --border-subtle:#1F2937;
+  --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+  --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--text-body);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+code{font-family:var(--mono);font-size:.85em;background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--text)}
+pre{background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:14px 16px;overflow-x:auto;margin:12px 0 20px} pre code{background:none;border:0;padding:0;font-size:12.5px;line-height:1.55;white-space:pre}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+.shell{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}
+.rail{position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--border);padding:24px 16px 32px;background:var(--bg);display:flex;flex-direction:column;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;padding:0 8px}
+.brand-mark{width:28px;height:28px;border-radius:8px;background:var(--brand);display:grid;place-items:center;flex:none}
+.brand-mark span{width:12px;height:12px;border-radius:3px;background:#fff;transform:rotate(45deg)}
+.brand b{font-weight:600;color:var(--text);font-size:15px;line-height:1.2;display:block}
+.brand small{color:var(--text-2);font-size:12px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:block;padding:6px 8px;border-radius:6px;text-decoration:none;color:var(--text);font-size:13.5px;font-weight:500}
+.nav a.sub{font-weight:400;color:var(--text-body);padding-left:14px;font-size:13px}
+.nav a.sub b{font-family:var(--mono);font-weight:500;color:var(--text-3);font-size:11.5px;margin-right:2px}
+.nav a:hover{background:var(--bg-2)}
+.nav a.on{background:var(--brand-wash);color:var(--brand-ink)}
+.rail-foot{margin-top:auto;padding:0 8px;font-size:12px;color:var(--text-3);line-height:1.5}
+.main{padding:40px 56px 96px;max-width:860px;width:100%}
+.eyebrow{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);font-weight:600}
+h1{font-size:40px;line-height:1.1;font-weight:600;color:var(--text);margin:8px 0 12px;letter-spacing:-.015em;text-wrap:balance}
+.lede{font-size:18px;color:var(--text-2);max-width:60ch;margin:0 0 8px}
+.lede strong{color:var(--text);font-weight:500}
+h2{font-size:26px;line-height:1.2;font-weight:600;color:var(--text);margin:72px 0 16px;letter-spacing:-.01em;text-wrap:balance;padding-top:24px;border-top:1px solid var(--border)}
+h3{font-size:20px;font-weight:600;color:var(--text);margin:48px 0 8px;letter-spacing:-.005em}
+h3::before{content:"";display:block;width:32px;height:3px;background:var(--brand);border-radius:2px;margin-bottom:14px}
+p{margin:0 0 14px;max-width:66ch}
+h3 + p{font-size:17px;color:var(--text);font-weight:500}
+p.why{color:var(--text-2);font-size:15px;padding-left:14px;border-left:2px solid var(--border)}
+p.why::before{content:"Why · ";color:var(--text-3);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+p.lbl{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2);font-weight:600;margin:22px 0 8px}
+strong{color:var(--text);font-weight:600}
+em{font-style:italic}
+ul,ol{margin:0 0 14px;padding-left:0;list-style:none;max-width:68ch}
+ul li{position:relative;padding-left:20px;margin:6px 0;font-size:15.5px}
+ul li::before{content:"";position:absolute;left:0;top:11px;width:9px;height:2px;background:var(--brand)}
+ul li.chk{padding-left:30px}
+ul li.chk::before{width:16px;height:16px;top:4px;background:var(--bg);border:1.5px solid var(--text-3);border-radius:4px}
+ol{counter-reset:s}
+ol li{counter-increment:s;display:grid;grid-template-columns:32px 1fr;gap:12px;margin:10px 0;font-size:15.5px}
+ol li::before{content:counter(s);width:28px;height:28px;border-radius:50%;background:var(--brand-wash);color:var(--brand-ink);font-weight:600;font-size:13px;display:grid;place-items:center;margin-top:1px}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px;margin:8px 0 20px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);font-weight:500;padding:10px 14px;background:var(--bg-2);border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:10px 14px;border-bottom:1px solid var(--border-subtle);vertical-align:top;color:var(--text-body)}
+tr:last-child td{border-bottom:0}
+td:first-child{color:var(--text);font-weight:500;white-space:nowrap}
+hr{display:none}
+
+.sitenav{display:flex;flex-direction:column;gap:2px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.sitenav .grp{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);padding:10px 8px 4px;font-weight:500}
+.sitenav a{display:block;padding:5px 8px;border-radius:6px;text-decoration:none;color:var(--text-body);font-size:13.5px;border:0}
+.sitenav a:hover{background:var(--bg-2);color:var(--text)} .sitenav a.on{color:var(--brand-ink);background:var(--brand-wash);font-weight:500}
+@media (max-width:900px){.sitenav{flex-direction:row;flex-wrap:wrap;gap:4px;border-bottom:0;padding-bottom:0}.sitenav .grp{display:none}}
+
+@media (max-width:900px){
+  .shell{grid-template-columns:1fr}
+  .rail{position:static;height:auto;border-right:0;border-bottom:1px solid var(--border);padding:16px}
+  .nav{flex-direction:row;flex-wrap:wrap;gap:4px} .nav a.sub{padding-left:8px} .rail-foot{display:none}
+  .main{padding:32px 20px 80px} h1{font-size:32px} h2{margin-top:56px}
+}
+</style>
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Pattern · Onboarding and go-live</small></div></div>
+    <nav class="sitenav" aria-label="Site"><div class="grp">Foundations</div><a href="index.html">Tokens</a><a href="principles.html">Principles</a><a href="extending.html">Extending</a><a href="icons.html">Icons</a><a href="assets.html">Assets</a><a href="motion.html">Motion</a><a href="type.html">Type · four scripts</a><a href="accessibility.html">Accessibility</a><div class="grp">Components</div><a href="components/button.html">Button</a><a href="components/icon-button.html">IconButton</a><a href="components/tag.html">Tag</a><a href="components/text-field.html">TextField</a><a href="components/selection-controls.html">Checkbox · Radio · Switch</a><a href="components/amount.html">Amount</a><a href="components/timer.html">Timer</a><a href="components/feedback.html">Banner · Toast · Snackbar</a><a href="components/chip.html">Chip</a><a href="components/avatar.html">Avatar</a><a href="components/badge.html">Badge</a><a href="components/card.html">Card</a><a href="components/list-item.html">ListItem</a><a href="components/selection-card.html">SelectionCard</a><a href="components/bottom-sheet.html">BottomSheet</a><a href="components/header-nav.html">HeaderNav</a><a href="components/bottom-tab-bar.html">BottomTabBar</a><a href="components/progress-bar.html">ProgressBar</a><a href="components/stepper.html">Stepper</a><a href="components/coachmark.html">Coachmark</a><a href="components/sos-control.html">SOSControl</a><a href="components/accordion.html">Accordion</a><a href="components/date-picker.html">DatePicker</a><a href="components/empty-state.html">EmptyState</a><a href="components/skeleton.html">Skeleton · Spinner</a><a href="components/voice-prompt.html">VoicePrompt</a><a href="components/tabs.html">Tabs · Segmented</a><a href="components/nudge.html">Nudge</a><a href="components/numeric-keypad.html">NumericKeypad</a><a href="components/page-indicator.html">PageIndicator</a><a href="components/media-capture.html">MediaCapture</a><a href="components/map-marker.html">MapMarker · MapSnippet</a><a href="components/stat-rating-divider.html">Stat · Rating · Divider</a><a href="components/how-to-clip.html">HowToClip</a><a href="components/shield-card.html">ShieldCard</a><a href="components/job-alert.html">JobAlert</a><div class="grp">Patterns</div><a href="pattern-new-job-alert.html">New job arrives</a><a href="pattern-check-in-out.html">Check in · work · check out</a><a href="pattern-payout.html">Payout</a><a class="on" href="pattern-onboarding.html">Onboarding · go-live</a><div class="grp">Research</div><a href="benchmark.html">Benchmark</a><a href="audit.html">Figma audit</a><a href="roadmap.html">Roadmap</a></nav><nav class="nav" id="nav"><a href="#the-flow">The flow</a><a href="#what-changes-from-the-shipped-screens">What changes from the shipped screens</a><a href="#stages-in-detail">Stages in detail</a><a class="sub" href="#0-1-welcome-and-language">0–1. Welcome and language</a><a class="sub" href="#2-phone-otp-location"><b>2</b> Phone, OTP, location</a><a class="sub" href="#3-about-you"><b>3</b> About you</a><a class="sub" href="#4-work"><b>4</b> Work</a><a class="sub" href="#5-identity"><b>5</b> Identity</a><a class="sub" href="#6a-training-in-the-app-tc-less">6a. Training in the app (TC-less)</a><a class="sub" href="#6b-training-centre-tc">6b. Training centre (TC)</a><a class="sub" href="#7-get-paid"><b>7</b> Get paid</a><a class="sub" href="#8-first-shift"><b>8</b> First shift</a><a href="#edges">Edges</a><a href="#follow-ups-for-the-system">Follow-ups for the system</a><a href="#checklist-for-the-flow">Checklist for the flow</a></nav>
+    <div class="rail-foot">Snabbit Expert Design System · generated from patterns/onboarding.md</div>
+  </aside>
+  <main class="main">
+    <header>
+      <div class="eyebrow">Snabbit Expert · Mobile</div>
+      <h1>Pattern — onboarding and go-live</h1>
+      <p class="lede">From the first open to the first shift. Evidence: <em>Self-Serve ER/AR</em> (<code>HqmnjmxhZvyvZxmIaVMCrB</code>, page <em>Final</em>) — the latest onboarding file, which supersedes the master file's FINAL ONBOARDING. Its five sections are two variants of one flow plus what follows: <strong>TC-less</strong> (house help <code>599:37239</code>, house cook <code>599:42040</code>) where training happens in the app; <strong>TC</strong> (house help <code>619:55994</code>) where she is booked into a training centre; <strong>Bank/UPI</strong> (<code>619:51990</code>) for getting paid; and <strong>Post onboarding</strong> (<code>599:29415</code>) — Home before the first shift, profile, earnings, notifications.</p>
+    </header>
+    <h2 id="the-flow">The flow</h2>
+<pre><code> first open
+     │
+     ▼
+ 0. Welcome ── splash · promise cards (₹30,000 · sick leave · insurance) · [Start]
+     │
+     ▼
+ 1. Language ── five SelectionCards in their own scripts · [Continue]  — voice from here on
+     │
+     ▼
+ 2. Phone ── NumericKeypad · OTP (auto-read) · location permission (why, then the OS dialog)
+     │
+     ▼
+ 3. About you ── &quot;5 steps · 2 minutes&quot; intro · city (auto, changeable) · name · gender · referral (optional)
+     │
+     ▼
+ 4. Work ── what work (SelectionCard rich: House help · Cook · Beauty) · &quot;tap the image&quot; confirmations (uniform, phone, …)
+     │
+     ▼
+ 5. Identity ── &quot;Keep your Aadhaar ready&quot; · DigiLocker / Aadhaar OTP (in-app, &quot;Don't leave the app&quot;) · verified summary
+     │
+     ├── TC-less ──► 6a. Training in the app ── HowToClip course · quiz · certificate → &quot;Onboarding complete&quot; → Home (pre-shift)
+     │
+     └── TC ──────► 6b. Training centre ── pick centre · pick day · confirmed card (map, trainer, documents, countdown) → Home (pre-shift)
+                          │
+                          ▼
+ 7. Get paid ── Bank or UPI (presenter video · form · verify · confirm name) · PAN (or skip with the 20 % warning)
+     │
+     ▼
+ 8. First shift ── Home pre-shift card: date · time · earnings range · Present / Absent → the shift lifecycle
+</code></pre>
+<hr />
+<h2 id="what-changes-from-the-shipped-screens">What changes from the shipped screens</h2>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Shipped</th>
+<th>Proposed</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Header: back · title · <strong>Call</strong> pill · <strong>language</strong> switcher (translate + caret)</td>
+<td>HeaderNav <code>page</code> with a two-item cluster: <strong>Help</strong> <code>HeaderAction</code> (headset, calls the onboarding line) and <strong>Language</strong> <code>IconButton</code> <code>translate</code></td>
+<td>Same two actions, system parts; Call = Help everywhere (<code>DECISIONS.md</code>)</td>
+</tr>
+<tr>
+<td>Thin segmented progress strip under the header (4–5 segments), Button label <em>Continue (1/5)</em></td>
+<td>ProgressBar <code>segmented</code> <code>S</code> under the header, <code>neutral</code>/<code>brand</code>; Button label <strong>Continue</strong> without the count — the strip already says it; spoken <em>"Step 2 of 5"</em> on each screen</td>
+<td>One channel for progress; a Button label is a verb (<code>button.md</code>)</td>
+</tr>
+<tr>
+<td>Language: five cards with the language name in its own script + English, radio at right</td>
+<td>SelectionCard <code>compact</code>, one column of five, own script first — kept; <strong>Telugu</strong> joins the four (the shipped set is five)</td>
+<td>Already right; the system's "four scripts" becomes <strong>five</strong> — see follow-ups</td>
+</tr>
+<tr>
+<td>Phone: hero photo, title with a speaker icon, <code>+91</code> field, OS keyboard</td>
+<td>Same layout with the VoicePrompt inline Listen, TextField <code>phone</code>, <strong>NumericKeypad</strong> in-app</td>
+<td><code>numeric-keypad.md</code>: every number through one keypad</td>
+</tr>
+<tr>
+<td>OTP: six boxes, OS keyboard, <em>Resend</em> link</td>
+<td>NumericKeypad <code>otp</code> (6), auto-read from SMS, <strong>Resend code</strong> as a Button <code>tertiary</code> with a Timer <code>deadline</code> (<em>in 0:28</em>)</td>
+<td>Matches <code>text-field.md</code> OTP rules</td>
+</tr>
+<tr>
+<td>Location permission: full-screen <em>Allow Snabbit to access this device's location?</em> with a map pin and the OS dialog</td>
+<td>BottomSheet <code>permission</code> (why, one sentence, scene asset) → OS dialog; <strong>Not now</strong> allowed, city then asked manually</td>
+<td><code>bottom-sheet.md</code> permission kind; P5 honesty</td>
+</tr>
+<tr>
+<td><em>Start training in 4 simple steps · It takes 2 minutes</em> with the stairs illustration</td>
+<td>Kept as a full-screen intro (scene asset, Heading1, Button <strong>Start</strong>); the count is whatever the variant has (5 steps TC-less)</td>
+<td>It sets expectation — P6</td>
+</tr>
+<tr>
+<td><em>A little bit about you</em>: Work location with <strong>Change</strong>, Full name, Gender as two photo cards, <em>Have a referral code?</em> with a code field</td>
+<td>Same fields: city as a ListItem with a <code>tertiary</code> <strong>Change</strong> → <code>select</code> sheet with city cards and an <em>Unavailable city</em> EmptyState; name TextField; gender as two SelectionCard <code>rich</code> with the character asset; referral as a collapsed row that opens a TextField</td>
+<td>Component parts for every field; the <em>Unavailable city</em> screen becomes the EmptyState <code>empty</code> kind with <strong>Notify me</strong></td>
+</tr>
+<tr>
+<td><em>What work are you interested in?</em> three photo cards with a <strong>NEW</strong> pill on Beauty</td>
+<td>SelectionCard <code>rich</code> × 3 with the scene asset right, Tag <code>brand</code> <strong>New</strong> on Beauty</td>
+<td>Kept</td>
+</tr>
+<tr>
+<td><em>Tap on the image to proceed</em> — a large illustration, a checkbox <em>I have my own smartphone</em></td>
+<td>SelectionCard <code>rich</code> full-width with the Checkbox as the control — tapping the image toggles it; title says what she is confirming (<em>I have my own smartphone</em>)</td>
+<td>The image is a checkbox target already; making it one component makes the state visible (row 4)</td>
+</tr>
+<tr>
+<td><em>Keep Aadhaar number ready</em> → DigiLocker in a WebView with <strong>Taking you there</strong> and a <em>Do not exit app now</em> Banner</td>
+<td>Kept: Banner <code>warning</code> <em>Stay in the app — we'll bring you back</em>; the WebView keeps the HeaderNav so Help stays reachable; on return, a Skeleton while verifying (3-second rule) then the summary Card (name · gender · DOB · father's name · masked Aadhaar · address) with ListItem rows and Stat <code>S</code></td>
+<td>P5, P7: never lose the header during a third-party step</td>
+</tr>
+<tr>
+<td><em>Your Aadhaar is verified!</em> check + summary, Button <strong>Starting your training</strong></td>
+<td>Kept; Button <strong>Start training</strong></td>
+<td>Verb, sentence case</td>
+</tr>
+<tr>
+<td><em>Congratulations! You have successfully done your onboarding!</em> with a celebratory scene, Button <strong>Let's train now</strong> (dark)</td>
+<td>Screen kept with the scene asset and <code>motion.celebrate</code>; Button <code>primary brand L</code> <strong>Start training</strong></td>
+<td>One primary style (<code>button.md</code>)</td>
+</tr>
+<tr>
+<td>Bank details form with a <strong>presenter video</strong> (16:9, play button) above the fields</td>
+<td><strong>HowToClip <code>guide</code></strong> — an inline 16:9 clip at the top of a form screen: a trainer explains the screen; plays on tap, captions on, ≤ 20 s; collapses to a 56 dp bar on scroll</td>
+<td>The shipped voice bar has become video; it is HowToClip's third form — see follow-ups</td>
+</tr>
+<tr>
+<td>Bank: account number, confirm account number, IFSC — OS keyboard; <em>Fetching account details</em> spinner screen; <em>Confirm this is you</em> with the bank's name; <em>Bank details added</em></td>
+<td>NumericKeypad for the account number (two entries kept — a wrong digit is money lost); IFSC TextField with a <strong>Find IFSC</strong> helper; Skeleton then the confirm Card (<em>Is this you? Sushila Devi · HDFC</em>) with <strong>Yes, that's me</strong> / <strong>No, try again</strong>; success sheet</td>
+<td>Keypad rule; the confirm step is the safety (P3)</td>
+</tr>
+<tr>
+<td>UPI: ID field · <em>The account belongs to</em> · a consent screen for UPI collection · <em>Thank you</em></td>
+<td>TextField with the <code>@bank</code> suggestions as Chips; confirm name Card; consent as a BottomSheet <code>confirm</code> with the consequence stated (<em>Snabbit can send money to this UPI. It can never take money.</em>)</td>
+<td>The consent is a costly-feeling step; naming what it is not is the honesty (P5)</td>
+</tr>
+<tr>
+<td>PAN entry, <em>Your PAN is verified</em>, a <strong>Skip</strong> with a red <em>20 % tax…</em> warning sheet</td>
+<td>PAN by MediaCapture <code>document</code> (number read, confirmed) or typed; skip sheet kept as <code>confirm</code> with the Nudge <code>loss</code> line <em>Without PAN, 20 % tax instead of 10 %</em> — safe option <strong>Add PAN</strong> above, <strong>Skip for now</strong> below</td>
+<td>Same as <code>payout.md</code></td>
+</tr>
+<tr>
+<td>Home pre-shift: <em>Welcome to Snabbit!</em> card with date, <em>7:00 AM – 12:00 PM</em>, <em>You can earn ₹800 – ₹1000</em>, <strong>Absent</strong> (red) and <strong>Present</strong> (green) side by side</td>
+<td>Card with the shift as Stats and Amount; <strong>Present</strong> as <code>primary brand M</code> alone; <strong>Can't come</strong> as a <code>ghost</code> Button <em>above</em> it, opening the leave <code>confirm</code> sheet</td>
+<td>Two coloured Buttons in a row is the mis-tap the principles forbid (P3); green/red are status colours (row 14)</td>
+</tr>
+<tr>
+<td>Task cards <em>Add bank account to get money quickly</em> / <em>Protect yourself…</em> with 3D art; a bottom strip <em>Bank details &amp; PAN missing · Add</em></td>
+<td>The <strong>Get paid</strong> Stepper (<code>payout.md</code>) on Home until done; other tasks as a Stepper <code>unordered</code> <em>Before your first shift</em>; the strip is a Nudge <code>loss</code>-free reminder → a Banner <code>info</code> with <strong>Add</strong></td>
+<td>Tasks are a Stepper; one list, not three surfaces</td>
+</tr>
+<tr>
+<td><em>Need help? Call our team</em> with three avatars</td>
+<td>ListItem rows with Avatar + name + role and a <code>phone</code> IconButton</td>
+<td>Component parts</td>
+</tr>
+<tr>
+<td>TC: <em>Please select these two</em> photo pairs; centre list; day list; confirmed card (map, <em>TIME LEFT 1 day</em>, trainer, documents to carry, centre address with Call/Share, nearest metro/bus)</td>
+<td>SelectionCard <code>rich</code> for centres (distance as a fact); SelectionCard <code>date</code> strip for the day; the <strong>training-centre card</strong> = MapSnippet 160 (<code>hub</code> marker) + Timer <code>L</code> <code>deadline</code> (<em>Fri 7 Feb · 10:00 am</em>, not a countdown in days) + ListItem rows (documents with the ID pictograms, trainer with Avatar and Call, centre address with Listen and Show directions, nearest metro/bus) + Buttons <strong>I'm on my way</strong> / <strong>Call trainer</strong></td>
+<td>Composition from parts; a date she plans around is a <code>deadline</code>, not a draining ring (<code>timer.md</code>)</td>
+</tr>
+<tr>
+<td>TC states: confirmed · today (<em>Reach by 9:45 am</em>) · missed (<em>Rebook</em>) · change date / change centre</td>
+<td>Same states through Tag + Timer tone + Banner; <strong>Rebook</strong> and <strong>Change</strong> as <code>secondary</code> Buttons; missing twice → Help</td>
+<td>Kept</td>
+</tr>
+</tbody>
+</table></div>
+<p>Kept as shipped: the order of steps; one question per screen; the real expert in uniform on every hero; the five-language choice first; the <em>2 minutes</em> promise; Aadhaar via DigiLocker; the celebratory completion screen; bank <strong>and</strong> UPI paths; the pre-shift Home.</p>
+<hr />
+<h2 id="stages-in-detail">Stages in detail</h2>
+<h3 id="0-1-welcome-and-language">0–1. Welcome and language</h3>
+<p>Splash (wordmark, expert photo) → promise screen: three ListItem rows with reward assets (<em>₹30,000 per month</em> · <em>Sick leaves</em> · <em>Insurance up to 5 lakh</em>), the expert pointing at them, Button <strong>Start</strong>. Then language: five SelectionCard <code>compact</code> (<em>English · हिन्दी · मराठी · తెలుగు · ಕನ್ನಡ</em>, own script first, English name under), Button <strong>Continue</strong> enabling on choice. From here every screen is spoken in her language on arrival (<code>voice-prompt.md</code>, <code>timeout.screenSettle</code>).</p>
+<h3 id="2-phone-otp-location">2. Phone, OTP, location</h3>
+<p>Hero photo (<em>Work in flexible shifts</em>, PageIndicator under a 3-card carousel of promises) over a bottom sheet-like panel: <em>Enter your mobile number</em> with Listen, TextField <code>phone</code> <code>+91</code>, NumericKeypad, <strong>Continue</strong>. OTP: NumericKeypad <code>otp</code> 6, auto-read, <strong>Resend code</strong> with a <code>deadline</code> Timer. Location: BottomSheet <code>permission</code> (<em>We use your location to find jobs near you</em>) → OS dialog; <strong>Not now</strong> → city asked in step 3.</p>
+<h3 id="3-about-you">3. About you</h3>
+<p>Intro screen <em>Finish onboarding in 5 steps · about 2 minutes</em> with the stairs scene and <strong>Start</strong>. Then: city ListItem (auto from location, <strong>Change</strong> → <code>select</code> sheet with city SelectionCards; unavailable → EmptyState <em>We're not in Mysuru yet</em> with <strong>Notify me</strong>), name TextField (spoken <em>"Type your name as on your Aadhaar"</em>), gender SelectionCard <code>rich</code> × 2, <em>Have a referral code?</em> row → TextField. ProgressBar <code>segmented</code> 1 of 5. <strong>Continue</strong>.</p>
+<h3 id="4-work">4. Work</h3>
+<p><em>What work are you interested in?</em> SelectionCard <code>rich</code> × 3 (House help · Cook · Beauty <strong>New</strong>). Then the confirmations: each a SelectionCard <code>rich</code> full-width with a Checkbox — <em>I have my own smartphone</em>, <em>I can wear the uniform</em>, <em>I can work 8 hours</em>; the image is the target; <strong>Continue</strong> enables when all are checked. Cook variant adds <em>What can you cook?</em> as Chips <code>filter</code> multi-select.</p>
+<h3 id="5-identity">5. Identity</h3>
+<p><em>Keep your Aadhaar number ready</em> (card illustration with the number highlighted; <em>You'll need your Aadhaar number and the phone linked to it</em>), Banner <code>warning</code> <em>Stay in the app — we'll bring you back</em>, <strong>Continue to Aadhaar</strong> → DigiLocker WebView with the HeaderNav kept → Skeleton (<em>Checking…</em>, 3-second rule, then <strong>Try again</strong> / <strong>Call help</strong>) → <em>Your Aadhaar is verified</em> summary Card → <strong>Start training</strong>. Failure: EmptyState <code>error</code> <em>Aadhaar didn't match</em> with <em>Try again</em> and <em>Call help</em>; never a code.</p>
+<h3 id="6a-training-in-the-app-tc-less">6a. Training in the app (TC-less)</h3>
+<p><em>Welcome to Snabbit training · Let's become a 5★ expert together</em> (Avatar of the trainer, <code>motion.celebrate</code>). The course is a Stepper <code>list</code> of modules, each a HowToClip <code>player</code> sequence (10–20 s clips) with a two-question quiz (SelectionCard <code>compact</code>, spoken); a module is <code>done</code> at 100 %. Finished → <em>Onboarding complete</em> scene (<strong>Start training</strong> was the entry; <strong>Go to Home</strong> exits) → Home pre-shift.</p>
+<h3 id="6b-training-centre-tc">6b. Training centre (TC)</h3>
+<p>Pick centre: SelectionCard <code>rich</code> list with distance and next slot as facts. Pick day: SelectionCard <code>date</code> strip (≤ 7). Confirmed: the training-centre card (above) with Timer <code>deadline</code>; states <em>Confirmed</em> · <em>Today · reach by 9:45 am</em> (Timer <code>countdown</code> appears only on the day) · <em>Missed</em> (Banner <code>error</code> + <strong>Rebook</strong>). <strong>Change date</strong> / <strong>Change centre</strong> as <code>secondary</code> Buttons below the card; <strong>Call trainer</strong> always present.</p>
+<h3 id="7-get-paid">7. Get paid</h3>
+<p>The Bank/UPI section, as <code>payout.md</code> § 3 — reached from the <em>Get paid</em> Stepper on Home. New here: the HowToClip <code>guide</code> at the top of the form screens, which is how the trainer explains <em>IFSC</em> without a paragraph.</p>
+<h3 id="8-first-shift">8. First shift</h3>
+<p>Home pre-shift: HeaderNav <code>home</code> (bell · SOS · Saathi · coins); Card <em>Your first shift</em> — <em>Tue 7 Feb</em> · <em>7:00 am – 12:00 pm</em> as Stats, <em>You can earn ₹800 – ₹1,000</em> as Amount range; <strong>Present</strong> <code>primary brand M</code>; <strong>Can't come</strong> <code>ghost</code> above it → leave <code>confirm</code> sheet. Below: the <em>Before your first shift</em> Stepper (bank · PAN · uniform pickup · watch the check-in clip), then <em>Need help?</em> rows. Marking Present hands over to the shift lifecycle and <code>pattern: check-in-out</code>.</p>
+<hr />
+<h2 id="edges">Edges</h2>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Edge</th>
+<th>Behaviour</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Drops out mid-flow</td>
+<td>Progress is saved per step; reopening lands on the current Stepper step with the intro skipped; a notification after 24 h (<em>Finish in 2 minutes</em>)</td>
+</tr>
+<tr>
+<td>No OTP arrives</td>
+<td>Resend after the deadline; after two, <strong>Call me instead</strong> (voice OTP) — never a dead end</td>
+</tr>
+<tr>
+<td>City unavailable</td>
+<td>EmptyState + <strong>Notify me</strong>; the flow ends warmly, no error tone</td>
+</tr>
+<tr>
+<td>Aadhaar fails / mismatch</td>
+<td>EmptyState <code>error</code> with the reason in her words and <strong>Try again</strong> / <strong>Call help</strong>; the header's Help is live throughout</td>
+</tr>
+<tr>
+<td>DigiLocker down</td>
+<td>Skeleton hits 3 s → <em>Aadhaar service is slow right now</em> with <strong>Try again</strong> and <strong>Later</strong> (the step becomes <code>attention</code> in the Stepper, onboarding continues)</td>
+</tr>
+<tr>
+<td>Referral code invalid</td>
+<td>TextField <code>error</code> <em>Code not found — check with your friend</em>; optional, never blocking</td>
+</tr>
+<tr>
+<td>Training centre missed twice</td>
+<td>Card state <em>Missed</em> with <strong>Call trainer</strong> as primary; rebooking moves to Help</td>
+</tr>
+<tr>
+<td>Offline</td>
+<td>Steps that need the network queue where they can (name, gender, work); OTP, Aadhaar and bank verification wait with an honest Banner</td>
+</tr>
+<tr>
+<td>Screen reader</td>
+<td>Each step's title is the page label; the presenter video is described; SelectionCards announce state</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="follow-ups-for-the-system">Follow-ups for the system</h2>
+<ul>
+<li><strong>Five scripts, one voice.</strong> The shipped language list has <strong>Telugu</strong>. <code>PRINCIPLES.md</code> P9, <code>type.md</code> and <code>typography.indic</code> say four; Telugu (a round, wide script like Kannada) joins with an expansion factor ≈ ×1.3 and the platform fallback (Noto Sans Telugu / Telugu Sangam MN). <strong>Decision to confirm</strong> — if Telugu is launching, the foundation updates in one commit.</li>
+<li><strong>HowToClip <code>guide</code></strong> — a third form: inline 16:9 at the top of a screen, plays on tap, captions on, collapses on scroll to a 56 dp bar with the play glyph; used on form screens where a trainer's explanation beats helper text. Add to <code>how-to-clip.md</code>.</li>
+<li><strong>SelectionCard <code>rich</code> with a Checkbox as the control</strong> for confirmations where the image is the target — a boolean on the existing kind, not a new one.</li>
+<li><strong>Training-centre card</strong> is a composition (MapSnippet + Timer <code>deadline</code> + ListItems + Buttons); no new component. Record in <code>card.md</code> compositions list.</li>
+<li><strong>Header cluster in <code>page</code> variant</strong>: Help + Language during onboarding only.</li>
+<li><code>icons.md</code>: <code>translate</code> already registered; <code>graduation-cap</code> (hub marker) already registered.</li>
+</ul>
+<hr />
+<h2 id="checklist-for-the-flow">Checklist for the flow</h2>
+<ul>
+<li class="chk">Every step is one question, spoken on arrival in the chosen language, with a Listen.</li>
+<li class="chk">No Button label carries a count; the ProgressBar and the voice carry progress.</li>
+<li class="chk">Every number (phone, OTP, account, PAN) is typed on the NumericKeypad.</li>
+<li class="chk">Help is reachable from every screen including the DigiLocker step.</li>
+<li class="chk">Present / Can't come are never side by side; no red/green Button pair anywhere.</li>
+<li class="chk">Kannada (and Telugu, if confirmed) at 1.3: language cards, <em>Start training</em>, <em>I have my own smartphone</em>.</li>
+<li class="chk">Field review with new experts on their own phones (checklist rows 15–16) — pending.</li>
+</ul>
+  </main>
+</div>
+<script>
+(function(){
+const links=[...document.querySelectorAll('#nav a')];
+const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-10% 0px -80% 0px'});
+  targets.forEach(t=>io.observe(t));
+}
+})();
+</script>
