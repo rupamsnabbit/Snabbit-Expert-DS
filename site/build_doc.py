@@ -14,6 +14,7 @@ parts = md.split("\n---\n", 1)
 body_md = parts[1] if len(parts) > 1 else md
 lede = re.search(r"^# .*?\n\n(.*?)\n\n", md, re.S).group(1)
 lede = re.sub(r"`([^`]+)`", r"<code>\1</code>", lede)
+lede = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", lede)
 H1 = re.match(r"^# (.*)", md).group(1).replace("Snabbit Expert — ", "")
 if H1.lower().startswith("benchmark"): H1 = "Benchmark"
 

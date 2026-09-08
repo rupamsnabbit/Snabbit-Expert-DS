@@ -1,0 +1,385 @@
+<meta charset="utf-8">
+<title>Snabbit Expert Accessibility</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --bg-2:#F9FAFB; --bg-3:#F3F4F6;
+  --text:#111827; --text-body:#374151; --text-2:#6B7280; --text-3:#9CA3AF;
+  --border:#E5E7EB; --border-subtle:#F3F4F6;
+  --brand:#F70F79; --brand-wash:#FEF1F7; --brand-ink:#97094A;
+  --ok:#059669; --ok-wash:#ECFDF5; --focus:#3B82F6;
+  --sans:"Outfit",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+    --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+    --border:#374151; --border-subtle:#1F2937;
+    --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+    --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+  --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+  --border:#374151; --border-subtle:#1F2937;
+  --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+  --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--text-body);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+code{font-family:var(--mono);font-size:.85em;background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--text)}
+pre{background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:14px 16px;overflow-x:auto;margin:12px 0 20px} pre code{background:none;border:0;padding:0;font-size:12.5px;line-height:1.55;white-space:pre}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+.shell{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}
+.rail{position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--border);padding:24px 16px 32px;background:var(--bg);display:flex;flex-direction:column;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;padding:0 8px}
+.brand-mark{width:28px;height:28px;border-radius:8px;background:var(--brand);display:grid;place-items:center;flex:none}
+.brand-mark span{width:12px;height:12px;border-radius:3px;background:#fff;transform:rotate(45deg)}
+.brand b{font-weight:600;color:var(--text);font-size:15px;line-height:1.2;display:block}
+.brand small{color:var(--text-2);font-size:12px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:block;padding:6px 8px;border-radius:6px;text-decoration:none;color:var(--text);font-size:13.5px;font-weight:500}
+.nav a.sub{font-weight:400;color:var(--text-body);padding-left:14px;font-size:13px}
+.nav a.sub b{font-family:var(--mono);font-weight:500;color:var(--text-3);font-size:11.5px;margin-right:2px}
+.nav a:hover{background:var(--bg-2)}
+.nav a.on{background:var(--brand-wash);color:var(--brand-ink)}
+.rail-foot{margin-top:auto;padding:0 8px;font-size:12px;color:var(--text-3);line-height:1.5}
+.main{padding:40px 56px 96px;max-width:860px;width:100%}
+.eyebrow{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);font-weight:600}
+h1{font-size:40px;line-height:1.1;font-weight:600;color:var(--text);margin:8px 0 12px;letter-spacing:-.015em;text-wrap:balance}
+.lede{font-size:18px;color:var(--text-2);max-width:60ch;margin:0 0 8px}
+.lede strong{color:var(--text);font-weight:500}
+h2{font-size:26px;line-height:1.2;font-weight:600;color:var(--text);margin:72px 0 16px;letter-spacing:-.01em;text-wrap:balance;padding-top:24px;border-top:1px solid var(--border)}
+h3{font-size:20px;font-weight:600;color:var(--text);margin:48px 0 8px;letter-spacing:-.005em}
+h3::before{content:"";display:block;width:32px;height:3px;background:var(--brand);border-radius:2px;margin-bottom:14px}
+p{margin:0 0 14px;max-width:66ch}
+h3 + p{font-size:17px;color:var(--text);font-weight:500}
+p.why{color:var(--text-2);font-size:15px;padding-left:14px;border-left:2px solid var(--border)}
+p.why::before{content:"Why · ";color:var(--text-3);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+p.lbl{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2);font-weight:600;margin:22px 0 8px}
+strong{color:var(--text);font-weight:600}
+em{font-style:italic}
+ul,ol{margin:0 0 14px;padding-left:0;list-style:none;max-width:68ch}
+ul li{position:relative;padding-left:20px;margin:6px 0;font-size:15.5px}
+ul li::before{content:"";position:absolute;left:0;top:11px;width:9px;height:2px;background:var(--brand)}
+ul li.chk{padding-left:30px}
+ul li.chk::before{width:16px;height:16px;top:4px;background:var(--bg);border:1.5px solid var(--text-3);border-radius:4px}
+ol{counter-reset:s}
+ol li{counter-increment:s;display:grid;grid-template-columns:32px 1fr;gap:12px;margin:10px 0;font-size:15.5px}
+ol li::before{content:counter(s);width:28px;height:28px;border-radius:50%;background:var(--brand-wash);color:var(--brand-ink);font-weight:600;font-size:13px;display:grid;place-items:center;margin-top:1px}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px;margin:8px 0 20px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);font-weight:500;padding:10px 14px;background:var(--bg-2);border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:10px 14px;border-bottom:1px solid var(--border-subtle);vertical-align:top;color:var(--text-body)}
+tr:last-child td{border-bottom:0}
+td:first-child{color:var(--text);font-weight:500;white-space:nowrap}
+hr{display:none}
+
+.sitenav{display:flex;flex-direction:column;gap:2px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.sitenav .grp{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);padding:10px 8px 4px;font-weight:500}
+.sitenav a{display:block;padding:5px 8px;border-radius:6px;text-decoration:none;color:var(--text-body);font-size:13.5px;border:0}
+.sitenav a:hover{background:var(--bg-2);color:var(--text)} .sitenav a.on{color:var(--brand-ink);background:var(--brand-wash);font-weight:500}
+@media (max-width:900px){.sitenav{flex-direction:row;flex-wrap:wrap;gap:4px;border-bottom:0;padding-bottom:0}.sitenav .grp{display:none}}
+
+@media (max-width:900px){
+  .shell{grid-template-columns:1fr}
+  .rail{position:static;height:auto;border-right:0;border-bottom:1px solid var(--border);padding:16px}
+  .nav{flex-direction:row;flex-wrap:wrap;gap:4px} .nav a.sub{padding-left:8px} .rail-foot{display:none}
+  .main{padding:32px 20px 80px} h1{font-size:32px} h2{margin-top:56px}
+}
+</style>
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Accessibility</small></div></div>
+    <nav class="sitenav" aria-label="Site"><div class="grp">Foundations</div><a href="index.html">Tokens</a><a href="principles.html">Principles</a><a href="extending.html">Extending</a><a href="icons.html">Icons</a><a href="assets.html">Assets</a><a href="motion.html">Motion</a><a href="type.html">Type · four scripts</a><a class="on" href="accessibility.html">Accessibility</a><div class="grp">Components</div><a href="components/button.html">Button</a><a href="components/icon-button.html">IconButton</a><a href="components/tag.html">Tag</a><a href="components/text-field.html">TextField</a><a href="components/selection-controls.html">Checkbox · Radio · Switch</a><a href="components/amount.html">Amount</a><a href="components/timer.html">Timer</a><a href="components/feedback.html">Banner · Toast · Snackbar</a><a href="components/chip.html">Chip</a><a href="components/avatar.html">Avatar</a><a href="components/badge.html">Badge</a><a href="components/card.html">Card</a><a href="components/list-item.html">ListItem</a><a href="components/selection-card.html">SelectionCard</a><a href="components/bottom-sheet.html">BottomSheet</a><a href="components/header-nav.html">HeaderNav</a><a href="components/bottom-tab-bar.html">BottomTabBar</a><a href="components/progress-bar.html">ProgressBar</a><a href="components/stepper.html">Stepper</a><a href="components/coachmark.html">Coachmark</a><a href="components/sos-control.html">SOSControl</a><a href="components/accordion.html">Accordion</a><a href="components/date-picker.html">DatePicker</a><a href="components/empty-state.html">EmptyState</a><a href="components/skeleton.html">Skeleton · Spinner</a><a href="components/voice-prompt.html">VoicePrompt</a><a href="components/tabs.html">Tabs · Segmented</a><a href="components/nudge.html">Nudge</a><a href="components/numeric-keypad.html">NumericKeypad</a><a href="components/page-indicator.html">PageIndicator</a><a href="components/media-capture.html">MediaCapture</a><a href="components/map-marker.html">MapMarker · MapSnippet</a><a href="components/stat-rating-divider.html">Stat · Rating · Divider</a><a href="components/how-to-clip.html">HowToClip</a><a href="components/shield-card.html">ShieldCard</a><a href="components/job-alert.html">JobAlert</a><div class="grp">Patterns</div><a href="pattern-new-job-alert.html">New job arrives</a><div class="grp">Research</div><a href="benchmark.html">Benchmark</a><a href="audit.html">Figma audit</a><a href="roadmap.html">Roadmap</a></nav><nav class="nav" id="nav"><a href="#contrast-what-the-tokens-measure">Contrast — what the tokens measure</a><a class="sub" href="#text-on-bgprimary-white">Text on bgPrimary (white)</a><a class="sub" href="#text-on-tinted-surfaces">Text on tinted surfaces</a><a class="sub" href="#non-text-3-1-floor">Non-text (3:1 floor)</a><a href="#targets-and-spacing">Targets and spacing</a><a href="#focus-and-keyboard-switch-access">Focus and keyboard / switch access</a><a href="#screen-reader-talkback-voiceover">Screen reader (TalkBack / VoiceOver)</a><a href="#motion-time-and-sound">Motion, time and sound</a><a href="#colour-and-greyscale-checklist-rows-9-10-14">Colour and greyscale (checklist rows 9, 10, 14)</a><a href="#sunlight-and-dim-light">Sunlight and dim light</a><a href="#cognitive-load">Cognitive load</a><a href="#the-test-pass-for-every-component-and-screen">The test pass — for every component and screen</a><a href="#open-decisions-this-page-needs">Open — decisions this page needs</a></nav>
+    <div class="rail-foot">Snabbit Expert Design System · generated from foundations/accessibility.md</div>
+  </aside>
+  <main class="main">
+    <header>
+      <div class="eyebrow">Snabbit Expert · Mobile</div>
+      <h1>Accessibility</h1>
+      <p class="lede">The expert reads slowly or not at all, works in sunlight and in dim stairwells, holds the phone in one hand on a moving bus, and may have set the system font large because her eyes are tired. Accessibility here is not a compliance layer; it is the persona. This page consolidates what every component spec has been repeating — contrast, targets, focus, screen reader, reduced motion, colour — into one standard, states what the tokens actually measure, and names the pairs that do <strong>not</strong> pass so they get fixed once rather than argued about per component. The checks are the ⚙ rows of the component checklist (<code>PRINCIPLES.md</code>).</p>
+    </header>
+    <h2 id="contrast-what-the-tokens-measure">Contrast — what the tokens measure</h2>
+<p>Ratios computed from <code>tokens.json</code> (WCAG 2.x). AA is 4.5:1 for text, 3:1 for large text (≥ 24 sp Regular or ≥ 18.7 sp SemiBold) and for non-text indicators. <strong>Our floor is higher than WCAG for anything read outdoors: 4.5:1 regardless of size, 7:1 preferred for money and time.</strong></p>
+<h3 id="text-on-bgprimary-white">Text on <code>bgPrimary</code> (white)</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Pair</th>
+<th>Ratio</th>
+<th>Verdict</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>textPrimary</code></td>
+<td>17.7</td>
+<td>✅</td>
+<td>Titles, amounts, anything essential</td>
+</tr>
+<tr>
+<td><code>textBody</code></td>
+<td>10.3</td>
+<td>✅</td>
+<td>Body copy</td>
+</tr>
+<tr>
+<td><code>textSecondary</code></td>
+<td>4.8</td>
+<td>✅ AA</td>
+<td>Metadata; <strong>the smallest colour a translated string may use</strong>; on <code>bgTertiary</code> it drops to 4.4 — use <code>textBody</code> there</td>
+</tr>
+<tr>
+<td><code>textTertiary</code></td>
+<td>2.5</td>
+<td>❌</td>
+<td>Decorative only: locked digits, placeholder glyphs, disabled-adjacent; never the only carrier of meaning</td>
+</tr>
+<tr>
+<td><code>textDisabled</code></td>
+<td>1.5</td>
+<td>❌ by design</td>
+<td>Disabled labels; the reason is always given in text next to it</td>
+</tr>
+<tr>
+<td><code>textBrand</code></td>
+<td>4.0</td>
+<td>⚠ large only</td>
+<td>Brand text passes only at Heading3 SemiBold and above (Amount, headings, secondary Button labels at 16 SemiBold are <strong>not</strong> large — see below)</td>
+</tr>
+<tr>
+<td><code>textSuccess</code></td>
+<td>3.8</td>
+<td>⚠ large only</td>
+<td>Status text uses the <strong>Strong</strong> step (below); 600 is for icons and large digits</td>
+</tr>
+<tr>
+<td><code>textWarning</code></td>
+<td>3.2</td>
+<td>⚠ large only</td>
+<td>Same</td>
+</tr>
+<tr>
+<td><code>textError</code></td>
+<td>4.8</td>
+<td>✅ AA</td>
+<td></td>
+</tr>
+<tr>
+<td><code>textInfo</code></td>
+<td>5.2</td>
+<td>✅ AA</td>
+<td></td>
+</tr>
+<tr>
+<td><code>textInverse</code> on <code>bgInverse</code></td>
+<td>17.7</td>
+<td>✅</td>
+<td>Toast, Snackbar, dark stages</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="text-on-tinted-surfaces">Text on tinted surfaces</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Pair</th>
+<th>Ratio</th>
+<th>Verdict</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>textInverse</code> on <code>bgBrand</code> (primary Button)</td>
+<td>4.0</td>
+<td>❌ at 16 SemiBold</td>
+<td><strong>Decision needed</strong> — see <em>Open</em> below</td>
+</tr>
+<tr>
+<td><code>textInverse</code> on <code>interactivePressed</code></td>
+<td>5.8</td>
+<td>✅</td>
+<td></td>
+</tr>
+<tr>
+<td><code>textBrand</code> on <code>bgBrandSubtle</code></td>
+<td>3.6</td>
+<td>⚠</td>
+<td>Brand text on the pink wash only at Heading3+; selected SelectionCard titles use <code>textPrimary</code></td>
+</tr>
+<tr>
+<td><code>textSuccess</code> on <code>bgSuccess</code> / <code>Subtle</code></td>
+<td>3.6 / 3.3</td>
+<td>❌</td>
+<td><code>textSuccessStrong</code> (green.700) → 5.5 / 5.3 ✅</td>
+</tr>
+<tr>
+<td><code>textWarning</code> on <code>bgWarning</code> / <code>Subtle</code></td>
+<td>3.1 / 2.9</td>
+<td>❌</td>
+<td><code>textWarningStrong</code> (yellow.700) → 5.0 / 4.8 ✅</td>
+</tr>
+<tr>
+<td><code>textError</code> on <code>bgError</code> / <code>Subtle</code></td>
+<td>4.4 / 4.0</td>
+<td>❌</td>
+<td><code>textErrorStrong</code> (red.700) → 6.5 / 6.2 ✅</td>
+</tr>
+<tr>
+<td><code>textInfo</code> on <code>bgInfo</code></td>
+<td>4.8</td>
+<td>✅ AA</td>
+<td><code>textInfoStrong</code> (blue.700) → 6.7 preferred at Caption</td>
+</tr>
+<tr>
+<td><code>textBody</code> on <code>bgInfo</code></td>
+<td>9.5</td>
+<td>✅</td>
+<td>The Accordion conditional row</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Rule that follows:</strong> status <strong>text</strong> (Tag soft labels, Banner copy, Timer labels, reason lines, status rows) always uses the <code>*Strong</code> step; the 600 step is for <strong>icons, digits ≥ 24 sp and fills</strong>. The four <code>text*Strong</code> tokens were proposed in <code>tag.md</code> and are hereby <strong>required</strong>, not optional — they go into the next token release.</p>
+<h3 id="non-text-3-1-floor">Non-text (3:1 floor)</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Ratio on white</th>
+<th>Verdict</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>iconBrand</code>, <code>iconError</code>, <code>borderBrand</code>, <code>borderError</code>, <code>borderFocus</code>, <code>borderStrong</code></td>
+<td>3.7 – 4.8</td>
+<td>✅</td>
+<td></td>
+</tr>
+<tr>
+<td><code>iconSuccess</code> (green.500)</td>
+<td>2.5</td>
+<td>❌</td>
+<td>Change <code>iconSuccess</code> → green.600 (3.8); a standalone success icon (Stepper done node, MediaCapture check) must otherwise sit on a filled disc</td>
+</tr>
+<tr>
+<td><code>iconWarning</code> (yellow.500)</td>
+<td>2.2</td>
+<td>❌</td>
+<td>Change <code>iconWarning</code> → yellow.600 (3.2); same rule</td>
+</tr>
+<tr>
+<td><code>borderDefault</code>, <code>borderSubtle</code></td>
+<td>1.2 / 1.1</td>
+<td>—</td>
+<td>Structural only; a control's edge is never the only sign it is a control (Buttons are filled or <code>borderStrong</code>/<code>borderBrand</code>)</td>
+</tr>
+<tr>
+<td>Timer ring, ProgressBar fill</td>
+<td>≥ 3.8</td>
+<td>✅</td>
+<td>Tone colours are 600 steps; the track is <code>borderDefault</code>, which is fine because the fill's <em>length</em> is the information</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="targets-and-spacing">Targets and spacing</h2>
+<ul>
+<li>Every interactive element ≥ <strong>48 × 48 dp</strong>; the screen's primary action ≥ <strong>56 dp</strong> tall and full width (checklist row 1).</li>
+<li>Adjacent targets have ≥ <strong>8 dp</strong> between them; a decline never sits beside an accept in a row (P3).</li>
+<li>Small visuals (S / XS IconButtons, Chips, Checkbox glyphs) get their 48 dp from the parent row or a padded hit area — the visual may be 24, the target never is.</li>
+<li>The whole row is the target wherever there is a row (ListItem, selection controls, ShieldRow, tabs).</li>
+<li>One-handed reach: the primary Button is at the bottom; nothing she must tap during a job is in the top-left corner except Back.</li>
+<li>Hold gestures (SOS, danger Buttons, keypad clear) are the only long-presses, they always show what they are doing, and they have a TalkBack equivalent (double-tap-and-hold) and a reduced-motion form.</li>
+<li>No swipe-only actions: every swipe (Tabs, carousel) has a tap or Button alternative; nothing is deleted by swiping.</li>
+</ul>
+<hr />
+<h2 id="focus-and-keyboard-switch-access">Focus and keyboard / switch access</h2>
+<ul>
+<li>Focus ring: 2 dp <code>borderFocus</code> <strong>outside</strong> the control with a 2 dp offset, radius following the control; visible on every focusable element, never removed.</li>
+<li>Tab order = reading order = visual order, except the primary Button, which comes <strong>first</strong> on takeover screens (JobAlert, SafetyCheck) so a switch user reaches Accept before Decline.</li>
+<li>A BottomSheet traps focus while open and returns it to the opener on close; Coachmark focus lands on the sentence.</li>
+<li>The NumericKeypad is a grid of buttons; hardware keyboards type into it.</li>
+</ul>
+<hr />
+<h2 id="screen-reader-talkback-voiceover">Screen reader (TalkBack / VoiceOver)</h2>
+<ul>
+<li>Every control announces <strong>role + label + state</strong>: <em>"Accept job, button"</em>, <em>"Shield, on, recording and location shared, button"</em>, <em>"Available for jobs, switch, on"</em>.</li>
+<li>Labels are the visible text; icons are decorative (<code>contentDescription = null</code>) unless the icon is the only meaning (IconButton, marker glyphs), in which case the label is the registered meaning from <code>icons.md</code>.</li>
+<li>Cards and rows are read as <strong>one block</strong> in visual order (<em>"New job. 1.2 kilometres. 7:45. One hour. You'll earn 150 rupees."</em>), not as six separate nodes; the block is also what the VoicePrompt speaks — one text, two channels.</li>
+<li>Amounts, times and distances have spoken forms (<em>"four hundred and fifty rupees"</em>, <em>"nine thirty am"</em>, <em>"1.2 kilometres"</em>), never digit-by-digit (<code>amount.md</code>, <code>timer.md</code>).</li>
+<li>Live regions: Timer at 60 / 30 / 10 s, Stepper step change, upload state, ShieldRow state — announced <strong>once</strong>, never chattering.</li>
+<li>Auto-advance, autoplay voice and shimmer stop when a screen reader is on; the SafetyCheck and JobAlert sounds do not.</li>
+<li>Truncated text (the three allowed places, <code>type.md</code>) is read in full.</li>
+</ul>
+<hr />
+<h2 id="motion-time-and-sound">Motion, time and sound</h2>
+<ul>
+<li>Reduced motion per <code>motion.md</code>: decoration fades or disappears; information motion stays.</li>
+<li>Time limits exist only where the business requires them (job alert, OTP resend, SOS cancel window) and are shown as a Timer she can see and hear; there is no other timed UI, and nothing dismisses itself before she has read it except a Toast (3 s, non-essential by definition).</li>
+<li>Anything that flashes does so ≤ 1 Hz (the <code>beat</code> pulse), never faster; nothing strobes.</li>
+<li>Sound is never the only channel: every sound has a visible state and a haptic (P4). (The sound register itself is parked — <code>ROADMAP.md</code>.)</li>
+</ul>
+<hr />
+<h2 id="colour-and-greyscale-checklist-rows-9-10-14">Colour and greyscale (checklist rows 9, 10, 14)</h2>
+<ul>
+<li>Every state is carried by ≥ 2 of colour / icon / shape / motion / words (row 4). Red alone is not an error; green alone is not success.</li>
+<li>Greyscale test: the page still reads — Timer by ring length and digits, Tag by outline vs fill and glyph, Rating by face shape, ProgressBar by fill length, Stepper by node glyph. Run it on every new component (row 10).</li>
+<li>Status colours mean status only; tier colours mean tier only; the Kavach-blue shield is the one domain colour and is never a status (row 14).</li>
+<li>Deuteranopia check: the pairs that collide are <code>iconSuccess</code> vs <code>iconWarning</code> (green/amber) — which is why both always carry a glyph — and the Timer's calm/attention tones, which is why the ring length and the digits do the work.</li>
+</ul>
+<hr />
+<h2 id="sunlight-and-dim-light">Sunlight and dim light</h2>
+<ul>
+<li>Design at 50 % brightness outdoors as the baseline condition (P8's baseline device profile); the 7:1 preference for money and time comes from this.</li>
+<li>Prefer filled indicators over thin outlines (a 1 dp <code>borderDefault</code> disappears in sunlight — which is fine, because it never carries meaning).</li>
+<li>Photos and maps behind text always get the scrim rule (<code>overlay.scrim</code> 60 % for caption blocks; MediaCapture and HowToClip).</li>
+<li>Light mode only for now: a dark mode would help the stairwell case and is a decision for the token roadmap, not a per-screen choice.</li>
+</ul>
+<hr />
+<h2 id="cognitive-load">Cognitive load</h2>
+<ul>
+<li>One next action per screen (P2); at most three hierarchy levels; ≤ 5 items in any carousel; ≤ 5 rows in any breakdown; ≤ 8 options in any picker before search appears.</li>
+<li>Errors name the problem and one recovery in her words (row 13); no codes, no <em>Something went wrong</em>.</li>
+<li>Nothing is hidden behind a gesture she has to discover; Coachmarks teach the three or four that exist.</li>
+<li>Consistency is an accessibility feature: one keypad, one Timer, one place for SOS, one pin family — she learns each once.</li>
+</ul>
+<hr />
+<h2 id="the-test-pass-for-every-component-and-screen">The test pass — for every component and screen</h2>
+<ol>
+<li><strong>Greyscale</strong> filter on: meaning intact?</li>
+<li><strong>Font scale 1.3</strong>, Kannada strings (<code>type.md</code>): nothing clipped, Buttons still one line?</li>
+<li><strong>TalkBack</strong> end to end: every control has role + label + state; blocks read in order; live regions announce once?</li>
+<li><strong>Reduced motion</strong> on: information motion still present; gestures have their alternative?</li>
+<li><strong>Contrast</strong>: every text pair ≥ 4.5, every indicator ≥ 3 — use the table above; a new pair is computed, not eyeballed.</li>
+<li><strong>Targets</strong>: 48 / 56 measured, 8 dp apart.</li>
+<li><strong>Outdoors</strong> at 50 % brightness on the baseline device: can she read the amount and the time at arm's length?</li>
+</ol>
+<hr />
+<h2 id="open-decisions-this-page-needs">Open — decisions this page needs</h2>
+<ol>
+<li><strong>Primary Button label contrast.</strong> <code>textInverse</code> on <code>bgBrand</code> is 4.0:1; at ButtonLg 16 sp SemiBold that fails AA (large text starts at 18.7 sp SemiBold). Options: (a) raise <code>ButtonLg</code> to <strong>18 / 24 SemiBold</strong> for L Buttons — passes as large text, helps sunlight, costs Kannada width (re-check budgets); (b) darken <code>interactiveDefault</code> to pink.700 (<code>#C70C61</code>, 5.8:1) — passes outright but moves the brand colour on the app's most visible surface; (c) keep 16 sp and document the brand exception with mitigations (56 dp, icon, spoken label). <strong>Recommendation: (a)</strong>, because it changes no colour and improves the outdoor case; <code>button.md</code> and <code>tokens.json</code> follow once decided.</li>
+<li><strong>Token release 0.20.</strong> Required by this page: <code>textSuccessStrong</code> / <code>textWarningStrong</code> / <code>textErrorStrong</code> / <code>textInfoStrong</code> (700 steps); <code>iconSuccess</code> → green.600 and <code>iconWarning</code> → yellow.600; plus the earlier proposals already in use (<code>bgErrorStrong</code>, <code>bgReward</code>, <code>bgInfoSubtle</code>, <code>bgNeutralStrong</code>, <code>overlay.scrim</code>, <code>overlay.result</code>).</li>
+</ol>
+<p>Until decided, specs cite this page rather than repeating the numbers, and the <code>*Strong</code> step is used for status text everywhere.</p>
+  </main>
+</div>
+<script>
+(function(){
+const links=[...document.querySelectorAll('#nav a')];
+const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-10% 0px -80% 0px'});
+  targets.forEach(t=>io.observe(t));
+}
+})();
+</script>

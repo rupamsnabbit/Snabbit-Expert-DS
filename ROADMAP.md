@@ -4,7 +4,7 @@ What is done and what is left, against the 46-component core set in `audit/BENCH
 
 ---
 
-## Done — 39 pages · 46 of 46 core components + 2 compositions + 1 pattern
+## Done — 40 pages · 46 of 46 core components + 2 compositions + 1 pattern
 
 | # | Page | Covers | Status |
 | --- | --- | --- | --- |
@@ -47,7 +47,7 @@ What is done and what is left, against the 46-component core set in `audit/BENCH
 | — | FAB | Folded into IconButton: floating = `L` `circle` at `elevation.floating`; shutter and recentre only; no FAB component (`icon-button.md`) | Decided |
 | 37 | Pattern · New job arrives | `patterns/new-job-alert.md` — arrive, decide, accept / decline / time's up, edges; PRINCIPLES reference case corrected | Proposed |
 
-Foundations done: tokens (`tokens/`), principles, extending, icons register, assets (two layers), motion (`foundations/motion.md`), type across four scripts (`foundations/type.md`). Research done: Figma audit (204 frames), benchmark.
+Foundations done: tokens (`tokens/`), principles, extending, icons register, assets (two layers), motion (`foundations/motion.md`), type across four scripts (`foundations/type.md`), accessibility (`foundations/accessibility.md`). Research done: Figma audit (204 frames), benchmark.
 
 ---
 
@@ -59,7 +59,7 @@ Removed from the count (decided): Tooltip (→ Coachmark), Progress Buttons (→
 
 ---
 
-## To do — foundations (3 of 8 left) — visual first
+## To do — foundations (2 of 8 left) — visual first
 
 Order decided 2026-09-08: the visual foundations first, sound parked.
 
@@ -67,8 +67,8 @@ Order decided 2026-09-08: the visual foundations first, sound parked.
 | --- | --- | --- | --- |
 | 1 | **Motion tokens** | `motion.*` (10 durations, 4 easings) and `timeout.*` (14) added to tokens.json; `foundations/motion.md`; specs reconciled | **done** |
 | 2 | **Indic type rules** | `foundations/type.md`: fallback faces, ×1.15 table, expansion budgets, consolidated length table, wrapping, font scale 1.3, test strings; `typography.indic` extended | **done** |
-| 3 | **Accessibility standard** | Contrast, targets, focus ring, reduced motion — currently repeated per spec | next |
-| 4 | Content guide | Voice, four languages, spoken-copy rules, vocabulary in one place | later |
+| 3 | **Accessibility standard** | `foundations/accessibility.md`: every token pair measured, targets, focus, screen reader, greyscale, sunlight, the seven-step test pass | **done** — two decisions open |
+| 4 | Content guide | Voice, four languages, spoken-copy rules, vocabulary in one place | next (or patterns first) |
 | — | Sound & haptics register | Every spec names sounds and haptics that exist nowhere as a list (`sound.sos`, `sound.newJob`, `sound.safetyCheck`, `sound.shutter`, `sound.voiceStart`; `haptic.*`) | **parked** — not visual; the proposals stay in the specs until this is picked up |
 
 ---
@@ -90,5 +90,6 @@ Component status lifecycle in practice (nothing is Reconciled yet) · Changelog 
 - `illustration.purple` hex — waiting on a value from the Snabbit Assets file.
 - Confirm whether the `1Login` onboarding screen (navy, non-Outfit) is shipped or older — see `references/SCREENS.md`.
 - Shield: two product decisions to confirm — auto-start at check-in (vs shipped per-job *Activate*), and the Kavach-blue shield as the one domain-coloured pictogram (`shield-card.md`).
+- Accessibility decisions: (1) primary Button label is 4.0:1 at 16 sp SemiBold — recommend ButtonLg 18 / 24 for L Buttons; (2) token release 0.20 with the `text*Strong` steps, `iconSuccess` → green.600, `iconWarning` → yellow.600 and the accumulated proposals (`foundations/accessibility.md` § Open).
 - Figma reconciliation: every spec lists its changes; none applied yet. Until Figma matches, designers still draw from old frames.
 - Field validation: checklist rows 15–16 (copy heard aloud in four languages; device review with experts) are open on every component.
