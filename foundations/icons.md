@@ -35,7 +35,8 @@ Status: **seed**. Populated fully during the Button, Tab bar and Job-alert specs
 | `sun` | Summer / daytime bonus | regular | Breakdown rows (replaces the 🌞 emoji) |
 | `caret-left` | Back | regular | HeaderNav |
 | `arrow-clockwise` | Retry / refresh | regular | Error states |
-| `camera` | Take photo / selfie | regular | Check-in, documents |
+| `camera` | Take photo / selfie | regular | MediaCapture tile and shutter, check-in, documents |
+| `image` | Choose from gallery | regular | MediaCapture document preview only |
 | `user-plus` | Register / add expert | regular | Stepper (onboarding), Refer |
 | `identification-card` | ID proof / documents | regular | Stepper, Profile documents |
 | `bank` | Bank account | regular | Stepper, Earnings payout |

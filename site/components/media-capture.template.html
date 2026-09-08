@@ -1,0 +1,130 @@
+<meta charset="utf-8">
+<title>Snabbit Expert MediaCapture</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>__BASECSS__
+.tile{width:156px;height:156px;border-radius:12px;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;font-family:var(--sans);color:#111827;text-align:center;padding:12px;box-sizing:border-box;overflow:hidden;background:#fff}
+.tile.wide{width:328px;height:180px}
+.tile.empty{border:1.5px dashed #6B7280;cursor:pointer}.tile.empty svg{width:32px;height:32px;color:#6B7280}.tile .lb{font-size:14px;font-weight:500;line-height:20px}.tile .tb{font-size:14px;font-weight:500;color:#F70F79}
+.tile .photo{position:absolute;inset:0;background:linear-gradient(160deg,#FDE68A,#F59E0B 45%,#B45309);}
+.tile .photo.face{background:linear-gradient(160deg,#F9A8D4,#F70F79 60%,#9D174D)}
+.tile .photo::after{content:"";position:absolute;left:12%;top:18%;width:76%;height:64%;border-radius:8px;background:rgba(255,255,255,.25)}
+.tile.uploading .photo{opacity:.4}.tile .prog{position:absolute;left:0;right:0;bottom:0;height:4px;background:#F3F4F6}.tile .prog span{display:block;height:100%;background:#F70F79;width:var(--p,40%)}
+.tile.done{box-shadow:inset 0 0 0 2px #10B981}.tile .chk{position:absolute;top:8px;right:8px;width:24px;height:24px;color:#10B981;background:#fff;border-radius:50%}.tile .chk svg{width:24px;height:24px}
+.tile.error{box-shadow:inset 0 0 0 2px #EF4444}.tile.error .photo{opacity:.5}.tile .reason{position:absolute;left:8px;right:8px;bottom:8px;background:#fff;border-radius:6px;padding:4px 8px;font-size:12px;color:#DC2626;font-weight:500}
+.under{display:flex;flex-direction:column;gap:6px;align-items:center}.under .rt{height:40px;padding:0 14px;border-radius:8px;border:0;font:500 14px var(--sans);cursor:pointer}.under .rt.ter{background:transparent;color:#F70F79}.under .rt.dan{background:#fff;color:#DC2626;box-shadow:inset 0 0 0 1.5px #DC2626}
+.cam{width:360px;height:640px;border-radius:20px;overflow:hidden;position:relative;background:linear-gradient(180deg,#5B6B7A,#2F3A45 60%,#1F262E);font-family:var(--sans);color:#fff;user-select:none}
+.cam .person{position:absolute;left:50%;top:22%;width:120px;height:150px;border-radius:60px 60px 50px 50px;background:#C89A7B;transform:translateX(-50%)}.cam .body{position:absolute;left:50%;top:44%;width:260px;height:300px;border-radius:120px 120px 0 0;background:#F70F79;transform:translateX(-50%)}
+.cam .hdr{position:absolute;top:24px;left:4px;right:4px;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 4px}
+.cam .disc{width:40px;height:40px;border-radius:50%;background:#fff;color:#374151;display:grid;place-items:center;margin:4px}.cam .disc svg{width:24px;height:24px}
+.ha{width:44px;height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}.ha .d{width:30px;height:30px;border-radius:50%;background:#FEF2F2;color:#DC2626;box-shadow:inset 0 0 0 1.5px #EF4444;display:grid;place-items:center}.ha .d svg{width:18px;height:18px}.ha .l{height:16px;padding:0 6px;border-radius:999px;background:#DC2626;color:#fff;font-size:11px;line-height:16px;font-weight:600}
+.guide{position:absolute;left:20%;top:18%;width:60%;height:44%;border:2px dashed rgba(255,255,255,.9);border-radius:50%;transition:border-color .2s}
+.guide.ok{border-color:#10B981}
+.logo{position:absolute;right:14%;top:62%;width:26%;height:9%;border:2px dashed rgba(255,255,255,.9);border-radius:6px;transition:border-color .2s}.logo.ok{border-color:#10B981}
+.doc{position:absolute;left:7.5%;top:34%;width:85%;aspect-ratio:1.6;border:2px dashed rgba(255,255,255,.9);border-radius:12px}
+.instr{position:absolute;left:16px;right:16px;bottom:120px;height:48px;border-radius:12px;background:rgba(17,24,39,.7);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:500}
+.shut{position:absolute;left:50%;bottom:32px;transform:translateX(-50%);width:56px;height:56px;border-radius:50%;background:#F70F79;color:#fff;border:0;display:grid;place-items:center;cursor:pointer;box-shadow:0 0 0 4px rgba(255,255,255,.5)}.shut svg{width:24px;height:24px}.shut.pulse{animation:pulse .5s}
+@keyframes pulse{50%{transform:translateX(-50%) scale(1.15)}}
+.gal{position:absolute;right:24px;bottom:40px;height:40px;padding:0 12px;border-radius:8px;border:0;background:transparent;color:#fff;font:500 14px var(--sans)}
+.ovl{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;opacity:0;pointer-events:none;transition:opacity .2s}.ovl.on{opacity:1;pointer-events:auto}
+.ovl.ok{background:rgba(209,250,229,.6)}.ovl.bad{background:rgba(254,226,226,.6)}
+.ovl .big{width:64px;height:64px;color:#10B981}.ovl .big svg{width:64px;height:64px}
+.ovl .strip{background:rgba(17,24,39,.75);padding:10px 16px;border-radius:12px;font-size:20px;font-weight:600}
+.ovl .rtk{position:absolute;left:16px;right:16px;bottom:32px;height:56px;border-radius:12px;border:0;background:#F70F79;color:#fff;font:500 16px var(--sans);cursor:pointer}
+.spin{width:24px;height:24px;border-radius:50%;border:2.5px solid rgba(255,255,255,.4);border-top-color:#fff;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(328px,1fr));gap:24px 32px;align-items:start}
+.stg{display:flex;flex-direction:column;gap:8px}.stg .cap{font-family:var(--mono);font-size:12px;color:var(--text-2)}.stg .cap b{color:var(--text);font-weight:500}
+.ctl{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:12px}.ctl button{font-family:var(--sans);font-size:13px;padding:6px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);cursor:pointer}
+.logline{font-family:var(--mono);font-size:12px;color:var(--text-2);min-height:16px;margin-top:8px;white-space:pre-line}
+@media (prefers-reduced-motion:reduce){.shut.pulse{animation:none}.ovl{transition:none}}
+__NAVCSS__</style>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · MediaCapture</small></div></div>
+    __SITENAV__
+    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#tiles">Tile</a><a href="#live">Preview · live</a><a href="#guides">Guides</a><a href="#rules">Rules</a><a href="#dont">Don't</a><a href="#figma">Figma changes</a></nav>
+    <div class="rail-foot">Rendered from tokens.json · spec in components/media-capture.md</div>
+  </aside>
+  <main class="main">
+    <header id="overview">
+      <div class="eyebrow">Core component</div><h1>MediaCapture</h1>
+      <p class="lede">Every photo the app asks for — the uniform selfie, the check-in photo, Aadhaar front and back, the finished kitchen — through one component: a tile that holds the slot and a preview that guides the shot, talks her through it, and always offers a retake. She never has to know what a megabyte is.</p>
+      <div class="meta"><span class="chip status">Proposed</span><span class="chip">Tier 1 · Core</span><span class="chip"><code>SnabbitMediaCapture</code></span><span class="chip">tile · preview</span><span class="chip">Retake, never delete</span><span class="chip">Selfies camera-only</span></div>
+    </header>
+
+    <section id="tiles">
+      <header><div class="eyebrow">In a form</div><h2>Tile</h2><p>The label says <em>what</em> to photograph, never a format or size. Five states; the way out of every bad one is Retake. Two-sided documents are two tiles; the second waits for the first.</p></header>
+      <div class="stage"><div class="grid2" id="tiles-grid"></div></div>
+    </section>
+
+    <section id="live">
+      <header><div class="eyebrow">Try it</div><h2>Preview · live</h2><p>The uniform selfie. Dashes turn green when the face and the Snabbit logo are in place and the shutter pulses; tap it (or wait — face guides auto-capture after 1 s). The result is a tint, a word and a voice; a fail always has Retake. SOS stays in the header on check-in previews.</p></header>
+      <div class="demo" style="align-items:flex-start;flex-wrap:wrap;gap:28px"><div class="cam" id="cam"></div><div class="card" style="max-width:320px"><h4>Simulate</h4><div class="ctl"><button id="align">Align face + logo</button><button id="failnext">Next result: fail</button><button id="reset">Reset</button></div><div class="logline" id="log">aligning · spoken "Put your face in the circle. Show the Snabbit logo."</div></div></div>
+    </section>
+
+    <section id="guides">
+      <header><div class="eyebrow">Three shots</div><h2>Guides</h2></header>
+      <div class="stage"><div class="grid2" id="guides-grid"></div></div>
+    </section>
+
+    <section id="rules">
+      <header><div class="eyebrow">Behaviour</div><h2>Rules</h2></header>
+      <ol class="rules"><li><b>Selfies and check-in photos are camera-only.</b> Documents offer <em>Take photo</em> (primary) and <em>Choose from gallery</em> (tertiary).</li><li><b>Retake replaces; there is no delete.</b> A tile is cleared only by the flow that owns it.</li><li>Size and format are handled silently — compressed on device; she never sees MB, JPG or "too large".</li><li>Permission is asked through the Permission sheet first (why, then the OS dialog); denied → EmptyState with <em>Allow camera</em>.</li><li>One control: the shutter. Flash auto for documents, off for faces. No zoom, torch, filters or timers.</li><li><em>Checking</em> ≤ 3 s, then a result. After three fails, <em>Call Help</em> joins Retake.</li><li>Instructions and results are spoken as they change; the network dropping mid-upload keeps the photo locally and shows <em>Couldn't upload — try again</em>.</li></ol>
+    </section>
+
+    <section id="dont">
+      <header><div class="eyebrow">Common mistakes</div><h2>Don't</h2></header>
+      <div class="stage"><div class="grid2" id="dont-grid"></div></div>
+    </section>
+
+    <section id="figma">
+      <header><div class="eyebrow">Reconciliation</div><h2>What changes in Figma</h2></header>
+      <ol class="rules"><li>Document Upload Card → MediaCapture / Tile: State (Empty / Uploading / Done / Error / Review), Shape (Square / Wide). Hint → what to photograph; ✕ → Retake.</li><li>Camera Preview → MediaCapture / Preview: Guide (Face / Document / Scene), Result (None / Checking / Success / Fail); overlays bound to bgSuccessSubtle / bgErrorSubtle; add the instruction bar and Retake / Call Help.</li><li>Delete the Camera / Gallery Selection Pill; gallery is a tertiary Button on document previews only.</li><li>Add SOS to every check-in preview frame.</li></ol>
+      <p class="sub" style="margin-top:14px">Result: ~12 variants, and a camera that explains itself. Token proposals: <code>overlay.result</code> 60 %, <code>sound.shutter</code>.</p>
+    </section>
+  </main>
+</div>
+
+<script id="tokens-json" type="application/json">__TOKENS__</script>
+<script>
+(function(){
+const T=JSON.parse(document.getElementById("tokens-json").textContent); const $=s=>document.querySelector(s);
+const ICO={cam:'M208,56H180.28L166.65,35.56A8,8,0,0,0,160,32H96a8,8,0,0,0-6.65,3.56L75.71,56H48A24,24,0,0,0,24,80V192a24,24,0,0,0,24,24H208a24,24,0,0,0,24-24V80A24,24,0,0,0,208,56Zm8,136a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V80a8,8,0,0,1,8-8H80a8,8,0,0,0,6.66-3.56L100.28,48h55.43l13.63,20.44A8,8,0,0,0,176,72h32a8,8,0,0,1,8,8ZM128,88a44,44,0,1,0,44,44A44.05,44.05,0,0,0,128,88Zm0,72a28,28,0,1,1,28-28A28,28,0,0,1,128,160Z',plus:'M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z',retry:'M240,56v48a8,8,0,0,1-8,8H184a8,8,0,0,1,0-16H211.4L184.81,71.64l-.25-.24a80,80,0,1,0-1.67,114.78,8,8,0,0,1,11,11.63A95.44,95.44,0,0,1,128,224h-1.32A96,96,0,1,1,195.75,60L224,85.8V56a8,8,0,1,1,16,0Z',chk:'M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,85.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z',img:'M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,16V158.75l-26.07-26.06a16,16,0,0,0-22.63,0l-20,20-44-44a16,16,0,0,0-22.62,0L40,149.37V56ZM40,172l52-52,80,80H40Zm176,28H194.63l-36-36,20-20L216,181.38V200ZM144,100a12,12,0,1,1,12,12A12,12,0,0,1,144,100Z',id:'M200,112a8,8,0,0,1-8,8H152a8,8,0,0,1,0-16h40A8,8,0,0,1,200,112Zm-8,24H152a8,8,0,0,0,0,16h40a8,8,0,0,0,0-16Zm40-80V200a16,16,0,0,1-16,16H40a16,16,0,0,1-16-16V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56ZM216,200V56H40V200H216Zm-80.26-34a8,8,0,1,1-15.5,4c-2.63-10.26-13.06-18-24.25-18s-21.61,7.74-24.25,18a8,8,0,1,1-15.5-4,39.84,39.84,0,0,1,17.19-23.34,32,32,0,1,1,45.12,0A39.76,39.76,0,0,1,135.75,166ZM96,136a16,16,0,1,0-16-16A16,16,0,0,0,96,136Z',x:'M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm37.66,130.34a8,8,0,0,1-11.32,11.32L128,139.31l-26.34,26.35a8,8,0,0,1-11.32-11.32L116.69,128,90.34,101.66a8,8,0,0,1,11.32-11.32L128,116.69l26.34-26.35a8,8,0,0,1,11.32,11.32L139.31,128Z',siren:'M120,16V8a8,8,0,0,1,16,0v8a8,8,0,0,1-16,0Zm80,32a8,8,0,0,0,5.66-2.34l8-8a8,8,0,0,0-11.32-11.32l-8,8A8,8,0,0,0,200,48ZM50.34,45.66A8,8,0,0,0,61.66,34.34l-8-8A8,8,0,0,0,42.34,37.66ZM232,176v24a16,16,0,0,1-16,16H40a16,16,0,0,1-16-16V176a16,16,0,0,1,16-16V128a88,88,0,0,1,88.67-88c48.15.36,87.33,40.29,87.33,89v31A16,16,0,0,1,232,176ZM134.68,87.89C153.67,91.08,168,108.32,168,128a8,8,0,0,0,16,0c0-27.4-20.07-51.43-46.68-55.89a8,8,0,1,0-2.64,15.78ZM216,200V176H40v24H216Z',back:'M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z'};
+const svg=n=>`<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="${ICO[n]}"/></svg>`;
+const tile=(st,label,o={})=>{const w=o.wide?'wide':'';const photo=`<div class="photo ${o.face?'face':''}"></div>`;
+ if(st==='empty')return `<div class="stg" style="align-items:center"><button class="tile empty ${w}">${svg('cam')}<span class="lb">${label}</span><span class="tb">Take photo</span></button></div>`;
+ if(st==='uploading')return `<div class="stg" style="align-items:center"><div class="tile uploading ${w}">${photo}<div class="prog"><span style="--p:${o.p||45}%"></span></div></div></div>`;
+ if(st==='done')return `<div class="stg" style="align-items:center"><div class="tile done ${w}">${photo}<span class="chk">${svg('chk')}</span></div><div class="under"><button class="rt ter">Retake</button></div></div>`;
+ return `<div class="stg" style="align-items:center"><div class="tile error ${w}">${photo}<span class="reason">${o.reason||'Photo is blurry'}</span></div><div class="under"><button class="rt dan">Retake</button></div></div>`;};
+const W=(cap,html)=>`<div class="stg">${html}<div class="cap">${cap}</div></div>`;
+$('#tiles-grid').innerHTML=[
+ W('<b>empty</b> · dashed borderStrong · what to photograph · the tile is the target',`<div style="display:flex;gap:16px">${tile('empty','Front of your Aadhaar card')}${tile('empty','Back of your Aadhaar card')}</div>`),
+ W('<b>uploading</b> · dimmed photo · ProgressBar S along the bottom · no spinner',`<div style="display:flex;gap:16px">${tile('uploading','')}${tile('done','',{})}</div>`),
+ W('<b>done</b> · borderSuccess · check · Retake tertiary',`<div style="display:flex;gap:16px">${tile('done','',{face:1})}${tile('error','',{face:1,reason:'Uniform not visible'})}</div>`),
+ W('<b>wide · error</b> · one reason line · Retake secondary danger',tile('error','',{wide:1,reason:'Card not in frame'}))].join('');
+// live
+let phase='align',failNext=false,aligned=false,autoT;const cam=$('#cam');
+function render(){cam.innerHTML=`<div class="person"></div><div class="body"></div><div class="guide ${aligned?'ok':''}" id="g1"></div><div class="logo ${aligned?'ok':''}" id="g2"></div><div class="hdr"><span class="disc">${svg('back')}</span><span class="ha"><span class="d">${svg('siren')}</span><span class="l">SOS</span></span></div><div class="instr" id="instr">${aligned?'Hold still':'Put your face in the circle'}</div><button class="shut ${aligned?'pulse':''}" id="shut" aria-label="Take photo">${svg('cam')}</button><div class="ovl" id="ovl"></div>`;
+ $('#shut').onclick=shoot;}
+function shoot(){if(phase!=='align')return;phase='checking';const s=$('#shut');s.innerHTML='<span class="spin"></span>';$('#instr').textContent='Checking…';$('#log').textContent='shutter → shutter sound · checking ≤ 3 s';setTimeout(result,1200);}
+function result(){const o=$('#ovl');$('#instr').hidden=true;$('#shut').hidden=true;if(failNext){phase='fail';o.className='ovl bad on';o.innerHTML=`<div class="strip">Uniform not visible</div><button class="rtk" id="rtk">Retake</button>`;$('#rtk').onclick=()=>{phase='align';aligned=false;failNext=false;render();$('#log').textContent='Retake → back to aligning';};$('#log').textContent='fail → bgErrorSubtle @ 60 % · reason spoken "Uniform not visible" · Retake primary';}
+ else{phase='success';o.className='ovl ok on';o.innerHTML=`<span class="big">${svg('chk')}</span><div class="strip">Login successful</div>`;$('#log').textContent='success → bgSuccessSubtle @ 60 % · check 64 · spoken "Login successful" · continues after 800 ms';}}
+$('#align').onclick=()=>{if(phase!=='align')return;aligned=true;render();$('#log').textContent='aligned → dashes turn iconSuccess · shutter pulses once · spoken "Hold still" · auto-capture in 1 s';clearTimeout(autoT);autoT=setTimeout(()=>{if(phase==='align'&&aligned)shoot();},1000);};
+$('#failnext').onclick=()=>{failNext=!failNext;$('#failnext').textContent=failNext?'Next result: success':'Next result: fail';};
+$('#reset').onclick=()=>{clearTimeout(autoT);phase='align';aligned=false;render();$('#log').textContent='aligning · spoken "Put your face in the circle. Show the Snabbit logo."';};
+render();
+// guides
+const mini=(inner,cap)=>W(cap,`<div class="cam" style="width:200px;height:356px;border-radius:14px">${inner}<div class="instr" style="bottom:56px;height:32px;font-size:12px;left:8px;right:8px">${cap.split(' · ')[1]||''}</div><button class="shut" style="width:36px;height:36px;bottom:10px">${svg('cam').replace('<svg','<svg style="width:16px;height:16px"')}</button></div>`);
+$('#guides-grid').innerHTML=[mini(`<div class="person" style="width:66px;height:84px;top:20%"></div><div class="body" style="width:150px;height:170px;top:42%"></div><div class="guide"></div><div class="logo"></div>`,'<b>face</b> · Show the Snabbit logo'),mini(`<div class="doc"></div>`,'<b>document</b> · Fit the whole card in the frame'),mini(``,'<b>scene</b> · Take a photo of the finished work')].join('');
+// donts
+$('#dont-grid').innerHTML=[
+ W('',`<div class="stg" style="align-items:center"><button class="tile empty">${svg('plus')}<span class="lb">Upload Front Side</span><span class="tb" style="color:#9CA3AF">JPG, PNG (Max 5MB)</span></button></div>`).replace('<div class="cap"></div>','<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">"Upload", a plus, and <em>JPG, PNG (Max 5MB)</em> (as shipped). She does not know formats or megabytes. The label says what to photograph; size is handled silently.</div>'),
+ W('',`<div class="stg" style="align-items:center"><div class="tile" style="box-shadow:inset 0 0 0 2px #F70F79"><div class="photo"></div><span class="chk" style="color:#374151">${svg('x')}</span></div></div>`).replace('<div class="cap"></div>','<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">A ✕ on the photo. Deleting is never the goal — replacing is. Retake, under the tile, as a Button.</div>'),
+ W('',`<div class="cam" style="width:200px;height:356px;border-radius:14px"><div class="person" style="width:66px;height:84px;top:20%"></div><div class="body" style="width:150px;height:170px;top:42%"></div><div class="ovl bad on" style="justify-content:center"><div class="strip" style="font-size:14px">Verification failed (ERR_FACE_03)</div></div></div>`).replace('<div class="cap"></div>','<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">A red screen with a code and no way out. The reason in her words — <em>Uniform not visible</em> — spoken, and Retake right there.</div>'),
+ W('',`<div class="cam" style="width:200px;height:356px;border-radius:14px"><div class="person" style="width:66px;height:84px;top:20%"></div><div class="body" style="width:150px;height:170px;top:42%"></div><div style="position:absolute;left:8px;right:8px;bottom:10px;display:flex;justify-content:space-around;align-items:center;font-size:11px"><span>⚡</span><span>1×</span><button class="shut" style="position:static;transform:none;width:36px;height:36px">${svg('cam').replace('<svg','<svg style="width:16px;height:16px"')}</button><span>⏱</span><span>${svg('img').replace('<svg','<svg style="width:16px;height:16px"')}</span></div></div>`).replace('<div class="cap"></div>','<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">Flash, zoom, timer and gallery on a selfie. One control, the shutter; flash is automatic; a selfie from the gallery is not a selfie.</div>')].join('');
+const links=[...document.querySelectorAll('#nav a')];const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-20% 0px -70% 0px'});targets.forEach(t=>io.observe(t));}
+})();
+</script>

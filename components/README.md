@@ -34,3 +34,4 @@ One spec per core component. `button.md` is the template. Status per component: 
 | Nudge | Proposed | `nudge.md` | `site/components/nudge.html` |
 | NumericKeypad | Proposed | `numeric-keypad.md` | `site/components/numeric-keypad.html` |
 | PageIndicator | Proposed | `page-indicator.md` | `site/components/page-indicator.html` |
+| MediaCapture | Proposed | `media-capture.md` | `site/components/media-capture.html` |

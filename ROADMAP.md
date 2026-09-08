@@ -4,7 +4,7 @@ What is done and what is left, against the 46-component core set in `audit/BENCH
 
 ---
 
-## Done — 30 pages · 38 of 46 core components
+## Done — 31 pages · 39 of 46 core components
 
 | # | Page | Covers | Status |
 | --- | --- | --- | --- |
@@ -38,16 +38,16 @@ What is done and what is left, against the 46-component core set in `audit/BENCH
 | 28 | Nudge | Nudge (gain, loss, list) | Proposed |
 | 29 | NumericKeypad | NumericKeypad (phone, otp, number, amount) | Proposed |
 | 30 | PageIndicator | PageIndicator (2–5 pages; carousel rules) | Proposed |
+| 31 | MediaCapture | MediaCapture (tile, preview; face / document / scene guides) | Proposed |
 
 Foundations done: tokens (`tokens/`), principles, extending, icons register, assets (two layers). Research done: Figma audit (204 frames), benchmark.
 
 ---
 
-## To do — components (9), in the agreed order
+## To do — components (8), in the agreed order
 
 | # | Component | Priority | Notes |
 | --- | --- | --- | --- |
-| 31 | Media container | P1 | Photo capture: loading, error, retake. |
 | 32 | Map marker | P1 | Job, hub, expert position. |
 | 33 | Divider | — | Trivial; fold into ListItem/Card pages or one small page. |
 | 34 | Rating | — | Post-job rating the expert gives/receives. |
