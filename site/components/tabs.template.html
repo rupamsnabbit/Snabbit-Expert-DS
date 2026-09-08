@@ -1,0 +1,114 @@
+<meta charset="utf-8">
+<title>Snabbit Expert Tabs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>__BASECSS__
+.seg{display:flex;background:#F3F4F6;border-radius:999px;padding:4px;position:relative;width:328px;font-family:var(--sans);height:40px;box-sizing:border-box}
+.seg.s{height:32px;width:auto;padding:3px}
+.seg .ind{position:absolute;top:4px;bottom:4px;background:#fff;border-radius:999px;box-shadow:inset 0 0 0 1px #E5E7EB;transition:left .15s ease-out,width .15s ease-out}
+.seg.s .ind{top:3px;bottom:3px}
+.seg button{flex:1;position:relative;z-index:1;border:0;background:transparent;font:500 14px var(--sans);color:#6B7280;cursor:pointer;border-radius:999px;padding:0 12px;white-space:nowrap}
+.seg.s button{font-size:12px}
+.seg button.on{color:#111827;font-weight:600}.seg button small{font-weight:400;font-size:12px;margin-left:4px;color:#6B7280}
+.seg button:active{background:rgba(0,0,0,.03)}
+.tabs{position:relative;display:flex;width:328px;border-bottom:1px solid #F3F4F6;font-family:var(--sans)}
+.tabs button{flex:1;height:48px;border:0;background:transparent;font:500 14px var(--sans);color:#6B7280;cursor:pointer;position:relative;display:flex;flex-direction:row;align-items:center;justify-content:center;gap:6px;white-space:nowrap}.tabs.ic button{flex-direction:column;gap:4px}
+.tabs.ic button{height:56px}.tabs button svg{width:20px;height:20px}
+.tabs button.on{color:#F70F79}
+.tabs .ind{position:absolute;bottom:-1px;height:2px;background:#F70F79;border-radius:1px;transition:left .2s ease-out,width .2s ease-out}
+.tabs .mk{position:absolute;top:-14px;left:50%;transform:translateX(-50%);height:18px;padding:0 6px;border-radius:4px;background:#FEF1F7;color:#F70F79;font-size:10px;font-weight:600;line-height:18px;white-space:nowrap}
+.tabs .bdg{position:static;min-width:16px;height:16px;padding:0 4px;border-radius:999px;background:#F70F79;color:#fff;font-size:11px;font-weight:600;display:grid;place-items:center;line-height:1}
+.tabs.mkroom{margin-top:16px}
+.panel{width:328px;background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px;font-family:var(--sans);color:#111827;margin-top:12px;display:flex;flex-direction:column;gap:8px}
+.panel .t{font-size:16px;font-weight:500}.panel .r{display:flex;justify-content:space-between;font-size:14px;color:#374151;min-height:32px;align-items:center}.panel .r b{font-variant-numeric:tabular-nums;color:#111827}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(328px,1fr));gap:24px 32px;align-items:start}
+.stg{display:flex;flex-direction:column;gap:8px}.stg .cap{font-family:var(--mono);font-size:12px;color:var(--text-2)}.stg .cap b{color:var(--text);font-weight:500}
+.logline{font-family:var(--mono);font-size:12px;color:var(--text-2);min-height:16px;margin-top:8px;white-space:pre-line}
+.scr{width:360px;border:1px solid #E5E7EB;border-radius:20px;overflow:hidden;background:#F9FAFB;color:#111827;font-family:var(--sans)}
+.scr .hn{height:56px;background:#fff;display:flex;align-items:center;padding:0 16px;font-size:18px;font-weight:500}
+.scr .body{padding:16px;display:flex;flex-direction:column;gap:12px}
+@media (prefers-reduced-motion:reduce){.seg .ind,.tabs .ind{transition:none}}
+__NAVCSS__</style>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · Tabs · Segmented</small></div></div>
+    __SITENAV__
+    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#segmented">Segmented</a><a href="#tabs-s">Tabs</a><a href="#live">Live</a><a href="#which">Which one</a><a href="#dont">Don't</a><a href="#figma">Figma changes</a></nav>
+    <div class="rail-foot">Rendered from tokens.json · spec in components/tabs.md</div>
+  </aside>
+  <main class="main">
+    <header id="overview">
+      <div class="eyebrow">Core component</div><h1>Tabs · Segmented</h1>
+      <p class="lede">Two ways to switch what a screen shows without leaving it. Segmented for two or three views of the same thing; Tabs for three to five sections of one screen. Both change content in place, remember the choice, and never navigate — the tab bar at the bottom is the map; these are pages of one book.</p>
+      <div class="meta"><span class="chip status">Proposed</span><span class="chip">Tier 1 · Core</span><span class="chip"><code>SnabbitSegmented</code> · <code>SnabbitTabs</code></span><span class="chip">2–3 · 3–5</span><span class="chip">Never scrolls, never navigates</span></div>
+    </header>
+
+    <section id="segmented">
+      <header><div class="eyebrow">Views of the same thing</div><h2>Segmented</h2><p>A <code>bgTertiary</code> track with a raised <code>bgPrimary</code> segment — readable in greyscale and outdoors, unlike the shipped dark fill. Two or three equal segments, full width or hugging inside a card header. Labels only, ≤ 10 chars; an optional count.</p></header>
+      <div class="stage"><div class="grid2" id="seg-grid"></div></div>
+    </section>
+
+    <section id="tabs-s">
+      <header><div class="eyebrow">Sections of one screen</div><h2>Tabs</h2><p>Three to five equal-width tabs with a 2 dp brand underline that slides. Never scrolls — a cut-off tab is a hidden feature and a mis-tap; six becomes a select sheet. Icon <em>with</em> label or label alone, never icon-only. One marker Tag above at most one tab; badges on at most two.</p></header>
+      <div class="stage"><div class="grid2" id="tabs-grid"></div></div>
+    </section>
+
+    <section id="live">
+      <header><div class="eyebrow">Try it</div><h2>Live · My Rate Card</h2><p>The shipped rate card, rebuilt: Segmented for Weekdays / Weekends, Tabs for shift length with a <em>Your shift</em> marker. Selection swaps the content in place and is remembered per screen.</p></header>
+      <div class="demo" style="align-items:flex-start;flex-wrap:wrap;gap:28px"><div class="scr" id="ph"></div><div class="card" style="max-width:320px"><h4>Log</h4><div class="logline" id="log">tap a segment or a tab</div></div></div>
+    </section>
+
+    <section id="which">
+      <header><div class="eyebrow">Choosing</div><h2>Which one</h2></header>
+      <ol class="rules"><li><b>Same data, different slice</b> (today / week / month; weekdays / weekends) → Segmented, 2–3.</li><li><b>Different sections of one screen</b> (shift lengths; earnings / bonus / penalties) → Tabs, 3–5.</li><li><b>Two lists that are both worth seeing</b> (upcoming / past leave) → headings, not tabs. Two lists shown beat two lists hidden.</li><li><b>More than five</b> → a select BottomSheet or a Chip row.</li><li><b>Anything that goes somewhere or does something</b> → a Button or ListItem, never a tab.</li></ol>
+    </section>
+
+    <section id="dont">
+      <header><div class="eyebrow">Common mistakes</div><h2>Don't</h2></header>
+      <div class="stage"><div class="grid2" id="dont-grid"></div></div>
+    </section>
+
+    <section id="figma">
+      <header><div class="eyebrow">Reconciliation</div><h2>What changes in Figma</h2></header>
+      <ol class="rules"><li>Create Segmented: Count (2 / 3), Size (M / S), Selected, Counts. Track bgTertiary; segment bgPrimary + borderDefault.</li><li>Create Tabs: Count (3–5), Selected, Icons, Marker, per-tab Badge. Indicator bgBrand.</li><li>Rebuild My Rate Card: Segmented M for Weekdays / Weekends; Tabs (5) for shift lengths with the Your shift marker; no horizontal scroll.</li><li>Leave history stays as headings.</li></ol>
+      <p class="sub" style="margin-top:14px">Result: ~12 variants, and the first tab controls drawn from one definition.</p>
+    </section>
+  </main>
+</div>
+
+<script id="tokens-json" type="application/json">__TOKENS__</script>
+<script>
+(function(){
+const T=JSON.parse(document.getElementById("tokens-json").textContent); const $=s=>document.querySelector(s);
+const ICON={inr:'M208,80a8,8,0,0,1-8,8H167.85c.09,1.32.15,2.65.15,4a60.07,60.07,0,0,1-60,60H92.69l72.69,66.08a8,8,0,1,1-10.76,11.84l-88-80A8,8,0,0,1,72,136h36a44.05,44.05,0,0,0,44-44c0-1.35-.07-2.68-.19-4H72a8,8,0,0,1,0-16h75.17A44,44,0,0,0,108,48H72a8,8,0,0,1,0-16H200a8,8,0,0,1,0,16H148.74a60.13,60.13,0,0,1,15.82,24H200A8,8,0,0,1,208,80Z',trophy:'M232,64H208V56a16,16,0,0,0-16-16H64A16,16,0,0,0,48,56v8H24A16,16,0,0,0,8,80V96a40,40,0,0,0,40,40h3.65A80.13,80.13,0,0,0,120,191.61V216H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16H136V191.58c31.94-3.23,58.44-25.64,68.08-55.58H208a40,40,0,0,0,40-40V80A16,16,0,0,0,232,64ZM48,120A24,24,0,0,1,24,96V80H48v32q0,4,.39,8Zm144-8.9c0,35.52-28.49,64.64-63.51,64.9H128a64,64,0,0,1-64-64V56H192ZM232,96a24,24,0,0,1-24,24h-.5a81.81,81.81,0,0,0,.5-8.9V80h24Z',warn:'M236.8,188.09,149.35,36.22h0a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM222.93,203.8a8.5,8.5,0,0,1-7.48,4.2H40.55a8.5,8.5,0,0,1-7.48-4.2,7.59,7.59,0,0,1,0-7.72L120.52,44.21a8.75,8.75,0,0,1,15,0l87.45,151.87A7.59,7.59,0,0,1,222.93,203.8ZM120,144V104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,180Z'};
+const svg=n=>`<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="${ICON[n]}"/></svg>`;
+let uid=0;
+function seg(items,sel,o={}){const id='sg'+(uid++);return {html:`<div class="seg ${o.s?'s':''}" role="radiogroup" id="${id}"><span class="ind"></span>${items.map((l,i)=>`<button role="radio" aria-checked="${i===sel}" class="${i===sel?'on':''}" data-i="${i}">${l}${o.counts?`<small>${o.counts[i]}</small>`:''}</button>`).join('')}</div>`,id};}
+function tabs(items,sel,o={}){const id='tb'+(uid++);return {html:`<div class="tabs ${o.icons?'ic':''} ${o.marker!=null?'mkroom':''}" role="tablist" id="${id}"><span class="ind"></span>${items.map((l,i)=>`<button role="tab" aria-selected="${i===sel}" class="${i===sel?'on':''}" data-i="${i}">${o.icons?svg(o.icons[i]):''}${l}${o.marker===i?'<span class="mk">Your shift</span>':''}${o.badges&&o.badges[i]?`<span class="bdg">${o.badges[i]}</span>`:''}</button>`).join('')}</div>`,id};}
+function wire(id,onChange){const el=document.getElementById(id);if(!el)return;const btns=[...el.querySelectorAll('button')];const ind=el.querySelector('.ind');const place=()=>{const b=el.querySelector('button.on');if(!b)return;ind.style.left=b.offsetLeft+'px';ind.style.width=b.offsetWidth+'px';};place();btns.forEach(b=>b.onclick=()=>{btns.forEach(x=>{x.classList.remove('on');x.setAttribute(x.role==='tab'?'aria-selected':'aria-checked','false');});b.classList.add('on');b.setAttribute(b.getAttribute('role')==='tab'?'aria-selected':'aria-checked','true');place();onChange&&onChange(+b.dataset.i,b.textContent.trim());});window.addEventListener('resize',place);}
+const W=(cap,html)=>`<div class="stg">${html}<div class="cap">${cap}</div></div>`;
+const S=[seg(['Weekdays','Weekends'],0),seg(['Today','Week','Month'],0,{counts:['3','14','52']}),seg(['Cash','UPI'],1,{s:1})];
+$('#seg-grid').innerHTML=[W('<b>2 segments · M</b> · raised bgPrimary segment on bgTertiary track',S[0].html),W('<b>3 segments · M</b> · optional counts in Caption',S[1].html),W('<b>S · hugging</b> · inside a card header or sheet',`<div style="display:flex">${S[2].html}</div>`)].join('');
+S.forEach(s=>wire(s.id));
+const Tb=[tabs(['4 hr','5 hr','6 hr','7 hr','8 hr'],2,{marker:2}),tabs(['Earnings','Bonus','Penalties'],0,{icons:['inr','trophy','warn']}),tabs(['Upcoming','Past','Cancelled'],0,{badges:[1,null,null]})];
+$('#tabs-grid').innerHTML=[W('<b>5 tabs</b> · equal width · marker Tag above the current one · never scrolls',Tb[0].html),W('<b>3 tabs · icon + label</b> · 56 dp · never icon-only',Tb[1].html),W('<b>3 tabs · badge</b> · dot or count ≤ 9 on at most two',Tb[2].html)].join('');
+Tb.forEach(t=>wire(t.id));
+// live
+const RATES={Weekdays:{'4 hr':[350,125],'5 hr':[350,125],'6 hr':[350,125],'7 hr':[380,130],'8 hr':[400,130]},Weekends:{'4 hr':[425,135],'5 hr':[425,135],'6 hr':[425,135],'7 hr':[450,140],'8 hr':[475,140]}};
+let day='Weekdays',hrs='6 hr';
+const LS=seg(['Weekdays','Weekends'],0),LT=tabs(['4 hr','5 hr','6 hr','7 hr','8 hr'],2,{marker:2});
+function panel(){const [ming,base]=RATES[day][hrs];return `<div class="panel" id="rate-panel" role="tabpanel" aria-label="${day} · ${hrs}"><span class="t">${day} · ${hrs}</span><div class="r">MinG<b>₹${ming}</b></div><div class="r">Base pay<b>₹${base}/hr</b></div><div class="r">Summer daily bonus<b>₹80</b></div></div>`;}
+$('#ph').innerHTML=`<div class="hn">My rate card</div><div class="body"><div style="align-self:center">${LS.html}</div>${LT.html}${panel()}</div>`;
+wire(LS.id,(i,l)=>{day=l;$('#rate-panel').outerHTML=panel();$('#log').textContent=`segment → ${l} · content swapped in place · spoken "${l}. ${hrs} rates." · light haptic`;});
+wire(LT.id,(i,l)=>{hrs=l.replace('Your shift','').trim();$('#rate-panel').outerHTML=panel();$('#log').textContent=`tab → ${hrs} · indicator slides 200 ms · remembered per screen`;});
+// donts
+$('#dont-grid').innerHTML=[
+ `<div class="stg"><div class="tabs" style="overflow:hidden"><span class="ind" style="left:230px;width:60px"></span>${['4 hr','5 hr','6 hr','7 hr','8 hr','9 hr','10 hr'].map((l,i)=>`<button style="flex:none;width:76px" class="${i===3?'on':''}">${l}</button>`).join('')}</div><span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">Seven tabs scrolling off the edge (the shipped rate card). A cut-off tab is a hidden feature and a mis-tap. Five max; more is a select sheet.</div></div>`,
+ `<div class="stg"><div class="seg"><span class="ind" style="left:4px;width:160px;background:#111827;box-shadow:none"></span><button class="on" style="color:#fff">Weekdays</button><button>Weekends</button></div><span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">A dark filled segment (as shipped). Dark fills are scrims and the inverse surface; a raised white segment reads in greyscale and outdoors.</div></div>`,
+ `<div class="stg"><div class="tabs ic"><span class="ind" style="left:0;width:82px"></span>${['inr','trophy','warn','inr'].map((n,i)=>`<button class="${i===0?'on':''}">${svg(n)}</button>`).join('')}</div><span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">Icon-only tabs. A trophy is not "Bonus" to someone in her first week. Icon with label, or label alone.</div></div>`,
+ `<div class="stg"><div class="tabs"><span class="ind" style="left:0;width:109px"></span><button class="on">Earnings</button><button>Apply leave</button><button>Call trainer</button></div><span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">Tabs that go somewhere or do something. A tab changes the content below and nothing else; the rest are ListItems or Buttons.</div></div>`].join('');
+const links=[...document.querySelectorAll('#nav a')];const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-20% 0px -70% 0px'});targets.forEach(t=>io.observe(t));}
+})();
+</script>

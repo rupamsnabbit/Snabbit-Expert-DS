@@ -30,3 +30,4 @@ One spec per core component. `button.md` is the template. Status per component: 
 | EmptyState | Proposed | `empty-state.md` | `site/components/empty-state.html` |
 | Skeleton · Spinner | Proposed | `skeleton.md` | `site/components/skeleton.html` |
 | VoicePrompt | Proposed | `voice-prompt.md` | `site/components/voice-prompt.html` |
+| Tabs · Segmented | Proposed | `tabs.md` | `site/components/tabs.html` |
