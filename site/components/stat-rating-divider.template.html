@@ -1,0 +1,107 @@
+<meta charset="utf-8">
+<title>Snabbit Expert Stat Rating Divider</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>__BASECSS__
+.stat{display:flex;flex-direction:column;gap:2px;font-family:var(--sans);color:#111827;min-width:0}
+.stat .lb{font-size:12px;line-height:16px;color:#6B7280;display:flex;align-items:center;gap:6px}.stat .lb svg{width:16px;height:16px}.stat .lb .coin{width:18px;height:18px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#FDE68A,#F59E0B 60%,#B45309)}
+.stat .v{font-size:24px;line-height:32px;font-weight:600;font-variant-numeric:tabular-nums}
+.stat.S .v{font-size:16px;line-height:24px}.stat.L .v{font-size:40px;line-height:48px}
+.stat .d{font-size:12px;line-height:16px;display:inline-flex;align-items:center;gap:2px;font-weight:500}.stat .d svg{width:12px;height:12px}.stat .d.up{color:#059669}.stat .d.dn{color:#DC2626}
+.stat .v .face{display:inline-block;vertical-align:middle;margin-left:6px}
+.cardx{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px;width:328px;font-family:var(--sans);color:#111827}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.dv{height:1px;background:#F3F4F6}.dv.row{margin-left:16px}.dv.sec{background:#E5E7EB;margin:16px 0}
+.dv.lab{display:flex;align-items:center;gap:12px;height:auto;background:transparent;font-family:var(--sans);font-size:12px;color:#6B7280}.dv.lab::before,.dv.lab::after{content:"";flex:1;height:1px;background:#F3F4F6}
+.li{display:flex;align-items:center;gap:12px;min-height:56px;padding:0 16px;font-family:var(--sans);font-size:16px;color:#111827}.li .tx{flex:1}.li .sub{display:block;font-size:14px;color:#6B7280}
+.face{width:48px;height:48px;border-radius:50%;border:2px solid #F59E0B;background:#fff;position:relative;display:inline-block;flex:none;cursor:pointer;transition:transform .1s;box-sizing:border-box}
+.face.on{background:#FBBF24;border-color:#F59E0B}.face.on.bad{background:#EF4444;border-color:#DC2626}
+.face::before,.face::after{content:"";position:absolute;background:#111827;border-radius:2px}
+.face::before{width:4px;height:6px;left:30%;top:30%;box-shadow:16px 0 0 #111827}
+.face::after{width:22px;height:8px;left:50%;bottom:22%;transform:translateX(-50%);border-radius:0 0 12px 12px;background:transparent;border:3px solid #111827;border-top:0}
+.face.m1::after{border-radius:12px 12px 0 0;border:3px solid #111827;border-bottom:0;bottom:16%}
+.face.m2::after{width:14px;border-radius:8px 8px 0 0;border:3px solid #111827;border-bottom:0;bottom:18%}
+.face.m3::after{width:16px;height:3px;border:0;background:#111827;bottom:26%;border-radius:2px}
+.face.m5::after{width:24px;height:12px;background:#fff;border:3px solid #111827;border-top:0}
+.face.sm{width:24px;height:24px;border-width:1.5px}.face.sm::before{width:2px;height:3px;left:30%;top:32%;box-shadow:8px 0 0 #111827}.face.sm::after{width:10px;height:4px;border-width:2px;bottom:22%}.face.sm.m3::after{height:2px;border:0}
+.rt{display:flex;gap:8px;justify-content:center}
+.word{text-align:center;font-family:var(--sans);font-size:16px;color:#111827;min-height:24px;margin-top:8px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(328px,1fr));gap:24px 32px;align-items:start}
+.stg{display:flex;flex-direction:column;gap:8px}.stg .cap{font-family:var(--mono);font-size:12px;color:var(--text-2)}.stg .cap b{color:var(--text);font-weight:500}
+.logline{font-family:var(--mono);font-size:12px;color:var(--text-2);min-height:16px;margin-top:8px}
+.spk{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:8px;background:#FEF1F7;color:#F70F79}.spk svg{width:18px;height:18px}
+.star{color:#F59E0B;font-size:18px;letter-spacing:2px}
+__NAVCSS__</style>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · Stat · Rating · Divider</small></div></div>
+    __SITENAV__
+    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#stat">Stat</a><a href="#rating">Rating</a><a href="#divider">Divider</a><a href="#dont">Don't</a><a href="#figma">Figma changes</a></nav>
+    <div class="rail-foot">Rendered from tokens.json · spec in components/stat-rating-divider.md</div>
+  </aside>
+  <main class="main">
+    <header id="overview">
+      <div class="eyebrow">Core components</div><h1>Stat · Rating · Divider</h1>
+      <p class="lede">Three small things on almost every screen, so they must be exactly the same everywhere: a number with its name, how the customer felt — as faces, not stars — and the line between things.</p>
+      <div class="meta"><span class="chip status">Proposed</span><span class="chip">Tier 1 · Core</span><span class="chip"><code>SnabbitStat</code> · <code>SnabbitRating</code> · <code>SnabbitDivider</code></span><span class="chip">Label above value</span><span class="chip">Faces, not stars</span></div>
+    </header>
+
+    <section id="stat">
+      <header><div class="eyebrow">A number with its name</div><h2>Stat</h2><p>Label first, value second — she reads the name before the number. Values follow the Amount rules. A delta appears only when the comparison is one she can act on (<em>vs last week</em>), coloured and arrowed. At most four Stats in a Card, 2 × 2 with a Divider between rows.</p></header>
+      <div class="stage"><div class="grid2" id="stat-grid"></div></div>
+    </section>
+
+    <section id="rating">
+      <header><div class="eyebrow">How did it go?</div><h2>Rating</h2><p><b>Input</b>: five faces from the illustration layer, 48 dp; tap one and its word appears and is spoken. <b>Display</b>: a number to one decimal and <em>one</em> face for its band — never five tiny stars. Under five ratings the display says <em>New</em>.</p></header>
+      <div class="demo" style="align-items:flex-start;flex-wrap:wrap;gap:28px"><div class="cardx"><div style="font-size:18px;font-weight:500;margin-bottom:16px">How was the job?</div><div class="rt" id="rt"></div><div class="word" id="word">&nbsp;</div><button id="send" disabled style="margin-top:12px;height:48px;width:100%;border-radius:10px;border:0;background:#F3F4F6;color:#9CA3AF;font:500 16px var(--sans)">Send</button></div><div class="stg"><div class="grid2" id="disp-grid" style="grid-template-columns:1fr"></div><div class="logline" id="log">tap a face</div></div></div>
+    </section>
+
+    <section id="divider">
+      <header><div class="eyebrow">The line between things</div><h2>Divider</h2><p>1 dp, never thicker, never decoration. <b>row</b> inset 16 dp between ListItems; <b>section</b> full-bleed with 16 dp space; <b>labelled</b> to group a list by day or status. Never two in a row, never under a heading or above a Button, never where a Card edge already divides.</p></header>
+      <div class="stage"><div class="grid2" id="div-grid"></div></div>
+    </section>
+
+    <section id="dont">
+      <header><div class="eyebrow">Common mistakes</div><h2>Don't</h2></header>
+      <div class="stage"><div class="grid2" id="dont-grid"></div></div>
+    </section>
+
+    <section id="figma">
+      <header><div class="eyebrow">Reconciliation</div><h2>What changes in Figma</h2></header>
+      <ol class="rules"><li>Value + Metric Card → Stat: Size (S / M / L), Delta, Icon; label above value in every variant.</li><li>Rating → Rating: Form (Input / Display), Value (1–5); five kept Smileys as instances; delete the other ten; display = number + one face.</li><li>Create Divider: Kind (Row / Section / Labelled); replace every hand-drawn 1 dp line in the Lifecycle mocks.</li><li>Table Components → ListItem + Stat S.</li></ol>
+      <p class="sub" style="margin-top:14px">Result: ~14 variants replacing 38 frames.</p>
+    </section>
+  </main>
+</div>
+
+<script id="tokens-json" type="application/json">__TOKENS__</script>
+<script>
+(function(){
+const T=JSON.parse(document.getElementById("tokens-json").textContent); const $=s=>document.querySelector(s);
+const ICO={up:'M205.66,117.66a8,8,0,0,1-11.32,0L136,59.31V216a8,8,0,0,1-16,0V59.31L61.66,117.66a8,8,0,0,1-11.32-11.32l72-72a8,8,0,0,1,11.32,0l72,72A8,8,0,0,1,205.66,117.66Z',dn:'M205.66,149.66l-72,72a8,8,0,0,1-11.32,0l-72-72a8,8,0,0,1,11.32-11.32L120,196.69V40a8,8,0,0,1,16,0V196.69l58.34-58.35a8,8,0,0,1,11.32,11.32Z',coins:'M184,89.57V84c0-25.08-37.83-44-88-44S8,58.92,8,84v40c0,20.89,26.25,37.49,64,42.46V172c0,25.08,37.83,44,88,44s88-18.92,88-44V132C248,111.3,222.58,94.68,184,89.57ZM232,132c0,13.22-30.79,28-72,28-3.73,0-7.43-.13-11.08-.37C170.49,151.77,184,139,184,124V105.74C213.87,110.19,232,122.27,232,132ZM72,150.25V126.46A183.74,183.74,0,0,0,96,128a183.74,183.74,0,0,0,24-1.54v23.79A163,163,0,0,1,96,152,163,163,0,0,1,72,150.25Zm96-40.32V124c0,8.39-12.41,17.4-32,22.87V123.5C148.91,120.37,159.84,115.71,168,109.93ZM96,56c41.21,0,72,14.78,72,28s-30.79,28-72,28S24,97.22,24,84,54.79,56,96,56ZM24,124V109.93c8.16,5.78,19.09,10.44,32,13.57v23.37C36.41,141.4,24,132.39,24,124Zm64,48v-4.17c2.63.1,5.29.17,8,.17,3.88,0,7.67-.13,11.39-.35A121.92,121.92,0,0,0,120,171.41v23.46C100.41,189.4,88,180.39,88,172Zm48,26.25V174.4a179.48,179.48,0,0,0,24,1.6,183.74,183.74,0,0,0,24-1.54v23.79a165.45,165.45,0,0,1-48,0Zm64-3.38V171.5c12.91-3.13,23.84-7.79,32-13.57V172C232,180.39,219.59,189.4,200,194.87Z',spray:'M200,80a8,8,0,0,0,8-8,56.06,56.06,0,0,0-56-56H80A16,16,0,0,0,64,32V80a24,24,0,0,1-24,24,8,8,0,0,0,0,16A40,40,0,0,0,80,80h32v24.62a23.87,23.87,0,0,1-9,18.74L87,136.15a39.79,39.79,0,0,0-15,31.23V224a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V211.47A270.88,270.88,0,0,0,174,80ZM80,32h72a40.08,40.08,0,0,1,39.2,32H80ZM192,211.47V224H88V167.38a23.87,23.87,0,0,1,9-18.74l16-12.79a39.79,39.79,0,0,0,15-31.23V80h27.52A254.86,254.86,0,0,1,192,211.47Z',spk:'M155.51,24.81a8,8,0,0,0-8.42.88L77.25,80H32A16,16,0,0,0,16,96v64a16,16,0,0,0,16,16H77.25l69.84,54.31A8,8,0,0,0,160,224V32A8,8,0,0,0,155.51,24.81ZM144,207.64,84.91,161.69A7.94,7.94,0,0,0,80,160H32V96H80a7.94,7.94,0,0,0,4.91-1.69L144,48.36ZM208,128a39.93,39.93,0,0,1-10,26.46,8,8,0,0,1-12-10.58,24,24,0,0,0,0-31.72,8,8,0,1,1,12-10.58A40,40,0,0,1,208,128Zm40,0a79.9,79.9,0,0,1-20.37,53.34,8,8,0,0,1-11.92-10.67,64,64,0,0,0,0-85.33,8,8,0,1,1,11.92-10.67A79.83,79.83,0,0,1,248,128Z'};
+const svg=n=>`<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="${ICO[n]}"/></svg>`;
+const WORDS=['Very unhappy','Unhappy','Okay','Happy','Very happy'];
+const face=(n,o={})=>`<span class="face m${n} ${o.on?'on':''} ${n===1&&o.on?'bad':''} ${o.sm?'sm':''}" data-n="${n}" role="${o.sm?'img':'radio'}" aria-label="${WORDS[n-1]}"></span>`;
+const stat=(lb,v,o={})=>`<div class="stat ${o.size||'M'}">${lb?`<span class="lb">${o.icon||''}${lb}</span>`:''}<span class="v">${v}${o.face?face(o.face,{on:1,sm:1}):''}</span>${o.d?`<span class="d ${o.d>0?'up':'dn'}">${svg(o.d>0?'up':'dn')}${o.dtext}</span>`:''}</div>`;
+const W=(cap,html)=>`<div class="stg">${html}<div class="cap">${cap}</div></div>`;
+$('#stat-grid').innerHTML=[
+ W('<b>M · 2 × 2 in a Card</b> · Divider between rows · one delta where it helps',`<div class="cardx"><div class="g2">${stat('Earned this week','₹4,250',{d:1,dtext:'₹380 vs last week'})}${stat('Jobs done','14')}</div><div class="dv sec"></div><div class="g2">${stat('Snabbit coins','240',{icon:'<span class="coin"></span>'})}${stat('Rating','4.8',{face:5})}</div></div>`),
+ W('<b>L · hero</b> · Amount L · inline Listen',`<div class="cardx" style="display:flex;align-items:flex-end;justify-content:space-between">${stat('Earned today','₹1,240',{size:'L',d:-1,dtext:'₹200 vs yesterday'})}<span class="spk">${svg('spk')}</span></div>`),
+ W('<b>S · in a ListItem trailing slot</b> · Table Components become this',`<div class="cardx" style="padding:0"><div class="li"><span class="tx">Work (1 hour)</span>${stat('','₹120',{size:'S'})}</div><div class="dv row"></div><div class="li"><span class="tx">Summer bonus</span>${stat('','₹20',{size:'S'})}</div></div>`)].join('');
+let sel=0;function rt(){$('#rt').innerHTML=[1,2,3,4,5].map(n=>face(n,{on:n===sel})).join('');$('#rt').querySelectorAll('.face').forEach(f=>f.onclick=()=>{sel=+f.dataset.n;rt();$('#word').textContent=WORDS[sel-1];const b=$('#send');b.disabled=false;b.style.background='#F70F79';b.style.color='#fff';$('#log').textContent=`chose ${sel} → face fills, others outline · spoken "${WORDS[sel-1]}" · Send enabled`;});}
+rt();
+$('#disp-grid').innerHTML=[W('<b>display</b> · number + one face for the band',`<div class="cardx" style="width:300px;display:flex;flex-direction:column;gap:12px">${[[4.8,5],[4.2,4],[3.7,3],[2.4,1]].map(([v,f])=>`<div style="display:flex;align-items:center;gap:8px;font-size:20px;font-weight:600;font-variant-numeric:tabular-nums">${v}${face(f,{on:1,sm:1})}<span style="font-size:12px;color:#6B7280;font-weight:400;margin-left:auto">${WORDS[f-1]}</span></div>`).join('')}<div style="display:flex;align-items:center;gap:8px;font-size:20px;font-weight:600">New<span style="font-size:12px;color:#6B7280;font-weight:400;margin-left:auto">fewer than 5 ratings</span></div></div>`)].join('');
+$('#div-grid').innerHTML=[
+ W('<b>row</b> · borderSubtle · inset 16 dp',`<div class="cardx" style="padding:0"><div class="li"><span class="tx">Radhika S<span class="sub">Cleaning · 2 hr</span></span></div><div class="dv row"></div><div class="li"><span class="tx">Anagha S<span class="sub">Cooking · 1 hr</span></span></div><div class="dv row"></div><div class="li"><span class="tx">Meera K<span class="sub">Cleaning · 3 hr</span></span></div></div>`),
+ W('<b>section</b> · borderDefault · full bleed · 16 dp above and below',`<div class="cardx"><div style="font-size:16px;font-weight:500">Today</div><div style="font-size:14px;color:#6B7280;margin-top:4px">3 jobs · ₹1,240</div><div class="dv sec"></div><div style="font-size:16px;font-weight:500">This week</div><div style="font-size:14px;color:#6B7280;margin-top:4px">14 jobs · ₹4,250</div></div>`),
+ W('<b>labelled</b> · groups a list by day or status',`<div class="cardx" style="padding:0 0 8px"><div class="dv lab" style="padding:12px 16px 4px">Today</div><div class="li"><span class="tx">Radhika S</span></div><div class="dv lab" style="padding:12px 16px 4px">Yesterday</div><div class="li"><span class="tx">Anagha S</span></div><div class="li"><span class="tx">Meera K</span></div></div>`)].join('');
+$('#dont-grid').innerHTML=[
+ W('',`<div class="cardx"><div class="g2">${stat('','₹4,250')}<div class="stat"><span class="v">14</span><span class="lb">Jobs done</span></div></div><div style="margin-top:8px;color:#6B7280;font-size:12px">Earned this week</div></div>`).replace('<div class="cap"></div>','<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">Value before label, or a label somewhere else. The name comes first, right above its number, every time.</div>'),
+ W('',`<div class="cardx" style="display:flex;align-items:center;gap:12px"><span class="star">★★★★☆</span><span style="font-size:14px;color:#6B7280">4.2 · Rate us 5 stars!</span></div>`).replace('<div class="cap"></div>','<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">Stars, and a plea. A star scale is abstract; a face is a feeling she recognises. The question is <em>How was the job?</em></div>'),
+ W('',`<div class="cardx"><div style="font-size:16px;font-weight:500">Earnings</div><div class="dv sec" style="margin:8px 0"></div><div class="dv sec" style="margin:0 0 8px"></div><div class="li" style="padding:0"><span class="tx">Work (1 hour)</span><b>₹120</b></div><div class="dv sec" style="margin:8px 0"></div><button style="height:48px;width:100%;border-radius:10px;border:0;background:#F70F79;color:#fff;font:500 16px var(--sans)">Withdraw</button></div>`).replace('<div class="cap"></div>','<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">Two dividers in a row, one under a heading, one above the Button. A divider separates peers; headings, Buttons and Card edges already separate.</div>'),
+ W('',`<div class="cardx">${stat('Earnings','₹4,250.00',{d:1,dtext:'+9.83% vs 7-day rolling avg'})}</div>`).replace('<div class="cap"></div>','<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">Decimals on rupees and a delta she cannot act on. <em>₹4,250 · ↑ ₹380 vs last week</em>.</div>')].join('');
+const links=[...document.querySelectorAll('#nav a')];const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-20% 0px -70% 0px'});targets.forEach(t=>io.observe(t));}
+})();
+</script>

@@ -36,3 +36,4 @@ One spec per core component. `button.md` is the template. Status per component: 
 | PageIndicator | Proposed | `page-indicator.md` | `site/components/page-indicator.html` |
 | MediaCapture | Proposed | `media-capture.md` | `site/components/media-capture.html` |
 | MapMarker · MapSnippet | Proposed | `map-marker.md` | `site/components/map-marker.html` |
+| Stat · Rating · Divider | Proposed | `stat-rating-divider.md` | `site/components/stat-rating-divider.html` |

@@ -32,6 +32,7 @@ Status: **seed**. Populated fully during the Button, Tab bar and Job-alert specs
 | `info` | Information | regular | Banner `info` tone only — never as an (i) tooltip trigger |
 | `caret-right` | Navigate into | regular | ListItem trailing |
 | `calendar-blank` | A date / choose a day | regular | Leave, shift date rows |
+| `arrow-up` / `arrow-down` | Change versus a period (Stat delta) | regular | Stat |
 | `arrow-right` | Do this → get that (gain nudge) | regular | Nudge leading icon |
 | `backspace` | Delete a digit (hold to clear) | regular | NumericKeypad |
 | `caret-down` | Expand / collapse | regular · rotates 180° when open | Accordion header |
