@@ -38,6 +38,7 @@ briefs/         Tier 3 / change-to-core briefs (template in EXTENDING.md)
 references/     reference screenshots + their reference reads
 foundations/    icons.md (Phosphor meaning register) · assets.md (illustration style lock + register)
 DECISIONS.md    dated design decisions and their consequences
+ROADMAP.md      what is done and what is left (components, foundations, patterns, governance) — update in the same commit as the work
 audit/          FIGMA_AUDIT.md — tier classification of every Figma frame · BENCHMARK.md — gaps vs M3/Base/Asphalt · frames.json
 site/           generated documentation site
   build.py               tokens.json + template.html → index.html

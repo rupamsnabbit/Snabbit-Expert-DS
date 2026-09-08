@@ -26,6 +26,8 @@ Status: **seed**. Populated fully during the Button, Tab bar and Job-alert specs
 | `check-circle` | Success | fill | Banner, Toast, celebration |
 | `info` | Information | regular | Banner `info` tone only — never as an (i) tooltip trigger |
 | `caret-right` | Navigate into | regular | ListItem trailing |
+| `caret-down` | Expand / collapse | regular · rotates 180° when open | Accordion header |
+| `sun` | Summer / daytime bonus | regular | Breakdown rows (replaces the 🌞 emoji) |
 | `caret-left` | Back | regular | HeaderNav |
 | `arrow-clockwise` | Retry / refresh | regular | Error states |
 | `camera` | Take photo / selfie | regular | Check-in, documents |

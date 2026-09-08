@@ -1,0 +1,434 @@
+<meta charset="utf-8">
+<title>Snabbit Expert Roadmap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --bg-2:#F9FAFB; --bg-3:#F3F4F6;
+  --text:#111827; --text-body:#374151; --text-2:#6B7280; --text-3:#9CA3AF;
+  --border:#E5E7EB; --border-subtle:#F3F4F6;
+  --brand:#F70F79; --brand-wash:#FEF1F7; --brand-ink:#97094A;
+  --ok:#059669; --ok-wash:#ECFDF5; --focus:#3B82F6;
+  --sans:"Outfit",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+    --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+    --border:#374151; --border-subtle:#1F2937;
+    --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+    --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+  --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+  --border:#374151; --border-subtle:#1F2937;
+  --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+  --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--text-body);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+code{font-family:var(--mono);font-size:.85em;background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--text)}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+.shell{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}
+.rail{position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--border);padding:24px 16px 32px;background:var(--bg);display:flex;flex-direction:column;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;padding:0 8px}
+.brand-mark{width:28px;height:28px;border-radius:8px;background:var(--brand);display:grid;place-items:center;flex:none}
+.brand-mark span{width:12px;height:12px;border-radius:3px;background:#fff;transform:rotate(45deg)}
+.brand b{font-weight:600;color:var(--text);font-size:15px;line-height:1.2;display:block}
+.brand small{color:var(--text-2);font-size:12px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:block;padding:6px 8px;border-radius:6px;text-decoration:none;color:var(--text);font-size:13.5px;font-weight:500}
+.nav a.sub{font-weight:400;color:var(--text-body);padding-left:14px;font-size:13px}
+.nav a.sub b{font-family:var(--mono);font-weight:500;color:var(--text-3);font-size:11.5px;margin-right:2px}
+.nav a:hover{background:var(--bg-2)}
+.nav a.on{background:var(--brand-wash);color:var(--brand-ink)}
+.rail-foot{margin-top:auto;padding:0 8px;font-size:12px;color:var(--text-3);line-height:1.5}
+.main{padding:40px 56px 96px;max-width:860px;width:100%}
+.eyebrow{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);font-weight:600}
+h1{font-size:40px;line-height:1.1;font-weight:600;color:var(--text);margin:8px 0 12px;letter-spacing:-.015em;text-wrap:balance}
+.lede{font-size:18px;color:var(--text-2);max-width:60ch;margin:0 0 8px}
+.lede strong{color:var(--text);font-weight:500}
+h2{font-size:26px;line-height:1.2;font-weight:600;color:var(--text);margin:72px 0 16px;letter-spacing:-.01em;text-wrap:balance;padding-top:24px;border-top:1px solid var(--border)}
+h3{font-size:20px;font-weight:600;color:var(--text);margin:48px 0 8px;letter-spacing:-.005em}
+h3::before{content:"";display:block;width:32px;height:3px;background:var(--brand);border-radius:2px;margin-bottom:14px}
+p{margin:0 0 14px;max-width:66ch}
+h3 + p{font-size:17px;color:var(--text);font-weight:500}
+p.why{color:var(--text-2);font-size:15px;padding-left:14px;border-left:2px solid var(--border)}
+p.why::before{content:"Why · ";color:var(--text-3);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+p.lbl{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2);font-weight:600;margin:22px 0 8px}
+strong{color:var(--text);font-weight:600}
+em{font-style:italic}
+ul,ol{margin:0 0 14px;padding-left:0;list-style:none;max-width:68ch}
+ul li{position:relative;padding-left:20px;margin:6px 0;font-size:15.5px}
+ul li::before{content:"";position:absolute;left:0;top:11px;width:9px;height:2px;background:var(--brand)}
+ul li.chk{padding-left:30px}
+ul li.chk::before{width:16px;height:16px;top:4px;background:var(--bg);border:1.5px solid var(--text-3);border-radius:4px}
+ol{counter-reset:s}
+ol li{counter-increment:s;display:grid;grid-template-columns:32px 1fr;gap:12px;margin:10px 0;font-size:15.5px}
+ol li::before{content:counter(s);width:28px;height:28px;border-radius:50%;background:var(--brand-wash);color:var(--brand-ink);font-weight:600;font-size:13px;display:grid;place-items:center;margin-top:1px}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px;margin:8px 0 20px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);font-weight:500;padding:10px 14px;background:var(--bg-2);border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:10px 14px;border-bottom:1px solid var(--border-subtle);vertical-align:top;color:var(--text-body)}
+tr:last-child td{border-bottom:0}
+td:first-child{color:var(--text);font-weight:500;white-space:nowrap}
+hr{display:none}
+
+.sitenav{display:flex;flex-direction:column;gap:2px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.sitenav .grp{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);padding:10px 8px 4px;font-weight:500}
+.sitenav a{display:block;padding:5px 8px;border-radius:6px;text-decoration:none;color:var(--text-body);font-size:13.5px;border:0}
+.sitenav a:hover{background:var(--bg-2);color:var(--text)} .sitenav a.on{color:var(--brand-ink);background:var(--brand-wash);font-weight:500}
+@media (max-width:900px){.sitenav{flex-direction:row;flex-wrap:wrap;gap:4px;border-bottom:0;padding-bottom:0}.sitenav .grp{display:none}}
+
+@media (max-width:900px){
+  .shell{grid-template-columns:1fr}
+  .rail{position:static;height:auto;border-right:0;border-bottom:1px solid var(--border);padding:16px}
+  .nav{flex-direction:row;flex-wrap:wrap;gap:4px} .nav a.sub{padding-left:8px} .rail-foot{display:none}
+  .main{padding:32px 20px 80px} h1{font-size:32px} h2{margin-top:56px}
+}
+</style>
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Roadmap</small></div></div>
+    <nav class="sitenav" aria-label="Site"><div class="grp">Foundations</div><a href="index.html">Tokens</a><a href="principles.html">Principles</a><a href="extending.html">Extending</a><a href="icons.html">Icons</a><a href="assets.html">Assets</a><div class="grp">Components</div><a href="components/button.html">Button</a><a href="components/icon-button.html">IconButton</a><a href="components/tag.html">Tag</a><a href="components/text-field.html">TextField</a><a href="components/selection-controls.html">Checkbox · Radio · Switch</a><a href="components/amount.html">Amount</a><a href="components/timer.html">Timer</a><a href="components/feedback.html">Banner · Toast · Snackbar</a><a href="components/chip.html">Chip</a><a href="components/avatar.html">Avatar</a><a href="components/badge.html">Badge</a><a href="components/card.html">Card</a><a href="components/list-item.html">ListItem</a><a href="components/selection-card.html">SelectionCard</a><a href="components/bottom-sheet.html">BottomSheet</a><a href="components/header-nav.html">HeaderNav</a><a href="components/bottom-tab-bar.html">BottomTabBar</a><a href="components/progress-bar.html">ProgressBar</a><a href="components/stepper.html">Stepper</a><a href="components/coachmark.html">Coachmark</a><a href="components/sos-control.html">SOSControl</a><a href="components/accordion.html">Accordion</a><div class="grp">Research</div><a href="benchmark.html">Benchmark</a><a href="audit.html">Figma audit</a><a class="on" href="roadmap.html">Roadmap</a></nav><nav class="nav" id="nav"><a href="#done-22-pages-29-of-46-core-components">Done — 22 pages · 29 of 46 core components</a><a href="#to-do-components-17-in-the-agreed-order">To do — components (17), in the agreed order</a><a href="#to-do-foundations-5-of-7">To do — foundations (5 of 7)</a><a href="#to-do-patterns-0-of-10">To do — patterns (0 of 10)</a><a href="#to-do-governance-0-of-4">To do — governance (0 of 4)</a><a href="#open-items">Open items</a></nav>
+    <div class="rail-foot">Snabbit Expert Design System · generated from ROADMAP.md</div>
+  </aside>
+  <main class="main">
+    <header>
+      <div class="eyebrow">Snabbit Expert · Mobile</div>
+      <h1>Roadmap</h1>
+      <p class="lede">What is done and what is left, against the 46-component core set in `audit/BENCHMARK.md`. Updated in the same commit as the work. Status meanings: **Proposed** (spec + live page exist) → **Reconciled** (Figma matches) → **Stable** (package ships it).</p>
+    </header>
+    <h2 id="done-22-pages-29-of-46-core-components">Done — 22 pages · 29 of 46 core components</h2>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Page</th>
+<th>Covers</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Button</td>
+<td>Button (incl. hold-to-confirm)</td>
+<td>Proposed</td>
+</tr>
+<tr>
+<td>2</td>
+<td>IconButton</td>
+<td>IconButton, allowed-icon set</td>
+<td>Proposed</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Tag</td>
+<td>Tag</td>
+<td>Proposed</td>
+</tr>
+<tr>
+<td>4</td>
+<td>TextField</td>
+<td>TextField (text, phone, OTP, amount, search)</td>
+<td>Proposed</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Checkbox · Radio · Switch</td>
+<td>three selection controls</td>
+<td>Proposed</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Amount</td>
+<td>Amount (₹, tabular, sizes)</td>
+<td>Proposed</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Timer</td>
+<td>Timer (countdown, deadline)</td>
+<td>Proposed</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Banner · Toast · Snackbar</td>
+<td>Banner (incl. <strong>Offline banner</strong>), Toast, <strong>Snackbar with action</strong></td>
+<td>Proposed</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Chip</td>
+<td>Chip (filter, input)</td>
+<td>Proposed</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Avatar</td>
+<td>Avatar</td>
+<td>Proposed</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Badge</td>
+<td>Badge (dot, count, promo), AchievementBadge</td>
+<td>Proposed</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Card</td>
+<td>Card</td>
+<td>Proposed</td>
+</tr>
+<tr>
+<td>13</td>
+<td>ListItem</td>
+<td>ListItem</td>
+<td>Proposed</td>
+</tr>
+<tr>
+<td>14</td>
+<td>SelectionCard</td>
+<td>SelectionCard</td>
+<td>Proposed</td>
+</tr>
+<tr>
+<td>15</td>
+<td>BottomSheet</td>
+<td>BottomSheet — info, <strong>confirm (Dialog)</strong>, select (<strong>Menu/Select</strong>), form, <strong>permission</strong></td>
+<td>Proposed</td>
+</tr>
+<tr>
+<td>16</td>
+<td>HeaderNav</td>
+<td>HeaderNav, HeaderAction</td>
+<td>Proposed</td>
+</tr>
+<tr>
+<td>17</td>
+<td>BottomTabBar</td>
+<td>BottomTabBar</td>
+<td>Proposed</td>
+</tr>
+<tr>
+<td>18</td>
+<td>ProgressBar</td>
+<td>ProgressBar; compositions TierProgressCard, WeeklyGoalCard, TierRail</td>
+<td>Proposed</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Stepper</td>
+<td>Stepper (rail, list)</td>
+<td>Proposed</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Coachmark</td>
+<td>Coachmark (replaces Tooltip)</td>
+<td>Proposed</td>
+</tr>
+<tr>
+<td>21</td>
+<td>SOSControl</td>
+<td>SOSControl, active screen, SafetyStrip</td>
+<td>Proposed</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Accordion</td>
+<td>Accordion (faq, breakdown)</td>
+<td>Proposed</td>
+</tr>
+</tbody>
+</table></div>
+<p>Foundations done: tokens (<code>tokens/</code>), principles, extending, icons register, assets (two layers). Research done: Figma audit (204 frames), benchmark.</p>
+<hr />
+<h2 id="to-do-components-17-in-the-agreed-order">To do — components (17), in the agreed order</h2>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Component</th>
+<th>Priority</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>23</td>
+<td><strong>DatePicker</strong> (+ time)</td>
+<td>P1</td>
+<td>Shift date, leave. Probably a BottomSheet <code>select</code> with a calendar strip; time is a Select.</td>
+</tr>
+<tr>
+<td>24</td>
+<td><strong>Empty state</strong></td>
+<td>P0</td>
+<td>Illustration + one line + one action. One of the five mandatory states (P5).</td>
+</tr>
+<tr>
+<td>25</td>
+<td><strong>Skeleton / Spinner</strong></td>
+<td>P0</td>
+<td>Loading for lists and cards; spinner only inside Button.</td>
+</tr>
+<tr>
+<td>26</td>
+<td><strong>Voice prompt</strong></td>
+<td>P0</td>
+<td>The spoken-guidance bubble: play/replay, playing state, language. Every spec references it.</td>
+</tr>
+<tr>
+<td>27</td>
+<td>Tabs / Segmented control</td>
+<td>P1</td>
+<td>Earnings today/week/month; ≤ 3 segments, icon + label.</td>
+</tr>
+<tr>
+<td>28</td>
+<td>Nudge</td>
+<td>P1</td>
+<td>Consequence strip (Figma <code>1581:6683</code>): <em>If not accepted −50</em>, <em>Login by 6:50 +1 coin</em>. Sits with the job-alert pattern.</td>
+</tr>
+<tr>
+<td>29</td>
+<td>Numeric keypad</td>
+<td>P1</td>
+<td>OTP, amounts, phone. Large keys.</td>
+</tr>
+<tr>
+<td>30</td>
+<td>Pagination dots</td>
+<td>P1</td>
+<td>Carousels, onboarding.</td>
+</tr>
+<tr>
+<td>31</td>
+<td>Media container</td>
+<td>P1</td>
+<td>Photo capture: loading, error, retake.</td>
+</tr>
+<tr>
+<td>32</td>
+<td>Map marker</td>
+<td>P1</td>
+<td>Job, hub, expert position.</td>
+</tr>
+<tr>
+<td>33</td>
+<td>Divider</td>
+<td>—</td>
+<td>Trivial; fold into ListItem/Card pages or one small page.</td>
+</tr>
+<tr>
+<td>34</td>
+<td>Rating</td>
+<td>—</td>
+<td>Post-job rating the expert gives/receives.</td>
+</tr>
+<tr>
+<td>35</td>
+<td>Stat</td>
+<td>—</td>
+<td>Label + Amount + delta; earnings tiles.</td>
+</tr>
+<tr>
+<td>36</td>
+<td>How-to clip</td>
+<td>P1</td>
+<td>10-second looping video with voice (research-validated channel).</td>
+</tr>
+<tr>
+<td>37</td>
+<td>Shield (Kavach) card</td>
+<td>Composition</td>
+<td>Card + SafetyStrip + <em>Start Shield</em>; after Voice prompt.</td>
+</tr>
+<tr>
+<td>38</td>
+<td>Job-alert sheet</td>
+<td>Composition</td>
+<td>Timer + Amount + Button + Nudge; written as the first pattern.</td>
+</tr>
+<tr>
+<td>39</td>
+<td>FAB (map controls)</td>
+<td>P1</td>
+<td>IconButton <code>L</code> floating variant — may collapse into IconButton.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Removed from the count (decided): Tooltip (→ Coachmark), Progress Buttons (→ Button hold state), Popover, Data table, Drawer, Breadcrumb.</p>
+<hr />
+<h2 id="to-do-foundations-5-of-7">To do — foundations (5 of 7)</h2>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Foundation</th>
+<th>Why it blocks</th>
+<th>Depends on</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Sound &amp; haptics register</strong></td>
+<td>Every spec names sounds (<em>coin</em>, <em>success</em>, <em>sos</em>) and haptics (<em>light</em>, <em>medium</em>, <em>heavy</em>) that exist nowhere as a list</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Motion tokens</strong></td>
+<td>Durations and curves are hard-coded per spec (100, 150, 200, 300, 400 ms)</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Content guide</strong></td>
+<td>Voice, four languages, spoken-copy rules, vocabulary in one place</td>
+<td>Voice prompt</td>
+</tr>
+<tr>
+<td><strong>Accessibility standard</strong></td>
+<td>Contrast, targets, screen reader, reduced motion — currently repeated per spec</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Indic type rules</td>
+<td>Line-height ×1.15 exists in tokens; wrap/length rules per component not consolidated</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="to-do-patterns-0-of-10">To do — patterns (0 of 10)</h2>
+<p>New-job alert (reference case, first) · Check-in / check-out · Payout · Onboarding &amp; go-live · Error recovery · Permission asking · First run (Coachmark tours) · Earnings breakdown · SOS flow (drawn in SOSControl; pattern adds what happens after) · Offline.</p>
+<hr />
+<h2 id="to-do-governance-0-of-4">To do — governance (0 of 4)</h2>
+<p>Component status lifecycle in practice (nothing is Reconciled yet) · Changelog · Token/spec lint · Design-review step from <code>EXTENDING.md</code>.</p>
+<hr />
+<h2 id="open-items">Open items</h2>
+<ul>
+<li><code>illustration.purple</code> hex — waiting on a value from the Snabbit Assets file.</li>
+<li><code>PRINCIPLES.md</code> reference-case line still says the Timer is a ring around the Button; the Timer spec places it above. Fix when the job-alert pattern is written.</li>
+<li>Home header: check the cluster order and the coin / red-card assets against the live app (screenshot requested).</li>
+<li>Figma reconciliation: every spec lists its changes; none applied yet. Until Figma matches, designers still draw from old frames.</li>
+<li>Field validation: checklist rows 15–16 (copy heard aloud in four languages; device review with experts) are open on every component.</li>
+</ul>
+  </main>
+</div>
+<script>
+(function(){
+const links=[...document.querySelectorAll('#nav a')];
+const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-10% 0px -80% 0px'});
+  targets.forEach(t=>io.observe(t));
+}
+})();
+</script>

@@ -25,3 +25,4 @@ One spec per core component. `button.md` is the template. Status per component: 
 | Stepper | Proposed | `stepper.md` | `site/components/stepper.html` |
 | Coachmark | Proposed | `coachmark.md` | `site/components/coachmark.html` |
 | SOSControl | Proposed | `sos-control.md` | `site/components/sos-control.html` |
+| Accordion | Proposed | `accordion.md` | `site/components/accordion.html` |

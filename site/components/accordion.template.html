@@ -1,0 +1,103 @@
+<meta charset="utf-8">
+<title>Snabbit Expert Accordion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>__BASECSS__
+.acc{background:#fff;border:1px solid #F3F4F6;border-radius:12px;overflow:hidden;font-family:var(--sans);color:#111827;width:328px}
+.acc+.acc{margin-top:8px}
+.acc .hd{display:flex;align-items:center;gap:8px;min-height:56px;padding:4px 8px 4px 16px;cursor:pointer;background:transparent;border:0;width:100%;text-align:left;font-family:var(--sans)}
+.acc .hd:active{background:#F9FAFB}
+.acc .hd .q{flex:1;min-width:0;font-size:16px;line-height:24px;font-weight:500;color:#374151}
+.acc.open .hd .q{color:#111827}
+.acc .hd .sum{font-size:16px;font-weight:600;font-variant-numeric:tabular-nums;color:#111827;white-space:nowrap}
+.acc .spk{width:48px;height:48px;border-radius:10px;background:#FEF1F7;color:#F70F79;display:grid;place-items:center;flex:none;border:0;cursor:pointer}.acc .spk svg{width:20px;height:20px}
+.acc .spk.on{background:#F70F79;color:#fff}
+.acc .car{width:24px;height:24px;color:#6B7280;flex:none;transition:transform .2s;margin-right:4px}.acc .car svg{width:24px;height:24px}
+.acc.open .car{transform:rotate(180deg)}
+.acc .bd{display:grid;grid-template-rows:0fr;transition:grid-template-rows .2s ease-out}.acc.open .bd{grid-template-rows:1fr}
+.acc .bd>div{overflow:hidden}
+.acc .bdin{border-top:1px solid #F3F4F6;padding:12px 16px 16px;font-size:14px;line-height:20px;color:#374151;display:flex;flex-direction:column;gap:10px}
+.acc .lnk{color:#F70F79;font-weight:500;font-size:14px;align-self:flex-start;padding:10px 0;margin:-6px 0}
+.acc .big{text-align:center;font-size:32px;line-height:40px;font-weight:600;font-variant-numeric:tabular-nums;color:#111827;padding:4px 0 12px;position:relative}
+.acc .big::after{content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50%) rotate(45deg);width:10px;height:10px;background:#fff;border-right:1px solid #E5E7EB;border-bottom:1px solid #E5E7EB}
+.acc .rows{border-top:1px solid #E5E7EB;margin:0 -16px -16px}
+.acc .rw{display:flex;align-items:center;gap:8px;min-height:48px;padding:0 16px;font-size:14px;color:#374151}.acc .rw+.rw{border-top:1px solid #F3F4F6}.acc .rw .am{margin-left:auto;font-weight:600;font-variant-numeric:tabular-nums;color:#111827}.acc .rw svg{width:16px;height:16px;color:#6B7280}
+.acc .rw.cond{background:#EFF6FF;color:#2563EB}.acc .rw.cond svg{color:#2563EB}.acc .rw.cond .am{color:#2563EB}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(328px,1fr));gap:24px 32px;align-items:start}
+.stg{display:flex;flex-direction:column;gap:8px}.stg .cap{font-family:var(--mono);font-size:12px;color:var(--text-2)}.stg .cap b{color:var(--text);font-weight:500}
+.logline{font-family:var(--mono);font-size:12px;color:var(--text-2);min-height:16px;margin-top:8px}
+@media (prefers-reduced-motion:reduce){.acc .bd,.acc .car{transition:none}}
+__NAVCSS__</style>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · Accordion</small></div></div>
+    __SITENAV__
+    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#kinds">Kinds</a><a href="#live">Live</a><a href="#rules">Rules</a><a href="#dont">Don't</a><a href="#figma">Figma changes</a></nav>
+    <div class="rail-foot">Rendered from tokens.json · spec in components/accordion.md</div>
+  </aside>
+  <main class="main">
+    <header id="overview">
+      <div class="eyebrow">Core component</div><h1>Accordion</h1>
+      <p class="lede">A row that opens to say more — and reads it aloud. Two jobs: answer a question, or show a breakdown of an amount. It hides information, never actions.</p>
+      <div class="meta"><span class="chip status">Proposed</span><span class="chip">Tier 1 · Core</span><span class="chip"><code>SnabbitAccordion</code></span><span class="chip">faq · breakdown</span><span class="chip">Speaker on every row</span></div>
+    </header>
+
+    <section id="kinds">
+      <header><div class="eyebrow">Two jobs</div><h2>Kinds</h2><p><b>faq</b>: the question she would ask, a speaker that reads the answer, a caret. <b>breakdown</b>: title and Amount M collapsed; open, the Amount L above its line rows, one of which may be <em>conditional</em> — <code>bgInfo</code> wash, clock, the condition — meaning <em>you get this if…</em></p></header>
+      <div class="stage"><div class="grid2" id="kinds-grid"></div></div>
+    </section>
+
+    <section id="live">
+      <header><div class="eyebrow">Try it</div><h2>Live</h2><p>One FAQ open at a time in a group; the speaker reads the body (opening it if closed) and only one speaker plays across the screen. Breakdown items are independent.</p></header>
+      <div class="demo" style="align-items:flex-start;flex-wrap:wrap;gap:28px"><div id="live-grp"></div><div class="card" style="max-width:320px"><h4>Log</h4><div class="logline" id="log">tap a header or a speaker</div></div></div>
+    </section>
+
+    <section id="rules">
+      <header><div class="eyebrow">Limits</div><h2>Rules</h2></header>
+      <ol class="rules"><li>No actions inside. One tertiary link at most (<em>Ask Saathi ›</em>), never a Button. If it needs a tap, it goes on the screen (P2).</li><li>Never nested; never more than 6 items in a group — beyond that it is a search or a Select.</li><li>Whole header toggles; the speaker is its own 48 dp target and does not toggle.</li><li>A breakdown that is the only thing on the screen opens by default; in a list it starts collapsed.</li><li>FAQ titles are questions she would ask, ≤ 48 chars. Bodies end with what to do.</li><li>Phosphor only in row labels — the <em>Summer Bonus 🌞</em> emoji becomes <code>sun</code>.</li></ol>
+    </section>
+
+    <section id="dont">
+      <header><div class="eyebrow">Common mistakes</div><h2>Don't</h2></header>
+      <div class="stage"><div class="grid2" id="dont-grid"></div></div>
+    </section>
+
+    <section id="figma">
+      <header><div class="eyebrow">Reconciliation</div><h2>What changes in Figma</h2></header>
+      <ol class="rules"><li>Accordion + Earnings Accordion → Accordion: Kind (FAQ / Breakdown), State (Collapsed / Open), Speaker (default on), Link.</li><li>Add Accordion / Row for breakdown lines with a Conditional boolean; replace the emoji with a Phosphor sun instance.</li><li>Speaker → IconButton M tertiary brand instance; caret → 24 dp caret-down rotated in Open.</li><li>Collapsed Earnings header → one line, Amount M right.</li></ol>
+      <p class="sub" style="margin-top:14px">Result: ~8 variants replacing 4 — one component where there were two.</p>
+    </section>
+  </main>
+</div>
+
+<script id="tokens-json" type="application/json">__TOKENS__</script>
+<script>
+(function(){
+const T=JSON.parse(document.getElementById("tokens-json").textContent); const $=s=>document.querySelector(s);
+const ICO={car:'M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z',spk:'M155.51,24.81a8,8,0,0,0-8.42.88L77.25,80H32A16,16,0,0,0,16,96v64a16,16,0,0,0,16,16H77.25l69.84,54.31A8,8,0,0,0,160,224V32A8,8,0,0,0,155.51,24.81ZM32,96H72v64H32ZM144,207.64,88,164.09V91.91l56-43.55Zm54-106.08a40,40,0,0,1,0,52.88,8,8,0,0,1-12-10.58,24,24,0,0,0,0-31.72,8,8,0,0,1,12-10.58ZM248,128a79.9,79.9,0,0,1-20.37,53.34,8,8,0,0,1-11.92-10.67,64,64,0,0,0,0-85.33,8,8,0,1,1,11.92-10.67A79.83,79.83,0,0,1,248,128Z',spkf:'M160,32.25V223.69a8.29,8.29,0,0,1-3.91,7.18,8,8,0,0,1-9-.56l-65.57-51A4,4,0,0,1,80,176.16V79.84a4,4,0,0,1,1.55-3.15l65.57-51a8,8,0,0,1,10,.16A8.27,8.27,0,0,1,160,32.25ZM60,80H32A16,16,0,0,0,16,96v64a16,16,0,0,0,16,16H60a4,4,0,0,0,4-4V84A4,4,0,0,0,60,80Zm126.77,20.84a8,8,0,0,0-.72,11.3,24,24,0,0,1,0,31.72,8,8,0,1,0,12,10.58,40,40,0,0,0,0-52.88A8,8,0,0,0,186.74,100.84Zm40.89-26.17a8,8,0,1,0-11.92,10.66,64,64,0,0,1,0,85.34,8,8,0,1,0,11.92,10.66,80,80,0,0,0,0-106.66Z',sun:'M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z',clock:'M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z'};
+const svg=n=>`<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="${ICO[n]}"/></svg>`;
+const faq=(q,paras,o={})=>`<div class="acc faq ${o.open?'open':''}"><button class="hd" aria-expanded="${!!o.open}"><span class="q">${q}</span><span class="spk ${o.speaking?'on':''}" role="button" aria-label="Read aloud">${svg(o.speaking?'spkf':'spk')}</span><span class="car">${svg('car')}</span></button><div class="bd"><div><div class="bdin">${paras.map(p=>`<p style="margin:0">${p}</p>`).join('')}${o.link?`<a class="lnk">Ask Saathi ›</a>`:''}</div></div></div></div>`;
+const rows=[['Work (1 hour)','₹120'],['Check in by 7:45 pm','₹5','cond'],['Summer bonus (1 hour)','₹20','sun'],['OT (15 min)','₹40']];
+const bd=(title,amt,o={})=>`<div class="acc bd-k ${o.open?'open':''}"><button class="hd" aria-expanded="${!!o.open}"><span class="q" style="font-weight:400;color:#6B7280;font-size:14px">${title}</span>${o.open?'':`<span class="sum">${amt}</span>`}<span class="spk" role="button" aria-label="Read aloud">${svg('spk')}</span><span class="car">${svg('car')}</span></button><div class="bd"><div><div class="bdin" style="border-top:0;padding-top:0"><div class="big">${amt}</div><div class="rows">${rows.map(([l,a,k])=>`<div class="rw ${k==='cond'?'cond':''}">${k==='cond'?svg('clock'):k==='sun'?svg('sun'):''}${l}<span class="am">${a}</span></div>`).join('')}</div></div></div></div></div>`;
+const W=(cap,html)=>`<div class="stg">${html}<div class="cap">${cap}</div></div>`;
+const P1=['If you log out early or deny a job in your last hour, your MinG for that time is reduced. The deduction is based on the time you did not work.','To avoid this, complete your full shift and accept jobs in your last hour.'];
+$('#kinds-grid').innerHTML=[
+ W('<b>faq · collapsed</b> · question · speaker M tertiary · caret',faq('What are adjustments?',['Adjustments are small changes to your earnings after a job — a bonus added or a penalty removed.'])),
+ W('<b>faq · open</b> · body ≤ 3 paragraphs · ends with what to do · one tertiary link',faq('What is Last Hour MinG Loss?',P1,{open:1,link:1})),
+ W('<b>breakdown · collapsed</b> · title + Amount M on one line',bd('You will earn','₹150')),
+ W('<b>breakdown · open</b> · Amount L · rows · one conditional row (bgInfo, clock)',bd('You will earn','₹150',{open:1}))].join('');
+// live
+const G=$('#live-grp');G.innerHTML=faq('What are adjustments?',['Adjustments are small changes to your earnings after a job — a bonus added or a penalty removed.'])+faq('What is Last Hour MinG Loss?',P1,{link:1})+faq('Why did I get a red card?',['A red card is given for a no-show or a very late check-in.','Five red cards in a month lower your tier. Check in on time to avoid them.'])+`<div style="height:16px"></div>`+bd('You will earn','₹150')+bd('Yesterday','₹640');
+function wire(){G.querySelectorAll('.acc').forEach(a=>{const hd=a.querySelector('.hd'),spk=a.querySelector('.spk');
+ hd.onclick=e=>{if(e.target.closest('.spk'))return;const open=!a.classList.contains('open');if(a.classList.contains('faq')&&open)G.querySelectorAll('.acc.faq.open').forEach(x=>{x.classList.remove('open');x.querySelector('.hd').setAttribute('aria-expanded','false');});a.classList.toggle('open',open);hd.setAttribute('aria-expanded',open);if(a.classList.contains('bd-k')){const s=a.querySelector('.sum');}$('#log').textContent=(open?'opened':'closed')+' · '+a.querySelector('.q').textContent+(a.classList.contains('faq')&&open?' · other FAQ items closed':'')+' · light haptic';};
+ spk.onclick=e=>{e.stopPropagation();const on=!spk.classList.contains('on');G.querySelectorAll('.spk.on').forEach(x=>{x.classList.remove('on');x.innerHTML=svg('spk');});if(on){spk.classList.add('on');spk.innerHTML=svg('spkf');if(!a.classList.contains('open')){hd.click();}$('#log').textContent='reading body aloud · "'+a.querySelector('.bdin').textContent.trim().slice(0,60)+'…" · other speakers stopped';}else $('#log').textContent='stopped';};});}
+wire();
+$('#dont-grid').innerHTML=[
+ `<div class="stg">${faq('Bank account',['Add or change the account your payouts go to.','<span style="display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 16px;border-radius:10px;background:#F70F79;color:#fff;font-weight:500">Add bank account</span>'],{open:1})}<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">A Button inside the body. An accordion hides information, never actions — if it needs a tap it belongs on the screen (P2).</div></div>`,
+ `<div class="stg">${faq('Adjustments',['…']).replace('<span class="spk" role="button" aria-label="Read aloud">'+svg('spk')+'</span>','')}<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">A title that is a noun, and no speaker. Titles are the question she would ask; every body can be heard.</div></div>`,
+ `<div class="stg">${bd('You will earn','₹150',{open:1}).replace(svg('sun')+'Summer bonus (1 hour)','Summer bonus 🌞 (1 hour)').replace('class="rw cond"','class="rw" style="background:#FEF3C7"')}<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">An emoji as an icon, and a tint with no meaning. Phosphor <code>sun</code>; the only tinted row is <em>conditional</em> and it says what the condition is.</div></div>`].join('');
+const links=[...document.querySelectorAll('#nav a')];const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-20% 0px -70% 0px'});targets.forEach(t=>io.observe(t));}
+})();
+</script>
