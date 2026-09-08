@@ -33,7 +33,7 @@ A Card that behaves like a Radio or a Checkbox. Used when the options need more 
 ```
 ┌ hero ─────────────────────────────────────────────────┐  radius lg · border thin (2 dp borderBrand when selected)
 │ ┌───────────────────────────────────────────────────┐ │
-│ │                                          [Tag]    │ │  image 16:9, full width, clipped to the top corners · optional Tag top-right
+│ │                                          [Tag]    │ │  image 4:3 (near-square, as shipped) or 16:9 for landscape photos · full width · optional Tag top-right
 │ │            scene asset or expert photo            │ │  selected: 24 dp check badge bottom-right of the image
 │ └───────────────────────────────────────────────────┘ │
 │ (○)  Title                                            │  control 24 · Title BodyLg 16 Medium
@@ -41,7 +41,7 @@ A Card that behaves like a Radio or a Checkbox. Used when the options need more 
 └───────────────────────────────────────────────────────┘
 ```
 
-Padding 16; control–text gap 12; lines gap 4; between cards 12. Min height **64** (compact) / **96** (rich) / image 16:9 + 72 (hero, ≈ 256 at 328 wide). Whole card is the tap target — including the image; the control has no separate hit area.
+Padding 16; control–text gap 12; lines gap 4; between cards 12. Min height **64** (compact) / **96** (rich) / image + 72 (hero: ≈ 318 at 328 wide with a 4:3 image, ≈ 256 with 16:9). Whole card is the tap target — including the image; the control has no separate hit area.
 
 ---
 
@@ -52,7 +52,7 @@ Padding 16; control–text gap 12; lines gap 4; between cards 12. Min height **6
 | `compact` | control · leading icon 24 (optional) · title · optional description | Upload method (Camera / Gallery), language, payout method — options that need one line more than a radio row |
 | `rich` | control · title · description · ≤ 2 facts · optional Amount/Tag line · asset 64 right | Shift type, service type, plan choice — options she compares |
 | `date` | control · weekday `Caption` · day `Heading2` · month `Caption`; fixed 72 × 88, in a horizontal row of ≤ 7 | Picking a day (leave, shift change). Composes into the Day Strip. |
-| `hero` | **image 16:9 on top**, full width · control · title · description · optional Tag over the image | Options she recognises by picture before words — kind of work (*House help · Cook · Beauty*), a confirmation she makes by looking (*I have my own smartphone*, *I can wear the uniform*), a training centre. ≤ 3 per group; one at a time is fine (a single `multi` hero is a big, honest checkbox). |
+| `hero` | **image on top** (4:3 default, 16:9 allowed), full width · control · title · description · optional Tag over the image | Options she recognises by picture before words — kind of work (*House help · Cook · Beauty*), a confirmation she makes by looking (*I have my own smartphone*, *I can wear the uniform*), a training centre. ≤ 3 per group; one at a time is fine (a single `multi` hero is a big, honest checkbox). |
 
 Mode: `single` (radio, exactly one) or `multi` (checkbox, zero or more). A group is one mode. `date` is always `single`; `hero` is either — a group of confirmations is `multi` and the Button enables when all are checked.
 
@@ -69,7 +69,7 @@ Mode: `single` (radio, exactly one) or `multi` (checkbox, zero or more). A group
 | recommended | as state | | a `brand` soft Tag *Recommended* top-right (or above the asset) — at most one per group |
 | group error | `borderError` 2 on every unselected card | | one error line under the group, as Selection controls |
 
-Selected fill stays `bgPrimary` — a pink wash across several multi-selected cards is loud; the 2 dp border + control + check badge carry it.
+Selected fill stays `bgPrimary` for `compact`, `rich` and `date` — a pink wash across several multi-selected cards is loud; the 2 dp border + control + check badge carry it. **`hero` is the exception**: its text row takes a `bgBrandSubtle` wash when selected (as shipped) — with the image filling the card, the wash under the title is the one place the state can be seen at a glance, and hero groups are ≤ 3.
 
 ---
 

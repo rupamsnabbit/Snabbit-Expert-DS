@@ -28,12 +28,13 @@
 .dt .ctl{display:none}
 .strip{display:flex;gap:8px;overflow-x:auto;padding:4px 0;scrollbar-width:none}.strip::-webkit-scrollbar{display:none}
 .sc.hero{flex-direction:column;gap:0;padding:0;overflow:hidden}
-.sc.hero .img{width:100%;aspect-ratio:16/9;position:relative;background:linear-gradient(180deg,#FEF1F7,#FBCFE8);display:block}
+.sc.hero .img{width:100%;aspect-ratio:4/3;position:relative;background:linear-gradient(180deg,#FEF1F7,#FBCFE8);display:block}
 .sc.hero .img svg.scene{width:100%;height:100%;display:block}
 .sc.hero .img .tag{position:absolute;right:12px;top:12px;background:#FEF1F7;color:#F70F79;font:500 12px var(--sans);padding:2px 8px;border-radius:999px;box-shadow:inset 0 0 0 1px #F70F79}
 .sc.hero .img .chk{position:absolute;right:12px;bottom:12px;width:24px;height:24px;border-radius:50%;background:#F70F79;color:#fff;display:grid;place-items:center;box-shadow:0 0 0 2px #fff}.sc.hero .img .chk svg{width:14px;height:14px}
 .sc.hero .row{display:flex;gap:12px;align-items:flex-start;padding:16px;width:100%}
 .sc.hero.dis .img{opacity:.4}
+.sc.hero.sel .row{background:#FEF1F7}
 .grp{display:flex;flex-direction:column;gap:12px}
 .gerr{display:flex;gap:6px;align-items:center;color:#DC2626;font-size:14px}.gerr svg{width:16px;height:16px}
 .grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(328px,1fr));gap:24px 32px;align-items:start}
@@ -58,7 +59,7 @@ __NAVCSS__</style>
     </header>
 
     <section id="variants">
-      <header><div class="eyebrow">Four shapes</div><h2>Variants</h2><p>Control always leading, top-left — the same place as a Radio row. <b>Compact</b> for one-line options with an icon; <b>rich</b> for options she compares, with facts and a 64 dp asset; <b>date</b> for picking a day, in a strip of ≤ 7; <b>hero</b> when the picture is the option — image 16:9 on top, radio or checkbox under it, ≤ 3 per group.</p></header>
+      <header><div class="eyebrow">Four shapes</div><h2>Variants</h2><p>Control always leading, top-left — the same place as a Radio row. <b>Compact</b> for one-line options with an icon; <b>rich</b> for options she compares, with facts and a 64 dp asset; <b>date</b> for picking a day, in a strip of ≤ 7; <b>hero</b> when the picture is the option — image on top (4:3, or 16:9 for photos), radio or checkbox under it, ≤ 3 per group.</p></header>
       <div class="stage"><div class="grid2" id="variants-grid"></div></div>
     </section>
 
@@ -109,7 +110,7 @@ function card(o){ // variant, mode, sel, dis, err, press, title, desc, facts[[ic
  return `<div class="${cls}" data-id="${o.id||''}" role="${o.mode==='multi'?'checkbox':'radio'}" aria-checked="${!!o.sel}">${o.rec?'<span class="rec">Recommended</span>':''}<span class="ctl">${ctl(o.mode,o.sel,o.dis)}</span>${o.lead?`<span class="lead">${svg(o.lead)}</span>`:''}<span class="body"><span class="t">${o.title}</span>${o.desc?`<span class="d">${o.desc}</span>`:''}${facts}</span>${asset}</div>`;}
 // scene stand-in (illustration layer): pink stage, an expert figure, a prop
 const scene=(kind)=>{const props={help:'<rect x="180" y="60" width="70" height="90" rx="6" fill="#F9A8D4"/><rect x="188" y="70" width="54" height="30" rx="3" fill="#fff" opacity=".7"/>',cook:'<ellipse cx="215" cy="130" rx="42" ry="10" fill="#C70C61"/><rect x="180" y="95" width="70" height="35" rx="8" fill="#F70F79"/><path d="M200 80q8-14 0-28M220 80q8-14 0-28" stroke="#F9A8D4" stroke-width="4" fill="none" stroke-linecap="round"/>',beauty:'<circle cx="215" cy="85" r="26" fill="#fff" opacity=".8"/><circle cx="215" cy="85" r="18" fill="#F9A8D4"/><rect x="209" y="112" width="12" height="40" rx="4" fill="#C70C61"/>',phone:'<rect x="196" y="55" width="44" height="80" rx="8" fill="#111827"/><rect x="201" y="62" width="34" height="60" rx="3" fill="#FEF1F7"/>',uniform:'<path d="M180 70l35-15 35 15-8 12-10-4v70h-34v-70l-10 4z" fill="#F70F79"/><circle cx="215" cy="98" r="4" fill="#fff"/>',centre:'<rect x="170" y="70" width="90" height="70" rx="6" fill="#FBCFE8"/><rect x="200" y="100" width="30" height="40" fill="#C70C61"/><path d="M165 72l50-28 50 28z" fill="#F70F79"/>'};
- return `<svg class="scene" viewBox="0 0 320 180" aria-hidden="true"><ellipse cx="160" cy="165" rx="130" ry="14" fill="#F9A8D4" opacity=".6"/><circle cx="110" cy="62" r="22" fill="#C89A7B"/><path d="M75 165v-60q0-24 35-24t35 24v60z" fill="#F70F79"/><path d="M96 82h28v10h-28z" fill="#111827" opacity=".15"/>${props[kind]||''}</svg>`;};
+ return `<svg class="scene" viewBox="0 0 320 240" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><ellipse cx="160" cy="165" rx="130" ry="14" fill="#F9A8D4" opacity=".6"/><circle cx="110" cy="62" r="22" fill="#C89A7B"/><path d="M75 165v-60q0-24 35-24t35 24v60z" fill="#F70F79"/><path d="M96 82h28v10h-28z" fill="#111827" opacity=".15"/>${props[kind]||''}</svg>`;};
 function hero(o){ // mode, sel, dis, title, desc, kind, tag, id
  const cls=['sc','hero',o.sel?'sel':'',o.dis?'dis':'',o.press?'press':''].join(' ');
  return `<div class="${cls}" data-id="${o.id||''}" role="${o.mode==='multi'?'checkbox':'radio'}" aria-checked="${!!o.sel}"><span class="img">${scene(o.kind)}${o.tag?`<span class="tag">${o.tag}</span>`:''}${o.sel?`<span class="chk">${svg('check')}</span>`:''}</span><span class="row"><span class="ctl">${ctl(o.mode,o.sel,o.dis)}</span><span class="body"><span class="t">${o.title}</span>${o.desc?`<span class="d">${o.desc}</span>`:''}</span></span></div>`;}
@@ -117,7 +118,7 @@ const W=(cap,html)=>`<div class="stg">${html}<div class="cap">${cap}</div></div>
 $('#variants-grid').innerHTML=[
  W('<b>compact</b> · control · icon · title · description',`<div class="grp">${card({variant:'compact',lead:'camera',title:'Camera',desc:'Take a photo now',sel:1})}${card({variant:'compact',lead:'image',title:'Gallery',desc:'Choose an existing photo'})}</div>`),
  W('<b>rich</b> · facts + 64 dp asset',card({variant:'rich',title:'Full time',desc:'10 to 12 hours daily',facts:[['rupee','/ month','₹20K – ₹30K'],['clock','8+ hours daily']],asset:.5,sel:1})),
- W('<b>hero · single</b> · image 16:9 on top · the picture is the option · ≤ 3 per group',`<div class="grp">${hero({mode:'single',kind:'help',title:'House help',desc:'Cleaning, mopping, laundry and other house work',sel:1})}${hero({mode:'single',kind:'beauty',title:'Beauty',desc:'Hair dyeing, hair colouring and facials',tag:'New'})}</div>`),
+ W('<b>hero · single</b> · image 4:3 on top · selected row takes the brand wash · the picture is the option · ≤ 3 per group',`<div class="grp">${hero({mode:'single',kind:'help',title:'House help',desc:'Cleaning, mopping, laundry and other house work',sel:1})}${hero({mode:'single',kind:'beauty',title:'Beauty',desc:'Hair dyeing, hair colouring and facials',tag:'New'})}</div>`),
  W('<b>hero · multi</b> · one big, honest checkbox — tapping the image toggles it',hero({mode:'multi',kind:'phone',title:'I have my own smartphone',desc:'You will use it for every job',sel:1})),
  W('<b>date</b> · 72 × 88 · strip of ≤ 7 · today first',`<div class="strip">${[['Mon','7','Sep',1],['Tue','8','Sep'],['Wed','9','Sep'],['Thu','10','Sep'],['Fri','11','Sep'],['Sat','12','Sep'],['Sun','13','Sep']].map(([w,d,m,s])=>card({variant:'date',wd:w,dy:d,mo:m,sel:s})).join('')}</div>`)].join('');
 $('#states-grid').innerHTML=[
