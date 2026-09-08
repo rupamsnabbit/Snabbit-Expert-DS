@@ -23,7 +23,8 @@ Status: **seed**. Populated fully during the Button, Tab bar and Job-alert specs
 | `shield-check` | Shield / Kavach active | fill | In-job header |
 | `speaker-high` | Play / replay spoken guidance | regular · fill while playing | Voice prompt, Coachmark, HeaderNav trailing |
 | `speaker-slash` | Sound / autoplay off | regular | VoicePrompt bar toggle, Coachmark muted state |
-| `play` | Play spoken guidance | fill | VoicePrompt bar disc |
+| `play` | Play (voice or clip) | fill | VoicePrompt bar disc, HowToClip card |
+| `arrow-counter-clockwise` | Replay | regular | HowToClip player |
 | `pause` | Pause spoken guidance | fill | VoicePrompt bar disc while playing |
 | `wifi-slash` | Offline | regular | Offline banner |
 | `warning-circle` | Warning / attention | regular | Banner, Toast |

@@ -4,7 +4,7 @@ What is done and what is left, against the 46-component core set in `audit/BENCH
 
 ---
 
-## Done — 33 pages · 43 of 46 core components
+## Done — 34 pages · 44 of 46 core components
 
 | # | Page | Covers | Status |
 | --- | --- | --- | --- |
@@ -41,16 +41,16 @@ What is done and what is left, against the 46-component core set in `audit/BENCH
 | 31 | MediaCapture | MediaCapture (tile, preview; face / document / scene guides) | Proposed |
 | 32 | MapMarker · MapSnippet | MapMarker (job, hub, me, hotspot); MapSnippet composition | Proposed |
 | 33 | Stat · Rating · Divider | Stat (S/M/L, delta); Rating (faces: input, display); Divider (row, section, labelled) | Proposed |
+| 34 | HowToClip | HowToClip (card, player; 10–20 s, loops once, captions) | Proposed |
 
 Foundations done: tokens (`tokens/`), principles, extending, icons register, assets (two layers). Research done: Figma audit (204 frames), benchmark.
 
 ---
 
-## To do — components (4), in the agreed order
+## To do — components (3), in the agreed order
 
 | # | Component | Priority | Notes |
 | --- | --- | --- | --- |
-| 36 | How-to clip | P1 | 10-second looping video with voice (research-validated channel). |
 | 37 | Shield (Kavach) card | Composition | Card + SafetyStrip + *Start Shield*; after Voice prompt. |
 | 38 | Job-alert sheet | Composition | Timer + Amount + Button + Nudge; written as the first pattern. |
 | 39 | FAB (map controls) | P1 | IconButton `L` floating variant — may collapse into IconButton. |

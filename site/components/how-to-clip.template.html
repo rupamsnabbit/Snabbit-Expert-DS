@@ -1,0 +1,109 @@
+<meta charset="utf-8">
+<title>Snabbit Expert HowToClip</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>__BASECSS__
+.clip{width:144px;height:180px;border-radius:12px;position:relative;overflow:hidden;flex:none;cursor:pointer;font-family:var(--sans);color:#fff;background:linear-gradient(160deg,#5B6B7A,#2F3A45)}
+.clip.S{width:96px;height:120px}
+.clip .fig{position:absolute;left:50%;top:38%;width:36px;height:44px;border-radius:18px 18px 14px 14px;background:#C89A7B;transform:translateX(-50%)}.clip .bod{position:absolute;left:50%;top:60%;width:80px;height:80px;border-radius:40px 40px 0 0;background:#F70F79;transform:translateX(-50%)}
+.clip.S .fig{width:24px;height:30px}.clip.S .bod{width:54px;height:54px}
+.clip .scrim{position:absolute;left:0;right:0;bottom:0;height:45%;background:linear-gradient(180deg,transparent,rgba(17,24,39,.75))}
+.clip .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:40px;height:40px;border-radius:50%;background:#fff;color:#F70F79;display:grid;place-items:center}.clip .play svg{width:18px;height:18px}
+.clip.S .play{width:28px;height:28px}.clip.S .play svg{width:12px;height:12px}
+.clip .dur{position:absolute;right:8px;bottom:8px;background:rgba(17,24,39,.6);border-radius:4px;padding:2px 6px;font-size:12px;font-variant-numeric:tabular-nums}
+.clip .ttl{position:absolute;left:10px;bottom:8px;right:44px;font-size:14px;font-weight:500;line-height:18px}
+.clip .chk{position:absolute;right:8px;top:8px;width:20px;height:20px;color:#10B981;background:#fff;border-radius:50%}.clip .chk svg{width:20px;height:20px}
+.clip .ni{position:absolute;left:8px;top:8px;background:rgba(17,24,39,.6);border-radius:4px;padding:2px 6px;font-size:11px}
+.car{display:flex;gap:12px;overflow:hidden;width:328px;padding:2px 0}
+.pi{display:flex;gap:8px;justify-content:center;margin-top:12px}.pi span{width:8px;height:8px;border-radius:4px;background:#E5E7EB}.pi span.on{width:24px;background:#F70F79}
+.pl{width:360px;height:640px;border-radius:20px;background:#111827;position:relative;overflow:hidden;font-family:var(--sans);color:#fff;user-select:none}
+.pl .vid{position:absolute;inset:0;background:linear-gradient(180deg,#4B5B6A,#1F262E);cursor:pointer}
+.pl .vid .fig{position:absolute;left:50%;top:26%;width:110px;height:140px;border-radius:55px 55px 44px 44px;background:#C89A7B;transform:translateX(-50%)}.pl .vid .bod{position:absolute;left:50%;top:46%;width:240px;height:260px;border-radius:120px 120px 0 0;background:#F70F79;transform:translateX(-50%)}
+.pl .top{position:absolute;top:16px;left:8px;right:8px;display:flex;justify-content:space-between}.pl .ib{width:48px;height:48px;border-radius:10px;border:0;background:transparent;color:#fff;display:grid;place-items:center;cursor:pointer}.pl .ib svg{width:24px;height:24px}
+.pl .cap{position:absolute;left:24px;right:24px;bottom:120px;background:rgba(17,24,39,.6);border-radius:12px;padding:12px 16px;font-size:18px;line-height:24px;font-weight:600;text-align:center}
+.pl .prog{position:absolute;left:16px;right:16px;bottom:96px;height:4px;border-radius:2px;background:rgba(255,255,255,.3)}.pl .prog span{display:block;height:100%;border-radius:2px;background:#F70F79;width:var(--p,0%)}
+.pl .glyph{position:absolute;pointer-events:none;left:50%;top:50%;transform:translate(-50%,-50%);width:64px;height:64px;color:#fff;opacity:0;transition:opacity .2s}.pl .glyph.on{opacity:.9}.pl .glyph svg{width:64px;height:64px}
+.pl .replay{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);height:48px;padding:0 20px;border-radius:10px;border:0;background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px #fff;font:500 16px var(--sans);display:none;align-items:center;gap:8px;cursor:pointer}.pl .replay.on{display:inline-flex}.pl .replay svg{width:20px;height:20px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(328px,1fr));gap:24px 32px;align-items:start}
+.stg{display:flex;flex-direction:column;gap:8px}.stg .cap{font-family:var(--mono);font-size:12px;color:var(--text-2)}.stg .cap b{color:var(--text);font-weight:500}
+.ctl{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:12px}.ctl button{font-family:var(--sans);font-size:13px;padding:6px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);cursor:pointer}
+.logline{font-family:var(--mono);font-size:12px;color:var(--text-2);min-height:16px;margin-top:8px;white-space:pre-line}
+.hd5{font-family:var(--sans);font-size:16px;font-weight:500;color:var(--text);margin-bottom:12px}
+@media (prefers-reduced-motion:reduce){.pl .glyph{transition:none;display:none}}
+__NAVCSS__</style>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · HowToClip</small></div></div>
+    __SITENAV__
+    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#cards">Card</a><a href="#live">Player · live</a><a href="#rules">Rules</a><a href="#dont">Don't</a><a href="#figma">Figma changes</a></nav>
+    <div class="rail-foot">Rendered from tokens.json · spec in components/how-to-clip.md</div>
+  </aside>
+  <main class="main">
+    <header id="overview">
+      <div class="eyebrow">Core component</div><h1>HowToClip</h1>
+      <p class="lede">A ten-second film of a real expert doing the thing, with a voice saying what she is doing. The third channel — after showing and saying — and the one first-time users completed tasks with in the research. A card she taps; a player that shows one task, loops once, speaks, and gets out of the way.</p>
+      <div class="meta"><span class="chip status">Proposed</span><span class="chip">Tier 1 · Core</span><span class="chip"><code>SnabbitHowToClip</code></span><span class="chip">10–20 s · one task</span><span class="chip">Loops once · captions always</span></div>
+    </header>
+
+    <section id="cards">
+      <header><div class="eyebrow">In a carousel or a row</div><h2>Card</h2><p>4:5 thumbnail (the first frame), a play disc, a duration chip so she knows the cost before tapping, a title of ≤ 3 words. ≤ 5 in a carousel with a PageIndicator; a small one can sit in a Stepper row or a Coachmark. Watched cards carry a check.</p></header>
+      <div class="stage"><div class="grid2" id="cards-grid"></div></div>
+    </section>
+
+    <section id="live">
+      <header><div class="eyebrow">Try it</div><h2>Player · live</h2><p>Full-screen portrait. Autoplays with voice, captions always on, knob-less progress. Tap the video to pause and resume. It loops once, then stops on the last frame with <em>Replay</em> — never <em>Up next</em>. Close returns to where she was.</p></header>
+      <div class="demo" style="align-items:flex-start;flex-wrap:wrap;gap:28px"><div class="pl" id="pl"></div><div class="card" style="max-width:320px"><h4>Log</h4><div class="ctl"><button id="restart">Open again</button></div><div class="logline" id="log">opened → autoplay after 300 ms · voice on · other voices stop</div></div></div>
+    </section>
+
+    <section id="rules">
+      <header><div class="eyebrow">Making and showing clips</div><h2>Rules</h2></header>
+      <ol class="rules"><li><b>10–20 seconds, one task each.</b> Longer is a course; shorter is a Coachmark.</li><li><b>A real expert in uniform,</b> in a real home, portrait, phone-quality light. Never stock, never a model.</li><li><b>Voice</b> is a recorded native speaker describing what is on screen, present tense — <em>"Tap Check in when you reach the door."</em> Never <em>"In this video…"</em>.</li><li><b>Captions always on,</b> burned in per language, ≤ 2 lines of ≤ 40 chars, changing no faster than every 2 s.</li><li><b>Loops once,</b> then Replay. No scrubber, speed, share, landscape, or next-clip autoplay.</li><li><b>Offline:</b> onboarding, go-live and check-in clips ship in the app (≤ 2 MB). Others download on Wi-Fi, or on tap with a Toast <em>Using data · 1.5 MB</em> — the one place a size is shown, because it costs her money.</li><li><b>Watched</b> at 80 % once; it can satisfy a Stepper step.</li></ol>
+    </section>
+
+    <section id="dont">
+      <header><div class="eyebrow">Common mistakes</div><h2>Don't</h2></header>
+      <div class="stage"><div class="grid2" id="dont-grid"></div></div>
+    </section>
+
+    <section id="figma">
+      <header><div class="eyebrow">Reconciliation</div><h2>What changes in Figma</h2></header>
+      <ol class="rules"><li>Create HowToClip / Card: Size (M / S), Watched, NeedsInternet; duration chip and ≤ 3-word title.</li><li>Create HowToClip / Player: State (Playing / Paused / Ended), Sound (On / Off); knob-less progress, captions block, Replay.</li><li>Rebuild the rate-card carousel with three Card instances and a PageIndicator; add clip cards to onboarding Stepper steps that have one.</li></ol>
+      <p class="sub" style="margin-top:14px">Result: ~8 variants, and the third channel drawn for the first time. Token proposal: <code>media.clipBudget</code> 2 MB · 720 × 1280 · ≤ 20 s.</p>
+    </section>
+  </main>
+</div>
+
+<script id="tokens-json" type="application/json">__TOKENS__</script>
+<script>
+(function(){
+const T=JSON.parse(document.getElementById("tokens-json").textContent); const $=s=>document.querySelector(s);
+const ICO={play:'M240,128a15.74,15.74,0,0,1-7.6,13.51L88.32,229.65a16,16,0,0,1-16.2.3A15.86,15.86,0,0,1,64,216.13V39.87a15.86,15.86,0,0,1,8.12-13.82,16,16,0,0,1,16.2.3L232.4,114.49A15.74,15.74,0,0,1,240,128Z',pause:'M216,48V208a16,16,0,0,1-16,16H160a16,16,0,0,1-16-16V48a16,16,0,0,1,16-16h40A16,16,0,0,1,216,48ZM96,32H56A16,16,0,0,0,40,48V208a16,16,0,0,0,16,16H96a16,16,0,0,0,16-16V48A16,16,0,0,0,96,32Z',replay:'M224,128a96,96,0,0,1-94.71,96H128A95.38,95.38,0,0,1,62.1,197.8a8,8,0,0,1,11-11.63A80,80,0,1,0,71.43,71.39a3.07,3.07,0,0,1-.26.25L44.59,96H72a8,8,0,0,1,0,16H24a8,8,0,0,1-8-8V56a8,8,0,0,1,16,0V85.8L60.25,60A96,96,0,0,1,224,128Z',x:'M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z',spk:'M155.51,24.81a8,8,0,0,0-8.42.88L77.25,80H32A16,16,0,0,0,16,96v64a16,16,0,0,0,16,16H77.25l69.84,54.31A8,8,0,0,0,160,224V32A8,8,0,0,0,155.51,24.81ZM32,96H72v64H32ZM144,207.64,88,164.09V91.91l56-43.55Zm54-106.08a40,40,0,0,1,0,52.88,8,8,0,0,1-12-10.58,24,24,0,0,0,0-31.72,8,8,0,0,1,12-10.58ZM248,128a79.9,79.9,0,0,1-20.37,53.34,8,8,0,0,1-11.92-10.67,64,64,0,0,0,0-85.33,8,8,0,1,1,11.92-10.67A79.83,79.83,0,0,1,248,128Z',mute:'M53.92,34.62A8,8,0,1,0,42.08,45.38L73.55,80H32A16,16,0,0,0,16,96v64a16,16,0,0,0,16,16H77.25l69.84,54.31A8,8,0,0,0,160,224V175.09l42.08,46.29a8,8,0,1,0,11.84-10.76ZM32,96H72v64H32ZM144,207.64,88,164.09V95.89l56,61.6Zm42-63.77a24,24,0,0,0,0-31.72,8,8,0,1,1,12-10.57,40,40,0,0,1,0,52.88,8,8,0,0,1-12-10.59Zm-80.16-76a8,8,0,0,1,1.4-11.23l39.85-31A8,8,0,0,1,160,32v74.83a8,8,0,0,1-16,0V48.36l-26.94,21A8,8,0,0,1,105.84,67.91ZM248,128a79.9,79.9,0,0,1-20.37,53.34,8,8,0,0,1-11.92-10.67,64,64,0,0,0,0-85.33,8,8,0,1,1,11.92-10.67A79.83,79.83,0,0,1,248,128Z',chk:'M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,85.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z'};
+const svg=n=>`<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="${ICO[n]}"/></svg>`;
+const clip=(t,d,o={})=>`<div class="clip ${o.S?'S':''}" role="button" aria-label="Video: ${t}, ${d}${o.watched?', watched':''}"><span class="fig"></span><span class="bod"></span><span class="scrim"></span>${o.watched?`<span class="chk">${svg('chk')}</span>`:''}${o.ni?'<span class="ni">Needs internet</span>':''}<span class="play">${svg('play')}</span><span class="dur">${d}</span>${o.S?'':`<span class="ttl">${t}</span>`}</div>`;
+const W=(cap,html)=>`<div class="stg">${html}<div class="cap">${cap}</div></div>`;
+$('#cards-grid').innerHTML=[
+ W('<b>carousel</b> · ≤ 5 · first full, second peeking · PageIndicator',`<div><div class="hd5">Learn how it works</div><div class="car">${clip('Daily earnings','0:12',{watched:1})}${clip('Monthly bonus','0:15')}${clip('Red cards','0:10',{ni:1})}</div><div class="pi"><span class="on"></span><span></span><span></span></div></div>`),
+ W('<b>S · in a Stepper row</b> · title outside · watching can complete the step',`<div style="width:328px;background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:12px 16px;display:flex;gap:12px;align-items:center;font-family:var(--sans)">${clip('How to check in','0:14',{S:1})}<div style="flex:1"><div style="font-size:12px;color:#6B7280">Step 3</div><div style="font-size:18px;font-weight:500">Watch: how to check in</div><div style="font-size:14px;color:#6B7280">14 seconds</div></div></div>`)].join('');
+// player
+let state='idle',p=0,raf,loops=0,tt,pausedAt=0,t0;const pl=$('#pl');const DUR=6000;
+const CAPS=[[0,'Walk to the door and open the app.'],[2000,'Tap Check in when you reach the door.'],[4000,'Show your face and the Snabbit logo.']];
+function render(){pl.innerHTML=`<div class="vid" id="vid"><span class="fig"></span><span class="bod"></span></div><div class="top"><button class="ib" id="close" aria-label="Close">${svg('x')}</button><button class="ib" id="snd" aria-label="Voice on">${svg('spk')}</button></div><div class="cap" id="cap">${CAPS[0][1]}</div><div class="prog"><span id="pp"></span></div><div class="glyph" id="gl">${svg('pause')}</div><button class="replay" id="rp">${svg('replay')}Replay</button>`;
+ $('#vid').onclick=()=>{if(state==='playing'){pause();}else if(state==='paused'){resume();}};
+ $('#rp').onclick=()=>{loops=0;start(0);$('#log').textContent='Replay → plays again from the start';};
+ $('#close').onclick=()=>{cancelAnimationFrame(raf);state='idle';$('#log').textContent='close → back to where she was · watched state kept if ≥ 80 % played';};
+ $('#snd').onclick=()=>{const on=$('#snd').getAttribute('aria-label')==='Voice on';$('#snd').innerHTML=svg(on?'mute':'spk');$('#snd').setAttribute('aria-label',on?'Voice off':'Voice on');$('#log').textContent=on?'voice off → captions carry it':'voice on';};}
+function flash(n){const g=$('#gl');g.innerHTML=svg(n);g.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>g.classList.remove('on'),400);}
+function start(from){state='playing';t0=performance.now()-from;$('#rp').classList.remove('on');const step=()=>{const el=performance.now()-t0;p=Math.min(100,el/DUR*100);$('#pp').style.setProperty('--p',p+'%');const c=CAPS.filter(x=>x[0]<=el).pop();if(c)$('#cap').textContent=c[1];if(p>=100){if(loops<1){loops++;$('#log').textContent='end of loop 1 → plays once more · watched set at 80 %';start(0);}else{state='ended';$('#rp').classList.add('on');$('#log').textContent='ended after second play → stops on the last frame · Replay · never Up next';}return;}raf=requestAnimationFrame(step);};raf=requestAnimationFrame(step);}
+function pause(){cancelAnimationFrame(raf);state='paused';pausedAt=performance.now()-t0;flash('pause');$('#log').textContent='tap → paused · glyph flashes 400 ms';}
+function resume(){flash('play');start(pausedAt);$('#log').textContent='tap → resumed';}
+function open(){render();loops=0;state='idle';$('#log').textContent='opened → autoplay after 300 ms · voice on · other voices stop';setTimeout(()=>start(0),300);}
+$('#restart').onclick=open;open();
+$('#dont-grid').innerHTML=[
+ W('',`<div class="car">${['Daily earnings','Monthly bonus','Red cards','Kavach','Referrals','Tiers','Leave'].map(t=>clip(t,'')).join('')}</div>`).replace('<div class="cap"></div>','<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">Seven clips scrolling off the edge, no durations. Five at most with a PageIndicator; every card shows its cost in seconds.</div>'),
+ W('',`<div class="pl" style="height:300px"><div class="vid"><span class="fig" style="top:16%;width:70px;height:88px"></span><span class="bod" style="top:44%;width:150px;height:160px"></span></div><div style="position:absolute;left:16px;right:16px;bottom:56px;height:4px;background:rgba(255,255,255,.3)"><span style="display:block;width:35%;height:100%;background:#F70F79"></span><span style="position:absolute;left:35%;top:50%;width:14px;height:14px;border-radius:50%;background:#fff;transform:translate(-50%,-50%)"></span></div><div style="position:absolute;left:16px;right:16px;bottom:12px;display:flex;justify-content:space-between;font-size:12px"><span>0:04 / 0:12</span><span>1.5× · Share · ⤢</span></div><div style="position:absolute;left:16px;top:16px;background:rgba(255,255,255,.15);border-radius:6px;padding:6px 10px;font-size:12px">Up next: Monthly bonus ▶</div></div>`).replace('<div class="cap"></div>','<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">The OS player: scrubber, speed, share, fullscreen, <em>Up next</em>. One task, loop once, Replay, close — and captions.</div>'),
+ W('',`<div class="clip" style="width:328px;height:120px;background:linear-gradient(135deg,#1D4ED8,#60A5FA)"><span class="scrim"></span><span class="play">${svg('play')}</span><span class="dur">4:37</span><span class="ttl" style="right:60px">Welcome to Snabbit: everything you need to know about earnings, bonuses and penalties</span></div>`).replace('<div class="cap"></div>','<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">A four-minute course with a sentence for a title. 10–20 seconds, one task, ≤ 3 words — <em>Daily earnings</em>.</div>')].join('');
+const links=[...document.querySelectorAll('#nav a')];const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-20% 0px -70% 0px'});targets.forEach(t=>io.observe(t));}
+})();
+</script>
