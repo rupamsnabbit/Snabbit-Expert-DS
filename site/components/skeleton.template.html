@@ -1,0 +1,129 @@
+<meta charset="utf-8">
+<title>Snabbit Expert Skeleton</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>__BASECSS__
+.ph{width:360px;height:560px;border:1px solid #E5E7EB;border-radius:20px;background:#F9FAFB;position:relative;overflow:hidden;color:#111827;font-family:var(--sans);display:flex;flex-direction:column}
+.ph .sb{height:24px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:11px;color:#6B7280;flex:none}
+.ph .hn{height:56px;background:#fff;display:flex;align-items:center;padding:0 16px;font-size:18px;font-weight:500;flex:none}
+.ph .body{flex:1;padding:16px;display:flex;flex-direction:column;gap:12px;overflow:hidden}
+.ph .tb{height:64px;background:#fff;border-top:1px solid #E5E7EB;flex:none;display:flex}.ph .tb span{flex:1;display:flex;align-items:flex-end;justify-content:center;padding-bottom:10px;font-size:12px;color:#6B7280}.ph .tb span.on{color:#F70F79}
+.sk{position:relative;overflow:hidden;background:#F3F4F6}
+.sk::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 0,rgba(255,255,255,.7) 50%,transparent 100%);transform:translateX(-100%);animation:shim 1.2s linear infinite}
+.sk.line{height:12px;border-radius:4px}.sk.line.h{height:14px}.sk.amt{height:28px;width:96px;border-radius:6px}.sk.amt.l{height:36px;width:128px}
+.sk.circle{border-radius:50%;flex:none}.sk.block{border-radius:12px}
+.skcard{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.skrow{display:flex;align-items:center;gap:12px;min-height:64px;padding:8px 16px;background:#fff;border:1px solid #E5E7EB;border-radius:12px}.skrow .tx{flex:1;display:flex;flex-direction:column;gap:8px}
+@keyframes shim{to{transform:translateX(100%)}}
+.static .sk::after{animation:none;display:none}
+.cardx{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:6px}.cardx .t{font-size:18px;font-weight:500}.cardx .s{font-size:14px;color:#6B7280}.cardx .a{font-size:28px;font-weight:600;font-variant-numeric:tabular-nums}
+.li{display:flex;align-items:center;gap:12px;min-height:64px;padding:8px 16px;background:#fff;border:1px solid #E5E7EB;border-radius:12px}.li .av{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#8C6B4F,#3B2A1E);flex:none}.li .tx{flex:1;display:flex;flex-direction:column;gap:2px}.li .tt{font-size:16px}.li .st{font-size:14px;color:#6B7280}.li .am{font-weight:600;font-variant-numeric:tabular-nums}
+.btn{height:56px;border-radius:12px;border:0;background:#F70F79;color:#fff;font:500 16px var(--sans);width:100%;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer}
+.btn.load{background:#F4368D;cursor:default}
+.spin{width:20px;height:20px;border-radius:50%;border:2.5px solid currentColor;border-right-color:transparent;animation:spin .8s linear infinite;flex:none;box-sizing:border-box}.spin.s16{width:16px;height:16px;border-width:2px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.es{display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;padding:24px 0}.es .pic{width:96px;height:96px;border-radius:50%;background:#FDE4EF;display:grid;place-items:center;position:relative;color:#F70F79}.es .pic svg{width:44px;height:44px}.es .pic .dot{position:absolute;right:4px;bottom:4px;width:26px;height:26px;border-radius:50%;background:#EF4444;color:#fff;display:grid;place-items:center;box-shadow:0 0 0 3px #fff;font-size:14px;font-weight:700}
+.es h3{margin:0;font-size:20px;font-weight:600}.es p{margin:0;font-size:14px;color:#374151}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:24px 32px;align-items:start}
+.stg{display:flex;flex-direction:column;gap:8px}.stg .cap{font-family:var(--mono);font-size:12px;color:var(--text-2)}.stg .cap b{color:var(--text);font-weight:500}
+.shapes{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px}.shapes>div{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:10px;min-height:120px;justify-content:center}.shapes .cap{font-family:var(--mono);font-size:12px;color:var(--text-2);margin-top:auto}
+.ctl{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:12px}.ctl button{font-family:var(--sans);font-size:13px;padding:6px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);cursor:pointer}
+.logline{font-family:var(--mono);font-size:12px;color:var(--text-2);min-height:16px;margin-top:8px;white-space:pre-line}
+.tl{display:grid;grid-template-columns:110px 1fr;gap:8px 16px;font-size:14px;color:var(--text)}.tl .t{font-family:var(--mono);font-size:12.5px;color:var(--text-2)}
+@media (prefers-reduced-motion:reduce){.sk::after{animation:none;display:none}.spin{animation:pulse 1s ease-in-out infinite;border-right-color:currentColor}@keyframes pulse{50%{opacity:.4}}}
+__NAVCSS__</style>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · Skeleton · Spinner</small></div></div>
+    __SITENAV__
+    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#shapes-s">Shapes</a><a href="#presets">Presets</a><a href="#live">Live · 3-second rule</a><a href="#spinner">Spinner</a><a href="#dont">Don't</a><a href="#figma">Figma changes</a></nav>
+    <div class="rail-foot">Rendered from tokens.json · spec in components/skeleton.md</div>
+  </aside>
+  <main class="main">
+    <header id="overview">
+      <div class="eyebrow">Core component · P5 · P8</div><h1>Skeleton · Spinner</h1>
+      <p class="lede">Loading that is visible, cheap and short. A Skeleton holds the shape of what is coming; a Spinner lives only inside a Button or a row. A Skeleton still there after three seconds is not loading, it is failing — and the screen says so.</p>
+      <div class="meta"><span class="chip status">Proposed</span><span class="chip">Tier 1 · Core</span><span class="chip"><code>SnabbitSkeleton</code> · <code>SnabbitSpinner</code></span><span class="chip">3-second rule</span><span class="chip">No full-screen spinner</span></div>
+    </header>
+
+    <section id="shapes-s">
+      <header><div class="eyebrow">Six shapes</div><h2>Shapes</h2><p>Grey <code>bgTertiary</code> shapes on the real layout, in the real positions, at the real sizes, with one shimmer crossing all of them in sync. Radii follow what they stand for.</p></header>
+      <div class="stage"><div class="shapes" id="shapes"></div></div>
+    </section>
+
+    <section id="presets">
+      <header><div class="eyebrow">Drawn once</div><h2>Presets</h2><p>Every list or card screen has a named preset. Header, tab bar, SOS and Banners are never skeletons — they render real, immediately. Reduced motion: shapes are static.</p></header>
+      <div class="stage"><div class="grid2" id="presets-grid"></div></div>
+    </section>
+
+    <section id="live">
+      <header><div class="eyebrow">Try it</div><h2>Live · the three-second rule</h2><p>Skeleton at 0 ms, no fade-in. Content swaps in one frame when it arrives. At 3 s the Skeleton is replaced by an EmptyState — <em>offline</em> if there is no connection, otherwise <em>error</em> with Try again. Never a Skeleton older than 3 s.</p></header>
+      <div class="demo" style="align-items:flex-start;flex-wrap:wrap;gap:28px"><div class="ph" id="ph"></div><div class="card" style="max-width:320px"><h4>Simulate</h4><div class="ctl"><button data-ms="250">Arrives in 250 ms</button><button data-ms="1800">Arrives in 1.8 s</button><button data-ms="9999">Never arrives</button><button data-ms="off">Offline</button></div><div class="logline" id="log">choose a scenario</div><div class="tl" style="margin-top:12px"><div class="t">0 ms</div><div>Skeleton, at once</div><div class="t">≤ 300 ms</div><div>Swap — nothing to notice</div><div class="t">3 s</div><div>EmptyState error / offline</div></div></div></div>
+    </section>
+
+    <section id="spinner">
+      <header><div class="eyebrow">Two homes, no others</div><h2>Spinner</h2><p>A 2.5 dp arc rotating 800 ms, inheriting its container's text colour. Inside a <b>Button</b> it replaces the label and the fill lightens; <b>inline</b> it sits at the trailing edge of a row whose text stays readable. Never centred on a screen, never over a scrim, never beside a Skeleton.</p></header>
+      <div class="stage"><div class="grid2" id="spin-grid"></div></div>
+    </section>
+
+    <section id="dont">
+      <header><div class="eyebrow">Common mistakes</div><h2>Don't</h2></header>
+      <div class="stage"><div class="grid2" id="dont-grid"></div></div>
+    </section>
+
+    <section id="figma">
+      <header><div class="eyebrow">Reconciliation</div><h2>What changes in Figma</h2></header>
+      <ol class="rules"><li>Create Skeleton shapes (Line / Amount / Circle / Block / Row / Card) bound to bgTertiary, and the five presets: JobCard, ListRows, EarningsHead, Breakdown, Home.</li><li>Create Spinner (Size 16 / 20; Place Button / Inline); replace the hand-drawn arcs in Loading States with the instance.</li><li>Delete the Retrying… screen; the flow becomes Skeleton → EmptyState error.</li><li>Add a loading frame to each list screen mock — loading exists only if it is drawn.</li></ol>
+      <p class="sub" style="margin-top:14px">Result: ~13 variants. Token proposals: <code>motion.shimmer</code> 1200 ms, <code>motion.spin</code> 800 ms, <code>timeout.skeleton</code> 3000 ms (shared with EmptyState).</p>
+    </section>
+  </main>
+</div>
+
+<script id="tokens-json" type="application/json">__TOKENS__</script>
+<script>
+(function(){
+const T=JSON.parse(document.getElementById("tokens-json").textContent); const $=s=>document.querySelector(s);
+const WIFI='M213.92,210.62a8,8,0,1,1-11.84,10.76l-52-57.15a60.1,60.1,0,0,0-57.41,7.24,8,8,0,1,1-9.42-12.93A75.43,75.43,0,0,1,128,144c1.28,0,2.55,0,3.82.1L104.9,114.49A108,108,0,0,0,61,135.31,8,8,0,0,1,49.73,134,8,8,0,0,1,51,122.77a124.27,124.27,0,0,1,41.71-21.66L69.37,75.4a155.43,155.43,0,0,0-40.29,24A8,8,0,0,1,18.92,86,171.87,171.87,0,0,1,58,62.86L42.08,45.38A8,8,0,1,1,53.92,34.62ZM128,192a12,12,0,1,0,12,12A12,12,0,0,0,128,192Zm109.08-92.6A172.3,172.3,0,0,0,128,64a170.94,170.94,0,0,0-25.45,1.91,8,8,0,1,0,2.37,15.82A154.14,154.14,0,0,1,128,80a156.31,156.31,0,0,1,98.92,35.37A8,8,0,0,0,237.08,99.4Zm-32.15,36.1a124.63,124.63,0,0,0-58.6-26.7,8,8,0,0,0-2.94,15.73,108.66,108.66,0,0,1,51.3,23.34,8,8,0,0,0,10.24-12.37Z';
+const SEARCH='M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z';
+const svg=p=>`<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="${p}"/></svg>`;
+const sk=(cls,style='')=>`<span class="sk ${cls}" style="${style}"></span>`;
+$('#shapes').innerHTML=[
+ [sk('line h','width:70%')+sk('line','width:90%')+sk('line','width:45%'),'line · 0.6 × line-height · last line shorter'],
+ [sk('amt l'),'amount · Amount cap height · 4–6 digits'],
+ [`<div style="display:flex;gap:12px">${sk('circle','width:40px;height:40px')}${sk('circle','width:32px;height:32px')}${sk('circle','width:24px;height:24px')}</div>`,'circle · avatar / pictogram sizes'],
+ [sk('block','height:56px;width:100%'),'block · image, map, Button'],
+ [`<div style="display:flex;gap:12px;align-items:center">${sk('circle','width:40px;height:40px')}<div style="flex:1;display:flex;flex-direction:column;gap:8px">${sk('line h','width:60%')}${sk('line','width:40%')}</div></div>`,'row · 64 dp · circle + two lines'],
+ [`<div style="border:1px solid #E5E7EB;border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:8px">${sk('line h','width:50%')}${sk('line','width:80%')}${sk('block','height:32px')}</div>`,'card · the Card padding']].map(([h,c])=>`<div>${h}<span class="cap">${c}</span></div>`).join('');
+const jobcard=()=>`<div class="skcard">${sk('line h','width:55%')}${sk('line','width:80%')}${sk('line','width:40%')}${sk('amt')}${sk('block','height:56px')}</div>`;
+const rows=n=>Array.from({length:n},()=>`<div class="skrow">${sk('circle','width:40px;height:40px')}<div class="tx">${sk('line h','width:60%')}${sk('line','width:35%')}</div>${sk('line','width:48px')}</div>`).join('');
+const earnhead=()=>`<div class="skcard" style="align-items:center">${sk('line','width:40%')}${sk('amt l')}${sk('line','width:55%')}${sk('block','height:40px;width:100%;border-radius:999px')}</div>`;
+const phone=(body,o={})=>`<div class="ph ${o.static?'static':''}"><div class="sb"><span>9:41</span><span>${o.off?'✕ No service':'▂▄▆ 4G ▮'}</span></div><div class="hn">${o.title||'Home'}</div><div class="body" aria-busy="true" aria-label="Loading">${body}</div><div class="tb"><span class="on">Home</span><span>Earnings</span><span>Refer</span><span>Profile</span></div></div>`;
+const W=(cap,html)=>`<div class="stg">${html}<div class="cap">${cap}</div></div>`;
+$('#presets-grid').innerHTML=[
+ W('<b>Home</b> · JobCard + two cards · header and tab bar real',phone(jobcard()+`<div class="skcard">${sk('line h','width:45%')}${sk('line','width:70%')}</div><div class="skcard">${sk('line h','width:50%')}${sk('line','width:65%')}</div>`)),
+ W('<b>ListRows</b> · n × row · announced once "Loading jobs"',phone(rows(5),{title:'Jobs'})),
+ W('<b>EarningsHead</b> + <b>Breakdown</b>',phone(earnhead()+`<div class="skcard">${sk('line h','width:40%')}${rows(0)}${[70,50,60,45].map(w=>`<div style="display:flex;justify-content:space-between">${sk('line','width:'+w+'%')}${sk('line','width:40px')}</div>`).join('')}</div>`,{title:'Earnings'})),
+ W('<b>reduced motion</b> · static shapes, no shimmer',phone(jobcard()+`<div class="skcard">${sk('line h','width:45%')}${sk('line','width:70%')}</div>`,{static:1}))].join('');
+// live
+let timer1,timer2;const ph=$('#ph');
+const real=`<div class="cardx"><span class="t">Cleaning · 2 hr</span><span class="s">Koramangala · 9:30 am</span><span class="a">₹450</span><button class="btn">Accept job</button></div><div class="cardx"><span class="t">Next job in 42 min</span></div>`;
+const empty=(off)=>`<div class="es"><span class="pic">${svg(off?WIFI:SEARCH)}<span class="dot">✕</span></span><h3>${off?"You're offline":"Couldn't load your jobs"}</h3><p>${off?"Your jobs will show when you're back online. SOS still works.":"The network dropped. Your jobs are safe."}</p><button class="btn" style="height:48px;border-radius:10px">Try again</button></div>`;
+function run(ms){clearTimeout(timer1);clearTimeout(timer2);const off=ms==='off';ph.innerHTML=phone(jobcard()+`<div class="skcard">${sk('line h','width:45%')}${sk('line','width:70%')}</div>`,{off}).replace('<div class="ph ">','<div>').replace(/<\/div>$/,'');
+ const t0=performance.now();$('#log').textContent='0 ms · Skeleton at once · announced "Loading jobs"';
+ if(!off&&ms<3000){timer1=setTimeout(()=>{ph.querySelector('.body').innerHTML=real;ph.querySelector('.body').removeAttribute('aria-busy');$('#log').textContent=`${Math.round(performance.now()-t0)} ms · content arrived → swapped in one frame${ms<=300?' · nothing to notice':''}`;},ms);}
+ timer2=setTimeout(()=>{if(off||ms>=3000){ph.querySelector('.body').innerHTML=empty(off);$('#log').textContent=`3000 ms · Skeleton replaced by EmptyState ${off?'offline':'error'} · spoken`;}},3000);}
+document.querySelectorAll('.ctl button[data-ms]').forEach(b=>b.onclick=()=>run(b.dataset.ms==='off'?'off':+b.dataset.ms));
+run(1800);
+// spinner
+$('#spin-grid').innerHTML=[
+ W('<b>Button</b> · label replaced · fill interactiveHover · taps ignored · ≥ 400 ms',`<div style="width:328px;display:flex;flex-direction:column;gap:12px"><button class="btn load"><span class="spin"></span></button><button class="btn" style="height:40px;border-radius:8px;font-size:14px;background:#F4368D"><span class="spin s16"></span></button></div>`),
+ W('<b>inline</b> · one value refreshing · text stays · 3-second rule → "Not updated"',`<div style="width:328px;display:flex;flex-direction:column;gap:8px"><div class="li"><span class="av"></span><div class="tx"><span class="tt">Payout · 4 Sep</span><span class="st">Checking status</span></div><span class="spin" style="color:#6B7280"></span></div><div class="li"><span class="av"></span><div class="tx"><span class="tt">Payout · 3 Sep</span><span class="st" style="color:#6B7280">Not updated</span></div><span class="am">₹1,240</span></div></div>`)].join('');
+$('#dont-grid').innerHTML=[
+ W('',phone(`<div style="flex:1;display:grid;place-items:center"><div style="display:flex;flex-direction:column;align-items:center;gap:12px"><span class="spin" style="width:48px;height:48px;border-width:4px;color:#F70F79"></span><span style="font-size:18px;font-weight:500">Retrying…</span></div></div>`)).replace('<div class="cap"></div>','<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">A spinner as the screen. Nothing says what is loading or how long. Skeleton for 3 s, then a named state.</div>'),
+ W('',phone(jobcard()+`<div style="position:absolute;inset:0;background:rgba(17,24,39,.4);display:grid;place-items:center"><span class="spin" style="width:40px;height:40px;border-width:3px;color:#fff"></span></div>`)).replace('<div class="cap"></div>','<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">A spinner over a Skeleton, or over a scrim. Two loading signals is one too many, and a scrim blocks SOS.</div>'),
+ W('',phone(`<div class="skcard" style="opacity:.6">${sk('line h','width:55%')}${sk('line','width:80%')}${sk('amt')}${sk('block','height:56px')}</div><div style="text-align:center;font-size:12px;color:#9CA3AF;margin-top:auto">still loading · 0:47</div>`)).replace('<div class="cap"></div>','<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">A Skeleton that never ends. After three seconds it is not loading, it is failing — EmptyState says so and offers Try again.</div>')].join('');
+const links=[...document.querySelectorAll('#nav a')];const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-20% 0px -70% 0px'});targets.forEach(t=>io.observe(t));}
+})();
+</script>

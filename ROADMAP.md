@@ -4,7 +4,7 @@ What is done and what is left, against the 46-component core set in `audit/BENCH
 
 ---
 
-## Done — 24 pages · 31 of 46 core components
+## Done — 25 pages · 33 of 46 core components
 
 | # | Page | Covers | Status |
 | --- | --- | --- | --- |
@@ -32,16 +32,16 @@ What is done and what is left, against the 46-component core set in `audit/BENCH
 | 22 | Accordion | Accordion (faq, breakdown) | Proposed |
 | 23 | DatePicker | DatePicker (strip, month, DayCell); time = Select | Proposed |
 | 24 | EmptyState | EmptyState (empty, error, offline, waiting; page, section) | Proposed |
+| 25 | Skeleton · Spinner | Skeleton shapes + presets; Spinner (Button, inline); 3-second rule | Proposed |
 
 Foundations done: tokens (`tokens/`), principles, extending, icons register, assets (two layers). Research done: Figma audit (204 frames), benchmark.
 
 ---
 
-## To do — components (15), in the agreed order
+## To do — components (14), in the agreed order
 
 | # | Component | Priority | Notes |
 | --- | --- | --- | --- |
-| 25 | **Skeleton / Spinner** | P0 | Loading for lists and cards; spinner only inside Button. |
 | 26 | **Voice prompt** | P0 | The spoken-guidance bubble: play/replay, playing state, language. Every spec references it. |
 | 27 | Tabs / Segmented control | P1 | Earnings today/week/month; ≤ 3 segments, icon + label. |
 | 28 | Nudge | P1 | Consequence strip (Figma `1581:6683`): *If not accepted −50*, *Login by 6:50 +1 coin*. Sits with the job-alert pattern. |

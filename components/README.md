@@ -28,3 +28,4 @@ One spec per core component. `button.md` is the template. Status per component: 
 | Accordion | Proposed | `accordion.md` | `site/components/accordion.html` |
 | DatePicker | Proposed | `date-picker.md` | `site/components/date-picker.html` |
 | EmptyState | Proposed | `empty-state.md` | `site/components/empty-state.html` |
+| Skeleton · Spinner | Proposed | `skeleton.md` | `site/components/skeleton.html` |
