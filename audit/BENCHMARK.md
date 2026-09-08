@@ -26,7 +26,7 @@ Ranked by how directly a principle demands it. **P0** = a principle cannot be me
 | P1 | **Numeric keypad** | Asphalt Keyboard | OTP, amounts, phone numbers. Large keys, one purpose; the OS keyboard is too small and too full. |
 | P1 | **Amount / number display** | — (we have "Value") | Earnings, payouts, timers: the primary figure on most screens. Own component so ₹, tabular numerals, size and colour are always right. |
 | P1 | **Pagination indicator** | Asphalt Indicator, M3 Carousel | Dots for banner carousels and onboarding. |
-| P1 | **Floating action button** | M3 FAB | Map screens only: recentre, call. Not a general pattern (P2: one primary action at the bottom). |
+| P1 | **Floating action button** | M3 FAB | Folded into IconButton (`L` `circle` at `elevation.floating`): shutter and recentre only. Not a general pattern (P2: one primary action at the bottom). |
 | P1 | **Map marker** | Asphalt Marker | Job location, hub, expert position. Consistent pin family. |
 | P1 | **Menu / Select** | M3 Menus, Base Select | On mobile this is a bottom sheet list with radio. Language picker, shift picker. |
 | P1 | **Media container** | — | Photos of the home, selfie, document capture: one component with loading, error and retake states. |

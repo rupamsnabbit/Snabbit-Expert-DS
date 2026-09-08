@@ -4,7 +4,7 @@ What is done and what is left, against the 46-component core set in `audit/BENCH
 
 ---
 
-## Done — 37 pages · 44 of 46 core components + 2 compositions + 1 pattern
+## Done — 37 pages · 46 of 46 core components + 2 compositions + 1 pattern
 
 | # | Page | Covers | Status |
 | --- | --- | --- | --- |
@@ -44,17 +44,16 @@ What is done and what is left, against the 46-component core set in `audit/BENCH
 | 34 | HowToClip | HowToClip (card, player; 10–20 s, loops once, captions) | Proposed |
 | 35 | ShieldCard (Kavach) | Composition: ShieldRow (6 states), ShieldConsent, SafetyCheck; SafetyStrip `shield` kind | Proposed |
 | 36 | JobAlert | Composition: the reference case as one screen — facts strip, earnings Card, Nudge loss, Timer L, Decline hold, Accept | Proposed |
+| — | FAB | Folded into IconButton: floating = `L` `circle` at `elevation.floating`; shutter and recentre only; no FAB component (`icon-button.md`) | Decided |
 | 37 | Pattern · New job arrives | `patterns/new-job-alert.md` — arrive, decide, accept / decline / time's up, edges; PRINCIPLES reference case corrected | Proposed |
 
 Foundations done: tokens (`tokens/`), principles, extending, icons register, assets (two layers). Research done: Figma audit (204 frames), benchmark.
 
 ---
 
-## To do — components (1)
+## To do — components
 
-| # | Component | Priority | Notes |
-| --- | --- | --- | --- |
-| 39 | FAB (map controls) | P1 | IconButton `L` floating variant — may collapse into IconButton. |
+None. The 46-component core set is specified; FAB was folded into IconButton.
 
 Removed from the count (decided): Tooltip (→ Coachmark), Progress Buttons (→ Button hold state), Popover, Data table, Drawer, Breadcrumb.
 

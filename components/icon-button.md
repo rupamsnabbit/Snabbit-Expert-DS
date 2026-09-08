@@ -96,6 +96,13 @@ Haptic: `light` on primary and secondary; none on ghost. Sound: none — the out
 
 - Header: back at left, at most **one** IconButton at right (close or language). Two right-side icon buttons is a menu; use a labelled action instead.
 - Floating controls sit 16 dp from the screen edge, above the bottom action bar by 16 dp, never over the primary Button.
+
+### Floating — the system's whole answer to the "FAB"
+
+There is no FAB component. A floating control is an IconButton `L`, `circle`, at `elevation.floating`, and the system allows exactly **two** of them: the camera **shutter** (`camera`, `primary brand`, MediaCapture) and **recentre** (`crosshair`, `secondary neutral`) on the one taller, pannable map — the arrival screen's 240 dp MapSnippet when she has scrolled it. MapSnippets at 160 dp are static and carry no control (`map-marker.md`).
+
+Rules: at most one floating control per screen; it is never the screen's next action (that is the Button at the bottom with a verb, P2); it never carries a label — a floating control with a label is a `Button`, put it in the action bar; there is no `+` / *New* floating button anywhere, because the expert never creates things; it hides while a BottomSheet is open and while the SafetyStrip's owner screen is active. Elevation: `floating` (4 dp) is the only shadow a control ever has, and only here. Hit area 56 dp; reduced motion: no lift on press.
+
 - In a list row an IconButton (S, secondary brand `phone`) sits at the trailing edge with 12 dp from the row's text.
 
 ---
