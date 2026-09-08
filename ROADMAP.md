@@ -59,15 +59,17 @@ Removed from the count (decided): Tooltip (→ Coachmark), Progress Buttons (→
 
 ---
 
-## To do — foundations (5 of 7)
+## To do — foundations (5 of 7) — visual first
 
-| Foundation | Why it blocks | Depends on |
-| --- | --- | --- |
-| **Sound & haptics register** | Every spec names sounds (*coin*, *success*, *sos*) and haptics (*light*, *medium*, *heavy*) that exist nowhere as a list | — |
-| **Motion tokens** | Durations and curves are hard-coded per spec (100, 150, 200, 300, 400 ms) | — |
-| **Content guide** | Voice, four languages, spoken-copy rules, vocabulary in one place | — (VoicePrompt done) |
-| **Accessibility standard** | Contrast, targets, screen reader, reduced motion — currently repeated per spec | — |
-| Indic type rules | Line-height ×1.15 exists in tokens; wrap/length rules per component not consolidated | — |
+Order decided 2026-09-08: the visual foundations first, sound parked.
+
+| # | Foundation | Why it blocks | Status |
+| --- | --- | --- | --- |
+| 1 | **Motion tokens** | Durations and curves are hard-coded per spec (60, 100, 150, 200, 300, 400, 600, 800, 1200 ms); `motion.*` and `timeout.*` proposals sit in seven specs | next |
+| 2 | **Indic type rules** | Line-height ×1.15 exists in tokens; wrap, length and fallback-face rules per component not consolidated; every checklist row 7 is open | after motion |
+| 3 | **Accessibility standard** | Contrast, targets, focus ring, reduced motion — currently repeated per spec | after type |
+| 4 | Content guide | Voice, four languages, spoken-copy rules, vocabulary in one place | later |
+| — | Sound & haptics register | Every spec names sounds and haptics that exist nowhere as a list (`sound.sos`, `sound.newJob`, `sound.safetyCheck`, `sound.shutter`, `sound.voiceStart`; `haptic.*`) | **parked** — not visual; the proposals stay in the specs until this is picked up |
 
 ---
 
