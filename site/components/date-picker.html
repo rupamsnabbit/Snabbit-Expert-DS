@@ -1,0 +1,249 @@
+<meta charset="utf-8">
+<title>Snabbit Expert DatePicker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{--bg:#FFFFFF;--bg-2:#F9FAFB;--bg-3:#F3F4F6;--text:#111827;--text-body:#374151;--text-2:#6B7280;--text-3:#9CA3AF;--border:#E5E7EB;--border-subtle:#F3F4F6;--brand:#F70F79;--brand-wash:#FEF1F7;--brand-ink:#97094A;--focus:#3B82F6;--ok:#059669;--ok-wash:#ECFDF5;--bad:#DC2626;--bad-wash:#FEF2F2;
+--sans:"Outfit",ui-sans-serif,system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111827;--bg-2:#1F2937;--bg-3:#374151;--text:#F9FAFB;--text-body:#E5E7EB;--text-2:#9CA3AF;--text-3:#6B7280;--border:#374151;--border-subtle:#1F2937;--brand:#F65CA1;--brand-wash:rgba(247,15,121,.14);--brand-ink:#FBC9DF;--ok:#34D399;--ok-wash:rgba(16,185,129,.14);--bad:#F87171;--bad-wash:rgba(239,68,68,.14)}}
+:root[data-theme="dark"]{--bg:#111827;--bg-2:#1F2937;--bg-3:#374151;--text:#F9FAFB;--text-body:#E5E7EB;--text-2:#9CA3AF;--text-3:#6B7280;--border:#374151;--border-subtle:#1F2937;--brand:#F65CA1;--brand-wash:rgba(247,15,121,.14);--brand-ink:#FBC9DF;--ok:#34D399;--ok-wash:rgba(16,185,129,.14);--bad:#F87171;--bad-wash:rgba(239,68,68,.14)}
+*{box-sizing:border-box} html{scroll-behavior:smooth;scroll-padding-top:24px} @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} .sbtn,.sbtn *{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--text-body);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+code{font-family:var(--mono);font-size:.86em;background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--text)}
+button{font:inherit} :focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+.shell{display:grid;grid-template-columns:232px minmax(0,1fr);min-height:100vh}
+.rail{position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--border);padding:24px 16px 32px;background:var(--bg);display:flex;flex-direction:column;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;padding:0 8px}.brand-mark{width:28px;height:28px;border-radius:8px;background:var(--brand);display:grid;place-items:center;flex:none}.brand-mark span{width:12px;height:12px;border-radius:3px;background:#fff;transform:rotate(45deg)}
+.brand b{font-weight:600;color:var(--text);font-size:15px;line-height:1.2;display:block}.brand small{color:var(--text-2);font-size:12px}
+.nav{display:flex;flex-direction:column;gap:2px}.nav .grp{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);padding:12px 8px 4px;font-weight:500}
+.nav a{display:block;padding:6px 8px;border-radius:6px;text-decoration:none;color:var(--text-body);font-size:13.5px}.nav a:hover{background:var(--bg-2);color:var(--text)}.nav a.on{background:var(--brand-wash);color:var(--brand-ink);font-weight:500}
+.rail-foot{margin-top:auto;padding:0 8px;font-size:12px;color:var(--text-3);line-height:1.5}
+.main{padding:40px 56px 96px;max-width:1080px;width:100%}
+.eyebrow{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);font-weight:600}
+h1{font-size:40px;line-height:1.1;font-weight:600;color:var(--text);margin:8px 0 12px;letter-spacing:-.015em}
+.lede{font-size:17px;color:var(--text-2);max-width:62ch;margin:0}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}.chip{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border:1px solid var(--border);border-radius:999px;font-size:12.5px;color:var(--text-body)}
+.chip.status{background:#FEF3C7;color:#B45309;border-color:transparent;font-weight:600}
+section{padding-top:64px} section>header{margin-bottom:20px;max-width:68ch}
+h2{font-size:26px;line-height:1.2;font-weight:600;color:var(--text);margin:6px 0 8px;letter-spacing:-.01em} h3{font-size:16px;font-weight:600;color:var(--text);margin:32px 0 12px}
+section>header p,.sub{color:var(--text-2);margin:0;font-size:15px}
+.rules{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:6px;max-width:68ch}.rules li{padding-left:18px;position:relative;font-size:14px}.rules li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:2px;background:var(--brand)}
+
+/* stage */
+.stage{background:#FFFFFF;border:1px solid var(--border);border-radius:12px;padding:24px;color:#111827}
+.stage.dark{background:#F9FAFB}
+.matrix{display:grid;gap:14px 20px;align-items:center}
+.matrix .h{font-family:var(--mono);font-size:11.5px;color:#6B7280;text-transform:uppercase;letter-spacing:.06em}
+.matrix .r{font-family:var(--mono);font-size:12.5px;color:#111827;white-space:nowrap}
+.matrix .r small{display:block;color:#9CA3AF;font-size:11px;text-transform:none;letter-spacing:0}
+.na{width:24px;height:2px;background:#E5E7EB;border-radius:1px}
+.sizes{display:flex;gap:28px;align-items:flex-end;flex-wrap:wrap}
+.szd{display:flex;flex-direction:column;gap:10px;align-items:flex-start}.szd .lbl{font-family:var(--mono);font-size:12px;color:var(--text-2)}.szd .lbl b{color:var(--text);font-weight:500}
+
+/* the button itself — everything from tokens via CSS vars set by JS */
+.sbtn{display:inline-flex;align-items:center;justify-content:center;border:0;cursor:pointer;white-space:nowrap;font-family:var(--sans);position:relative;overflow:hidden;
+  height:var(--h);padding:0 var(--px);border-radius:var(--r);font-size:var(--fs);font-weight:var(--fw);line-height:1;gap:var(--gap);
+  background:var(--fill,transparent);color:var(--ink);box-shadow:inset 0 0 0 var(--bw,0) var(--bc,transparent);transition:background .1s ease-out,box-shadow .1s}
+.sbtn.full{width:100%}
+.sbtn:active:not(.disabled):not(.loading){background:var(--fill-p)}
+.sbtn.pressed{background:var(--fill-p)}
+.sbtn.focused{outline:2px solid #3B82F6;outline-offset:2px}
+.sbtn.disabled{cursor:not-allowed}
+.sbtn svg{width:var(--ic);height:var(--ic);flex:none}
+.sbtn .spin{width:var(--ic);height:var(--ic);border-radius:50%;border:2px solid currentColor;border-right-color:transparent;animation:sp .7s linear infinite;flex:none}
+@keyframes sp{to{transform:rotate(360deg)}}
+.sbtn .hf{position:absolute;inset:0;background:rgba(0,0,0,.18);transform-origin:left;transform:scaleX(0)}
+.sbtn.holding .hf{transform:scaleX(1);transition:transform .6s linear}
+.sbtn>*{position:relative}
+.demo{display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start}
+.demo .card{flex:1;min-width:260px;border:1px solid var(--border);border-radius:12px;padding:18px;background:var(--bg)}
+.demo .card h4{margin:0 0 6px;font-size:14px;color:var(--text)}.demo .card p{margin:0 0 14px;font-size:13px;color:var(--text-2)}
+.demo .live{display:flex;gap:12px;align-items:center;flex-wrap:wrap;background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px;color:#111827}
+.logline{font-family:var(--mono);font-size:12px;color:var(--text-2);margin-top:10px;min-height:16px}
+
+/* phone mock */
+.phones{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.ph{border:1px solid var(--border);border-radius:16px;overflow:hidden;background:#fff;color:#111827}
+.ph .bar{padding:10px 16px;border-bottom:1px solid #F3F4F6;font-size:12px;color:#6B7280;display:flex;justify-content:space-between}
+.ph .bar b{font-weight:600}
+.ph .body{padding:16px;min-height:220px;display:flex;flex-direction:column;gap:12px}
+.ph .body .hd{font-size:20px;font-weight:600;line-height:28px}.ph .body .tx{font-size:14px;color:#374151;line-height:20px}
+.ph .foot{padding:12px 16px 24px;border-top:1px solid #F3F4F6;display:flex;flex-direction:column;gap:12px}
+.ph .foot.row{flex-direction:row}
+.verdict{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin:12px 0 6px}
+.verdict.ok{background:var(--ok-wash);color:var(--ok)}.verdict.bad{background:var(--bad-wash);color:var(--bad)}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px}table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{text-align:left;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);font-weight:500;padding:10px 14px;background:var(--bg-2);border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:9px 14px;border-bottom:1px solid var(--border-subtle);vertical-align:top}tr:last-child td{border-bottom:0}
+td.tk{font-family:var(--mono);font-size:12.5px;color:var(--text)}
+.sw{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-2px;margin-right:6px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(8px);background:var(--text);color:var(--bg);padding:8px 14px;border-radius:8px;font-size:13px;opacity:0;pointer-events:none;transition:opacity .15s,transform .15s;font-family:var(--mono)}.toast.show{opacity:1;transform:translateX(-50%)}
+@media (max-width:900px){.shell{grid-template-columns:1fr}.rail{position:static;height:auto;border-right:0;border-bottom:1px solid var(--border);padding:16px}.nav{flex-direction:row;flex-wrap:wrap;gap:4px}.nav .grp,.rail-foot{display:none}.main{padding:32px 20px 80px}h1{font-size:32px}}
+
+.dp{width:328px;font-family:var(--sans);color:#111827;display:flex;flex-direction:column;gap:12px}
+.strip{display:flex;gap:8px}
+.tile{flex:1;height:64px;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1px #E5E7EB;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;border:0;font-family:var(--sans);padding:0;user-select:none}
+.tile .n{font-size:20px;line-height:24px;font-weight:600;color:#111827}.tile .w{font-size:11px;line-height:14px;font-weight:500;letter-spacing:.04em;color:#6B7280;text-transform:uppercase}
+.tile.today{box-shadow:inset 0 0 0 1.5px #F70F79}.tile.today .w{color:#F70F79}
+.tile.sel{background:#FEF1F7;box-shadow:inset 0 0 0 2px #F70F79}.tile.sel .n{color:#F70F79}
+.tile.dis{box-shadow:none;background:transparent;cursor:default}.tile.dis .n,.tile.dis .w{color:#D1D5DB}
+.tile:active:not(.dis){background:#F9FAFB}
+.mh{display:flex;align-items:center;justify-content:space-between}.mh .t{font-size:20px;line-height:28px;font-weight:600}
+.mh button{width:48px;height:48px;border-radius:10px;border:0;background:transparent;color:#374151;display:grid;place-items:center;cursor:pointer}.mh button svg{width:24px;height:24px}.mh button:disabled{color:#D1D5DB;cursor:default}
+.mh.year .t{font-size:16px;font-weight:500}
+.grid{display:grid;grid-template-columns:repeat(7,44px);gap:4px;justify-content:center}
+.grid .wd{height:20px;font-size:11px;font-weight:500;letter-spacing:.04em;color:#6B7280;text-transform:uppercase;display:grid;place-items:center}
+.cell{position:relative;height:44px;display:grid;place-items:center;border:0;background:transparent;font-family:var(--sans);font-size:16px;font-weight:500;color:#111827;cursor:pointer;padding:0;user-select:none}
+.cell .c{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;position:relative;z-index:1}
+.cell.today .c{box-shadow:inset 0 0 0 1.5px #F70F79}
+.cell.sel .c{background:#F70F79;color:#fff}
+.cell.range::before{content:"";position:absolute;left:-4px;right:-4px;top:2px;bottom:2px;background:#FEF1F7}
+.cell.range.sel.start::before{left:50%}.cell.range.sel.end::before{right:50%}.cell.range.sel.start.end::before{display:none}
+.cell.dis{color:#D1D5DB;cursor:default}
+.cell .off{position:absolute;bottom:-2px;left:0;right:0;text-align:center;font-size:9px;line-height:10px;color:#6B7280}
+.cell.amt{height:56px}.cell.amt .c{margin-top:-10px}.cell .am{position:absolute;bottom:2px;left:0;right:0;text-align:center;font-size:11px;font-weight:600;font-variant-numeric:tabular-nums}
+.cell .am.pos{color:#059669}.cell .am.neg{color:#DC2626}.cell .am.zero{color:#9CA3AF}
+.cell.blank{cursor:default}
+.sum{font-size:18px;line-height:24px;color:#111827;min-height:24px}.sum.empty{color:#6B7280}
+.lim{font-size:12px;color:#6B7280;margin-top:-8px}
+.dbtn{height:56px;border-radius:12px;border:0;background:#F70F79;color:#fff;font:500 16px var(--sans);width:100%}.dbtn:disabled{background:#F3F4F6;color:#9CA3AF}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(328px,1fr));gap:24px 32px;align-items:start}
+.stg{display:flex;flex-direction:column;gap:8px}.stg .cap{font-family:var(--mono);font-size:12px;color:var(--text-2)}.stg .cap b{color:var(--text);font-weight:500}
+.mx{display:grid;grid-template-columns:100px repeat(6,1fr);gap:12px 8px;align-items:center}
+.mx .h{font-family:var(--mono);font-size:11px;color:var(--text-2);text-transform:uppercase;letter-spacing:.05em;text-align:center}.mx .r{font-family:var(--mono);font-size:12.5px;color:var(--text)}
+.mx > .c{display:flex;justify-content:center;align-items:center;background:#fff;border-radius:10px;border:1px solid #E5E7EB;padding:8px 4px;min-height:80px;font-family:var(--sans);color:#111827}
+.mx > .c .tile{width:64px;flex:none}.mx > .c .cell{width:44px}.mx > .c .grid{overflow:visible}.cell .c{width:40px;height:40px;flex:none}
+.ctl{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:12px}.ctl button{font-family:var(--sans);font-size:13px;padding:6px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);cursor:pointer}
+.logline{font-family:var(--mono);font-size:12px;color:var(--text-2);min-height:16px;margin-top:8px}
+.sheet{width:328px;background:#fff;border-radius:16px 16px 0 0;padding:20px 16px 16px;font-family:var(--sans);color:#111827;box-shadow:0 -1px 0 #E5E7EB}
+.sheet .tt{font-size:20px;font-weight:600;margin-bottom:8px}
+.sheet .row{display:flex;align-items:center;gap:12px;min-height:56px;font-size:16px;border-top:1px solid #F3F4F6}.sheet .row:first-of-type{border-top:0}
+.rd{width:24px;height:24px;border-radius:50%;box-shadow:inset 0 0 0 1.5px #6B7280;display:grid;place-items:center;flex:none}.rd.on{box-shadow:inset 0 0 0 2px #F70F79}.rd.on::after{content:"";width:12px;height:12px;border-radius:50%;background:#F70F79}
+.wheel{display:flex;gap:8px;justify-content:center;background:#F3F4F6;border-radius:12px;padding:12px}.wheel div{width:80px;text-align:center;font-family:var(--sans);color:#9CA3AF;font-size:18px;line-height:32px}.wheel div b{display:block;color:#111827;font-weight:500;background:#fff;border-radius:6px}
+@media (prefers-reduced-motion:reduce){.cell.range::before{transition:none}}
+
+.sitenav{display:flex;flex-direction:column;gap:2px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.sitenav .grp{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);padding:10px 8px 4px;font-weight:500}
+.sitenav a{display:block;padding:5px 8px;border-radius:6px;text-decoration:none;color:var(--text-body);font-size:13.5px;border:0}
+.sitenav a:hover{background:var(--bg-2);color:var(--text)} .sitenav a.on{color:var(--brand-ink);background:var(--brand-wash);font-weight:500}
+@media (max-width:900px){.sitenav{flex-direction:row;flex-wrap:wrap;gap:4px;border-bottom:0;padding-bottom:0}.sitenav .grp{display:none}}
+</style>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · DatePicker</small></div></div>
+    <nav class="sitenav" aria-label="Site"><div class="grp">Foundations</div><a href="../index.html">Tokens</a><a href="../principles.html">Principles</a><a href="../extending.html">Extending</a><a href="../icons.html">Icons</a><a href="../assets.html">Assets</a><div class="grp">Components</div><a href="../components/button.html">Button</a><a href="../components/icon-button.html">IconButton</a><a href="../components/tag.html">Tag</a><a href="../components/text-field.html">TextField</a><a href="../components/selection-controls.html">Checkbox · Radio · Switch</a><a href="../components/amount.html">Amount</a><a href="../components/timer.html">Timer</a><a href="../components/feedback.html">Banner · Toast · Snackbar</a><a href="../components/chip.html">Chip</a><a href="../components/avatar.html">Avatar</a><a href="../components/badge.html">Badge</a><a href="../components/card.html">Card</a><a href="../components/list-item.html">ListItem</a><a href="../components/selection-card.html">SelectionCard</a><a href="../components/bottom-sheet.html">BottomSheet</a><a href="../components/header-nav.html">HeaderNav</a><a href="../components/bottom-tab-bar.html">BottomTabBar</a><a href="../components/progress-bar.html">ProgressBar</a><a href="../components/stepper.html">Stepper</a><a href="../components/coachmark.html">Coachmark</a><a href="../components/sos-control.html">SOSControl</a><a href="../components/accordion.html">Accordion</a><a class="on" href="../components/date-picker.html">DatePicker</a><div class="grp">Research</div><a href="../benchmark.html">Benchmark</a><a href="../audit.html">Figma audit</a><a href="../roadmap.html">Roadmap</a></nav>
+    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#strip-s">Strip</a><a href="#month-s">Month</a><a href="#cells">Day cell states</a><a href="#time">Time</a><a href="#dont">Don't</a><a href="#figma">Figma changes</a></nav>
+    <div class="rail-foot">Rendered from tokens.json · spec in components/date-picker.md</div>
+  </aside>
+  <main class="main">
+    <header id="overview">
+      <div class="eyebrow">Core component</div><h1>DatePicker</h1>
+      <p class="lede">Choosing a day the way she thinks about days: this week as a row of big numbers, further away as a month she can see whole. Never three spinning wheels, never a typed 10/06/2026. What she chose is written in words before she confirms.</p>
+      <div class="meta"><span class="chip status">Proposed</span><span class="chip">Tier 1 · Core</span><span class="chip"><code>SnabbitDatePicker</code></span><span class="chip">strip · month</span><span class="chip">Time is a Select, not a picker</span></div>
+    </header>
+
+    <section id="strip-s">
+      <header><div class="eyebrow">This week</div><h2>Strip</h2><p>Two to seven days from today as 64 dp tiles — big number, weekday under it, <em>Today</em> on the first. Single select. It never scrolls; more than seven days is a month. Tap a tile.</p></header>
+      <div class="demo" style="align-items:flex-start;flex-wrap:wrap;gap:28px"><div class="dp" id="strip"></div><div class="card" style="max-width:300px"><h4>Log</h4><div class="logline" id="log1">tap a day</div></div></div>
+    </section>
+
+    <section id="month-s">
+      <header><div class="eyebrow">Further away</div><h2>Month</h2><p>Seven columns, Monday first, 44 dp cells with 4 dp gutters. Today is ringed; selected is filled; a range is a soft band between two filled ends. The summary line under the grid is the confirmation — the Button belongs to the flow and stays disabled until the summary has a value. Try a range of up to 6 days.</p></header>
+      <div class="demo" style="align-items:flex-start;flex-wrap:wrap;gap:28px"><div class="dp" id="month"></div><div class="card" style="max-width:300px"><h4>Controls</h4><div class="ctl"><button id="mode-range">Range (leave)</button><button id="mode-single">Single</button><button id="mode-dob">Date of birth</button><button id="mode-earn">Earnings by day</button></div><div class="logline" id="log2">range · up to 6 days</div></div></div>
+    </section>
+
+    <section id="cells">
+      <header><div class="eyebrow">One cell</div><h2>Day cell states</h2><p>One DayCell in both kinds. No red Sundays — red means error or SOS; a Sunday is not a mistake and many experts work Sundays. A weekly off day says <em>Off</em>. The amount slot exists only in the read-only earnings view.</p></header>
+      <div class="stage"><div class="mx" id="mx"></div></div>
+    </section>
+
+    <section id="time">
+      <header><div class="eyebrow">Never a wheel</div><h2>Time</h2><p>Times are a <code>select</code> BottomSheet of named slots, or a Chip row when there are four or fewer. Wheels of numbers are the worst control for this user; slots are how shifts actually work.</p></header>
+      <div class="stage"><div class="grid2" id="time-grid"></div></div>
+    </section>
+
+    <section id="dont">
+      <header><div class="eyebrow">Common mistakes</div><h2>Don't</h2></header>
+      <div class="stage"><div class="grid2" id="dont-grid"></div></div>
+    </section>
+
+    <section id="figma">
+      <header><div class="eyebrow">Reconciliation</div><h2>What changes in Figma</h2></header>
+      <ol class="rules"><li>Calendar (×2) + Date Picker + Date + Day Properties + Day Strip → DatePicker: Kind (Strip / Month), Select (Single / Range), Amounts, YearStepper; DayCell: State (Default / Today / Selected / InRange / Disabled / Off), Amount.</li><li>Remove the red Sunday colour; add the Off caption.</li><li>Delete DOB Selection (TextField) — replace with DatePicker month + YearStepper.</li><li>Date Selection Cards → strip tile instances.</li><li>The summary line becomes part of the component; the separate Confirm Leave sheet goes.</li></ol>
+      <p class="sub" style="margin-top:14px">Result: ~14 variants replacing 7 frames and 20-odd loose cells. caret-left / caret-right join the IconButton allowed set for the month header only.</p>
+    </section>
+  </main>
+</div>
+
+<script id="tokens-json" type="application/json">{"$schema":"https://design-tokens.github.io/community-group/format/","meta":{"name":"Snabbit Expert Design Tokens","package":"com.snabbit:design-system","version":"0.19.0","platform":"Compose Multiplatform (Android + iOS)","source":"tokens/DESIGN_TOKENS.md","themeApi":"SnabbitTheme","modes":["light"],"notes":["The installed package is canonical. If this file and the package disagree, the package wins and this file must be updated in the same change.","Dark mode is not defined in 0.19.0. Semantic names are mode-ready; a dark mapping is the next token task.","Palette names (pink600, gray700) are allowed only while building a semantic token the package does not yet expose.","Decisions: Outfit only (Indic falls back to system face). Phosphor Icons only \u2014 regular by default, fill for selected/active."]},"color":{"palette":{"pink":{"50":"#FEF1F7","100":"#FDE4EF","200":"#FBC9DF","300":"#F9AECF","400":"#F65CA1","500":"#F4368D","600":"#F70F79","700":"#C70C61","800":"#97094A","900":"#670632"},"gray":{"50":"#F9FAFB","100":"#F3F4F6","200":"#E5E7EB","300":"#D1D5DB","400":"#9CA3AF","500":"#6B7280","600":"#4B5563","700":"#374151","800":"#1F2937","900":"#111827"},"green":{"50":"#ECFDF5","100":"#D1FAE5","200":"#A7F3D0","300":"#6EE7B7","400":"#34D399","500":"#10B981","600":"#059669","700":"#047857"},"red":{"50":"#FEF2F2","100":"#FEE2E2","200":"#FECACA","300":"#FCA5A5","400":"#F87171","500":"#EF4444","600":"#DC2626","700":"#B91C1C"},"yellow":{"50":"#FFFBEB","100":"#FEF3C7","200":"#FDE68A","300":"#FCD34D","400":"#FBBF24","500":"#F59E0B","600":"#D97706","700":"#B45309"},"blue":{"50":"#EFF6FF","100":"#DBEAFE","200":"#BFDBFE","300":"#93C5FD","400":"#60A5FA","500":"#3B82F6","600":"#2563EB","700":"#1D4ED8"}},"semantic":{"text":[{"name":"textPrimary","ref":"gray.900","value":"#111827","use":"Titles and highest-emphasis content"},{"name":"textBody","ref":"gray.700","value":"#374151","use":"Default readable content"},{"name":"textSecondary","ref":"gray.500","value":"#6B7280","use":"Supporting content and metadata"},{"name":"textTertiary","ref":"gray.400","value":"#9CA3AF","use":"Low-emphasis, non-essential metadata"},{"name":"textDisabled","ref":"gray.300","value":"#D1D5DB","use":"Disabled labels only"},{"name":"textInverse","ref":"white","value":"#FFFFFF","use":"Text on dark or brand fills"},{"name":"textBrand","ref":"pink.600","value":"#F70F79","use":"Brand-colored text and links"},{"name":"textSuccess","ref":"green.600","value":"#059669","use":"Success text and strong positive amount"},{"name":"textWarning","ref":"yellow.600","value":"#D97706","use":"Attention or waiting text"},{"name":"textError","ref":"red.600","value":"#DC2626","use":"Error or destructive message"},{"name":"textInfo","ref":"blue.600","value":"#2563EB","use":"Informational message and link-like status"}],"background":[{"name":"bgPrimary","ref":"white","value":"#FFFFFF","use":"Screen and card surfaces"},{"name":"bgSecondary","ref":"gray.50","value":"#F9FAFB","use":"Subtle grouped surface"},{"name":"bgTertiary","ref":"gray.100","value":"#F3F4F6","use":"Muted/header surface"},{"name":"bgInverse","ref":"gray.900","value":"#111827","use":"Dark high-contrast surface, scrim base"},{"name":"bgBrand","ref":"pink.600","value":"#F70F79","use":"Primary brand fill"},{"name":"bgBrandSubtle","ref":"pink.50","value":"#FEF1F7","use":"Soft brand callout or selected wash"},{"name":"bgSuccess","ref":"green.50","value":"#ECFDF5","use":"Success callout"},{"name":"bgSuccessSubtle","ref":"green.100","value":"#D1FAE5","use":"Success emphasis"},{"name":"bgWarning","ref":"yellow.50","value":"#FFFBEB","use":"Warning callout"},{"name":"bgWarningSubtle","ref":"yellow.100","value":"#FEF3C7","use":"Warning emphasis"},{"name":"bgError","ref":"red.50","value":"#FEF2F2","use":"Error callout"},{"name":"bgErrorSubtle","ref":"red.100","value":"#FEE2E2","use":"Error emphasis"},{"name":"bgInfo","ref":"blue.50","value":"#EFF6FF","use":"Informational callout"}],"border":[{"name":"borderDefault","ref":"gray.200","value":"#E5E7EB","use":"Standard structural border"},{"name":"borderSubtle","ref":"gray.100","value":"#F3F4F6","use":"Low-emphasis card boundary"},{"name":"borderStrong","ref":"gray.500","value":"#6B7280","use":"Strong neutral separation"},{"name":"borderBrand","ref":"pink.600","value":"#F70F79","use":"Selected or brand emphasis boundary"},{"name":"borderFocus","ref":"blue.500","value":"#3B82F6","use":"Keyboard/input focus"},{"name":"borderSuccess","ref":"green.500","value":"#10B981","use":"Success boundary"},{"name":"borderWarning","ref":"yellow.500","value":"#F59E0B","use":"Warning boundary"},{"name":"borderError","ref":"red.500","value":"#EF4444","use":"Error boundary"}],"icon":[{"name":"iconBrand","ref":"pink.600","value":"#F70F79","use":"Brand-colored icon"},{"name":"iconSuccess","ref":"green.500","value":"#10B981","use":"Success icon"},{"name":"iconWarning","ref":"yellow.500","value":"#F59E0B","use":"Warning icon"},{"name":"iconError","ref":"red.500","value":"#EF4444","use":"Error icon"}],"interactive":[{"name":"interactiveDefault","ref":"pink.600","value":"#F70F79","use":"Primary brand action, resting"},{"name":"interactiveHover","ref":"pink.500","value":"#F4368D","use":"Hover / loading \u2014 package-controlled"},{"name":"interactivePressed","ref":"pink.700","value":"#C70C61","use":"Pressed \u2014 package-controlled"}]}},"typography":{"fontFamily":{"compose":"Outfit","legacyFlutter":"Metropolis","indicFallback":"system"},"rule":"Outfit is the only type family. It covers Latin and numerals; Devanagari and Kannada glyphs fall back to the platform system face. Do not add another family.","scale":[{"name":"Display","size":32,"lineHeight":40,"weight":600,"weightName":"SemiBold","use":"Rare hero result or safety state"},{"name":"Heading1","size":28,"lineHeight":37.3,"weight":600,"weightName":"SemiBold","use":"High-salience screen title"},{"name":"Heading2","size":24,"lineHeight":32,"weight":600,"weightName":"SemiBold","use":"Major section or result"},{"name":"Heading3","size":20,"lineHeight":28,"weight":600,"weightName":"SemiBold","use":"Card or section title"},{"name":"Title","size":18,"lineHeight":24,"weight":500,"weightName":"Medium","use":"Navigation title or prominent label"},{"name":"BodyLg","size":16,"lineHeight":24,"weight":400,"weightName":"Regular","use":"Primary explanation"},{"name":"BodyMd","size":14,"lineHeight":20,"weight":400,"weightName":"Regular","use":"Default supporting content"},{"name":"Caption","size":12,"lineHeight":16,"weight":400,"weightName":"Regular","use":"Metadata and helper content"},{"name":"Small","size":10,"lineHeight":14,"weight":400,"weightName":"Regular","use":"Compact, non-essential metadata only"},{"name":"ButtonLg","size":16,"lineHeight":16,"weight":600,"weightName":"SemiBold","use":"Large CTA"},{"name":"ButtonMd","size":14,"lineHeight":14,"weight":600,"weightName":"SemiBold","use":"Standard/compact CTA"}],"rules":["Use sentence case for UI text.","Use at most three hierarchy levels on one screen.","Do not use Small for actions, errors, payment status, safety guidance, or essential instructions.","Respect system font scaling and verify two-line labels and titles."],"indic":{"scripts":["Devanagari","Kannada"],"lineHeightMultiplier":1.15,"note":"Indic ascenders/descenders exceed Outfit metrics. Multiply the scale's line height by 1.15 for text containers that may hold Hindi, Marathi or Kannada; never truncate."}},"spacing":{"unit":"dp","scale":[{"name":"0","value":0,"use":"Intentional flush alignment"},{"name":"1","value":2,"use":"Optical correction only"},{"name":"2","value":4,"use":"Tight icon/text or inline gap"},{"name":"3","value":8,"use":"Small internal gap"},{"name":"4","value":12,"use":"Standard internal gap"},{"name":"5","value":16,"use":"Default component padding and screen margin"},{"name":"6","value":20,"use":"Large component padding"},{"name":"7","value":24,"use":"Section gap or spacious screen margin"},{"name":"8","value":32,"use":"Large section separation"},{"name":"9","value":40,"use":"Major separation"},{"name":"10","value":48,"use":"Touch target or major separation"},{"name":"11","value":64,"use":"Rare hero separation"}],"aliases":{"componentPadding":[4,8,16,24,32],"componentGap":[4,8,12,16],"layoutPadding":[16,24,32],"layoutGap":[16,24,32]},"forbidden":[6,10,14,18,22],"rule":"Do not add arbitrary 6, 10, 14, 18, or 22 dp layout values. A value owned by a design-system component (6 dp tag gap, 10 dp medium-button radius) is valid only through that component."},"radius":{"unit":"dp","scale":[{"name":"none","value":0,"use":"Dividers and intentionally square joins"},{"name":"sm","value":4,"use":"Small controls and tags"},{"name":"md","value":8,"use":"Inputs and compact controls"},{"name":"lg","value":12,"use":"Default card and large control"},{"name":"xl","value":16,"use":"Selected card, sheet, prominent surface"},{"name":"xxl","value":24,"use":"Large hero surface only"},{"name":"full","value":9999,"use":"Pill, avatar, circle"}]},"borderWidth":{"unit":"dp","scale":[{"name":"thin","value":1,"use":"Default structural border"},{"name":"thick","value":1.5,"use":"Emphasised border"},{"name":"thicker","value":2,"use":"Selection or strong emphasis \u2014 not routine decoration"}]},"elevation":{"unit":"dp","rule":"The package exposes no global shadow scale in 0.19.0. Default is flat with border/background hierarchy.","scale":[{"name":"flat","value":0,"use":"Screens, cards, buttons, app bars"},{"name":"floating","value":4,"use":"Floating map/control surface already established in app code"},{"name":"modal","value":null,"use":"Component-owned \u2014 use SnabbitBottomSheet; do not recreate its scrim/elevation"}]},"icon":{"library":"Phosphor Icons","rule":"Phosphor only. No other icon set, no custom glyphs. One Phosphor icon = one meaning in the app, recorded in foundations/icons.md.","weights":{"default":"regular","selected":"fill","emphasis":"bold","never":["thin","light","duotone"]},"unit":"dp","sizes":[16,20,24,32,40],"defaultAction":24,"mediumControl":20,"minTouchTarget":48,"buttonOwned":{"XS":16,"S":18,"M":20,"L":24}},"button":{"unit":"dp","sizes":[{"name":"XS","height":32,"paddingX":12,"radius":6,"icon":16,"labelSize":12,"labelWeight":500,"labelWeightName":"Medium"},{"name":"S","height":40,"paddingX":16,"radius":8,"icon":18,"labelSize":14,"labelWeight":500,"labelWeightName":"Medium"},{"name":"M","height":48,"paddingX":20,"radius":10,"icon":20,"labelSize":16,"labelWeight":600,"labelWeightName":"SemiBold"},{"name":"L","height":56,"paddingX":24,"radius":12,"icon":24,"labelSize":16,"labelWeight":600,"labelWeightName":"SemiBold"}],"rules":["Prefer M for standard actions and L for full-width bottom actions.","XS and S need a 48 dp parent hit area when interactive.","Loading keeps the label visible and adds a spinner.","Disabled and loading states must block duplicate taps."]},"grid":{"unit":"dp","baselineViewport":{"width":360,"height":800},"verifyWidths":[320,360,412],"screenMargin":16,"spaciousMargin":24,"nestedPadding":[12,16],"sectionGap":[24,32],"bottomActionPadding":16,"rules":["Use one horizontal margin consistently within a screen.","Cards align to the screen grid.","Bottom actions use 16 dp horizontal/top padding plus the system safe-area inset.","Keep scroll content clear of a persistent footer by the footer height plus safe area.","Do not center long form content in a fixed-width column on phone surfaces."]},"governance":{"addingAToken":["Confirm the package has no semantic token for the need.","Check this document and the closest existing pattern.","Record the proposed name, value, purpose, affected states, contrast, and migration plan in a component brief.","Prefer adding the token to the design-system package. If temporarily local, isolate it in the app design-system layer, not a feature file.","Update this file, the component library, and affected screenshots in the same change."]},"illustration":{"purple":null,"yellow":["yellow.300","yellow.400"],"note":"Accent hues used only inside illustration assets (foundations/assets.md). purple: hex to be read from the Snabbit Assets Figma file and locked; until then no new asset introduces a purple."}}</script>
+<script>
+(function(){
+const T=JSON.parse(document.getElementById("tokens-json").textContent); const $=s=>document.querySelector(s);
+const ICO={l:'M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z',r:'M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z',cal:'M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Z',clock:'M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z'};
+const svg=n=>`<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="${ICO[n]}"/></svg>`;
+const WD=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],WDL=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],MO=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const TODAY=new Date(2026,5,10); // Wed 10 June 2026
+const dow=d=>(d.getDay()+6)%7; const same=(a,b)=>a&&b&&a.getTime()===b.getTime();
+const fmtLong=d=>`${WDL[dow(d)]}, ${d.getDate()} ${MO[d.getMonth()]}`;
+// strip
+let ssel=null;
+function strip(){const days=Array.from({length:5},(_,i)=>new Date(2026,5,10+i));
+ $('#strip').innerHTML=`<div class="strip" role="radiogroup">${days.map((d,i)=>`<button class="tile ${i===0?'today':''} ${same(d,ssel)?'sel':''} ${i===4?'dis':''}" role="radio" aria-checked="${same(d,ssel)}" data-i="${i}" ${i===4?'disabled aria-label="'+fmtLong(d)+', not available"':''}><span class="n">${d.getDate()}</span><span class="w">${i===0?'Today':i===1?'Tmrw':WD[dow(d)]}</span></button>`).join('')}</div><div class="sum ${ssel?'':'empty'}">${ssel?fmtLong(ssel):'Choose a day'}</div><button class="dbtn" ${ssel?'':'disabled'}>Submit attendance</button>`;
+ $('#strip').querySelectorAll('.tile:not(.dis)').forEach(t=>t.onclick=()=>{ssel=days[+t.dataset.i];strip();$('#log1').textContent=`selected · spoken "${fmtLong(ssel)}" · light haptic`;});}
+strip();
+// month
+let mode='range',y=2026,m=5,a=null,b=null,LIM=6;
+const dobY=1994;
+function month(){const first=new Date(y,m,1),off=dow(first),n=new Date(y,m+1,0).getDate();
+ const isPast=d=>d<TODAY,isFut=d=>d>TODAY;
+ const cells=[];for(let i=0;i<off;i++)cells.push('<span class="cell blank"></span>');
+ for(let d=1;d<=n;d++){const dt=new Date(y,m,d);let cls=[],dis=false,extra='';
+  if(mode==='earn'){dis=isFut(dt);const v=isFut(dt)?null:[800,650,0,920,-200,700,0][d%7];if(v!==null)extra=`<span class="am ${v>0?'pos':v<0?'neg':'zero'}">${v===0?'—':(v<0?'−':'')+'₹'+Math.abs(v)}</span>`;cls.push('amt');}
+  else if(mode==='dob'){dis=false;}
+  else{dis=isPast(dt);if(mode==='range'&&a&&!b&&(dt<a||(dt-a)/864e5>LIM-1))dis=true;}
+  if(same(dt,TODAY)&&mode!=='dob')cls.push('today');
+  if(dow(dt)===6&&mode!=='earn'&&mode!=='dob')extra+='<span class="off">Off</span>';
+  if(a&&b&&dt>=a&&dt<=b){cls.push('range');if(same(dt,a))cls.push('sel','start');if(same(dt,b))cls.push('sel','end');}
+  else if(a&&same(dt,a))cls.push('sel');
+  if(dis)cls.push('dis');
+  cells.push(`<button class="cell ${cls.join(' ')}" data-d="${d}" ${dis?'disabled':''} aria-label="${fmtLong(dt)}${dis?', not available':''}"><span class="c">${d}</span>${extra}</button>`);}
+ let sum='Choose a day',empty=true;
+ if(mode==='earn'){sum='Tap a day to see its breakdown';}
+ else if(a&&b){const days=Math.round((b-a)/864e5)+1;sum=`${a.getDate()} to ${b.getDate()} ${MO[m]} · ${days} day${days>1?'s':''}`;empty=false;}
+ else if(a){sum=mode==='range'?`From ${fmtLong(a)} — now the last day`:fmtLong(a);empty=mode==='range';}
+ const canPrev=mode==='dob'||mode==='earn'||new Date(y,m,1)>new Date(TODAY.getFullYear(),TODAY.getMonth(),1);
+ const canNext=mode!=='earn'||new Date(y,m+1,1)<=TODAY;
+ $('#month').innerHTML=`${mode==='dob'?`<div class="mh year"><button id="yp" aria-label="Previous year">${svg('l')}</button><span class="t">${y}</span><button id="yn" aria-label="Next year">${svg('r')}</button></div>`:''}<div class="mh"><button id="mp" aria-label="Previous month" ${canPrev?'':'disabled'}>${svg('l')}</button><span class="t">${MO[m]} ${mode==='dob'?'':y}</span><button id="mn" aria-label="Next month" ${canNext?'':'disabled'}>${svg('r')}</button></div>${mode==='range'?'<div class="lim">Up to 6 days</div>':''}<div class="grid" role="grid">${WD.map(w=>`<span class="wd">${w}</span>`).join('')}${cells.join('')}</div><div class="sum ${empty?'empty':''}">${sum}</div>${mode==='earn'?'':`<button class="dbtn" ${empty?'disabled':''}>${mode==='range'?'Confirm leave':mode==='dob'?'Save date of birth':'Confirm'}</button>`}`;
+ $('#mp').onclick=()=>{m--;if(m<0){m=11;y--;}month();};$('#mn').onclick=()=>{m++;if(m>11){m=0;y++;}month();};
+ const yp=$('#yp');if(yp){yp.onclick=()=>{y--;month();};$('#yn').onclick=()=>{y++;month();};}
+ $('#month').querySelectorAll('.cell:not(.dis):not(.blank)').forEach(c=>c.onclick=()=>{const dt=new Date(y,m,+c.dataset.d);
+  if(mode==='earn'){$('#log2').textContent=`${fmtLong(dt)} → opens the day's breakdown (Accordion)`;return;}
+  if(mode==='range'){if(!a||(a&&b)){a=dt;b=null;$('#log2').textContent=`start · "${fmtLong(dt)}" · days beyond 6 disabled`;}else if(dt<a){a=dt;$('#log2').textContent='tapped before start → start moved';}else{b=dt;const days=Math.round((b-a)/864e5)+1;$('#log2').textContent=`range · spoken "${a.getDate()} to ${b.getDate()} ${MO[m]}, ${days} days" · Button enabled`;}}
+  else{a=dt;b=null;$('#log2').textContent=`selected · spoken "${fmtLong(dt)}"`;}
+  month();});}
+function setMode(md){mode=md;a=b=null;if(md==='dob'){y=dobY;m=2;}else if(md==='earn'){y=2026;m=4;}else{y=2026;m=5;}month();}
+$('#mode-range').onclick=()=>{setMode('range');$('#log2').textContent='range · up to 6 days · past days disabled';};
+$('#mode-single').onclick=()=>{setMode('single');$('#log2').textContent='single · past days disabled';};
+$('#mode-dob').onclick=()=>{setMode('dob');$('#log2').textContent='date of birth · year stepper above the month · no typed digits';};
+$('#mode-earn').onclick=()=>{setMode('earn');$('#log2').textContent='earnings by day · read-only · Amount S under each day · future disabled';};
+setMode('range');
+// cell matrix
+const tile=(n,w,cls)=>`<button class="tile ${cls}"><span class="n">${n}</span><span class="w">${w}</span></button>`;
+const cell=(n,cls,extra='')=>`<div class="grid" style="grid-template-columns:44px"><button class="cell ${cls}"><span class="c">${n}</span>${extra}</button></div>`;
+const ST=[['default','',''],['today','today','Today'],['selected','sel',''],['disabled','dis',''],['off (weekly off)','','off'],['amount (earnings view)','amt','amt']];
+$('#mx').innerHTML=`<div></div>${ST.map(s=>`<div class="h">${s[0]}</div>`).join('')}<div class="r">strip tile</div>${ST.map(([h,c,x])=>`<div class="c">${h.startsWith('amount')?'<span style="font-size:11px;color:var(--text-3)">—</span>':tile(10,x==='Today'?'Today':x==='off'?'Off':'Wed',c)}</div>`).join('')}<div class="r">month cell</div>${ST.map(([h,c,x])=>`<div class="c">${cell(10,c,x==='off'?'<span class="off">Off</span>':x==='amt'?'<span class="am pos">₹800</span>':'')}</div>`).join('')}`;
+// time
+$('#time-grid').innerHTML=[
+ `<div class="stg"><div class="sheet"><div class="tt">Shift start</div>${['7:00 am','9:00 am','11:00 am','2:00 pm'].map((t,i)=>`<div class="row"><span class="rd ${i===1?'on':''}"></span>${t}<span style="margin-left:auto;font-size:14px;color:#6B7280">${['4 hrs','5 hrs','4 hrs','5 hrs'][i]}</span></div>`).join('')}</div><div class="cap"><b>select sheet</b> · named slots with what they mean · spoken "nine in the morning"</div></div>`,
+ `<div class="stg"><div class="dp"><div style="font-size:14px;color:#374151">Start time</div><div style="display:flex;gap:8px;flex-wrap:wrap">${['7:00 am','9:00 am','11:00 am'].map((t,i)=>`<span style="height:40px;padding:0 16px;border-radius:999px;display:inline-flex;align-items:center;font-size:14px;font-weight:500;${i===0?'background:#FEF1F7;color:#F70F79;box-shadow:inset 0 0 0 1.5px #F70F79':'background:#fff;box-shadow:inset 0 0 0 1px #E5E7EB;color:#111827'}">${t}</span>`).join('')}</div></div><div class="cap"><b>chip row</b> · ≤ 4 slots inline</div></div>`].join('');
+// donts
+$('#dont-grid').innerHTML=[
+ `<div class="stg"><div class="wheel"><div>9<b>10</b>11</div><div>05<b>06</b>07</div><div>2025<b>2026</b>2027</div></div><span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">Three spinning wheels of numbers. Which one is the month? The research is unambiguous: this fails. Days are tiles or a month grid; times are slots.</div></div>`,
+ `<div class="stg"><div class="dp"><div style="height:56px;border-radius:12px;box-shadow:inset 0 0 0 1px #E5E7EB;background:#fff;display:flex;align-items:center;padding:0 16px;font-size:16px;color:#9CA3AF;gap:12px">${svg('cal').replace('<svg','<svg style="width:20px;height:20px;color:#6B7280"')}DD/MM/YYYY</div></div><span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">A typed date. <em>10/06</em> is June to her and October to the server. Date of birth is a month grid with a year stepper.</div></div>`,
+ `<div class="stg"><div class="dp"><div class="grid">${WD.map((w,i)=>`<span class="wd" style="${i===6?'color:#DC2626':''}">${w}</span>`).join('')}${[1,2,3,4,5,6,7].map((d,i)=>`<button class="cell"><span class="c" style="${i===6?'color:#DC2626':''}">${d}</span></button>`).join('')}</div></div><span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">Red Sundays. Red is error or SOS (P6); a Sunday is not a mistake and many experts work it. A weekly off says <em>Off</em>.</div></div>`,
+ `<div class="stg"><div class="dp"><div class="sum">Selected: 2026-06-10</div><button class="dbtn">OK</button></div><span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">An ISO date and <em>OK</em>. The summary is words she would say — <em>Wednesday, 10 June</em> — and the Button says what happens: <em>Confirm leave</em>.</div></div>`].join('');
+const links=[...document.querySelectorAll('#nav a')];const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-20% 0px -70% 0px'});targets.forEach(t=>io.observe(t));}
+})();
+</script>

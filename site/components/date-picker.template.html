@@ -1,0 +1,166 @@
+<meta charset="utf-8">
+<title>Snabbit Expert DatePicker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>__BASECSS__
+.dp{width:328px;font-family:var(--sans);color:#111827;display:flex;flex-direction:column;gap:12px}
+.strip{display:flex;gap:8px}
+.tile{flex:1;height:64px;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1px #E5E7EB;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;border:0;font-family:var(--sans);padding:0;user-select:none}
+.tile .n{font-size:20px;line-height:24px;font-weight:600;color:#111827}.tile .w{font-size:11px;line-height:14px;font-weight:500;letter-spacing:.04em;color:#6B7280;text-transform:uppercase}
+.tile.today{box-shadow:inset 0 0 0 1.5px #F70F79}.tile.today .w{color:#F70F79}
+.tile.sel{background:#FEF1F7;box-shadow:inset 0 0 0 2px #F70F79}.tile.sel .n{color:#F70F79}
+.tile.dis{box-shadow:none;background:transparent;cursor:default}.tile.dis .n,.tile.dis .w{color:#D1D5DB}
+.tile:active:not(.dis){background:#F9FAFB}
+.mh{display:flex;align-items:center;justify-content:space-between}.mh .t{font-size:20px;line-height:28px;font-weight:600}
+.mh button{width:48px;height:48px;border-radius:10px;border:0;background:transparent;color:#374151;display:grid;place-items:center;cursor:pointer}.mh button svg{width:24px;height:24px}.mh button:disabled{color:#D1D5DB;cursor:default}
+.mh.year .t{font-size:16px;font-weight:500}
+.grid{display:grid;grid-template-columns:repeat(7,44px);gap:4px;justify-content:center}
+.grid .wd{height:20px;font-size:11px;font-weight:500;letter-spacing:.04em;color:#6B7280;text-transform:uppercase;display:grid;place-items:center}
+.cell{position:relative;height:44px;display:grid;place-items:center;border:0;background:transparent;font-family:var(--sans);font-size:16px;font-weight:500;color:#111827;cursor:pointer;padding:0;user-select:none}
+.cell .c{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;position:relative;z-index:1}
+.cell.today .c{box-shadow:inset 0 0 0 1.5px #F70F79}
+.cell.sel .c{background:#F70F79;color:#fff}
+.cell.range::before{content:"";position:absolute;left:-4px;right:-4px;top:2px;bottom:2px;background:#FEF1F7}
+.cell.range.sel.start::before{left:50%}.cell.range.sel.end::before{right:50%}.cell.range.sel.start.end::before{display:none}
+.cell.dis{color:#D1D5DB;cursor:default}
+.cell .off{position:absolute;bottom:-2px;left:0;right:0;text-align:center;font-size:9px;line-height:10px;color:#6B7280}
+.cell.amt{height:56px}.cell.amt .c{margin-top:-10px}.cell .am{position:absolute;bottom:2px;left:0;right:0;text-align:center;font-size:11px;font-weight:600;font-variant-numeric:tabular-nums}
+.cell .am.pos{color:#059669}.cell .am.neg{color:#DC2626}.cell .am.zero{color:#9CA3AF}
+.cell.blank{cursor:default}
+.sum{font-size:18px;line-height:24px;color:#111827;min-height:24px}.sum.empty{color:#6B7280}
+.lim{font-size:12px;color:#6B7280;margin-top:-8px}
+.dbtn{height:56px;border-radius:12px;border:0;background:#F70F79;color:#fff;font:500 16px var(--sans);width:100%}.dbtn:disabled{background:#F3F4F6;color:#9CA3AF}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(328px,1fr));gap:24px 32px;align-items:start}
+.stg{display:flex;flex-direction:column;gap:8px}.stg .cap{font-family:var(--mono);font-size:12px;color:var(--text-2)}.stg .cap b{color:var(--text);font-weight:500}
+.mx{display:grid;grid-template-columns:100px repeat(6,1fr);gap:12px 8px;align-items:center}
+.mx .h{font-family:var(--mono);font-size:11px;color:var(--text-2);text-transform:uppercase;letter-spacing:.05em;text-align:center}.mx .r{font-family:var(--mono);font-size:12.5px;color:var(--text)}
+.mx > .c{display:flex;justify-content:center;align-items:center;background:#fff;border-radius:10px;border:1px solid #E5E7EB;padding:8px 4px;min-height:80px;font-family:var(--sans);color:#111827}
+.mx > .c .tile{width:64px;flex:none}.mx > .c .cell{width:44px}.mx > .c .grid{overflow:visible}.cell .c{width:40px;height:40px;flex:none}
+.ctl{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:12px}.ctl button{font-family:var(--sans);font-size:13px;padding:6px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);cursor:pointer}
+.logline{font-family:var(--mono);font-size:12px;color:var(--text-2);min-height:16px;margin-top:8px}
+.sheet{width:328px;background:#fff;border-radius:16px 16px 0 0;padding:20px 16px 16px;font-family:var(--sans);color:#111827;box-shadow:0 -1px 0 #E5E7EB}
+.sheet .tt{font-size:20px;font-weight:600;margin-bottom:8px}
+.sheet .row{display:flex;align-items:center;gap:12px;min-height:56px;font-size:16px;border-top:1px solid #F3F4F6}.sheet .row:first-of-type{border-top:0}
+.rd{width:24px;height:24px;border-radius:50%;box-shadow:inset 0 0 0 1.5px #6B7280;display:grid;place-items:center;flex:none}.rd.on{box-shadow:inset 0 0 0 2px #F70F79}.rd.on::after{content:"";width:12px;height:12px;border-radius:50%;background:#F70F79}
+.wheel{display:flex;gap:8px;justify-content:center;background:#F3F4F6;border-radius:12px;padding:12px}.wheel div{width:80px;text-align:center;font-family:var(--sans);color:#9CA3AF;font-size:18px;line-height:32px}.wheel div b{display:block;color:#111827;font-weight:500;background:#fff;border-radius:6px}
+@media (prefers-reduced-motion:reduce){.cell.range::before{transition:none}}
+__NAVCSS__</style>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · DatePicker</small></div></div>
+    __SITENAV__
+    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#strip-s">Strip</a><a href="#month-s">Month</a><a href="#cells">Day cell states</a><a href="#time">Time</a><a href="#dont">Don't</a><a href="#figma">Figma changes</a></nav>
+    <div class="rail-foot">Rendered from tokens.json · spec in components/date-picker.md</div>
+  </aside>
+  <main class="main">
+    <header id="overview">
+      <div class="eyebrow">Core component</div><h1>DatePicker</h1>
+      <p class="lede">Choosing a day the way she thinks about days: this week as a row of big numbers, further away as a month she can see whole. Never three spinning wheels, never a typed 10/06/2026. What she chose is written in words before she confirms.</p>
+      <div class="meta"><span class="chip status">Proposed</span><span class="chip">Tier 1 · Core</span><span class="chip"><code>SnabbitDatePicker</code></span><span class="chip">strip · month</span><span class="chip">Time is a Select, not a picker</span></div>
+    </header>
+
+    <section id="strip-s">
+      <header><div class="eyebrow">This week</div><h2>Strip</h2><p>Two to seven days from today as 64 dp tiles — big number, weekday under it, <em>Today</em> on the first. Single select. It never scrolls; more than seven days is a month. Tap a tile.</p></header>
+      <div class="demo" style="align-items:flex-start;flex-wrap:wrap;gap:28px"><div class="dp" id="strip"></div><div class="card" style="max-width:300px"><h4>Log</h4><div class="logline" id="log1">tap a day</div></div></div>
+    </section>
+
+    <section id="month-s">
+      <header><div class="eyebrow">Further away</div><h2>Month</h2><p>Seven columns, Monday first, 44 dp cells with 4 dp gutters. Today is ringed; selected is filled; a range is a soft band between two filled ends. The summary line under the grid is the confirmation — the Button belongs to the flow and stays disabled until the summary has a value. Try a range of up to 6 days.</p></header>
+      <div class="demo" style="align-items:flex-start;flex-wrap:wrap;gap:28px"><div class="dp" id="month"></div><div class="card" style="max-width:300px"><h4>Controls</h4><div class="ctl"><button id="mode-range">Range (leave)</button><button id="mode-single">Single</button><button id="mode-dob">Date of birth</button><button id="mode-earn">Earnings by day</button></div><div class="logline" id="log2">range · up to 6 days</div></div></div>
+    </section>
+
+    <section id="cells">
+      <header><div class="eyebrow">One cell</div><h2>Day cell states</h2><p>One DayCell in both kinds. No red Sundays — red means error or SOS; a Sunday is not a mistake and many experts work Sundays. A weekly off day says <em>Off</em>. The amount slot exists only in the read-only earnings view.</p></header>
+      <div class="stage"><div class="mx" id="mx"></div></div>
+    </section>
+
+    <section id="time">
+      <header><div class="eyebrow">Never a wheel</div><h2>Time</h2><p>Times are a <code>select</code> BottomSheet of named slots, or a Chip row when there are four or fewer. Wheels of numbers are the worst control for this user; slots are how shifts actually work.</p></header>
+      <div class="stage"><div class="grid2" id="time-grid"></div></div>
+    </section>
+
+    <section id="dont">
+      <header><div class="eyebrow">Common mistakes</div><h2>Don't</h2></header>
+      <div class="stage"><div class="grid2" id="dont-grid"></div></div>
+    </section>
+
+    <section id="figma">
+      <header><div class="eyebrow">Reconciliation</div><h2>What changes in Figma</h2></header>
+      <ol class="rules"><li>Calendar (×2) + Date Picker + Date + Day Properties + Day Strip → DatePicker: Kind (Strip / Month), Select (Single / Range), Amounts, YearStepper; DayCell: State (Default / Today / Selected / InRange / Disabled / Off), Amount.</li><li>Remove the red Sunday colour; add the Off caption.</li><li>Delete DOB Selection (TextField) — replace with DatePicker month + YearStepper.</li><li>Date Selection Cards → strip tile instances.</li><li>The summary line becomes part of the component; the separate Confirm Leave sheet goes.</li></ol>
+      <p class="sub" style="margin-top:14px">Result: ~14 variants replacing 7 frames and 20-odd loose cells. caret-left / caret-right join the IconButton allowed set for the month header only.</p>
+    </section>
+  </main>
+</div>
+
+<script id="tokens-json" type="application/json">__TOKENS__</script>
+<script>
+(function(){
+const T=JSON.parse(document.getElementById("tokens-json").textContent); const $=s=>document.querySelector(s);
+const ICO={l:'M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z',r:'M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z',cal:'M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Z',clock:'M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z'};
+const svg=n=>`<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="${ICO[n]}"/></svg>`;
+const WD=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],WDL=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],MO=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const TODAY=new Date(2026,5,10); // Wed 10 June 2026
+const dow=d=>(d.getDay()+6)%7; const same=(a,b)=>a&&b&&a.getTime()===b.getTime();
+const fmtLong=d=>`${WDL[dow(d)]}, ${d.getDate()} ${MO[d.getMonth()]}`;
+// strip
+let ssel=null;
+function strip(){const days=Array.from({length:5},(_,i)=>new Date(2026,5,10+i));
+ $('#strip').innerHTML=`<div class="strip" role="radiogroup">${days.map((d,i)=>`<button class="tile ${i===0?'today':''} ${same(d,ssel)?'sel':''} ${i===4?'dis':''}" role="radio" aria-checked="${same(d,ssel)}" data-i="${i}" ${i===4?'disabled aria-label="'+fmtLong(d)+', not available"':''}><span class="n">${d.getDate()}</span><span class="w">${i===0?'Today':i===1?'Tmrw':WD[dow(d)]}</span></button>`).join('')}</div><div class="sum ${ssel?'':'empty'}">${ssel?fmtLong(ssel):'Choose a day'}</div><button class="dbtn" ${ssel?'':'disabled'}>Submit attendance</button>`;
+ $('#strip').querySelectorAll('.tile:not(.dis)').forEach(t=>t.onclick=()=>{ssel=days[+t.dataset.i];strip();$('#log1').textContent=`selected · spoken "${fmtLong(ssel)}" · light haptic`;});}
+strip();
+// month
+let mode='range',y=2026,m=5,a=null,b=null,LIM=6;
+const dobY=1994;
+function month(){const first=new Date(y,m,1),off=dow(first),n=new Date(y,m+1,0).getDate();
+ const isPast=d=>d<TODAY,isFut=d=>d>TODAY;
+ const cells=[];for(let i=0;i<off;i++)cells.push('<span class="cell blank"></span>');
+ for(let d=1;d<=n;d++){const dt=new Date(y,m,d);let cls=[],dis=false,extra='';
+  if(mode==='earn'){dis=isFut(dt);const v=isFut(dt)?null:[800,650,0,920,-200,700,0][d%7];if(v!==null)extra=`<span class="am ${v>0?'pos':v<0?'neg':'zero'}">${v===0?'—':(v<0?'−':'')+'₹'+Math.abs(v)}</span>`;cls.push('amt');}
+  else if(mode==='dob'){dis=false;}
+  else{dis=isPast(dt);if(mode==='range'&&a&&!b&&(dt<a||(dt-a)/864e5>LIM-1))dis=true;}
+  if(same(dt,TODAY)&&mode!=='dob')cls.push('today');
+  if(dow(dt)===6&&mode!=='earn'&&mode!=='dob')extra+='<span class="off">Off</span>';
+  if(a&&b&&dt>=a&&dt<=b){cls.push('range');if(same(dt,a))cls.push('sel','start');if(same(dt,b))cls.push('sel','end');}
+  else if(a&&same(dt,a))cls.push('sel');
+  if(dis)cls.push('dis');
+  cells.push(`<button class="cell ${cls.join(' ')}" data-d="${d}" ${dis?'disabled':''} aria-label="${fmtLong(dt)}${dis?', not available':''}"><span class="c">${d}</span>${extra}</button>`);}
+ let sum='Choose a day',empty=true;
+ if(mode==='earn'){sum='Tap a day to see its breakdown';}
+ else if(a&&b){const days=Math.round((b-a)/864e5)+1;sum=`${a.getDate()} to ${b.getDate()} ${MO[m]} · ${days} day${days>1?'s':''}`;empty=false;}
+ else if(a){sum=mode==='range'?`From ${fmtLong(a)} — now the last day`:fmtLong(a);empty=mode==='range';}
+ const canPrev=mode==='dob'||mode==='earn'||new Date(y,m,1)>new Date(TODAY.getFullYear(),TODAY.getMonth(),1);
+ const canNext=mode!=='earn'||new Date(y,m+1,1)<=TODAY;
+ $('#month').innerHTML=`${mode==='dob'?`<div class="mh year"><button id="yp" aria-label="Previous year">${svg('l')}</button><span class="t">${y}</span><button id="yn" aria-label="Next year">${svg('r')}</button></div>`:''}<div class="mh"><button id="mp" aria-label="Previous month" ${canPrev?'':'disabled'}>${svg('l')}</button><span class="t">${MO[m]} ${mode==='dob'?'':y}</span><button id="mn" aria-label="Next month" ${canNext?'':'disabled'}>${svg('r')}</button></div>${mode==='range'?'<div class="lim">Up to 6 days</div>':''}<div class="grid" role="grid">${WD.map(w=>`<span class="wd">${w}</span>`).join('')}${cells.join('')}</div><div class="sum ${empty?'empty':''}">${sum}</div>${mode==='earn'?'':`<button class="dbtn" ${empty?'disabled':''}>${mode==='range'?'Confirm leave':mode==='dob'?'Save date of birth':'Confirm'}</button>`}`;
+ $('#mp').onclick=()=>{m--;if(m<0){m=11;y--;}month();};$('#mn').onclick=()=>{m++;if(m>11){m=0;y++;}month();};
+ const yp=$('#yp');if(yp){yp.onclick=()=>{y--;month();};$('#yn').onclick=()=>{y++;month();};}
+ $('#month').querySelectorAll('.cell:not(.dis):not(.blank)').forEach(c=>c.onclick=()=>{const dt=new Date(y,m,+c.dataset.d);
+  if(mode==='earn'){$('#log2').textContent=`${fmtLong(dt)} → opens the day's breakdown (Accordion)`;return;}
+  if(mode==='range'){if(!a||(a&&b)){a=dt;b=null;$('#log2').textContent=`start · "${fmtLong(dt)}" · days beyond 6 disabled`;}else if(dt<a){a=dt;$('#log2').textContent='tapped before start → start moved';}else{b=dt;const days=Math.round((b-a)/864e5)+1;$('#log2').textContent=`range · spoken "${a.getDate()} to ${b.getDate()} ${MO[m]}, ${days} days" · Button enabled`;}}
+  else{a=dt;b=null;$('#log2').textContent=`selected · spoken "${fmtLong(dt)}"`;}
+  month();});}
+function setMode(md){mode=md;a=b=null;if(md==='dob'){y=dobY;m=2;}else if(md==='earn'){y=2026;m=4;}else{y=2026;m=5;}month();}
+$('#mode-range').onclick=()=>{setMode('range');$('#log2').textContent='range · up to 6 days · past days disabled';};
+$('#mode-single').onclick=()=>{setMode('single');$('#log2').textContent='single · past days disabled';};
+$('#mode-dob').onclick=()=>{setMode('dob');$('#log2').textContent='date of birth · year stepper above the month · no typed digits';};
+$('#mode-earn').onclick=()=>{setMode('earn');$('#log2').textContent='earnings by day · read-only · Amount S under each day · future disabled';};
+setMode('range');
+// cell matrix
+const tile=(n,w,cls)=>`<button class="tile ${cls}"><span class="n">${n}</span><span class="w">${w}</span></button>`;
+const cell=(n,cls,extra='')=>`<div class="grid" style="grid-template-columns:44px"><button class="cell ${cls}"><span class="c">${n}</span>${extra}</button></div>`;
+const ST=[['default','',''],['today','today','Today'],['selected','sel',''],['disabled','dis',''],['off (weekly off)','','off'],['amount (earnings view)','amt','amt']];
+$('#mx').innerHTML=`<div></div>${ST.map(s=>`<div class="h">${s[0]}</div>`).join('')}<div class="r">strip tile</div>${ST.map(([h,c,x])=>`<div class="c">${h.startsWith('amount')?'<span style="font-size:11px;color:var(--text-3)">—</span>':tile(10,x==='Today'?'Today':x==='off'?'Off':'Wed',c)}</div>`).join('')}<div class="r">month cell</div>${ST.map(([h,c,x])=>`<div class="c">${cell(10,c,x==='off'?'<span class="off">Off</span>':x==='amt'?'<span class="am pos">₹800</span>':'')}</div>`).join('')}`;
+// time
+$('#time-grid').innerHTML=[
+ `<div class="stg"><div class="sheet"><div class="tt">Shift start</div>${['7:00 am','9:00 am','11:00 am','2:00 pm'].map((t,i)=>`<div class="row"><span class="rd ${i===1?'on':''}"></span>${t}<span style="margin-left:auto;font-size:14px;color:#6B7280">${['4 hrs','5 hrs','4 hrs','5 hrs'][i]}</span></div>`).join('')}</div><div class="cap"><b>select sheet</b> · named slots with what they mean · spoken "nine in the morning"</div></div>`,
+ `<div class="stg"><div class="dp"><div style="font-size:14px;color:#374151">Start time</div><div style="display:flex;gap:8px;flex-wrap:wrap">${['7:00 am','9:00 am','11:00 am'].map((t,i)=>`<span style="height:40px;padding:0 16px;border-radius:999px;display:inline-flex;align-items:center;font-size:14px;font-weight:500;${i===0?'background:#FEF1F7;color:#F70F79;box-shadow:inset 0 0 0 1.5px #F70F79':'background:#fff;box-shadow:inset 0 0 0 1px #E5E7EB;color:#111827'}">${t}</span>`).join('')}</div></div><div class="cap"><b>chip row</b> · ≤ 4 slots inline</div></div>`].join('');
+// donts
+$('#dont-grid').innerHTML=[
+ `<div class="stg"><div class="wheel"><div>9<b>10</b>11</div><div>05<b>06</b>07</div><div>2025<b>2026</b>2027</div></div><span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">Three spinning wheels of numbers. Which one is the month? The research is unambiguous: this fails. Days are tiles or a month grid; times are slots.</div></div>`,
+ `<div class="stg"><div class="dp"><div style="height:56px;border-radius:12px;box-shadow:inset 0 0 0 1px #E5E7EB;background:#fff;display:flex;align-items:center;padding:0 16px;font-size:16px;color:#9CA3AF;gap:12px">${svg('cal').replace('<svg','<svg style="width:20px;height:20px;color:#6B7280"')}DD/MM/YYYY</div></div><span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">A typed date. <em>10/06</em> is June to her and October to the server. Date of birth is a month grid with a year stepper.</div></div>`,
+ `<div class="stg"><div class="dp"><div class="grid">${WD.map((w,i)=>`<span class="wd" style="${i===6?'color:#DC2626':''}">${w}</span>`).join('')}${[1,2,3,4,5,6,7].map((d,i)=>`<button class="cell"><span class="c" style="${i===6?'color:#DC2626':''}">${d}</span></button>`).join('')}</div></div><span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">Red Sundays. Red is error or SOS (P6); a Sunday is not a mistake and many experts work it. A weekly off says <em>Off</em>.</div></div>`,
+ `<div class="stg"><div class="dp"><div class="sum">Selected: 2026-06-10</div><button class="dbtn">OK</button></div><span class="verdict bad">Don't</span><div class="sub" style="font-size:13.5px">An ISO date and <em>OK</em>. The summary is words she would say — <em>Wednesday, 10 June</em> — and the Button says what happens: <em>Confirm leave</em>.</div></div>`].join('');
+const links=[...document.querySelectorAll('#nav a')];const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-20% 0px -70% 0px'});targets.forEach(t=>io.observe(t));}
+})();
+</script>

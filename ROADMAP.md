@@ -4,7 +4,7 @@ What is done and what is left, against the 46-component core set in `audit/BENCH
 
 ---
 
-## Done — 22 pages · 29 of 46 core components
+## Done — 23 pages · 30 of 46 core components
 
 | # | Page | Covers | Status |
 | --- | --- | --- | --- |
@@ -30,16 +30,16 @@ What is done and what is left, against the 46-component core set in `audit/BENCH
 | 20 | Coachmark | Coachmark (replaces Tooltip) | Proposed |
 | 21 | SOSControl | SOSControl, active screen, SafetyStrip | Proposed |
 | 22 | Accordion | Accordion (faq, breakdown) | Proposed |
+| 23 | DatePicker | DatePicker (strip, month, DayCell); time = Select | Proposed |
 
 Foundations done: tokens (`tokens/`), principles, extending, icons register, assets (two layers). Research done: Figma audit (204 frames), benchmark.
 
 ---
 
-## To do — components (17), in the agreed order
+## To do — components (16), in the agreed order
 
 | # | Component | Priority | Notes |
 | --- | --- | --- | --- |
-| 23 | **DatePicker** (+ time) | P1 | Shift date, leave. Probably a BottomSheet `select` with a calendar strip; time is a Select. |
 | 24 | **Empty state** | P0 | Illustration + one line + one action. One of the five mandatory states (P5). |
 | 25 | **Skeleton / Spinner** | P0 | Loading for lists and cards; spinner only inside Button. |
 | 26 | **Voice prompt** | P0 | The spoken-guidance bubble: play/replay, playing state, language. Every spec references it. |

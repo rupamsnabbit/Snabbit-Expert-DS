@@ -51,7 +51,7 @@ A filled brand IconButton is never the screen's one next action — that action 
 
 ## Allowed icons
 
-An IconButton may use only these registered icons (nine, after `bell` was added by the HeaderNav spec), in these positions. Anything else becomes a labelled Button.
+An IconButton may use only these registered icons (ten, after `bell` from HeaderNav and the month carets from DatePicker), in these positions. Anything else becomes a labelled Button.
 
 | Icon | Meaning | Position | Size |
 | --- | --- | --- | --- |
@@ -64,6 +64,7 @@ An IconButton may use only these registered icons (nine, after `bell` was added 
 | `crosshair` | Recentre map | Map, bottom-right above the action bar | L secondary neutral (floating, circle) |
 | `translate` | Change language | Settings header | M ghost neutral |
 | `bell` | Notifications | Home header left, with Badge; root header trailing | M ghost neutral |
+| `caret-left` / `caret-right` | Previous / next month or year | DatePicker month header **only** | M ghost neutral |
 
 To add an icon here: it must be in `foundations/icons.md`, tested with five experts who have never seen it, and appear in the same place on every screen.
 
