@@ -1,0 +1,355 @@
+<meta charset="utf-8">
+<title>Snabbit Expert Pattern Payout</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --bg-2:#F9FAFB; --bg-3:#F3F4F6;
+  --text:#111827; --text-body:#374151; --text-2:#6B7280; --text-3:#9CA3AF;
+  --border:#E5E7EB; --border-subtle:#F3F4F6;
+  --brand:#F70F79; --brand-wash:#FEF1F7; --brand-ink:#97094A;
+  --ok:#059669; --ok-wash:#ECFDF5; --focus:#3B82F6;
+  --sans:"Outfit",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+    --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+    --border:#374151; --border-subtle:#1F2937;
+    --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+    --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+  --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+  --border:#374151; --border-subtle:#1F2937;
+  --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+  --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--text-body);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+code{font-family:var(--mono);font-size:.85em;background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--text)}
+pre{background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:14px 16px;overflow-x:auto;margin:12px 0 20px} pre code{background:none;border:0;padding:0;font-size:12.5px;line-height:1.55;white-space:pre}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+.shell{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}
+.rail{position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--border);padding:24px 16px 32px;background:var(--bg);display:flex;flex-direction:column;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;padding:0 8px}
+.brand-mark{width:28px;height:28px;border-radius:8px;background:var(--brand);display:grid;place-items:center;flex:none}
+.brand-mark span{width:12px;height:12px;border-radius:3px;background:#fff;transform:rotate(45deg)}
+.brand b{font-weight:600;color:var(--text);font-size:15px;line-height:1.2;display:block}
+.brand small{color:var(--text-2);font-size:12px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:block;padding:6px 8px;border-radius:6px;text-decoration:none;color:var(--text);font-size:13.5px;font-weight:500}
+.nav a.sub{font-weight:400;color:var(--text-body);padding-left:14px;font-size:13px}
+.nav a.sub b{font-family:var(--mono);font-weight:500;color:var(--text-3);font-size:11.5px;margin-right:2px}
+.nav a:hover{background:var(--bg-2)}
+.nav a.on{background:var(--brand-wash);color:var(--brand-ink)}
+.rail-foot{margin-top:auto;padding:0 8px;font-size:12px;color:var(--text-3);line-height:1.5}
+.main{padding:40px 56px 96px;max-width:860px;width:100%}
+.eyebrow{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);font-weight:600}
+h1{font-size:40px;line-height:1.1;font-weight:600;color:var(--text);margin:8px 0 12px;letter-spacing:-.015em;text-wrap:balance}
+.lede{font-size:18px;color:var(--text-2);max-width:60ch;margin:0 0 8px}
+.lede strong{color:var(--text);font-weight:500}
+h2{font-size:26px;line-height:1.2;font-weight:600;color:var(--text);margin:72px 0 16px;letter-spacing:-.01em;text-wrap:balance;padding-top:24px;border-top:1px solid var(--border)}
+h3{font-size:20px;font-weight:600;color:var(--text);margin:48px 0 8px;letter-spacing:-.005em}
+h3::before{content:"";display:block;width:32px;height:3px;background:var(--brand);border-radius:2px;margin-bottom:14px}
+p{margin:0 0 14px;max-width:66ch}
+h3 + p{font-size:17px;color:var(--text);font-weight:500}
+p.why{color:var(--text-2);font-size:15px;padding-left:14px;border-left:2px solid var(--border)}
+p.why::before{content:"Why · ";color:var(--text-3);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+p.lbl{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2);font-weight:600;margin:22px 0 8px}
+strong{color:var(--text);font-weight:600}
+em{font-style:italic}
+ul,ol{margin:0 0 14px;padding-left:0;list-style:none;max-width:68ch}
+ul li{position:relative;padding-left:20px;margin:6px 0;font-size:15.5px}
+ul li::before{content:"";position:absolute;left:0;top:11px;width:9px;height:2px;background:var(--brand)}
+ul li.chk{padding-left:30px}
+ul li.chk::before{width:16px;height:16px;top:4px;background:var(--bg);border:1.5px solid var(--text-3);border-radius:4px}
+ol{counter-reset:s}
+ol li{counter-increment:s;display:grid;grid-template-columns:32px 1fr;gap:12px;margin:10px 0;font-size:15.5px}
+ol li::before{content:counter(s);width:28px;height:28px;border-radius:50%;background:var(--brand-wash);color:var(--brand-ink);font-weight:600;font-size:13px;display:grid;place-items:center;margin-top:1px}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px;margin:8px 0 20px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);font-weight:500;padding:10px 14px;background:var(--bg-2);border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:10px 14px;border-bottom:1px solid var(--border-subtle);vertical-align:top;color:var(--text-body)}
+tr:last-child td{border-bottom:0}
+td:first-child{color:var(--text);font-weight:500;white-space:nowrap}
+hr{display:none}
+
+.sitenav{display:flex;flex-direction:column;gap:2px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.sitenav .grp{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);padding:10px 8px 4px;font-weight:500}
+.sitenav a{display:block;padding:5px 8px;border-radius:6px;text-decoration:none;color:var(--text-body);font-size:13.5px;border:0}
+.sitenav a:hover{background:var(--bg-2);color:var(--text)} .sitenav a.on{color:var(--brand-ink);background:var(--brand-wash);font-weight:500}
+@media (max-width:900px){.sitenav{flex-direction:row;flex-wrap:wrap;gap:4px;border-bottom:0;padding-bottom:0}.sitenav .grp{display:none}}
+
+@media (max-width:900px){
+  .shell{grid-template-columns:1fr}
+  .rail{position:static;height:auto;border-right:0;border-bottom:1px solid var(--border);padding:16px}
+  .nav{flex-direction:row;flex-wrap:wrap;gap:4px} .nav a.sub{padding-left:8px} .rail-foot{display:none}
+  .main{padding:32px 20px 80px} h1{font-size:32px} h2{margin-top:56px}
+}
+</style>
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Pattern · Payout</small></div></div>
+    <nav class="sitenav" aria-label="Site"><div class="grp">Foundations</div><a href="index.html">Tokens</a><a href="principles.html">Principles</a><a href="extending.html">Extending</a><a href="icons.html">Icons</a><a href="assets.html">Assets</a><a href="motion.html">Motion</a><a href="type.html">Type · four scripts</a><a href="accessibility.html">Accessibility</a><div class="grp">Components</div><a href="components/button.html">Button</a><a href="components/icon-button.html">IconButton</a><a href="components/tag.html">Tag</a><a href="components/text-field.html">TextField</a><a href="components/selection-controls.html">Checkbox · Radio · Switch</a><a href="components/amount.html">Amount</a><a href="components/timer.html">Timer</a><a href="components/feedback.html">Banner · Toast · Snackbar</a><a href="components/chip.html">Chip</a><a href="components/avatar.html">Avatar</a><a href="components/badge.html">Badge</a><a href="components/card.html">Card</a><a href="components/list-item.html">ListItem</a><a href="components/selection-card.html">SelectionCard</a><a href="components/bottom-sheet.html">BottomSheet</a><a href="components/header-nav.html">HeaderNav</a><a href="components/bottom-tab-bar.html">BottomTabBar</a><a href="components/progress-bar.html">ProgressBar</a><a href="components/stepper.html">Stepper</a><a href="components/coachmark.html">Coachmark</a><a href="components/sos-control.html">SOSControl</a><a href="components/accordion.html">Accordion</a><a href="components/date-picker.html">DatePicker</a><a href="components/empty-state.html">EmptyState</a><a href="components/skeleton.html">Skeleton · Spinner</a><a href="components/voice-prompt.html">VoicePrompt</a><a href="components/tabs.html">Tabs · Segmented</a><a href="components/nudge.html">Nudge</a><a href="components/numeric-keypad.html">NumericKeypad</a><a href="components/page-indicator.html">PageIndicator</a><a href="components/media-capture.html">MediaCapture</a><a href="components/map-marker.html">MapMarker · MapSnippet</a><a href="components/stat-rating-divider.html">Stat · Rating · Divider</a><a href="components/how-to-clip.html">HowToClip</a><a href="components/shield-card.html">ShieldCard</a><a href="components/job-alert.html">JobAlert</a><div class="grp">Patterns</div><a href="pattern-new-job-alert.html">New job arrives</a><a href="pattern-check-in-out.html">Check in · work · check out</a><a class="on" href="pattern-payout.html">Payout</a><div class="grp">Research</div><a href="benchmark.html">Benchmark</a><a href="audit.html">Figma audit</a><a href="roadmap.html">Roadmap</a></nav><nav class="nav" id="nav"><a href="#the-flow">The flow</a><a href="#what-changes-from-the-shipped-screens">What changes from the shipped screens</a><a href="#1-statement">1. Statement</a><a href="#2-schedule-and-states">2. Schedule and states</a><a href="#3-get-paid-account-and-pan">3. Get paid — account and PAN</a><a href="#4-early-payout">4. Early payout</a><a href="#5-history">5. History</a><a href="#6-paid-the-moment">6. Paid — the moment</a><a href="#content">Content</a><a href="#spec-follow-ups">Spec follow-ups</a><a href="#checklist-for-the-flow">Checklist for the flow</a></nav>
+    <div class="rail-foot">Snabbit Expert Design System · generated from patterns/payout.md</div>
+  </aside>
+  <main class="main">
+    <header>
+      <div class="eyebrow">Snabbit Expert · Mobile</div>
+      <h1>Pattern — payout</h1>
+      <p class="lede">Where the money goes. The expert earns per job, sees a running total on the Earnings tab, and is <strong>paid</strong> on fixed days — monthly, with an early-payout option and bonuses that land on their own dates. This pattern covers the statement she reads, the schedule that tells her when, the states a payout can be in, and the two things she must set up to be paid at all (a UPI or bank account, and a PAN). Evidence: <em>Expert App 2.0</em> → <em>WIP – Payout I</em> → the sections marked ✅ — <em>Monthly Earnings</em> (<code>3553:12166</code>, four account states) and <em>Adjustments Case</em> (<code>5007:9424</code>); the rest of that page is still working material and is not treated as shipped.</p>
+    </header>
+    <h2 id="the-flow">The flow</h2>
+<pre><code> Earnings tab
+      │
+      ▼
+ 1. Statement ── month pager · &quot;You'll be paid&quot; hero · earned − deductions · breakdown rows · rewards · actions
+      │
+      ├── 2. Schedule ── dated rows: paid (UTR) · processing · blocked (no account) · failed
+      │         │
+      │         └── 3. Get paid ── Add UPI / bank (form sheet) · Add PAN (MediaCapture document) · one Stepper when missing
+      │
+      ├── 4. Early payout ── amount up to the limit · fee shown · confirm · lands in the schedule as &quot;Early payout&quot;
+      │
+      ├── 5. History ── every payout ever, newest first, with UTR
+      │
+      └── 6. Paid ── notification + Snackbar on payout day; Help for a payout issue
+</code></pre>
+<hr />
+<h2 id="what-changes-from-the-shipped-screens">What changes from the shipped screens</h2>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Shipped (✅ Monthly Earnings)</th>
+<th>Proposed</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Header: back · <em>Expert ID: 14586</em> · <strong>Payout Issue</strong> pill</td>
+<td>HeaderNav <code>page</code> — back, title <em>March earnings</em>, trailing <strong>Help</strong> <code>HeaderAction</code> (headset)</td>
+<td>The Expert ID belongs on Profile; <em>Payout Issue</em> is Help with a payout context (<code>header-nav.md</code>)</td>
+</tr>
+<tr>
+<td><code>‹ March 2025 ›</code> month pager</td>
+<td>Kept: the DatePicker month header (caret IconButtons), months with no earnings disabled</td>
+<td>Already a system part; one place to learn a month pager</td>
+</tr>
+<tr>
+<td>Green band <strong>Total Earnings ₹26,674</strong>, then deductions, then <em>Remaining Payout ₹15,474</em> — and the green Total band again at the bottom</td>
+<td>Hero Card: <strong>You'll be paid</strong> · Amount <code>L</code> <strong>₹15,474</strong> · <em>on 15 Mar</em>; under it Accordion <code>breakdown</code> <strong>collapsed</strong>: <em>Earned ₹26,674</em> then each deduction as a negative row; the total appears once</td>
+<td>The number she needs is what reaches her account (P1, P2); green is a status colour, not a heading colour (row 14); the same total twice is noise</td>
+</tr>
+<tr>
+<td>ⓘ tooltips (<em>Locked bonuses</em>, <em>Joining bonus unlocks when…</em>)</td>
+<td>Supporting text in the row + the section's Listen; no tooltips</td>
+<td>A tooltip is a tap she cannot discover (<code>coachmark.md</code>); words she can hear</td>
+</tr>
+<tr>
+<td><em>Locked Bonuses 🔒 ₹8,500 ›</em></td>
+<td>Amount <code>locked</code> in the row, supporting line <em>Unlocks after 20 jobs</em>, row opens the rules Accordion <code>faq</code></td>
+<td><code>amount.md</code> already has the state</td>
+</tr>
+<tr>
+<td>Payout Schedule: date tile + name + status line (<em>Paid on 5 Feb · UTR…</em> / <em>Payment is under processing…</em> / <em>Add UPI / bank account to enable payout ›</em>)</td>
+<td>ListItem with a date tile leading, Tag for status (<code>success</code> Paid · <code>warning</code> Processing · <code>error</code> Blocked · <code>error</code> Failed), status line as supporting text, UTR with a <strong>copy</strong> IconButton; Blocked and Failed rows carry the fix as a Button <code>secondary M</code></td>
+<td>State by Tag + words + icon, not by a coloured sentence (row 4); the fix is on the row that needs it (P2)</td>
+</tr>
+<tr>
+<td>Monthly Earnings Breakdown rows with brown 3D coin icons, a <strong>Show</strong> pill on Karma bonus, 🔒 on locked rows</td>
+<td>ListItem rows with the <strong>reward asset</strong> 24 dp leading (coin / badge — the metallic layer is right here, these are rewards), Amount <code>S</code> trailing, <code>caret-right</code>; locked rows use Amount <code>locked</code>; no <em>Show</em> pill — the row opens</td>
+<td><code>assets.md</code>: rewards are metallic, informational icons are not; a pill inside a row is a second target (P3)</td>
+</tr>
+<tr>
+<td><em>Income Tax (20 %) −₹500 · Upload PAN Card to reduce tax</em> as a red link</td>
+<td>Row with Amount negative + supporting <em>20 % until PAN is added</em>; below the card a <strong>Nudge <code>gain</code></strong> <em>Add PAN → tax drops to 10 %</em> with the PAN pictogram</td>
+<td>A red link reads as an error; it is an opportunity (P6) and Nudge is the component for <em>do this → get that</em></td>
+</tr>
+<tr>
+<td>Rewards &amp; Penalties: two tiles <em>Gold Coins 40</em> / <em>Red Cards 15</em></td>
+<td>Two Stat <code>M</code> tiles in a Card: <strong>Snabbit coins 40</strong> with the pink coin, <strong>Red cards 15</strong> with the red-card asset; tap → the rewards / penalties screens</td>
+<td>Gold coin is deprecated (<code>assets.md</code>); Stat is the component</td>
+</tr>
+<tr>
+<td>Quick Actions with 3D pictograms: <em>Withdraw Early Payout · View Payout History · Referral Earnings · UPI/Bank Details · PAN Details</em></td>
+<td>ListItem <code>navigational</code> rows with flat pictograms 40; account rows show the masked value (<em>sushila@okaxis</em>, <em>BFTPX…34K</em>) and a Tag <code>warning</code> <strong>Update</strong> when action is needed</td>
+<td>Illustration layer for informational pictograms; one list, one row style</td>
+</tr>
+<tr>
+<td>Yellow callouts <em>Add your UPI / Bank Account to enable payout</em> and <em>PAN Card helps reduce Income Tax</em> with 3D art</td>
+<td>When either is missing, a <strong>Stepper <code>list unordered</code></strong> <em>Get paid</em> at the <strong>top</strong> of the statement: <em>Add UPI or bank account</em> · <em>Add PAN card</em>; each row is the task; done rows show the check</td>
+<td>A blocked payout is the one thing on the page that matters (P2); Stepper is the component for tasks to complete</td>
+</tr>
+<tr>
+<td>Adjustments detail: <em>Total Amount</em> + rows with a blank grey circle, <em>Job ID: 15567, 09:00 AM</em>, grouped by date</td>
+<td>Same structure with Divider <code>labelled</code> per day, ListItem rows with the job-type pictogram, supporting line <em>Radhika's home · 9:00 am</em>; the Job ID stays in the detail, not the row</td>
+<td>The grey circle is a placeholder; she recognises a customer and a time, not an ID</td>
+</tr>
+</tbody>
+</table></div>
+<p>Kept as shipped: the month-by-month statement; deductions listed openly (cash collected, early payout, loan EMI, training kit EMI — <em>Deducted EMI 1/4</em>); the payout schedule as dated rows; the four account states (no account / account / UPI + PAN / PAN pending); the 20 % → 10 % tax rule surfaced in the statement.</p>
+<hr />
+<h2 id="1-statement">1. Statement</h2>
+<pre><code>┌────────────────────────────────────────────┐
+│ ‹  March earnings                    Help  │  HeaderNav page
+│         ‹   March 2025   ›                 │  DatePicker month header
+│ ┌ Get paid ────────────────────────────── ┐│  Stepper list unordered · only while something is missing
+│ │ ○ Add UPI or bank account               ││
+│ │ ○ Add PAN card                          ││
+│ └─────────────────────────────────────────┘│
+│ ┌────────────────────────────────────────┐ │  Card
+│ │ You'll be paid                   (🔊)  │ │  Caption + Listen
+│ │ ₹15,474                                │ │  Amount L
+│ │ on 15 Mar · monthly payout             │ │  BodyMd textSecondary
+│ │ Earned ₹26,674 · deductions ₹11,200  ▾ │ │  Accordion breakdown, collapsed
+│ │   Earned                      ₹26,674  │ │
+│ │   Cash you collected          −₹1,000  │ │
+│ │   Early payout taken          −₹3,000  │ │
+│ │   Loan EMI                    −₹1,200  │ │
+│ │   Training kit EMI · 1 of 4     −₹500  │ │
+│ │   🔒 Locked bonuses            ₹8,500  │ │  Amount locked · unlocks after 20 jobs
+│ └────────────────────────────────────────┘ │
+│ Payout schedule                            │  section heading
+│ [7 Feb] Winback bonus     Paid ✓  ₹5,000  │  ListItem · date tile · Tag success · UTR 1234… ⧉
+│ [15 Feb] Monthly payout  Processing ₹10,474│  Tag warning · &quot;Usually by evening&quot;
+│ [20 Feb] Joining bonus   Blocked   ₹5,000  │  Tag error · [ Add UPI or bank ]
+│ This month's earnings                      │
+│ [coin] Daily earnings              ₹8,000 ›│  ListItem + reward asset + Amount S
+│ [badge] Karma bonus                ₹2,000 ›│
+│ [badge] Joining bonus         🔒  ₹5,000 ›│
+│ [ ] Adjustments                    ₹8,000 ›│
+│ [ ] Income tax · 20 % until PAN     −₹500 ›│
+│ [PAN picto] Add PAN → tax drops to 10 %   ›│  Nudge gain
+│ ┌ 🪙 40 Snabbit coins ┐ ┌ 🟥 15 Red cards ┐│  two Stat M tiles
+│ Early payout · up to ₹25,000              ›│  ListItem navigational rows
+│ Payout history                            ›│
+│ Referral earnings                         ›│
+│ UPI / bank · sushila@okaxis     Update    ›│
+│ PAN · BFTPX…34K                           ›│
+└────────────────────────────────────────────┘
+</code></pre>
+<ul>
+<li>The hero is <strong>what reaches her account and when</strong>; the earned total is the first breakdown row. The whole Card is read aloud by its Listen in that order.</li>
+<li>Deductions are named in her words: <em>Cash you collected</em> (she kept it — it is not a penalty), <em>Early payout taken</em>, <em>Loan EMI</em>, <em>Training kit EMI · 1 of 4</em>. Never <em>Adjustments</em> as a deduction label — adjustments are additions here and have their own row.</li>
+<li>Tabs: the Earnings tab root shows <strong>Today</strong> by default (<code>pattern: earnings breakdown</code>, to come); this statement is the <strong>Month</strong> view reached by the Tabs <code>segmented</code> <em>Today · Week · Month</em>.</li>
+<li>Empty month: EmptyState <code>empty</code> <em>No earnings in February</em> with <em>See March ›</em>.</li>
+</ul>
+<h2 id="2-schedule-and-states">2. Schedule and states</h2>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>State</th>
+<th>Tag</th>
+<th>Supporting line</th>
+<th>Action on the row</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>scheduled</code></td>
+<td><code>neutral</code> <em>15 Mar</em></td>
+<td><em>Monthly payout</em></td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>processing</code></td>
+<td><code>warning</code> <strong>Processing</strong></td>
+<td><em>Usually by evening · started 9:10 am</em></td>
+<td>— (never a spinner; a date, a word)</td>
+</tr>
+<tr>
+<td><code>paid</code></td>
+<td><code>success</code> <strong>Paid</strong></td>
+<td><em>5 Feb · UTR 1234 5678 90</em></td>
+<td>IconButton <code>S</code> <strong>copy</strong> the UTR (Toast <em>Copied</em>)</td>
+</tr>
+<tr>
+<td><code>blocked</code></td>
+<td><code>error</code> <strong>Blocked</strong></td>
+<td><em>Add a UPI or bank account to get paid</em></td>
+<td>Button <code>secondary brand M</code> <strong>Add UPI or bank</strong></td>
+</tr>
+<tr>
+<td><code>failed</code></td>
+<td><code>error</code> <strong>Failed</strong></td>
+<td><em>Bank returned it · check the account number</em></td>
+<td>Button <code>secondary brand M</code> <strong>Fix account</strong> · Help</td>
+</tr>
+<tr>
+<td><code>held</code></td>
+<td><code>warning</code> <strong>On hold</strong></td>
+<td><em>Talk to Help about this payout</em></td>
+<td>Button <code>secondary neutral M</code> <strong>Call help</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p class="lbl">Rules: a payout row never shows an amount without a state; <em>Processing</em> has a plain-language expectation (<em>Usually by evening</em>), never a percentage; a <code>failed</code> or <code>blocked</code> row is also a Snackbar on Home the day it happens (<em>Payout blocked · Add UPI ›</em>), and the <em>Get paid</em> Stepper appears at the top of the statement until it is fixed.</p>
+<h2 id="3-get-paid-account-and-pan">3. Get paid — account and PAN</h2>
+<ul>
+<li><strong>Add UPI or bank account</strong> → BottomSheet <code>select</code>: <em>UPI ID</em> or <em>Bank account</em> (Radio rows with pictograms). UPI → <code>form</code> sheet: one TextField <em>UPI ID</em> (<code>sushila@okaxis</code>), helper <em>It's in your UPI app, under your name</em>, Button <strong>Verify and save</strong> → a ₹1 verification with a spoken <em>"Your account is verified"</em> and the name from the bank shown for her to confirm (<em>Is this you? Sushila Devi</em>). Bank → account number and IFSC through the NumericKeypad (<code>otp</code>-style boxes for the account number, plain field for IFSC), then the same verification.</li>
+<li><strong>Add PAN</strong> → MediaCapture <code>preview</code> with the <code>document</code> guide, then <code>tile</code> <code>done</code>; the number is read from the photo and shown for confirmation, never typed. The Nudge <code>gain</code> collapses when done and the tax row updates on the next statement.</li>
+<li>Both are also reachable from the <em>UPI / bank</em> and <em>PAN</em> rows; a Tag <code>warning</code> <strong>Update</strong> on the row means the bank rejected the last payout.</li>
+<li>Verification and PAN checks can take a day: the row shows <code>processing</code> with <em>Checking with the bank · usually a day</em> — and payouts are <strong>not</strong> blocked in the meantime if a previous account exists.</li>
+</ul>
+<h2 id="4-early-payout">4. Early payout</h2>
+<ul>
+<li>Row <em>Early payout · up to ₹25,000</em> → screen: Amount <code>L</code> picker with a NumericKeypad <code>amount</code> (₹ steps of 500, max the limit), the fee stated as a row <em>Fee ₹X (Y %)</em> and <em>You'll get ₹Z on Monday</em>, Button <code>primary brand L</code> <strong>Take early payout</strong> → <code>confirm</code> sheet with the consequence strip (<em>−₹3,000 from your 15 Mar payout · fee ₹X</em>), safe option <strong>Not now</strong> above, <strong>Confirm</strong> below (plain tap — it is her money; the sheet is the protection).</li>
+<li>It lands in the schedule as <em>Early payout · Processing</em> and in the statement as the <em>Early payout taken</em> deduction.</li>
+<li>Limit reached → the row shows <em>Available again after 15 Mar</em> and is not disabled without that reason.</li>
+</ul>
+<h2 id="5-history">5. History</h2>
+<ul>
+<li>One list, newest first, Divider <code>labelled</code> per month; ListItem rows: date tile, <em>Monthly payout</em> / <em>Early payout</em> / <em>Winback bonus</em>, Tag state, Amount <code>S</code>; row opens a detail with the UTR (copy), the account it went to (masked) and <strong>Help with this payout</strong>.</li>
+<li>Skeleton on load; EmptyState <em>No payouts yet · your first is on 15 Mar</em>.</li>
+</ul>
+<h2 id="6-paid-the-moment">6. Paid — the moment</h2>
+<ul>
+<li>On payout day: a notification <em>₹10,474 paid to your account</em> with the bank's name; in the app a Snackbar <em>₹10,474 paid · See ›</em>; the schedule row flips to <code>paid</code>. A short <code>celebrate</code> moment on the Earnings tab the first time she opens it that day — this is the whole point of the week (P6).</li>
+<li>Failed: notification + Snackbar with the fix; never silent.</li>
+<li>Help from any payout row opens Help with the payout pre-attached (the shipped <em>Payout Issue</em>).</li>
+</ul>
+<hr />
+<h2 id="content">Content</h2>
+<ul>
+<li><em>You'll be paid</em> · <em>Earned</em> · <em>Cash you collected</em> · <em>Early payout taken</em> · <em>Loan EMI</em> · <em>Training kit EMI · 1 of 4</em> · <em>Locked bonuses</em> · <em>Paid</em> · <em>Processing</em> · <em>Blocked</em> · <em>Failed</em> · <em>On hold</em>.</li>
+<li>Dates: <em>15 Mar</em>, weekday when within a week (<em>Mon 15 Mar</em>); never <em>15/03/2025</em>.</li>
+<li>Tax: <em>Income tax · 20 % until PAN is added</em> → after: <em>Income tax · 10 %</em>. The Nudge: <em>Add PAN → tax drops to 10 %</em>.</li>
+<li>Never <em>Remaining Payout</em>, <em>Adjustments</em> for a deduction, <em>UTR</em> without the number, <em>under processing</em>.</li>
+</ul>
+<hr />
+<h2 id="spec-follow-ups">Spec follow-ups</h2>
+<ul>
+<li><code>icon-button.md</code>: <code>caret-left</code> / <code>caret-right</code> month pager — allowed in the DatePicker header <strong>and</strong> the earnings statement header (same component).</li>
+<li><code>icons.md</code>: register <code>copy</code> (copy a reference number — UTR, job ID), <code>receipt</code> (payout history), <code>hand-coins</code> (early payout).</li>
+<li><code>amount.md</code>: add <code>S</code> negative rows for deductions in a breakdown (already covered by <code>negative</code>; note the <em>−</em> precedes the ₹).</li>
+<li>Pattern <em>earnings breakdown</em> (to come) owns the Today / Week views and the Tabs root; this page owns Month and everything about being paid.</li>
+</ul>
+<hr />
+<h2 id="checklist-for-the-flow">Checklist for the flow</h2>
+<ul>
+<li class="chk">The hero says what reaches her account and when; the earned total is one row.</li>
+<li class="chk">Every payout row has a state Tag and, if blocked or failed, the fix on the row.</li>
+<li class="chk">When an account or PAN is missing, the <em>Get paid</em> Stepper is the first thing on the statement.</li>
+<li class="chk">Deduction labels read in her words in Kannada at 1.3 (<em>Cash you collected</em>, <em>Training kit EMI · 1 of 4</em>).</li>
+<li class="chk">UTR copies with one tap; <em>Processing</em> never shows a spinner or a percentage.</li>
+<li class="chk">Field review with experts (checklist rows 15–16) — pending; test the UPI verification moment.</li>
+</ul>
+  </main>
+</div>
+<script>
+(function(){
+const links=[...document.querySelectorAll('#nav a')];
+const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-10% 0px -80% 0px'});
+  targets.forEach(t=>io.observe(t));
+}
+})();
+</script>

@@ -64,7 +64,7 @@ An IconButton may use only these registered icons (ten, after `bell` from Header
 | `crosshair` | Recentre map | Map, bottom-right above the action bar | L secondary neutral (floating, circle) |
 | `translate` | Change language | Settings header | M ghost neutral |
 | `bell` | Notifications | Home header left, with Badge; root header trailing | M ghost neutral |
-| `caret-left` / `caret-right` | Previous / next month or year | DatePicker month header **only** | M ghost neutral |
+| `caret-left` / `caret-right` | Previous / next month or year | DatePicker month header and the earnings statement's month pager (the same header) — nowhere else | M ghost neutral |
 
 To add an icon here: it must be in `foundations/icons.md`, tested with five experts who have never seen it, and appear in the same place on every screen.
 

@@ -12,5 +12,6 @@ python3 site/build_doc.py foundations/accessibility.md site/accessibility.html "
 python3 site/build_doc.py audit/BENCHMARK.md       site/benchmark.html  "Snabbit Expert Benchmark"  "Benchmark"
 python3 site/build_doc.py patterns/new-job-alert.md site/pattern-new-job-alert.html "Snabbit Expert Pattern New Job" "Pattern · New job arrives"
 python3 site/build_doc.py patterns/check-in-out.md site/pattern-check-in-out.html "Snabbit Expert Pattern Check-in" "Pattern · Check in, work, check out"
+python3 site/build_doc.py patterns/payout.md site/pattern-payout.html "Snabbit Expert Pattern Payout" "Pattern · Payout"
 python3 site/build_doc.py ROADMAP.md               site/roadmap.html    "Snabbit Expert Roadmap"    "Roadmap"
 python3 site/build_audit.py

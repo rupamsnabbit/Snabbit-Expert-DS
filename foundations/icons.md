@@ -60,5 +60,8 @@ Status: **seed**. Populated fully during the Button, Tab bar and Job-alert specs
 | `chats-circle` | Saathi — chat with support | regular | Home header `HeaderAction` |
 | `headset` | Help — call the trainer / support line | regular | In-job and state headers `HeaderAction` |
 | `magnifying-glass` | Search | regular | TextField search, HeaderNav search |
+| `copy` | Copy a reference number (UTR, job ID) | regular | Payout rows, payout detail |
+| `receipt` | Payout history | regular | Earnings statement row |
+| `hand-coins` | Early payout | regular | Earnings statement row |
 
 Not icons: smileys for Rating and the mascot are illustrations, not Phosphor glyphs — they live in the illustration library.
