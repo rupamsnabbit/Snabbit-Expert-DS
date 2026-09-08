@@ -1,0 +1,346 @@
+<meta charset="utf-8">
+<title>Snabbit Expert Pattern Check-in</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --bg-2:#F9FAFB; --bg-3:#F3F4F6;
+  --text:#111827; --text-body:#374151; --text-2:#6B7280; --text-3:#9CA3AF;
+  --border:#E5E7EB; --border-subtle:#F3F4F6;
+  --brand:#F70F79; --brand-wash:#FEF1F7; --brand-ink:#97094A;
+  --ok:#059669; --ok-wash:#ECFDF5; --focus:#3B82F6;
+  --sans:"Outfit",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+    --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+    --border:#374151; --border-subtle:#1F2937;
+    --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+    --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+  --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+  --border:#374151; --border-subtle:#1F2937;
+  --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+  --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--text-body);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+code{font-family:var(--mono);font-size:.85em;background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--text)}
+pre{background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:14px 16px;overflow-x:auto;margin:12px 0 20px} pre code{background:none;border:0;padding:0;font-size:12.5px;line-height:1.55;white-space:pre}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+.shell{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}
+.rail{position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--border);padding:24px 16px 32px;background:var(--bg);display:flex;flex-direction:column;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;padding:0 8px}
+.brand-mark{width:28px;height:28px;border-radius:8px;background:var(--brand);display:grid;place-items:center;flex:none}
+.brand-mark span{width:12px;height:12px;border-radius:3px;background:#fff;transform:rotate(45deg)}
+.brand b{font-weight:600;color:var(--text);font-size:15px;line-height:1.2;display:block}
+.brand small{color:var(--text-2);font-size:12px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:block;padding:6px 8px;border-radius:6px;text-decoration:none;color:var(--text);font-size:13.5px;font-weight:500}
+.nav a.sub{font-weight:400;color:var(--text-body);padding-left:14px;font-size:13px}
+.nav a.sub b{font-family:var(--mono);font-weight:500;color:var(--text-3);font-size:11.5px;margin-right:2px}
+.nav a:hover{background:var(--bg-2)}
+.nav a.on{background:var(--brand-wash);color:var(--brand-ink)}
+.rail-foot{margin-top:auto;padding:0 8px;font-size:12px;color:var(--text-3);line-height:1.5}
+.main{padding:40px 56px 96px;max-width:860px;width:100%}
+.eyebrow{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);font-weight:600}
+h1{font-size:40px;line-height:1.1;font-weight:600;color:var(--text);margin:8px 0 12px;letter-spacing:-.015em;text-wrap:balance}
+.lede{font-size:18px;color:var(--text-2);max-width:60ch;margin:0 0 8px}
+.lede strong{color:var(--text);font-weight:500}
+h2{font-size:26px;line-height:1.2;font-weight:600;color:var(--text);margin:72px 0 16px;letter-spacing:-.01em;text-wrap:balance;padding-top:24px;border-top:1px solid var(--border)}
+h3{font-size:20px;font-weight:600;color:var(--text);margin:48px 0 8px;letter-spacing:-.005em}
+h3::before{content:"";display:block;width:32px;height:3px;background:var(--brand);border-radius:2px;margin-bottom:14px}
+p{margin:0 0 14px;max-width:66ch}
+h3 + p{font-size:17px;color:var(--text);font-weight:500}
+p.why{color:var(--text-2);font-size:15px;padding-left:14px;border-left:2px solid var(--border)}
+p.why::before{content:"Why · ";color:var(--text-3);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+p.lbl{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2);font-weight:600;margin:22px 0 8px}
+strong{color:var(--text);font-weight:600}
+em{font-style:italic}
+ul,ol{margin:0 0 14px;padding-left:0;list-style:none;max-width:68ch}
+ul li{position:relative;padding-left:20px;margin:6px 0;font-size:15.5px}
+ul li::before{content:"";position:absolute;left:0;top:11px;width:9px;height:2px;background:var(--brand)}
+ul li.chk{padding-left:30px}
+ul li.chk::before{width:16px;height:16px;top:4px;background:var(--bg);border:1.5px solid var(--text-3);border-radius:4px}
+ol{counter-reset:s}
+ol li{counter-increment:s;display:grid;grid-template-columns:32px 1fr;gap:12px;margin:10px 0;font-size:15.5px}
+ol li::before{content:counter(s);width:28px;height:28px;border-radius:50%;background:var(--brand-wash);color:var(--brand-ink);font-weight:600;font-size:13px;display:grid;place-items:center;margin-top:1px}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px;margin:8px 0 20px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);font-weight:500;padding:10px 14px;background:var(--bg-2);border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:10px 14px;border-bottom:1px solid var(--border-subtle);vertical-align:top;color:var(--text-body)}
+tr:last-child td{border-bottom:0}
+td:first-child{color:var(--text);font-weight:500;white-space:nowrap}
+hr{display:none}
+
+.sitenav{display:flex;flex-direction:column;gap:2px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.sitenav .grp{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);padding:10px 8px 4px;font-weight:500}
+.sitenav a{display:block;padding:5px 8px;border-radius:6px;text-decoration:none;color:var(--text-body);font-size:13.5px;border:0}
+.sitenav a:hover{background:var(--bg-2);color:var(--text)} .sitenav a.on{color:var(--brand-ink);background:var(--brand-wash);font-weight:500}
+@media (max-width:900px){.sitenav{flex-direction:row;flex-wrap:wrap;gap:4px;border-bottom:0;padding-bottom:0}.sitenav .grp{display:none}}
+
+@media (max-width:900px){
+  .shell{grid-template-columns:1fr}
+  .rail{position:static;height:auto;border-right:0;border-bottom:1px solid var(--border);padding:16px}
+  .nav{flex-direction:row;flex-wrap:wrap;gap:4px} .nav a.sub{padding-left:8px} .rail-foot{display:none}
+  .main{padding:32px 20px 80px} h1{font-size:32px} h2{margin-top:56px}
+}
+</style>
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Pattern · Check in, work, check out</small></div></div>
+    <nav class="sitenav" aria-label="Site"><div class="grp">Foundations</div><a href="index.html">Tokens</a><a href="principles.html">Principles</a><a href="extending.html">Extending</a><a href="icons.html">Icons</a><a href="assets.html">Assets</a><a href="motion.html">Motion</a><a href="type.html">Type · four scripts</a><a href="accessibility.html">Accessibility</a><div class="grp">Components</div><a href="components/button.html">Button</a><a href="components/icon-button.html">IconButton</a><a href="components/tag.html">Tag</a><a href="components/text-field.html">TextField</a><a href="components/selection-controls.html">Checkbox · Radio · Switch</a><a href="components/amount.html">Amount</a><a href="components/timer.html">Timer</a><a href="components/feedback.html">Banner · Toast · Snackbar</a><a href="components/chip.html">Chip</a><a href="components/avatar.html">Avatar</a><a href="components/badge.html">Badge</a><a href="components/card.html">Card</a><a href="components/list-item.html">ListItem</a><a href="components/selection-card.html">SelectionCard</a><a href="components/bottom-sheet.html">BottomSheet</a><a href="components/header-nav.html">HeaderNav</a><a href="components/bottom-tab-bar.html">BottomTabBar</a><a href="components/progress-bar.html">ProgressBar</a><a href="components/stepper.html">Stepper</a><a href="components/coachmark.html">Coachmark</a><a href="components/sos-control.html">SOSControl</a><a href="components/accordion.html">Accordion</a><a href="components/date-picker.html">DatePicker</a><a href="components/empty-state.html">EmptyState</a><a href="components/skeleton.html">Skeleton · Spinner</a><a href="components/voice-prompt.html">VoicePrompt</a><a href="components/tabs.html">Tabs · Segmented</a><a href="components/nudge.html">Nudge</a><a href="components/numeric-keypad.html">NumericKeypad</a><a href="components/page-indicator.html">PageIndicator</a><a href="components/media-capture.html">MediaCapture</a><a href="components/map-marker.html">MapMarker · MapSnippet</a><a href="components/stat-rating-divider.html">Stat · Rating · Divider</a><a href="components/how-to-clip.html">HowToClip</a><a href="components/shield-card.html">ShieldCard</a><a href="components/job-alert.html">JobAlert</a><div class="grp">Patterns</div><a href="pattern-new-job-alert.html">New job arrives</a><a class="on" href="pattern-check-in-out.html">Check in · work · check out</a><div class="grp">Research</div><a href="benchmark.html">Benchmark</a><a href="audit.html">Figma audit</a><a href="roadmap.html">Roadmap</a></nav><nav class="nav" id="nav"><a href="#the-flow">The flow</a><a href="#what-changes-from-the-shipped-screens">What changes from the shipped screens</a><a href="#1-on-the-way">1. On the way</a><a href="#2-check-in">2. Check in</a><a href="#3-working">3. Working</a><a href="#4-check-out">4. Check out</a><a href="#edges">Edges</a><a href="#parts-used">Parts used</a><a href="#spec-follow-ups-from-this-pattern">Spec follow-ups from this pattern</a><a href="#checklist-for-the-flow">Checklist for the flow</a></nav>
+    <div class="rail-foot">Snabbit Expert Design System · generated from patterns/check-in-out.md</div>
+  </aside>
+  <main class="main">
+    <header>
+      <div class="eyebrow">Snabbit Expert · Mobile</div>
+      <h1>Pattern — check in, work, check out</h1>
+      <p class="lede">The second pattern: everything between <em>Accept job</em> and <em>Ready for next job</em>. It is the longest stretch she spends in the app and the one where the money, the safety promise and the customer relationship all live on the same screen. The shipped flow (Lifecycle file → <em>Final Designs DS Compatible</em>: <em>Reach Job Location</em> <code>16:14340</code>, <em>Job Started</em> <code>10:8552</code>, <em>Job In Progress</em> <code>19:15700</code> / <code>6:8405</code>, <em>Enter OTP to end job</em> <code>10:13110</code>, <em>Job Completed</em> <code>11:18791</code>) is already close to the system; this page names its stages, composes each from system parts, and records the handful of departures.</p>
+    </header>
+    <h2 id="the-flow">The flow</h2>
+<pre><code> accepted (pattern: new job)
+        │
+        ▼
+ 1. On the way ── state header &quot;Check in&quot; · MapSnippet + Show directions · address + Listen · Call · Chat · Timer &quot;Check in by&quot; · [Check in]
+        │
+        ▼
+ 2. Check in ── location check → (far) sheet: Show directions / I'm here anyway (hold) → Job started sheet · Shield starts
+        │
+        ▼
+ 3. Working ── state header &quot;Job in progress&quot; · Timer &quot;Time left&quot; · customer card · ShieldRow · You earn · preferences · [Complete job]
+        │
+        ▼
+ 4. Check out ── OTP sheet (NumericKeypad) → Job completed · You earned + breakdown · Rating · [Ready for next job]
+        │
+        ▼
+ Home
+</code></pre>
+<p>Every stage keeps the in-job header (<code>state</code> variant, Help + SOS) and, once Shield is on, the SafetyStrip when she leaves the screen. Nothing here has a tab bar: she is at work.</p>
+<hr />
+<h2 id="what-changes-from-the-shipped-screens">What changes from the shipped screens</h2>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Shipped</th>
+<th>Proposed</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>CHECK IN BY</em> · <strong>1:23</strong> digits alone above <em>Check In</em></td>
+<td>Timer <code>L</code> <code>countdown</code>, label <em>Check in by</em>, above the Button</td>
+<td>Time as a shape (P5); same change as the job alert</td>
+</tr>
+<tr>
+<td>Customer card: name + <em>Listen</em>, address, four tiles Map · Call · Chat · Street view</td>
+<td>MapSnippet with <strong>Show directions</strong> (replaces Map + Street view); address with inline Listen; <strong>Call</strong> and <strong>Chat</strong> as two Buttons <code>secondary M</code> under the card</td>
+<td>Two ways to the same map is two things to learn; Street view is a novelty on a ₹10k phone (P8). Call and Chat are the actions she uses</td>
+</tr>
+<tr>
+<td>Chat sheet with the customer's messages and <em>Quick Replies</em> (<em>I have reached</em> · <em>Please give approval</em>) and a free-text field</td>
+<td>Kept as a BottomSheet <code>form</code> with Chip <code>quick-reply</code> (≤ 4) and one TextField; quick replies first, typing last</td>
+<td>It is already the right shape; Chips carry the P1 promise that she never has to type</td>
+</tr>
+<tr>
+<td><em>Job Started</em> sheet: check, illustration, <em>Say Namaste</em> tip, <strong>OK</strong></td>
+<td>BottomSheet <code>info</code>: check pictogram, scene illustration, one tip spoken aloud, Button <strong>Start work</strong></td>
+<td><em>OK</em> is not a verb (<code>button.md</code>); the tip is the moment to speak (P4)</td>
+</tr>
+<tr>
+<td><em>Job In Progress</em> · <em>TIME LEFT</em> <strong>48:23</strong> ring</td>
+<td>Same — Timer <code>L</code> <code>countdown</code> <em>Time left</em>; tone computed</td>
+<td>Already matches <code>timer.md</code>; the label goes sentence case</td>
+</tr>
+<tr>
+<td>Kavach row with <strong>▶ Activate</strong> / waveform</td>
+<td>ShieldRow (<code>shield-card.md</code>): starts at check-in, reports <em>Recording · Location shared</em></td>
+<td>Decided in the Shield spec (auto-start to confirm)</td>
+</tr>
+<tr>
+<td><em>Complete Job</em> disabled (pink wash) with no reason until the end time</td>
+<td>Button <code>primary brand L</code> <strong>Complete job</strong>, <code>disabled</code> <strong>with the reason under it</strong> — <em>Available at 11:00</em> — enabling 10 min before the end time; a Timer <code>attention</code> tone at 15 min</td>
+<td>A Button is never disabled without saying why (<code>button.md</code>); she should know when she can leave</td>
+</tr>
+<tr>
+<td><em>Enter OTP to end job</em>: three boxes, <em>Please ask the customer to share the OTP with you</em>, <strong>End Job</strong> disabled</td>
+<td>BottomSheet <code>form</code> with NumericKeypad <code>otp</code> (length server-set, 3 today); line <em>Ask the customer for the code</em>; spoken; <strong>Complete job</strong> enables on the last digit and auto-submits (<code>timeout.settle</code>); a <code>ghost</code> <strong>Customer can't share the code?</strong> → Call help</td>
+<td>Same shape, system parts; the fallback is the missing piece (P5: every state has a way out)</td>
+</tr>
+<tr>
+<td><em>Job Completed</em> · <em>You Earned</em> ₹150 + breakdown · <em>Rate the customer</em> five faces · <strong>Ready for next job</strong> disabled</td>
+<td>Same order: Card + Amount <code>L</code> + Accordion <code>breakdown</code> (expanded), Rating <code>input</code>, Button <code>primary brand L</code>; while unrated the Button is disabled <strong>with</strong> <em>Tap a face to continue</em> under it</td>
+<td>The screen is right; it needed the reason line and the Rating component's spoken words</td>
+</tr>
+<tr>
+<td>Customer preferences as a plain key/value table (<em>Spice level · Low</em>)</td>
+<td>ListItem rows with Stat <code>S</code> trailing, under a section heading, with a Listen on the section</td>
+<td><code>stat-rating-divider.md</code>: tables are ListItems; preferences are read aloud in a kitchen</td>
+</tr>
+</tbody>
+</table></div>
+<p>Kept as shipped: the state header with icon + title (<em>Check in</em>, <em>Job in progress</em>, <em>Job completed</em>), Help + SOS, the customer card order (name · timing · duration), <em>You earn</em> as a one-row Card, the block-customer flow after a bad rating.</p>
+<hr />
+<h2 id="1-on-the-way">1. On the way</h2>
+<pre><code>┌────────────────────────────────────────────┐
+│ ( Help )                    ( SOS )        │  HeaderNav state · check-circle + Check in
+│              ✓ Check in                    │
+│ ┌────────────────────────────────────────┐ │  MapSnippet 240 (hero) · job + me markers
+│ │ ▒▒▒  (⌂) Radhika's home      ● You ▒▒▒ │ │
+│ │ HAL Old Airport Rd, near railway  (🔊) │ │  address ≤ 2 lines + Listen
+│ │ 3.2 km · about 12 min                  │ │
+│ │ [ ⇱ Show directions                 ]  │ │  Button secondary brand M
+│ └────────────────────────────────────────┘ │
+│ [ 📞 Call ]        [ 💬 Chat  ①  ]          │  two Buttons secondary neutral M · Badge on Chat
+│ ┌ You'll earn  ₹145 + ₹5 · Check in by 7:45 pm ▾ ┐  Card + Accordion breakdown, collapsed
+│                                            │
+│              Check in by                   │  Timer L countdown · tone computed from the check-in window
+│               ( 1:23 )                     │
+│ [ ✓ Check in                            ]  │  Button primary brand L
+└────────────────────────────────────────────┘
+</code></pre>
+<ul>
+<li><strong>Show directions</strong> hands off to the maps app (<code>map-marker.md</code>); coming back lands here. The distance line refreshes every 30 s.</li>
+<li><strong>Chat</strong> opens the BottomSheet <code>form</code>: customer messages as plain bubbles (read aloud on open), Chips <em>I have reached</em> · <em>Please give approval</em> · <em>Running 10 min late</em> (≤ 4, server-set), one TextField <em>Type other message…</em> with the NumericKeypad <strong>not</strong> used (free text). A Badge on Chat shows unread.</li>
+<li><strong>Call</strong> goes through a masked number; the Button label is <em>Call</em>, never the number.</li>
+<li>The <em>Check in by</em> Timer's tone follows <code>timer.md</code>; <code>urgent</code> at ≤ 60 s. On expiry the Timer says <em>Late</em> and a Nudge <code>loss</code> explains the consequence if there is one (<em>Check-in bonus lost · ₹5</em>); Check in stays enabled — being late is not being blocked.</li>
+<li><strong>Check in</strong> is one tap. Tapping it runs the check-in (2).</li>
+</ul>
+<h2 id="2-check-in">2. Check in</h2>
+<ul>
+<li>The app checks her location against the customer's. Within the radius → check-in succeeds. Outside it → BottomSheet <code>confirm</code>: <em>You're about 400 m from Radhika's home</em> with the MapSnippet 160 (job + me), Button <code>primary</code> <strong>Show directions</strong>, and <code>ghost danger</code> <strong>I'm here anyway</strong> as a <strong>hold</strong> — a wrong check-in is costly for her (P3, P11).</li>
+<li>No GPS fix in 5 s → the same sheet with <em>Can't find your location</em>; <strong>Check in anyway</strong> (hold) is allowed and the job is flagged for review, told to her plainly: <em>We'll confirm with the customer</em>.</li>
+<li>Where the flow requires a check-in photo (a subset of jobs, server-set) it is the MediaCapture <code>preview</code> with the <code>face</code> guide <strong>before</strong> the location check, SOS in the header.</li>
+<li>Success: the <strong>Job started</strong> sheet — BottomSheet <code>info</code>, <code>check-circle</code> fill 40 <code>iconSuccess</code> on a <code>bgSuccess</code> disc, the scene illustration for the job type (<em>greeting at the door</em>), one tip in <code>BodyLg</code> spoken aloud (<em>Say namaste and ask where to start</em>), Button <code>primary brand L</code> <strong>Start work</strong>. <code>sound.confirm</code>. Shield starts here (ShieldRow <code>starting</code> → <code>on</code>); the sheet's dismissal lands on (3).</li>
+<li>Offline: check-in is <strong>queued</strong> — the Button goes <code>loading</code>, then the screen moves to (3) with a Banner <code>warning</code> <em>Check-in will send when you're back online</em>; the Timer records the tap time, not the send time. Never a blocked check-in for lack of network (P5, P8).</li>
+</ul>
+<h2 id="3-working">3. Working</h2>
+<pre><code>┌────────────────────────────────────────────┐
+│ ( Help )                    ( SOS )        │  HeaderNav state · clock + Job in progress
+│           ⏱ Job in progress                │
+│              Time left                     │  Timer L countdown · calm → attention (15 min) → urgent (≤ 20 %)
+│               ( 48:23 )                    │
+│ ┌────────────────────────────────────────┐ │  Card
+│ │ 👤 Radhika S               [📞] [💬]  │ │  customer row · IconButtons S secondary brand
+│ │ 🕒 Job timing        10:00 – 11:00 am   │ │  ListItem rows, Stat S trailing
+│ │ ⏳ Duration                    60 min   │ │
+│ │ 🛡 Shield  ● Recording · Location shared│ │  ShieldRow · last row
+│ └────────────────────────────────────────┘ │
+│ ┌ You earn                        ₹145 ┐   │  one-row Card · Amount M · tap → breakdown
+│ Customer preferences                (🔊)   │  section heading + Listen
+│ 🌶 Spice level                   Low       │  ListItem + Stat S
+│ 🫙 Oil level                  Medium       │
+│                                            │
+│ [ ✓ Complete job                        ]  │  disabled until 10 min before end · reason line under it
+│   Available at 10:50                       │
+└────────────────────────────────────────────┘
+</code></pre>
+<ul>
+<li>The Timer counts <strong>down</strong> (<em>Time left</em>), as shipped; <code>elapsed</code> is reserved for overtime (see edges).</li>
+<li><strong>Complete job</strong> enables 10 minutes before the end time; the reason line disappears when it enables. Before that, the only way to end early is Help (call the trainer) — early completion is a support decision, not a tap.</li>
+<li>Preferences come from the customer and are read aloud with the section's Listen; there are ≤ 6 rows, or a <em>See all ›</em> ListItem.</li>
+<li>The screen never sleeps while it is on top (she puts the phone on the counter); brightness follows the system.</li>
+<li>Leaving the screen (to Earnings, say) is allowed; the SafetyStrip shows <em>Recording · Location shared</em> and tapping it returns here. The tab bar is hidden during a job; Home is reached only by finishing.</li>
+</ul>
+<h2 id="4-check-out">4. Check out</h2>
+<ul>
+<li><strong>Complete job</strong> → BottomSheet <code>form</code>: title <em>Enter the code to finish</em>, line <em>Ask the customer for the code</em> (spoken), NumericKeypad <code>otp</code> with the server-set length (3 today), Button <strong>Complete job</strong> enabling on the last digit and auto-submitting after <code>timeout.settle</code>. Wrong code: boxes shake (<code>motion.xfast</code>), <em>Wrong code — ask again</em> spoken; after 3 wrong codes <strong>Call help</strong> joins as <code>secondary</code>.</li>
+<li><code>ghost</code> <strong>Customer can't share the code?</strong> → calls Help directly; the sheet stays.</li>
+<li>On success: the <strong>Job completed</strong> screen — HeaderNav <code>state</code> <em>Job completed</em> with <code>check-circle</code>; Card <em>You earned</em> + Amount <code>L</code> <code>textSuccess</code> + Accordion <code>breakdown</code> expanded (Work · Check in by 7:45 pm · Summer bonus · Overtime — the same rows as the alert, now earned); <em>Rate the customer</em> with Rating <code>input</code> (five faces, spoken word on tap); Button <code>primary brand L</code> <strong>Ready for next job</strong>, disabled with <em>Tap a face to continue</em> until a face is chosen.</li>
+<li><code>sound.confirm</code> and the accept celebration (<code>motion.celebrate</code>) play once when the screen appears — this is the moment the money became hers (P6).</li>
+<li><strong>Ready for next job</strong> → Home; a Toast <em>₹150 added to today's earnings</em>. Shield stops; ShieldRow <code>ended</code> is visible in the job's detail later.</li>
+<li>A rating of <em>unhappy</em> or <em>very unhappy</em> offers <strong>Block this customer</strong> as a <code>tertiary</code> Button under the faces (shipped flow kept); it opens a <code>confirm</code> sheet with the block-list count (<em>4 of 5 blocked</em>), safe option first.</li>
+</ul>
+<hr />
+<h2 id="edges">Edges</h2>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Edge</th>
+<th>Behaviour</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Late for check-in</td>
+<td>Timer <code>expired</code> → <em>Late</em>; Nudge <code>loss</code> with the lost bonus; Check in still one tap. A red card, if any, is shown <strong>before</strong> it applies (Nudge) and <strong>after</strong> as a Snackbar on Home</td>
+</tr>
+<tr>
+<td>Customer not home / not answering</td>
+<td>Chat quick reply <em>I have reached</em> → after 5 min a Banner <code>info</code> <em>Waited 5 min? Call help</em> with <strong>Call help</strong>; the wait is paid per policy and the Banner says so (<em>Waiting time is paid</em>)</td>
+</tr>
+<tr>
+<td>Overtime</td>
+<td>At <em>Time left</em> 0:00 the Timer switches to <code>elapsed</code> <strong>Overtime</strong> counting up, <code>textWarning</code>, and an Accordion row <em>Overtime · 15 min · ₹40</em> appears in <em>You earn</em>; <strong>Complete job</strong> stays enabled</td>
+</tr>
+<tr>
+<td>Customer extends the job</td>
+<td>Banner <code>info</code> <em>Radhika asked for 30 more minutes · ₹75</em> with <strong>Accept</strong> (tap) / <strong>Decline</strong> (hold); the Timer resets on accept</td>
+</tr>
+<tr>
+<td>Job denied in the last hour (shipped <em>Last hour job denied</em>)</td>
+<td>Not on this screen: it is a Snackbar on Home with the reason and <em>Why? ›</em></td>
+</tr>
+<tr>
+<td>Shield blocked or stopped</td>
+<td>ShieldRow states; never a modal; work continues (<code>shield-card.md</code>)</td>
+</tr>
+<tr>
+<td>Battery &lt; 15 % during the job</td>
+<td>Banner <code>warning</code> <em>Battery low — charge if you can</em>; nothing else; Shield's own row handles its state</td>
+</tr>
+<tr>
+<td>Offline during the job</td>
+<td>Timer runs from the device clock; check-out queues like check-in; the code is validated offline against a hash sent at accept time, so <em>Complete job</em> works without signal</td>
+</tr>
+<tr>
+<td>SOS or SafetyCheck at any point</td>
+<td>Take over everything; return here after (P7)</td>
+</tr>
+<tr>
+<td>Screen reader</td>
+<td>Each stage's Card is one block; Timer live region at 15 min, 5 min, 0; the OTP boxes announce digit count</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="parts-used">Parts used</h2>
+<p>HeaderNav <code>state</code> · SOSControl · MapSnippet · MapMarker · VoicePrompt inline · Button (<code>primary L</code>, <code>secondary M</code>, <code>ghost danger</code> hold) · IconButton <code>S</code> · Badge · Chip <code>quick-reply</code> · TextField · BottomSheet <code>form</code> / <code>info</code> / <code>confirm</code> · Timer <code>L</code> (<code>countdown</code>, <code>elapsed</code>) · Card · ListItem · Stat <code>S</code> · Amount <code>M</code> / <code>L</code> · Accordion <code>breakdown</code> · ShieldRow · SafetyStrip · Nudge <code>loss</code> · Banner · NumericKeypad <code>otp</code> · Rating <code>input</code> · MediaCapture <code>preview</code> (where required) · Toast · Snackbar. Nothing new.</p>
+<hr />
+<h2 id="spec-follow-ups-from-this-pattern">Spec follow-ups from this pattern</h2>
+<ul>
+<li><code>numeric-keypad.md</code>: the <code>otp</code> variant's length is server-set, <strong>3–6</strong> boxes (shipped is 3), not only 4 or 6.</li>
+<li><code>timer.md</code>: the in-job Timer is <code>countdown</code> <em>Time left</em> (as shipped); <code>elapsed</code> is for <strong>overtime</strong> — the mode table's example changes.</li>
+<li><code>header-nav.md</code>: <code>state</code> titles used here — <em>Check in</em> (<code>check-circle</code>), <em>Job in progress</em> (<code>clock</code>), <em>Job completed</em> (<code>check-circle</code> fill).</li>
+<li><code>chip.md</code>: quick replies are server-set, ≤ 4, first is always <em>I have reached</em>.</li>
+</ul>
+<hr />
+<h2 id="checklist-for-the-flow">Checklist for the flow</h2>
+<ul>
+<li class="chk">From accept to <em>Start work</em> with one tap per stage on a moving bus; Show directions returns to the same screen.</li>
+<li class="chk">Check in works offline (queued) and with no GPS fix (hold, flagged, told plainly).</li>
+<li class="chk"><em>Complete job</em> is never disabled without the reason under it; the OTP sheet has a way out when the customer can't share the code.</li>
+<li class="chk">Shield state is readable on every in-job screen and on the SafetyStrip off it.</li>
+<li class="chk">Kannada at 1.3: <em>Job in progress</em>, <em>Customer preferences</em>, <em>Ready for next job</em> fit their budgets.</li>
+<li class="chk">Field review with experts (checklist rows 15–16) — pending; test the OTP moment with a real customer.</li>
+</ul>
+  </main>
+</div>
+<script>
+(function(){
+const links=[...document.querySelectorAll('#nav a')];
+const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-10% 0px -80% 0px'});
+  targets.forEach(t=>io.observe(t));
+}
+})();
+</script>

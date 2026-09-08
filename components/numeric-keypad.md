@@ -42,7 +42,7 @@ Key states: default `bgPrimary`; pressed `bgTertiary` with a `motion.xfast` (80 
 | Kind | Entry shows | Length | Completion | Aux key |
 | --- | --- | --- | --- | --- |
 | `phone` | `+91` fixed prefix + `Heading2` digits grouped *98765 43210* | 10 | Button enables; digits **read back**; Button acts | — |
-| `otp` | 4 or 6 boxes 48 × 56, 8 dp apart, one digit each, active box `borderBrand` | 4 / 6 | **Auto-submit** on the last digit, 300 ms after it appears; wrong code shakes once, clears, keeps the keypad | — |
+| `otp` | 3–6 boxes 48 × 56, 8 dp apart, one digit each, active box `borderBrand`; length is server-set (job-end code is 3 today) | 3–6 | **Auto-submit** on the last digit, 300 ms after it appears; wrong code shakes once, clears, keeps the keypad | — |
 | `number` | `Heading2` digits (bag count, pincode) | as set | Button enables | — |
 | `amount` | Amount `L` with ₹, live Indian grouping *₹12,500* | as set (max shown) | Button enables; read back *"twelve thousand five hundred rupees"* | `00` |
 

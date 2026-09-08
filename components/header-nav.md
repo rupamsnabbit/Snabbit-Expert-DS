@@ -43,7 +43,7 @@ Height 56 dp (64 with subtitle) plus the status-bar inset. `bgPrimary`, no shado
 | `home` | IconButton `bell` with Badge | — | `HeaderAction`s: coins · (red cards) · Saathi · **SOS** | Home tab only |
 | `search` | back | TextField `search` (fills the middle) | — | Search screens; the field is focused on open |
 | `in-job` | back (or none while a job is running) | job title + subtitle (*Cleaning · 1:24:10*) with Timer M | **Help** + **SOS** `HeaderAction`s | Every pushed screen during a job |
-| `state` | — | **centred** 24 dp icon + `Title` (*Check In*, *New Job*, *Job In Progress*) | **Help** + **SOS** | Full-screen job states only — never on a screen that has a back |
+| `state` | — | **centred** 24 dp icon + `Title` in sentence case (*Check in* `check-circle` · *New job* `spray-bottle` · *Job in progress* `clock` · *Job completed* `check-circle` fill) | **Help** + **SOS** | Full-screen job states only — never on a screen that has a back |
 | `transparent` | back on a 40 dp `bgPrimary` disc | — | — | Over a map or camera preview |
 
 Only `home`, `in-job` and `state` carry SOS, and SOS is always the **rightmost** element, same size, same place (P7). Nothing else ever sits where SOS sits.

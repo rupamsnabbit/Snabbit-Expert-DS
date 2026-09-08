@@ -4,7 +4,7 @@ What is done and what is left, against the 46-component core set in `audit/BENCH
 
 ---
 
-## Done — 40 pages · 46 of 46 core components + 2 compositions + 1 pattern
+## Done — 41 pages · 46 of 46 core components + 2 compositions + 1 pattern
 
 | # | Page | Covers | Status |
 | --- | --- | --- | --- |
@@ -45,6 +45,7 @@ What is done and what is left, against the 46-component core set in `audit/BENCH
 | 35 | ShieldCard (Kavach) | Composition: ShieldRow (6 states), ShieldConsent, SafetyCheck; SafetyStrip `shield` kind | Proposed |
 | 36 | JobAlert | Composition: the reference case as one screen — facts strip, earnings Card, Nudge loss, Timer L, Decline hold, Accept | Proposed |
 | — | FAB | Folded into IconButton: floating = `L` `circle` at `elevation.floating`; shutter and recentre only; no FAB component (`icon-button.md`) | Decided |
+| 38 | Pattern · Check in, work, check out | `patterns/check-in-out.md` — four stages from shipped Final Designs, departures cited, edges (late, overtime, extension, offline, no GPS) | Proposed |
 | 37 | Pattern · New job arrives | `patterns/new-job-alert.md` — arrive, decide, accept / decline / time's up, edges; PRINCIPLES reference case corrected | Proposed |
 
 Foundations done: tokens (`tokens/`), principles, extending, icons register, assets (two layers), motion (`foundations/motion.md`), type across four scripts (`foundations/type.md`), accessibility (`foundations/accessibility.md`). Research done: Figma audit (204 frames), benchmark.
@@ -73,9 +74,9 @@ Order decided 2026-09-08: the visual foundations first, sound parked.
 
 ---
 
-## To do — patterns (1 of 10 done)
+## To do — patterns (2 of 10 done)
 
-~~New-job alert~~ (done) · Check-in / check-out · Payout · Onboarding & go-live · Error recovery · Permission asking · First run (Coachmark tours) · Earnings breakdown · SOS flow (drawn in SOSControl; pattern adds what happens after) · Offline.
+~~New-job alert~~ (done) · ~~Check-in / check-out~~ (done) · Payout · Onboarding & go-live · Error recovery · Permission asking · First run (Coachmark tours) · Earnings breakdown · SOS flow (drawn in SOSControl; pattern adds what happens after) · Offline.
 
 ---
 

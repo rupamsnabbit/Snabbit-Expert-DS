@@ -57,8 +57,8 @@ Colour is never the only signal: the stroke length, the digits and the sound all
 
 | Mode | Digits | Ring | Use |
 | --- | --- | --- | --- |
-| `countdown` | time remaining | drains | Job alert (accept within), arrive within, login within, OTP resend |
-| `elapsed` | time since start, counts up | fills | Job in progress (*Working for 1:24:10*), overtime |
+| `countdown` | time remaining | drains | Job alert (accept within), check in by, **job in progress (time left)**, login within, OTP resend |
+| `elapsed` | time since a moment, counts up | fills | **Overtime** (*Overtime 12:40*, after time left reaches 0), waiting at the door |
 | `deadline` | clock time (`6:45 am`) | none | Login by, job starts at — things she plans around rather than races |
 
 `elapsed` uses `calm` only, unless it crosses a limit (overtime) → `attention`.
