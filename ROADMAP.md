@@ -90,7 +90,7 @@ Component status lifecycle in practice (nothing is Reconciled yet) · Changelog 
 ## Open items
 
 - `illustration.purple` hex — waiting on a value from the Snabbit Assets file.
-- Confirm whether the `1Login` onboarding screen (navy, non-Outfit) is shipped or older — see `references/SCREENS.md`.
+- `1Login` question superseded: onboarding evidence now comes from *Self-Serve ER/AR* (`HqmnjmxhZvyvZxmIaVMCrB`); the master file's FINAL ONBOARDING is an older iteration.
 - Shield: two product decisions to confirm — auto-start at check-in (vs shipped per-job *Activate*), and the Kavach-blue shield as the one domain-coloured pictogram (`shield-card.md`).
 - Accessibility decisions: (1) primary Button label is 4.0:1 at 16 sp SemiBold — recommend ButtonLg 18 / 24 for L Buttons; (2) token release 0.20 with the `text*Strong` steps, `iconSuccess` → green.600, `iconWarning` → yellow.600 and the accumulated proposals (`foundations/accessibility.md` § Open).
 - Figma reconciliation: every spec lists its changes; none applied yet. Until Figma matches, designers still draw from old frames.

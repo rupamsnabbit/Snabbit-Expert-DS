@@ -8,6 +8,7 @@ Two Figma files hold the **real screens** of the Expert app. They are the eviden
 | --- | --- | --- | --- |
 | **Expert App 2.0** (master) | `Q0YzzdKk21ayyKHjvCGPzM` | `FINAL ONBOARDING` (14537:42610) · `📝 Onboarding (ER - training)` (0:1) · `📍 Training` (110:3666) · `🏁 Go live` (1067:4218) · `🍔 Lunch Selection` (28714:63473) · `WIP - Payout I` (3406:12122) | Everything else (Archive, V2, UAT, Page 30/33, Design System page — the DS lives in `QjXqQZVAqLoRmH1j7foH1I`) |
 | **Shift – Job Lifecycle DS** | `WEUPV9q19eAqRbkZSBj6OY` | `Job Lifecycle` (0:1) · `Shift Lifecycle` (28:18373) | UAT, BRANDING |
+| **Self-Serve ER/AR** (onboarding, latest — added 2026-09-08) | `HqmnjmxhZvyvZxmIaVMCrB` | `Final` (0:1): sections *TC Less house help* · *TC house help* · *TC Less house cook* · *Bank/UPI* · *Post Onboarding* | — · **Supersedes** `FINAL ONBOARDING` in the master file for onboarding evidence; the master file's onboarding pages are now older iterations |
 
 ## Telling shipped from proposed
 
@@ -38,6 +39,16 @@ Conflicts found on first read — **decided 2026-09-08** (see `DECISIONS.md`): b
 | In-job title | **Centred** with a leading icon (*✓ Check In*, *🧴 New Job*, *⏱ Job In Progress*), no back | Left-aligned beside back | Allow a centred `state` variant for full-screen job states only |
 | Onboarding `1Login` | Navy palette, non-Outfit type, native keypad | Tokens: pink brand, Outfit | Likely an older or OS-level screen — confirm before treating as shipped |
 | Stepper | *Complete them in any order* | Strict order | Add `ordered: false` (no locked state, every row tappable) |
+
+## When the screens change
+
+They will — every quarter, sometimes every sprint. The system is built so that this is normal rather than a crisis:
+
+1. **Screens are evidence, not source.** A spec cites the shipped screen in its *What changes* table and departs from it with a principle. When a new screen file arrives, the citation is updated (file key, frame id, date); the *rule* in the spec changes only if the new screen shows something the principle did not anticipate. Most screen changes are re-arrangements of the same parts and change nothing in the system.
+2. **Register the file here first.** Add the row above (key, pages/sections, what it supersedes), note the date, then re-read only the specs and patterns whose evidence it replaces. Old files stay listed as *superseded* so a citation in an older spec still resolves.
+3. **Three outcomes per component**, recorded in `DECISIONS.md` when it is a decision: *confirmed* (the new screen matches the spec — move the component towards **Reconciled**), *spec updated* (the screen taught the system something — change the rule and say why), *screen flagged* (the screen departs from a principle — the spec stays and the departure goes to the Figma reconciliation list for the designer).
+4. **Patterns absorb flow changes; components absorb look changes.** A new onboarding order edits `patterns/onboarding.md`; a new button shape edits `button.md` and every pattern inherits it. Nothing is edited in two places.
+5. **Nothing is Stable until it ships from the package.** While screens keep moving, statuses stay *Proposed* / *Reconciled*; the changelog (`ROADMAP.md`, and a `CHANGELOG.md` once governance is set up) records each re-read with the file key and date.
 
 ## How to use these files in a spec
 
