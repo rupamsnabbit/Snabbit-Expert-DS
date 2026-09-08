@@ -1,0 +1,93 @@
+<meta charset="utf-8">
+<title>Snabbit Expert PageIndicator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>__BASECSS__
+.pi{display:flex;gap:8px;justify-content:center;align-items:center;height:8px}
+.pi span{width:8px;height:8px;border-radius:4px;background:#E5E7EB;transition:width .2s ease-out,background .2s}
+.pi span.on{width:24px;background:#F70F79}
+.pi.inv span{background:rgba(255,255,255,.4)}.pi.inv span.on{background:#fff}
+.car{width:328px;overflow:hidden;border-radius:12px;position:relative;touch-action:pan-y;user-select:none}
+.car .trk{display:flex;transition:transform .2s ease-out}
+.car .pg{width:328px;flex:none;height:150px;border-radius:12px;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:16px;box-sizing:border-box;color:#fff;font-family:var(--sans);font-size:18px;font-weight:600;line-height:24px;background:linear-gradient(135deg,#1D4ED8,#60A5FA)}
+.car .pg:nth-child(2){background:linear-gradient(135deg,#9D174D,#F70F79)}.car .pg:nth-child(3){background:linear-gradient(135deg,#065F46,#10B981)}.car .pg:nth-child(4){background:linear-gradient(135deg,#92400E,#F59E0B)}
+.car .pg small{display:block;font-size:12px;font-weight:400;opacity:.9}
+.wrap{width:328px;display:flex;flex-direction:column;gap:12px;font-family:var(--sans)}
+.wrap h5{margin:0;font-size:16px;font-weight:500;color:#111827}
+.stage-dark{background:#F70F79;border-radius:20px;width:328px;height:220px;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:20px;padding:24px;box-sizing:border-box;color:#fff;font-family:var(--sans);text-align:center}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(328px,1fr));gap:24px 32px;align-items:start}
+.stg{display:flex;flex-direction:column;gap:8px}.stg .cap{font-family:var(--mono);font-size:12px;color:var(--text-2)}.stg .cap b{color:var(--text);font-weight:500}
+.ctl{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:12px}.ctl button{font-family:var(--sans);font-size:13px;padding:6px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);cursor:pointer}
+.logline{font-family:var(--mono);font-size:12px;color:var(--text-2);min-height:16px;margin-top:8px}
+@media (prefers-reduced-motion:reduce){.pi span,.car .trk{transition:none}}
+__NAVCSS__</style>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · PageIndicator</small></div></div>
+    __SITENAV__
+    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#anatomy">Anatomy</a><a href="#live">Live</a><a href="#rules">Rules</a><a href="#dont">Don't</a><a href="#figma">Figma changes</a></nav>
+    <div class="rail-foot">Rendered from tokens.json · spec in components/page-indicator.md</div>
+  </aside>
+  <main class="main">
+    <header id="overview">
+      <div class="eyebrow">Core component</div><h1>PageIndicator</h1>
+      <p class="lede">The small row of dots under anything she swipes sideways: you are on the second of four. It exists only where there is a carousel, a carousel exists only for things she can safely miss, and there are never more than five pages.</p>
+      <div class="meta"><span class="chip status">Proposed</span><span class="chip">Tier 1 · Core</span><span class="chip"><code>SnabbitPageIndicator</code></span><span class="chip">2–5 pages</span><span class="chip">Not a target</span></div>
+    </header>
+
+    <section id="anatomy">
+      <header><div class="eyebrow">Shape</div><h2>Anatomy</h2><p>Current page a 24 × 8 pill in <code>bgBrand</code>, the rest 8 dp dots in <code>borderDefault</code>, 8 dp gaps, centred 12 dp below the carousel on the page background — never on the image. An <em>inverse</em> variant for full-screen intros on a coloured stage.</p></header>
+      <div class="stage"><div class="grid2" id="anat-grid"></div></div>
+    </section>
+
+    <section id="live">
+      <header><div class="eyebrow">Try it</div><h2>Live</h2><p>Swipe or drag the cards (or use the buttons). The pill slides with the page. A promotional carousel may auto-advance every 6 s, pausing while touched and stopping after one loop; the how-to clips never do.</p></header>
+      <div class="demo" style="align-items:flex-start;flex-wrap:wrap;gap:28px"><div class="wrap"><h5>More from Snabbit</h5><div class="car" id="car"><div class="trk" id="trk"><div class="pg">Refer and earn up to ₹4000<small>Promotional banner · auto-advances</small></div><div class="pg">Summer bonus this week<small>Promotional banner</small></div><div class="pg">New: Kavach safety<small>Promotional banner</small></div><div class="pg">Training centre moved<small>Promotional banner</small></div></div></div><div class="pi" id="dots" aria-hidden="true"></div></div><div class="card" style="max-width:300px"><h4>Controls</h4><div class="ctl"><button id="prev">‹ Prev</button><button id="next">Next ›</button><button id="auto">Start auto-advance</button></div><div class="logline" id="log">page 1 of 4</div></div></div>
+    </section>
+
+    <section id="rules">
+      <header><div class="eyebrow">Limits</div><h2>Rules</h2></header>
+      <ol class="rules"><li><b>2–5 pages.</b> One page has no indicator; six is a vertical list or three cards plus <em>See all ›</em>.</li><li><b>Not a target.</b> The swipe (or the flow's Next Button) moves pages; an 8 dp dot on a moving bus is a mis-tap.</li><li><b>Auto-advance</b> only for promotional banners: 6 s, pauses on touch, one loop, never restarts. Never for how-to clips or anything with a Button inside. Never with a screen reader or reduced motion.</li><li><b>Below the card,</b> on the page background — never over the image.</li><li>Announces <em>"Page 2 of 4"</em> on change; each card is a region with its own title.</li></ol>
+    </section>
+
+    <section id="dont">
+      <header><div class="eyebrow">Common mistakes</div><h2>Don't</h2></header>
+      <div class="stage"><div class="grid2" id="dont-grid"></div></div>
+    </section>
+
+    <section id="figma">
+      <header><div class="eyebrow">Reconciliation</div><h2>What changes in Figma</h2></header>
+      <ol class="rules"><li>Create PageIndicator: Count (2–5), Current (1–5), Variant (Default / Inverse). Pill bgBrand; dots borderDefault.</li><li>Replace the dash + dots under the rate-card clips and the Home banners with instances 12 dp below the card, on the page background.</li><li>Trim any carousel mock with more than five cards.</li></ol>
+      <p class="sub" style="margin-top:14px">Result: ~8 variants, and one indicator for every swipe.</p>
+    </section>
+  </main>
+</div>
+
+<script id="tokens-json" type="application/json">__TOKENS__</script>
+<script>
+(function(){
+const T=JSON.parse(document.getElementById("tokens-json").textContent); const $=s=>document.querySelector(s);
+const pi=(n,cur,inv)=>`<div class="pi ${inv?'inv':''}">${Array.from({length:n},(_,i)=>`<span class="${i===cur?'on':''}"></span>`).join('')}</div>`;
+const W=(cap,html)=>`<div class="stg">${html}<div class="cap">${cap}</div></div>`;
+$('#anat-grid').innerHTML=[
+ W('<b>default</b> · 4 pages · page 2',`<div style="width:328px;padding:16px 0">${pi(4,1)}</div>`),
+ W('<b>default</b> · 2 pages (minimum) · 5 pages (maximum)',`<div style="width:328px;padding:16px 0;display:flex;flex-direction:column;gap:20px">${pi(2,0)}${pi(5,4)}</div>`),
+ W('<b>inverse</b> · full-screen intro on a coloured stage · stepped by the flow\'s Next Button',`<div class="stage-dark"><div style="font-size:20px;font-weight:600">Jobs come to you</div>${pi(3,0,1)}</div>`)].join('');
+// live
+let cur=0,n=4,auto=null,touched=false;const trk=$('#trk');
+function go(i,why){cur=(i+n)%n;trk.style.transform=`translateX(${-cur*328}px)`;$('#dots').innerHTML=pi(n,cur).replace('<div class="pi ">','').replace(/<\/div>$/,'');$('#log').textContent=`page ${cur+1} of ${n}${why?' · '+why:''} · announced "Page ${cur+1} of ${n}"`;}
+$('#dots').innerHTML=pi(n,0).replace('<div class="pi ">','').replace(/<\/div>$/,'');
+$('#prev').onclick=()=>go(cur-1);$('#next').onclick=()=>go(cur+1);
+let sx=null;const car=$('#car');car.onpointerdown=e=>{sx=e.clientX;touched=true;};car.onpointerup=e=>{if(sx===null)return;const dx=e.clientX-sx;sx=null;touched=false;if(Math.abs(dx)>40)go(cur+(dx<0?1:-1),'swiped');};car.onpointerleave=()=>{sx=null;touched=false;};
+let loops=0;
+$('#auto').onclick=()=>{if(auto){clearInterval(auto);auto=null;$('#auto').textContent='Start auto-advance';$('#log').textContent='auto-advance stopped';return;}loops=0;$('#auto').textContent='Stop auto-advance';$('#log').textContent='auto-advance · 6 s per page · pauses on touch · stops after one loop';auto=setInterval(()=>{if(touched){$('#log').textContent='touched → auto-advance paused';return;}if(cur===n-1){loops++;if(loops>=1){clearInterval(auto);auto=null;$('#auto').textContent='Start auto-advance';$('#log').textContent='one full loop → auto-advance stopped for good';return;}}go(cur+1,'auto');},2000);};
+// donts
+$('#dont-grid').innerHTML=[
+ W('',`<div style="width:328px;padding:16px 0">${pi(8,2)}</div>`).replace('<div class="cap"></div>','<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">Eight pages. Nothing past the third swipe is ever seen. Five max; more is a vertical list or three cards plus <em>See all ›</em>.</div>'),
+ W('',`<div class="car" style="height:150px"><div class="pg" style="background:url() ,linear-gradient(135deg,#1D4ED8,#60A5FA)">Refer and earn<div style="position:absolute;left:0;right:0;bottom:10px">${pi(4,0,1)}</div></div></div>`).replace('<div class="cap"></div>','<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">Dots on the image. Contrast on a photo is luck; 12 dp below the card, on the page background, it is always readable.</div>'),
+ W('',`<div style="width:328px;padding:16px 0;display:flex;justify-content:center;gap:12px">${Array.from({length:4},(_,i)=>`<button style="width:40px;height:40px;border-radius:50%;border:1px solid #E5E7EB;background:${i===1?'#F70F79':'#fff'};color:${i===1?'#fff':'#374151'};font:500 14px var(--sans)">${i+1}</button>`).join('')}</div>`).replace('<div class="cap"></div>','<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">Numbered page buttons. This is a web pagination control; on the phone the swipe is the control and the indicator only reports.</div>')].join('');
+const links=[...document.querySelectorAll('#nav a')];const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-20% 0px -70% 0px'});targets.forEach(t=>io.observe(t));}
+})();
+</script>
