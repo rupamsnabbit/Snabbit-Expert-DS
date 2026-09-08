@@ -10,7 +10,10 @@ Status: **seed**. Populated fully during the Button, Tab bar and Job-alert specs
 | --- | --- | --- | --- |
 | `check` | Confirm / accept / done | regular | Accept job, Mark done |
 | `x` | Close / dismiss | regular | Sheets, banners |
-| `map-pin` | Job location / distance | regular | Job alert, job card |
+| `map-pin` | Job location / distance | regular | Job alert, job card (never as a map marker — markers carry `house` / `graduation-cap`) |
+| `house` | Customer's home (map marker) | fill | MapMarker `job` |
+| `navigation-arrow` | Her heading | fill | MapMarker `me` |
+| `arrow-square-out` | Opens another app (maps) | regular | MapSnippet *Show directions* |
 | `clock` | Duration / time | regular | Job alert, shift |
 | `currency-inr` | Earnings tab / amount | regular / fill when selected | Bottom tab bar, job alert, earnings, payout |
 | `spray-bottle` | Home tab — her tool; already learned in the shipped app | regular / fill when selected | Bottom tab bar |

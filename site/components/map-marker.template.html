@@ -1,0 +1,100 @@
+<meta charset="utf-8">
+<title>Snabbit Expert MapMarker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>__BASECSS__
+.mapbg{background-color:#EEF0F2;background-image:linear-gradient(0deg,#fff 0 3px,transparent 3px 34px),linear-gradient(90deg,#fff 0 3px,transparent 3px 46px),linear-gradient(35deg,transparent 0 48%,#fff 48% 52%,transparent 52%);position:relative;overflow:hidden}
+.mk{position:absolute;display:flex;flex-direction:column;align-items:center;transform:translate(-50%,-100%);font-family:var(--sans)}
+.mk .hd{width:32px;height:32px;border-radius:10px;background:#F70F79;color:#fff;display:grid;place-items:center;box-shadow:0 0 0 2px #fff;position:relative}.mk .hd svg{width:18px;height:18px}
+.mk .hd::after{content:"";position:absolute;left:50%;bottom:-6px;width:10px;height:10px;background:inherit;transform:translateX(-50%) rotate(45deg);border-radius:1px}
+.mk.hub .hd{background:#111827}
+.mk.L .hd{width:40px;height:40px;border-radius:12px}.mk.L .hd svg{width:22px;height:22px}
+.mk .lb{margin-top:10px;background:#fff;border-radius:999px;padding:2px 8px;font-size:12px;font-weight:500;color:#111827;white-space:nowrap;box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.mk.L .lb{font-size:14px;font-weight:600}
+.me{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;font-family:var(--sans)}
+.me .dot{width:16px;height:16px;border-radius:50%;background:#2563EB;box-shadow:0 0 0 3px #fff,0 0 0 8px rgba(37,99,235,.2);position:relative}
+.me .dot.arrow{background:#2563EB}.me .dot.arrow svg{width:12px;height:12px;color:#fff;position:absolute;left:2px;top:2px;transform:rotate(45deg)}
+.me.stale .dot{background:#9CA3AF;box-shadow:0 0 0 3px #fff}
+.me .lb{margin-top:6px;background:#fff;border-radius:999px;padding:2px 8px;font-size:12px;font-weight:500;color:#111827;box-shadow:0 1px 2px rgba(0,0,0,.12);white-space:nowrap}
+.hs{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;font-family:var(--sans)}
+.hs .ring{width:48px;height:48px;border-radius:50%;background:rgba(254,241,247,.6);border:1.5px dashed #F70F79}
+.hs .lb{margin-top:4px;background:#fff;border-radius:999px;padding:2px 8px;font-size:12px;font-weight:500;color:#111827;box-shadow:0 1px 2px rgba(0,0,0,.12);white-space:nowrap}
+.snip{width:328px;background:#fff;border:1px solid #F3F4F6;border-radius:12px;overflow:hidden;font-family:var(--sans);color:#111827;cursor:pointer}
+.snip .map{height:160px}.snip.tall .map{height:240px}
+.snip .in{padding:12px 16px 16px;display:flex;flex-direction:column;gap:8px}
+.snip .addr{display:flex;align-items:flex-start;gap:8px;font-size:14px;line-height:20px;color:#374151}.snip .addr span{flex:1}
+.snip .lis{width:40px;height:40px;border-radius:8px;background:#FEF1F7;color:#F70F79;display:grid;place-items:center;flex:none;margin:-8px -6px -8px 0}.snip .lis svg{width:18px;height:18px}
+.snip .dist{font-size:12px;color:#6B7280}
+.snip .btn{height:48px;border-radius:10px;border:0;background:#fff;box-shadow:inset 0 0 0 1.5px #F70F79;color:#F70F79;font:500 16px var(--sans);display:flex;align-items:center;justify-content:center;gap:8px;width:100%}.snip .btn svg{width:20px;height:20px}
+.snip .fb{height:160px;background:#F9FAFB;position:relative}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(328px,1fr));gap:24px 32px;align-items:start}
+.stg{display:flex;flex-direction:column;gap:8px}.stg .cap{font-family:var(--mono);font-size:12px;color:var(--text-2)}.stg .cap b{color:var(--text);font-weight:500}
+.mx{display:flex;gap:28px;flex-wrap:wrap;align-items:flex-start}.mx .mxi{width:150px;display:flex;flex-direction:column;gap:6px}.mx .mxi .mapbg{height:130px;border-radius:12px}
+.mx .cap{font-family:var(--mono);font-size:11px;color:var(--text-2);text-align:center;line-height:14px}
+.logline{font-family:var(--mono);font-size:12px;color:var(--text-2);min-height:16px;margin-top:8px}
+.oldpin{position:absolute;width:20px;height:28px;transform:translate(-50%,-100%);color:#DC2626}.oldpin svg{width:20px;height:28px}
+@media (prefers-reduced-motion:reduce){}
+__NAVCSS__</style>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · MapMarker</small></div></div>
+    __SITENAV__
+    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#markers">Markers</a><a href="#snippet">MapSnippet</a><a href="#rules">Rules</a><a href="#dont">Don't</a><a href="#figma">Figma changes</a></nav>
+    <div class="rail-foot">Rendered from tokens.json · spec in components/map-marker.md</div>
+  </aside>
+  <main class="main">
+    <header id="overview">
+      <div class="eyebrow">Core component · composition</div><h1>MapMarker · MapSnippet</h1>
+      <p class="lede">The app does not navigate; it hands off to the phone's maps app, and that is right. What it owns is the moment before: a small muted map that shows where — the customer's home, the hub, the hotspot — and where she is, with one Button that opens directions. The pins are the message; the map is context.</p>
+      <div class="meta"><span class="chip status">Proposed</span><span class="chip">Tier 1 · Core + Tier 2</span><span class="chip"><code>SnabbitMapMarker</code> · <code>SnabbitMapSnippet</code></span><span class="chip">job · hub · me · hotspot</span><span class="chip">Always labelled</span></div>
+    </header>
+
+    <section id="markers">
+      <header><div class="eyebrow">One meaning each</div><h2>Markers</h2><p>A 32 dp head with a Phosphor glyph, a white ring so it reads on any tile, and a label pill — always. An unlabelled pin is a red pin. <b>me</b> is a blue dot with a halo (an arrow when heading is known; grey when the fix is stale); <b>hotspot</b> is a dashed circle, not a pin, because it is an area.</p></header>
+      <div class="stage"><div class="mx" id="mx"></div></div>
+    </section>
+
+    <section id="snippet">
+      <header><div class="eyebrow">Tier 2</div><h2>MapSnippet</h2><p>Card with a static muted map (≤ 3 markers, fit to bounds, no controls), the address with an inline Listen, the distance line, and <em>Show directions</em>. Tapping the map does what the Button does. If the tile fails, the address and the job marker stand in and the Button still works.</p></header>
+      <div class="stage"><div class="grid2" id="snip-grid"></div><div class="logline" id="log" style="margin-top:16px">tap a snippet</div></div>
+    </section>
+
+    <section id="rules">
+      <header><div class="eyebrow">Behaviour</div><h2>Rules</h2></header>
+      <ol class="rules"><li><b>Hand off, don't navigate.</b> Directions open the phone's maps app with the destination pinned; walking mode under 1.5 km.</li><li><b>Static.</b> No pan, pinch or zoom controls; the snippet is one target.</li><li><b>≤ 3 markers:</b> the destination, <em>me</em>, a hotspot when relevant. A list of jobs is a ListItem list, never a map.</li><li><b>Labels always.</b> When two labels collide, <em>me</em> yields; the destination never hides its label.</li><li>Distance updates every 30 s while open: <em>3.2 km · about 12 min</em>, rounded to 5 min, never seconds, never ETA. Time pressure belongs to the Timer.</li><li>Map style is muted everywhere — greyscale roads, no POI labels, no traffic — so the markers are the only colour.</li></ol>
+    </section>
+
+    <section id="dont">
+      <header><div class="eyebrow">Common mistakes</div><h2>Don't</h2></header>
+      <div class="stage"><div class="grid2" id="dont-grid"></div></div>
+    </section>
+
+    <section id="figma">
+      <header><div class="eyebrow">Reconciliation</div><h2>What changes in Figma</h2></header>
+      <ol class="rules"><li>Create MapMarker: Kind (Job / Hub / Me / Hotspot), Size (M / L), State (Default / Selected / Stale). Heads bound to bgBrand / bgInverse / textInfo.</li><li>Create MapSnippet: Height (160 / 240), booleans Hotspot, Me; muted map placeholder; address + Listen + distance + Show directions.</li><li>Replace the default red pins and the overlaid Show directions strip in the arrival and Home hotspot cards with the composition.</li></ol>
+      <p class="sub" style="margin-top:14px">Result: ~10 variants, and the same pins on every map. Token proposal: <code>map.style</code> muted.</p>
+    </section>
+  </main>
+</div>
+
+<script id="tokens-json" type="application/json">__TOKENS__</script>
+<script>
+(function(){
+const T=JSON.parse(document.getElementById("tokens-json").textContent); const $=s=>document.querySelector(s);
+const ICO={house:'M224,120v96a8,8,0,0,1-8,8H160a8,8,0,0,1-8-8V164a4,4,0,0,0-4-4H108a4,4,0,0,0-4,4v52a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V120a16,16,0,0,1,4.69-11.31l80-80a16,16,0,0,1,22.62,0l80,80A16,16,0,0,1,224,120Z',cap:'M176,207.24a119,119,0,0,0,16-7.73V240a8,8,0,0,1-16,0Zm11.76-88.43-56-29.87a8,8,0,0,0-7.52,14.12L171,128l17-9.06Zm64-29.87-120-64a8,8,0,0,0-7.52,0l-120,64a8,8,0,0,0,0,14.12L32,117.87v48.42a15.91,15.91,0,0,0,4.06,10.65C49.16,191.53,78.51,216,128,216a130,130,0,0,0,48-8.76V130.67L171,128l-43,22.93L43.83,106l0,0L25,96,128,41.07,231,96l-18.78,10-.06,0L188,118.94a8,8,0,0,1,4,6.93v73.64a115.63,115.63,0,0,0,27.94-22.57A15.91,15.91,0,0,0,224,166.29V117.87l27.76-14.81a8,8,0,0,0,0-14.12Z',nav:'M248,121.58a15.76,15.76,0,0,1-11.29,15l-.2.06-78,21.84-21.84,78-.06.2a15.77,15.77,0,0,1-15,11.29h-.3a15.77,15.77,0,0,1-15.07-10.67L41,61.41a1,1,0,0,1-.05-.16A16,16,0,0,1,61.25,40.9l.16.05,175.92,65.26A15.78,15.78,0,0,1,248,121.58Z',pin:'M128,16a88.1,88.1,0,0,0-88,88c0,75.3,80,132.17,83.41,134.55a8,8,0,0,0,9.18,0C136,236.17,216,179.3,216,104A88.1,88.1,0,0,0,128,16Zm0,56a32,32,0,1,1-32,32A32,32,0,0,1,128,72Z',out:'M224,104a8,8,0,0,1-16,0V59.32l-66.33,66.34a8,8,0,0,1-11.32-11.32L196.68,48H152a8,8,0,0,1,0-16h64a8,8,0,0,1,8,8Zm-40,24a8,8,0,0,0-8,8v72H48V80h72a8,8,0,0,0,0-16H48A16,16,0,0,0,32,80V208a16,16,0,0,0,16,16H176a16,16,0,0,0,16-16V136A8,8,0,0,0,184,128Z',spk:'M155.51,24.81a8,8,0,0,0-8.42.88L77.25,80H32A16,16,0,0,0,16,96v64a16,16,0,0,0,16,16H77.25l69.84,54.31A8,8,0,0,0,160,224V32A8,8,0,0,0,155.51,24.81ZM144,207.64,84.91,161.69A7.94,7.94,0,0,0,80,160H32V96H80a7.94,7.94,0,0,0,4.91-1.69L144,48.36ZM208,128a39.93,39.93,0,0,1-10,26.46,8,8,0,0,1-12-10.58,24,24,0,0,0,0-31.72,8,8,0,1,1,12-10.58A40,40,0,0,1,208,128Zm40,0a79.9,79.9,0,0,1-20.37,53.34,8,8,0,0,1-11.92-10.67,64,64,0,0,0,0-85.33,8,8,0,1,1,11.92-10.67A79.83,79.83,0,0,1,248,128Z'};
+const svg=n=>`<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="${ICO[n]}"/></svg>`;
+const mk=(kind,label,x,y,o={})=>kind==='me'?`<div class="me ${o.stale?'stale':''}" style="left:${x}%;top:${y}%"><span class="dot ${o.arrow?'arrow':''}">${o.arrow?svg('nav'):''}</span>${label?`<span class="lb">${label}</span>`:''}</div>`:kind==='hotspot'?`<div class="hs" style="left:${x}%;top:${y}%"><span class="ring"></span><span class="lb">${label}</span></div>`:`<div class="mk ${kind} ${o.L?'L':''}" style="left:${x}%;top:${y}%"><span class="hd">${svg(kind==='hub'?'cap':'house')}</span><span class="lb">${label}</span></div>`;
+$('#mx').innerHTML=[['job','Radhika\'s home','job · bgBrand · house'],['hub','Koramangala hub','hub · bgInverse · graduation-cap'],['me','You','me · textInfo dot · halo'],['hotspot','Jyoti Nivas Gate','hotspot · dashed area, no pin'],['jobL','Radhika\'s home','job · L · selected'],['meA','You','me · heading known'],['meS','You · a minute ago','me · stale (> 60 s)']].map(([k,l,c])=>`<div class="mxi"><div class="mapbg">${k==='jobL'?mk('job',l,50,62,{L:1}):k==='meA'?mk('me',l,50,45,{arrow:1}):k==='meS'?mk('me',l,50,45,{stale:1}):mk(k,l,50,k==='me'||k==='hotspot'?45:62)}</div><span class="cap">${c}</span></div>`).join('');
+const snip=(o={})=>`<div class="snip ${o.tall?'tall':''}" role="button" aria-label="Map. ${o.dest||'Radhika\'s home'}, ${o.dist||'3.2 kilometres, about 12 minutes'}. Show directions." data-n="${o.n||''}">${o.fail?`<div class="fb">${mk('job',o.dest||'Radhika\'s home',50,58)}</div>`:`<div class="map mapbg">${mk(o.hub?'hub':'job',o.dest||'Radhika\'s home',o.hub?60:62,o.tall?48:58)}${o.me!==false?mk('me','You',o.tall?22:24,o.tall?72:74):''}${o.hotspot?mk('hotspot','Jyoti Nivas Gate',30,38):''}</div>`}<div class="in"><div class="addr"><span>${o.addr||'HAL Old Airport Rd, near railway over bridge, LN Pura'}</span><span class="lis" role="button" aria-label="Listen">${svg('spk')}</span></div><div class="dist">${o.dist||'3.2 km · about 12 min'}</div><button class="btn">${svg('out')}Show directions</button></div></div>`;
+const W=(cap,html)=>`<div class="stg">${html}<div class="cap">${cap}</div></div>`;
+$('#snip-grid').innerHTML=[W('<b>160 · job + me</b> · Home / job details',snip({n:'job'})),W('<b>240 · job + me + hotspot</b> · arrival screen hero',snip({tall:1,hotspot:1,n:'arrival'})),W('<b>hub</b> · training centre · walking under 1.5 km',snip({hub:1,dest:'Koramangala hub',addr:'HAL Old Airport Rd, near railway over bridge, LN Pura, Marathahalli',dist:'650 m · about 8 min',n:'hub'})),W('<b>tile failed / offline</b> · address and the job marker stand in · Button still works',snip({fail:1,n:'fail'}))].join('');
+document.querySelectorAll('.snip').forEach(s=>{s.onclick=e=>{if(e.target.closest('.lis')){$('#log').textContent='Listen → address read aloud';return;}$('#log').textContent=`${s.dataset.n}: opens the phone\'s maps app with the destination pinned · ${s.dataset.n==='hub'?'walking mode (< 1.5 km)':'transit mode'}`;};});
+$('#dont-grid').innerHTML=[
+ W('',`<div class="snip"><div class="map" style="height:160px;background:linear-gradient(135deg,#D1FAE5,#FDE68A 40%,#BFDBFE);position:relative"><span class="oldpin" style="left:40%;top:50%">${svg('pin')}</span><span class="oldpin" style="left:64%;top:62%">${svg('pin')}</span><div style="position:absolute;left:50%;bottom:8px;transform:translateX(-50%);background:rgba(0,0,0,.6);color:#fff;font-size:12px;padding:6px 10px;border-radius:6px">⊕ Show directions</div></div></div>`).replace('<div class="cap"></div>','<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">Default red pins, unlabelled, on a full-colour tile, with a 12 dp text strip as the action (as shipped). Which pin is the job? Labelled markers, a muted tile, a real Button.</div>'),
+ W('',`<div class="snip"><div class="map mapbg">${['Radhika','Anagha','Meera','Priya','Sunita'].map((n,i)=>mk('job',n+'\'s home',15+i*17,35+(i%2)*30)).join('')}</div></div>`).replace('<div class="cap"></div>','<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">Five jobs on one map. A map is for one destination; a list of jobs is a ListItem list she can read top to bottom.</div>'),
+ W('',`<div class="snip"><div class="map mapbg">${mk('job','Radhika\'s home',60,58)}${mk('me','You',24,74)}<div style="position:absolute;right:8px;top:8px;display:flex;flex-direction:column;gap:4px"><span style="width:32px;height:32px;background:#fff;border-radius:6px;display:grid;place-items:center;font-weight:600">+</span><span style="width:32px;height:32px;background:#fff;border-radius:6px;display:grid;place-items:center;font-weight:600">−</span></div><div style="position:absolute;left:8px;bottom:8px;background:#fff;border-radius:6px;padding:4px 8px;font-size:12px">ETA 11:42 · 3.24 km</div></div></div>`).replace('<div class="cap"></div>','<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">Zoom controls, <em>ETA</em>, two decimals. The snippet is static and one target; the distance line says <em>3.2 km · about 12 min</em>; time pressure belongs to the Timer.</div>')].join('');
+const links=[...document.querySelectorAll('#nav a')];const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-20% 0px -70% 0px'});targets.forEach(t=>io.observe(t));}
+})();
+</script>
