@@ -33,7 +33,7 @@ Every number she types — her phone, the OTP the customer reads out, an amount 
 
 Total height 4 × 64 + 3 × 8 + 16 = **296 dp**, fixed. The keypad is anchored to the bottom, above the safe area, below the flow's Button. It never covers the entry; the screen's content area is what remains above.
 
-Key states: default `bgPrimary`; pressed `bgTertiary` with a 60 ms scale to 0.96 and a `light` haptic plus the platform key click; disabled (max length reached) — the digit keys stay visible but a tap gives a `bump` of the entry (2 dp shake, 80 ms) and no digit; backspace is never disabled.
+Key states: default `bgPrimary`; pressed `bgTertiary` with a `motion.xfast` (80 ms) scale to 0.96 and a `light` haptic plus the platform key click; disabled (max length reached) — the digit keys stay visible but a tap gives a `bump` of the entry (2 dp shake, 80 ms) and no digit; backspace is never disabled.
 
 ---
 
@@ -56,7 +56,7 @@ SMS autofill (OTP) fills the boxes and submits as if typed. Paste is honoured fo
 - Each key press appends one digit, `light` haptic, key click at the phone's system volume. Sound off → haptic only.
 - **Backspace**: tap removes one digit; hold 600 ms clears the whole entry with a `medium` haptic — undo is not offered because re-typing is short.
 - **Read back** (`phone`, `amount`): when the entry is complete, the digits are spoken once in her language in groups of five (phone) or as an amount, ending with *"— is this right?"*; the Button is enabled during and after; tapping it stops the voice. Not for OTP (it is auto-submitting and short).
-- Wrong OTP: boxes shake 80 ms, clear, a Toast *Wrong code — try again* spoken; after 3 wrong codes, *Resend code* becomes the primary action and the keypad stays.
+- Wrong OTP: boxes shake `motion.xfast` (80 ms), clear, a Toast *Wrong code — try again* spoken; after 3 wrong codes, *Resend code* becomes the primary action and the keypad stays.
 - Max length: extra digits are ignored with the entry bump; no error text.
 - One keypad on screen at a time; it is never shown with the OS keyboard.
 - Reduced motion: no slide-in, no key scale; shake replaced by a colour flash of `borderError` on the entry.
@@ -83,7 +83,6 @@ Role `group` labelled *Number keypad*; each key a button announcing its digit; b
 | Token | Value | Note |
 | --- | --- | --- |
 | `haptic.bump` | short double tick | Max-length and wrong-code feedback; into the sound & haptics register |
-| `motion.keyPress` | 60 ms | Key scale; into the motion foundation |
 
 ---
 

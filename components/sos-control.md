@@ -38,7 +38,7 @@ Identical on Home, in-job and state headers, always the last element on the righ
 | 0 ms | Disc darkens to pressed; a **hold indicator** appears in the **centre of the screen**: 120 dp disc, `bgErrorStrong`, siren, ring track around it, text *Keep holding* (`Heading3`, `textInverse` on a 60 % scrim) | `light` haptic |
 | 0 → 1500 ms | The ring fills clockwise; the number *3 · 2 · 1* is not shown — the fill is the countdown | `light` haptic tick at 500 and 1000 ms |
 | **1500 ms** | Ring completes → **triggered**. Active screen opens | `heavy` haptic; the *sos* sound (registered; unique) once |
-| released early | Indicator fades 150 ms; Toast, spoken: *Hold SOS for 2 seconds to call for help* | none |
+| released early | Indicator fades `motion.fast` (100 ms); Toast, spoken: *Hold SOS for 2 seconds to call for help* | none |
 
 The indicator sits in the centre because her thumb covers the control itself; she must be able to see progress without looking under her hand. The hold works with the screen partly obscured and one-handed (P7 test condition). No slide, no double-tap, no shake: one gesture, taught once by the first-run Coachmark.
 

@@ -146,6 +146,34 @@ The package does not expose a global shadow scale in 0.19.0. The default is flat
 
 Any new shadow value is a local decision that must be documented in the component brief and proposed for the design-system package. Legacy Flutter elevations from 2–10 dp are existing inconsistencies, not reusable tokens.
 
+## Motion and timeouts
+
+Motion is information or acknowledgement, never decoration. Anything decorative finishes within 300 ms; gestures, timers and loops are exempt because they carry meaning. Animate `transform` and `opacity` only — never colour, shadow or blur on a ₹10k phone. Full rules and the per-component map: `foundations/motion.md`.
+
+| Duration | ms | Use |
+| --- | --- | --- |
+| `motion.instant` | 0 | Content swaps (skeleton → content, tab content) |
+| `motion.xfast` | 80 | Key press scale, OTP shake |
+| `motion.fast` | 100 | Pressed washes, fade-outs, small things leaving |
+| `motion.standard` | 200 | Open / close, slide, expand, indicator moves — the default |
+| `motion.slow` | 300 | Sheet entering, progress fills, Stepper node completing |
+| `motion.emphasis` | 400 | One-shot emphasis: goal bounce, glyph flash |
+| `motion.gesture` | 600 | Hold-to-confirm fill |
+| `motion.celebrate` | 800 | Accept celebration; Spinner revolution |
+| `motion.beat` | 1000 | Pulses that mean *live*: record dot, urgent digits |
+| `motion.loop` | 1200 | Shimmer, spotlight pulse cycle |
+
+| Easing | Curve | Use |
+| --- | --- | --- |
+| `easing.enter` | `cubic-bezier(0, 0, 0.2, 1)` | Arriving |
+| `easing.exit` | `cubic-bezier(0.4, 0, 1, 1)` | Leaving |
+| `easing.move` | `cubic-bezier(0.4, 0, 0.2, 1)` | Moving while on screen |
+| `easing.linear` | `linear` | Anything that measures time |
+
+Timeouts are behaviour, not animation — how long the app waits before it acts or speaks: `timeout.tapGuard` 300 · `timeout.loadingMin` 400 · `timeout.settle` 300 · `timeout.screenSettle` 500 · `timeout.loading` 3000 (the three-second rule) · `timeout.toast` 3000 · `timeout.snackbar` 6000 · `timeout.autoAdvance` 6000 · `timeout.autoContinue` 800 · `timeout.holdSOS` 1500 · `timeout.sosCancel` 5000 · `timeout.expiredClose` 2000 · `timeout.safetyCheck` 30 000 · `timeout.jobAlert` server-set.
+
+**Reduced motion.** Decorative motion becomes a fade of the same duration or instant; motion that carries information (Timer ring, progress fill, level meter, the camera guide turning green) stays; hold gestures show a countdown label instead of a sweep; pulses stop and the state is carried by weight or words.
+
 ## Icon sizes and touch targets
 
 Icons are **Phosphor Icons only** — no other set, no custom glyphs. Weight `regular` by default, `fill` for selected/active state, `bold` only for emphasis; never `thin`, `light` or `duotone`. One Phosphor icon carries one meaning in the app; the register lives in `foundations/icons.md`. Use the design-system icon component and its semantic icon names. Standard visual sizes are 16, 20, 24, 32, and 40 dp. Use 24 dp for normal navigation/action icons and 20 dp in medium controls. A visual icon may be smaller than its hit area, but the interactive target must be at least 48 × 48 dp.

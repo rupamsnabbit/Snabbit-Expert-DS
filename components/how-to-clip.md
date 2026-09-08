@@ -52,13 +52,13 @@ A **watched** card shows a `check-circle` fill 20 dp `iconSuccess` top-right; wa
 └────────────────────────────────────┘
 ```
 
-Tap anywhere on the video to pause / resume (a 64 dp `pause` / `play` glyph flashes 400 ms). Nothing else: no scrubber, no speed, no share, no fullscreen toggle, no next-clip autoplay. The header and SOS are hidden — a clip is never watched during a job.
+Tap anywhere on the video to pause / resume (a 64 dp `pause` / `play` glyph flashes `motion.emphasis` (400 ms)). Nothing else: no scrubber, no speed, no share, no fullscreen toggle, no next-clip autoplay. The header and SOS are hidden — a clip is never watched during a job.
 
 ---
 
 ## Behaviour
 
-- **Autoplay** on open, with voice, after 300 ms; the phone's silent switch is respected (captions carry it). The VoicePrompt rules apply: one voice at a time; opening a clip stops any other.
+- **Autoplay** on open, with voice, after `timeout.settle` (300 ms); the phone's silent switch is respected (captions carry it). The VoicePrompt rules apply: one voice at a time; opening a clip stops any other.
 - **Loops once** (plays twice) then stops on the last frame with *Replay*; close returns to where she was. Never a queue, never *Up next*.
 - **Captions always on**, burned in per language at build time (not a text track) so they render identically on every phone and survive offline; Outfit for Latin, system face for Indic per the type rules; ≤ 2 lines, ≤ 40 chars each, changing no faster than every 2 s.
 - **Offline**: onboarding, go-live and check-in clips ship in the app (≤ 2 MB each at 720 × 1280, 24 fps, H.264); others download on first view over Wi-Fi or on tap over data with a Toast *Using data · 1.5 MB* — the one place a size is shown, because it costs her money. If unavailable offline, the card shows *Needs internet* in `Caption` and the tap gives a Toast.

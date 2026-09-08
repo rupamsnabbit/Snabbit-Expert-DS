@@ -92,7 +92,7 @@ The confirm Button belongs to the flow (*Confirm leave*, *Submit attendance*) an
 - Past days are `disabled` in pickers about the future; future days are `disabled` in date of birth and history.
 - The strip's first tile is always **today**, labelled *Today*; it never scrolls and never starts on a past day.
 - Earnings-by-day `month` is **read-only**: tapping a day opens that day's breakdown (Accordion); no selection state.
-- Reduced motion: the range band appears without the 150 ms grow.
+- Reduced motion: the range band appears without the `motion.standard` grow.
 
 ---
 

@@ -46,7 +46,7 @@ One line that ties **what she does next** to **what it is worth** — a coin if 
 ## Behaviour
 
 - Appears only while the condition is **open**: a deadline not yet passed, a choice not yet made.
-- When the condition **resolves well** (she logs in by 6:40), the Nudge collapses (150 ms) and the reward's own moment plays — coin animation and *coin* sound from the rewards register, Toast *3 coins earned*.
+- When the condition **resolves well** (she logs in by 6:40), the Nudge collapses (`motion.standard`) and the reward's own moment plays — coin animation and *coin* sound from the rewards register, Toast *3 coins earned*.
 - When it **resolves badly** (deadline passes), the Nudge collapses and a Banner `error` states what happened and what to do next; the Nudge never shows the loss after the fact — that is a Banner.
 - **Never repeats.** A Nudge for a recurring condition (daily login) shows daily because the condition is new each day; a Nudge she has dismissed or acted on does not return the same day.
 - Times update live (*by 6:40 am* stays; *in 12 min* counts down) — use the Timer's `deadline` mode text, never a second ring.

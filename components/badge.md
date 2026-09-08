@@ -47,7 +47,7 @@ Never `success` — a badge is a nudge to look; a finished thing needs no nudge.
 
 ### States
 
-Appears with a 150 ms scale-in from 0.6, disappears with a 100 ms fade; reduced motion → instant. No pressed/disabled — it is not interactive. While the host is disabled the badge hides.
+Appears with a `motion.standard` scale-in from 0.6, disappears with a `motion.fast` fade; reduced motion → instant. No pressed/disabled — it is not interactive. While the host is disabled the badge hides.
 
 ---
 

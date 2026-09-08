@@ -61,7 +61,7 @@ Padding 16 sides, 24 top (8 when grabber), 16 bottom + safe area. Content gap 12
 
 ## Behaviour
 
-- Opens in 250 ms ease-out from the bottom; scrim fades in over the same time. Closes in 200 ms. Reduced motion → appear/disappear.
+- Opens in `motion.slow` (300 ms) `easing.enter` from the bottom; scrim fades in over the same time. Closes in `motion.standard` (200 ms) `easing.exit`. Reduced motion → appear/disappear.
 - `info`, `select`, `form`, `permission`: drag down past 30 % dismisses; scrim tap dismisses; back dismisses; ✕ dismisses. A dismissed `form` keeps its typed value for 5 minutes.
 - `confirm`: **cannot be dismissed accidentally.** No ✕, no drag, scrim tap does nothing, back button = the safe option. The only ways out are the two labelled actions. This is the P3 second gesture for anything costly.
 - On open the sheet **speaks its title and body** on first-time flows and whenever the kind is `confirm` or `permission` (P4). A `speaker-high` IconButton beside the title lets her hear it again.
@@ -117,7 +117,7 @@ Result: 5 kinds × booleans ≈ **20 core variants**; the 15 feature sheets beco
 | 4 | ⚙ States by ≥ 2 channels | ✅ confirm = no ✕ + hold + consequence strip |
 | 5 | ⚙ Loading / offline | ✅ button loading; Offline Banner inside |
 | 6 | ⚙ Tap guard | ✅ via Button |
-| 8 | ⚙ Motion ≤ 300 ms, reduced motion | ✅ 250 / 200 ms |
+| 8 | ⚙ Motion ≤ 300 ms, reduced motion | ✅ `motion.slow` / `motion.standard` |
 | 9 | Meaning without text | ✅ hero asset + consequence strip + spoken title |
 | 11 | Costly actions protected | ✅ confirm is non-dismissible + hold |
 | 12 | Sound / voice | ✅ spoken on confirm & permission & first-time |

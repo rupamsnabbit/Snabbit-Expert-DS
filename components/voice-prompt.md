@@ -92,7 +92,6 @@ Bar: `group` labelled *Voice guidance*; disc announces *Play guidance* / *Pause*
 
 | Token | Value | Note |
 | --- | --- | --- |
-| `voice.autoplayDelay` | 500 ms | After screen settle, before autoplay |
 | `sound.voiceStart` | — | Tick haptic only; no sound (into the sound register) |
 
 ---

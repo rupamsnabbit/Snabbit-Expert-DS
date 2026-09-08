@@ -86,11 +86,7 @@ Skeleton region `aria-busy`, labelled *Loading jobs*; its shapes are hidden from
 
 ## Token proposals
 
-| Token | Value | Note |
-| --- | --- | --- |
-| `motion.shimmer` | 1200 ms linear, infinite | Skeleton shimmer; into the motion foundation |
-| `motion.spin` | 800 ms linear, infinite | Spinner; into the motion foundation |
-| `timeout.skeleton` | 3000 ms | The three-second rule; shared with EmptyState |
+None — `motion.loop`, `motion.celebrate` and `timeout.loading` are now tokens (`foundations/motion.md`).
 
 ---
 

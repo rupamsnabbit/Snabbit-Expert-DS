@@ -53,7 +53,7 @@ Each Coachmark has a **way out** declared: `do-it` (the target's own action dism
 
 ## Voice
 
-The sentence is **spoken automatically** when the Coachmark appears, in her chosen language, 300 ms after the bubble settles. The speaker control replays it. Voice is the primary channel; the text is the transcript. Spoken copy is written as speech and reviewed aloud (P4, P9). If sound is off or the phone is silent, the speaker control shows the *muted* state and the text carries the whole meaning — which is why it is one short sentence, not three.
+The sentence is **spoken automatically** when the Coachmark appears, in her chosen language, `timeout.settle` (300 ms) after the bubble settles. The speaker control replays it. Voice is the primary channel; the text is the transcript. Spoken copy is written as speech and reviewed aloud (P4, P9). If sound is off or the phone is silent, the speaker control shows the *muted* state and the text carries the whole meaning — which is why it is one short sentence, not three.
 
 ---
 
@@ -83,7 +83,7 @@ Bubble **below** the target when the target's centre is in the top half of the s
 | entering | Scrim fades in 200 ms; bubble scales 0.96 → 1 and fades 200 ms; spotlight ring pulses 2 dp → 6 dp twice over 1.2 s, then holds |
 | showing | Steady; voice plays; speaker control in `playing` (icon `speaker-high` fill) then `idle` (regular) |
 | muted | Sound off: speaker shows `speaker-slash`; text unchanged |
-| leaving | Bubble and scrim fade 150 ms; target un-spotlights; if `do-it`, the target's own pressed state runs |
+| leaving | Bubble and scrim fade `motion.fast` (100 ms); target un-spotlights; if `do-it`, the target's own pressed state runs |
 
 Reduced motion: no pulse, no scale; fades stay.
 

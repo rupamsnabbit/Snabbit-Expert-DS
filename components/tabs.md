@@ -30,7 +30,7 @@ Two ways to switch what a screen shows without leaving it. **Segmented** for two
 
 - **2 or 3 segments**, equal width, full content width (328 dp) or hugging with 16 dp horizontal padding when inside a card header.
 - Label `BodyMd` Medium, ≤ 10 chars in the longest language, no icons (there is no room and the words are the point). Optional count in `Caption`: *Today · 3*.
-- Selected segment slides 150 ms ease-out; `light` haptic. Reduced motion: no slide.
+- Selected segment slides `motion.standard` (200 ms) `easing.move`; `light` haptic. Reduced motion: no slide.
 - Sizes: `M` 40 dp (default), `S` 32 dp inside cards and sheets (segment 24, `Caption` Medium).
 - One selection always; there is no "none".
 
@@ -44,7 +44,7 @@ Two ways to switch what a screen shows without leaving it. **Segmented** for two
 
 - **3 to 5 tabs**, equal width, 48 dp tall, full content width, never scrolling. Two is a Segmented; six is a `select` BottomSheet or Chip row.
 - Label only, or 20 dp Phosphor icon **with** label (icon above, label below, 56 dp tall). Never icon-only.
-- Indicator slides between tabs 200 ms ease-out; content may swipe between tabs (`tabs` only, not Segmented); `light` haptic on change.
+- Indicator slides between tabs `motion.standard` (200 ms) `easing.move`; content may swipe between tabs (`tabs` only, not Segmented); `light` haptic on change.
 - Optional `Badge` (dot or count ≤ 9) top-right of a label; at most two badged tabs.
 - The row is sticky under the HeaderNav (and SafetyStrip) when the content scrolls.
 
@@ -89,7 +89,7 @@ Segmented: `radiogroup` of radios. Tabs: `tablist` / `tab` with `selected`, pane
 
 ## Token proposals
 
-None. Slide durations use the pending motion foundation (150 / 200 ms).
+None. Slide durations are `motion.standard`; content swap `motion.instant` (see `foundations/motion.md`).
 
 ---
 

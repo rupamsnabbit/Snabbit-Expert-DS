@@ -87,6 +87,7 @@ td{padding:11px 14px;border-bottom:1px solid var(--border-subtle);vertical-align
 tr:last-child td{border-bottom:0}
 td.num{font-variant-numeric:tabular-nums;font-family:var(--mono);font-size:13px;color:var(--text);white-space:nowrap}
 td .use{color:var(--text-2)}
+.mo-play{width:104px;height:24px;border-radius:12px;border:1px solid var(--border);background:var(--bg-2);position:relative;cursor:pointer;padding:0}.mo-dot{position:absolute;left:4px;top:3px;width:16px;height:16px;border-radius:50%;background:var(--brand);display:block}
 
 /* token name = copyable */
 .tk{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:12.5px;color:var(--text);background:var(--bg-2);border:1px solid var(--border);border-radius:6px;padding:2px 8px;cursor:pointer;white-space:nowrap;transition:border-color .12s}
@@ -222,6 +223,7 @@ __NAVCSS__</style>
       <a href="#spacing">Spacing</a>
       <a href="#radius">Radius &amp; borders</a>
       <a href="#elevation">Elevation</a>
+      <a href="#motion">Motion &amp; timeouts</a>
       <div class="grp">Sizing</div>
       <a href="#icons">Icons &amp; touch targets</a>
       <a href="#buttons">Button sizes</a>
@@ -293,6 +295,21 @@ __NAVCSS__</style>
         <p id="elev-rule"></p>
       </header>
       <div class="tbl-wrap"><table><thead><tr><th>Token</th><th>Value</th><th>Use</th></tr></thead><tbody id="elev"></tbody></table></div>
+    </section>
+
+    <section id="motion">
+      <header>
+        <div class="eyebrow">Time</div>
+        <h2>Motion &amp; timeouts</h2>
+        <p id="motion-rule"></p>
+      </header>
+      <div class="tbl-wrap"><table><thead><tr><th>Token</th><th>Value</th><th>Use</th><th>Feel</th></tr></thead><tbody id="mo"></tbody></table></div>
+      <h3 style="margin-top:24px">Easing</h3>
+      <div class="tbl-wrap"><table><thead><tr><th>Token</th><th>Curve</th><th>Use</th></tr></thead><tbody id="ea"></tbody></table></div>
+      <h3 style="margin-top:24px">Timeouts — behaviour, not animation</h3>
+      <p id="to-rule" class="sub"></p>
+      <div class="tbl-wrap"><table><thead><tr><th>Token</th><th>Value</th><th>Use</th></tr></thead><tbody id="to"></tbody></table></div>
+      <p class="sub" id="rm-rule" style="margin-top:16px"></p>
     </section>
 
     <section id="icons">
@@ -438,6 +455,14 @@ $('#bw').innerHTML = T.borderWidth.scale.map(b=>`
 // ---- elevation ----
 $('#elev-rule').textContent = T.elevation.rule;
 $('#elev').innerHTML = T.elevation.scale.map(e=>`<tr class="f" data-f="elevation ${e.name}"><td>${tk('elevation.'+e.name)}</td><td class="num">${e.value===null?'—':e.value+' dp'}</td><td class="use">${esc(e.use)}</td></tr>`).join('');
+
+// ---- motion / timeout ----
+$('#motion-rule').textContent = T.motion.rule;
+$('#mo').innerHTML = T.motion.duration.map(d=>`<tr class="f" data-f="motion ${d.name} ${d.value}"><td>${tk('motion.'+d.name)}</td><td class="num">${d.value} ms</td><td class="use">${esc(d.use)}</td><td><button type="button" class="mo-play" data-ms="${d.value}" aria-label="Play ${d.name}"><span class="mo-dot"></span></button></td></tr>`).join('');
+$('#ea').innerHTML = T.motion.easing.map(e=>`<tr class="f" data-f="easing ${e.name}"><td>${tk('easing.'+e.name)}</td><td class="num">${esc(e.value)}</td><td class="use">${esc(e.use)}</td></tr>`).join('');
+$('#to-rule').textContent = T.timeout.rule; $('#rm-rule').textContent = 'Reduced motion: ' + T.motion.reducedMotion;
+$('#to').innerHTML = T.timeout.scale.map(e=>`<tr class="f" data-f="timeout ${e.name}"><td>${tk('timeout.'+e.name)}</td><td class="num">${e.value===null?'server':e.value.toLocaleString('en-IN')+' ms'}</td><td class="use">${esc(e.use)}</td></tr>`).join('');
+document.querySelectorAll('.mo-play').forEach(b=>{b.addEventListener('click',()=>{const d=b.querySelector('.mo-dot');const ms=+b.dataset.ms||1;d.style.transition='none';d.style.transform='translateX(0)';requestAnimationFrame(()=>{d.style.transition=`transform ${ms}ms cubic-bezier(0,0,0.2,1)`;d.style.transform='translateX(72px)';});});});
 
 // ---- icons ----
 const I=T.icon;

@@ -37,7 +37,7 @@ components/     one spec per core component (button.md, …); each has a live pa
 briefs/         Tier 3 / change-to-core briefs (template in EXTENDING.md)
 patterns/       one flow per file (new-job-alert.md, …); each has a page site/pattern-<name>.html built by build_doc.py
 references/     SCREENS.md (the two screen files: which pages, shipped vs proposed, open conflicts) · reference screenshots + their reads
-foundations/    icons.md (Phosphor meaning register) · assets.md (illustration style lock + register)
+foundations/    icons.md (Phosphor meaning register) · assets.md (illustration style lock + register) · motion.md (durations, easing, timeouts, reduced motion)
 DECISIONS.md    dated design decisions and their consequences
 ROADMAP.md      what is done and what is left (components, foundations, patterns, governance) — update in the same commit as the work
 audit/          FIGMA_AUDIT.md — tier classification of every Figma frame · BENCHMARK.md — gaps vs M3/Base/Asphalt · frames.json

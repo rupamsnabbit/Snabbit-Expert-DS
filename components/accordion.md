@@ -90,7 +90,7 @@ Header is a button with `aria-expanded`; body is a region labelled by the header
 
 ## Token proposals
 
-None. Conditional row uses `bgInfo` / `textInfo`; motion uses the 200 ms standard pending the motion foundation.
+None. Conditional row uses `bgInfo` / `textInfo`; motion uses `motion.standard` (200 ms).
 
 ---
 
