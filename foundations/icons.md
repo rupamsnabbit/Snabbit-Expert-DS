@@ -19,7 +19,9 @@ Status: **seed**. Populated fully during the Button, Tab bar and Job-alert specs
 | `siren` | SOS | fill | SOS control — this icon is used for nothing else |
 | `shield-check` | Shield / Kavach active | fill | In-job header |
 | `speaker-high` | Play / replay spoken guidance | regular · fill while playing | Voice prompt, Coachmark, HeaderNav trailing |
-| `speaker-slash` | Sound is off | regular | Coachmark muted state |
+| `speaker-slash` | Sound / autoplay off | regular | VoicePrompt bar toggle, Coachmark muted state |
+| `play` | Play spoken guidance | fill | VoicePrompt bar disc |
+| `pause` | Pause spoken guidance | fill | VoicePrompt bar disc while playing |
 | `wifi-slash` | Offline | regular | Offline banner |
 | `warning-circle` | Warning / attention | regular | Banner, Toast |
 | `x-circle` | Error | regular | Banner, Toast, TextField |

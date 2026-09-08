@@ -1,0 +1,120 @@
+<meta charset="utf-8">
+<title>Snabbit Expert VoicePrompt</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>__BASECSS__
+.ph{width:360px;height:600px;border:1px solid #E5E7EB;border-radius:20px;background:#F9FAFB;position:relative;overflow:hidden;color:#111827;font-family:var(--sans);display:flex;flex-direction:column}
+.ph .sb{height:24px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:11px;color:#6B7280;flex:none}
+.ph .hn{height:56px;background:#fff;display:flex;align-items:center;padding:0 16px;font-size:18px;font-weight:500;gap:8px;flex:none}
+.ph .prog{height:3px;background:#F3F4F6;flex:none}.ph .prog span{display:block;height:100%;background:#F70F79;width:55%}
+.ph .body{flex:1;padding:16px;display:flex;flex-direction:column;gap:12px}
+.ph .cta{height:56px;flex:none;align-self:stretch;border-radius:12px;border:0;background:#F70F79;color:#fff;font:500 16px var(--sans);margin:0 16px 16px}
+.vb{height:48px;background:#FEF1F7;display:flex;align-items:center;gap:12px;padding:0 8px 0 16px;flex:none}
+.vb .disc{width:32px;height:32px;border-radius:50%;background:#F70F79;color:#fff;display:grid;place-items:center;border:0;cursor:pointer;flex:none;padding:0}.vb .disc svg{width:16px;height:16px}
+.vb .dhit{width:48px;height:48px;display:grid;place-items:center;margin-left:-8px;flex:none}
+.vb .trk{flex:1;height:4px;border-radius:2px;background:rgba(247,15,121,.3);overflow:hidden}.vb .trk span{display:block;height:100%;background:#F70F79;width:var(--p,0%);transition:width .1s linear}
+.vb .tg{width:48px;height:48px;border:0;background:transparent;color:#374151;display:grid;place-items:center;cursor:pointer;border-radius:10px}.vb .tg svg{width:24px;height:24px}.vb .tg.off{color:#9CA3AF}
+.inl{display:inline-flex;align-items:center;gap:6px}.inl .lbl{font-size:12px;font-weight:500;color:#F70F79}
+.inl .ib{width:48px;height:48px;border-radius:10px;background:#FEF1F7;color:#F70F79;display:grid;place-items:center;border:0;cursor:pointer;padding:0}.inl .ib svg{width:20px;height:20px}
+.inl .ib.on{background:#F70F79;color:#fff}
+.cardx{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px}.cardx .t{font-size:16px;font-weight:500}.cardx .s{font-size:14px;color:#374151;line-height:20px}
+.row{display:flex;align-items:center;gap:12px}.row .tx{flex:1;min-width:0}
+.sc{border:2px solid #E5E7EB;border-radius:12px;padding:12px;display:flex;gap:12px;align-items:center;background:#fff}.sc.on{border-color:#F70F79}.sc .rd{width:24px;height:24px;border-radius:50%;box-shadow:inset 0 0 0 1.5px #6B7280;flex:none}.sc.on .rd{box-shadow:inset 0 0 0 2px #F70F79;background:radial-gradient(circle,#F70F79 40%,transparent 44%)}.sc .t{font-size:16px;font-weight:500}.sc .s{font-size:13px;color:#6B7280}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:24px 32px;align-items:start}
+.stg{display:flex;flex-direction:column;gap:8px}.stg .cap{font-family:var(--mono);font-size:12px;color:var(--text-2)}.stg .cap b{color:var(--text);font-weight:500}
+.ctl{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:12px}.ctl button{font-family:var(--sans);font-size:13px;padding:6px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);cursor:pointer}
+.logline{font-family:var(--mono);font-size:12px;color:var(--text-2);min-height:16px;margin-top:8px;white-space:pre-line}
+.tbl{width:100%;border-collapse:collapse;font-size:14px}.tbl th,.tbl td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top;color:var(--text)}.tbl th{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--text-2)}
+.toast{position:absolute;left:16px;right:16px;bottom:88px;background:#111827;color:#fff;border-radius:12px;padding:12px 16px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none}.toast.on{opacity:1}
+__NAVCSS__</style>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · VoicePrompt</small></div></div>
+    __SITENAV__
+    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#forms">Two forms</a><a href="#live">Live</a><a href="#where">What gets a voice</a><a href="#rules">Rules</a><a href="#dont">Don't</a><a href="#figma">Figma changes</a></nav>
+    <div class="rail-foot">Rendered from tokens.json · spec in components/voice-prompt.md</div>
+  </aside>
+  <main class="main">
+    <header id="overview">
+      <div class="eyebrow">Core component · P4</div><h1>VoicePrompt</h1>
+      <p class="lede">The one visible shape for "this can be heard". A bar that speaks a whole screen, an inline control that speaks one thing. The shipped onboarding already has the bar; this names it, adds the second form, and writes the rules for when the app speaks on its own.</p>
+      <div class="meta"><span class="chip status">Proposed</span><span class="chip">Tier 1 · Core</span><span class="chip"><code>SnabbitVoicePrompt</code></span><span class="chip">bar · inline</span><span class="chip">One voice at a time</span><span class="chip">In-job never speaks unasked</span></div>
+    </header>
+
+    <section id="forms">
+      <header><div class="eyebrow">Shape</div><h2>Two forms</h2><p>The <b>bar</b> sits under the header: a play/pause disc, a progress track with <em>no knob</em> (progress is information, not a control — dragging 12 dp one-handed on a bus fails P3), and a sound on/off toggle for autoplay. The <b>inline</b> control is an IconButton M tertiary at the trailing edge of the thing it reads, with a <em>Listen</em> label when there is room. Playing: pause icon, filled track, filled inline disc.</p></header>
+      <div class="stage"><div class="grid2" id="forms-grid"></div></div>
+    </section>
+
+    <section id="live">
+      <header><div class="eyebrow">Try it</div><h2>Live</h2><p>Press play on the bar, then Listen on the address: starting one stops the other. Toggle sound off and the bar stops autoplaying (a Toast confirms); tap play still works. Finished → the disc returns to play and replays from the start.</p></header>
+      <div class="demo" style="align-items:flex-start;flex-wrap:wrap;gap:28px"><div class="ph" id="ph"></div><div class="card" style="max-width:320px"><h4>Log</h4><div class="ctl"><button id="reenter">Re-enter screen</button><button id="talkback">Toggle TalkBack</button></div><div class="logline" id="log">first visit → bar autoplays 500 ms after settle</div></div></div>
+    </section>
+
+    <section id="where">
+      <header><div class="eyebrow">Policy</div><h2>What gets a voice</h2><p>Anything that autoplays also shows its control, so what spoke can be replayed and stopped. In-job screens never speak unasked — a customer's home is not the place for a phone to start talking.</p></header>
+      <div class="stage"><table class="tbl"><tr><th>Surface</th><th>Form</th><th>Autoplay</th></tr>
+      <tr><td>Onboarding · training · go-live screens</td><td>bar</td><td>First visit only, 500 ms after settle</td></tr>
+      <tr><td>Coachmark sentence</td><td>inline (in the bubble)</td><td>Yes</td></tr>
+      <tr><td>EmptyState error / offline / waiting · Banner error / offline</td><td>inline</td><td>Yes, once — errors she must recover from are always spoken</td></tr>
+      <tr><td>Accordion body · Amounts</td><td>inline</td><td>No</td></tr>
+      <tr><td>Customer address, landmark, in-job instructions</td><td>inline</td><td><b>Never</b></td></tr>
+      <tr><td>Job alert · SOS active screen</td><td>own sound + spoken status</td><td>Yes — highest stakes; blocks all other voice</td></tr></table></div>
+    </section>
+
+    <section id="rules">
+      <header><div class="eyebrow">Behaviour</div><h2>Rules</h2></header>
+      <ol class="rules"><li><b>One voice at a time.</b> Starting one stops any other on the screen.</li><li><b>Priority.</b> Job-alert sound and SOS voice stop and block everything else; a phone call pauses voice and it does not resume by itself.</li><li><b>Language.</b> Her chosen language. Fixed copy is a recorded native speaker; names, amounts and times are on-device TTS spliced in. Safety copy is never synthetic.</li><li><b>One speed.</b> Replay is the control — no 1.5×, no slow mode.</li><li><b>Offline.</b> Fixed-copy audio ships in the app in four languages; voice never needs the network.</li><li><b>Autoplay is once.</b> A screen that has spoken does not speak again on return. With TalkBack on, autoplay is suppressed; the controls stay.</li><li><b>Written as speech.</b> ≤ 12 words a sentence, ≤ 3 sentences a screen; what a trainer would <em>say</em> standing beside her. Reviewed aloud by a native speaker before ship (P9).</li></ol>
+    </section>
+
+    <section id="dont">
+      <header><div class="eyebrow">Common mistakes</div><h2>Don't</h2></header>
+      <div class="stage"><div class="grid2" id="dont-grid"></div></div>
+    </section>
+
+    <section id="figma">
+      <header><div class="eyebrow">Reconciliation</div><h2>What changes in Figma</h2></header>
+      <ol class="rules"><li>Create VoicePrompt: Form (Bar / Inline), State (Idle / Playing / Finished), Sound (On / Off), Label (inline). Bar bound to bgBrandSubtle, disc to bgBrand.</li><li>Replace the scrubber knob in every onboarding frame with the knob-less track; add the bar to training, go-live and error screens.</li><li>Replace the Listen pill and bare speakers with inline instances.</li><li>Note autoplay in each screen mock's description: <em>autoplays first visit</em> / <em>never autoplays</em>.</li></ol>
+      <p class="sub" style="margin-top:14px">Result: ~8 variants, and the app's voice drawn on every screen that has one. Token proposals: <code>voice.autoplayDelay</code> 500 ms; <code>sound.voiceStart</code> (tick haptic only).</p>
+    </section>
+  </main>
+</div>
+
+<script id="tokens-json" type="application/json">__TOKENS__</script>
+<script>
+(function(){
+const T=JSON.parse(document.getElementById("tokens-json").textContent); const $=s=>document.querySelector(s);
+const ICO={play:'M240,128a15.74,15.74,0,0,1-7.6,13.51L88.32,229.65a16,16,0,0,1-16.2.3A15.86,15.86,0,0,1,64,216.13V39.87a15.86,15.86,0,0,1,8.12-13.82,16,16,0,0,1,16.2.3L232.4,114.49A15.74,15.74,0,0,1,240,128Z',pause:'M216,48V208a16,16,0,0,1-16,16H160a16,16,0,0,1-16-16V48a16,16,0,0,1,16-16h40A16,16,0,0,1,216,48ZM96,32H56A16,16,0,0,0,40,48V208a16,16,0,0,0,16,16H96a16,16,0,0,0,16-16V48A16,16,0,0,0,96,32Z',spk:'M155.51,24.81a8,8,0,0,0-8.42.88L77.25,80H32A16,16,0,0,0,16,96v64a16,16,0,0,0,16,16H77.25l69.84,54.31A8,8,0,0,0,160,224V32A8,8,0,0,0,155.51,24.81ZM32,96H72v64H32ZM144,207.64,88,164.09V91.91l56-43.55Zm54-106.08a40,40,0,0,1,0,52.88,8,8,0,0,1-12-10.58,24,24,0,0,0,0-31.72,8,8,0,0,1,12-10.58ZM248,128a79.9,79.9,0,0,1-20.37,53.34,8,8,0,0,1-11.92-10.67,64,64,0,0,0,0-85.33,8,8,0,1,1,11.92-10.67A79.83,79.83,0,0,1,248,128Z',spkf:'M160,32.25V223.69a8.29,8.29,0,0,1-3.91,7.18,8,8,0,0,1-9-.56l-65.57-51A4,4,0,0,1,80,176.16V79.84a4,4,0,0,1,1.55-3.15l65.57-51a8,8,0,0,1,10,.16A8.27,8.27,0,0,1,160,32.25ZM60,80H32A16,16,0,0,0,16,96v64a16,16,0,0,0,16,16H60a4,4,0,0,0,4-4V84A4,4,0,0,0,60,80Zm126.77,20.84a8,8,0,0,0-.72,11.3,24,24,0,0,1,0,31.72,8,8,0,1,0,12,10.58,40,40,0,0,0,0-52.88A8,8,0,0,0,186.74,100.84Zm40.89-26.17a8,8,0,1,0-11.92,10.66,64,64,0,0,1,0,85.34,8,8,0,1,0,11.92,10.66,80,80,0,0,0,0-106.66Z',mute:'M53.92,34.62A8,8,0,1,0,42.08,45.38L73.55,80H32A16,16,0,0,0,16,96v64a16,16,0,0,0,16,16H77.25l69.84,54.31A8,8,0,0,0,160,224V175.09l42.08,46.29a8,8,0,1,0,11.84-10.76ZM32,96H72v64H32ZM144,207.64,88,164.09V95.89l56,61.6Zm42-63.77a24,24,0,0,0,0-31.72,8,8,0,1,1,12-10.57,40,40,0,0,1,0,52.88,8,8,0,0,1-12-10.59Zm-80.16-76a8,8,0,0,1,1.4-11.23l39.85-31A8,8,0,0,1,160,32v74.83a8,8,0,0,1-16,0V48.36l-26.94,21A8,8,0,0,1,105.84,67.91ZM248,128a79.9,79.9,0,0,1-20.37,53.34,8,8,0,0,1-11.92-10.67,64,64,0,0,0,0-85.33,8,8,0,1,1,11.92-10.67A79.83,79.83,0,0,1,248,128Z',back:'M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z'};
+const svg=n=>`<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="${ICO[n]}"/></svg>`;
+const bar=(o={})=>`<div class="vb" role="group" aria-label="Voice guidance"><span class="dhit"><button class="disc" id="${o.id||''}" aria-label="${o.playing?'Pause':'Play guidance'}">${svg(o.playing?'pause':'play')}</button></span><div class="trk"><span style="--p:${o.p||0}%"></span></div><button class="tg ${o.sound===false?'off':''}" id="${o.tid||''}" aria-label="${o.sound===false?'Voice off':'Voice on'}">${svg(o.sound===false?'mute':'spk')}</button></div>`;
+const inl=(o={})=>`<span class="inl">${o.label?`<span class="lbl">${o.label}</span>`:''}<button class="ib ${o.on?'on':''}" id="${o.id||''}" aria-label="${o.on?'Stop':'Listen'}">${svg(o.on?'spkf':'spk')}</button></span>`;
+const W=(cap,html)=>`<div class="stg">${html}<div class="cap">${cap}</div></div>`;
+const shell=(title,inner,o={})=>`<div class="ph"><div class="sb"><span>9:41</span><span>▂▄▆ 4G ▮</span></div><div class="hn">${o.back?`<span style="width:24px;height:24px;color:#374151">${svg('back')}</span>`:''}${title}</div>${o.prog?'<div class="prog"><span></span></div>':''}${inner}</div>`;
+$('#forms-grid').innerHTML=[
+ W('<b>bar · idle</b> · play disc · knob-less track · sound toggle',`<div style="width:360px;border:1px solid #E5E7EB;border-radius:12px;overflow:hidden">${bar()}</div>`),
+ W('<b>bar · playing</b> · pause · track fills in real time',`<div style="width:360px;border:1px solid #E5E7EB;border-radius:12px;overflow:hidden">${bar({playing:1,p:42})}</div>`),
+ W('<b>bar · sound off</b> · speaker-slash · autoplay off, tap ▶ still works',`<div style="width:360px;border:1px solid #E5E7EB;border-radius:12px;overflow:hidden">${bar({sound:false})}</div>`),
+ W('<b>inline</b> · idle with Listen label · playing (fill) · without label in a tight row',`<div style="width:360px;display:flex;gap:24px;align-items:center;padding:8px 0">${inl({label:'Listen'})}${inl({label:'Listen',on:1})}${inl()}</div>`)].join('');
+// live
+let playing=null,p=0,raf,sound=true,seen=false,talkback=false,tt;
+const ph=$('#ph');
+function toast(m){const t=ph.querySelector('.toast');if(!t)return;t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),2000);}
+function render(){ph.innerHTML=shell('Registration',bar({id:'vbtn',tid:'vtg',playing:playing==='bar',p:playing==='bar'?p:0,sound})+`<div class="body"><div style="font-size:20px;font-weight:600;line-height:28px">Choose the work you're interested in</div><div class="sc on"><span class="rd"></span><div><div class="t">House Help</div><div class="s">Cleaning, mopping, laundry</div></div></div><div class="sc"><span class="rd"></span><div><div class="t">Home Cook</div><div class="s">Cooking, meal preparation</div></div></div><div class="cardx"><div class="row"><div class="tx"><div class="t">Koramangala Training Center</div><div class="s">HAL Old Airport rd, near railway over bridge</div></div>${inl({id:'ibtn',label:'Listen',on:playing==='addr'})}</div></div></div><div class="toast"></div><button class="cta">Continue</button>`,{back:1,prog:1}).replace('<div class="ph">','').replace(/<\/div>$/,'');
+ $('#vbtn').onclick=()=>{if(playing==='bar'){stop('paused');}else start('bar');};
+ $('#ibtn').onclick=()=>{if(playing==='addr'){stop('stopped');}else start('addr');};
+ $('#vtg').onclick=()=>{sound=!sound;render();toast(sound?'Voice on':'Voice off — tap ▶ to hear');$('#log').textContent=`sound ${sound?'on':'off'} · remembered per account · Toast`;};}
+function start(who){if(playing&&playing!==who)$('#log').textContent=`${who} started → ${playing} stopped (one voice at a time)`;else $('#log').textContent=`${who} playing · light haptic tick · ${who==='bar'?'"Choose the kind of work you want to do. You can change it later."':'"HAL Old Airport road, near the railway over bridge."'}`;playing=who;p=0;render();const t0=performance.now(),dur=who==='bar'?6000:3000;cancelAnimationFrame(raf);const step=()=>{p=Math.min(100,(performance.now()-t0)/dur*100);const s=ph.querySelector('.vb .trk span');if(s&&who==='bar')s.style.setProperty('--p',p+'%');if(p>=100){playing=null;render();$('#log').textContent=`${who} finished → control back to idle; tap ▶ replays from the start`;return;}raf=requestAnimationFrame(step);};raf=requestAnimationFrame(step);}
+function stop(w){cancelAnimationFrame(raf);const was=playing;playing=null;render();$('#log').textContent=`${was} ${w}`;}
+function enter(){render();if(!seen&&sound&&!talkback){setTimeout(()=>{if(!playing){start('bar');$('#log').textContent='first visit → bar autoplays 500 ms after settle';}},500);seen=true;}else $('#log').textContent=seen?'return visit → no autoplay (once is once); controls remain':talkback?'TalkBack on → autoplay suppressed; controls read as Listen / Stop':'sound off → no autoplay; tap ▶ to hear';}
+$('#reenter').onclick=()=>{cancelAnimationFrame(raf);playing=null;enter();};
+$('#talkback').onclick=()=>{talkback=!talkback;seen=false;cancelAnimationFrame(raf);playing=null;enter();};
+enter();
+$('#dont-grid').innerHTML=[
+ W('',`<div style="width:360px;border:1px solid #E5E7EB;border-radius:12px;overflow:hidden"><div class="vb"><span class="dhit"><button class="disc">${svg('play')}</button></span><div class="trk" style="position:relative;overflow:visible"><span style="--p:30%"></span><span style="position:absolute;left:30%;top:50%;width:14px;height:14px;border-radius:50%;background:#F70F79;transform:translate(-50%,-50%);box-shadow:0 0 0 2px #fff"></span></div><span style="font-size:12px;color:#6B7280;font-variant-numeric:tabular-nums">0:12 / 0:40</span><button class="tg">1.5×</button></div></div>`).replace('<div class="cap"></div>','<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">A scrubber knob, timecodes and a speed control. Progress is information, not a control; replay is the control; one speed.</div>'),
+ W('',shell('Job In Progress',bar({playing:1,p:20})+`<div class="body"><div class="cardx"><div class="t">Radhika S</div><div class="s">HAL Old Airport rd, near railway over bridge</div></div></div>`)).replace('<div class="cap"></div>','<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">Autoplaying in a customer\'s home. In-job screens never speak unasked; the address gets an inline Listen she chooses to tap.</div>'),
+ W('',`<div style="width:360px;display:flex;flex-direction:column;gap:8px">${['Address','Instructions','Timing'].map(t=>`<div class="cardx"><div class="row"><div class="tx"><div class="t">${t}</div></div>${inl({on:1})}</div></div>`).join('')}</div>`).replace('<div class="cap"></div>','<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">Three things playing at once. One voice at a time — starting one stops the others.</div>')].join('');
+const links=[...document.querySelectorAll('#nav a')];const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-20% 0px -70% 0px'});targets.forEach(t=>io.observe(t));}
+})();
+</script>

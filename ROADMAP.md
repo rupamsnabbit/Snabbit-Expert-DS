@@ -4,7 +4,7 @@ What is done and what is left, against the 46-component core set in `audit/BENCH
 
 ---
 
-## Done — 25 pages · 33 of 46 core components
+## Done — 26 pages · 34 of 46 core components
 
 | # | Page | Covers | Status |
 | --- | --- | --- | --- |
@@ -33,16 +33,16 @@ What is done and what is left, against the 46-component core set in `audit/BENCH
 | 23 | DatePicker | DatePicker (strip, month, DayCell); time = Select | Proposed |
 | 24 | EmptyState | EmptyState (empty, error, offline, waiting; page, section) | Proposed |
 | 25 | Skeleton · Spinner | Skeleton shapes + presets; Spinner (Button, inline); 3-second rule | Proposed |
+| 26 | VoicePrompt | VoicePrompt (bar, inline); autoplay policy | Proposed |
 
 Foundations done: tokens (`tokens/`), principles, extending, icons register, assets (two layers). Research done: Figma audit (204 frames), benchmark.
 
 ---
 
-## To do — components (14), in the agreed order
+## To do — components (13), in the agreed order
 
 | # | Component | Priority | Notes |
 | --- | --- | --- | --- |
-| 26 | **Voice prompt** | P0 | The spoken-guidance bubble: play/replay, playing state, language. Every spec references it. |
 | 27 | Tabs / Segmented control | P1 | Earnings today/week/month; ≤ 3 segments, icon + label. |
 | 28 | Nudge | P1 | Consequence strip (Figma `1581:6683`): *If not accepted −50*, *Login by 6:50 +1 coin*. Sits with the job-alert pattern. |
 | 29 | Numeric keypad | P1 | OTP, amounts, phone. Large keys. |
@@ -67,7 +67,7 @@ Removed from the count (decided): Tooltip (→ Coachmark), Progress Buttons (→
 | --- | --- | --- |
 | **Sound & haptics register** | Every spec names sounds (*coin*, *success*, *sos*) and haptics (*light*, *medium*, *heavy*) that exist nowhere as a list | — |
 | **Motion tokens** | Durations and curves are hard-coded per spec (100, 150, 200, 300, 400 ms) | — |
-| **Content guide** | Voice, four languages, spoken-copy rules, vocabulary in one place | Voice prompt |
+| **Content guide** | Voice, four languages, spoken-copy rules, vocabulary in one place | — (VoicePrompt done) |
 | **Accessibility standard** | Contrast, targets, screen reader, reduced motion — currently repeated per spec | — |
 | Indic type rules | Line-height ×1.15 exists in tokens; wrap/length rules per component not consolidated | — |
 
