@@ -34,7 +34,11 @@ Status: **seed**. Populated fully during the Button, Tab bar and Job-alert specs
 | `bank` | Bank account | regular | Stepper, Earnings payout |
 | `graduation-cap` | Training | regular | Stepper, Hub |
 | `lock-simple` | Locked / not yet available | fill | Stepper node badge, ProgressBar goal, tier rail |
-| `phone` | Call | regular | Job card, contact |
+| `phone` | Call | regular | Job card, contact, SOS status row |
+| `phone-call` | Place an emergency call | regular | SOS active screen (Call police 112) |
+| `siren` | SOS | fill | SOSControl only — no other use |
+| `microphone` | Audio recording | regular | SOS / Shield status rows |
+| `record` | Something is live (recording, sharing) | fill | SafetyStrip dot, status rows |
 | `trophy` | Tier / contest | regular / fill when earned | Tier badge, contest |
 | `fire` | Streak | fill | Streak chip |
 | `coin` | Snabbit coins | fill | CoinChip |
