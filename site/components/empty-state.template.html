@@ -1,0 +1,121 @@
+<meta charset="utf-8">
+<title>Snabbit Expert EmptyState</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>__BASECSS__
+.ph{width:360px;height:600px;border:1px solid #E5E7EB;border-radius:20px;background:#F9FAFB;position:relative;overflow:hidden;color:#111827;font-family:var(--sans);display:flex;flex-direction:column}
+.ph .sb{height:24px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:11px;color:#6B7280;flex:none}
+.ph .hn{height:56px;background:#fff;display:flex;align-items:center;padding:0 16px;font-size:18px;font-weight:500;flex:none}
+.ph .ban{height:40px;background:#F3F4F6;color:#374151;display:flex;align-items:center;gap:8px;padding:0 16px;font-size:14px;flex:none}.ph .ban svg{width:20px;height:20px}
+.ph .tb{height:64px;background:#fff;border-top:1px solid #E5E7EB;flex:none;display:flex}.ph .tb span{flex:1;display:flex;align-items:flex-end;justify-content:center;padding-bottom:10px;font-size:12px;color:#6B7280}.ph .tb span.on{color:#F70F79}
+.ph .area{flex:1;display:flex;align-items:center;justify-content:center;padding:16px}
+.es{display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;max-width:296px;font-family:var(--sans);color:#111827}
+.es .pic{width:120px;height:120px;border-radius:50%;background:#FDE4EF;display:grid;place-items:center;position:relative;color:#F70F79}.es .pic svg{width:56px;height:56px}
+.es .pic .dot{position:absolute;right:6px;bottom:6px;width:32px;height:32px;border-radius:50%;background:#EF4444;color:#fff;display:grid;place-items:center;box-shadow:0 0 0 3px #fff;font-size:18px;font-weight:700;line-height:1}
+.es .pic .dot.ok{background:#10B981}
+.es h3{margin:0;font-size:20px;line-height:28px;font-weight:600}
+.es p{margin:0;font-size:14px;line-height:20px;color:#374151}
+.es .spk{display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 12px 0 10px;border-radius:8px;background:#FEF1F7;color:#F70F79;font:500 14px var(--sans);border:0;cursor:pointer}.es .spk svg{width:20px;height:20px}
+.es .acts{display:flex;flex-direction:column;gap:12px;width:100%;margin-top:8px}
+.ebtn{height:48px;border-radius:10px;border:0;font:500 16px var(--sans);width:100%;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer}.ebtn svg{width:20px;height:20px}
+.ebtn.pri{background:#F70F79;color:#fff}.ebtn.sec{background:#fff;color:#111827;box-shadow:inset 0 0 0 1.5px #6B7280}.ebtn.ter{background:transparent;color:#F70F79;height:40px}
+.ebtn.load{background:#F4368D;color:#fff}.ebtn.load .spin{width:20px;height:20px;border-radius:50%;border:2.5px solid rgba(255,255,255,.4);border-top-color:#fff;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.es.section{gap:8px;max-width:100%}.es.section .pic{width:64px;height:64px}.es.section .pic svg{width:30px;height:30px}.es.section .pic .dot{width:20px;height:20px;font-size:12px;right:0;bottom:0}.es.section h3{font-size:16px;line-height:24px;font-weight:500}.es.section .acts{margin-top:0}
+.cardx{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:20px 16px;width:328px;font-family:var(--sans)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:24px 32px;align-items:start}
+.stg{display:flex;flex-direction:column;gap:8px}.stg .cap{font-family:var(--mono);font-size:12px;color:var(--text-2)}.stg .cap b{color:var(--text);font-weight:500}
+.ctl{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:12px}.ctl button{font-family:var(--sans);font-size:13px;padding:6px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);cursor:pointer}
+.logline{font-family:var(--mono);font-size:12px;color:var(--text-2);min-height:16px;margin-top:8px;white-space:pre-line}
+@media (prefers-reduced-motion:reduce){.ebtn.load .spin{animation:none}}
+__NAVCSS__</style>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · EmptyState</small></div></div>
+    __SITENAV__
+    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#kinds">Kinds</a><a href="#section">Section size</a><a href="#live">Live</a><a href="#copy">Copy rules</a><a href="#dont">Don't</a><a href="#figma">Figma changes</a></nav>
+    <div class="rail-foot">Rendered from tokens.json · spec in components/empty-state.md</div>
+  </aside>
+  <main class="main">
+    <header id="overview">
+      <div class="eyebrow">Core component · P5</div><h1>EmptyState</h1>
+      <p class="lede">The screen with nothing to show still says three things: what is true, why or what happens next, and what she can do. One shape for nothing-yet, couldn't-load, offline and waiting — learned once, spoken every time it matters.</p>
+      <div class="meta"><span class="chip status">Proposed</span><span class="chip">Tier 1 · Core</span><span class="chip"><code>SnabbitEmptyState</code></span><span class="chip">empty · error · offline · waiting</span><span class="chip">page · section</span></div>
+    </header>
+
+    <section id="kinds">
+      <header><div class="eyebrow">Four reasons for nothing</div><h2>Kinds</h2><p>Same anatomy every time: a pictogram (pink disc, magenta object, the <em>dot</em> carries the status), a title that says what is true, a body that says why or when, a speaker on anything she must recover from, and one way out. Waiting always has a time, never a spinner.</p></header>
+      <div class="stage"><div class="grid2" id="kinds-grid"></div></div>
+    </section>
+
+    <section id="section">
+      <header><div class="eyebrow">Inside a card</div><h2>Section size</h2><p>When only part of a screen is empty — today's jobs on Home, this week's referrals — the 64 dp pictogram, a BodyLg title and at most a tertiary Button sit inside the Card.</p></header>
+      <div class="stage"><div class="grid2" id="section-grid"></div></div>
+    </section>
+
+    <section id="live">
+      <header><div class="eyebrow">Try it</div><h2>Live</h2><p><em>Try again</em> runs with the Button's own loading state. On a second failure the body gains <em>Still not working — call Help</em> and Call Help becomes primary. Never more than two automatic retries; the third is hers. Offline swaps to real content the moment the connection returns.</p></header>
+      <div class="demo" style="align-items:flex-start;flex-wrap:wrap;gap:28px"><div class="ph" id="ph"></div><div class="card" style="max-width:320px"><h4>Controls</h4><div class="ctl"><button data-k="error">Error</button><button data-k="offline">Offline</button><button data-k="empty">Empty</button><button data-k="waiting">Waiting</button><button id="online">Connection returns</button></div><div class="logline" id="log">error · spoken once on appearance</div></div></div>
+    </section>
+
+    <section id="copy">
+      <header><div class="eyebrow">Words</div><h2>Copy rules</h2></header>
+      <ol class="rules"><li>Title = what is true, ≤ 40 chars, no exclamation, no <em>Oops</em>, no <em>Something went wrong</em>.</li><li>Body = one or two sentences, ≤ 80 chars. For errors: <b>reassure first</b> (<em>Your money is safe</em>), then the cause if known, then stop. Never an error code, never <em>server</em>, never blame.</li><li>Button = a verb: <em>Try again</em>, <em>Go online</em>, <em>Call Help</em>, <em>Refer a friend</em>. Never <em>OK</em>, never <em>Contact support</em>.</li><li>Waiting always has a time — <em>Ready by 10:00 pm</em>, <em>Usually 2 hours</em> — or says who will tell her.</li><li>Never a dead end: error and offline always have a way out; empty has one whenever an action exists, otherwise the body says what will happen instead.</li><li>Error, offline and waiting are <b>spoken</b> once on appearance; the speaker replays.</li></ol>
+    </section>
+
+    <section id="dont">
+      <header><div class="eyebrow">Common mistakes</div><h2>Don't</h2></header>
+      <div class="stage"><div class="grid2" id="dont-grid"></div></div>
+    </section>
+
+    <section id="figma">
+      <header><div class="eyebrow">Reconciliation</div><h2>What changes in Figma</h2></header>
+      <ol class="rules"><li>Create EmptyState: Kind (Empty / Error / Offline / Waiting), Size (Page / Section), booleans Speaker, Body, Button, SecondButton.</li><li>Rebuild the ERRORS frames as error instances — search-document-✗ pictogram, Try again + Call Help; delete the red warning-circle glyph and the Retrying… spinner screen.</li><li>Add the missing empty pictograms (calendar without a dot, and one per tab) to the Assets page.</li><li>Add an empty instance to every list screen mock — the state exists only if it is drawn.</li></ol>
+      <p class="sub" style="margin-top:14px">Result: ~10 variants, and the first drawn empty states in the app.</p>
+    </section>
+  </main>
+</div>
+
+<script id="tokens-json" type="application/json">__TOKENS__</script>
+<script>
+(function(){
+const T=JSON.parse(document.getElementById("tokens-json").textContent); const $=s=>document.querySelector(s);
+const ICO={warn:'M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm-8-80V80a8,8,0,0,1,16,0v56a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,172Z',wifi:'M213.92,210.62a8,8,0,1,1-11.84,10.76l-52-57.15a60,60,0,0,0-57.41,7.24,8,8,0,1,1-9.42-12.93A75.43,75.43,0,0,1,128,144c1.28,0,2.55,0,3.82.1L104.9,114.49A108,108,0,0,0,61,135.31,8,8,0,0,1,49.73,134,8,8,0,0,1,51,122.77a124.27,124.27,0,0,1,41.71-21.66L69.37,75.4a155.43,155.43,0,0,0-40.29,24A8,8,0,0,1,18.92,87,171.87,171.87,0,0,1,58,62.86L42.08,45.38A8,8,0,1,1,53.92,34.62ZM128,192a12,12,0,1,0,12,12A12,12,0,0,0,128,192ZM237.08,87A172.3,172.3,0,0,0,106,49.4a8,8,0,1,0,2,15.87A158.33,158.33,0,0,1,128,64a156.25,156.25,0,0,1,98.92,35.37A8,8,0,0,0,237.08,87ZM195,135.31a8,8,0,0,0,11.24-1.3,8,8,0,0,0-1.3-11.24,124.25,124.25,0,0,0-51.73-24.2A8,8,0,1,0,150,114.24,108.12,108.12,0,0,1,195,135.31Z',hour:'M200,75.64V40a16,16,0,0,0-16-16H72A16,16,0,0,0,56,40V76a16.07,16.07,0,0,0,6.4,12.8L114.67,128,62.4,167.2A16.07,16.07,0,0,0,56,180v36a16,16,0,0,0,16,16H184a16,16,0,0,0,16-16V180.36a16.09,16.09,0,0,0-6.35-12.77L141.27,128l52.38-39.6A16.05,16.05,0,0,0,200,75.64ZM184,216H72V180l56-42,56,42.35Zm0-140.36L128,118,72,76V40H184Z',tray:'M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32Zm0,16V152h-28.7A15.86,15.86,0,0,0,168,156.69L148.69,176H107.31L88,156.69A15.86,15.86,0,0,0,76.69,152H48V48Zm0,160H48V168H76.69L96,187.31A15.86,15.86,0,0,0,107.31,192h41.38A15.86,15.86,0,0,0,160,187.31L179.31,168H208v40Z',retry:'M240,56v48a8,8,0,0,1-8,8H184a8,8,0,0,1,0-16H211.4L184.81,71.64l-.25-.24a80,80,0,1,0-1.67,114.78,8,8,0,0,1,11,11.63A95.44,95.44,0,0,1,128,224h-1.32A96,96,0,1,1,195.75,60L224,85.8V56a8,8,0,1,1,16,0Z',headset:'M201.89,54.66A103.43,103.43,0,0,0,128.79,24H128A104,104,0,0,0,24,128v56a24,24,0,0,0,24,24H64a24,24,0,0,0,24-24V144a24,24,0,0,0-24-24H40.36A88.12,88.12,0,0,1,190.54,65.93,87.39,87.39,0,0,1,215.65,120H192a24,24,0,0,0-24,24v40a24,24,0,0,0,24,24h24a24,24,0,0,1-24,24H136a8,8,0,0,0,0,16h56a40,40,0,0,0,40-40V128A103.41,103.41,0,0,0,201.89,54.66ZM64,136a8,8,0,0,1,8,8v40a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V136Zm128,56a8,8,0,0,1-8-8V144a8,8,0,0,1,8-8h24v56Z',spk:'M155.51,24.81a8,8,0,0,0-8.42.88L77.25,80H32A16,16,0,0,0,16,96v64a16,16,0,0,0,16,16H77.25l69.84,54.31A8,8,0,0,0,160,224V32A8,8,0,0,0,155.51,24.81ZM32,96H72v64H32ZM144,207.64,88,164.09V91.91l56-43.55Zm54-106.08a40,40,0,0,1,0,52.88,8,8,0,0,1-12-10.58,24,24,0,0,0,0-31.72,8,8,0,0,1,12-10.58ZM248,128a79.9,79.9,0,0,1-20.37,53.34,8,8,0,0,1-11.92-10.67,64,64,0,0,0,0-85.33,8,8,0,1,1,11.92-10.67A79.83,79.83,0,0,1,248,128Z',spray:'M200,80a8,8,0,0,0,8-8,56.06,56.06,0,0,0-56-56H80A16,16,0,0,0,64,32V80a24,24,0,0,1-24,24,8,8,0,0,0,0,16A40,40,0,0,0,80,80h32v24.62a23.87,23.87,0,0,1-9,18.74L87,136.15a39.79,39.79,0,0,0-15,31.23V224a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V211.47A270.88,270.88,0,0,0,174,80ZM80,32h72a40.08,40.08,0,0,1,39.2,32H80ZM192,211.47V224H88V167.38a23.87,23.87,0,0,1,9-18.74l16-12.79a39.79,39.79,0,0,0,15-31.23V80h27.52A254.86,254.86,0,0,1,192,211.47Z',coins:'M184,89.57V84c0-25.08-37.83-44-88-44S8,58.92,8,84v40c0,20.89,26.25,37.49,64,42.46V172c0,25.08,37.83,44,88,44s88-18.92,88-44V132C248,111.3,222.58,94.68,184,89.57ZM232,132c0,13.22-30.79,28-72,28-3.73,0-7.43-.13-11.08-.37C170.49,151.77,184,139,184,124V105.74C213.87,110.19,232,122.27,232,132ZM72,150.25V126.46A183.74,183.74,0,0,0,96,128a183.74,183.74,0,0,0,24-1.54v23.79A163,163,0,0,1,96,152,163,163,0,0,1,72,150.25Zm96-40.32V124c0,8.39-12.41,17.4-32,22.87V123.5C148.91,120.37,159.84,115.71,168,109.93ZM96,56c41.21,0,72,14.78,72,28s-30.79,28-72,28S24,97.22,24,84,54.79,56,96,56ZM24,124V109.93c8.16,5.78,19.09,10.44,32,13.57v23.37C36.41,141.4,24,132.39,24,124Zm64,48v-4.17c2.63.1,5.29.17,8,.17,3.88,0,7.67-.13,11.39-.35A121.92,121.92,0,0,0,120,171.41v23.46C100.41,189.4,88,180.39,88,172Zm48,26.25V174.4a179.48,179.48,0,0,0,24,1.6,183.74,183.74,0,0,0,24-1.54v23.79a165.45,165.45,0,0,1-48,0Zm64-3.38V171.5c12.91-3.13,23.84-7.79,32-13.57V172C232,180.39,219.59,189.4,200,194.87Z',search:'M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z'};
+const svg=n=>`<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="${ICO[n]}"/></svg>`;
+const pic=(icon,dot)=>`<span class="pic">${svg(icon)}${dot?`<span class="dot ${dot==='ok'?'ok':''}">${dot==='ok'?'✓':'✕'}</span>`:''}</span>`;
+function es(o){return `<div class="es ${o.size||''}" role="region" aria-label="${o.title}">${pic(o.icon,o.dot)}<h3>${o.title}</h3>${o.body?`<p>${o.body}</p>`:''}${o.speaker?`<button class="spk">${svg('spk')}Hear this</button>`:''}${(o.primary||o.secondary)?`<div class="acts">${o.primary?`<button class="ebtn ${o.size==='section'?'ter':'pri'} ${o.loading?'load':''}" id="${o.pid||''}">${o.loading?'<span class="spin"></span>':''}${o.primary}</button>`:''}${o.secondary?`<button class="ebtn ${o.secPri?'pri':'sec'}">${svg('headset')}${o.secondary}</button>`:''}</div>`:''}</div>`;}
+const KINDS={
+ empty:{icon:'tray',title:'No jobs today',body:'Jobs appear here when you go online.',primary:'Go online',speaker:true},
+ error:{icon:'search',dot:'x',title:"Couldn't load your earnings",body:'Your money is safe. The network dropped.',primary:'Try again',secondary:'Call Help',speaker:true},
+ offline:{icon:'wifi',dot:'x',title:"You're offline",body:"Your jobs will show when you're back online. SOS still works.",primary:'Try again',speaker:true},
+ waiting:{icon:'hour',title:'Payout on its way',body:'Ready by 10:00 pm today.',speaker:true}};
+const W=(cap,html)=>`<div class="stg">${html}<div class="cap">${cap}</div></div>`;
+const phone=(inner,o={})=>`<div class="ph"><div class="sb"><span>9:41</span><span>${o.off?'✕ No service':'▂▄▆ 4G ▮'}</span></div><div class="hn">${o.title||'Earnings'}</div>${o.off?`<div class="ban">${svg('wifi')}You're offline · showing nothing saved</div>`:''}<div class="area">${inner}</div><div class="tb"><span>Home</span><span class="on">Earnings</span><span>Refer</span><span>Profile</span></div></div>`;
+$('#kinds-grid').innerHTML=[
+ W('<b>empty</b> · neutral pictogram · what makes it non-empty · the way to do that',phone(es(KINDS.empty),{title:'Home'})),
+ W('<b>error</b> · red dot · reassure first · Try again + Call Help · spoken',phone(es(KINDS.error))),
+ W('<b>offline</b> · nothing cached · the Offline Banner stays at the top too · SOS still works',phone(es(KINDS.offline),{off:1,title:'Home'})),
+ W('<b>waiting</b> · a deadline, never a spinner · no Button needed',phone(es(KINDS.waiting)))].join('');
+$('#section-grid').innerHTML=[
+ W('<b>section · empty</b> · 64 dp pictogram · BodyLg title · tertiary Button',`<div class="cardx">${es({size:'section',icon:'tray',title:'No jobs today',body:'Go online to start getting jobs.',primary:'Go online'})}</div>`),
+ W('<b>section · empty, nothing to do</b> · the body says what happens instead',`<div class="cardx">${es({size:'section',icon:'coins',title:'Nothing earned yet',body:'Your first payout comes the day after your first job.'})}</div>`),
+ W('<b>section · error</b> · only this part failed · Try again inline',`<div class="cardx">${es({size:'section',icon:'search',dot:'x',title:"Couldn't load referrals",body:'Your bonus is safe.',primary:'Try again'})}</div>`)].join('');
+// live
+let kind='error',fails=0,loading=false;
+function render(){const k={...KINDS[kind]};if(kind==='error'){if(fails>=1){k.body='Your money is safe. Still not working — call Help.';k.secPri=true;}k.loading=loading;k.pid='retry';}
+ if(kind==='offline'){k.loading=loading;k.pid='retry';}
+ $('#ph').innerHTML=phone(es(k),{off:kind==='offline',title:kind==='empty'||kind==='offline'?'Home':'Earnings'}).replace('<div class="ph">','<div>').replace(/<\/div>$/,'');
+ const r=$('#retry');if(r&&!loading)r.onclick=()=>{loading=true;render();$('#log').textContent='Try again → Button loading state (its own spinner)';setTimeout(()=>{loading=false;if(kind==='error'){fails++;$('#log').textContent=fails===1?'failed again → body adds "Still not working — call Help"; Call Help becomes primary':`failed ${fails+1} times → no more automatic retries; hers now`;}else $('#log').textContent='still offline → same state';render();},1200);};}
+render();
+document.querySelectorAll('.ctl button[data-k]').forEach(b=>b.onclick=()=>{kind=b.dataset.k;fails=0;loading=false;render();$('#log').textContent=kind+(kind==='empty'?' · spoken because it has a Button':' · spoken once on appearance');});
+$('#online').onclick=()=>{if(kind!=='offline'){$('#log').textContent='not offline';return;}$('#ph').innerHTML=phone(`<div style="align-self:flex-start;width:100%;display:flex;flex-direction:column;gap:12px"><div class="cardx" style="width:100%;padding:16px;color:#111827">Cleaning · 2 hr <span style="float:right;color:#6B7280">9:30 am</span></div><div class="cardx" style="width:100%;padding:16px;color:#6B7280">Next job in 42 min</div></div>`,{title:'Home'}).replace('<div class="ph">','<div>').replace(/<\/div>$/,'')+`<div style="position:absolute;left:16px;right:16px;bottom:80px;background:#111827;color:#fff;border-radius:12px;padding:12px 16px;font-size:14px">Back online</div>`;$('#log').textContent='connection returned → real content swaps in · Toast "Back online"';};
+// donts
+$('#dont-grid').innerHTML=[
+ W('',phone(`<div class="es"><span class="pic" style="background:transparent;color:#DC2626">${svg('warn')}</span><h3>Oops! Something went wrong</h3><p>Error 500. Please contact support.</p><div class="acts"><button class="ebtn sec">Retry</button></div></div>`)).replace('<div class="cap"></div>','<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">A red icon as the picture, <em>Oops</em>, an error code, <em>Retry</em> and a link to support. Pictogram with a dot; what is true; reassure; Try again + Call Help.</div>'),
+ W('',phone(`<div style="color:#9CA3AF;font-size:14px">No data</div>`)).replace('<div class="cap"></div>','<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">Two grey words in the middle of nothing. Empty is a mandatory state (P5): what is true, what makes it non-empty, the way to do that.</div>'),
+ W('',phone(`<div class="es"><span class="spin" style="width:48px;height:48px;border-radius:50%;border:4px solid #FDE4EF;border-top-color:#F70F79;animation:spin .8s linear infinite"></span><h3>Retrying…</h3></div>`)).replace('<div class="cap"></div>','<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">An indefinite spinner as a screen. Loading is Skeleton and brief; waiting has a time — <em>Ready by 10:00 pm</em>.</div>')].join('');
+const links=[...document.querySelectorAll('#nav a')];const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-20% 0px -70% 0px'});targets.forEach(t=>io.observe(t));}
+})();
+</script>

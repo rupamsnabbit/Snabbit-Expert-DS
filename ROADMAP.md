@@ -4,7 +4,7 @@ What is done and what is left, against the 46-component core set in `audit/BENCH
 
 ---
 
-## Done — 23 pages · 30 of 46 core components
+## Done — 24 pages · 31 of 46 core components
 
 | # | Page | Covers | Status |
 | --- | --- | --- | --- |
@@ -31,16 +31,16 @@ What is done and what is left, against the 46-component core set in `audit/BENCH
 | 21 | SOSControl | SOSControl, active screen, SafetyStrip | Proposed |
 | 22 | Accordion | Accordion (faq, breakdown) | Proposed |
 | 23 | DatePicker | DatePicker (strip, month, DayCell); time = Select | Proposed |
+| 24 | EmptyState | EmptyState (empty, error, offline, waiting; page, section) | Proposed |
 
 Foundations done: tokens (`tokens/`), principles, extending, icons register, assets (two layers). Research done: Figma audit (204 frames), benchmark.
 
 ---
 
-## To do — components (16), in the agreed order
+## To do — components (15), in the agreed order
 
 | # | Component | Priority | Notes |
 | --- | --- | --- | --- |
-| 24 | **Empty state** | P0 | Illustration + one line + one action. One of the five mandatory states (P5). |
 | 25 | **Skeleton / Spinner** | P0 | Loading for lists and cards; spinner only inside Button. |
 | 26 | **Voice prompt** | P0 | The spoken-guidance bubble: play/replay, playing state, language. Every spec references it. |
 | 27 | Tabs / Segmented control | P1 | Earnings today/week/month; ≤ 3 segments, icon + label. |
@@ -89,6 +89,6 @@ Component status lifecycle in practice (nothing is Reconciled yet) · Changelog 
 
 - `illustration.purple` hex — waiting on a value from the Snabbit Assets file.
 - `PRINCIPLES.md` reference-case line still says the Timer is a ring around the Button; the Timer spec places it above. Fix when the job-alert pattern is written.
-- Header conflicts with shipped screens (bell, Help vs Saathi, SOS position, centred in-job title) and Stepper ordering — see `references/SCREENS.md`; decisions pending.
+- Confirm whether the `1Login` onboarding screen (navy, non-Outfit) is shipped or older — see `references/SCREENS.md`.
 - Figma reconciliation: every spec lists its changes; none applied yet. Until Figma matches, designers still draw from old frames.
 - Field validation: checklist rows 15–16 (copy heard aloud in four languages; device review with experts) are open on every component.

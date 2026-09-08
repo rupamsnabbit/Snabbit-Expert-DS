@@ -27,3 +27,4 @@ One spec per core component. `button.md` is the template. Status per component: 
 | SOSControl | Proposed | `sos-control.md` | `site/components/sos-control.html` |
 | Accordion | Proposed | `accordion.md` | `site/components/accordion.html` |
 | DatePicker | Proposed | `date-picker.md` | `site/components/date-picker.html` |
+| EmptyState | Proposed | `empty-state.md` | `site/components/empty-state.html` |

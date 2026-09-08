@@ -27,7 +27,7 @@ Names are `asset/<class>/<name>`. One asset, one meaning. Before making one, loo
 
 Square, pink-tiled floor and wall as the stage, one or two objects, sparkles. Existing: cleaning (bucket, mop), bathroom (toilet), kitchen-clean (spray, cloth), laundry (basket, iron), dishes (rack, plates), cooking (vegetables, board), shelves (books, plant), fridge, magic (wand, star). Sizes 96 · 160 · 240 dp. WebP.
 
-Used for: service categories, empty states, onboarding, the Permission sheet. New scenes needed: no-jobs, offline, permission-camera, permission-location, permission-contacts, permission-notifications, payout-success.
+Used for: service categories, empty states, onboarding, the Permission sheet. New scenes needed: permission-camera, permission-location, permission-contacts, permission-notifications, payout-success. (Empty and error states use **pictograms**, not scenes — see `components/empty-state.md`; new pictograms needed: `calendar` without a dot, `tray`.)
 
 ### 2. Pictograms — `asset/picto/*`
 
