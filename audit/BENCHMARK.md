@@ -32,7 +32,7 @@ Ranked by how directly a principle demands it. **P0** = a principle cannot be me
 | P1 | **Media container** | — | Photos of the home, selfie, document capture: one component with loading, error and retake states. |
 | P1 | **Stepper / Progress steps** | M3, Base | We have "Step Indicatorss"; formalise for onboarding and go-live. |
 | P2 | Time picker | M3 | Shift start. Probably a Select in practice. |
-| P2 | Popover | Base | Rarely; tooltips cover most cases. |
+| P2 | Popover | Base | **Closed** — `components/popover.md`: non-modal, 2–3 actions about a map marker; whitelist of three sites. |
 | P2 | Data table | Base, M3 | Not on phone. Use ListItem rows. |
 | P2 | Drawer / Navigation rail | M3, Base | Not for a 360 dp phone with a bottom tab bar. Skip. |
 | P2 | Breadcrumb, Tree view, Pagination | Base | Web components. Skip. |

@@ -79,5 +79,6 @@ Status: **seed**. Populated fully during the Button, Tab bar and Job-alert specs
 | `minus` | Indeterminate (parent "select all") | bold | Checkbox |
 | `receipt` | Payout history | regular | Earnings statement row |
 | `hand-coins` | Early payout | regular | Earnings statement row |
+| `clock-clockwise` | Time added (job extended) | regular | Tooltip `status` success on the Timer |
 
 Not icons: smileys for Rating and the mascot are illustrations, not Phosphor glyphs — they live in the illustration library.

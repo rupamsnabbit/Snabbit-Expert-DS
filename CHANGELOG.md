@@ -10,8 +10,9 @@ One section per release, newest first; *Unreleased* on top. Sections inside: Tok
 - Proposed for 0.20.0 (not yet in `tokens.json`): `textSuccessStrong` / `textWarningStrong` / `textErrorStrong` / `textInfoStrong`; `iconSuccess` → green.600; `iconWarning` → yellow.600; `bgErrorStrong`, `bgReward`, `bgInfoSubtle`, `bgNeutralStrong`; `overlay.scrim`, `overlay.result`; `ButtonLg` size decision. See `foundations/accessibility.md` § Open.
 
 ### Components
-- All 46 core components specified with live pages (`components/*.md`, `site/components/*.html`): Button, IconButton, Tag, TextField, Checkbox · Radio · Switch, Amount, Timer, Banner · Toast · Snackbar, Chip, Avatar, Badge, Card, ListItem, SelectionCard, BottomSheet, HeaderNav, BottomTabBar, ProgressBar, Stepper, Coachmark, SOSControl, Accordion, DatePicker, EmptyState, Skeleton, VoicePrompt, Tabs, Nudge, NumericKeypad, PageIndicator, MediaCapture, MapMarker · MapSnippet, Stat · Rating · Divider, HowToClip. Status: Proposed.
+- All 49 core components specified with live pages (`components/*.md`, `site/components/*.html`): Button, IconButton, Tag, TextField, Checkbox · Radio · Switch, Amount, Timer, Banner · Toast · Snackbar, Chip, Avatar, Badge, Card, ListItem, SelectionCard, BottomSheet, HeaderNav, BottomTabBar, ProgressBar, Stepper, Coachmark, SOSControl, Accordion, DatePicker, EmptyState, Skeleton, VoicePrompt, Tabs, Nudge, NumericKeypad, PageIndicator, MediaCapture, MapMarker · MapSnippet, Stat · Rating · Divider, HowToClip, Tooltip, ProgressButton, Popover. Status: Proposed.
 - Compositions: ShieldCard (Kavach) — ShieldRow, ShieldConsent, SafetyCheck; JobAlert — the reference case as one screen.
+- Tooltip (`label` long-press name · `status` change at the Timer, tone computed), ProgressButton (`countdown` · `progress`, band from the left, brand only) and Popover (`actions` · `detail`, non-modal, three-site whitelist) reinstated as separate components (`DECISIONS.md` 2026-09-10); `coachmark.md` and `button.md` reconciliation lists updated; BENCHMARK P2 Popover closed.
 - FAB folded into IconButton (`floating` = L circle at `elevation.floating`; shutter and recentre only).
 - SelectionCard gains `hero` (image on top, radio or checkbox, ≤ 3 per group; 4:3; selected row takes the brand wash).
 - HeaderNav: shipped bell restored at left; SOS rightmost as a deliberate change; Help (call) and Saathi (chat) are two actions; `state` variant for full-screen job states.
@@ -19,7 +20,7 @@ One section per release, newest first; *Unreleased* on top. Sections inside: Tok
 - Stepper gains `unordered`; NumericKeypad `otp` supports 3–6 boxes; Timer `countdown` for time left, `elapsed` for overtime; Amount sign icons unified with Stat (`arrow-up` / `arrow-down`).
 
 ### Foundations
-- `foundations/icons.md` — 72 Phosphor meanings registered.
+- `foundations/icons.md` — 73 Phosphor meanings registered (`clock-clockwise` added for Tooltip).
 - `foundations/assets.md` — two layers (illustration / metallic rewards); `asset/picto/shield` proposed as the one domain-coloured pictogram.
 - `foundations/motion.md` — three rules, durations, easing, timeouts, where motion is not, reduced motion per kind.
 - `foundations/type.md` — four scripts: fallback faces, ×1.15 table, English budgets / universal box, consolidated length table, wrapping, font scale 1.3, test strings.
@@ -35,7 +36,7 @@ One section per release, newest first; *Unreleased* on top. Sections inside: Tok
 - Open, awaiting the design lead: primary Button label contrast (ButtonLg 18/24 recommended); token release 0.20; Telugu as a fifth script; Shield auto-start and the blue shield; HowToClip `guide`.
 
 ### Site
-- Documentation site under `site/` built by `build_all.sh`: tokens page (with Motion & timeouts and the four-script sample), foundations, 36 component pages, 10 pattern pages, roadmap, benchmark, audit.
+- Documentation site under `site/` built by `build_all.sh`: tokens page (with Motion & timeouts and the four-script sample), foundations, 39 component pages, 10 pattern pages, roadmap, benchmark, audit.
 - `site/lint.py` — spec lint run by the build; first run found and fixed 55 errors.
 - `GOVERNANCE.md` — status lifecycle, review step, recording changes, releases, roles.
 - `references/SCREENS.md` — the three screen files and the *When the screens change* procedure; *Self-Serve ER/AR* registered as the onboarding source.

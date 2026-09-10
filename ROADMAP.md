@@ -1,10 +1,10 @@
 # Roadmap
 
-What is done and what is left, against the 46-component core set in `audit/BENCHMARK.md`. Updated in the same commit as the work. Status meanings: **Proposed** (spec + live page exist) → **Reconciled** (Figma matches) → **Stable** (package ships it).
+What is done and what is left, against the 49-component core set in `audit/BENCHMARK.md` (46 + Tooltip, ProgressButton, Popover reinstated 2026-09-10). Updated in the same commit as the work. Status meanings: **Proposed** (spec + live page exist) → **Reconciled** (Figma matches) → **Stable** (package ships it).
 
 ---
 
-## Done — 51 pages · 46 of 46 core components + 2 compositions + 1 pattern
+## Done — 54 pages · 49 of 49 core components + 2 compositions + 10 patterns
 
 | # | Page | Covers | Status |
 | --- | --- | --- | --- |
@@ -44,6 +44,9 @@ What is done and what is left, against the 46-component core set in `audit/BENCH
 | 34 | HowToClip | HowToClip (card, player; 10–20 s, loops once, captions) | Proposed |
 | 35 | ShieldCard (Kavach) | Composition: ShieldRow (6 states), ShieldConsent, SafetyCheck; SafetyStrip `shield` kind | Proposed |
 | 36 | JobAlert | Composition: the reference case as one screen — facts strip, earnings Card, Nudge loss, Timer L, Decline hold, Accept | Proposed |
+| 47 | Tooltip | `label` (dark, long-press name) and `status` (tinted, a change at the thing it points at; tone computed from the Timer); arrow above / below; from shipped Tooltips `537:4918` + Colored Tooltip `1491:17618` | Proposed |
+| 48 | ProgressButton | `countdown` (time used of a window, where no Timer is on screen) and `progress` (work done); band from the left, label still, count in numerals; from shipped Progress Buttons `1491:13660` (green → brand) | Proposed |
+| 49 | Popover | `actions` (2–3 rows) and `detail`; non-modal, anchored to a map marker; whitelist of three sites; no three-dots menus | Proposed |
 | — | FAB | Folded into IconButton: floating = `L` `circle` at `elevation.floating`; shutter and recentre only; no FAB component (`icon-button.md`) | Decided |
 | 46 | Pattern · Offline | `patterns/offline.md` — works / queues / waits table, the one Banner, the queue with tap times, truly-nothing state, slow network, data cost | Proposed |
 | 45 | Pattern · After SOS | `patterns/after-sos.md` — the minute, hour, day and week after; job stopped for safety, paid in full; the Home safety card; false alarms | Proposed |
@@ -62,9 +65,9 @@ Foundations done: tokens (`tokens/`), principles, extending, icons register, ass
 
 ## To do — components
 
-None. The 46-component core set is specified; FAB was folded into IconButton.
+None. The 49-component core set is specified; FAB was folded into IconButton.
 
-Removed from the count (decided): Tooltip (→ Coachmark), Progress Buttons (→ Button hold state), Popover, Data table, Drawer, Breadcrumb.
+Removed from the count (decided): Data table, Drawer, Breadcrumb. **Reinstated 2026-09-10** (`DECISIONS.md`): Tooltip, ProgressButton, Popover — each a separate component with its own spec and page, with coexistence rules against Coachmark and Button hold.
 
 ---
 

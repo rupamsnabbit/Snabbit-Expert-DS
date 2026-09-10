@@ -1,0 +1,126 @@
+<meta charset="utf-8">
+<title>Snabbit Expert ProgressButton</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>__BASECSS__
+.pb{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;border-radius:12px;font:500 16px/24px var(--sans);width:328px;border:0;cursor:pointer;padding:0 16px;box-sizing:border-box;text-align:center}
+.pb.L{height:56px}.pb.M{height:48px;border-radius:10px;font-size:14px}
+.pb.primary{background:#F70F79;color:#fff}.pb.primary .band{background:#C70C61}
+.pb.secondary{background:#fff;color:#F70F79;box-shadow:inset 0 0 0 1.5px #F70F79}.pb.secondary .band{background:#FEF1F7;top:1.5px;bottom:1.5px;left:1.5px;border-radius:10px 0 0 10px}.pb.secondary .cnt{color:#374151}
+.pb .band{position:absolute;left:0;top:0;bottom:0;width:calc(var(--p,0)*1%);transition:width .2s cubic-bezier(.2,0,0,1)}
+.pb.lin .band{transition:width 1s linear}
+.pb .lb{position:relative;z-index:1}
+.pb .cnt{position:absolute;right:12px;top:50%;transform:translateY(-50%);z-index:1;font:600 12px/16px var(--sans);font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.pb.secondary .cnt.warn{color:#D97706}
+.pb.disabled{background:#F3F4F6;color:#9CA3AF;cursor:default;box-shadow:none}.pb.disabled .band{display:none}
+.reason{font:400 14px/20px var(--sans);color:#6B7280;text-align:center;margin-top:8px;width:328px}
+.hold{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;border-radius:12px;height:56px;width:328px;font:500 16px var(--sans);color:#DC2626;background:#fff;box-shadow:inset 0 0 0 1.5px #EF4444;user-select:none;-webkit-user-select:none;touch-action:none;cursor:pointer}
+.hold .band{position:absolute;left:0;top:0;bottom:0;width:0;background:#FEE2E2}.hold.on .band{width:100%;transition:width .6s linear}.hold .lb{position:relative}
+.scr{width:360px;border:1px solid #E5E7EB;border-radius:20px;overflow:hidden;background:#F9FAFB;color:#111827;font-family:var(--sans);position:relative}
+.scr .hn{height:56px;background:#fff;display:flex;align-items:center;padding:0 16px;font-size:18px;font-weight:500;border-bottom:1px solid #F3F4F6}
+.scr .body{padding:16px;display:flex;flex-direction:column;gap:12px}
+.cardx{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.cardx .d{font-size:14px;color:#6B7280}.cardx .h{font-size:18px;font-weight:600}.cardx .pb{width:100%}
+.tag{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border-radius:999px;font:500 13px var(--sans);background:#ECFDF5;color:#047857;align-self:center}.tag svg{width:16px;height:16px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(328px,1fr));gap:24px 32px;align-items:start}
+.stg{display:flex;flex-direction:column;gap:8px}.stg .cap{font-family:var(--mono);font-size:12px;color:var(--text-2)}.stg .cap b{color:var(--text);font-weight:500}
+.ctl{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:12px}.ctl button{font-family:var(--sans);font-size:13px;padding:6px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);cursor:pointer}
+.logline{font-family:var(--mono);font-size:12px;color:var(--text-2);min-height:16px;margin-top:8px;white-space:pre-line}
+@media (prefers-reduced-motion:reduce){.pb .band,.pb.lin .band{transition:none}}
+__NAVCSS__</style>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · ProgressButton</small></div></div>
+    __SITENAV__
+    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#modes">Modes</a><a href="#live">Live</a><a href="#hold">vs hold</a><a href="#rules">Rules</a><a href="#dont">Don't</a><a href="#figma">Figma changes</a></nav>
+    <div class="rail-foot">Rendered from tokens.json · spec in components/progress-button.md</div>
+  </aside>
+  <main class="main">
+    <header id="overview">
+      <div class="eyebrow">Core component · P5 · P7</div><h1>ProgressButton</h1>
+      <p class="lede">A Button whose fill moves on its own — the clock or the server moves it, not her finger. <b>countdown</b> shows how much of a window has been used (<em>Accept job · 0:42</em>) where there is no Timer on the screen; <b>progress</b> shows how far the work she started has got (<em>Checking in · 2 of 3</em>). The band always grows from the left, the label never moves, and a count says the number so nobody has to read a fill.</p>
+      <div class="meta"><span class="chip status">Proposed</span><span class="chip">Tier 1 · Core</span><span class="chip"><code>SnabbitProgressButton</code></span><span class="chip">countdown · progress</span><span class="chip">L · M</span><span class="chip">brand only</span><span class="chip">Figma 1491:13660</span></div>
+    </header>
+
+    <section id="modes">
+      <header><div class="eyebrow">Two meanings</div><h2>Modes</h2><p>Band <code>interactivePressed</code> over <code>interactiveDefault</code> (<b>primary</b>) or <code>bgBrandSubtle</code> over <code>bgPrimary</code> (<b>secondary</b>, L only — <code>textBrand</code> on the band measures 3.6:1, large text only). The shipped green <em>Accept Job</em> becomes brand: there is no success Button tone. The last state is never a full-dark button — a countdown ends as <code>disabled</code> with its reason; progress ends as the outcome.</p></header>
+      <div class="stage"><div class="grid2" id="modes-grid"></div></div>
+    </section>
+
+    <section id="live">
+      <header><div class="eyebrow">Try it</div><h2>Live · Home card and check-in</h2><p>The check-in window has opened on the Home card: a <code>countdown</code> ProgressButton fills as the window is used and stays tappable the whole time. Tap it and it becomes <code>progress</code> — <em>Checking in · 1 of 3</em>, location → photo → server — not tappable, no spinner, and the outcome replaces it. Let the window lapse instead and the Button disables with the reason under it.</p></header>
+      <div class="demo" style="align-items:flex-start;flex-wrap:wrap;gap:28px"><div class="scr" id="ph"></div><div class="card" style="max-width:320px"><h4>Simulate</h4><div class="ctl"><button id="run">Let the window run</button><button id="fail">Server step fails</button><button id="reset">Reset</button></div><div class="logline" id="log">window open · countdown · band = time used · tappable</div></div></div>
+    </section>
+
+    <section id="hold">
+      <header><div class="eyebrow">Same anatomy, opposite author</div><h2>ProgressButton vs the hold Button</h2><p>Both are a Button with a band. The difference is who moves it. Hold: her finger, danger tone, cancels on release (<code>button.md</code> § hold). ProgressButton: the clock or the server, brand tone, moves whether or not she touches the screen. Because they are two components, a moving fill never means two things — and a ProgressButton is never used on a danger action, where a self-moving band would look like the hold completing by itself.</p></header>
+      <div class="stage"><div class="grid2" id="hold-grid"></div></div>
+    </section>
+
+    <section id="rules">
+      <header><div class="eyebrow">One clock per screen</div><h2>Rules</h2></header>
+      <ol class="rules"><li><b>Not beside a Timer of the same window.</b> The job alert keeps its Timer pill and a plain Button; countdown lives on job rows and the Home card, where there is no pill.</li><li><b>Band from the left, covering what is used or done</b> — the direction of the hold sweep, the ProgressBar and the Stepper.</li><li><b>Label still.</b> Unchanged through a countdown; changed once, to the participle, at the start of progress.</li><li><b>Count says the number</b> in tabular numerals: <em>0:42</em>, <em>2 of 3</em>. The band alone is never the only channel.</li><li><b>Ends as a normal Button.</b> Countdown at 0 → <code>disabled</code> with the reason under it; progress at 100 → the outcome replaces it, or the Button returns with the failure under it.</li><li><b>Brand only, L or M, one per screen.</b> Never danger, never S, never icon-only.</li></ol>
+    </section>
+
+    <section id="dont">
+      <header><div class="eyebrow">Common mistakes</div><h2>Don't</h2></header>
+      <div class="stage"><div class="grid2" id="dont-grid"></div></div>
+    </section>
+
+    <section id="figma">
+      <header><div class="eyebrow">Reconciliation</div><h2>What changes in Figma</h2></header>
+      <ol class="rules"><li>Progress Buttons (1491:13660) → ProgressButton: Mode (Countdown / Progress), Variant (Primary / Secondary), Size (L / M), Fill (0 / 25 / 50 / 75 / 100), Count (boolean). Band = left-anchored rectangle clipped by the container, bound to interactivePressed / bgBrandSubtle.</li><li>Recolour the green Accept Job set to interactiveDefault; label stays textInverse.</li><li>Replace the full-dark variant with the two end states: Countdown 100 = Button disabled + reason; Progress 100 = the outcome Tag.</li><li>Button reconciliation item 6 (Progress Buttons out of the Components page) is superseded — they stay, as this component.</li></ol>
+      <p class="sub" style="margin-top:14px">Result: 2 × 2 × 2 × 5 = 40 variants (Figma) replacing 10 loose ones. Contrast measured: textInverse on interactiveDefault 4.0:1, on interactivePressed 5.7:1; textBrand on bgBrandSubtle 3.6:1 (secondary is L only). The <code>ButtonLg</code> 18/24 decision applies here as it does to Button.</p>
+    </section>
+  </main>
+</div>
+
+<script id="tokens-json" type="application/json">__TOKENS__</script>
+<script>
+(function(){
+const $=s=>document.querySelector(s);
+const CHECK='M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z';
+const svg=d=>`<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="${d}"/></svg>`;
+const pb=(label,p,o={})=>`<button class="pb ${o.v||'primary'} ${o.size||'L'} ${o.dis?'disabled':''} ${o.lin?'lin':''}" style="--p:${p}" id="${o.id||''}" ${o.dis?'disabled':''} aria-label="${label}${o.cnt?', '+o.cnt:''}"><span class="band"></span><span class="lb">${label}</span>${o.cnt?`<span class="cnt ${o.warn?'warn':''}">${o.cnt}</span>`:''}</button>${o.reason?`<div class="reason">${o.reason}</div>`:''}`;
+const W=(cap,html)=>`<div class="stg">${html}<div class="cap">${cap}</div></div>`;
+$('#modes-grid').innerHTML=[
+ W('<b>countdown · primary L</b> · 35 % of the window used · count = time left · tappable',pb('Accept job',35,{cnt:'0:42'})),
+ W('<b>countdown · primary L</b> · 85 % used · the count stays textInverse; urgency is the Timer\'s or the Nudge\'s job',pb('Accept job',85,{cnt:'0:09'})),
+ W('<b>countdown · end</b> · 100 % → disabled with the reason under it (never a full-dark button)',pb('Accept job',0,{dis:1,reason:"Time's up · The job went to another expert"})),
+ W('<b>progress · primary L</b> · label became the participle once · 2 of 3 steps · not tappable',pb('Checking in…',66,{cnt:'2 of 3'})),
+ W('<b>progress · secondary L</b> · bgBrandSubtle band · count in textBody · turns textWarning under 20 % of a window',pb('Sending…',60,{v:'secondary',cnt:'3 of 5'})),
+ W('<b>countdown · M</b> · inside a job row in the Jobs list, where a Timer pill per row will not fit',`<div class="cardx" style="width:328px;flex-direction:row;align-items:center;justify-content:space-between;gap:12px"><div><div class="h" style="font-size:16px">Koramangala</div><div class="d">Deep clean · ₹450</div></div>${pb('Accept',40,{size:'M',cnt:'1:12'}).replace('class="pb','style="width:150px;--p:40;padding-right:44px" class="pb')}</div>`)].join('');
+// live
+const ph=$('#ph');let mode='countdown',used=20,t=null,step=0,failAt=0;
+function render(){let main='';
+ if(mode==='countdown')main=pb('Check in',used,{id:'main',cnt:fmt(300-used*3),lin:1});
+ else if(mode==='progress')main=pb('Checking in…',step*33.4,{id:'main',cnt:`${step} of 3`});
+ else if(mode==='done')main=`<span class="tag">${svg(CHECK)}Checked in · 9:58 am</span>`;
+ else if(mode==='failed')main=pb('Check in',67,{id:'main',cnt:'2 of 3',reason:"Couldn't reach Snabbit · Your photo is saved — Retry"});
+ else if(mode==='expired')main=pb('Check in',0,{id:'main',dis:1,reason:'Check-in window closed at 10:00 · Call help'});
+ ph.innerHTML=`<div class="hn">Home</div><div class="body"><div class="cardx"><span class="d">Today · Radhika · Deep clean</span><span class="h">10:00 am – 12:00 pm</span><span class="d">Check-in window 9:55 – 10:00</span>${main}</div><div class="cardx" style="color:#6B7280;font-size:14px">Jyoti Nivas College Gate · 350 m away</div></div>`;
+ const m=$('#main');if(m&&mode==='countdown')m.onclick=start;if(m&&mode==='failed')m.onclick=()=>{step=2;mode='progress';render();$('#log').textContent='retry → progress resumes at step 3 · the band never went backwards';setTimeout(()=>{step=3;render();setTimeout(()=>{mode='done';render();},400);},800);};}
+function fmt(s){s=Math.max(0,Math.round(s));return `${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`;}
+function tick(){if(mode!=='countdown')return;used=Math.min(100,used+4);if(used>=100){mode='expired';render();$('#log').textContent='window used up → Button disabled with the reason under it · row updates after timeout.expiredClose';return;}render();t=setTimeout(tick,1000);}
+function start(){clearTimeout(t);mode='progress';step=1;render();$('#log').textContent='tap → progress · label "Checking in…" once · 1 of 3 (location) · not tappable';
+ setTimeout(()=>{step=2;render();$('#log').textContent+='\n2 of 3 (photo) · band steps 200 ms (motion.standard)';setTimeout(()=>{if(failAt){mode='failed';render();$('#log').textContent+='\nstep 3 failed → band stops · reason under the Button · tap to retry';failAt=0;return;}step=3;render();$('#log').textContent+='\n3 of 3 (server) → 100 → outcome replaces the Button';setTimeout(()=>{mode='done';render();},400);},900);},900);}
+$('#run').onclick=()=>{if(mode!=='countdown'){$('#log').textContent='not in a countdown · reset first';return;}clearTimeout(t);$('#log').textContent='window running · band = time used, left → right · count = time left · still tappable';tick();};
+$('#fail').onclick=()=>{if(mode!=='countdown'){$('#log').textContent='not in a countdown · reset first';return;}failAt=1;start();};
+$('#reset').onclick=()=>{clearTimeout(t);mode='countdown';used=20;step=0;failAt=0;render();$('#log').textContent='window open · countdown · band = time used · tappable';};
+render();
+// hold vs progress
+$('#hold-grid').innerHTML=[
+ W('<b>Button · hold</b> (button.md) · danger · her finger · press and hold; release cancels · 600 ms (motion.gesture)',`<div class="hold" id="hd"><span class="band"></span><span class="lb" id="hdl">Hold to decline</span></div>`),
+ W('<b>ProgressButton · countdown</b> · brand · the clock · moves without her · tap accepts any time',pb('Accept job',55,{cnt:'0:27'}))].join('');
+const hd=$('#hd');let ht;hd.addEventListener('pointerdown',e=>{e.preventDefault();hd.classList.add('on');ht=setTimeout(()=>{$('#hdl').textContent='Declined';},600);});['pointerup','pointerleave','pointercancel'].forEach(ev=>hd.addEventListener(ev,()=>{clearTimeout(ht);if($('#hdl').textContent!=='Declined')hd.classList.remove('on');}));
+// donts
+$('#dont-grid').innerHTML=[
+ W('',`<button class="pb L" style="background:#059669;color:#fff;--p:50"><span class="band" style="background:#047857"></span><span class="lb">Accept Job</span></button>`).replace('<div class="cap"></div>','<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">The shipped green. Status colours are for status; <em>Accept job</em> is the forward action and is brand. The Timer beside it already carries green.</div>'),
+ W('',`<button class="pb primary L" style="--p:100"><span class="band"></span><span class="lb">Check In</span></button>`).replace('<div class="cap"></div>','<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">The full-dark end state with the same label. Done or over? A countdown ends as <code>disabled</code> with the reason; progress ends as the outcome.</div>'),
+ W('',`<button class="pb primary L" style="--p:40"><span class="band" style="left:auto;right:0"></span><span class="lb">Accept job</span></button>`).replace('<div class="cap"></div>','<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">A band growing from the right. Everything that means "done" in this system moves left to right — the hold sweep, the ProgressBar, the Stepper.</div>'),
+ W('',`<div style="display:flex;flex-direction:column;gap:12px;align-items:center;width:328px"><div style="width:96px;height:96px;border-radius:50%;background:conic-gradient(#059669 60%,#E5E7EB 0);display:grid;place-items:center"><div style="width:80px;height:80px;border-radius:50%;background:#fff;display:grid;place-items:center;font:600 22px var(--sans);color:#059669">0:42</div></div>${pb('Accept job',40,{cnt:'0:42'})}</div>`).replace('<div class="cap"></div>','<span class="verdict bad">Don\'t</span><div class="sub" style="font-size:13.5px">Two clocks for one window. On the job alert the Timer pill is the countdown and the Button is plain; the ProgressButton is for rows and cards where the pill does not fit.</div>')].join('');
+const links=[...document.querySelectorAll('#nav a')];const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-20% 0px -70% 0px'});targets.forEach(t=>io.observe(t));}
+})();
+</script>

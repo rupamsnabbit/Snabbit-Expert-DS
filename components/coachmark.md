@@ -4,7 +4,7 @@ Status: **Proposed** · Tier: Core · Package: `SnabbitCoachmark` (new) · Figma
 
 Point and say. The first time a screen shows her something she has never used — the availability switch, the tab bar, the check-in camera — a Coachmark dims everything else, lights the one thing, and **speaks** one sentence about it in her language. Then it gets out of the way, and never comes back for that thing.
 
-This is the app's only tooltip. Hover hints, `(i)` popovers and "tap to learn more" bubbles do not exist here; the research on low-literate users is clear that guidance must be **on first use, with audio**, at the thing itself — not stored behind a small icon for later.
+This is the app's only **lesson**. Hover hints, `(i)` popovers and "tap to learn more" bubbles do not exist here (the small anchored bubble that names a control on long-press or announces a change at a Timer is the separate **Tooltip**, `tooltip.md`, reinstated 2026-09-10; a menu about a tapped marker is the **Popover**, `popover.md`); the research on low-literate users is clear that guidance must be **on first use, with audio**, at the thing itself — not stored behind a small icon for later.
 
 ---
 
@@ -14,7 +14,7 @@ This is the app's only tooltip. Hover hints, `(i)` popovers and "tap to learn mo
 | --- | --- | --- |
 | Tooltips: dark bubble, one line of `Caption`, six arrow positions, no trigger defined | **Coachmark**: scrim with a spotlight cut-out around the target, a light bubble with one `BodyLg` sentence, a **speaker** control, an optional pictogram, and one way out | A tooltip that appears on tap of an `(i)` fails P3 and the research; a coachmark that appears on first use with voice is how features get discovered. |
 | "This includes all bonuses" — explaining an amount in a bubble | Not a Coachmark. Explanations of a value are an `info` BottomSheet row or a `speaker-high` beside the label | A coachmark teaches a control once; it does not annotate data. |
-| Colored Tooltip (pink / warning fills) | **Deleted** | Colour on guidance reads as status (P6). Guidance is always the same neutral shell. |
+| Colored Tooltip (pink / warning fills) | ~~Deleted~~ → **Tooltip `status`** (`tooltip.md`, 2026-09-10) — not part of the Coachmark | Colour on *guidance* reads as status (P6), so the Coachmark stays neutral; the tinted bubble *is* status (a change at the Timer) and lives in its own component. |
 | Six arrow positions | **Two**: bubble below the target with the arrow on top, or above with the arrow beneath; arrow slides horizontally to the target centre | Fewer shapes to recognise; left/right arrows collide with 360 dp screens. |
 
 ---
@@ -114,8 +114,8 @@ Role dialog, modal; focus moves to the bubble; the sentence is announced (and sp
 
 ## Figma reconciliation
 
-1. Tooltips → **Coachmark**: `Placement` (Below / Above), `Media` (None / Picto), `WayOut` (Do-it / Got-it), `Counter` (None / n of 3), `Sound` (On / Muted). Bubble `bgPrimary`, text `BodyLg`.
-2. Delete **Colored Tooltip**. Delete the four side-arrow variants.
+1. ~~Tooltips → Coachmark~~ Create **Coachmark** as a new component: `Placement` (Below / Above), `Media` (None / Picto), `WayOut` (Do-it / Got-it), `Counter` (None / n of 3), `Sound` (On / Muted). Bubble `bgPrimary`, text `BodyLg`. (Tooltips stays, reconciled by `tooltip.md`.)
+2. ~~Delete Colored Tooltip~~ — reconciled as Tooltip `status` in `tooltip.md`.
 3. Add a **Coachmark / Overlay** frame: scrim + spotlight mask, to compose over screen mocks.
 4. Any mock that annotates a value with a tooltip → `info` BottomSheet or `speaker-high` beside the label.
 

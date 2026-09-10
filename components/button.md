@@ -151,7 +151,7 @@ Primary brand tap: the `confirm` sound family (short, rising) once the action *s
 3. `Content`: delete **Icon Both**.
 4. Rebind every fill, stroke and text colour to semantic variables named as in this spec; rebind text styles to `ButtonLg` / `ButtonMd`.
 5. Disabled: replace the pink-200 wash with `bgTertiary` + `textTertiary`.
-6. Move Button Groups, Progress Buttons and Block/Unblock out of the Components page (compositions / hold behaviour now live here).
+6. Move Button Groups and Block/Unblock out of the Components page (compositions). ~~Progress Buttons~~ stay — reconciled as **ProgressButton** (`progress-button.md`, 2026-09-10): a system-moved band (clock / server), distinct from the hold fill (her finger) here.
 
 Expected result: ~90 variants instead of 294.
 

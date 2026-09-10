@@ -40,3 +40,6 @@ One spec per core component. `button.md` is the template. Status per component: 
 | HowToClip | Proposed | `how-to-clip.md` | `site/components/how-to-clip.html` |
 | ShieldCard (Kavach) · composition | Proposed | `shield-card.md` | `site/components/shield-card.html` |
 | JobAlert · composition | Proposed | `job-alert.md` (flow: `patterns/new-job-alert.md`) | `site/components/job-alert.html` |
+| Tooltip | Proposed | `tooltip.md` | `site/components/tooltip.html` |
+| ProgressButton | Proposed | `progress-button.md` | `site/components/progress-button.html` |
+| Popover | Proposed | `popover.md` | `site/components/popover.html` |

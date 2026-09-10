@@ -1,6 +1,6 @@
 # Governance — how the system changes
 
-The system has 46 core components, 2 compositions, 6 foundations and 10 patterns, all **Proposed**. This page is how a page stops being proposed: what evidence moves it to **Reconciled** and **Stable**, who reviews what, how a change is recorded, and how the lint keeps the rules honest. It is short on purpose; the process should cost less than the work.
+The system has 49 core components, 2 compositions, 6 foundations and 10 patterns, all **Proposed**. This page is how a page stops being proposed: what evidence moves it to **Reconciled** and **Stable**, who reviews what, how a change is recorded, and how the lint keeps the rules honest. It is short on purpose; the process should cost less than the work.
 
 ---
 
