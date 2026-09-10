@@ -4,7 +4,7 @@ What is done and what is left, against the 46-component core set in `audit/BENCH
 
 ---
 
-## Done — 49 pages · 46 of 46 core components + 2 compositions + 1 pattern
+## Done — 51 pages · 46 of 46 core components + 2 compositions + 1 pattern
 
 | # | Page | Covers | Status |
 | --- | --- | --- | --- |
@@ -88,9 +88,9 @@ Order decided 2026-09-08: the visual foundations first, sound parked.
 
 ---
 
-## To do — governance (1 of 4)
+## Governance (4 of 4 written)
 
-~~Token/spec lint~~ (done — `site/lint.py`, run by `build_all.sh`; first run found 55 errors, all fixed: 17 unregistered icons registered, 3 specs given their missing sections, off-scale motion values, and *Continue* labels in onboarding) · Component status lifecycle in practice (nothing is Reconciled yet) · Changelog · Design-review step from `EXTENDING.md`.
+~~Token/spec lint~~ (`site/lint.py`, run by `build_all.sh`; now also checks status lines) · ~~Status lifecycle~~ · ~~Design-review step~~ · ~~Changelog~~ — all in `GOVERNANCE.md` and `CHANGELOG.md`. What remains is to **use** them: the first ten components in the reconciliation order (Button → HeaderNav → BottomTabBar → Card → ListItem → Amount → Timer → Tag → BottomSheet → SelectionCard) move to Reconciled as Figma is updated; token release 0.20.0 ships the accessibility fixes; CI runs the lint.
 
 ---
 

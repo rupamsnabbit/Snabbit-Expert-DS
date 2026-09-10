@@ -1,0 +1,249 @@
+<meta charset="utf-8">
+<title>Snabbit Expert Governance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --bg-2:#F9FAFB; --bg-3:#F3F4F6;
+  --text:#111827; --text-body:#374151; --text-2:#6B7280; --text-3:#9CA3AF;
+  --border:#E5E7EB; --border-subtle:#F3F4F6;
+  --brand:#F70F79; --brand-wash:#FEF1F7; --brand-ink:#97094A;
+  --ok:#059669; --ok-wash:#ECFDF5; --focus:#3B82F6;
+  --sans:"Outfit",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+    --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+    --border:#374151; --border-subtle:#1F2937;
+    --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+    --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+  --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+  --border:#374151; --border-subtle:#1F2937;
+  --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+  --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--text-body);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+code{font-family:var(--mono);font-size:.85em;background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--text)}
+pre{background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:14px 16px;overflow-x:auto;margin:12px 0 20px} pre code{background:none;border:0;padding:0;font-size:12.5px;line-height:1.55;white-space:pre}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+.shell{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}
+.rail{position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--border);padding:24px 16px 32px;background:var(--bg);display:flex;flex-direction:column;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;padding:0 8px}
+.brand-mark{width:28px;height:28px;border-radius:8px;background:var(--brand);display:grid;place-items:center;flex:none}
+.brand-mark span{width:12px;height:12px;border-radius:3px;background:#fff;transform:rotate(45deg)}
+.brand b{font-weight:600;color:var(--text);font-size:15px;line-height:1.2;display:block}
+.brand small{color:var(--text-2);font-size:12px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:block;padding:6px 8px;border-radius:6px;text-decoration:none;color:var(--text);font-size:13.5px;font-weight:500}
+.nav a.sub{font-weight:400;color:var(--text-body);padding-left:14px;font-size:13px}
+.nav a.sub b{font-family:var(--mono);font-weight:500;color:var(--text-3);font-size:11.5px;margin-right:2px}
+.nav a:hover{background:var(--bg-2)}
+.nav a.on{background:var(--brand-wash);color:var(--brand-ink)}
+.rail-foot{margin-top:auto;padding:0 8px;font-size:12px;color:var(--text-3);line-height:1.5}
+.main{padding:40px 56px 96px;max-width:860px;width:100%}
+.eyebrow{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);font-weight:600}
+h1{font-size:40px;line-height:1.1;font-weight:600;color:var(--text);margin:8px 0 12px;letter-spacing:-.015em;text-wrap:balance}
+.lede{font-size:18px;color:var(--text-2);max-width:60ch;margin:0 0 8px}
+.lede strong{color:var(--text);font-weight:500}
+h2{font-size:26px;line-height:1.2;font-weight:600;color:var(--text);margin:72px 0 16px;letter-spacing:-.01em;text-wrap:balance;padding-top:24px;border-top:1px solid var(--border)}
+h3{font-size:20px;font-weight:600;color:var(--text);margin:48px 0 8px;letter-spacing:-.005em}
+h3::before{content:"";display:block;width:32px;height:3px;background:var(--brand);border-radius:2px;margin-bottom:14px}
+p{margin:0 0 14px;max-width:66ch}
+h3 + p{font-size:17px;color:var(--text);font-weight:500}
+p.why{color:var(--text-2);font-size:15px;padding-left:14px;border-left:2px solid var(--border)}
+p.why::before{content:"Why · ";color:var(--text-3);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+p.lbl{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2);font-weight:600;margin:22px 0 8px}
+strong{color:var(--text);font-weight:600}
+em{font-style:italic}
+ul,ol{margin:0 0 14px;padding-left:0;list-style:none;max-width:68ch}
+ul li{position:relative;padding-left:20px;margin:6px 0;font-size:15.5px}
+ul li::before{content:"";position:absolute;left:0;top:11px;width:9px;height:2px;background:var(--brand)}
+ul li.chk{padding-left:30px}
+ul li.chk::before{width:16px;height:16px;top:4px;background:var(--bg);border:1.5px solid var(--text-3);border-radius:4px}
+ol{counter-reset:s}
+ol li{counter-increment:s;display:grid;grid-template-columns:32px 1fr;gap:12px;margin:10px 0;font-size:15.5px}
+ol li::before{content:counter(s);width:28px;height:28px;border-radius:50%;background:var(--brand-wash);color:var(--brand-ink);font-weight:600;font-size:13px;display:grid;place-items:center;margin-top:1px}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px;margin:8px 0 20px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);font-weight:500;padding:10px 14px;background:var(--bg-2);border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:10px 14px;border-bottom:1px solid var(--border-subtle);vertical-align:top;color:var(--text-body)}
+tr:last-child td{border-bottom:0}
+td:first-child{color:var(--text);font-weight:500;white-space:nowrap}
+hr{display:none}
+
+.sitenav{display:flex;flex-direction:column;gap:2px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.sitenav .grp{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);padding:10px 8px 4px;font-weight:500}
+.sitenav a{display:block;padding:5px 8px;border-radius:6px;text-decoration:none;color:var(--text-body);font-size:13.5px;border:0}
+.sitenav a:hover{background:var(--bg-2);color:var(--text)} .sitenav a.on{color:var(--brand-ink);background:var(--brand-wash);font-weight:500}
+@media (max-width:900px){.sitenav{flex-direction:row;flex-wrap:wrap;gap:4px;border-bottom:0;padding-bottom:0}.sitenav .grp{display:none}}
+
+@media (max-width:900px){
+  .shell{grid-template-columns:1fr}
+  .rail{position:static;height:auto;border-right:0;border-bottom:1px solid var(--border);padding:16px}
+  .nav{flex-direction:row;flex-wrap:wrap;gap:4px} .nav a.sub{padding-left:8px} .rail-foot{display:none}
+  .main{padding:32px 20px 80px} h1{font-size:32px} h2{margin-top:56px}
+}
+</style>
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Governance</small></div></div>
+    <nav class="sitenav" aria-label="Site"><div class="grp">Foundations</div><a href="index.html">Tokens</a><a href="principles.html">Principles</a><a href="extending.html">Extending</a><a href="icons.html">Icons</a><a href="assets.html">Assets</a><a href="motion.html">Motion</a><a href="type.html">Type · four scripts</a><a href="accessibility.html">Accessibility</a><div class="grp">Components</div><a href="components/button.html">Button</a><a href="components/icon-button.html">IconButton</a><a href="components/tag.html">Tag</a><a href="components/text-field.html">TextField</a><a href="components/selection-controls.html">Checkbox · Radio · Switch</a><a href="components/amount.html">Amount</a><a href="components/timer.html">Timer</a><a href="components/feedback.html">Banner · Toast · Snackbar</a><a href="components/chip.html">Chip</a><a href="components/avatar.html">Avatar</a><a href="components/badge.html">Badge</a><a href="components/card.html">Card</a><a href="components/list-item.html">ListItem</a><a href="components/selection-card.html">SelectionCard</a><a href="components/bottom-sheet.html">BottomSheet</a><a href="components/header-nav.html">HeaderNav</a><a href="components/bottom-tab-bar.html">BottomTabBar</a><a href="components/progress-bar.html">ProgressBar</a><a href="components/stepper.html">Stepper</a><a href="components/coachmark.html">Coachmark</a><a href="components/sos-control.html">SOSControl</a><a href="components/accordion.html">Accordion</a><a href="components/date-picker.html">DatePicker</a><a href="components/empty-state.html">EmptyState</a><a href="components/skeleton.html">Skeleton · Spinner</a><a href="components/voice-prompt.html">VoicePrompt</a><a href="components/tabs.html">Tabs · Segmented</a><a href="components/nudge.html">Nudge</a><a href="components/numeric-keypad.html">NumericKeypad</a><a href="components/page-indicator.html">PageIndicator</a><a href="components/media-capture.html">MediaCapture</a><a href="components/map-marker.html">MapMarker · MapSnippet</a><a href="components/stat-rating-divider.html">Stat · Rating · Divider</a><a href="components/how-to-clip.html">HowToClip</a><a href="components/shield-card.html">ShieldCard</a><a href="components/job-alert.html">JobAlert</a><div class="grp">Patterns</div><a href="pattern-new-job-alert.html">New job arrives</a><a href="pattern-check-in-out.html">Check in · work · check out</a><a href="pattern-payout.html">Payout</a><a href="pattern-onboarding.html">Onboarding · go-live</a><a href="pattern-error-recovery.html">When something goes wrong</a><a href="pattern-permissions.html">Asking for permission</a><a href="pattern-first-run.html">First run</a><a href="pattern-earnings.html">Earnings</a><a href="pattern-after-sos.html">After SOS</a><a href="pattern-offline.html">Offline</a><div class="grp">Research</div><a href="benchmark.html">Benchmark</a><a href="audit.html">Figma audit</a><a href="roadmap.html">Roadmap</a><a class="on" href="governance.html">Governance</a><a href="changelog.html">Changelog</a></nav><nav class="nav" id="nav"><a href="#1-status-lifecycle">1. Status lifecycle</a><a href="#2-review-the-design-review-step">2. Review — the design-review step</a><a href="#3-recording-a-change">3. Recording a change</a><a href="#4-changelog-and-releases">4. Changelog and releases</a><a href="#5-the-lint-as-governance">5. The lint as governance</a><a href="#6-roles">6. Roles</a><a href="#checklist-is-the-system-governed">Checklist — is the system governed?</a></nav>
+    <div class="rail-foot">Snabbit Expert Design System · generated from GOVERNANCE.md</div>
+  </aside>
+  <main class="main">
+    <header>
+      <div class="eyebrow">Snabbit Expert · Mobile</div>
+      <h1>Governance — how the system changes</h1>
+      <p class="lede">The system has 46 core components, 2 compositions, 6 foundations and 10 patterns, all <strong>Proposed</strong>. This page is how a page stops being proposed: what evidence moves it to <strong>Reconciled</strong> and <strong>Stable</strong>, who reviews what, how a change is recorded, and how the lint keeps the rules honest. It is short on purpose; the process should cost less than the work.</p>
+    </header>
+    <h2 id="1-status-lifecycle">1. Status lifecycle</h2>
+<p>Every component spec carries one status line. It moves in one direction and never skips a step.</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Means</th>
+<th>Evidence required to enter</th>
+<th>Who confirms</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Proposed</strong></td>
+<td>The spec and live page exist; the checklist is ticked by the author</td>
+<td>Spec, template, lint clean, ROADMAP row</td>
+<td>Author</td>
+</tr>
+<tr>
+<td><strong>Reconciled</strong></td>
+<td>Figma matches the spec: the <em>Figma reconciliation</em> list is done and the shipped screens use the instances</td>
+<td>The Figma component's node id in the status line; every item in the reconciliation list ticked; a screenshot of the Figma variants saved in <code>references/reconciled/&lt;name&gt;.png</code></td>
+<td>Design lead (Rupam)</td>
+</tr>
+<tr>
+<td><strong>Stable</strong></td>
+<td>The package ships it and the app uses it</td>
+<td>Package version in the status line; the component's Compose name resolves in the app repo; checklist rows 15–16 (copy heard aloud in four languages; device review with experts) ticked with the date</td>
+<td>Design lead + one engineer</td>
+</tr>
+<tr>
+<td><strong>Deprecated</strong></td>
+<td>Superseded; the status line names the replacement and the last version</td>
+<td>DECISIONS.md entry</td>
+<td>Design lead</td>
+</tr>
+</tbody>
+</table></div>
+<p class="lbl">Rules: a status change is its own commit (<em>"Button → Reconciled"</em>) with the evidence in the same commit; a Stable component's spec can still change, but the change goes through §3 and the status drops to Reconciled until the package catches up; a Reconciled component whose Figma drifts drops back to Proposed at the next screen re-read (<code>references/SCREENS.md</code> § When the screens change).</p>
+<p>Status line format (the lint reads it):</p>
+<pre><code>Status: **Reconciled** · Figma `1:4020` · Tier: Core · Package: `SnabbitButton` · …
+Status: **Stable** · Figma `1:4020` · Package: `SnabbitButton` 0.20.0 · reviewed 2026-10-02 · …
+</code></pre>
+<p><strong>Reconciliation order.</strong> Not alphabetical — by what unblocks the most screens: Button → HeaderNav → BottomTabBar → Card → ListItem → Amount → Timer → Tag → BottomSheet → SelectionCard → the rest. The first ten make the job alert, the job screen and Home reconcilable end to end.</p>
+<hr />
+<h2 id="2-review-the-design-review-step">2. Review — the design-review step</h2>
+<p><code>principles/EXTENDING.md</code> defines the tiers and the brief; this is the review that goes with them.</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Change</th>
+<th>Review</th>
+<th>Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tier 2 composition inside a feature</td>
+<td>None before merge; the author pastes the ticked checklist in the PR. Design lead spot-checks weekly</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Tier 3 local component</td>
+<td>Brief in <code>briefs/</code> (template in EXTENDING.md) reviewed by the design lead <strong>before</strong> build; the brief answers <em>why not existing</em>; third use triggers promotion</td>
+<td>≤ 2 days</td>
+</tr>
+<tr>
+<td>Change to a core component</td>
+<td>A brief marked <em>change to core</em>, plus: the spec diff, the live page updated, the lint clean, the <em>What changes</em> table's <em>Why</em> naming the principle. Reviewed by the design lead; if it changes a token, also by the engineer who owns <code>tokens.json</code></td>
+<td>≤ 1 week</td>
+</tr>
+<tr>
+<td>New token</td>
+<td>Proposed in the spec's <em>Token proposals</em> first; promoted in a token release (§4) — never added ad hoc</td>
+<td>Per release</td>
+</tr>
+<tr>
+<td>New icon meaning / asset</td>
+<td>A row in <code>icons.md</code> / <code>assets.md</code> in the same PR as the first use; the lint blocks unregistered icons</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Pattern change</td>
+<td>The pattern page updated with the shipped-screen citation and the <em>Why</em>; DECISIONS.md if a rule changed</td>
+<td>≤ 1 week</td>
+</tr>
+<tr>
+<td>Principle change</td>
+<td>A DECISIONS.md entry with <em>Revisit if</em>; the design lead and a founder</td>
+<td>Rare</td>
+</tr>
+</tbody>
+</table></div>
+<p>What a review checks, in order: <strong>is it a system part or a new thing</strong> (tier named) · <strong>does it depart from a principle, and does it say why</strong> · <strong>tokens only, lint clean</strong> · <strong>four languages at 1.3</strong> · <strong>the checklist is ticked honestly</strong> (row 15–16 pending is fine; a row ticked without the check having been run is not).</p>
+<p>Review happens in the PR (GitHub) or, for a Figma-only change, as a comment on the frame naming the spec section. Either way the outcome lands in the repo: a spec change, a DECISIONS entry, or a <em>screen flagged</em> note in <code>references/SCREENS.md</code>.</p>
+<hr />
+<h2 id="3-recording-a-change">3. Recording a change</h2>
+<ul>
+<li><strong>Spec change</strong> → edit the spec and its template; rebuild; lint; one commit with a message that names the component and the change (<em>"Timer: elapsed mode is for overtime; time left is a countdown"</em>).</li>
+<li><strong>Decision</strong> (a rule, a trade-off, anything someone will ask "why" about later) → <code>DECISIONS.md</code> entry: date · decision · consequence · <em>revisit if</em>. Written the day it is decided.</li>
+<li><strong>Screen file change</strong> → <code>references/SCREENS.md</code> first, then the re-read per its procedure.</li>
+<li><strong>Anything that changes what a designer or engineer must do differently</strong> → a line in <code>CHANGELOG.md</code> (§4).</li>
+<li><code>ROADMAP.md</code> counts and to-do lists are updated in the same commit as the work, never after.</li>
+</ul>
+<p>The commit message is the primary record; <code>CHANGELOG.md</code> is the human summary; <code>DECISIONS.md</code> is the <em>why</em>. Nothing is recorded in three places when one will do — a routine spec fix is a commit; a rule change is a commit plus a decision.</p>
+<hr />
+<h2 id="4-changelog-and-releases">4. Changelog and releases</h2>
+<p><code>CHANGELOG.md</code> has one section per <strong>release</strong> and an <em>Unreleased</em> section at the top. A release is a tag on this repo (<code>v0.20.0</code>) and, when tokens change, a matching package version. Sections: <em>Tokens</em> · <em>Components</em> · <em>Foundations</em> · <em>Patterns</em> · <em>Decisions</em> · <em>Site</em>. One line each, present tense, naming the file.</p>
+<p>Token releases follow semver on <code>tokens.json</code>: adding a token is minor; renaming or removing is major and needs a DECISIONS entry and a migration note; changing a value is minor if it stays within the same role (a darker <code>iconSuccess</code>) and major if it changes what a role means.</p>
+<p>The next release is <strong>0.20.0</strong> and its content is already known (<code>foundations/accessibility.md</code> § Open): <code>text*Strong</code> × 4, <code>iconSuccess</code> → green.600, <code>iconWarning</code> → yellow.600, <code>bgErrorStrong</code>, <code>bgReward</code>, <code>bgInfoSubtle</code>, <code>bgNeutralStrong</code>, <code>overlay.scrim</code>, <code>overlay.result</code>, plus the decision on <code>ButtonLg</code> size — and the motion / timeout / typography.indic groups added in this cycle.</p>
+<hr />
+<h2 id="5-the-lint-as-governance">5. The lint as governance</h2>
+<p><code>site/lint.py</code> is the part of this page that runs itself. It fails a commit for: raw hex · off-scale milliseconds · unregistered icons · a spec missing <em>What changes</em>, <em>Accessibility</em>, <em>Figma reconciliation</em> or the checklist · a spec without a live page · nav ↔ build mismatch · a generated page older than its source · <strong>a status line that claims Reconciled or Stable without its evidence</strong> (Figma id, package version). It warns on banned copy. <code>build_all.sh</code> runs it; CI should run it on every PR (<code>python3 site/lint.py</code>, exit 1 on error).</p>
+<hr />
+<h2 id="6-roles">6. Roles</h2>
+<ul>
+<li><strong>Design lead</strong> — owns principles, tokens' <em>meaning</em>, statuses, reviews Tier 3 and core changes, reads new screen files.</li>
+<li><strong>Engineer owning the package</strong> — owns <code>tokens.json</code> values and the package version; confirms Stable.</li>
+<li><strong>Any contributor</strong> — may propose: a spec, a token in <em>Token proposals</em>, an icon row, a brief. Proposals are cheap; promotion is reviewed.</li>
+<li><strong>Experts</strong> (the users) — the last reviewers: rows 15–16 exist so nothing becomes Stable without them.</li>
+</ul>
+<hr />
+<h2 id="checklist-is-the-system-governed">Checklist — is the system governed?</h2>
+<ul>
+<li class="chk">Every component spec has a status line the lint accepts.</li>
+<li class="chk"><code>CHANGELOG.md</code> has an <em>Unreleased</em> section that is not empty when the last commit changed behaviour.</li>
+<li class="chk">Every decision someone asked "why" about in the last month is in <code>DECISIONS.md</code>.</li>
+<li class="chk">The reconciliation order's first ten are Reconciled before any Tier 3 brief is approved.</li>
+<li class="chk">CI runs the lint.</li>
+</ul>
+  </main>
+</div>
+<script>
+(function(){
+const links=[...document.querySelectorAll('#nav a')];
+const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-10% 0px -80% 0px'});
+  targets.forEach(t=>io.observe(t));
+}
+})();
+</script>

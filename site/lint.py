@@ -12,6 +12,7 @@ Checks
   E5  component spec without a live page template, or template without a spec
   E6  page in site/nav.py not produced by build_all.sh (or vice versa)
   E7  generated site/*.html older than its source (run build_all.sh)
+  E8  status line claims Reconciled / Stable without its evidence (Figma id / package version), or is missing
   W1  banned words in UI copy quotes (OK, Submit, Continue as a bare label; Oops; Error 4xx)
   W2  spec still says "pending motion foundation" / "sound register" placeholders
 """
@@ -98,6 +99,14 @@ def scan(f, kind):
         for s in ("## Figma reconciliation", "## Acceptance checklist"):
             if s.lower() not in low: err(f, 0, "E4", f"missing section '{s}'")
         if not re.search(r"^\| \d+", text, re.M): err(f, 0, "E4", "acceptance checklist has no rows")
+        # E8 status line (GOVERNANCE.md §1)
+        st = re.search(r"^Status: \*\*(Proposed|Reconciled|Stable|Deprecated)\*\*(.*)$", text, re.M)
+        if not st: err(f, 0, "E8", "missing or malformed status line (Status: **Proposed** · …)")
+        else:
+            status, rest = st.group(1), st.group(2)
+            if status in ("Reconciled", "Stable") and not re.search(r"Figma `\d+:\d+`", rest): err(f, 0, "E8", f"{status} without a Figma component id in the status line")
+            if status == "Stable" and not re.search(r"`Snabbit\w+` \d+\.\d+\.\d+", rest): err(f, 0, "E8", "Stable without a package version in the status line")
+            if status == "Stable" and not re.search(r"reviewed \d{4}-\d{2}-\d{2}", rest): err(f, 0, "E8", "Stable without a 'reviewed YYYY-MM-DD' date")
 
 for f in sorted((ROOT / "components").glob("*.md")):
     if f.name in SKIP_SPECS: continue

@@ -20,6 +20,8 @@ python3 site/build_doc.py patterns/first-run.md site/pattern-first-run.html "Sna
 python3 site/build_doc.py patterns/earnings.md site/pattern-earnings.html "Snabbit Expert Pattern Earnings" "Pattern · Earnings"
 python3 site/build_doc.py patterns/after-sos.md site/pattern-after-sos.html "Snabbit Expert Pattern After SOS" "Pattern · After SOS"
 python3 site/build_doc.py patterns/offline.md site/pattern-offline.html "Snabbit Expert Pattern Offline" "Pattern · Offline"
+python3 site/build_doc.py GOVERNANCE.md site/governance.html "Snabbit Expert Governance" "Governance"
+python3 site/build_doc.py CHANGELOG.md site/changelog.html "Snabbit Expert Changelog" "Changelog"
 python3 site/build_doc.py ROADMAP.md               site/roadmap.html    "Snabbit Expert Roadmap"    "Roadmap"
 python3 site/build_audit.py
 python3 site/lint.py --warn   # spec lint: reports; `python3 site/lint.py` alone fails the build on errors

@@ -1,0 +1,166 @@
+<meta charset="utf-8">
+<title>Snabbit Expert Changelog</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --bg-2:#F9FAFB; --bg-3:#F3F4F6;
+  --text:#111827; --text-body:#374151; --text-2:#6B7280; --text-3:#9CA3AF;
+  --border:#E5E7EB; --border-subtle:#F3F4F6;
+  --brand:#F70F79; --brand-wash:#FEF1F7; --brand-ink:#97094A;
+  --ok:#059669; --ok-wash:#ECFDF5; --focus:#3B82F6;
+  --sans:"Outfit",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+    --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+    --border:#374151; --border-subtle:#1F2937;
+    --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+    --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+  --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+  --border:#374151; --border-subtle:#1F2937;
+  --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+  --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--text-body);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+code{font-family:var(--mono);font-size:.85em;background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--text)}
+pre{background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:14px 16px;overflow-x:auto;margin:12px 0 20px} pre code{background:none;border:0;padding:0;font-size:12.5px;line-height:1.55;white-space:pre}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+.shell{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}
+.rail{position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--border);padding:24px 16px 32px;background:var(--bg);display:flex;flex-direction:column;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;padding:0 8px}
+.brand-mark{width:28px;height:28px;border-radius:8px;background:var(--brand);display:grid;place-items:center;flex:none}
+.brand-mark span{width:12px;height:12px;border-radius:3px;background:#fff;transform:rotate(45deg)}
+.brand b{font-weight:600;color:var(--text);font-size:15px;line-height:1.2;display:block}
+.brand small{color:var(--text-2);font-size:12px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:block;padding:6px 8px;border-radius:6px;text-decoration:none;color:var(--text);font-size:13.5px;font-weight:500}
+.nav a.sub{font-weight:400;color:var(--text-body);padding-left:14px;font-size:13px}
+.nav a.sub b{font-family:var(--mono);font-weight:500;color:var(--text-3);font-size:11.5px;margin-right:2px}
+.nav a:hover{background:var(--bg-2)}
+.nav a.on{background:var(--brand-wash);color:var(--brand-ink)}
+.rail-foot{margin-top:auto;padding:0 8px;font-size:12px;color:var(--text-3);line-height:1.5}
+.main{padding:40px 56px 96px;max-width:860px;width:100%}
+.eyebrow{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);font-weight:600}
+h1{font-size:40px;line-height:1.1;font-weight:600;color:var(--text);margin:8px 0 12px;letter-spacing:-.015em;text-wrap:balance}
+.lede{font-size:18px;color:var(--text-2);max-width:60ch;margin:0 0 8px}
+.lede strong{color:var(--text);font-weight:500}
+h2{font-size:26px;line-height:1.2;font-weight:600;color:var(--text);margin:72px 0 16px;letter-spacing:-.01em;text-wrap:balance;padding-top:24px;border-top:1px solid var(--border)}
+h3{font-size:20px;font-weight:600;color:var(--text);margin:48px 0 8px;letter-spacing:-.005em}
+h3::before{content:"";display:block;width:32px;height:3px;background:var(--brand);border-radius:2px;margin-bottom:14px}
+p{margin:0 0 14px;max-width:66ch}
+h3 + p{font-size:17px;color:var(--text);font-weight:500}
+p.why{color:var(--text-2);font-size:15px;padding-left:14px;border-left:2px solid var(--border)}
+p.why::before{content:"Why · ";color:var(--text-3);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+p.lbl{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2);font-weight:600;margin:22px 0 8px}
+strong{color:var(--text);font-weight:600}
+em{font-style:italic}
+ul,ol{margin:0 0 14px;padding-left:0;list-style:none;max-width:68ch}
+ul li{position:relative;padding-left:20px;margin:6px 0;font-size:15.5px}
+ul li::before{content:"";position:absolute;left:0;top:11px;width:9px;height:2px;background:var(--brand)}
+ul li.chk{padding-left:30px}
+ul li.chk::before{width:16px;height:16px;top:4px;background:var(--bg);border:1.5px solid var(--text-3);border-radius:4px}
+ol{counter-reset:s}
+ol li{counter-increment:s;display:grid;grid-template-columns:32px 1fr;gap:12px;margin:10px 0;font-size:15.5px}
+ol li::before{content:counter(s);width:28px;height:28px;border-radius:50%;background:var(--brand-wash);color:var(--brand-ink);font-weight:600;font-size:13px;display:grid;place-items:center;margin-top:1px}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px;margin:8px 0 20px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);font-weight:500;padding:10px 14px;background:var(--bg-2);border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:10px 14px;border-bottom:1px solid var(--border-subtle);vertical-align:top;color:var(--text-body)}
+tr:last-child td{border-bottom:0}
+td:first-child{color:var(--text);font-weight:500;white-space:nowrap}
+hr{display:none}
+
+.sitenav{display:flex;flex-direction:column;gap:2px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.sitenav .grp{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);padding:10px 8px 4px;font-weight:500}
+.sitenav a{display:block;padding:5px 8px;border-radius:6px;text-decoration:none;color:var(--text-body);font-size:13.5px;border:0}
+.sitenav a:hover{background:var(--bg-2);color:var(--text)} .sitenav a.on{color:var(--brand-ink);background:var(--brand-wash);font-weight:500}
+@media (max-width:900px){.sitenav{flex-direction:row;flex-wrap:wrap;gap:4px;border-bottom:0;padding-bottom:0}.sitenav .grp{display:none}}
+
+@media (max-width:900px){
+  .shell{grid-template-columns:1fr}
+  .rail{position:static;height:auto;border-right:0;border-bottom:1px solid var(--border);padding:16px}
+  .nav{flex-direction:row;flex-wrap:wrap;gap:4px} .nav a.sub{padding-left:8px} .rail-foot{display:none}
+  .main{padding:32px 20px 80px} h1{font-size:32px} h2{margin-top:56px}
+}
+</style>
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Changelog</small></div></div>
+    <nav class="sitenav" aria-label="Site"><div class="grp">Foundations</div><a href="index.html">Tokens</a><a href="principles.html">Principles</a><a href="extending.html">Extending</a><a href="icons.html">Icons</a><a href="assets.html">Assets</a><a href="motion.html">Motion</a><a href="type.html">Type · four scripts</a><a href="accessibility.html">Accessibility</a><div class="grp">Components</div><a href="components/button.html">Button</a><a href="components/icon-button.html">IconButton</a><a href="components/tag.html">Tag</a><a href="components/text-field.html">TextField</a><a href="components/selection-controls.html">Checkbox · Radio · Switch</a><a href="components/amount.html">Amount</a><a href="components/timer.html">Timer</a><a href="components/feedback.html">Banner · Toast · Snackbar</a><a href="components/chip.html">Chip</a><a href="components/avatar.html">Avatar</a><a href="components/badge.html">Badge</a><a href="components/card.html">Card</a><a href="components/list-item.html">ListItem</a><a href="components/selection-card.html">SelectionCard</a><a href="components/bottom-sheet.html">BottomSheet</a><a href="components/header-nav.html">HeaderNav</a><a href="components/bottom-tab-bar.html">BottomTabBar</a><a href="components/progress-bar.html">ProgressBar</a><a href="components/stepper.html">Stepper</a><a href="components/coachmark.html">Coachmark</a><a href="components/sos-control.html">SOSControl</a><a href="components/accordion.html">Accordion</a><a href="components/date-picker.html">DatePicker</a><a href="components/empty-state.html">EmptyState</a><a href="components/skeleton.html">Skeleton · Spinner</a><a href="components/voice-prompt.html">VoicePrompt</a><a href="components/tabs.html">Tabs · Segmented</a><a href="components/nudge.html">Nudge</a><a href="components/numeric-keypad.html">NumericKeypad</a><a href="components/page-indicator.html">PageIndicator</a><a href="components/media-capture.html">MediaCapture</a><a href="components/map-marker.html">MapMarker · MapSnippet</a><a href="components/stat-rating-divider.html">Stat · Rating · Divider</a><a href="components/how-to-clip.html">HowToClip</a><a href="components/shield-card.html">ShieldCard</a><a href="components/job-alert.html">JobAlert</a><div class="grp">Patterns</div><a href="pattern-new-job-alert.html">New job arrives</a><a href="pattern-check-in-out.html">Check in · work · check out</a><a href="pattern-payout.html">Payout</a><a href="pattern-onboarding.html">Onboarding · go-live</a><a href="pattern-error-recovery.html">When something goes wrong</a><a href="pattern-permissions.html">Asking for permission</a><a href="pattern-first-run.html">First run</a><a href="pattern-earnings.html">Earnings</a><a href="pattern-after-sos.html">After SOS</a><a href="pattern-offline.html">Offline</a><div class="grp">Research</div><a href="benchmark.html">Benchmark</a><a href="audit.html">Figma audit</a><a href="roadmap.html">Roadmap</a><a href="governance.html">Governance</a><a class="on" href="changelog.html">Changelog</a></nav><nav class="nav" id="nav"><a href="#unreleased">Unreleased</a><a class="sub" href="#tokens">Tokens</a><a class="sub" href="#components">Components</a><a class="sub" href="#foundations">Foundations</a><a class="sub" href="#patterns">Patterns</a><a class="sub" href="#decisions">Decisions</a><a class="sub" href="#site">Site</a><a href="#0-19-0-2026-09-07">0.19.0 — 2026-09-07</a></nav>
+    <div class="rail-foot">Snabbit Expert Design System · generated from CHANGELOG.md</div>
+  </aside>
+  <main class="main">
+    <header>
+      <div class="eyebrow">Snabbit Expert · Mobile</div>
+      <h1>Changelog</h1>
+      <p class="lede">One section per release, newest first; <em>Unreleased</em> on top. Sections inside: Tokens · Components · Foundations · Patterns · Decisions · Site. One line each, present tense, naming the file. How and when to write here: <code>GOVERNANCE.md</code> § 3–4.</p>
+    </header>
+    <h1>Changelog</h1>
+<p>One section per release, newest first; <em>Unreleased</em> on top. Sections inside: Tokens · Components · Foundations · Patterns · Decisions · Site. One line each, present tense, naming the file. How and when to write here: <code>GOVERNANCE.md</code> § 3–4.</p>
+<h2 id="unreleased">Unreleased</h2>
+<h3 id="tokens">Tokens</h3>
+<ul>
+<li>Add <code>motion</code> (10 durations, 4 easings, reduced-motion rule) and <code>timeout</code> (14 waits) groups to <code>tokens.json</code>; summarised in <code>DESIGN_TOKENS.md</code> § Motion and timeouts.</li>
+<li>Extend <code>typography.indic</code>: fallback faces per platform, weight map, expansion factors (hi 1.2 · mr 1.25 · kn 1.35), <code>maxFontScale</code> 1.3, the three truncation sites.</li>
+<li>Proposed for 0.20.0 (not yet in <code>tokens.json</code>): <code>textSuccessStrong</code> / <code>textWarningStrong</code> / <code>textErrorStrong</code> / <code>textInfoStrong</code>; <code>iconSuccess</code> → green.600; <code>iconWarning</code> → yellow.600; <code>bgErrorStrong</code>, <code>bgReward</code>, <code>bgInfoSubtle</code>, <code>bgNeutralStrong</code>; <code>overlay.scrim</code>, <code>overlay.result</code>; <code>ButtonLg</code> size decision. See <code>foundations/accessibility.md</code> § Open.</li>
+</ul>
+<h3 id="components">Components</h3>
+<ul>
+<li>All 46 core components specified with live pages (<code>components/*.md</code>, <code>site/components/*.html</code>): Button, IconButton, Tag, TextField, Checkbox · Radio · Switch, Amount, Timer, Banner · Toast · Snackbar, Chip, Avatar, Badge, Card, ListItem, SelectionCard, BottomSheet, HeaderNav, BottomTabBar, ProgressBar, Stepper, Coachmark, SOSControl, Accordion, DatePicker, EmptyState, Skeleton, VoicePrompt, Tabs, Nudge, NumericKeypad, PageIndicator, MediaCapture, MapMarker · MapSnippet, Stat · Rating · Divider, HowToClip. Status: Proposed.</li>
+<li>Compositions: ShieldCard (Kavach) — ShieldRow, ShieldConsent, SafetyCheck; JobAlert — the reference case as one screen.</li>
+<li>FAB folded into IconButton (<code>floating</code> = L circle at <code>elevation.floating</code>; shutter and recentre only).</li>
+<li>SelectionCard gains <code>hero</code> (image on top, radio or checkbox, ≤ 3 per group; 4:3; selected row takes the brand wash).</li>
+<li>HeaderNav: shipped bell restored at left; SOS rightmost as a deliberate change; Help (call) and Saathi (chat) are two actions; <code>state</code> variant for full-screen job states.</li>
+<li>BottomTabBar: shipped four tabs kept (Home · Earnings · Refer · Profile).</li>
+<li>Stepper gains <code>unordered</code>; NumericKeypad <code>otp</code> supports 3–6 boxes; Timer <code>countdown</code> for time left, <code>elapsed</code> for overtime; Amount sign icons unified with Stat (<code>arrow-up</code> / <code>arrow-down</code>).</li>
+</ul>
+<h3 id="foundations">Foundations</h3>
+<ul>
+<li><code>foundations/icons.md</code> — 72 Phosphor meanings registered.</li>
+<li><code>foundations/assets.md</code> — two layers (illustration / metallic rewards); <code>asset/picto/shield</code> proposed as the one domain-coloured pictogram.</li>
+<li><code>foundations/motion.md</code> — three rules, durations, easing, timeouts, where motion is not, reduced motion per kind.</li>
+<li><code>foundations/type.md</code> — four scripts: fallback faces, ×1.15 table, English budgets / universal box, consolidated length table, wrapping, font scale 1.3, test strings.</li>
+<li><code>foundations/accessibility.md</code> — every token pair measured; failing pairs named with fixes; targets, focus, screen reader, greyscale, sunlight, the seven-step test pass.</li>
+<li>Sound &amp; haptics register parked (<code>ROADMAP.md</code>).</li>
+</ul>
+<h3 id="patterns">Patterns</h3>
+<ul>
+<li>Ten patterns in <code>patterns/</code>: new job arrives · check in, work, check out · payout · onboarding and go-live · when something goes wrong · asking for permission · the first time she sees it · earnings · after SOS · offline.</li>
+<li><code>PRINCIPLES.md</code> reference case corrected: Timer above the Button (pill ring), <em>Decline</em> as a ghost hold.</li>
+</ul>
+<h3 id="decisions">Decisions</h3>
+<ul>
+<li>See <code>DECISIONS.md</code>: assets two layers; light mode only; navigation (shipped tab bar, HeaderAction); header and Stepper corrections after the screen read; no FAB component.</li>
+<li>Open, awaiting the design lead: primary Button label contrast (ButtonLg 18/24 recommended); token release 0.20; Telugu as a fifth script; Shield auto-start and the blue shield; HowToClip <code>guide</code>.</li>
+</ul>
+<h3 id="site">Site</h3>
+<ul>
+<li>Documentation site under <code>site/</code> built by <code>build_all.sh</code>: tokens page (with Motion &amp; timeouts and the four-script sample), foundations, 36 component pages, 10 pattern pages, roadmap, benchmark, audit.</li>
+<li><code>site/lint.py</code> — spec lint run by the build; first run found and fixed 55 errors.</li>
+<li><code>GOVERNANCE.md</code> — status lifecycle, review step, recording changes, releases, roles.</li>
+<li><code>references/SCREENS.md</code> — the three screen files and the <em>When the screens change</em> procedure; <em>Self-Serve ER/AR</em> registered as the onboarding source.</li>
+</ul>
+<h2 id="0-19-0-2026-09-07">0.19.0 — 2026-09-07</h2>
+<p>The starting point: <code>tokens/tokens.json</code> and <code>DESIGN_TOKENS.md</code> (colour, type, spacing, radius, border, elevation, icon, button, grid), <code>principles/PRINCIPLES.md</code> and <code>EXTENDING.md</code>, the Figma audit (204 frames) and benchmark, and the Button spec.</p>
+  </main>
+</div>
+<script>
+(function(){
+const links=[...document.querySelectorAll('#nav a')];
+const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-10% 0px -80% 0px'});
+  targets.forEach(t=>io.observe(t));
+}
+})();
+</script>

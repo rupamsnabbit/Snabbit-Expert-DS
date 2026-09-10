@@ -39,6 +39,8 @@ patterns/       one flow per file (new-job-alert.md, …); each has a page site/
 references/     SCREENS.md (the two screen files: which pages, shipped vs proposed, open conflicts) · reference screenshots + their reads
 foundations/    icons.md (Phosphor meaning register) · assets.md (illustration style lock + register) · motion.md (durations, easing, timeouts, reduced motion) · type.md (four scripts: fallback faces, ×1.15, budgets, wrapping, font scale) · accessibility.md (measured contrast, targets, focus, screen reader, test pass)
 DECISIONS.md    dated design decisions and their consequences
+GOVERNANCE.md   status lifecycle (Proposed → Reconciled → Stable), review step, how changes are recorded, releases
+CHANGELOG.md    one section per release, Unreleased on top — a line for anything that changes what a designer or engineer must do
 ROADMAP.md      what is done and what is left (components, foundations, patterns, governance) — update in the same commit as the work
 audit/          FIGMA_AUDIT.md — tier classification of every Figma frame · BENCHMARK.md — gaps vs M3/Base/Asphalt · frames.json
 site/           generated documentation site
@@ -58,7 +60,7 @@ python3 site/lint.py     # spec lint alone; exit 1 on errors (raw hex, off-scale
 
 `build_all.sh` runs `site/build.py` (tokens.json → index.html + site/components/*.html), `site/build_doc.py` for each markdown doc, and `site/build_audit.py`. Add new docs/components to `build_all.sh` **and** to the site nav in `site/nav.py`.
 
-Regenerate the site in the same change as the source you edited. Never hand-edit a generated `site/*.html`. **Run `python3 site/lint.py` before committing** and fix every ERROR: E1 raw hex · E2 millisecond not on the motion/timeout scale · E3 Phosphor icon not registered in `foundations/icons.md` · E4 spec missing *What changes* / *Accessibility* / *Figma reconciliation* / checklist · E5 spec without a template (or the reverse) · E6 nav ↔ build mismatch · E7 generated page older than its source. Warnings (banned copy such as *OK / Submit / Continue / Oops*) are to be fixed too unless the line is quoting what *not* to write.
+Status changes, reviews and releases follow `GOVERNANCE.md`; behaviour changes get a line in `CHANGELOG.md` § Unreleased. Regenerate the site in the same change as the source you edited. Never hand-edit a generated `site/*.html`. **Run `python3 site/lint.py` before committing** and fix every ERROR: E1 raw hex · E2 millisecond not on the motion/timeout scale · E3 Phosphor icon not registered in `foundations/icons.md` · E4 spec missing *What changes* / *Accessibility* / *Figma reconciliation* / checklist · E5 spec without a template (or the reverse) · E6 nav ↔ build mismatch · E7 generated page older than its source. Warnings (banned copy such as *OK / Submit / Continue / Oops*) are to be fixed too unless the line is quoting what *not* to write.
 
 ## Publishing
 
