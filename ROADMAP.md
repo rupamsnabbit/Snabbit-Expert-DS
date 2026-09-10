@@ -4,7 +4,7 @@ What is done and what is left, against the 46-component core set in `audit/BENCH
 
 ---
 
-## Done — 48 pages · 46 of 46 core components + 2 compositions + 1 pattern
+## Done — 49 pages · 46 of 46 core components + 2 compositions + 1 pattern
 
 | # | Page | Covers | Status |
 | --- | --- | --- | --- |
@@ -45,6 +45,7 @@ What is done and what is left, against the 46-component core set in `audit/BENCH
 | 35 | ShieldCard (Kavach) | Composition: ShieldRow (6 states), ShieldConsent, SafetyCheck; SafetyStrip `shield` kind | Proposed |
 | 36 | JobAlert | Composition: the reference case as one screen — facts strip, earnings Card, Nudge loss, Timer L, Decline hold, Accept | Proposed |
 | — | FAB | Folded into IconButton: floating = `L` `circle` at `elevation.floating`; shutter and recentre only; no FAB component (`icon-button.md`) | Decided |
+| 46 | Pattern · Offline | `patterns/offline.md` — works / queues / waits table, the one Banner, the queue with tap times, truly-nothing state, slow network, data cost | Proposed |
 | 45 | Pattern · After SOS | `patterns/after-sos.md` — the minute, hour, day and week after; job stopped for safety, paid in full; the Home safety card; false alarms | Proposed |
 | 44 | Pattern · Earnings | `patterns/earnings.md` — Today / Week / Month tab, day view from 14 shipped attendance cases, per-job cards, rate card | Proposed |
 | 43 | Pattern · First run | `patterns/first-run.md` — the 12 first-run teachings, the Home tour, gating, reset, never-list | Proposed |
@@ -81,9 +82,9 @@ Order decided 2026-09-08: the visual foundations first, sound parked.
 
 ---
 
-## To do — patterns (9 of 10 done)
+## To do — patterns (10 of 10 done)
 
-~~New-job alert~~ (done) · ~~Check-in / check-out~~ (done) · ~~Payout~~ (done) · ~~Onboarding & go-live~~ (done) · ~~Error recovery~~ (done) · ~~Permission asking~~ (done) · ~~First run~~ (done) · ~~Earnings breakdown~~ (done) · ~~After SOS~~ (done) · Offline.
+~~New-job alert~~ (done) · ~~Check-in / check-out~~ (done) · ~~Payout~~ (done) · ~~Onboarding & go-live~~ (done) · ~~Error recovery~~ (done) · ~~Permission asking~~ (done) · ~~First run~~ (done) · ~~Earnings breakdown~~ (done) · ~~After SOS~~ (done) · ~~Offline~~ (done). All ten patterns written; each is Proposed until reviewed with experts.
 
 ---
 

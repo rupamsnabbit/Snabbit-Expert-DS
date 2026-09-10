@@ -1,0 +1,247 @@
+<meta charset="utf-8">
+<title>Snabbit Expert Pattern Offline</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --bg-2:#F9FAFB; --bg-3:#F3F4F6;
+  --text:#111827; --text-body:#374151; --text-2:#6B7280; --text-3:#9CA3AF;
+  --border:#E5E7EB; --border-subtle:#F3F4F6;
+  --brand:#F70F79; --brand-wash:#FEF1F7; --brand-ink:#97094A;
+  --ok:#059669; --ok-wash:#ECFDF5; --focus:#3B82F6;
+  --sans:"Outfit",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+    --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+    --border:#374151; --border-subtle:#1F2937;
+    --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+    --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+  --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+  --border:#374151; --border-subtle:#1F2937;
+  --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+  --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--text-body);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+code{font-family:var(--mono);font-size:.85em;background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--text)}
+pre{background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:14px 16px;overflow-x:auto;margin:12px 0 20px} pre code{background:none;border:0;padding:0;font-size:12.5px;line-height:1.55;white-space:pre}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+.shell{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}
+.rail{position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--border);padding:24px 16px 32px;background:var(--bg);display:flex;flex-direction:column;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;padding:0 8px}
+.brand-mark{width:28px;height:28px;border-radius:8px;background:var(--brand);display:grid;place-items:center;flex:none}
+.brand-mark span{width:12px;height:12px;border-radius:3px;background:#fff;transform:rotate(45deg)}
+.brand b{font-weight:600;color:var(--text);font-size:15px;line-height:1.2;display:block}
+.brand small{color:var(--text-2);font-size:12px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:block;padding:6px 8px;border-radius:6px;text-decoration:none;color:var(--text);font-size:13.5px;font-weight:500}
+.nav a.sub{font-weight:400;color:var(--text-body);padding-left:14px;font-size:13px}
+.nav a.sub b{font-family:var(--mono);font-weight:500;color:var(--text-3);font-size:11.5px;margin-right:2px}
+.nav a:hover{background:var(--bg-2)}
+.nav a.on{background:var(--brand-wash);color:var(--brand-ink)}
+.rail-foot{margin-top:auto;padding:0 8px;font-size:12px;color:var(--text-3);line-height:1.5}
+.main{padding:40px 56px 96px;max-width:860px;width:100%}
+.eyebrow{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);font-weight:600}
+h1{font-size:40px;line-height:1.1;font-weight:600;color:var(--text);margin:8px 0 12px;letter-spacing:-.015em;text-wrap:balance}
+.lede{font-size:18px;color:var(--text-2);max-width:60ch;margin:0 0 8px}
+.lede strong{color:var(--text);font-weight:500}
+h2{font-size:26px;line-height:1.2;font-weight:600;color:var(--text);margin:72px 0 16px;letter-spacing:-.01em;text-wrap:balance;padding-top:24px;border-top:1px solid var(--border)}
+h3{font-size:20px;font-weight:600;color:var(--text);margin:48px 0 8px;letter-spacing:-.005em}
+h3::before{content:"";display:block;width:32px;height:3px;background:var(--brand);border-radius:2px;margin-bottom:14px}
+p{margin:0 0 14px;max-width:66ch}
+h3 + p{font-size:17px;color:var(--text);font-weight:500}
+p.why{color:var(--text-2);font-size:15px;padding-left:14px;border-left:2px solid var(--border)}
+p.why::before{content:"Why · ";color:var(--text-3);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+p.lbl{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2);font-weight:600;margin:22px 0 8px}
+strong{color:var(--text);font-weight:600}
+em{font-style:italic}
+ul,ol{margin:0 0 14px;padding-left:0;list-style:none;max-width:68ch}
+ul li{position:relative;padding-left:20px;margin:6px 0;font-size:15.5px}
+ul li::before{content:"";position:absolute;left:0;top:11px;width:9px;height:2px;background:var(--brand)}
+ul li.chk{padding-left:30px}
+ul li.chk::before{width:16px;height:16px;top:4px;background:var(--bg);border:1.5px solid var(--text-3);border-radius:4px}
+ol{counter-reset:s}
+ol li{counter-increment:s;display:grid;grid-template-columns:32px 1fr;gap:12px;margin:10px 0;font-size:15.5px}
+ol li::before{content:counter(s);width:28px;height:28px;border-radius:50%;background:var(--brand-wash);color:var(--brand-ink);font-weight:600;font-size:13px;display:grid;place-items:center;margin-top:1px}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px;margin:8px 0 20px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);font-weight:500;padding:10px 14px;background:var(--bg-2);border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:10px 14px;border-bottom:1px solid var(--border-subtle);vertical-align:top;color:var(--text-body)}
+tr:last-child td{border-bottom:0}
+td:first-child{color:var(--text);font-weight:500;white-space:nowrap}
+hr{display:none}
+
+.sitenav{display:flex;flex-direction:column;gap:2px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.sitenav .grp{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);padding:10px 8px 4px;font-weight:500}
+.sitenav a{display:block;padding:5px 8px;border-radius:6px;text-decoration:none;color:var(--text-body);font-size:13.5px;border:0}
+.sitenav a:hover{background:var(--bg-2);color:var(--text)} .sitenav a.on{color:var(--brand-ink);background:var(--brand-wash);font-weight:500}
+@media (max-width:900px){.sitenav{flex-direction:row;flex-wrap:wrap;gap:4px;border-bottom:0;padding-bottom:0}.sitenav .grp{display:none}}
+
+@media (max-width:900px){
+  .shell{grid-template-columns:1fr}
+  .rail{position:static;height:auto;border-right:0;border-bottom:1px solid var(--border);padding:16px}
+  .nav{flex-direction:row;flex-wrap:wrap;gap:4px} .nav a.sub{padding-left:8px} .rail-foot{display:none}
+  .main{padding:32px 20px 80px} h1{font-size:32px} h2{margin-top:56px}
+}
+</style>
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Pattern · Offline</small></div></div>
+    <nav class="sitenav" aria-label="Site"><div class="grp">Foundations</div><a href="index.html">Tokens</a><a href="principles.html">Principles</a><a href="extending.html">Extending</a><a href="icons.html">Icons</a><a href="assets.html">Assets</a><a href="motion.html">Motion</a><a href="type.html">Type · four scripts</a><a href="accessibility.html">Accessibility</a><div class="grp">Components</div><a href="components/button.html">Button</a><a href="components/icon-button.html">IconButton</a><a href="components/tag.html">Tag</a><a href="components/text-field.html">TextField</a><a href="components/selection-controls.html">Checkbox · Radio · Switch</a><a href="components/amount.html">Amount</a><a href="components/timer.html">Timer</a><a href="components/feedback.html">Banner · Toast · Snackbar</a><a href="components/chip.html">Chip</a><a href="components/avatar.html">Avatar</a><a href="components/badge.html">Badge</a><a href="components/card.html">Card</a><a href="components/list-item.html">ListItem</a><a href="components/selection-card.html">SelectionCard</a><a href="components/bottom-sheet.html">BottomSheet</a><a href="components/header-nav.html">HeaderNav</a><a href="components/bottom-tab-bar.html">BottomTabBar</a><a href="components/progress-bar.html">ProgressBar</a><a href="components/stepper.html">Stepper</a><a href="components/coachmark.html">Coachmark</a><a href="components/sos-control.html">SOSControl</a><a href="components/accordion.html">Accordion</a><a href="components/date-picker.html">DatePicker</a><a href="components/empty-state.html">EmptyState</a><a href="components/skeleton.html">Skeleton · Spinner</a><a href="components/voice-prompt.html">VoicePrompt</a><a href="components/tabs.html">Tabs · Segmented</a><a href="components/nudge.html">Nudge</a><a href="components/numeric-keypad.html">NumericKeypad</a><a href="components/page-indicator.html">PageIndicator</a><a href="components/media-capture.html">MediaCapture</a><a href="components/map-marker.html">MapMarker · MapSnippet</a><a href="components/stat-rating-divider.html">Stat · Rating · Divider</a><a href="components/how-to-clip.html">HowToClip</a><a href="components/shield-card.html">ShieldCard</a><a href="components/job-alert.html">JobAlert</a><div class="grp">Patterns</div><a href="pattern-new-job-alert.html">New job arrives</a><a href="pattern-check-in-out.html">Check in · work · check out</a><a href="pattern-payout.html">Payout</a><a href="pattern-onboarding.html">Onboarding · go-live</a><a href="pattern-error-recovery.html">When something goes wrong</a><a href="pattern-permissions.html">Asking for permission</a><a href="pattern-first-run.html">First run</a><a href="pattern-earnings.html">Earnings</a><a href="pattern-after-sos.html">After SOS</a><a class="on" href="pattern-offline.html">Offline</a><div class="grp">Research</div><a href="benchmark.html">Benchmark</a><a href="audit.html">Figma audit</a><a href="roadmap.html">Roadmap</a></nav><nav class="nav" id="nav"><a href="#three-rules">Three rules</a><a href="#the-banner">The Banner</a><a href="#what-works-what-queues-what-waits">What works, what queues, what waits</a><a href="#the-queue">The queue</a><a href="#truly-nothing">Truly nothing</a><a href="#patchy-not-off">Patchy, not off</a><a href="#cost">Cost</a><a href="#content">Content</a><a href="#checklist-for-the-pattern">Checklist for the pattern</a></nav>
+    <div class="rail-foot">Snabbit Expert Design System · generated from patterns/offline.md</div>
+  </aside>
+  <main class="main">
+    <header>
+      <div class="eyebrow">Snabbit Expert · Mobile</div>
+      <h1>Pattern — offline and patchy network</h1>
+      <p class="lede">The expert's phone loses data in lifts, stairwells, basements and buses several times a day (persona; P8). If every loss were an error she would see red a dozen times before lunch, and she would learn not to trust the app at the exact moments — check-in at the door, check-out in the kitchen — when trust matters most. This pattern makes offline a <strong>condition the app works within</strong>, not an error it reports: what keeps working, what queues, what honestly cannot, and how the app says so once. The components are the Banner, Skeleton, EmptyState <code>offline</code>, Button <code>disabled</code> with a reason, and the SOS offline path already drawn in <code>sos-control.md</code>. No shipped screen shows an offline state; everything here is proposed.</p>
+    </header>
+    <h2 id="three-rules">Three rules</h2>
+<ol>
+<li><strong>Everything she has already seen keeps working.</strong> Screens render from cache; her jobs, earnings, rate card, clips marked <em>saved</em>, and the Home card are there without a network. A blank screen for lack of signal is a bug.</li>
+<li><strong>Everything she does is queued unless it needs an answer from someone else right now.</strong> Check-in, check-out, decline, photos, ratings, messages, attendance — recorded on the phone with the tap time, sent when the network returns, told to her once. Only accepting a job, verifying a code and paying need the network at that moment, and they say so.</li>
+<li><strong>Say it once, at the top, and stop.</strong> One Banner <code>warning</code> at the top of the screen while offline; no Toast per failure, no red screen unless there is truly nothing to show. When the network returns, the Banner becomes <em>Back online · Sending 3 things…</em> for as long as the queue takes, then leaves.</li>
+</ol>
+<hr />
+<h2 id="the-banner">The Banner</h2>
+<pre><code>│ ⚠ You're offline · Your work is saved and will send when you're back   │  Banner warning · under the header, above content · not dismissible
+</code></pre>
+<ul>
+<li>Appears after <strong>5 s</strong> without a network (not on a one-second blip), on every screen except full-screen job states, where it sits under the state header. It never covers the SafetyStrip; the two stack.</li>
+<li>Variants of the one Banner as the state changes: <em>You're offline · Your work is saved…</em> (<code>warning</code>) → <em>Back online · Sending 3 things…</em> (<code>info</code>, with a ProgressBar <code>S</code> when &gt; 3 items) → gone. If something in the queue fails on return: <em>Couldn't send 1 thing — Retry</em> (<code>error</code>, <code>pattern: error recovery</code>).</li>
+<li>Spoken once when it appears: <em>"You're offline. Your work is saved."</em> Not again when it changes, unless something failed.</li>
+<li>Never a full-screen "No internet" page while anything is cached.</li>
+</ul>
+<hr />
+<h2 id="what-works-what-queues-what-waits">What works, what queues, what waits</h2>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>She does</th>
+<th>Offline behaviour</th>
+<th>Told how</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Opens Home, Earnings, Profile, a job</td>
+<td>Renders from the last sync; a <code>Caption</code> <em>Updated 9:40 am</em> under the hero where numbers matter (earnings, coins)</td>
+<td>Banner only</td>
+</tr>
+<tr>
+<td>Marks <strong>Present</strong></td>
+<td>Queued with the tap time; the card flips to <em>Present · sending when online</em></td>
+<td>Banner; the card's Tag <code>neutral</code> <em>Saving…</em> → <code>success</code> on send</td>
+</tr>
+<tr>
+<td><strong>Checks in</strong></td>
+<td>Queued with tap time and last known location; the job screen moves to <em>Job in progress</em>; the Timer runs from the device clock</td>
+<td>Banner <code>warning</code> on the job screen: <em>Check-in will send when you're back online</em></td>
+</tr>
+<tr>
+<td><strong>Completes the job</strong> (OTP)</td>
+<td>The code is validated against a hash sent at accept time, so it works offline; check-out is queued with its time</td>
+<td>Banner; earnings row <em>Pending sync</em> until sent</td>
+</tr>
+<tr>
+<td>Takes a <strong>photo</strong></td>
+<td>Kept on the phone; tile <code>uploading</code> → after 3 s <code>queued</code> (<em>Will upload when online</em>, <code>textSecondary</code>); never <code>error</code> for lack of network</td>
+<td>The tile's own state</td>
+</tr>
+<tr>
+<td><strong>Rates</strong>, <strong>messages</strong>, <strong>quick-replies</strong></td>
+<td>Queued; Chat shows the message with a small <code>clock</code> glyph until sent</td>
+<td>Inline glyph</td>
+</tr>
+<tr>
+<td><strong>Declines</strong> a job alert</td>
+<td>Queued (hold still required); the alert closes</td>
+<td>Toast <em>Declined</em> as usual</td>
+</tr>
+<tr>
+<td><strong>Accepts</strong> a job alert</td>
+<td><strong>Cannot</strong> queue — someone else may take it. Accept <code>disabled</code> with <em>Waiting for network…</em> under it; the Timer keeps running; retry every 3 s; enables the instant the network returns</td>
+<td>On the Button, per <code>job-alert.md</code></td>
+</tr>
+<tr>
+<td>Verifies an <strong>OTP for login</strong>, adds a <strong>bank account</strong>, requests <strong>early payout</strong></td>
+<td>Wait: the Button <code>disabled</code> with <em>Needs internet</em> under it; the typed value is kept for 5 minutes</td>
+<td>On the Button</td>
+</tr>
+<tr>
+<td>Watches a <strong>HowToClip</strong></td>
+<td>Bundled clips play; others show <em>Needs internet</em> on the card</td>
+<td>On the card</td>
+</tr>
+<tr>
+<td>Opens a <strong>map</strong></td>
+<td>Cached tile or the address fallback; <strong>Show directions</strong> still opens the maps app</td>
+<td>Snippet's own fallback</td>
+</tr>
+<tr>
+<td>Presses <strong>SOS</strong></td>
+<td>Works: dialler call, SMS location, retries — <code>sos-control.md</code></td>
+<td>The active screen says <em>Calling by phone · Location by SMS</em></td>
+</tr>
+<tr>
+<td><strong>Shield</strong></td>
+<td>Recording continues on the phone; location is buffered; uploads when back; the row says <em>Recording · saving on phone</em></td>
+<td>ShieldRow status line</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="the-queue">The queue</h2>
+<ul>
+<li>Everything queued is stored with its <strong>tap time</strong>, so a check-in at 9:58 that sends at 10:04 is a 9:58 check-in. The Timer and all earnings use the tap time. She is never late because the network was.</li>
+<li>Sending is silent and in order; the Banner counts down (<em>Sending 3 things…</em>). Each item that lands updates its own place (a Tag, a row, a tile) with <code>motion.standard</code>; no Toast per item.</li>
+<li>Conflicts (the server says the job was cancelled while she was offline): the item is dropped and the change is explained where it lives — a Banner <code>info</code> on the job (<em>This job was cancelled at 9:45 · you're paid for the trip</em>), never a modal, never a loss of her record.</li>
+<li>Items older than <strong>24 h</strong> that still cannot send become a Snackbar <em>1 thing from yesterday didn't send — Retry · Call help</em>. Nothing is silently discarded.</li>
+<li>The queue survives app kills and restarts; it is visible under Profile → <em>Waiting to send</em> (ListItems with the tap time) only when it is not empty.</li>
+</ul>
+<hr />
+<h2 id="truly-nothing">Truly nothing</h2>
+<p>When there is no network <strong>and</strong> nothing cached for the screen (first open on a new phone, a screen she has never visited): EmptyState <code>offline</code> — <em>You're offline</em> · <em>Your jobs will show when you're back online. SOS still works.</em> · <strong>Try again</strong> — with the Banner above it. This is the only full-screen offline state, and it still shows the header, the tab bar and SOS.</p>
+<hr />
+<h2 id="patchy-not-off">Patchy, not off</h2>
+<p>Half the time the network is not gone but slow. The rules are the same ones the loading pattern set: Skeleton after <code>motion.instant</code>, at least <code>timeout.loadingMin</code>, honest failure at <code>timeout.loading</code> (3 s) — and on a slow network the honest failure is <strong>the offline path above</strong>, not an error: the screen shows what it has, queues what she does, and the Banner says <em>Slow network · Your work is saved</em>. Requests retry with back-off; nothing spins past three seconds.</p>
+<hr />
+<h2 id="cost">Cost</h2>
+<p>Data costs money (P8). Nothing downloads by itself on mobile data except the queue, job alerts and Shield uploads (which are the job). Clips, maps beyond the snippet and profile photos wait for Wi-Fi unless she taps them, and then say the size once (<em>Using data · 1.5 MB</em>, <code>how-to-clip.md</code>). There is no "download for offline" setting to find; the app decides what she will need at the door and keeps it.</p>
+<hr />
+<h2 id="content">Content</h2>
+<ul>
+<li><em>You're offline · Your work is saved and will send when you're back</em> · <em>Back online · Sending 3 things…</em> · <em>Slow network · Your work is saved</em> · <em>Check-in will send when you're back online</em> · <em>Waiting for network…</em> · <em>Needs internet</em> · <em>Will upload when online</em> · <em>Updated 9:40 am</em> · <em>Recording · saving on phone</em>.</li>
+<li>Never <em>No internet connection</em>, <em>Network error</em>, <em>Failed to fetch</em>, <em>Retry</em> as the only text, a red screen, a spinner that does not end.</li>
+<li>Spoken once per state change that matters (offline; something failed to send); not for <em>Back online</em>.</li>
+</ul>
+<hr />
+<h2 id="checklist-for-the-pattern">Checklist for the pattern</h2>
+<ul>
+<li class="chk">Every screen renders from cache with the network off; the only full-screen state is EmptyState <code>offline</code> with nothing cached.</li>
+<li class="chk">Check-in, check-out, Present, photos, ratings, messages and declines queue with their tap time; Accept and verifications disable with the reason.</li>
+<li class="chk">One Banner, not dismissible, stacking with the SafetyStrip; no Toast per failure.</li>
+<li class="chk">The queue survives restarts, is visible only when non-empty, and nothing is discarded silently.</li>
+<li class="chk">Tested in a lift, a basement and a bus on the baseline device (checklist row 16).</li>
+</ul>
+  </main>
+</div>
+<script>
+(function(){
+const links=[...document.querySelectorAll('#nav a')];
+const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-10% 0px -80% 0px'});
+  targets.forEach(t=>io.observe(t));
+}
+})();
+</script>
