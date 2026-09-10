@@ -26,6 +26,8 @@ This repository is the **mobile design system** for the Snabbit Expert app (Comp
 
 Do the six-step reference read in `principles/EXTENDING.md` and deliver step 6 (reference and translation side by side, every difference stated as one sentence). Save the screenshot and the read to `references/` with a short `.md`. Do not start drawing or coding before step 4 (tier named).
 
+**Mobbin is the preferred source of inspiration** (`EXTENDING.md` § Where inspiration comes from): it shows shipped flows with their states, which is the standard of evidence this system holds. Search Mobbin by *flow* (onboarding, check-in, earnings, payout, referral, permissions, offline), prefer worker-side and low-literacy-audience apps, read three apps' versions before translating, save the flow and its read under `references/<app>-<flow>/` (internal only — never published, never traced), then translate. Pinterest and Dribbble are for mood only; nothing structural is borrowed from a screen that never shipped.
+
 ## Repository layout
 
 ```
@@ -66,7 +68,7 @@ The design lead draws in **Paper** (the desktop app), not in a prototype. The Pa
 
 - **Tokens by variable, always.** Every colour, size, line height, spacing and radius is `var(--…)` from the file's token set. A raw hex or px in a Paper design is the same violation as in a spec. Palette steps (`--color-pink-300`) only while proposing a new semantic token; illustration accents (`--color-illustration-yellow`) only inside illustration assets.
 - **Components before compositions.** Draw a control as the spec draws it (`components/<name>.md` anatomy, sizes, states) before arranging it. A screen is a Tier 2 composition of core components on the 360 × 800 baseline (`--container-screen`, content `--container-content`, margin `--spacing-5`); anything that is not a core component is Tier 3 and gets a brief in `briefs/` (`principles/EXTENDING.md`).
-- **Pinterest, Mobbin, Dribbble, screenshots:** run the six-step reference read in `EXTENDING.md` first and translate — structure, order and interaction may be borrowed; colours, faces, radii, shadows and copy may not. Off-palette colour is not a style choice here: for a low-literacy user colour is a language (P6). A campaign or celebration surface that needs more than the palette proposes a token, it does not paste a hex.
+- **Mobbin, Pinterest, Dribbble, screenshots:** Mobbin first (shipped flows, states); run the six-step reference read in `EXTENDING.md` first and translate — structure, order and interaction may be borrowed; colours, faces, radii, shadows and copy may not. Off-palette colour is not a style choice here: for a low-literacy user colour is a language (P6). A campaign or celebration surface that needs more than the palette proposes a token, it does not paste a hex.
 - **Type in Paper** is size + line height + weight; the Indic rule (line height × 1.15) is applied by picking the next leading up when a container holds Hindi, Marathi or Kannada. Weights are 400 / 500 / 600 only; no letter-spacing; no caps.
 - **Keep the token set in sync.** When `tokens.json` changes (a release per `GOVERNANCE.md` § 4), re-export to Paper the same day and note it in `CHANGELOG.md` § Site. The Paper file is a consumer of the tokens, never a source.
 - **Copy** on any Paper screen follows `foundations/content.md` — real strings from the specs, never lorem ipsum, never `OK` / `Submit` / `Continue`.

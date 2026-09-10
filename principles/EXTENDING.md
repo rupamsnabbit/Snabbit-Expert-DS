@@ -65,6 +65,20 @@ When the input is a screenshot or reference (Mobbin, Pinterest, Dribbble, a comp
 
 An agent asked to "make it like this but not strictly the design system" does steps 1–6 and delivers step 6. It does not skip to a restyled copy of the screenshot.
 
+### Where inspiration comes from — Mobbin first
+
+**Mobbin is the preferred source** of references for this system, and the design lead uses it daily. It shows *shipped* product — real flows, with their states, edge cases and sequence — which is the same standard of evidence this repository holds itself to (`references/SCREENS.md`: screens are evidence). Pinterest and Dribbble show concept art: one screen, no states, no next screen, colours chosen to win a like. They are allowed for **mood** only; nothing structural is borrowed from a screen that never shipped.
+
+How to use Mobbin here:
+
+- **Search by flow, not by look.** *Onboarding · OTP*, *Check-in*, *Earnings breakdown*, *Payout*, *Referral*, *Permission request*, *Empty state*, *Offline*. Open the whole flow and read it start to finish — the borrowable idea is almost always in the *sequence* and the *state handling*, not in the screen you first liked.
+- **Prefer apps that serve someone like the expert.** Worker-side apps first — Urban Company Partner, Swiggy / Zomato delivery partner, Rapido Captain, Uber Driver, DoorDash Dasher, Grab Driver, Porter — then consumer apps with a low-literacy or first-time-smartphone audience (PhonePe, Paytm, Meesho, ShareChat, WhatsApp). A fintech dashboard for analysts teaches us nothing about a woman at a customer's door.
+- **Pull three, not one.** For any pattern, read at least three apps' versions before translating. What all three do is convention (she may already know it from another app — P7 says keep it); what only one does is a choice to justify.
+- **Save the flow, with its read.** `references/<app>-<flow>/` holds the screenshots in order plus one `.md`: app, platform, date captured, Mobbin URL, the six-step read, and which spec or brief it fed. Internal reference only — Mobbin screenshots are never published on the site or in the repo's public pages, and never traced.
+- **Then translate** (steps 1–6 above). What comes across: order of screens, what is asked when, how a state is handled, a gesture, a transition. What never comes across: the skin. If the translated version is not recognisably ours — Outfit, our pinks and status colours, our Buttons, our voice — it is a transplant, start again.
+
+An agent given a Mobbin link does exactly this: opens the flow, reads three, saves the read, translates, shows side by side.
+
 ---
 
 ## Changing core

@@ -39,6 +39,7 @@ One section per release, newest first; *Unreleased* on top. Sections inside: Tok
 ### Site
 - Documentation site under `site/` built by `build_all.sh`: tokens page (with Motion & timeouts and the four-script sample), foundations, 39 component pages, 10 pattern pages, roadmap, benchmark, audit.
 - `site/lint.py` — spec lint run by the build; first run found and fixed 55 errors. W1 now warns on the whole `content.md` § 9 banned list.
+- `EXTENDING.md` § *Where inspiration comes from — Mobbin first*: search by flow, prefer worker-side apps, read three, save under `references/<app>-<flow>/`, internal only; mirrored in `CLAUDE.md` / `AGENTS.md`.
 - Paper: the *Snabbit* Paper file carries the full token set (153 tokens) exported from `tokens.json`; `CLAUDE.md` / `AGENTS.md` gain a *Designing on Paper* section.
 - `GOVERNANCE.md` — status lifecycle, review step, recording changes, releases, roles.
 - `references/SCREENS.md` — the three screen files and the *When the screens change* procedure; *Self-Serve ER/AR* registered as the onboarding source.
