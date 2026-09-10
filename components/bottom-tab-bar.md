@@ -6,7 +6,7 @@ The whole map of the app, always visible, always in the same order. For a user w
 
 ---
 
-## Starting point: what ships today
+## What changes from Figma — starting point: what ships today
 
 The live app already has a four-tab bar — **Home · Earnings · Refer · Profile** — with a pink pill behind the selected icon, a brand-coloured label, and a `₹4000` promo pill on *Refer*. This spec keeps that structure (the experts have learned it) and tightens four things: the icons become registered Phosphor glyphs, the selection channels are defined, the promo pill becomes a governed `Badge` kind, and the rules for badges, hiding and font scaling are written down. Rewards and Saathi stay where they are today — in the Home header — not in the bar.
 

@@ -88,9 +88,9 @@ Order decided 2026-09-08: the visual foundations first, sound parked.
 
 ---
 
-## To do — governance (0 of 4)
+## To do — governance (1 of 4)
 
-Component status lifecycle in practice (nothing is Reconciled yet) · Changelog · Token/spec lint · Design-review step from `EXTENDING.md`.
+~~Token/spec lint~~ (done — `site/lint.py`, run by `build_all.sh`; first run found 55 errors, all fixed: 17 unregistered icons registered, 3 specs given their missing sections, off-scale motion values, and *Continue* labels in onboarding) · Component status lifecycle in practice (nothing is Reconciled yet) · Changelog · Design-review step from `EXTENDING.md`.
 
 ---
 

@@ -15,7 +15,7 @@ The shipped flow is good: it is short (five steps, "2 minutes"), speaks, shows a
  0. Welcome ── splash · promise cards (₹30,000 · sick leave · insurance) · [Start]
      │
      ▼
- 1. Language ── five SelectionCards in their own scripts · [Continue]  — voice from here on
+ 1. Language ── five SelectionCards in their own scripts · [Next]  — voice from here on
      │
      ▼
  2. Phone ── NumericKeypad · OTP (auto-read) · location permission (why, then the OS dialog)
@@ -47,7 +47,7 @@ The shipped flow is good: it is short (five steps, "2 minutes"), speaks, shows a
 | Shipped | Proposed | Why |
 | --- | --- | --- |
 | Header: back · title · **Call** pill · **language** switcher (translate + caret) | HeaderNav `page` with a two-item cluster: **Help** `HeaderAction` (headset, calls the onboarding line) and **Language** `IconButton` `translate` | Same two actions, system parts; Call = Help everywhere (`DECISIONS.md`) |
-| Thin segmented progress strip under the header (4–5 segments), Button label *Continue (1/5)* | ProgressBar `segmented` `S` under the header, `neutral`/`brand`; Button label **Continue** without the count — the strip already says it; spoken *"Step 2 of 5"* on each screen | One channel for progress; a Button label is a verb (`button.md`) |
+| Thin segmented progress strip under the header (4–5 segments), Button label *Continue (1/5)* | ProgressBar `segmented` `S` under the header, `neutral`/`brand`; Button label **Next** — no count (the strip already says it), and not *Continue* (`button.md` bans it); spoken *"Step 2 of 5"* on each screen | One channel for progress; a Button label is a verb (`button.md`) |
 | Language: five cards with the language name in its own script + English, radio at right | SelectionCard `compact`, one column of five, own script first — kept; **Telugu** joins the four (the shipped set is five) | Already right; the system's "four scripts" becomes **five** — see follow-ups |
 | Phone: hero photo, title with a speaker icon, `+91` field, OS keyboard | Same layout with the VoicePrompt inline Listen, TextField `phone`, **NumericKeypad** in-app | `numeric-keypad.md`: every number through one keypad |
 | OTP: six boxes, OS keyboard, *Resend* link | NumericKeypad `otp` (6), auto-read from SMS, **Resend code** as a Button `tertiary` with a Timer `deadline` (*in 0:28*) | Matches `text-field.md` OTP rules |
@@ -77,23 +77,23 @@ Kept as shipped: the order of steps; one question per screen; the real expert in
 
 ### 0–1. Welcome and language
 
-Splash (wordmark, expert photo) → promise screen: three ListItem rows with reward assets (*₹30,000 per month* · *Sick leaves* · *Insurance up to 5 lakh*), the expert pointing at them, Button **Start**. Then language: five SelectionCard `compact` (*English · हिन्दी · मराठी · తెలుగు · ಕನ್ನಡ*, own script first, English name under), Button **Continue** enabling on choice. From here every screen is spoken in her language on arrival (`voice-prompt.md`, `timeout.screenSettle`).
+Splash (wordmark, expert photo) → promise screen: three ListItem rows with reward assets (*₹30,000 per month* · *Sick leaves* · *Insurance up to 5 lakh*), the expert pointing at them, Button **Start**. Then language: five SelectionCard `compact` (*English · हिन्दी · मराठी · తెలుగు · ಕನ್ನಡ*, own script first, English name under), Button **Next** enabling on choice. From here every screen is spoken in her language on arrival (`voice-prompt.md`, `timeout.screenSettle`).
 
 ### 2. Phone, OTP, location
 
-Hero photo (*Work in flexible shifts*, PageIndicator under a 3-card carousel of promises) over a bottom sheet-like panel: *Enter your mobile number* with Listen, TextField `phone` `+91`, NumericKeypad, **Continue**. OTP: NumericKeypad `otp` 6, auto-read, **Resend code** with a `deadline` Timer. Location: BottomSheet `permission` (*We use your location to find jobs near you*) → OS dialog; **Not now** → city asked in step 3.
+Hero photo (*Work in flexible shifts*, PageIndicator under a 3-card carousel of promises) over a bottom sheet-like panel: *Enter your mobile number* with Listen, TextField `phone` `+91`, NumericKeypad, **Next**. OTP: NumericKeypad `otp` 6, auto-read, **Resend code** with a `deadline` Timer. Location: BottomSheet `permission` (*We use your location to find jobs near you*) → OS dialog; **Not now** → city asked in step 3.
 
 ### 3. About you
 
-Intro screen *Finish onboarding in 5 steps · about 2 minutes* with the stairs scene and **Start**. Then: city ListItem (auto from location, **Change** → `select` sheet with city SelectionCards; unavailable → EmptyState *We're not in Mysuru yet* with **Notify me**), name TextField (spoken *"Type your name as on your Aadhaar"*), gender SelectionCard `rich` × 2, *Have a referral code?* row → TextField. ProgressBar `segmented` 1 of 5. **Continue**.
+Intro screen *Finish onboarding in 5 steps · about 2 minutes* with the stairs scene and **Start**. Then: city ListItem (auto from location, **Change** → `select` sheet with city SelectionCards; unavailable → EmptyState *We're not in Mysuru yet* with **Notify me**), name TextField (spoken *"Type your name as on your Aadhaar"*), gender SelectionCard `rich` × 2, *Have a referral code?* row → TextField. ProgressBar `segmented` 1 of 5. **Next**.
 
 ### 4. Work
 
-*What work are you interested in?* SelectionCard `hero` × 3 `single` (House help · Cook · Beauty **New**). Then the confirmations: each a SelectionCard `hero` `multi` — *I have my own smartphone*, *I can wear the uniform*, *I can work 8 hours*; the image is the target; **Continue** enables when all are checked. Cook variant adds *What can you cook?* as Chips `filter` multi-select.
+*What work are you interested in?* SelectionCard `hero` × 3 `single` (House help · Cook · Beauty **New**). Then the confirmations: each a SelectionCard `hero` `multi` — *I have my own smartphone*, *I can wear the uniform*, *I can work 8 hours*; the image is the target; **Next** enables when all are checked. Cook variant adds *What can you cook?* as Chips `filter` multi-select.
 
 ### 5. Identity
 
-*Keep your Aadhaar number ready* (card illustration with the number highlighted; *You'll need your Aadhaar number and the phone linked to it*), Banner `warning` *Stay in the app — we'll bring you back*, **Continue to Aadhaar** → DigiLocker WebView with the HeaderNav kept → Skeleton (*Checking…*, 3-second rule, then **Try again** / **Call help**) → *Your Aadhaar is verified* summary Card → **Start training**. Failure: EmptyState `error` *Aadhaar didn't match* with *Try again* and *Call help*; never a code.
+*Keep your Aadhaar number ready* (card illustration with the number highlighted; *You'll need your Aadhaar number and the phone linked to it*), Banner `warning` *Stay in the app — we'll bring you back*, **Open Aadhaar** → DigiLocker WebView with the HeaderNav kept → Skeleton (*Checking…*, 3-second rule, then **Try again** / **Call help**) → *Your Aadhaar is verified* summary Card → **Start training**. Failure: EmptyState `error` *Aadhaar didn't match* with *Try again* and *Call help*; never a code.
 
 ### 6a. Training in the app (TC-less)
 

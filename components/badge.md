@@ -11,6 +11,14 @@ The word *badge* means two different things in the Figma file and in every desig
 
 Figma's "Badge – Parent" is the second. The first did not exist and IconButton already depends on it.
 
+## What changes from Figma
+
+| Today | Proposed | Why |
+| --- | --- | --- |
+| One "Badge" family that is really the metallic achievement hexagon | Two components: **Badge** (count · dot) and **AchievementBadge** (the reward asset in a wrapper) | Two meanings, two names; IconButton and the tab bar need the small one |
+| No count / dot badge exists | Badge with `count` (1–99, then *99+*) and `dot`, pinned top-right of a host | Unread and "new" are the two states she needs on a tab or icon |
+| Achievement hexagons placed as loose images | AchievementBadge with `Size`, `State` (earned / locked) and the asset from the reward layer | One wrapper, registered assets (`assets.md`) |
+
 ---
 
 ## Part 1 — Badge (count · dot)
@@ -87,6 +95,10 @@ Sizes: **24** inline beside a name · **40** list rows, tier strip · **64** pro
 A horizontal strip of 40 dp badges, 12 dp apart, earned then next-two-locked, followed by `+N more` in `textSecondary` when she has more than five. This is a composition; it lives with the profile pattern, not as a core component.
 
 ---
+
+## Accessibility
+
+Badge is announced with its host (*"Chat, 3 unread"*; a dot announces *"new"*) and is never focusable on its own. AchievementBadge announces its name and state (*"Gold star, earned"* / *"Shakti Premium, locked"*); the asset is decorative to the reader. Count text ≥ 4.5:1 on its fill; the dot is paired with the host's label change.
 
 ## Token proposals
 

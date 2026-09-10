@@ -51,7 +51,7 @@ A screen has at most one `hero`. If two figures compete, one becomes `lg`.
 | `brand` | `textBrand` | none | Highlighted incentive on offer (*Earn ₹50 extra*) |
 | `muted` | `textSecondary` | as value | Past, struck-through (`line-through`) or estimated figures |
 
-Sign is a property of the **value**, not typed into copy. `+₹50` and `−₹50` differ by colour **and** sign **and** — where the number stands alone — a Phosphor `arrow-up-right` / `arrow-down-right` 16 dp leading icon (P1: never colour alone). Negative amounts are never wrapped in parentheses.
+Sign is a property of the **value**, not typed into copy. `+₹50` and `−₹50` differ by colour **and** sign **and** — where the number stands alone — a Phosphor `arrow-up` / `arrow-down` 16 dp leading icon (P1: never colour alone). Negative amounts are never wrapped in parentheses.
 
 ---
 

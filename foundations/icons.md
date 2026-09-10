@@ -61,13 +61,23 @@ Status: **seed**. Populated fully during the Button, Tab bar and Job-alert specs
 | `headset` | Help — call the trainer / support line | regular | In-job and state headers `HeaderAction` |
 | `magnifying-glass` | Search | regular | TextField search, HeaderNav search |
 | `copy` | Copy a reference number (UTR, job ID) | regular | Payout rows, payout detail |
+| `lock-simple` / `lock` | Locked — a bonus, a step, a badge not yet earned (`lock-simple` in Stepper nodes; `lock` beside amounts and assets) | regular | Amount locked, Badge locked, ProgressBar neutral, Stepper locked |
+| `lock-open` | Just unlocked | regular | Amount unlock moment |
+| `eye` / `eye-slash` | Show / hide an amount | regular | Amount, ListItem trailing (privacy in public) |
+| `user` | A person (placeholder avatar, name field) | regular | Avatar placeholder, TextField leading |
+| `envelope` | Email / message field | regular | TextField leading |
+| `seal-check` | Verified (KYC, selfie) | fill | Avatar verified mark |
+| `caret-up` | Collapse | regular | Card / Accordion expanded header (rotates from `caret-down`) |
+| `plus-circle` | Add one more | regular | Card add action, referral |
+| `paper-plane-right` | Send a message | fill | Chat send |
+| `broom` | Cleaning (service category) | regular | Chip filter |
+| `cooking-pot` | Cooking (service category) | regular | Chip filter |
+| `t-shirt` | Laundry (service category) | regular | Chip filter |
+| `calendar` | This week / a date range | regular | Chip filter, Earnings pager (a single day is `calendar-blank`) |
+| `cell-signal-low` / `wifi-slash` | Weak signal / offline | regular | Banner offline, EmptyState offline |
+| `crosshair` | Recentre map | regular | The one floating map control (IconButton) |
+| `minus` | Indeterminate (parent "select all") | bold | Checkbox |
 | `receipt` | Payout history | regular | Earnings statement row |
 | `hand-coins` | Early payout | regular | Earnings statement row |
-| `first-aid-kit` | Health cover (insurance) | regular | Profile row, insurance Stepper rail — never Shield, which is `shield-check` |
-| `users-three` | Her family on the cover | regular | Insurance Stepper rail (distinct from `users`, which is Refer) |
-| `baby` | Children on the cover | regular | Insurance Stepper rail |
-| `address-book` | Pick from her contacts | regular | Insurance nominee name / number |
-| `plus-circle` | Add one more to a list | regular | Card `empty` kind — add a child, add a bank account |
-| `pencil-simple` | Change this answer | regular | Insurance review screen; any review-before-submit row |
 
 Not icons: smileys for Rating and the mascot are illustrations, not Phosphor glyphs — they live in the illustration library.

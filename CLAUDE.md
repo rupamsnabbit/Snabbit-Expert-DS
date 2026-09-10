@@ -43,18 +43,20 @@ site/           generated documentation site
   build.py               tokens.json + template.html → index.html
   build_doc.py           any markdown → page in site chrome (principles.html, benchmark.html)
   build_audit.py         audit/frames.json + classification → audit.html + FIGMA_AUDIT.md
+  lint.py                spec lint (tokens, motion, icons, sections, pairing, nav, staleness)
   index.html · principles.html · benchmark.html · audit.html · template.html
 ```
 
 ## Commands
 
 ```bash
-bash site/build_all.sh   # rebuild every page: tokens, docs, components, audit
+bash site/build_all.sh   # rebuild every page: tokens, docs, components, audit — ends with the lint report
+python3 site/lint.py     # spec lint alone; exit 1 on errors (raw hex, off-scale ms, unregistered icons, missing sections, stale pages)
 ```
 
 `build_all.sh` runs `site/build.py` (tokens.json → index.html + site/components/*.html), `site/build_doc.py` for each markdown doc, and `site/build_audit.py`. Add new docs/components to `build_all.sh` **and** to the site nav in `site/nav.py`.
 
-Regenerate the site in the same change as the source you edited. Never hand-edit a generated `site/*.html`.
+Regenerate the site in the same change as the source you edited. Never hand-edit a generated `site/*.html`. **Run `python3 site/lint.py` before committing** and fix every ERROR: E1 raw hex · E2 millisecond not on the motion/timeout scale · E3 Phosphor icon not registered in `foundations/icons.md` · E4 spec missing *What changes* / *Accessibility* / *Figma reconciliation* / checklist · E5 spec without a template (or the reverse) · E6 nav ↔ build mismatch · E7 generated page older than its source. Warnings (banned copy such as *OK / Submit / Continue / Oops*) are to be fixed too unless the line is quoting what *not* to write.
 
 ## Publishing
 

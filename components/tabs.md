@@ -64,7 +64,7 @@ Two ways to switch what a screen shows without leaving it. **Segmented** for two
 
 ## Behaviour
 
-- Changing selection swaps the content below in one frame (or a 150 ms cross-fade when the content heights match); scroll position of each tab/segment is remembered while on the screen.
+- Changing selection swaps the content below in one frame (or a `motion.standard` cross-fade when the content heights match); scroll position of each tab/segment is remembered while on the screen.
 - The last selection is remembered **per screen, per account**, and restored on return — except where a default is a safety of understanding (Earnings opens on *Today*).
 - Neither control ever navigates, opens a sheet, or triggers an action; if a tab would need to "do" something, it is a Button.
 - Content under a tab announces its heading on change: *"Weekends. Daily earnings."*

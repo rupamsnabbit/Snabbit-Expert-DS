@@ -6,6 +6,16 @@ Three small things that appear on almost every screen and so must be exactly the
 
 ---
 
+## What changes from Figma
+
+| Today | Proposed | Why |
+| --- | --- | --- |
+| *Value* (6) and *Metric Card* (4) with the label above or below by frame | **Stat** with `Size` and `Delta`; label always above the value | She reads the name before the number |
+| *Rating* (6) with 15 smiley faces and star-like displays | **Rating** `input` with five faces (two states) and `display` as a number + one face | Faces are recognised without reading; five is enough |
+| Hand-drawn 1 dp lines; *Table Components* as tables | **Divider** with three kinds; tables become ListItems with Stat `S` | One line, one rule |
+
+---
+
 ## Stat
 
 A label and a value, optionally with a change. It is how every earnings, coin, job and rating figure is shown outside a list row.
