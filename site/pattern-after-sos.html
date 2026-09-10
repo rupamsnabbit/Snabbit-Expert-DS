@@ -1,0 +1,199 @@
+<meta charset="utf-8">
+<title>Snabbit Expert Pattern After SOS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --bg-2:#F9FAFB; --bg-3:#F3F4F6;
+  --text:#111827; --text-body:#374151; --text-2:#6B7280; --text-3:#9CA3AF;
+  --border:#E5E7EB; --border-subtle:#F3F4F6;
+  --brand:#F70F79; --brand-wash:#FEF1F7; --brand-ink:#97094A;
+  --ok:#059669; --ok-wash:#ECFDF5; --focus:#3B82F6;
+  --sans:"Outfit",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+    --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+    --border:#374151; --border-subtle:#1F2937;
+    --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+    --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+  --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+  --border:#374151; --border-subtle:#1F2937;
+  --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+  --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--text-body);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+code{font-family:var(--mono);font-size:.85em;background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--text)}
+pre{background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:14px 16px;overflow-x:auto;margin:12px 0 20px} pre code{background:none;border:0;padding:0;font-size:12.5px;line-height:1.55;white-space:pre}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+.shell{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}
+.rail{position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--border);padding:24px 16px 32px;background:var(--bg);display:flex;flex-direction:column;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;padding:0 8px}
+.brand-mark{width:28px;height:28px;border-radius:8px;background:var(--brand);display:grid;place-items:center;flex:none}
+.brand-mark span{width:12px;height:12px;border-radius:3px;background:#fff;transform:rotate(45deg)}
+.brand b{font-weight:600;color:var(--text);font-size:15px;line-height:1.2;display:block}
+.brand small{color:var(--text-2);font-size:12px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:block;padding:6px 8px;border-radius:6px;text-decoration:none;color:var(--text);font-size:13.5px;font-weight:500}
+.nav a.sub{font-weight:400;color:var(--text-body);padding-left:14px;font-size:13px}
+.nav a.sub b{font-family:var(--mono);font-weight:500;color:var(--text-3);font-size:11.5px;margin-right:2px}
+.nav a:hover{background:var(--bg-2)}
+.nav a.on{background:var(--brand-wash);color:var(--brand-ink)}
+.rail-foot{margin-top:auto;padding:0 8px;font-size:12px;color:var(--text-3);line-height:1.5}
+.main{padding:40px 56px 96px;max-width:860px;width:100%}
+.eyebrow{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);font-weight:600}
+h1{font-size:40px;line-height:1.1;font-weight:600;color:var(--text);margin:8px 0 12px;letter-spacing:-.015em;text-wrap:balance}
+.lede{font-size:18px;color:var(--text-2);max-width:60ch;margin:0 0 8px}
+.lede strong{color:var(--text);font-weight:500}
+h2{font-size:26px;line-height:1.2;font-weight:600;color:var(--text);margin:72px 0 16px;letter-spacing:-.01em;text-wrap:balance;padding-top:24px;border-top:1px solid var(--border)}
+h3{font-size:20px;font-weight:600;color:var(--text);margin:48px 0 8px;letter-spacing:-.005em}
+h3::before{content:"";display:block;width:32px;height:3px;background:var(--brand);border-radius:2px;margin-bottom:14px}
+p{margin:0 0 14px;max-width:66ch}
+h3 + p{font-size:17px;color:var(--text);font-weight:500}
+p.why{color:var(--text-2);font-size:15px;padding-left:14px;border-left:2px solid var(--border)}
+p.why::before{content:"Why · ";color:var(--text-3);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+p.lbl{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2);font-weight:600;margin:22px 0 8px}
+strong{color:var(--text);font-weight:600}
+em{font-style:italic}
+ul,ol{margin:0 0 14px;padding-left:0;list-style:none;max-width:68ch}
+ul li{position:relative;padding-left:20px;margin:6px 0;font-size:15.5px}
+ul li::before{content:"";position:absolute;left:0;top:11px;width:9px;height:2px;background:var(--brand)}
+ul li.chk{padding-left:30px}
+ul li.chk::before{width:16px;height:16px;top:4px;background:var(--bg);border:1.5px solid var(--text-3);border-radius:4px}
+ol{counter-reset:s}
+ol li{counter-increment:s;display:grid;grid-template-columns:32px 1fr;gap:12px;margin:10px 0;font-size:15.5px}
+ol li::before{content:counter(s);width:28px;height:28px;border-radius:50%;background:var(--brand-wash);color:var(--brand-ink);font-weight:600;font-size:13px;display:grid;place-items:center;margin-top:1px}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px;margin:8px 0 20px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);font-weight:500;padding:10px 14px;background:var(--bg-2);border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:10px 14px;border-bottom:1px solid var(--border-subtle);vertical-align:top;color:var(--text-body)}
+tr:last-child td{border-bottom:0}
+td:first-child{color:var(--text);font-weight:500;white-space:nowrap}
+hr{display:none}
+
+.sitenav{display:flex;flex-direction:column;gap:2px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.sitenav .grp{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);padding:10px 8px 4px;font-weight:500}
+.sitenav a{display:block;padding:5px 8px;border-radius:6px;text-decoration:none;color:var(--text-body);font-size:13.5px;border:0}
+.sitenav a:hover{background:var(--bg-2);color:var(--text)} .sitenav a.on{color:var(--brand-ink);background:var(--brand-wash);font-weight:500}
+@media (max-width:900px){.sitenav{flex-direction:row;flex-wrap:wrap;gap:4px;border-bottom:0;padding-bottom:0}.sitenav .grp{display:none}}
+
+@media (max-width:900px){
+  .shell{grid-template-columns:1fr}
+  .rail{position:static;height:auto;border-right:0;border-bottom:1px solid var(--border);padding:16px}
+  .nav{flex-direction:row;flex-wrap:wrap;gap:4px} .nav a.sub{padding-left:8px} .rail-foot{display:none}
+  .main{padding:32px 20px 80px} h1{font-size:32px} h2{margin-top:56px}
+}
+</style>
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Pattern · After SOS</small></div></div>
+    <nav class="sitenav" aria-label="Site"><div class="grp">Foundations</div><a href="index.html">Tokens</a><a href="principles.html">Principles</a><a href="extending.html">Extending</a><a href="icons.html">Icons</a><a href="assets.html">Assets</a><a href="motion.html">Motion</a><a href="type.html">Type · four scripts</a><a href="accessibility.html">Accessibility</a><div class="grp">Components</div><a href="components/button.html">Button</a><a href="components/icon-button.html">IconButton</a><a href="components/tag.html">Tag</a><a href="components/text-field.html">TextField</a><a href="components/selection-controls.html">Checkbox · Radio · Switch</a><a href="components/amount.html">Amount</a><a href="components/timer.html">Timer</a><a href="components/feedback.html">Banner · Toast · Snackbar</a><a href="components/chip.html">Chip</a><a href="components/avatar.html">Avatar</a><a href="components/badge.html">Badge</a><a href="components/card.html">Card</a><a href="components/list-item.html">ListItem</a><a href="components/selection-card.html">SelectionCard</a><a href="components/bottom-sheet.html">BottomSheet</a><a href="components/header-nav.html">HeaderNav</a><a href="components/bottom-tab-bar.html">BottomTabBar</a><a href="components/progress-bar.html">ProgressBar</a><a href="components/stepper.html">Stepper</a><a href="components/coachmark.html">Coachmark</a><a href="components/sos-control.html">SOSControl</a><a href="components/accordion.html">Accordion</a><a href="components/date-picker.html">DatePicker</a><a href="components/empty-state.html">EmptyState</a><a href="components/skeleton.html">Skeleton · Spinner</a><a href="components/voice-prompt.html">VoicePrompt</a><a href="components/tabs.html">Tabs · Segmented</a><a href="components/nudge.html">Nudge</a><a href="components/numeric-keypad.html">NumericKeypad</a><a href="components/page-indicator.html">PageIndicator</a><a href="components/media-capture.html">MediaCapture</a><a href="components/map-marker.html">MapMarker · MapSnippet</a><a href="components/stat-rating-divider.html">Stat · Rating · Divider</a><a href="components/how-to-clip.html">HowToClip</a><a href="components/shield-card.html">ShieldCard</a><a href="components/job-alert.html">JobAlert</a><div class="grp">Patterns</div><a href="pattern-new-job-alert.html">New job arrives</a><a href="pattern-check-in-out.html">Check in · work · check out</a><a href="pattern-payout.html">Payout</a><a href="pattern-onboarding.html">Onboarding · go-live</a><a href="pattern-error-recovery.html">When something goes wrong</a><a href="pattern-permissions.html">Asking for permission</a><a href="pattern-first-run.html">First run</a><a href="pattern-earnings.html">Earnings</a><a class="on" href="pattern-after-sos.html">After SOS</a><div class="grp">Research</div><a href="benchmark.html">Benchmark</a><a href="audit.html">Figma audit</a><a href="roadmap.html">Roadmap</a></nav><nav class="nav" id="nav"><a href="#the-flow">The flow</a><a href="#1-the-next-minute">1. The next minute</a><a href="#2-the-next-hour">2. The next hour</a><a href="#3-the-same-day-the-safety-card-on-home">3. The same day — the safety card on Home</a><a href="#4-the-next-week">4. The next week</a><a href="#false-alarms-and-repeat-presses">False alarms and repeat presses</a><a href="#content">Content</a><a href="#parts-used">Parts used</a><a href="#checklist-for-the-pattern">Checklist for the pattern</a></nav>
+    <div class="rail-foot">Snabbit Expert Design System · generated from patterns/after-sos.md</div>
+  </aside>
+  <main class="main">
+    <header>
+      <div class="eyebrow">Snabbit Expert · Mobile</div>
+      <h1>Pattern — after SOS</h1>
+      <p class="lede"><code>sos-control.md</code> draws SOS from the hold to the <em>I'm safe now</em> hold; <code>shield-card.md</code> draws the safety check. This pattern is what the app does <strong>afterwards</strong> — in the minutes, the day and the week after she pressed SOS or answered <em>I am in danger</em> — because the moment she is safe is the moment the app most often goes silent, and silence after fear reads as abandonment. Evidence: the shipped <em>Post SOS Trigger Flow</em> (<code>1059:55741</code>) ends at <em>Help is on the way · I am safe, end SOS</em>; nothing after that is drawn. Everything here is proposed.</p>
+    </header>
+    <h2 id="the-flow">The flow</h2>
+<pre><code> SOS ended (I'm safe now, held) · or SafetyCheck answered &quot;I am in danger&quot; then resolved
+        │
+        ▼
+ 1. The next minute ── Snackbar &quot;SOS ended · Recording saved&quot; · the job screen becomes &quot;Job stopped&quot; · Shield keeps running until she leaves
+        │
+        ▼
+ 2. The next hour ── a call from the safety team (not a form) · the job is closed as &quot;Stopped for safety&quot; · she is paid for the time · no red card
+        │
+        ▼
+ 3. The same day ── Home shows a calm card: what happened, what we did, who to call · availability off until she turns it on
+        │
+        ▼
+ 4. The next week ── follow-up call · the customer is blocked for her · the record is in Profile → Safety
+</code></pre>
+<hr />
+<h2 id="1-the-next-minute">1. The next minute</h2>
+<ul>
+<li>The SOS active screen closes on the <em>I'm safe now</em> hold; the screen she returns to is the <strong>job screen in a new state — <code>stopped</code></strong>: HeaderNav <code>state</code> <em>Job stopped</em> with <code>shield-check</code>, the Timer gone, the customer row without Call, and one Button <code>primary brand L</code> <strong>Leave now</strong> (opens Show directions to the nearest hub or home, her choice, as a <code>select</code> sheet). There is no <em>Complete job</em>, no OTP, no rating.</li>
+<li>Snackbar <em>SOS ended · Recording saved</em> with <strong>What happens next ›</strong> → the card in (3).</li>
+<li>Shield stays <strong>on</strong> until she taps <em>I've left</em> on the Leave screen or is 200 m away; the SafetyStrip says so. Nothing asks her to do anything else for at least five minutes: no rating, no survey, no Nudge, no job alert (alerts are held for 30 minutes after an SOS).</li>
+<li>Voice, once, calm: <em>"Help is with you. You can leave when you're ready. We'll call you soon."</em></li>
+</ul>
+<h2 id="2-the-next-hour">2. The next hour</h2>
+<ul>
+<li>The safety team <strong>calls her</strong> (the number she sees as <em>Snabbit safety</em>); the app never asks her to fill in what happened. If she does not answer, the team calls again in 15 minutes and sends the card in (3) as a notification.</li>
+<li>The job closes automatically as <strong>Stopped for safety</strong>. She is paid for the time worked plus the guaranteed top-up for the day; the earnings row reads <em>Job stopped for your safety · paid in full</em> with the Shield pictogram — never a deduction line, never a red card, never <em>Job denied</em>.</li>
+<li>Any customer rating or complaint from this job is not shown to her.</li>
+</ul>
+<h2 id="3-the-same-day-the-safety-card-on-home">3. The same day — the safety card on Home</h2>
+<pre><code>┌────────────────────────────────────────────┐  Card · bgInfo stage · asset/picto/shield
+│ [shield]  You pressed SOS today            │  Heading3
+│ Radhika S · 10:14 am · 14 min              │  BodyMd textSecondary
+│ ✓ Safety team spoke with you               │  ListItem rows, check-circle, as they happen
+│ ✓ Job closed · you're paid in full         │
+│ ✓ Recording saved with the safety team     │
+│ ○ We'll call you tomorrow to check in      │
+│ [ 📞 Call the safety team              ]   │  Button secondary brand M
+│ You're off for today. Turn on when ready.  │  Caption + the availability Switch
+└────────────────────────────────────────────┘
+</code></pre>
+<ul>
+<li>Availability is set <strong>off</strong> and stays off until she turns it on; the card says so plainly and holds the Switch (<code>selection-controls.md</code>). No Nudge about missed earnings appears that day.</li>
+<li>The card stays on Home until the follow-up call is done, then moves to Profile → <em>Safety</em> as a record (<em>4 Mar · Radhika S · SOS · resolved</em>).</li>
+<li>Rows appear as they happen (<code>motion.standard</code>); each is spoken when it appears if the app is open.</li>
+<li>The card is <code>bgInfo</code>, never red: red was the emergency; this is the aftermath (row 14, P6).</li>
+</ul>
+<h2 id="4-the-next-week">4. The next week</h2>
+<ul>
+<li>Follow-up call from the same team member where possible; the card row ticks.</li>
+<li>The customer is <strong>blocked for her</strong> automatically (the block-list count on the rating screen shows it; she can unblock only through Help). She is never sent to that address again.</li>
+<li>Profile → <em>Safety</em>: the record, the recording's status (<em>Saved · 30 days</em>), <strong>Call the safety team</strong>, <strong>Talk to someone</strong> (counselling line, if offered), and the Shield settings. Nothing here has a red card, a rating or a penalty near it.</li>
+<li>If SOS was pressed by mistake and cancelled in the 5-second window, none of this happens — a Toast <em>SOS cancelled</em>, nothing on Home.</li>
+</ul>
+<hr />
+<h2 id="false-alarms-and-repeat-presses">False alarms and repeat presses</h2>
+<ul>
+<li>Cancelled within <code>timeout.sosCancel</code>: Toast only. Ended within 60 s with <em>I'm safe now</em>: the minute-after steps happen, the call happens, the card is shorter (<em>You pressed SOS · everything's fine · we'll still check in</em>). Nothing about a false alarm is ever framed as her fault; the copy never says <em>false alarm</em>.</li>
+<li>Three SOS presses in a month → the follow-up call is by a supervisor and the card offers <strong>Change my area</strong>; never a warning, never a restriction shown in the app.</li>
+</ul>
+<hr />
+<h2 id="content">Content</h2>
+<ul>
+<li><em>Job stopped</em> · <em>Leave now</em> · <em>SOS ended · Recording saved</em> · <em>You pressed SOS today</em> · <em>Safety team spoke with you</em> · <em>Job closed · you're paid in full</em> · <em>We'll call you tomorrow to check in</em> · <em>You're off for today. Turn on when ready.</em> · <em>Call the safety team</em> · <em>Talk to someone</em>.</li>
+<li>Voice: the same calm speaker as the SOS screen; present tense; no exclamation marks; nothing spoken more than once.</li>
+<li>Never: <em>Incident</em>, <em>Report</em>, <em>Ticket</em>, <em>Case ID</em>, <em>false alarm</em>, <em>Please rate your experience</em>, <em>Are you sure?</em></li>
+</ul>
+<hr />
+<h2 id="parts-used">Parts used</h2>
+<p>HeaderNav <code>state</code> · Button · Snackbar · SafetyStrip · ShieldRow · Card (<code>bgInfo</code> stage) · ListItem · Switch · Toast · MapSnippet (Leave now) · VoicePrompt. Nothing new; the <code>stopped</code> job state joins <code>check-in-out.md</code>'s stage 3 as a fourth exit.</p>
+<hr />
+<h2 id="checklist-for-the-pattern">Checklist for the pattern</h2>
+<ul>
+<li class="chk">After <em>I'm safe now</em>, nothing asks her for anything for five minutes; job alerts are held for thirty.</li>
+<li class="chk">The job closes as <em>Stopped for safety</em>, paid in full, no red card, no rating shown.</li>
+<li class="chk">A human calls within the hour; the app never asks her to describe what happened.</li>
+<li class="chk">The Home card is <code>bgInfo</code>, ticks as things happen, holds the availability Switch, and moves to Profile → Safety after the follow-up.</li>
+<li class="chk">The customer is blocked for her without asking.</li>
+<li class="chk">Copy reviewed aloud in four languages by the safety team as well as native speakers.</li>
+</ul>
+  </main>
+</div>
+<script>
+(function(){
+const links=[...document.querySelectorAll('#nav a')];
+const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-10% 0px -80% 0px'});
+  targets.forEach(t=>io.observe(t));
+}
+})();
+</script>

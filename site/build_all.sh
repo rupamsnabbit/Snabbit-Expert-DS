@@ -18,5 +18,6 @@ python3 site/build_doc.py patterns/error-recovery.md site/pattern-error-recovery
 python3 site/build_doc.py patterns/permissions.md site/pattern-permissions.html "Snabbit Expert Pattern Permissions" "Pattern · Asking for permission"
 python3 site/build_doc.py patterns/first-run.md site/pattern-first-run.html "Snabbit Expert Pattern First Run" "Pattern · The first time she sees it"
 python3 site/build_doc.py patterns/earnings.md site/pattern-earnings.html "Snabbit Expert Pattern Earnings" "Pattern · Earnings"
+python3 site/build_doc.py patterns/after-sos.md site/pattern-after-sos.html "Snabbit Expert Pattern After SOS" "Pattern · After SOS"
 python3 site/build_doc.py ROADMAP.md               site/roadmap.html    "Snabbit Expert Roadmap"    "Roadmap"
 python3 site/build_audit.py
