@@ -9,6 +9,7 @@ python3 site/build_doc.py foundations/assets.md    site/assets.html     "Snabbit
 python3 site/build_doc.py foundations/motion.md    site/motion.html     "Snabbit Expert Motion"     "Motion"
 python3 site/build_doc.py foundations/type.md      site/type.html       "Snabbit Expert Type"       "Type · four scripts"
 python3 site/build_doc.py foundations/accessibility.md site/accessibility.html "Snabbit Expert Accessibility" "Accessibility"
+python3 site/build_doc.py foundations/content.md site/content.html "Snabbit Expert Content" "Content — how the app talks"
 python3 site/build_doc.py audit/BENCHMARK.md       site/benchmark.html  "Snabbit Expert Benchmark"  "Benchmark"
 python3 site/build_doc.py patterns/new-job-alert.md site/pattern-new-job-alert.html "Snabbit Expert Pattern New Job" "Pattern · New job arrives"
 python3 site/build_doc.py patterns/check-in-out.md site/pattern-check-in-out.html "Snabbit Expert Pattern Check-in" "Pattern · Check in, work, check out"

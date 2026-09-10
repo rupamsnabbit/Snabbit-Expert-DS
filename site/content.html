@@ -1,0 +1,586 @@
+<meta charset="utf-8">
+<title>Snabbit Expert Content</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --bg-2:#F9FAFB; --bg-3:#F3F4F6;
+  --text:#111827; --text-body:#374151; --text-2:#6B7280; --text-3:#9CA3AF;
+  --border:#E5E7EB; --border-subtle:#F3F4F6;
+  --brand:#F70F79; --brand-wash:#FEF1F7; --brand-ink:#97094A;
+  --ok:#059669; --ok-wash:#ECFDF5; --focus:#3B82F6;
+  --sans:"Outfit",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+    --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+    --border:#374151; --border-subtle:#1F2937;
+    --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+    --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+  --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+  --border:#374151; --border-subtle:#1F2937;
+  --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+  --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--text-body);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+code{font-family:var(--mono);font-size:.85em;background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--text)}
+pre{background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:14px 16px;overflow-x:auto;margin:12px 0 20px} pre code{background:none;border:0;padding:0;font-size:12.5px;line-height:1.55;white-space:pre}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+.shell{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}
+.rail{position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--border);padding:24px 16px 32px;background:var(--bg);display:flex;flex-direction:column;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;padding:0 8px}
+.brand-mark{width:28px;height:28px;border-radius:8px;background:var(--brand);display:grid;place-items:center;flex:none}
+.brand-mark span{width:12px;height:12px;border-radius:3px;background:#fff;transform:rotate(45deg)}
+.brand b{font-weight:600;color:var(--text);font-size:15px;line-height:1.2;display:block}
+.brand small{color:var(--text-2);font-size:12px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:block;padding:6px 8px;border-radius:6px;text-decoration:none;color:var(--text);font-size:13.5px;font-weight:500}
+.nav a.sub{font-weight:400;color:var(--text-body);padding-left:14px;font-size:13px}
+.nav a.sub b{font-family:var(--mono);font-weight:500;color:var(--text-3);font-size:11.5px;margin-right:2px}
+.nav a:hover{background:var(--bg-2)}
+.nav a.on{background:var(--brand-wash);color:var(--brand-ink)}
+.rail-foot{margin-top:auto;padding:0 8px;font-size:12px;color:var(--text-3);line-height:1.5}
+.main{padding:40px 56px 96px;max-width:860px;width:100%}
+.eyebrow{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);font-weight:600}
+h1{font-size:40px;line-height:1.1;font-weight:600;color:var(--text);margin:8px 0 12px;letter-spacing:-.015em;text-wrap:balance}
+.lede{font-size:18px;color:var(--text-2);max-width:60ch;margin:0 0 8px}
+.lede strong{color:var(--text);font-weight:500}
+h2{font-size:26px;line-height:1.2;font-weight:600;color:var(--text);margin:72px 0 16px;letter-spacing:-.01em;text-wrap:balance;padding-top:24px;border-top:1px solid var(--border)}
+h3{font-size:20px;font-weight:600;color:var(--text);margin:48px 0 8px;letter-spacing:-.005em}
+h3::before{content:"";display:block;width:32px;height:3px;background:var(--brand);border-radius:2px;margin-bottom:14px}
+p{margin:0 0 14px;max-width:66ch}
+h3 + p{font-size:17px;color:var(--text);font-weight:500}
+p.why{color:var(--text-2);font-size:15px;padding-left:14px;border-left:2px solid var(--border)}
+p.why::before{content:"Why · ";color:var(--text-3);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+p.lbl{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2);font-weight:600;margin:22px 0 8px}
+strong{color:var(--text);font-weight:600}
+em{font-style:italic}
+ul,ol{margin:0 0 14px;padding-left:0;list-style:none;max-width:68ch}
+ul li{position:relative;padding-left:20px;margin:6px 0;font-size:15.5px}
+ul li::before{content:"";position:absolute;left:0;top:11px;width:9px;height:2px;background:var(--brand)}
+ul li.chk{padding-left:30px}
+ul li.chk::before{width:16px;height:16px;top:4px;background:var(--bg);border:1.5px solid var(--text-3);border-radius:4px}
+ol{counter-reset:s}
+ol li{counter-increment:s;display:grid;grid-template-columns:32px 1fr;gap:12px;margin:10px 0;font-size:15.5px}
+ol li::before{content:counter(s);width:28px;height:28px;border-radius:50%;background:var(--brand-wash);color:var(--brand-ink);font-weight:600;font-size:13px;display:grid;place-items:center;margin-top:1px}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px;margin:8px 0 20px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);font-weight:500;padding:10px 14px;background:var(--bg-2);border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:10px 14px;border-bottom:1px solid var(--border-subtle);vertical-align:top;color:var(--text-body)}
+tr:last-child td{border-bottom:0}
+td:first-child{color:var(--text);font-weight:500;white-space:nowrap}
+hr{display:none}
+
+.sitenav{display:flex;flex-direction:column;gap:2px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.sitenav .grp{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);padding:10px 8px 4px;font-weight:500}
+.sitenav a{display:block;padding:5px 8px;border-radius:6px;text-decoration:none;color:var(--text-body);font-size:13.5px;border:0}
+.sitenav a:hover{background:var(--bg-2);color:var(--text)} .sitenav a.on{color:var(--brand-ink);background:var(--brand-wash);font-weight:500}
+@media (max-width:900px){.sitenav{flex-direction:row;flex-wrap:wrap;gap:4px;border-bottom:0;padding-bottom:0}.sitenav .grp{display:none}}
+
+@media (max-width:900px){
+  .shell{grid-template-columns:1fr}
+  .rail{position:static;height:auto;border-right:0;border-bottom:1px solid var(--border);padding:16px}
+  .nav{flex-direction:row;flex-wrap:wrap;gap:4px} .nav a.sub{padding-left:8px} .rail-foot{display:none}
+  .main{padding:32px 20px 80px} h1{font-size:32px} h2{margin-top:56px}
+}
+</style>
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Content — how the app talks</small></div></div>
+    <nav class="sitenav" aria-label="Site"><div class="grp">Foundations</div><a href="index.html">Tokens</a><a href="principles.html">Principles</a><a href="extending.html">Extending</a><a href="icons.html">Icons</a><a href="assets.html">Assets</a><a href="motion.html">Motion</a><a href="type.html">Type · four scripts</a><a href="accessibility.html">Accessibility</a><a class="on" href="content.html">Content</a><div class="grp">Components</div><a href="components/button.html">Button</a><a href="components/icon-button.html">IconButton</a><a href="components/tag.html">Tag</a><a href="components/text-field.html">TextField</a><a href="components/selection-controls.html">Checkbox · Radio · Switch</a><a href="components/amount.html">Amount</a><a href="components/timer.html">Timer</a><a href="components/feedback.html">Banner · Toast · Snackbar</a><a href="components/chip.html">Chip</a><a href="components/avatar.html">Avatar</a><a href="components/badge.html">Badge</a><a href="components/card.html">Card</a><a href="components/list-item.html">ListItem</a><a href="components/selection-card.html">SelectionCard</a><a href="components/bottom-sheet.html">BottomSheet</a><a href="components/header-nav.html">HeaderNav</a><a href="components/bottom-tab-bar.html">BottomTabBar</a><a href="components/progress-bar.html">ProgressBar</a><a href="components/stepper.html">Stepper</a><a href="components/coachmark.html">Coachmark</a><a href="components/sos-control.html">SOSControl</a><a href="components/accordion.html">Accordion</a><a href="components/date-picker.html">DatePicker</a><a href="components/empty-state.html">EmptyState</a><a href="components/skeleton.html">Skeleton · Spinner</a><a href="components/voice-prompt.html">VoicePrompt</a><a href="components/tabs.html">Tabs · Segmented</a><a href="components/nudge.html">Nudge</a><a href="components/numeric-keypad.html">NumericKeypad</a><a href="components/page-indicator.html">PageIndicator</a><a href="components/media-capture.html">MediaCapture</a><a href="components/map-marker.html">MapMarker · MapSnippet</a><a href="components/stat-rating-divider.html">Stat · Rating · Divider</a><a href="components/how-to-clip.html">HowToClip</a><a href="components/shield-card.html">ShieldCard</a><a href="components/job-alert.html">JobAlert</a><a href="components/tooltip.html">Tooltip</a><a href="components/progress-button.html">ProgressButton</a><a href="components/popover.html">Popover</a><div class="grp">Patterns</div><a href="pattern-new-job-alert.html">New job arrives</a><a href="pattern-check-in-out.html">Check in · work · check out</a><a href="pattern-payout.html">Payout</a><a href="pattern-onboarding.html">Onboarding · go-live</a><a href="pattern-error-recovery.html">When something goes wrong</a><a href="pattern-permissions.html">Asking for permission</a><a href="pattern-first-run.html">First run</a><a href="pattern-earnings.html">Earnings</a><a href="pattern-after-sos.html">After SOS</a><a href="pattern-offline.html">Offline</a><div class="grp">Research</div><a href="benchmark.html">Benchmark</a><a href="audit.html">Figma audit</a><a href="roadmap.html">Roadmap</a><a href="governance.html">Governance</a><a href="changelog.html">Changelog</a></nav><nav class="nav" id="nav"><a href="#1-the-register">1. The register</a><a href="#2-grammar-and-typography-of-copy">2. Grammar and typography of copy</a><a href="#3-actions">3. Actions</a><a href="#4-states">4. States</a><a href="#5-numbers-money-time-place">5. Numbers, money, time, place</a><a href="#6-spoken-copy">6. Spoken copy</a><a href="#7-four-languages-how-a-string-ships">7. Four languages — how a string ships</a><a href="#8-vocabulary-the-words-we-always-use">8. Vocabulary — the words we always use</a><a href="#9-words-we-never-use">9. Words we never use</a><a href="#10-copy-review-the-checklist-for-one-string">10. Copy review — the checklist for one string</a><a href="#checklist-for-the-foundation">Checklist for the foundation</a></nav>
+    <div class="rail-foot">Snabbit Expert Design System · generated from foundations/content.md</div>
+  </aside>
+  <main class="main">
+    <header>
+      <div class="eyebrow">Snabbit Expert · Mobile</div>
+      <h1>Content — how the app talks</h1>
+      <p class="lede">The expert reads slowly, in one of four scripts, often with the phone in her hand at a stranger's door. So the words are not decoration on the interface — for her, <strong>the sentence she hears or reads is the interface</strong> (P1, P4, P9). This page gathers the copy rules that forty component specs apply one at a time into one place: the voice, the grammar, how actions and states are worded, how numbers and time are written, how spoken lines differ from written ones, how a string gets to four languages, the words we always use and the words we never use. The length budgets live in <code>foundations/type.md</code>; this page is about what goes inside them.</p>
+    </header>
+    <h2 id="1-the-register">1. The register</h2>
+<p>Write the way a good trainer at the Hub talks to an expert she respects: plainly, warmly, one thing at a time, assuming intelligence but not literacy.</p>
+<ul>
+<li><strong>One idea per line.</strong> A Button says one thing; a Banner says what happened and what to do, nothing else; a sheet body says at most four lines. If a sentence needs a comma to survive, split it.</li>
+<li><strong>Verbs for actions, nouns for things, numbers first.</strong> <em>Accept job</em> · <em>Check in</em> · <em>3 more jobs to Gold</em> · <em>15 min added</em>. The number leads because it is the part she reads fastest and the part that is the same in every language.</li>
+<li><strong>Concrete over abstract.</strong> <em>Your ₹450 will reach your bank by Tuesday</em> beats <em>Payout processing</em>. Name the amount, the day, the person, the place.</li>
+<li><strong>Her words, not ours.</strong> She says <em>job</em>, <em>shift</em>, <em>check in</em>, <em>earnings</em>, <em>payout</em>, <em>tier</em>, <em>SOS</em>, <em>Shield</em>, <em>Hub</em> — the vocabulary in <code>PRINCIPLES.md</code> § Vocabulary. She does not say <em>booking</em>, <em>task</em>, <em>wallet</em>, <em>settlement</em>, <em>KYC</em>, <em>OTP verification</em>, <em>ETA</em>, <em>UTR</em>. When a system word is unavoidable, put the plain meaning first and the word after: <em>Reference number (UTR) 4021…</em>.</li>
+<li><strong>No idiom, no cleverness.</strong> Every English line will be translated by someone who has met an expert; a pun or a phrasal verb makes their job impossible and the Kannada line 1.6× long. <em>Keep going!</em> is untranslatable and says nothing; <em>3 more jobs to Gold</em> translates itself.</li>
+<li><strong>Adult to adult.</strong> She is a professional having a normal day or a hard one. No cheerleading, no scolding, no baby talk, no <em>Oops</em>.</li>
+</ul>
+<p>The test for any line: <strong>would you say this to a colleague, out loud, at her door?</strong> If it would sound odd spoken, it is wrong written.</p>
+<hr />
+<h2 id="2-grammar-and-typography-of-copy">2. Grammar and typography of copy</h2>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Do</th>
+<th>Don't</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sentence case everywhere</td>
+<td><em>Accept job</em> · <em>Time left</em></td>
+<td><em>Accept Job</em> · <em>TIME LEFT</em></td>
+<td>Indic scripts have no case; caps make English the odd one out (P9). The shipped <em>ACCEPT IN</em> small caps is retired (<code>timer.md</code>).</td>
+</tr>
+<tr>
+<td>No exclamation marks, no emoji as content</td>
+<td><em>Job done · ₹450 earned</em></td>
+<td><em>Job done! 🎉</em></td>
+<td>Emphasis comes from the moment (sound, motion), not punctuation. Emoji do not translate and read as noise to a screen reader.</td>
+</tr>
+<tr>
+<td>No questions in status or feedback</td>
+<td><em>Waiting for network…</em></td>
+<td><em>No internet?</em></td>
+<td>A question asks her to think; a status tells her. Questions belong only in confirmations that have a real choice.</td>
+</tr>
+<tr>
+<td>No ellipsis except a live wait</td>
+<td><em>Checking in…</em> (band moving)</td>
+<td><em>Loading…</em> on a static screen</td>
+<td>Three dots mean <em>something is happening now</em>; never <em>there is more text</em>.</td>
+</tr>
+<tr>
+<td>Full stops only in multi-sentence bodies</td>
+<td>Banner: <em>You're offline · Your work is saved</em></td>
+<td><em>You're offline.</em></td>
+<td>Single lines and labels carry no terminal punctuation; the middle dot joins two facts.</td>
+</tr>
+<tr>
+<td>Second person, present tense</td>
+<td><em>You earn ₹450</em> · <em>Radhika asked for 30 more minutes</em></td>
+<td><em>The user will be paid</em> · <em>Extension requested</em></td>
+<td>Active voice with a named actor; the passive hides who did what.</td>
+</tr>
+<tr>
+<td>Never blame</td>
+<td><em>That code didn't match · Try again or call help</em></td>
+<td><em>Invalid input</em> · <em>You entered the wrong OTP</em></td>
+<td>P5, <code>patterns/error-recovery.md</code>: state the fact, show the way back.</td>
+</tr>
+<tr>
+<td>Name people</td>
+<td><em>Call Radhika</em> · <em>Radhika's home</em></td>
+<td><em>Call customer</em></td>
+<td>The customer has a name; using it is respect and disambiguation.</td>
+</tr>
+<tr>
+<td>Brand words stay Latin</td>
+<td><em>Snabbit</em> · <em>SOS</em> · <em>UPI</em></td>
+<td>transliterated</td>
+<td>Read as logos; the feature name <em>Kavach</em> is written in the script of the language (see § 8).</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="3-actions">3. Actions</h2>
+<p>An action is a <strong>verb, or verb + object, ≤ 18 English characters, one line</strong>, and it names what will happen — never the fact that she agrees.</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Say</th>
+<th>Never</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Take the job</td>
+<td><strong>Accept job</strong></td>
+<td><em>Accept</em>, <em>Yes</em>, <em>OK</em>, <em>Confirm</em></td>
+</tr>
+<tr>
+<td>Refuse the job (hold)</td>
+<td><strong>Decline</strong></td>
+<td><em>Reject</em>, <em>Deny</em>, <em>Skip</em>, <em>No</em></td>
+</tr>
+<tr>
+<td>Arrive / leave</td>
+<td><strong>Check in</strong> · <strong>Complete job</strong></td>
+<td><em>Start</em>, <em>Submit</em>, <em>Done</em></td>
+</tr>
+<tr>
+<td>Move through a flow</td>
+<td><strong>Next</strong> · <strong>Start</strong> · <strong>Go to Home</strong></td>
+<td><em>Continue</em>, <em>Proceed</em>, <em>OK</em></td>
+</tr>
+<tr>
+<td>Low-stakes exit</td>
+<td><strong>Not now</strong> · <strong>Got it</strong></td>
+<td><em>Dismiss</em>, <em>Cancel</em> (unless it cancels a job), <em>Close</em> on a Banner (swipe does that)</td>
+</tr>
+<tr>
+<td>Permission</td>
+<td><strong>Allow location</strong> · <strong>Open settings</strong></td>
+<td><em>Enable</em>, <em>Grant</em>, <em>Allow</em> alone</td>
+</tr>
+<tr>
+<td>Money</td>
+<td><strong>Get paid now</strong> · <strong>Add bank account</strong> · <strong>See breakdown</strong></td>
+<td><em>Withdraw</em>, <em>Redeem</em>, <em>Proceed to payout</em></td>
+</tr>
+<tr>
+<td>Help</td>
+<td><strong>Call help</strong> · <strong>Chat with Saathi</strong></td>
+<td><em>Contact support</em>, <em>Raise a ticket</em></td>
+</tr>
+<tr>
+<td>Retry</td>
+<td><strong>Try again</strong> (with the reason above it)</td>
+<td><em>Retry</em> alone, <em>Refresh</em></td>
+</tr>
+<tr>
+<td>Learn</td>
+<td><strong>Show me</strong> · <strong>Play</strong></td>
+<td><em>Learn more</em>, <em>Know more</em>, <em>Read more</em></td>
+</tr>
+</tbody>
+</table></div>
+<p class="lbl">Rules:</p>
+<ul>
+<li>Two actions on one surface are <strong>different verbs</strong>, never <em>Yes / No</em>: <em>Accept job</em> and <em>Decline</em>; <em>Get paid now</em> and <em>Not now</em>.</li>
+<li>A destructive or costly action's label says what is lost: <em>End shift</em> · <em>Decline</em> · <em>Remove account</em>; the hold gesture (<code>button.md</code>) is the protection, the word is the warning.</li>
+<li>A disabled Button always has its <strong>reason under it</strong> in <code>BodyMd</code> <code>textSecondary</code>: <em>Available at 11:00</em> · <em>Needs internet</em> · <em>Waiting for network…</em>. Never a disabled Button alone.</li>
+<li>Tab labels are single nouns ≤ 10 characters: <em>Home · Earnings · Refer · Profile</em>.</li>
+<li>Chips are nouns or short phrases she would say: <em>I have reached</em> · <em>Running 10 min late</em> — quick replies are written as <strong>her</strong> speech.</li>
+</ul>
+<hr />
+<h2 id="4-states">4. States</h2>
+<p>Every state has the same two-part shape — <strong>what is true, then what to do</strong> — and the second part is a Button or a chip, not a sentence.</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>State</th>
+<th>Shape</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Loading (≤ 3 s)</td>
+<td>Present participle on the thing she tapped; no text elsewhere</td>
+<td><em>Checking in…</em></td>
+</tr>
+<tr>
+<td>Loading (&gt; 3 s)</td>
+<td>The honest reason + what continues</td>
+<td><em>Slow network · Your work is saved</em></td>
+</tr>
+<tr>
+<td>Empty</td>
+<td>What would be here + how it gets here; never blame, never <em>No data</em></td>
+<td><em>No jobs yet</em> · <em>Jobs for tomorrow arrive by 8 pm. We'll ring you.</em></td>
+</tr>
+<tr>
+<td>Success</td>
+<td><strong>What</strong> succeeded, with the number</td>
+<td><em>Checked in · 9:58 am</em> · <em>₹450 added to earnings</em> — never <em>Success!</em> alone</td>
+</tr>
+<tr>
+<td>Error she can fix</td>
+<td>The fact + the fix</td>
+<td><em>That code didn't match</em> → <strong>Try again</strong> · <strong>Call help</strong></td>
+</tr>
+<tr>
+<td>Error she cannot fix</td>
+<td>The fact + who is on it + what she can still do</td>
+<td><em>Couldn't reach Snabbit · Your photo is saved · We'll send it when you're back online</em></td>
+</tr>
+<tr>
+<td>Offline</td>
+<td>Once, at the top, calm</td>
+<td><em>You're offline · Your work is saved and will send when you're back</em></td>
+</tr>
+<tr>
+<td>Waiting on someone else</td>
+<td>Who, and for how long</td>
+<td><em>Waiting for Radhika to approve · 2 min</em></td>
+</tr>
+<tr>
+<td>Time running out</td>
+<td>Number first, tone from the Timer</td>
+<td><em>15 min left</em> · <em>1 min left to accept</em></td>
+</tr>
+<tr>
+<td>Miss (late, no-show, lapsed)</td>
+<td>The fact, the consequence as a number, the way back — no shame</td>
+<td><em>Login window closed at 6:40 am · Log in now to start your shift</em></td>
+</tr>
+<tr>
+<td>Win</td>
+<td>One warm specific line, ≤ 1.5 s on screen</td>
+<td><em>Gold tier · 3 weeks on time</em></td>
+</tr>
+</tbody>
+</table></div>
+<p>Never: <em>Something went wrong</em> · <em>Error 502</em> · <em>Request failed</em> · <em>Oops</em> · <em>Network error</em> · <em>Failed to fetch</em> · <em>Invalid input</em> · <em>Verification failed</em> · <em>Try again later</em> without a time · <em>Success!</em> · <em>Coming soon</em> · <em>Pro tip</em> · <em>New!</em> · <em>Up next</em> · a red screen · a spinner that does not end.</p>
+<hr />
+<h2 id="5-numbers-money-time-place">5. Numbers, money, time, place</h2>
+<p>Identical in every language (P9); numerals are Latin; formats come from <code>foundations/type.md</code> § Numerals.</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Thing</th>
+<th>Format</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Money</td>
+<td><code>₹450</code> · <code>₹1,250</code> · <code>₹1,25,000</code></td>
+<td>Indian grouping; no decimals unless paise matter (never in UI); the sign is <code>+ ₹450</code> / <code>− ₹50</code> with a space, <code>Amount</code> component</td>
+</tr>
+<tr>
+<td>Duration</td>
+<td><code>45 min</code> · <code>1 hr 20 min</code> · <code>2 hrs</code></td>
+<td>Never <code>1:20</code> for a duration; <code>m:ss</code> only inside a Timer</td>
+</tr>
+<tr>
+<td>Countdown</td>
+<td><code>1:23</code> · <code>0:42</code> · <code>48:23</code></td>
+<td>Timer only; tabular numerals</td>
+</tr>
+<tr>
+<td>Clock time</td>
+<td><code>9:30 am</code> · <code>6:40 pm</code></td>
+<td>12-hour, lowercase, space before am/pm; never <code>06:40</code>, never <code>AM</code></td>
+</tr>
+<tr>
+<td>Date</td>
+<td><em>Mon 8 Sep</em> · <em>Tuesday, 7 February</em></td>
+<td>Weekday and month translated, numerals Latin; never <code>08/09/2026</code>, never ISO</td>
+</tr>
+<tr>
+<td>Relative time</td>
+<td><em>Today</em> · <em>Tomorrow</em> · <em>Yesterday</em> · <em>in 2 days</em> · <em>2 min ago</em></td>
+<td>Beyond a week, use the date</td>
+</tr>
+<tr>
+<td>Distance</td>
+<td><code>350 m</code> · <code>1.2 km</code></td>
+<td>One decimal max</td>
+</tr>
+<tr>
+<td>Counts</td>
+<td><em>3 jobs</em> · <em>1 job</em> · <em>no jobs</em></td>
+<td>Plurals written out per language; never <em>job(s)</em></td>
+</tr>
+<tr>
+<td>Ranges</td>
+<td><code>9:55 – 10:00</code> · <code>7:00 am – 12:00 pm</code></td>
+<td>En dash with spaces</td>
+</tr>
+<tr>
+<td>Reference numbers</td>
+<td><em>Reference (UTR) 4021 8834 …</em> with <strong>copy</strong></td>
+<td>Grouped in fours; never the bare acronym</td>
+</tr>
+<tr>
+<td>Phone</td>
+<td><code>+91 98xxx xxxxx</code></td>
+<td>Grouped 5-5</td>
+</tr>
+<tr>
+<td>Percent</td>
+<td><code>20 %</code> — avoid in UI</td>
+<td>She thinks in rupees and minutes, not percent; the Timer uses percent only to compute tone</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="6-spoken-copy">6. Spoken copy</h2>
+<p>Voice is a first-class channel (P4). Spoken lines are <strong>written separately</strong> from their on-screen twins — they are speech, not text read aloud.</p>
+<ul>
+<li><strong>≤ 12 words, one instruction, present tense, her name never.</strong> <em>"Hold the button to decline."</em> · <em>"Fifteen minutes added."</em> · <em>"You're offline. Your work is saved."</em></li>
+<li><strong>Numbers are spoken as she would say them</strong>: <em>"four hundred and fifty rupees"</em>, <em>"nine fifty-eight"</em>, <em>"fifteen minutes"</em> — not <em>"₹450"</em> passed to a TTS engine. Every string with a number has a spoken form written by hand.</li>
+<li><strong>When it speaks</strong> (and only then): first use of a control (Coachmark); every error she must recover from; every time-critical event (new job, check-in window, running late, time left at 15 / 5 / 1 min, payout credited); the outcome of an action that takes her eyes off the phone (checked in, photo saved). Once per event; never on <em>Back online</em>, never on decoration, never twice for the same thing.</li>
+<li><strong>The speaker control</strong> (<code>speaker-high</code>) sits beside anything spoken so she can hear it again; replay is never more than one tap away (<code>voice-prompt.md</code>).</li>
+<li><strong>Silence is a state.</strong> Silent mode is honoured except for the new-job alert and SOS, which she has told us she always wants to hear.</li>
+<li><strong>Recorded, not synthesised, for the fixed set.</strong> Onboarding, coachmarks, error recovery and the safety flows are recorded by a native speaker per language; dynamic strings (amounts, names, times) are synthesised into a template <em>"Your ₹450 will reach your bank by Tuesday"</em> with the recorded frame and the synthesised slot — and are reviewed aloud once per release.</li>
+<li><strong>Sound before words.</strong> The distinct sound (new job, confirm, commit, SOS) plays first; the words follow after <code>motion.standard</code>. A sound is never used for two meanings.</li>
+</ul>
+<hr />
+<h2 id="7-four-languages-how-a-string-ships">7. Four languages — how a string ships</h2>
+<p>Hindi, Kannada, Marathi and English are equal citizens (P9). The process is the same for every string, and nothing is Stable until it has been through it (<code>GOVERNANCE.md</code>, checklist row 15).</p>
+<ol>
+<li><strong>English master, written to this page</strong>, with its budget from <code>type.md</code> and its spoken form (§ 6) if it is spoken. The string key names the place and the job, not the words: <code>job.accept.button</code>, <code>checkin.window.closed.banner</code>.</li>
+<li><strong>Translated by a native speaker who has met an expert</strong> — a trainer, a Hub lead, an expert herself — never a vendor working from a spreadsheet. The translator sees the screen, not a list. Formal register (आप / ನೀವು / तुम्ही), never the intimate form.</li>
+<li><strong>Kannada is the test string.</strong> It is the widest (× 1.35). If the Kannada string does not fit the box at font scale 1.3, the <strong>English is shortened</strong> — all four languages get the shorter idea; a language never gets a worse line to fit.</li>
+<li><strong>Heard aloud.</strong> Each spoken line is recorded or synthesised and played to the translator and to one expert; a line that sounds like a form is rewritten.</li>
+<li><strong>Reviewed on the screen</strong> in all four languages at font scale 1.3 (<code>accessibility.md</code> § the test pass, step 4). Then it is done — and it is never edited in one language alone.</li>
+</ol>
+<p class="lbl">Rules of the road: numerals stay Latin in every language; brand words (<em>Snabbit</em>, <em>SOS</em>, <em>UPI</em>, <em>Saathi</em>) stay Latin; <strong>Kavach</strong> is written in the script of the language (कवच / ಕವಚ) because it is a word, not a logo — <em>decision to confirm</em> (§ 8); dates translate the weekday and month, not the numerals; the language picker offers each language in its own name and script (हिन्दी · ಕನ್ನಡ · मराठी · English).</p>
+<hr />
+<h2 id="8-vocabulary-the-words-we-always-use">8. Vocabulary — the words we always use</h2>
+<p><code>PRINCIPLES.md</code> § Vocabulary is the source; this extends it with the words the specs settled on since. Say the left column everywhere: UI, voice, code identifiers, training, support scripts.</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Say</th>
+<th>Not</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Expert</td>
+<td>worker, runner, helper, maid, partner</td>
+<td><em>Runner</em> survives in package names only</td>
+</tr>
+<tr>
+<td>Customer · her name</td>
+<td>client, user, household</td>
+<td>Name whenever known</td>
+</tr>
+<tr>
+<td>Job</td>
+<td>booking, order, task, gig, visit</td>
+<td>One customer visit</td>
+</tr>
+<tr>
+<td>Shift</td>
+<td>slot, session, duty</td>
+<td>The block of hours she chose</td>
+</tr>
+<tr>
+<td>Check in / Complete job</td>
+<td>login, punch, attendance, check out, submit</td>
+<td><em>Check out</em> is the pattern's name; the Button says <em>Complete job</em></td>
+</tr>
+<tr>
+<td>Present / Login (Home card)</td>
+<td>attendance, mark attendance</td>
+<td>The pre-shift confirmation; shipped word</td>
+</tr>
+<tr>
+<td>Earnings</td>
+<td>income, wallet, balance</td>
+<td>What she has earned</td>
+</tr>
+<tr>
+<td>Payout</td>
+<td>settlement, transfer, withdrawal, redeem</td>
+<td>Money reaching her bank</td>
+</tr>
+<tr>
+<td>Tier · Gold / Silver / Bronze / Diamond</td>
+<td>level, rank, badge</td>
+<td>Tier colours only for tier (P6)</td>
+</tr>
+<tr>
+<td>Streak</td>
+<td>run, chain</td>
+<td>Consecutive on-time days</td>
+</tr>
+<tr>
+<td>Coins · Red cards</td>
+<td>points, rewards, penalties, strikes</td>
+<td>The two reward-layer currencies; always with the asset</td>
+</tr>
+<tr>
+<td>Bonus</td>
+<td>incentive, karma, adjustment</td>
+<td>Additions to base pay; <em>Adjustments</em> is never a deduction label</td>
+</tr>
+<tr>
+<td>SOS</td>
+<td>emergency, panic, alert</td>
+<td>The safety trigger</td>
+</tr>
+<tr>
+<td>Shield</td>
+<td>safety mode, monitoring, recording mode</td>
+<td>The in-job safety feature — see the Kavach note</td>
+</tr>
+<tr>
+<td>Saathi</td>
+<td>support chat, help desk, bot</td>
+<td>The chat; <em>Help</em> is the call</td>
+</tr>
+<tr>
+<td>Hub</td>
+<td>centre, office, branch</td>
+<td>The physical training / support location</td>
+</tr>
+<tr>
+<td>Code (OTP)</td>
+<td>OTP, PIN, passcode</td>
+<td><em>Enter the code Radhika gives you</em></td>
+</tr>
+<tr>
+<td>Bank account · UPI ID</td>
+<td>payment method, KYC</td>
+<td>Plain nouns</td>
+</tr>
+<tr>
+<td>Directions</td>
+<td>navigate, maps, route</td>
+<td>Opens the maps app</td>
+</tr>
+<tr>
+<td>Time left · Overtime</td>
+<td>remaining, extra time, ETA</td>
+<td>Timer labels</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Open decision — Kavach or Shield.</strong> The shipped product calls the feature <em>Snabbit Kavach</em>; <code>PRINCIPLES.md</code> says <em>Shield</em>; <code>shield-card.md</code> uses <em>Shield</em> in the UI and <em>Kavach</em> as the feature's proper name. Recommendation: <strong>Kavach</strong> as the name she hears and sees (it is what the Hub calls it and it is a word in her language), <em>Shield</em> as the component name in code and specs. Needs the design lead's yes; then one pass through <code>shield-card.md</code>, <code>patterns/after-sos.md</code> and the vocabulary table.</p>
+<hr />
+<h2 id="9-words-we-never-use">9. Words we never use</h2>
+<p>Consolidated from every spec. The lint warns on the first group.</p>
+<ul>
+<li><strong>Bare agreement labels:</strong> <em>OK</em> · <em>Okay</em> · <em>Yes</em> · <em>No</em> · <em>Submit</em> · <em>Continue</em> · <em>Proceed</em> · <em>Confirm</em> alone · <em>Done</em> alone · <em>Dismiss</em> · <em>Cancel</em> (except cancelling a job) · <em>Skip</em>.</li>
+<li><strong>System error language:</strong> <em>Something went wrong</em> · <em>Oops</em> · <em>Error 4xx / 5xx</em> · <em>Request failed</em> · <em>Network error</em> · <em>No internet connection</em> · <em>Failed to fetch</em> · <em>Invalid input</em> · <em>Verification failed</em> · <em>Server</em> · <em>Timeout</em> · <em>Try again later</em>.</li>
+<li><strong>Marketing filler:</strong> <em>Hurry!</em> · <em>Don't miss out</em> · <em>Keep going!</em> · <em>Pro tip</em> · <em>New!</em> · <em>Coming soon</em> · <em>Learn more</em> · <em>Know more</em> · <em>Up next</em> · <em>Congratulations!</em> alone · <em>Success!</em> alone.</li>
+<li><strong>Jargon and acronyms alone:</strong> <em>KYC</em> · <em>OTP</em> (say <em>code</em>) · <em>ETA</em> · <em>UTR</em> (say <em>Reference number (UTR)</em>) · <em>Min G</em> · <em>Base Pay</em> as a heading · <em>Adjustments</em> for a deduction · <em>Job ID</em> · <em>Waiver</em> · <em>Step two</em> (steps are shown, not numbered in words).</li>
+<li><strong>Feature-speak:</strong> <em>Activate</em> · <em>Enable</em> · <em>Grant</em> · <em>Monitoring active</em> · <em>Smart monitoring</em> · <em>Turn on availability</em> · <em>Location permission required</em> · a feature name alone as a Button.</li>
+<li><strong>Shame:</strong> <em>Streak broken</em> · <em>You missed…</em> as a headline · <em>Job denied</em> · <em>Rejected</em> · <em>Failed</em> about her.</li>
+</ul>
+<hr />
+<h2 id="10-copy-review-the-checklist-for-one-string">10. Copy review — the checklist for one string</h2>
+<p>Run before a string enters a spec or a build. Rows 15–16 of the component checklist depend on it.</p>
+<ul>
+<li class="chk">Verb for an action, noun for a thing, number first where there is one.</li>
+<li class="chk">≤ its budget in English (<code>type.md</code>); Kannada fits the same box at 1.3.</li>
+<li class="chk">Sentence case; no caps, exclamation marks, emoji, idiom, question in a status.</li>
+<li class="chk">Vocabulary from § 8; nothing from § 9.</li>
+<li class="chk">States say what is true, then what to do; no blame; the way back is a Button.</li>
+<li class="chk">Numbers, money, time and dates in the § 5 formats.</li>
+<li class="chk">If spoken: a separate spoken form ≤ 12 words, numbers written as speech.</li>
+<li class="chk">Translated by someone who has met an expert; heard aloud; reviewed on screen in four languages.</li>
+<li class="chk">Passes the colleague test: you would say it to her, out loud, at the door.</li>
+</ul>
+<hr />
+<h2 id="checklist-for-the-foundation">Checklist for the foundation</h2>
+<ul>
+<li class="chk">Every component spec's <em>Content</em> section cites this page instead of restating rules.</li>
+<li class="chk">The lint W1 list matches § 9's first two groups.</li>
+<li class="chk">The Kavach / Shield decision is made and applied.</li>
+<li class="chk">A four-language glossary (§ 8 in हिन्दी · ಕನ್ನಡ · मराठी) is filled in by the Hub trainers and kept beside this page.</li>
+<li class="chk">The first ten Stable components have every string through § 7.</li>
+</ul>
+  </main>
+</div>
+<script>
+(function(){
+const links=[...document.querySelectorAll('#nav a')];
+const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-10% 0px -80% 0px'});
+  targets.forEach(t=>io.observe(t));
+}
+})();
+</script>

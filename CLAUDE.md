@@ -20,7 +20,7 @@ This repository is the **mobile design system** for the Snabbit Expert app (Comp
 - **Translate, don't transplant.** A reference supplies ideas (structure, order, interaction); the system supplies expression (tokens, components, voice). "Don't stick strictly to the design system" means *run the reference read and translate*, never *restyle the screenshot*.
 - **Principles pass.** Anything with a state, an action or text runs the acceptance checklist in `PRINCIPLES.md`. Cite principle numbers when you make or request a change (*"P3: decline is adjacent to accept"*).
 - **Vocabulary.** Expert (not worker/runner/helper), Job, Shift, Check in/out, Earnings, Payout, Tier, Streak, SOS, Shield, Hub. See the table in `PRINCIPLES.md`.
-- **Copy** is warm, specific, sentence case, one idea per line, and designed to fit Hindi, Kannada and Marathi at large font size. Actions are verbs (*Accept job*), never *OK / Submit / Continue*.
+- **Copy** follows `foundations/content.md`: warm, specific, sentence case, one idea per line, numbers first, designed to fit Hindi, Kannada and Marathi at large font size. Actions are verbs (*Accept job*), never *OK / Submit / Continue*; the § 9 banned list is enforced by the lint.
 
 ## When the user shares a screenshot or reference
 
@@ -35,7 +35,7 @@ components/     one spec per core component (button.md, …); each has a live pa
 briefs/         Tier 3 / change-to-core briefs (template in EXTENDING.md)
 patterns/       one flow per file (new-job-alert.md, …); each has a page site/pattern-<name>.html built by build_doc.py
 references/     SCREENS.md (the two screen files: which pages, shipped vs proposed, open conflicts) · reference screenshots + their reads
-foundations/    icons.md (Phosphor meaning register) · assets.md (illustration style lock + register) · motion.md (durations, easing, timeouts, reduced motion) · type.md (four scripts: fallback faces, ×1.15, budgets, wrapping, font scale) · accessibility.md (measured contrast, targets, focus, screen reader, test pass)
+foundations/    icons.md (Phosphor meaning register) · assets.md (illustration style lock + register) · motion.md (durations, easing, timeouts, reduced motion) · type.md (four scripts: fallback faces, ×1.15, budgets, wrapping, font scale) · accessibility.md (measured contrast, targets, focus, screen reader, test pass) · content.md (voice, grammar, actions, states, formats, spoken copy, four-language process, vocabulary, banned words)
 DECISIONS.md    dated design decisions and their consequences
 GOVERNANCE.md   status lifecycle (Proposed → Reconciled → Stable), review step, how changes are recorded, releases
 CHANGELOG.md    one section per release, Unreleased on top — a line for anything that changes what a designer or engineer must do
@@ -59,6 +59,20 @@ python3 site/lint.py     # spec lint alone; exit 1 on errors (raw hex, off-scale
 `build_all.sh` runs `site/build.py` (tokens.json → index.html + site/components/*.html), `site/build_doc.py` for each markdown doc, and `site/build_audit.py`. Add new docs/components to `build_all.sh` **and** to the site nav in `site/nav.py`.
 
 Status changes, reviews and releases follow `GOVERNANCE.md`; behaviour changes get a line in `CHANGELOG.md` § Unreleased. Regenerate the site in the same change as the source you edited. Never hand-edit a generated `site/*.html`. **Run `python3 site/lint.py` before committing** and fix every ERROR: E1 raw hex · E2 millisecond not on the motion/timeout scale · E3 Phosphor icon not registered in `foundations/icons.md` · E4 spec missing *What changes* / *Accessibility* / *Figma reconciliation* / checklist · E5 spec without a template (or the reverse) · E6 nav ↔ build mismatch · E7 generated page older than its source. Warnings (banned copy such as *OK / Submit / Continue / Oops*) are to be fixed too unless the line is quoting what *not* to write.
+
+## Designing on Paper
+
+The design lead draws in **Paper** (the desktop app), not in a prototype. The Paper file *Snabbit* (team *Rupam's Team*) carries the full token set exported from `tokens/tokens.json` on 2026-09-10 — 153 tokens named `--color-text-primary`, `--text-body-lg`, `--leading-body-lg`, `--spacing-5`, `--radius-lg`, `--spacing-border-thin`, `--spacing-elevation-floating`, `--container-content`, and so on, each with its DS description. When drawing or editing in Paper:
+
+- **Tokens by variable, always.** Every colour, size, line height, spacing and radius is `var(--…)` from the file's token set. A raw hex or px in a Paper design is the same violation as in a spec. Palette steps (`--color-pink-300`) only while proposing a new semantic token; illustration accents (`--color-illustration-yellow`) only inside illustration assets.
+- **Components before compositions.** Draw a control as the spec draws it (`components/<name>.md` anatomy, sizes, states) before arranging it. A screen is a Tier 2 composition of core components on the 360 × 800 baseline (`--container-screen`, content `--container-content`, margin `--spacing-5`); anything that is not a core component is Tier 3 and gets a brief in `briefs/` (`principles/EXTENDING.md`).
+- **Pinterest, Mobbin, Dribbble, screenshots:** run the six-step reference read in `EXTENDING.md` first and translate — structure, order and interaction may be borrowed; colours, faces, radii, shadows and copy may not. Off-palette colour is not a style choice here: for a low-literacy user colour is a language (P6). A campaign or celebration surface that needs more than the palette proposes a token, it does not paste a hex.
+- **Type in Paper** is size + line height + weight; the Indic rule (line height × 1.15) is applied by picking the next leading up when a container holds Hindi, Marathi or Kannada. Weights are 400 / 500 / 600 only; no letter-spacing; no caps.
+- **Keep the token set in sync.** When `tokens.json` changes (a release per `GOVERNANCE.md` § 4), re-export to Paper the same day and note it in `CHANGELOG.md` § Site. The Paper file is a consumer of the tokens, never a source.
+- **Copy** on any Paper screen follows `foundations/content.md` — real strings from the specs, never lorem ipsum, never `OK` / `Submit` / `Continue`.
+- Screens that become evidence for a spec are exported as PNG into `references/` with a short `.md`, like any other reference.
+
+Nothing in this repository is a prototype and none of it needs to be: the live pages under `site/` exist so engineers and reviewers can see behaviour; the visual source of truth for a new screen is the Paper file, and the spec is what makes it buildable.
 
 ## Publishing
 

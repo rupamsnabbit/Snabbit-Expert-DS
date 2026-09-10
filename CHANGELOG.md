@@ -25,6 +25,7 @@ One section per release, newest first; *Unreleased* on top. Sections inside: Tok
 - `foundations/motion.md` — three rules, durations, easing, timeouts, where motion is not, reduced motion per kind.
 - `foundations/type.md` — four scripts: fallback faces, ×1.15 table, English budgets / universal box, consolidated length table, wrapping, font scale 1.3, test strings.
 - `foundations/accessibility.md` — every token pair measured; failing pairs named with fixes; targets, focus, screen reader, greyscale, sunlight, the seven-step test pass.
+- `foundations/content.md` — the content guide: register, grammar, actions, states, number/time formats, spoken copy, how a string ships in four languages, vocabulary, the banned list, copy review checklist.
 - Sound & haptics register parked (`ROADMAP.md`).
 
 ### Patterns
@@ -33,11 +34,12 @@ One section per release, newest first; *Unreleased* on top. Sections inside: Tok
 
 ### Decisions
 - See `DECISIONS.md`: assets two layers; light mode only; navigation (shipped tab bar, HeaderAction); header and Stepper corrections after the screen read; no FAB component.
-- Open, awaiting the design lead: primary Button label contrast (ButtonLg 18/24 recommended); token release 0.20; Telugu as a fifth script; Shield auto-start and the blue shield; HowToClip `guide`.
+- Open, awaiting the design lead: Kavach vs Shield as the user-facing name; primary Button label contrast (ButtonLg 18/24 recommended); token release 0.20; Telugu as a fifth script; Shield auto-start and the blue shield; HowToClip `guide`.
 
 ### Site
 - Documentation site under `site/` built by `build_all.sh`: tokens page (with Motion & timeouts and the four-script sample), foundations, 39 component pages, 10 pattern pages, roadmap, benchmark, audit.
-- `site/lint.py` — spec lint run by the build; first run found and fixed 55 errors.
+- `site/lint.py` — spec lint run by the build; first run found and fixed 55 errors. W1 now warns on the whole `content.md` § 9 banned list.
+- Paper: the *Snabbit* Paper file carries the full token set (153 tokens) exported from `tokens.json`; `CLAUDE.md` / `AGENTS.md` gain a *Designing on Paper* section.
 - `GOVERNANCE.md` — status lifecycle, review step, recording changes, releases, roles.
 - `references/SCREENS.md` — the three screen files and the *When the screens change* procedure; *Self-Serve ER/AR* registered as the onboarding source.
 

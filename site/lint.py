@@ -13,7 +13,7 @@ Checks
   E6  page in site/nav.py not produced by build_all.sh (or vice versa)
   E7  generated site/*.html older than its source (run build_all.sh)
   E8  status line claims Reconciled / Stable without its evidence (Figma id / package version), or is missing
-  W1  banned words in UI copy quotes (OK, Submit, Continue as a bare label; Oops; Error 4xx)
+  W1  banned words in UI copy (OK, Submit, Continue as a bare label; the foundations/content.md § 9 list)
   W2  spec still says "pending motion foundation" / "sound register" placeholders
 """
 import re, sys, pathlib, json, subprocess
@@ -60,6 +60,8 @@ NOT_ICONS = {
 PH_DIR = pathlib.Path("/tmp/claude-0/ph/node_modules/@phosphor-icons/core/assets/regular")
 PHOSPHOR = {p.stem for p in PH_DIR.glob("*.svg")} if PH_DIR.exists() else set()
 
+# foundations/content.md § 9 — the first two groups (system error language, marketing filler)
+BANNED = r"\bOops\b|Error \d{3}|Something went wrong|Request failed|Network error|No internet connection|Failed to fetch|Invalid input|Verification failed|Try again later|Coming soon|Pro tip|Learn more|Know more|Don't miss out|Keep going!|Hurry!"
 SPEC_SECTIONS = ["## What changes", "## Accessibility", "## Figma reconciliation", "## Acceptance checklist"]
 SKIP_SPECS = {"README.md"}
 
@@ -88,8 +90,8 @@ def scan(f, kind):
         # W1 banned copy
         if re.search(r"\*\*(OK|Submit|Continue)\*\*(?! \(|\s*[·—-])", line) and "never" not in line.lower() and "not " not in line.lower() and "don" not in line.lower():
             warn(f, i, "W1", "bare label OK / Submit / Continue as a Button: " + line.strip()[:80])
-        if re.search(r"\bOops\b|Error \d{3}", line) and not re.search(r"never|no \*|no \b|banned|not ", line, re.I):
-            warn(f, i, "W1", "banned error copy: " + line.strip()[:80])
+        if rel != "foundations/content.md" and re.search(BANNED, line) and not re.search(r"never|no \*|no \b|banned|not |don't|instead of|→", line, re.I):
+            warn(f, i, "W1", "banned copy (foundations/content.md § 9): " + line.strip()[:80])
         if re.search(r"pending (the )?motion foundation|into the motion foundation", line, re.I):
             warn(f, i, "W2", "motion placeholder — the foundation exists; cite the token")
     if kind == "component":

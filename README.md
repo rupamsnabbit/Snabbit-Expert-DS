@@ -11,10 +11,16 @@ DECISIONS.md         Dated decisions: Outfit only, Phosphor only, light only
 foundations/
   icons.md           Phosphor meaning register (one icon, one meaning)
   assets.md          Illustration/reward assets: soft-3D style lock, register, AI style prompt
+  motion.md          Durations, easing, timeouts, reduced motion
+  type.md            Four scripts: fallback faces, ×1.15, budgets, wrapping, font scale
+  accessibility.md   Measured contrast, targets, focus, screen reader, the test pass
+  content.md         How the app talks: register, actions, states, formats, spoken copy, four languages, vocabulary, banned words
 principles/
   PRINCIPLES.md      Persona, 9 principles, reference case, acceptance checklist
   EXTENDING.md       Tiers, rule of three, reference-read procedure, brief template
-components/          One spec per core component
+components/          One spec per core component (49) + 2 compositions; live page per spec under site/components/
+patterns/            One flow per file (10)
+GOVERNANCE.md · CHANGELOG.md · ROADMAP.md   Lifecycle, releases, what is done and left
 briefs/              Tier 3 / change-to-core briefs
 references/          Reference screenshots + reads
 audit/               FIGMA_AUDIT.md · BENCHMARK.md · frames.json
