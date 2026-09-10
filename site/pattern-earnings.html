@@ -1,0 +1,263 @@
+<meta charset="utf-8">
+<title>Snabbit Expert Pattern Earnings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --bg-2:#F9FAFB; --bg-3:#F3F4F6;
+  --text:#111827; --text-body:#374151; --text-2:#6B7280; --text-3:#9CA3AF;
+  --border:#E5E7EB; --border-subtle:#F3F4F6;
+  --brand:#F70F79; --brand-wash:#FEF1F7; --brand-ink:#97094A;
+  --ok:#059669; --ok-wash:#ECFDF5; --focus:#3B82F6;
+  --sans:"Outfit",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+    --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+    --border:#374151; --border-subtle:#1F2937;
+    --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+    --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+  --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+  --border:#374151; --border-subtle:#1F2937;
+  --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+  --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--text-body);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+code{font-family:var(--mono);font-size:.85em;background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--text)}
+pre{background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:14px 16px;overflow-x:auto;margin:12px 0 20px} pre code{background:none;border:0;padding:0;font-size:12.5px;line-height:1.55;white-space:pre}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+.shell{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}
+.rail{position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--border);padding:24px 16px 32px;background:var(--bg);display:flex;flex-direction:column;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;padding:0 8px}
+.brand-mark{width:28px;height:28px;border-radius:8px;background:var(--brand);display:grid;place-items:center;flex:none}
+.brand-mark span{width:12px;height:12px;border-radius:3px;background:#fff;transform:rotate(45deg)}
+.brand b{font-weight:600;color:var(--text);font-size:15px;line-height:1.2;display:block}
+.brand small{color:var(--text-2);font-size:12px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:block;padding:6px 8px;border-radius:6px;text-decoration:none;color:var(--text);font-size:13.5px;font-weight:500}
+.nav a.sub{font-weight:400;color:var(--text-body);padding-left:14px;font-size:13px}
+.nav a.sub b{font-family:var(--mono);font-weight:500;color:var(--text-3);font-size:11.5px;margin-right:2px}
+.nav a:hover{background:var(--bg-2)}
+.nav a.on{background:var(--brand-wash);color:var(--brand-ink)}
+.rail-foot{margin-top:auto;padding:0 8px;font-size:12px;color:var(--text-3);line-height:1.5}
+.main{padding:40px 56px 96px;max-width:860px;width:100%}
+.eyebrow{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);font-weight:600}
+h1{font-size:40px;line-height:1.1;font-weight:600;color:var(--text);margin:8px 0 12px;letter-spacing:-.015em;text-wrap:balance}
+.lede{font-size:18px;color:var(--text-2);max-width:60ch;margin:0 0 8px}
+.lede strong{color:var(--text);font-weight:500}
+h2{font-size:26px;line-height:1.2;font-weight:600;color:var(--text);margin:72px 0 16px;letter-spacing:-.01em;text-wrap:balance;padding-top:24px;border-top:1px solid var(--border)}
+h3{font-size:20px;font-weight:600;color:var(--text);margin:48px 0 8px;letter-spacing:-.005em}
+h3::before{content:"";display:block;width:32px;height:3px;background:var(--brand);border-radius:2px;margin-bottom:14px}
+p{margin:0 0 14px;max-width:66ch}
+h3 + p{font-size:17px;color:var(--text);font-weight:500}
+p.why{color:var(--text-2);font-size:15px;padding-left:14px;border-left:2px solid var(--border)}
+p.why::before{content:"Why · ";color:var(--text-3);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+p.lbl{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2);font-weight:600;margin:22px 0 8px}
+strong{color:var(--text);font-weight:600}
+em{font-style:italic}
+ul,ol{margin:0 0 14px;padding-left:0;list-style:none;max-width:68ch}
+ul li{position:relative;padding-left:20px;margin:6px 0;font-size:15.5px}
+ul li::before{content:"";position:absolute;left:0;top:11px;width:9px;height:2px;background:var(--brand)}
+ul li.chk{padding-left:30px}
+ul li.chk::before{width:16px;height:16px;top:4px;background:var(--bg);border:1.5px solid var(--text-3);border-radius:4px}
+ol{counter-reset:s}
+ol li{counter-increment:s;display:grid;grid-template-columns:32px 1fr;gap:12px;margin:10px 0;font-size:15.5px}
+ol li::before{content:counter(s);width:28px;height:28px;border-radius:50%;background:var(--brand-wash);color:var(--brand-ink);font-weight:600;font-size:13px;display:grid;place-items:center;margin-top:1px}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px;margin:8px 0 20px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);font-weight:500;padding:10px 14px;background:var(--bg-2);border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:10px 14px;border-bottom:1px solid var(--border-subtle);vertical-align:top;color:var(--text-body)}
+tr:last-child td{border-bottom:0}
+td:first-child{color:var(--text);font-weight:500;white-space:nowrap}
+hr{display:none}
+
+.sitenav{display:flex;flex-direction:column;gap:2px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.sitenav .grp{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);padding:10px 8px 4px;font-weight:500}
+.sitenav a{display:block;padding:5px 8px;border-radius:6px;text-decoration:none;color:var(--text-body);font-size:13.5px;border:0}
+.sitenav a:hover{background:var(--bg-2);color:var(--text)} .sitenav a.on{color:var(--brand-ink);background:var(--brand-wash);font-weight:500}
+@media (max-width:900px){.sitenav{flex-direction:row;flex-wrap:wrap;gap:4px;border-bottom:0;padding-bottom:0}.sitenav .grp{display:none}}
+
+@media (max-width:900px){
+  .shell{grid-template-columns:1fr}
+  .rail{position:static;height:auto;border-right:0;border-bottom:1px solid var(--border);padding:16px}
+  .nav{flex-direction:row;flex-wrap:wrap;gap:4px} .nav a.sub{padding-left:8px} .rail-foot{display:none}
+  .main{padding:32px 20px 80px} h1{font-size:32px} h2{margin-top:56px}
+}
+</style>
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Pattern · Earnings</small></div></div>
+    <nav class="sitenav" aria-label="Site"><div class="grp">Foundations</div><a href="index.html">Tokens</a><a href="principles.html">Principles</a><a href="extending.html">Extending</a><a href="icons.html">Icons</a><a href="assets.html">Assets</a><a href="motion.html">Motion</a><a href="type.html">Type · four scripts</a><a href="accessibility.html">Accessibility</a><div class="grp">Components</div><a href="components/button.html">Button</a><a href="components/icon-button.html">IconButton</a><a href="components/tag.html">Tag</a><a href="components/text-field.html">TextField</a><a href="components/selection-controls.html">Checkbox · Radio · Switch</a><a href="components/amount.html">Amount</a><a href="components/timer.html">Timer</a><a href="components/feedback.html">Banner · Toast · Snackbar</a><a href="components/chip.html">Chip</a><a href="components/avatar.html">Avatar</a><a href="components/badge.html">Badge</a><a href="components/card.html">Card</a><a href="components/list-item.html">ListItem</a><a href="components/selection-card.html">SelectionCard</a><a href="components/bottom-sheet.html">BottomSheet</a><a href="components/header-nav.html">HeaderNav</a><a href="components/bottom-tab-bar.html">BottomTabBar</a><a href="components/progress-bar.html">ProgressBar</a><a href="components/stepper.html">Stepper</a><a href="components/coachmark.html">Coachmark</a><a href="components/sos-control.html">SOSControl</a><a href="components/accordion.html">Accordion</a><a href="components/date-picker.html">DatePicker</a><a href="components/empty-state.html">EmptyState</a><a href="components/skeleton.html">Skeleton · Spinner</a><a href="components/voice-prompt.html">VoicePrompt</a><a href="components/tabs.html">Tabs · Segmented</a><a href="components/nudge.html">Nudge</a><a href="components/numeric-keypad.html">NumericKeypad</a><a href="components/page-indicator.html">PageIndicator</a><a href="components/media-capture.html">MediaCapture</a><a href="components/map-marker.html">MapMarker · MapSnippet</a><a href="components/stat-rating-divider.html">Stat · Rating · Divider</a><a href="components/how-to-clip.html">HowToClip</a><a href="components/shield-card.html">ShieldCard</a><a href="components/job-alert.html">JobAlert</a><div class="grp">Patterns</div><a href="pattern-new-job-alert.html">New job arrives</a><a href="pattern-check-in-out.html">Check in · work · check out</a><a href="pattern-payout.html">Payout</a><a href="pattern-onboarding.html">Onboarding · go-live</a><a href="pattern-error-recovery.html">When something goes wrong</a><a href="pattern-permissions.html">Asking for permission</a><a href="pattern-first-run.html">First run</a><a class="on" href="pattern-earnings.html">Earnings</a><div class="grp">Research</div><a href="benchmark.html">Benchmark</a><a href="audit.html">Figma audit</a><a href="roadmap.html">Roadmap</a></nav><nav class="nav" id="nav"><a href="#the-tab">The tab</a><a href="#what-changes-from-the-shipped-screens">What changes from the shipped screens</a><a href="#today">Today</a><a href="#week-and-month">Week and month</a><a href="#rate-card">Rate card</a><a href="#content">Content</a><a href="#spec-follow-ups">Spec follow-ups</a><a href="#checklist-for-the-pattern">Checklist for the pattern</a></nav>
+    <div class="rail-foot">Snabbit Expert Design System · generated from patterns/earnings.md</div>
+  </aside>
+  <main class="main">
+    <header>
+      <div class="eyebrow">Snabbit Expert · Mobile</div>
+      <h1>Pattern — earnings</h1>
+      <p class="lede">The Earnings tab answers one question in three time frames: <strong>how much did I earn — today, this week, this month — and where did it come from?</strong> The month view is the payout statement (<code>payout.md</code>); this page owns the tab root, the <strong>day</strong> and <strong>week</strong> views, the per-job breakdown, and the rate card that explains the numbers. Evidence: <em>WIP – Payout I</em> → <em>Daily Earnings</em> (<code>5836:10552</code>, 14 attendance cases, the first marked ✅), <em>DAILY AND JOB LEVEL EARNINGS</em> (<code>5311:20676</code>), <em>✅ RATE CARD EDUCATION</em> and <em>My Rate Card</em> (<code>6062:14426</code>); <em>Self-Serve ER/AR</em> → <em>Post Onboarding</em> → <em>Daily</em> / <em>Monthly</em> (<code>599:32404</code> …).</p>
+    </header>
+    <h2 id="the-tab">The tab</h2>
+<pre><code>┌────────────────────────────────────────────┐
+│ ‹  Earnings                          Help  │  HeaderNav page (root: title, Help)
+│ [ Today ] [ Week ] [ Month ]               │  Tabs segmented · remembered per session
+│ ‹        Mon 13 Mar        ›               │  the day / week / month pager (DatePicker header) · today by default
+│ …view…                                     │
+└────────────────────────────────────────────┘
+</code></pre>
+<ul>
+<li><strong>Today</strong> is the default. <strong>Week</strong> and <strong>Month</strong> are the same screen shape with a different pager step; the pager never goes past today.</li>
+<li>Everything below the pager is one scroll; the hero is always <em>what she earned in this period</em>, an Amount <code>L</code> with a Listen that reads the card.</li>
+<li>Empty period → EmptyState <code>section</code> <em>No earnings on Sunday</em> / <em>Nothing yet today · Your first job's pay lands here</em>.</li>
+</ul>
+<hr />
+<h2 id="what-changes-from-the-shipped-screens">What changes from the shipped screens</h2>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Shipped</th>
+<th>Proposed</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Header: back · <em>Expert ID: 14586</em> · <strong>Payout Issue</strong></td>
+<td>HeaderNav <code>page</code> <em>Earnings</em> with <strong>Help</strong>; the Expert ID lives on Profile</td>
+<td>As <code>payout.md</code></td>
+</tr>
+<tr>
+<td>Day view tabs <em>Earnings · Refer Saheli</em></td>
+<td>Tabs <code>segmented</code> <strong>Today · Week · Month</strong>; referral is its own row on Profile and a Nudge on Home, not a tab on Earnings</td>
+<td>One tab, one subject</td>
+</tr>
+<tr>
+<td>Attendance card: green header <em>Present · Full Shift</em>, <em>Shift Timing (5h) 7:00 AM – 12:00 PM</em>, login / logout times with green checks; red header <em>Absent · No Show</em></td>
+<td><strong>Shift card</strong>: Tag <code>success</code> <strong>Present</strong> / <code>error</code> <strong>Absent</strong> with the reason as a second Tag <code>neutral</code> (<em>Full shift</em> · <em>Half shift</em> · <em>No show</em> · <em>False attendance</em>); ListItem rows <em>Shift 7:00 – 12:00 am · 5 hr</em>, <em>Logged in 6:40 am</em>, <em>Logged out 11:50 am</em> with Stat <code>S</code>; no green band</td>
+<td>Status by Tag, not by a coloured header (row 14); rows read aloud</td>
+</tr>
+<tr>
+<td><em>Daily Earnings ₹1,680</em> green band, then rows <em>Base Pay (₹130 × 1 hr) ⓘ · Min G ⓘ · Gold Coins 🪙3 · Red Cards 🟥2 · Overtime · Last Job Denied · Adjustments · Summer Bonus 🌞</em></td>
+<td><strong>Earnings card</strong>: <em>You earned</em> + Amount <code>L</code> + Listen; Accordion <code>breakdown</code> <strong>expanded</strong> with rows in her words — <em>Pay for work · 1 hr</em> · <em>Guaranteed top-up</em> · <em>Coins earned · 3</em> (coin asset) · <em>Red cards · 2</em> (red-card asset, negative) · <em>Overtime · 15 min</em> · <em>Last job refused</em> (negative) · <em>Extra payments</em> · <em>Summer bonus</em> (bonus asset); every row opens its explanation (Accordion <code>faq</code>) — no ⓘ</td>
+<td>Jargon (<em>Min G</em>, <em>Base Pay</em>, <em>Adjustments</em>) → words; emoji → assets; tooltips → tap-to-open rows with Listen</td>
+</tr>
+<tr>
+<td><em>Cash collected: ₹150</em> as a green strip</td>
+<td>ListItem <code>info</code> <em>You collected ₹150 in cash · deducted from payout</em> with the cash pictogram</td>
+<td>It is neither earning nor penalty; it is a fact she must not be surprised by on payout day</td>
+</tr>
+<tr>
+<td><em>Earnings Breakdown</em>: <em>Shift Performance</em> card, then <em>Job ID #12563 ₹160</em> cards with rows</td>
+<td><strong>Jobs today</strong>: one Card per job — <em>Radhika S · 9:00 am · 1 hr</em> as the title (Avatar S), Amount <code>M</code>, rows <em>Pay · Overtime 15 min · Checked in early (coin)</em>; <strong>Shift bonuses</strong> as the first card (<em>Logged in early · 1 coin</em>)</td>
+<td>She remembers the customer and the hour, never an ID</td>
+</tr>
+<tr>
+<td>Weekly: five pastel cards <em>Week 1 · 1 March – 7 March · ₹1,350 ›</em> in different colours</td>
+<td><strong>Week</strong> view: hero <em>This week ₹2,350</em>; a seven-day strip of Stat tiles (Mon … Sun, amount under each, today outlined, empty days <code>textTertiary</code>) — tap a day to jump to it; below, the week's totals as the same Accordion <code>breakdown</code>; the month's weeks as plain ListItems in <strong>Month</strong></td>
+<td>Colour meant nothing in the pastel cards (row 14); the day strip shows the shape of her week at a glance (P1)</td>
+</tr>
+<tr>
+<td><em>Add Bank &amp; PAN · Get paid on time · Add</em> green strip</td>
+<td>The <em>Get paid</em> Stepper (<code>payout.md</code>) — on Month and on Home, not on Today</td>
+<td>One place for tasks</td>
+</tr>
+<tr>
+<td>My Rate Card: performance table (<em>Min 4.8 avg rating</em>), rate rows, three how-to clips with a pink dash pager</td>
+<td><strong>Rate card</strong> screen (Profile → <em>My rate card</em>, and a row under the breakdown <em>How your pay is calculated ›</em>): HowToClip cards × 3 with PageIndicator; ListItem rows <em>Per hour ₹130</em>, <em>Overtime per 15 min ₹50</em>, <em>Early check-in 1 coin</em>; the performance conditions as a Stepper <code>unordered</code> with <code>done</code> / <code>attention</code> (<em>Rating 4.8 or more · you're at 4.9</em>)</td>
+<td>The table is ListItems (<code>stat-rating-divider.md</code>); conditions are things she can meet, so they are steps</td>
+</tr>
+<tr>
+<td>Fourteen attendance variants drawn as full screens</td>
+<td><strong>One</strong> day view; the shift card's Tags and the breakdown rows carry every case (present / absent / no show / false attendance / missed full shift / early logout / shift shortened / extended)</td>
+<td>The variants differ only in Tag and rows; a screen per case is fourteen things to maintain</td>
+</tr>
+</tbody>
+</table></div>
+<p>Kept as shipped: every earning and every deduction visible on the day it happens; per-job breakdown; the login / logout times on the shift card; the rate card with clips; red cards shown against the day they were given, with <em>Why? ›</em>.</p>
+<hr />
+<h2 id="today">Today</h2>
+<pre><code>┌────────────────────────────────────────────┐
+│ ‹        Mon 13 Mar        ›               │
+│ ┌ Present  Full shift ──────────────────┐  │  Tags
+│ │ 🕒 Shift            7:00 – 12:00 am   │  │  ListItem + Stat S
+│ │ ✓ Logged in                 6:40 am   │  │
+│ │ ✓ Logged out               11:50 am   │  │
+│ └───────────────────────────────────────┘  │
+│ ┌ You earned                      (🔊) ┐  │
+│ │ ₹1,680                                │  │  Amount L
+│ │ Pay for work · 1 hr             ₹130 ›│  │  Accordion breakdown, expanded; each row opens its faq
+│ │ Guaranteed top-up               ₹500 ›│  │
+│ │ [coin] Coins earned · 3          ₹30 ›│  │
+│ │ [red]  Red cards · 2            −₹50 ›│  │  negative Amount
+│ │ Overtime · 15 min                ₹50 ›│  │
+│ │ Last job refused                −₹21 ›│  │
+│ │ Extra payments                  ₹800 ›│  │
+│ │ [sun]  Summer bonus              ₹70 ›│  │
+│ └───────────────────────────────────────┘  │
+│ 💵 You collected ₹150 in cash · deducted from payout │  ListItem info
+│ Jobs today                                 │
+│ ┌ Shift bonuses                    ₹10 ┐  │  Card · rows
+│ ┌ (R) Radhika S · 9:00 am · 1 hr  ₹160 ┐  │  Card per job · Avatar S · Amount M · rows
+│ │ Pay · 1 hr ₹130 · Overtime 15 min ₹50 · Checked in early [coin] ₹10 │
+│ ┌ (A) Anagha S · 10:30 am · 30 min ₹80 ┐  │
+│ How your pay is calculated               › │  ListItem navigational → rate card
+└────────────────────────────────────────────┘
+</code></pre>
+<ul>
+<li>Rows that are zero are <strong>hidden</strong>, not shown as <em>₹0</em> — except the two she is waiting for (<em>Guaranteed top-up</em> when it applies later in the day, shown as <em>Counts at end of day</em>).</li>
+<li>Negative rows are negative Amounts (<code>amount.md</code>): <code>−₹50</code>, <code>textError</code>, never a red Button-like pill.</li>
+<li>A red-card row opens the penalties <code>faq</code> with the specific reason (<em>Late by 12 min at Radhika's</em>) and the appeal path (<strong>Ask about this</strong> → Help).</li>
+<li>The day updates live while she works: a job's card appears at check-out with <code>motion.slow</code> on the Amount.</li>
+</ul>
+<h2 id="week-and-month">Week and month</h2>
+<ul>
+<li><strong>Week</strong>: hero <em>This week ₹2,350</em>; the seven-day Stat strip; the same breakdown card for the week; <em>Jobs this week</em> collapsed by day (Divider <code>labelled</code> <em>Mon 13 Mar</em>).</li>
+<li><strong>Month</strong>: <code>payout.md</code> — the statement, schedule and <em>Get paid</em>. The month's weeks appear there as ListItems (<em>Week 2 · 8 – 14 Mar · ₹1,450 ›</em>) opening the Week view.</li>
+<li>The pager is the DatePicker header stepping by day / week / month; future is disabled; today is one tap away (<em>Today</em> Chip appears when not on today).</li>
+</ul>
+<h2 id="rate-card">Rate card</h2>
+<p>Profile → <em>My rate card</em> and the <em>How your pay is calculated ›</em> row. Sections: <strong>How it works</strong> (HowToClip cards <em>Daily earnings · Monthly bonus · Red cards</em>, PageIndicator), <strong>Your rates</strong> (ListItems with Stat <code>S</code>: <em>Per hour ₹130</em> · <em>Overtime, per 15 min ₹50</em> · <em>Early check-in 1 coin</em> · <em>Guaranteed per day ₹500</em>), <strong>To keep these rates</strong> (Stepper <code>unordered</code>: <em>Rating 4.8 or more · you're at 4.9</em> <code>done</code> · <em>Fewer than 3 red cards a month · you have 2</em> <code>attention</code>). Rates change with a Banner <code>info</code> <em>Your rates change on 1 Apr — See what's new ›</em> two weeks ahead, never silently.</p>
+<hr />
+<h2 id="content">Content</h2>
+<ul>
+<li><em>You earned</em> · <em>Pay for work</em> · <em>Guaranteed top-up</em> · <em>Coins earned</em> · <em>Red cards</em> · <em>Overtime</em> · <em>Last job refused</em> · <em>Extra payments</em> · <em>Summer bonus</em> · <em>You collected ₹150 in cash</em> · <em>Jobs today</em> · <em>Shift bonuses</em> · <em>How your pay is calculated</em>.</li>
+<li>Never <em>Min G</em>, <em>Base Pay</em>, <em>Adjustments</em>, <em>Job ID</em>, <em>Waiver</em>, <em>Deduction</em> as a heading, <em>Total Daily Earnings</em>.</li>
+<li>Job title: customer first name + initial · start time · duration. Times 12-hour, Latin numerals.</li>
+<li>Explanations (the <code>faq</code> rows) are two sentences, spoken: <em>We pay you ₹130 for every hour of work. Overtime is paid per 15 minutes.</em></li>
+</ul>
+<hr />
+<h2 id="spec-follow-ups">Spec follow-ups</h2>
+<ul>
+<li><code>amount.md</code>: a <code>pending</code> state for rows that count at end of day (<em>Counts at end of day</em>, <code>textSecondary</code>, no number) — small addition.</li>
+<li><code>stat-rating-divider.md</code>: the seven-day <strong>Stat strip</strong> (7 × Stat <code>S</code> in a row, today outlined) — record as a composition.</li>
+<li><code>header-nav.md</code> / <code>icon-button.md</code>: the pager header now steps by day, week or month on Earnings (same DatePicker header).</li>
+</ul>
+<hr />
+<h2 id="checklist-for-the-pattern">Checklist for the pattern</h2>
+<ul>
+<li class="chk">Today / Week / Month are one screen shape; the hero is always the period's total with a Listen.</li>
+<li class="chk">No jargon rows; every row opens its explanation; zero rows hidden.</li>
+<li class="chk">Jobs are named by customer and time, never by ID.</li>
+<li class="chk">Attendance cases are Tags and rows on one view, not fourteen screens.</li>
+<li class="chk">Copy reviewed aloud in four languages; <em>Guaranteed top-up</em> and <em>Last job refused</em> verified with experts.</li>
+</ul>
+  </main>
+</div>
+<script>
+(function(){
+const links=[...document.querySelectorAll('#nav a')];
+const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-10% 0px -80% 0px'});
+  targets.forEach(t=>io.observe(t));
+}
+})();
+</script>
