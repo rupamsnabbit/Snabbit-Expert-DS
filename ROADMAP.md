@@ -4,7 +4,7 @@ What is done and what is left, against the 46-component core set in `audit/BENCH
 
 ---
 
-## Done — 45 pages · 46 of 46 core components + 2 compositions + 1 pattern
+## Done — 46 pages · 46 of 46 core components + 2 compositions + 1 pattern
 
 | # | Page | Covers | Status |
 | --- | --- | --- | --- |
@@ -45,6 +45,7 @@ What is done and what is left, against the 46-component core set in `audit/BENCH
 | 35 | ShieldCard (Kavach) | Composition: ShieldRow (6 states), ShieldConsent, SafetyCheck; SafetyStrip `shield` kind | Proposed |
 | 36 | JobAlert | Composition: the reference case as one screen — facts strip, earnings Card, Nudge loss, Timer L, Decline hold, Accept | Proposed |
 | — | FAB | Folded into IconButton: floating = `L` `circle` at `elevation.floating`; shutter and recentre only; no FAB component (`icon-button.md`) | Decided |
+| 43 | Pattern · First run | `patterns/first-run.md` — the 12 first-run teachings, the Home tour, gating, reset, never-list | Proposed |
 | 42 | Pattern · Asking for permission | `patterns/permissions.md` — the eight permissions, when each is asked, the why-sentence, the fallback, permanently denied | Proposed |
 | 41 | Pattern · When something goes wrong | `patterns/error-recovery.md` — failure level → component, recovery ladder, copy rules, never-list | Proposed |
 | 40 | Pattern · Onboarding and go-live | `patterns/onboarding.md` — from *Self-Serve ER/AR*: TC-less and TC variants, Bank/UPI, pre-shift Home; presenter video → HowToClip `guide`; Telugu decision | Proposed |
@@ -78,9 +79,9 @@ Order decided 2026-09-08: the visual foundations first, sound parked.
 
 ---
 
-## To do — patterns (6 of 10 done)
+## To do — patterns (7 of 10 done)
 
-~~New-job alert~~ (done) · ~~Check-in / check-out~~ (done) · ~~Payout~~ (done) · ~~Onboarding & go-live~~ (done) · ~~Error recovery~~ (done) · ~~Permission asking~~ (done) · First run (Coachmark tours) · Earnings breakdown · SOS flow (drawn in SOSControl; pattern adds what happens after) · Offline.
+~~New-job alert~~ (done) · ~~Check-in / check-out~~ (done) · ~~Payout~~ (done) · ~~Onboarding & go-live~~ (done) · ~~Error recovery~~ (done) · ~~Permission asking~~ (done) · ~~First run~~ (done) · Earnings breakdown · SOS flow (drawn in SOSControl; pattern adds what happens after) · Offline.
 
 ---
 
