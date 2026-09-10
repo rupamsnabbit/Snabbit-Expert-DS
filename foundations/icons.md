@@ -63,5 +63,11 @@ Status: **seed**. Populated fully during the Button, Tab bar and Job-alert specs
 | `copy` | Copy a reference number (UTR, job ID) | regular | Payout rows, payout detail |
 | `receipt` | Payout history | regular | Earnings statement row |
 | `hand-coins` | Early payout | regular | Earnings statement row |
+| `first-aid-kit` | Health cover (insurance) | regular | Profile row, insurance Stepper rail — never Shield, which is `shield-check` |
+| `users-three` | Her family on the cover | regular | Insurance Stepper rail (distinct from `users`, which is Refer) |
+| `baby` | Children on the cover | regular | Insurance Stepper rail |
+| `address-book` | Pick from her contacts | regular | Insurance nominee name / number |
+| `plus-circle` | Add one more to a list | regular | Card `empty` kind — add a child, add a bank account |
+| `pencil-simple` | Change this answer | regular | Insurance review screen; any review-before-submit row |
 
 Not icons: smileys for Rating and the mascot are illustrations, not Phosphor glyphs — they live in the illustration library.

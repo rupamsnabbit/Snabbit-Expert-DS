@@ -77,7 +77,7 @@ Selected fill stays `bgPrimary` for `compact`, `rich` and `date` — a pink wash
 
 - Tap anywhere on the card selects/toggles. `single` deselects the others. Groups start empty unless a default is safe; the paid or irreversible option is never pre-selected.
 - The screen's primary Button commits. Selecting never navigates on its own (that is a tappable Card, not a SelectionCard).
-- ≤ **5** cards in a group (≤ **3** for `hero` — each is ~250 dp tall); more is a Select sheet with rows, or `rich` cards.
+- ≤ **5** cards in a group (≤ **3** for `hero` — each is ~250 dp tall); more is a Select sheet with rows, or `rich` cards. **Proposed exception (2026-09-09):** a group may run to **8** when the list is fixed by an outside authority and cannot be shortened, it is split by a `labelled` Divider into sub-groups of ≤ 5, and every card carries a pictogram — the insurance relationship list (`briefs/insurance-relationship-picker.md`, `patterns/insurance.md`). More than 8 is still a Select sheet with search.
 - `hero` image: a scene asset from the illustration layer or a photo of a real expert in uniform; never stock, never text on the image except the Tag; the image alone must say what the option is (P1) — the title confirms it.
 - `date` strips scroll horizontally, today first, with the selected day scrolled into view; past days disabled.
 - Font scaling: text wraps, cards grow; asset stays 64; nothing clips.

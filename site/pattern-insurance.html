@@ -1,0 +1,536 @@
+<meta charset="utf-8">
+<title>Snabbit Expert Pattern Insurance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --bg-2:#F9FAFB; --bg-3:#F3F4F6;
+  --text:#111827; --text-body:#374151; --text-2:#6B7280; --text-3:#9CA3AF;
+  --border:#E5E7EB; --border-subtle:#F3F4F6;
+  --brand:#F70F79; --brand-wash:#FEF1F7; --brand-ink:#97094A;
+  --ok:#059669; --ok-wash:#ECFDF5; --focus:#3B82F6;
+  --sans:"Outfit",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+    --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+    --border:#374151; --border-subtle:#1F2937;
+    --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+    --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+  --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+  --border:#374151; --border-subtle:#1F2937;
+  --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+  --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--text-body);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+code{font-family:var(--mono);font-size:.85em;background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--text)}
+pre{background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:14px 16px;overflow-x:auto;margin:12px 0 20px} pre code{background:none;border:0;padding:0;font-size:12.5px;line-height:1.55;white-space:pre}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+.shell{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}
+.rail{position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--border);padding:24px 16px 32px;background:var(--bg);display:flex;flex-direction:column;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;padding:0 8px}
+.brand-mark{width:28px;height:28px;border-radius:8px;background:var(--brand);display:grid;place-items:center;flex:none}
+.brand-mark span{width:12px;height:12px;border-radius:3px;background:#fff;transform:rotate(45deg)}
+.brand b{font-weight:600;color:var(--text);font-size:15px;line-height:1.2;display:block}
+.brand small{color:var(--text-2);font-size:12px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:block;padding:6px 8px;border-radius:6px;text-decoration:none;color:var(--text);font-size:13.5px;font-weight:500}
+.nav a.sub{font-weight:400;color:var(--text-body);padding-left:14px;font-size:13px}
+.nav a.sub b{font-family:var(--mono);font-weight:500;color:var(--text-3);font-size:11.5px;margin-right:2px}
+.nav a:hover{background:var(--bg-2)}
+.nav a.on{background:var(--brand-wash);color:var(--brand-ink)}
+.rail-foot{margin-top:auto;padding:0 8px;font-size:12px;color:var(--text-3);line-height:1.5}
+.main{padding:40px 56px 96px;max-width:860px;width:100%}
+.eyebrow{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);font-weight:600}
+h1{font-size:40px;line-height:1.1;font-weight:600;color:var(--text);margin:8px 0 12px;letter-spacing:-.015em;text-wrap:balance}
+.lede{font-size:18px;color:var(--text-2);max-width:60ch;margin:0 0 8px}
+.lede strong{color:var(--text);font-weight:500}
+h2{font-size:26px;line-height:1.2;font-weight:600;color:var(--text);margin:72px 0 16px;letter-spacing:-.01em;text-wrap:balance;padding-top:24px;border-top:1px solid var(--border)}
+h3{font-size:20px;font-weight:600;color:var(--text);margin:48px 0 8px;letter-spacing:-.005em}
+h3::before{content:"";display:block;width:32px;height:3px;background:var(--brand);border-radius:2px;margin-bottom:14px}
+p{margin:0 0 14px;max-width:66ch}
+h3 + p{font-size:17px;color:var(--text);font-weight:500}
+p.why{color:var(--text-2);font-size:15px;padding-left:14px;border-left:2px solid var(--border)}
+p.why::before{content:"Why · ";color:var(--text-3);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+p.lbl{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2);font-weight:600;margin:22px 0 8px}
+strong{color:var(--text);font-weight:600}
+em{font-style:italic}
+ul,ol{margin:0 0 14px;padding-left:0;list-style:none;max-width:68ch}
+ul li{position:relative;padding-left:20px;margin:6px 0;font-size:15.5px}
+ul li::before{content:"";position:absolute;left:0;top:11px;width:9px;height:2px;background:var(--brand)}
+ul li.chk{padding-left:30px}
+ul li.chk::before{width:16px;height:16px;top:4px;background:var(--bg);border:1.5px solid var(--text-3);border-radius:4px}
+ol{counter-reset:s}
+ol li{counter-increment:s;display:grid;grid-template-columns:32px 1fr;gap:12px;margin:10px 0;font-size:15.5px}
+ol li::before{content:counter(s);width:28px;height:28px;border-radius:50%;background:var(--brand-wash);color:var(--brand-ink);font-weight:600;font-size:13px;display:grid;place-items:center;margin-top:1px}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px;margin:8px 0 20px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);font-weight:500;padding:10px 14px;background:var(--bg-2);border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:10px 14px;border-bottom:1px solid var(--border-subtle);vertical-align:top;color:var(--text-body)}
+tr:last-child td{border-bottom:0}
+td:first-child{color:var(--text);font-weight:500;white-space:nowrap}
+hr{display:none}
+
+.sitenav{display:flex;flex-direction:column;gap:2px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.sitenav .grp{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);padding:10px 8px 4px;font-weight:500}
+.sitenav a{display:block;padding:5px 8px;border-radius:6px;text-decoration:none;color:var(--text-body);font-size:13.5px;border:0}
+.sitenav a:hover{background:var(--bg-2);color:var(--text)} .sitenav a.on{color:var(--brand-ink);background:var(--brand-wash);font-weight:500}
+@media (max-width:900px){.sitenav{flex-direction:row;flex-wrap:wrap;gap:4px;border-bottom:0;padding-bottom:0}.sitenav .grp{display:none}}
+
+@media (max-width:900px){
+  .shell{grid-template-columns:1fr}
+  .rail{position:static;height:auto;border-right:0;border-bottom:1px solid var(--border);padding:16px}
+  .nav{flex-direction:row;flex-wrap:wrap;gap:4px} .nav a.sub{padding-left:8px} .rail-foot{display:none}
+  .main{padding:32px 20px 80px} h1{font-size:32px} h2{margin-top:56px}
+}
+</style>
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Pattern · Free health cover</small></div></div>
+    <nav class="sitenav" aria-label="Site"><div class="grp">Foundations</div><a href="index.html">Tokens</a><a href="principles.html">Principles</a><a href="extending.html">Extending</a><a href="icons.html">Icons</a><a href="assets.html">Assets</a><a href="motion.html">Motion</a><a href="type.html">Type · four scripts</a><a href="accessibility.html">Accessibility</a><div class="grp">Components</div><a href="components/button.html">Button</a><a href="components/icon-button.html">IconButton</a><a href="components/tag.html">Tag</a><a href="components/text-field.html">TextField</a><a href="components/selection-controls.html">Checkbox · Radio · Switch</a><a href="components/amount.html">Amount</a><a href="components/timer.html">Timer</a><a href="components/feedback.html">Banner · Toast · Snackbar</a><a href="components/chip.html">Chip</a><a href="components/avatar.html">Avatar</a><a href="components/badge.html">Badge</a><a href="components/card.html">Card</a><a href="components/list-item.html">ListItem</a><a href="components/selection-card.html">SelectionCard</a><a href="components/bottom-sheet.html">BottomSheet</a><a href="components/header-nav.html">HeaderNav</a><a href="components/bottom-tab-bar.html">BottomTabBar</a><a href="components/progress-bar.html">ProgressBar</a><a href="components/stepper.html">Stepper</a><a href="components/coachmark.html">Coachmark</a><a href="components/sos-control.html">SOSControl</a><a href="components/accordion.html">Accordion</a><a href="components/date-picker.html">DatePicker</a><a href="components/empty-state.html">EmptyState</a><a href="components/skeleton.html">Skeleton · Spinner</a><a href="components/voice-prompt.html">VoicePrompt</a><a href="components/tabs.html">Tabs · Segmented</a><a href="components/nudge.html">Nudge</a><a href="components/numeric-keypad.html">NumericKeypad</a><a href="components/page-indicator.html">PageIndicator</a><a href="components/media-capture.html">MediaCapture</a><a href="components/map-marker.html">MapMarker · MapSnippet</a><a href="components/stat-rating-divider.html">Stat · Rating · Divider</a><a href="components/how-to-clip.html">HowToClip</a><a href="components/shield-card.html">ShieldCard</a><a href="components/job-alert.html">JobAlert</a><div class="grp">Patterns</div><a href="pattern-new-job-alert.html">New job arrives</a><a href="pattern-check-in-out.html">Check in · work · check out</a><a href="pattern-payout.html">Payout</a><a href="pattern-onboarding.html">Onboarding · go-live</a><a href="pattern-error-recovery.html">When something goes wrong</a><a class="on" href="pattern-insurance.html">Free health cover</a><div class="grp">Research</div><a href="benchmark.html">Benchmark</a><a href="audit.html">Figma audit</a><a href="roadmap.html">Roadmap</a></nav><nav class="nav" id="nav"><a href="#the-one-rule-for-this-flow">The one rule for this flow</a><a href="#where-it-lives">Where it lives</a><a href="#the-flow">The flow</a><a href="#1-you-are-covered">1. You are covered</a><a href="#2-who-should-get-the-money">2. Who should get the money?</a><a href="#3-their-name-and-number">3. Their name and number</a><a href="#4-their-birthday">4. Their birthday</a><a href="#5-your-children">5. Your children</a><a class="sub" href="#5a-your-first-child">5a. Your first child</a><a class="sub" href="#5b-when-was-name-born">5b. When was {name} born?</a><a href="#6-check-before-we-send">6. Check before we send</a><a href="#7-done">7. Done</a><a href="#the-five-states-everywhere">The five states, everywhere</a><a href="#voice-p4">Voice (P4)</a><a href="#the-words">The words</a><a href="#what-changes-from-the-current-screens">What changes from the current screens</a><a href="#new-assets-12-pictograms">New assets — 12 pictograms</a><a href="#open">Open</a><a href="#checklist-for-the-flow">Checklist for the flow</a></nav>
+    <div class="rail-foot">Snabbit Expert Design System · generated from patterns/insurance.md</div>
+  </aside>
+  <main class="main">
+    <header>
+      <div class="eyebrow">Snabbit Expert · Mobile</div>
+      <h1>Pattern — free health cover</h1>
+      <p class="lede">She has a free ₹6,00,000 health cover from the day she goes live. To put it in force the insurer needs four things: who receives the money if she cannot claim it, that person's name, birth date and phone, and the children who go on the policy with her. Today that is seven screens of dense English built around a word — <em>nominee</em> — that has no everyday equivalent in any of her languages.</p>
+    </header>
+    <h2 id="the-one-rule-for-this-flow">The one rule for this flow</h2>
+<p><strong>Never write <em>nominee</em>.</strong> The question is always <em>who should get the money</em>, and the answer is always a face and a name. <em>Nominee</em> stays in the API payload, the insurer's forms and this document's margins; it never reaches a screen, a voice line or a translation. See the word table below.</p>
+<hr />
+<h2 id="where-it-lives">Where it lives</h2>
+<p>Placed after go-live (decided 2026-09-09) — she is already earning, so there is no time pressure and no blocked shift. Two doors:</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Entry</th>
+<th>Component</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Home</strong></td>
+<td>Card <code>static</code>, pictogram <code>family</code> 64, footer Button <code>secondary brand M</code></td>
+<td><em>Your free health cover</em> · Amount <code>lg</code> <strong>₹6,00,000</strong> · Tag <code>brand soft L</code> <em>Free</em> · <em>See your cover</em></td>
+</tr>
+<tr>
+<td><strong>Profile</strong></td>
+<td>ListItem <code>navigational</code>, leading <code>first-aid-kit</code> 24 in a 40 dp <code>bgBrandSubtle</code> box</td>
+<td><em>Health cover</em> · description <em>₹6,00,000 · Free</em> · status line <code>warning-circle</code> <em>Choose who gets the money</em> while incomplete</td>
+</tr>
+</tbody>
+</table></div>
+<p>The Home card disappears once the cover is complete; the Profile row stays and opens the review screen. <strong>No Profile tab badge</strong> — <code>bottom-tab-bar.md</code> reserves that for a document that will block work, and this does not block work.</p>
+<hr />
+<h2 id="the-flow">The flow</h2>
+<pre><code> Home card / Profile row
+        │
+        ▼
+ 1. You are covered ──── Not now ──► back, Home card stays
+        │  Choose the person
+        ▼
+ 2. Who gets the money ── 8 cards, 2 labelled groups
+        ▼
+ 3. Their name and number ── pick from contacts │ type it │ Call Help
+        ▼
+ 4. Their birthday ── month picker + year stepper ── or &quot;I'll ask them later&quot; (saves)
+        ▼
+ 5. Your children ── No children ──┐
+        │  Add a child             │
+        ▼                          │
+ 5a. Name and boy/girl             │
+ 5b. Their birthday ──── loop ─────┤
+        │  Save my family          │
+        ▼                          │
+ 6. Check before we send ◄─────────┘
+        ▼
+ 7. Done ── your family is covered
+</code></pre>
+<p>Stepper <code>rail</code>, four nodes, non-interactive, under the VoicePrompt bar on screens 1–6: <strong>Cover</strong> <code>first-aid-kit</code> · <strong>Who gets it</strong> <code>users-three</code> · <strong>Children</strong> <code>baby</code> · <strong>Done</strong> <code>check-circle</code>.</p>
+<p>Every screen carries: HeaderNav <code>default</code> (back, title <em>Health cover</em>) · VoicePrompt <code>bar</code> autoplaying on first visit after <code>timeout.screenSettle</code> · the rail · one primary Button L full width above the safe area. Every screen saves on leave; re-entry lands on the first unfinished screen.</p>
+<hr />
+<h2 id="1-you-are-covered">1. You are covered</h2>
+<p>The education screen, and the only one that is allowed to be long. Pictogram <code>family</code> 120 dp, then the number, then three facts, then one line of honesty, then the way in.</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Component</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Figure</td>
+<td>Amount <code>hero</code></td>
+<td>label <em>Your cover</em> · <strong>₹6,00,000</strong> · Tag <code>brand soft L</code> <em>Free</em> beside the label</td>
+</tr>
+<tr>
+<td>Fact 1</td>
+<td>ListItem <code>informational</code>, pictogram <code>hospital-bed</code> 40</td>
+<td><em>Hospital bills up to ₹6,00,000</em> / <em>For you and your family</em></td>
+</tr>
+<tr>
+<td>Fact 2</td>
+<td>ListItem, pictogram <code>cash-in-hand</code> with a red ✗ dot</td>
+<td><em>You pay nothing at the hospital</em> / <em>Snabbit pays them directly</em></td>
+</tr>
+<tr>
+<td>Fact 3</td>
+<td>ListItem, pictogram <code>family</code> 40</td>
+<td><em>Your family is covered too</em> / <em>Add them here</em></td>
+</tr>
+<tr>
+<td>The ask</td>
+<td><code>BodyLg</code> <code>textBody</code></td>
+<td><em>Choose one person. If you can't claim the money, it goes to them.</em></td>
+</tr>
+<tr>
+<td>Actions</td>
+<td>ghost neutral M above, primary brand L below</td>
+<td><em>Not now</em> · <strong>Choose the person</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Two honest departures from the shipped screen. The green <em>100% FREE COVERAGE</em> pill becomes a <code>brand</code> Tag: success tone means done, paid or verified, and free is a price, not a status (P6, row 14). The grey image placeholder becomes the <code>family</code> pictogram, because a picture that carries nothing is worse than no picture (P1).</p>
+<p><em>Not now</em> is safe and reversible — she can return from Profile at any time — so it needs no confirmation sheet (P3: protect costly actions, not cheap ones). <strong>Open:</strong> if the insurer makes a nominee mandatory for enrolment, <em>Not now</em> is removed and the flow becomes part of go-live; nothing else on this screen changes.</p>
+<h2 id="2-who-should-get-the-money">2. Who should get the money?</h2>
+<p>Title <code>Heading3</code> <em>Who should get the money?</em> Body, two lines: <em>Choose one person from your family.</em> / <em>This is only if you can't claim it yourself.</em></p>
+<p>Eight SelectionCard <code>rich</code> <code>single</code>, 64 dp pictogram, in two <code>labelled</code> Divider groups — <em>Your family</em> (husband or wife, son or daughter, mother, father, brother, sister) and <em>Your husband's family</em> (his mother, his father). Ordered by how often each is chosen, not alphabetically.</p>
+<p>The two in-law cards are the weakest place in the whole flow for P1: a mother and a mother-in-law cannot be told apart by drawing. The group heading and the spoken line carry them, and this row is the first thing to watch in field testing.</p>
+<p>Primary Button: <strong>Add their name</strong>. Nothing is chosen and she taps it → group error per <code>selection-card.md</code> (<code>borderError</code> <code>thicker</code> on every unselected card, one error line) and the voice says <em>Choose one person.</em> The Button is never silently disabled (<code>text-field.md</code>).</p>
+<p>Why eight cards and not a <code>select</code> sheet, and the proposed change to core: <code>briefs/insurance-relationship-picker.md</code>.</p>
+<h2 id="3-their-name-and-number">3. Their name and number</h2>
+<p>The hardest screen in the flow, because <strong>the insurer accepts Latin characters only</strong> and she reads and writes in Devanagari or Kannada. Three doors, in order of how well they work:</p>
+<ol>
+<li><strong>Pick from contacts</strong> — Button <code>secondary brand L</code> with <code>address-book</code>, full width, above the fields. Opens the <code>permission</code> BottomSheet (scene <code>permission-contacts</code>, one line: <em>We only read the one contact you pick</em>), then the OS picker. Fills <strong>name and number in one tap</strong>, and contact names are already stored in Latin. This is the primary path and it solves both fields at once.</li>
+<li><strong>Type it</strong> — TextField <code>text</code> <em>Full name</em>, helper <em>In English letters, the same as on their Aadhaar</em>; TextField <code>phone</code> <em>Their phone number</em> on the NumericKeypad with live grouping. Two fields is the maximum on one screen (<code>text-field.md</code>).</li>
+<li><strong>Call Help</strong> — Button <code>ghost brand M</code>, always visible on this screen. A trainer types it for her. This is the only screen in the app where Help is offered pre-emptively rather than as recovery, and the reason is the script mismatch.</li>
+</ol>
+<p><strong>The read-back.</strong> Once a name is present, a VoicePrompt <code>inline</code> sits beside it and speaks it with on-device TTS. She cannot read Latin; she can hear whether the phone just said her husband's name. This is the verification channel for the whole screen and it is not optional.</p>
+<p>The chosen relationship stays visible at the top as its pictogram 40 + a <code>brand soft L</code> Tag, so she never loses track of who she is describing.</p>
+<p>Primary Button: <strong>Add their birthday</strong>.</p>
+<h2 id="4-their-birthday">4. Their birthday</h2>
+<p>DatePicker <code>month</code> with the year stepper above it — never three dropdowns, never a typed date (<code>date-picker.md</code>). The year stepper opens at a sensible year for the relationship chosen: her own year for a husband or wife, minus 25 for a parent, plus 20 for a child.</p>
+<p>The summary line under the grid, always present and spoken when it changes: <em>Wednesday, 28 January 2000 · 26 years old</em>. The <strong>age</strong> is the part she can actually check; the date is the part the insurer needs.</p>
+<p>She may not know it. Button <code>ghost brand M</code> <strong>I'll ask them later</strong> saves everything so far and closes with a Toast <em>Saved. Finish it from Profile.</em> This drops no field — it moves it to a second sitting, which the placement decision allows.</p>
+<p>Primary Button: <strong>Save this person</strong>.</p>
+<h2 id="5-your-children">5. Your children</h2>
+<p>The count question is gone. Asking <em>how many kids do you have?</em> as an abstract number, and then asking for that many sets of details, invites a mismatch she cannot fix. Instead she adds people to a list, and the count is what we send.</p>
+<p><strong>Nobody added yet:</strong> pictogram <code>child</code> 120, title <em>Do you have children?</em>, body <em>We can add them to your cover.</em> Buttons — ghost <em>No children</em> above primary <strong>Add a child</strong>.</p>
+<p><strong>One or more added:</strong> a list of ListItem rows (pictogram <code>boy</code> / <code>girl</code> 40, title the child's name, description <em>7 years old</em>, trailing <code>caret-right</code> to edit) and a Card <code>empty</code> dashed <em>Add another child</em>. Buttons — ghost <em>Add another child</em> above primary <strong>Save my family</strong>.</p>
+<p>At four children the <code>empty</code> card is replaced by a line <em>That's the most we can add</em> (the insurer's cap). <em>No children</em> goes straight to screen 6.</p>
+<h3 id="5a-your-first-child">5a. Your first child</h3>
+<p>TextField <code>text</code> <em>Child's name</em>, English-letters helper and the same VoicePrompt <code>inline</code> read-back as screen 3. Then two SelectionCard <code>rich</code> <code>single</code> with 64 dp pictograms — <strong>Boy</strong> and <strong>Girl</strong> — which map to the insurer's Male / Female. <em>Boy</em> and <em>Girl</em> are the words used about a child in all four languages; <em>Male</em> and <em>Female</em> are form words.</p>
+<p>The title counts in words she can hear: <em>Your first child</em>, <em>Your second child</em>.</p>
+<p>Primary Button: <strong>Add their birthday</strong>.</p>
+<h3 id="5b-when-was-name-born">5b. When was {name} born?</h3>
+<p>As screen 4, year stepper opening at this year − 5, summary line <em>28 January 2019 · 7 years old</em>. Primary Button: <strong>Save this child</strong> → back to screen 5 with the row added.</p>
+<h2 id="6-check-before-we-send">6. Check before we send</h2>
+<p>The P3 second look, and the most valuable screen in the flow — a wrong name here is a payout that never arrives.</p>
+<p>One Card per person: pictogram 40, name in <code>Heading3</code>, relationship as a <code>brand soft</code> Tag, birthday in words, phone number grouped, and a <code>pencil-simple</code> IconButton M ghost that jumps back to the step that owns it. A VoicePrompt <code>inline</code> on each card <strong>reads the whole card aloud as one block</strong> — the name, the relationship, the date in words, the number digit-grouped as <em>nine eight four seven, two one, six one five nine</em>, which is the one place in the system a number is read in groups instead of as a value, because she is checking it against what she was told.</p>
+<p>Buttons — ghost <em>Change something</em> above primary <strong>Send my details</strong>.</p>
+<p>Submit: the Button goes <code>loading</code> with its label kept (<code>button.md</code>), the three-second rule applies (<code>timeout.loading</code>), and duplicate taps are blocked.</p>
+<h2 id="7-done">7. Done</h2>
+<p>Pictogram <code>family</code> at 120 with a green ✓ dot — <strong>illustration layer, flat</strong>. The shipped Thank-you screen uses a metallic starburst badge; metallic is the reward layer and belongs only to things she earned (<code>foundations/assets.md</code>, decided 2026-09-07). Being insured is not a prize.</p>
+<p>Title <code>Heading3</code> <em>Your family is covered</em>. Body: <em>{Name} will get ₹6,00,000 if you can't claim it.</em> Spoken on arrival without being asked.</p>
+<p>One Button: <strong>Back to home</strong>. No confetti, no metallic, no <em>Thank you</em> — she did us no favour, she protected her family.</p>
+<hr />
+<h2 id="the-five-states-everywhere">The five states, everywhere</h2>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>State</th>
+<th>What she sees</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Loading</strong></td>
+<td>Skeleton of the real layout on screen 1 while the cover amount loads; three skeleton rows for the benefits. Never <code>₹0</code> as a placeholder (<code>amount.md</code>)</td>
+</tr>
+<tr>
+<td><strong>Empty</strong></td>
+<td>Screen 5 with nobody added is not an empty state — it is a question with two Buttons</td>
+</tr>
+<tr>
+<td><strong>Error</strong></td>
+<td>Load failure → EmptyState <code>error</code> <code>page</code>, pictogram <code>search-document-✗</code>, <em>Couldn't open your cover</em> / <em>Your cover is safe. The network dropped.</em> / <em>Try again</em> + <em>Call Help</em>. Save failure → Snackbar <em>Couldn't save · Retry</em>, with everything she typed kept</td>
+</tr>
+<tr>
+<td><strong>Offline</strong></td>
+<td>Banner <code>offline</code> under the header. <strong>The whole form works offline</strong> — contacts, pickers and typing are all local. The final submit queues: tapping <em>Send my details</em> while offline shows a Snackbar <em>Saved on your phone. We'll send it when you're back online.</em> The Button is never disabled without saying why</td>
+</tr>
+<tr>
+<td><strong>Resumed</strong></td>
+<td>Every screen saves on leave. Re-entry from Profile lands on the first unfinished screen, the rail shows where she is, and the voice says <em>"Step two of four. Who gets the money."</em></td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="voice-p4">Voice (P4)</h2>
+<p>VoicePrompt <code>bar</code> on screens 1–7, autoplaying on first visit only, recorded by a native speaker in each language. Inline controls on: each typed name (TTS read-back), each birthday summary line, and each card on screen 6.</p>
+<p>Spoken source lines — English, to be written as speech and reviewed aloud, ≤ 12 words a sentence, ≤ 3 sentences a screen:</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Screen</th>
+<th>Spoken</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><em>Snabbit gives you six lakh rupees of hospital cover. It is free.</em> / <em>Choose one person in your family. If you cannot claim the money, they get it.</em></td>
+</tr>
+<tr>
+<td>2</td>
+<td><em>Who should get the money? Choose one person.</em> / <em>The second group is your husband's family.</em></td>
+</tr>
+<tr>
+<td>3</td>
+<td><em>Pick them from your contacts. Or type their name in English letters.</em> / <em>Tap the speaker to hear the name you wrote.</em></td>
+</tr>
+<tr>
+<td>4</td>
+<td><em>Choose the year first, then the month, then the day.</em> / <em>Don't know it? Tap "I'll ask them later".</em></td>
+</tr>
+<tr>
+<td>5</td>
+<td><em>Do you have children? We can put them on your cover too.</em></td>
+</tr>
+<tr>
+<td>6</td>
+<td><em>Listen to each card. If something is wrong, tap the pencil.</em></td>
+</tr>
+<tr>
+<td>7</td>
+<td><em>Done. {Name} will get six lakh rupees if you cannot claim it.</em></td>
+</tr>
+</tbody>
+</table></div>
+<p>Numbers are spoken as words and units, never digit by digit — the one exception is the phone number on screen 6, which is spoken in groups because she is checking it.</p>
+<hr />
+<h2 id="the-words">The words</h2>
+<p>Every term on the left is what appears on screen and in the four translations. Every term on the right exists only in code, the insurer's forms and this document. Proposed as rows in the <code>PRINCIPLES.md</code> vocabulary table.</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Say</th>
+<th>Not</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cover · You are covered</td>
+<td>policy, plan, scheme, insurance product</td>
+<td><em>Insurance</em> itself is fine — बीमा (Hindi/Marathi) and ವಿಮೆ (Kannada) are everyday words. <em>Policy</em> and <em>scheme</em> are not</td>
+</tr>
+<tr>
+<td>The person who gets the money</td>
+<td>nominee, beneficiary, assignee</td>
+<td>No everyday equivalent in any of her languages; the translations are more formal than the English</td>
+</tr>
+<tr>
+<td>Hospital bills</td>
+<td>hospitalisation, in-patient, admission</td>
+<td></td>
+</tr>
+<tr>
+<td>You pay nothing at the hospital</td>
+<td>cashless treatment, cashless claim, network hospital</td>
+<td>Says the outcome, not the mechanism</td>
+</tr>
+<tr>
+<td>Your family on the cover</td>
+<td>dependents, family floater, add-on members</td>
+<td></td>
+</tr>
+<tr>
+<td>Boy · Girl</td>
+<td>Male · Female</td>
+<td>For a child, in all four languages</td>
+</tr>
+<tr>
+<td>Free</td>
+<td>100% free, no cost to you, complimentary</td>
+<td>One word; the price is zero and nothing else needs saying</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="what-changes-from-the-current-screens">What changes from the current screens</h2>
+<p>Every difference as one sentence, with the principle. The reference read is <code>references/insurance-flow-current.md</code>.</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Current</th>
+<th>Redesign</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The flow is built around the word <em>nominee</em></td>
+<td>The word never appears; the question is <em>Who should get the money?</em></td>
+<td>P1, P9 — it has no everyday translation</td>
+</tr>
+<tr>
+<td>One grey image placeholder and three outline icons</td>
+<td>12 registered pictograms; every choice is made by picture first</td>
+<td>P1, rows 9–10 — cover the text and the current flow is blank</td>
+</tr>
+<tr>
+<td><em>Hospitalization</em>, <em>Cashless treatment</em>, <em>Coverage Amount</em></td>
+<td><em>Hospital bills</em>, <em>You pay nothing at the hospital</em>, <em>Your cover</em></td>
+<td>P1, P9</td>
+</tr>
+<tr>
+<td>Checkboxes for Yes/No, relationship and gender</td>
+<td>SelectionCard <code>single</code> everywhere; a square never promises "one"</td>
+<td>P1, P3</td>
+</tr>
+<tr>
+<td>Eight relationship targets in two columns at ~20 dp</td>
+<td>Eight full-width cards ≥ 64 dp in two labelled groups</td>
+<td>P3, row 1</td>
+</tr>
+<tr>
+<td>Date of birth as three dropdowns, twice</td>
+<td>DatePicker <code>month</code> with a year stepper, and the date read back in words with the age</td>
+<td>P3 — the DS removed this control</td>
+</tr>
+<tr>
+<td><em>Do you have a nominee?</em> asked again after screen 1 already asked it</td>
+<td>Asked once, on screen 1, as two Buttons</td>
+<td>P2</td>
+</tr>
+<tr>
+<td>Five questions on screen 2</td>
+<td>One question per screen, two fields maximum</td>
+<td>P2</td>
+</tr>
+<tr>
+<td><em>How many kids do you have?</em> then that many forms</td>
+<td>She adds children to a list; the count is derived</td>
+<td>P5 — the count and the details can no longer disagree</td>
+</tr>
+<tr>
+<td>Nothing speaks</td>
+<td>VoicePrompt <code>bar</code> on every screen; inline read-back on every typed name</td>
+<td>P4, row 12</td>
+</tr>
+<tr>
+<td>A Latin-only name field with no way through it</td>
+<td>Contacts picker first, typing second, Call Help third, TTS read-back over all three</td>
+<td>P1, P4 — she cannot proofread a script she does not read</td>
+</tr>
+<tr>
+<td>The phone number typed by hand</td>
+<td>One tap from contacts; typing is the fallback</td>
+<td>P3 — ten digits from memory is the flow's biggest error source</td>
+</tr>
+<tr>
+<td>No loading, error or offline state</td>
+<td>Five states designed; the form works offline and the submit queues</td>
+<td>P5, row 5</td>
+</tr>
+<tr>
+<td>No sign of where she is</td>
+<td>Stepper <code>rail</code>, four nodes, spoken on entry</td>
+<td>P5</td>
+</tr>
+<tr>
+<td><em>Continue</em> × 4</td>
+<td><em>Choose the person</em>, <em>Add their name</em>, <em>Add their birthday</em>, <em>Save this person</em>, <em>Save my family</em>, <em>Send my details</em>, <em>Back to home</em></td>
+<td>P2 — actions are verbs that name the outcome</td>
+</tr>
+<tr>
+<td>Title Case, and <code>*</code> for required</td>
+<td>Sentence case; no asterisks</td>
+<td>Type rules, P1</td>
+</tr>
+<tr>
+<td>Secondary Button below the primary on screen 1</td>
+<td>Secondary above, primary lowest and nearest the thumb</td>
+<td><code>button.md</code> placement, P3</td>
+</tr>
+<tr>
+<td>Metallic starburst on the Thank-you screen</td>
+<td>Flat illustration pictogram with a green ✓ dot</td>
+<td><code>assets.md</code> — metallic is the reward layer, and being insured is not a prize</td>
+</tr>
+<tr>
+<td>Green <em>100% FREE COVERAGE</em> pill</td>
+<td>Tag <code>brand soft</code> <em>Free</em></td>
+<td>Row 14 — success tone means done, paid or verified</td>
+</tr>
+<tr>
+<td>No confirmation of what is being sent</td>
+<td>Screen 6 reads every card aloud before submit</td>
+<td>P3 — a wrong name is a payout that never arrives</td>
+</tr>
+<tr>
+<td><strong>₹6 Lakh and ₹5,00,000 on the same screen</strong></td>
+<td>One number everywhere</td>
+<td>P5 — see Open, below</td>
+</tr>
+</tbody>
+</table></div>
+<p>Seven screens become nine for a nominee with one child. That is the deliberate trade: each screen asks one thing, and there is no clock on this flow. If field testing shows the length hurts more than the density did, the merge to make first is screens 3 and 4 behind a single <em>About them</em> scroll — not the relationship step, and never the review.</p>
+<hr />
+<h2 id="new-assets-12-pictograms">New assets — 12 pictograms</h2>
+<p>Registered in <code>foundations/assets.md</code>. Illustration layer, pink disc + magenta object, 40 and 64 dp (120 for the two hero uses), SVG.</p>
+<p><code>family</code> · <code>hospital-bed</code> · <code>spouse</code> · <code>mother</code> · <code>father</code> · <code>brother</code> · <code>sister</code> · <code>mother-in-law</code> · <code>father-in-law</code> · <code>child</code> · <code>boy</code> · <code>girl</code></p>
+<p><strong>Cashless needs no new asset.</strong> The existing <code>cash-in-hand</code> object takes a red ✗ dot — the register's own rule is that the object says what and the dot says status, so one object carries both outcomes.</p>
+<p><code>mother-in-law</code> and <code>father-in-law</code> are drawn as distinct assets but will read as near-identical to <code>mother</code> and <code>father</code>; the labelled group heading and the voice carry them. Flagged as the field-test watch item.</p>
+<p>New Phosphor rows for <code>foundations/icons.md</code>: <code>first-aid-kit</code> (health cover), <code>users-three</code> (the family on the cover), <code>baby</code> (children), <code>address-book</code> (pick from contacts), <code>plus-circle</code> (add to a list — the Card <code>empty</code> affordance), <code>pencil-simple</code> (edit this answer).</p>
+<hr />
+<h2 id="open">Open</h2>
+<ol>
+<li><strong>Is a nominee optional?</strong> If the insurer requires one to enrol, <em>Not now</em> leaves screen 1 and the flow joins go-live. Everything else is unchanged. Awaiting the insurer.</li>
+<li><strong>₹6 Lakh or ₹5,00,000?</strong> The shipped screen says both. The redesign uses ₹6,00,000 throughout as a placeholder; one number must win before this ships.</li>
+<li><strong>Why do we collect children?</strong> Assumed coverage-relevant. If it turns out to be records only, screen 5 gets a <em>Skip</em> and stops claiming they are covered.</li>
+<li><strong>More than one nominee, with a percentage split?</strong> Assumed one. A split would need a new screen and probably a Tier 3 control; do not add it without evidence that experts ask for it.</li>
+<li><strong>Consent or e-signature?</strong> Assumed none. If the insurer needs a declaration, it is a <code>confirm</code> BottomSheet before screen 6's submit, spoken in full, never a scroll-to-accept.</li>
+<li><strong>Does she get a policy document?</strong> If so, screen 7 gains a second ghost Button and Profile gains a row; the document is a PDF she cannot read, so it needs a spoken summary beside it.</li>
+<li><strong>Telugu</strong> — if the fifth language launches (<code>patterns/onboarding.md</code>), every recorded line here is recorded again.</li>
+</ol>
+<hr />
+<h2 id="checklist-for-the-flow">Checklist for the flow</h2>
+<ul>
+<li class="chk">Cover the text on all nine screens: can a first-week expert still choose the right person?</li>
+<li class="chk">Greyscale: are the eight relationship cards still distinguishable? (Expected: six yes, two by heading only.)</li>
+<li class="chk">Kannada at font scale 1.3 on 360 × 800: eight card titles, two group headings, seven Button labels — nothing clipped, nothing shrunk.</li>
+<li class="chk">Contacts picker fills both fields in one tap on the three most common phones in the fleet.</li>
+<li class="chk">TTS read-back speaks a typed Latin name correctly in all four language settings.</li>
+<li class="chk">Airplane mode from screen 2 to screen 6: everything fills, the submit queues, nothing is lost.</li>
+<li class="chk">Leave at screen 4 and return from Profile: lands on screen 4, rail correct, voice announces the step.</li>
+<li class="chk">Every spoken line heard, not read, by a native speaker of each language (row 15).</li>
+<li class="chk">Baseline device and 3G profile (row 16).</li>
+<li class="chk">Field review: watch the in-law row, and watch whether <em>I'll ask them later</em> is used more than it is designed for.</li>
+</ul>
+  </main>
+</div>
+<script>
+(function(){
+const links=[...document.querySelectorAll('#nav a')];
+const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-10% 0px -80% 0px'});
+  targets.forEach(t=>io.observe(t));
+}
+})();
+</script>

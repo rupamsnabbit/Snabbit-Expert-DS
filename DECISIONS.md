@@ -57,3 +57,11 @@ Design decisions that constrain everything downstream. One entry each, dated, wi
 **Consequence.** Every future spec starts from a screenshot of the shipped form and records it in its *What changes* table; a departure from shipped must cite a principle. `references/SCREENS.md` says which pages and sections count as shipped.
 
 **Revisit if.** The shipped app moves SOS to the right on Home — then the P7 rule is simply met and the note above can go.
+
+## 2026-09-09 — *Nominee* leaves the interface
+
+**Decision.** The word **nominee** never appears on a screen, in a voice line, or in a translation. The question the app asks is *Who should get the money?* and the answer is a relationship and a name, chosen from pictogram cards. *Nominee* stays in the API payload, the insurer's forms and the specs' margins. The same rule is applied to *hospitalisation*, *cashless treatment*, *dependents* and *coverage amount* — see the vocabulary table in `PRINCIPLES.md`.
+
+**Consequence.** The insurance flow (`patterns/insurance.md`) is rebuilt as one question per screen, answered by picture and voice: eight relationship pictogram cards in two labelled groups, a contacts picker for the name and number (the insurer accepts Latin characters only, which she does not read — so the app never asks her to proofread one; a TTS read-back speaks it instead), the DatePicker `month` for both birth dates, children added to a list rather than counted, and a review screen that reads every card aloud before submit. Twelve new pictograms are registered in `foundations/assets.md`. `SelectionCard`'s "≤ 5 cards in a group" gains a documented exception for a fixed outside list (`briefs/insurance-relationship-picker.md`). The confirmation screen loses its metallic starburst — insurance is not earned, so it is not the reward layer.
+
+**Revisit if.** Field testing shows experts already use and understand a local word for nominee (some hub trainers may have taught one) — then that word, not the English one, is what goes on screen.

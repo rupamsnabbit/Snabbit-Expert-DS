@@ -266,6 +266,11 @@ Use these words everywhere — UI, code, docs, training. Do not introduce synony
 | SOS | emergency, panic | The safety trigger |
 | Shield | safety mode, Kavach | The in-job safety feature set |
 | Hub | centre, office | The physical training / support location |
+| Cover · You are covered | policy, plan, scheme | The free health insurance. *Insurance* itself is fine — बीमा (Hindi/Marathi) and ವಿಮೆ (Kannada) are everyday words |
+| The person who gets the money | nominee, beneficiary | *Nominee* has no everyday equivalent in any of her languages; it stays in code and the insurer's forms, never on a screen |
+| Hospital bills | hospitalisation, in-patient | |
+| You pay nothing at the hospital | cashless treatment, network hospital | Says the outcome, not the mechanism |
+| Your family on the cover | dependents, family floater | |
 
 ---
 

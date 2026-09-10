@@ -39,6 +39,21 @@ Proposed: `asset/picto/shield` — the Snabbit Shield (Kavach) mark, **Kavach bl
 
 Rule: the object says *what*, the dot says *status*. A pictogram without a dot is neutral. Never colour the object itself green or red — status is only ever the dot, so the same object can carry both outcomes.
 
+**Health cover — 12 new pictograms (2026-09-09, `patterns/insurance.md`).** Illustration layer, 40 · 64 dp, 120 dp for the two hero uses; SVG.
+
+| Asset | Meaning | Notes |
+| --- | --- | --- |
+| `asset/picto/family` | The health cover itself; her family on it | Hero on the cover screen and the confirmation (with a green ✓ dot); 40 dp in the Home card and the benefit row |
+| `asset/picto/hospital-bed` | Hospital bills are covered | |
+| `asset/picto/spouse` | Husband or wife | A pair; the only relationship pictogram showing two figures |
+| `asset/picto/mother` · `asset/picto/father` | Her mother · her father | |
+| `asset/picto/brother` · `asset/picto/sister` | Her brother · her sister | |
+| `asset/picto/mother-in-law` · `asset/picto/father-in-law` | Her husband's mother · father | **Weak by nature** — indistinguishable from `mother` / `father` at a glance. The `labelled` Divider heading and the voice carry them; watch this row in field testing |
+| `asset/picto/child` | Her son or daughter, gender not yet known | The relationship option |
+| `asset/picto/boy` · `asset/picto/girl` | A son · a daughter on the cover | The child gender choice; the words on screen are *Boy* and *Girl*, never *Male* / *Female* |
+
+*Cashless* needs no new asset: the existing `cash-in-hand` object takes a **red ✗ dot** and reads as *you pay nothing*. This is the register's own rule working as intended — one object, both outcomes, status only in the dot.
+
 ### 3. Characters — `asset/character/*`
 
 Semi-realistic flat vector, adult proportions, calm confident expressions, brown skin tones varied across scenes. Uniforms identify the role and are exact:

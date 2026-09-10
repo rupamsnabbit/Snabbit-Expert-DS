@@ -1,0 +1,248 @@
+<meta charset="utf-8">
+<title>Snabbit Expert Pattern Permissions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --bg-2:#F9FAFB; --bg-3:#F3F4F6;
+  --text:#111827; --text-body:#374151; --text-2:#6B7280; --text-3:#9CA3AF;
+  --border:#E5E7EB; --border-subtle:#F3F4F6;
+  --brand:#F70F79; --brand-wash:#FEF1F7; --brand-ink:#97094A;
+  --ok:#059669; --ok-wash:#ECFDF5; --focus:#3B82F6;
+  --sans:"Outfit",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+    --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+    --border:#374151; --border-subtle:#1F2937;
+    --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+    --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+  --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+  --border:#374151; --border-subtle:#1F2937;
+  --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+  --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--text-body);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+code{font-family:var(--mono);font-size:.85em;background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--text)}
+pre{background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:14px 16px;overflow-x:auto;margin:12px 0 20px} pre code{background:none;border:0;padding:0;font-size:12.5px;line-height:1.55;white-space:pre}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+.shell{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}
+.rail{position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--border);padding:24px 16px 32px;background:var(--bg);display:flex;flex-direction:column;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;padding:0 8px}
+.brand-mark{width:28px;height:28px;border-radius:8px;background:var(--brand);display:grid;place-items:center;flex:none}
+.brand-mark span{width:12px;height:12px;border-radius:3px;background:#fff;transform:rotate(45deg)}
+.brand b{font-weight:600;color:var(--text);font-size:15px;line-height:1.2;display:block}
+.brand small{color:var(--text-2);font-size:12px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:block;padding:6px 8px;border-radius:6px;text-decoration:none;color:var(--text);font-size:13.5px;font-weight:500}
+.nav a.sub{font-weight:400;color:var(--text-body);padding-left:14px;font-size:13px}
+.nav a.sub b{font-family:var(--mono);font-weight:500;color:var(--text-3);font-size:11.5px;margin-right:2px}
+.nav a:hover{background:var(--bg-2)}
+.nav a.on{background:var(--brand-wash);color:var(--brand-ink)}
+.rail-foot{margin-top:auto;padding:0 8px;font-size:12px;color:var(--text-3);line-height:1.5}
+.main{padding:40px 56px 96px;max-width:860px;width:100%}
+.eyebrow{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);font-weight:600}
+h1{font-size:40px;line-height:1.1;font-weight:600;color:var(--text);margin:8px 0 12px;letter-spacing:-.015em;text-wrap:balance}
+.lede{font-size:18px;color:var(--text-2);max-width:60ch;margin:0 0 8px}
+.lede strong{color:var(--text);font-weight:500}
+h2{font-size:26px;line-height:1.2;font-weight:600;color:var(--text);margin:72px 0 16px;letter-spacing:-.01em;text-wrap:balance;padding-top:24px;border-top:1px solid var(--border)}
+h3{font-size:20px;font-weight:600;color:var(--text);margin:48px 0 8px;letter-spacing:-.005em}
+h3::before{content:"";display:block;width:32px;height:3px;background:var(--brand);border-radius:2px;margin-bottom:14px}
+p{margin:0 0 14px;max-width:66ch}
+h3 + p{font-size:17px;color:var(--text);font-weight:500}
+p.why{color:var(--text-2);font-size:15px;padding-left:14px;border-left:2px solid var(--border)}
+p.why::before{content:"Why · ";color:var(--text-3);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+p.lbl{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2);font-weight:600;margin:22px 0 8px}
+strong{color:var(--text);font-weight:600}
+em{font-style:italic}
+ul,ol{margin:0 0 14px;padding-left:0;list-style:none;max-width:68ch}
+ul li{position:relative;padding-left:20px;margin:6px 0;font-size:15.5px}
+ul li::before{content:"";position:absolute;left:0;top:11px;width:9px;height:2px;background:var(--brand)}
+ul li.chk{padding-left:30px}
+ul li.chk::before{width:16px;height:16px;top:4px;background:var(--bg);border:1.5px solid var(--text-3);border-radius:4px}
+ol{counter-reset:s}
+ol li{counter-increment:s;display:grid;grid-template-columns:32px 1fr;gap:12px;margin:10px 0;font-size:15.5px}
+ol li::before{content:counter(s);width:28px;height:28px;border-radius:50%;background:var(--brand-wash);color:var(--brand-ink);font-weight:600;font-size:13px;display:grid;place-items:center;margin-top:1px}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px;margin:8px 0 20px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);font-weight:500;padding:10px 14px;background:var(--bg-2);border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:10px 14px;border-bottom:1px solid var(--border-subtle);vertical-align:top;color:var(--text-body)}
+tr:last-child td{border-bottom:0}
+td:first-child{color:var(--text);font-weight:500;white-space:nowrap}
+hr{display:none}
+
+.sitenav{display:flex;flex-direction:column;gap:2px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.sitenav .grp{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);padding:10px 8px 4px;font-weight:500}
+.sitenav a{display:block;padding:5px 8px;border-radius:6px;text-decoration:none;color:var(--text-body);font-size:13.5px;border:0}
+.sitenav a:hover{background:var(--bg-2);color:var(--text)} .sitenav a.on{color:var(--brand-ink);background:var(--brand-wash);font-weight:500}
+@media (max-width:900px){.sitenav{flex-direction:row;flex-wrap:wrap;gap:4px;border-bottom:0;padding-bottom:0}.sitenav .grp{display:none}}
+
+@media (max-width:900px){
+  .shell{grid-template-columns:1fr}
+  .rail{position:static;height:auto;border-right:0;border-bottom:1px solid var(--border);padding:16px}
+  .nav{flex-direction:row;flex-wrap:wrap;gap:4px} .nav a.sub{padding-left:8px} .rail-foot{display:none}
+  .main{padding:32px 20px 80px} h1{font-size:32px} h2{margin-top:56px}
+}
+</style>
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Pattern · Asking for permission</small></div></div>
+    <nav class="sitenav" aria-label="Site"><div class="grp">Foundations</div><a href="index.html">Tokens</a><a href="principles.html">Principles</a><a href="extending.html">Extending</a><a href="icons.html">Icons</a><a href="assets.html">Assets</a><a href="motion.html">Motion</a><a href="type.html">Type · four scripts</a><a href="accessibility.html">Accessibility</a><div class="grp">Components</div><a href="components/button.html">Button</a><a href="components/icon-button.html">IconButton</a><a href="components/tag.html">Tag</a><a href="components/text-field.html">TextField</a><a href="components/selection-controls.html">Checkbox · Radio · Switch</a><a href="components/amount.html">Amount</a><a href="components/timer.html">Timer</a><a href="components/feedback.html">Banner · Toast · Snackbar</a><a href="components/chip.html">Chip</a><a href="components/avatar.html">Avatar</a><a href="components/badge.html">Badge</a><a href="components/card.html">Card</a><a href="components/list-item.html">ListItem</a><a href="components/selection-card.html">SelectionCard</a><a href="components/bottom-sheet.html">BottomSheet</a><a href="components/header-nav.html">HeaderNav</a><a href="components/bottom-tab-bar.html">BottomTabBar</a><a href="components/progress-bar.html">ProgressBar</a><a href="components/stepper.html">Stepper</a><a href="components/coachmark.html">Coachmark</a><a href="components/sos-control.html">SOSControl</a><a href="components/accordion.html">Accordion</a><a href="components/date-picker.html">DatePicker</a><a href="components/empty-state.html">EmptyState</a><a href="components/skeleton.html">Skeleton · Spinner</a><a href="components/voice-prompt.html">VoicePrompt</a><a href="components/tabs.html">Tabs · Segmented</a><a href="components/nudge.html">Nudge</a><a href="components/numeric-keypad.html">NumericKeypad</a><a href="components/page-indicator.html">PageIndicator</a><a href="components/media-capture.html">MediaCapture</a><a href="components/map-marker.html">MapMarker · MapSnippet</a><a href="components/stat-rating-divider.html">Stat · Rating · Divider</a><a href="components/how-to-clip.html">HowToClip</a><a href="components/shield-card.html">ShieldCard</a><a href="components/job-alert.html">JobAlert</a><div class="grp">Patterns</div><a href="pattern-new-job-alert.html">New job arrives</a><a href="pattern-check-in-out.html">Check in · work · check out</a><a href="pattern-payout.html">Payout</a><a href="pattern-onboarding.html">Onboarding · go-live</a><a href="pattern-error-recovery.html">When something goes wrong</a><a class="on" href="pattern-permissions.html">Asking for permission</a><div class="grp">Research</div><a href="benchmark.html">Benchmark</a><a href="audit.html">Figma audit</a><a href="roadmap.html">Roadmap</a></nav><nav class="nav" id="nav"><a href="#three-rules">Three rules</a><a href="#the-eight-in-the-order-they-are-met">The eight, in the order they are met</a><a href="#the-sheet">The sheet</a><a href="#permanently-denied">Permanently denied</a><a href="#shield-consent-is-not-a-permission">Shield consent is not a permission</a><a href="#copy">Copy</a><a href="#accessibility-and-trust">Accessibility and trust</a><a href="#checklist-for-the-pattern">Checklist for the pattern</a></nav>
+    <div class="rail-foot">Snabbit Expert Design System · generated from patterns/permissions.md</div>
+  </aside>
+  <main class="main">
+    <header>
+      <div class="eyebrow">Snabbit Expert · Mobile</div>
+      <h1>Pattern — asking for permission</h1>
+      <p class="lede">The app needs eight things from the phone — location, camera, notifications, microphone, display-over-other-apps, battery-unrestricted, storage on old Androids, and SMS auto-read — and each one is a moment where a stranger's dialog appears in a language the expert may not read and asks her to trust something. This pattern fixes when each is asked, what the app says first, what happens when she says no, and how she gets back in later. The component is the BottomSheet <code>permission</code> (<code>bottom-sheet.md</code>); this page is the order and the copy.</p>
+    </header>
+    <h2 id="three-rules">Three rules</h2>
+<ol>
+<li><strong>Ask when it is needed, never before.</strong> Location when she first needs jobs near her, camera at the first photo, microphone at the first Shield start, notifications after the first accepted job — not on first launch in a row. A permission asked out of context is a permission denied (research; P5).</li>
+<li><strong>Say why first, in one sentence, in her language, aloud.</strong> The <code>permission</code> sheet always precedes the OS dialog: a scene asset showing the moment, one sentence of <em>why</em>, <strong>Allow …</strong> and <strong>Not now</strong>. She hears it before the phone shows her something she cannot read.</li>
+<li><strong>No is allowed, and the app keeps working.</strong> Every permission has a fallback path and a way back in. Nothing is gated behind a permission except the one thing that literally needs it, and that one thing says so where it is.</li>
+</ol>
+<hr />
+<h2 id="the-eight-in-the-order-they-are-met">The eight, in the order they are met</h2>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Permission</th>
+<th>Asked when</th>
+<th>Why (the sentence)</th>
+<th>If she says no</th>
+<th>Way back in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Notifications</strong></td>
+<td>After the first job is accepted (Android 13+; iOS on first open of Home)</td>
+<td><em>We'll tell you when a job comes — even when the app is closed.</em></td>
+<td>Jobs still arrive when the app is open; a Banner <code>warning</code> on Home: <em>Turn on notifications to hear about jobs</em> → <strong>Turn on</strong></td>
+<td>Home Banner; Profile → <em>Notifications</em> row</td>
+</tr>
+<tr>
+<td><strong>Location</strong></td>
+<td>Onboarding step 3, when the city is needed; asked again as <em>always / while using</em> before the first shift, for Shield and check-in</td>
+<td><em>We use your location to find jobs near you.</em> Before the first shift: <em>…and to share it with the safety team during a job.</em></td>
+<td>City asked by hand; check-in falls to <em>Check in anyway</em> (hold, flagged); Shield <code>blocked</code> <em>Location not allowed</em> → <strong>Allow location</strong></td>
+<td>ShieldRow fix Button; Profile → <em>Location</em></td>
+</tr>
+<tr>
+<td><strong>Camera</strong></td>
+<td>First photo: login selfie, Aadhaar (if typed fails), check-in photo where required</td>
+<td><em>We take a photo to confirm it's you.</em></td>
+<td>MediaCapture <code>preview</code> shows EmptyState <code>error</code> <em>Camera not allowed</em> → <strong>Allow camera</strong>; documents offer <strong>Choose from gallery</strong></td>
+<td>The tile itself; Profile → <em>Camera</em></td>
+</tr>
+<tr>
+<td><strong>Microphone</strong></td>
+<td>First Shield start (at check-in, after consent)</td>
+<td><em>Shield records sound during a job so the safety team can hear if something goes wrong.</em></td>
+<td>Shield <code>blocked</code> <em>Microphone not allowed</em> → <strong>Allow microphone</strong>; location-only Shield continues; the job continues</td>
+<td>ShieldRow fix Button</td>
+</tr>
+<tr>
+<td><strong>Display over other apps</strong> (Android)</td>
+<td>Onboarding, after Aadhaar, before the first shift</td>
+<td><em>So a new job can appear even when you're in another app.</em></td>
+<td>Job alerts arrive as notifications with an <strong>Accept job</strong> action; a Banner on Home until allowed</td>
+<td>Home Banner; Profile</td>
+</tr>
+<tr>
+<td><strong>Unrestricted battery</strong> (Android)</td>
+<td>Same moment as above, one sheet later</td>
+<td><em>So the phone doesn't stop Snabbit from telling you about jobs.</em></td>
+<td>Nothing breaks; a Banner <code>info</code> appears only if a job alert was missed while the app was asleep</td>
+<td>Home Banner after a missed alert</td>
+</tr>
+<tr>
+<td><strong>SMS auto-read</strong> (Android)</td>
+<td>Never asked — the OTP uses the SMS Retriever API, which needs no permission</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Storage / photos</strong> (Android ≤ 12)</td>
+<td>Only when <em>Choose from gallery</em> is tapped</td>
+<td><em>To pick a photo from your phone.</em></td>
+<td>Camera path remains</td>
+<td>The gallery Button</td>
+</tr>
+</tbody>
+</table></div>
+<p>Contacts are never asked (referral is a code, not a contact list). Phone-state, call logs, exact alarm: never.</p>
+<hr />
+<h2 id="the-sheet">The sheet</h2>
+<pre><code>┌──────────────────────────────────────────┐  BottomSheet permission
+│                                    (🔊)  │  Listen (title + body spoken on open)
+│         [ scene asset 160 ]              │  the moment: her at a door with the map · a photo being taken
+│ Find jobs near you                       │  Heading3
+│ We use your location to find jobs        │  BodyLg · one sentence · the why, never the how
+│ near you.                                │
+│ [ Allow location                     ]   │  Button primary brand L → the OS dialog
+│ [ Not now                            ]   │  Button ghost neutral L
+└──────────────────────────────────────────┘
+</code></pre>
+<ul>
+<li>Title is the <strong>benefit</strong> in her words (<em>Find jobs near you</em>, <em>Hear about jobs</em>, <em>Confirm it's you</em>), never <em>Location permission required</em>.</li>
+<li>Body is one sentence of why; never the mechanism (<em>background location service</em>), never a threat (<em>Without this the app won't work</em>).</li>
+<li><strong>Allow …</strong> names the thing so the OS dialog that follows makes sense; <strong>Not now</strong> is always there and always works.</li>
+<li>The sheet appears <strong>once</strong> per permission per context; if she says <em>Not now</em>, it does not return on its own — the Banner or the fix Button does the asking from then on.</li>
+<li>After the OS dialog: allowed → the flow continues with no confirmation screen (the thing just works); denied → the fallback row above, immediately, with the Banner or fix Button, never a second sheet.</li>
+</ul>
+<hr />
+<h2 id="permanently-denied">Permanently denied</h2>
+<p>When the OS will no longer show its dialog (<em>Don't ask again</em> on Android, any denial on iOS), <strong>Allow …</strong> cannot work. The fix Button then reads <strong>Open settings</strong> and the sheet body adds one line: <em>Turn it on in Settings — we'll bring you back.</em> The app deep-links to its own settings page and, on return, re-checks and continues. A HowToClip <code>guide</code> (<em>How to allow location</em>, 12 s) sits on that sheet for the phones where Settings is a maze.</p>
+<hr />
+<h2 id="shield-consent-is-not-a-permission">Shield consent is not a permission</h2>
+<p>The Shield consent sheet (<code>shield-card.md</code>) is Snabbit's own agreement, asked once with a visible way to say no. The OS microphone and location permissions come <strong>after</strong> consent, at the first start, through this pattern's sheets. Consent without permission → Shield <code>blocked</code> with the fix; permission without consent is never requested.</p>
+<hr />
+<h2 id="copy">Copy</h2>
+<ul>
+<li>Titles (benefits): <em>Find jobs near you</em> · <em>Hear about new jobs</em> · <em>Confirm it's you</em> · <em>Keep the safety team listening</em> · <em>See jobs in any app</em> · <em>Don't miss a job while the phone sleeps</em> · <em>Pick a photo</em>.</li>
+<li>Bodies: one sentence each, above. ≤ 60 chars in English, verified in Kannada at 1.3 (<code>type.md</code>).</li>
+<li>Buttons: <em>Allow location</em> · <em>Allow notifications</em> · <em>Allow camera</em> · <em>Allow microphone</em> · <em>Allow</em> (overlay) · <em>Open settings</em> · <em>Not now</em>. Never <em>OK</em>, <em>Enable</em>, <em>Grant</em>, <em>Continue</em>.</li>
+<li>Banners: <em>Turn on notifications to hear about jobs</em> → <strong>Turn on</strong>; <em>Allow location to check in faster</em> → <strong>Allow</strong>.</li>
+<li>Never: <em>required</em>, <em>mandatory</em>, <em>the app needs</em>, <em>you must</em>. The app asks; she decides.</li>
+</ul>
+<hr />
+<h2 id="accessibility-and-trust">Accessibility and trust</h2>
+<ul>
+<li>Each sheet is spoken on open (<code>bottom-sheet.md</code>); the OS dialog itself is not translatable, which is why the sentence before it matters.</li>
+<li>A denied permission is never shown as an error state in red; it is a condition (Banner <code>warning</code> / <code>info</code>) with a fix — <code>pattern: error recovery</code>.</li>
+<li>The app never asks for a permission during a job alert, SOS or SafetyCheck; if the moment arrives then, it waits.</li>
+<li>Analytics: which sheet was shown and what she chose is logged; a permission with a &lt; 60 % allow rate is a sentence to rewrite, not a sheet to repeat.</li>
+</ul>
+<hr />
+<h2 id="checklist-for-the-pattern">Checklist for the pattern</h2>
+<ul>
+<li class="chk">Every OS dialog is preceded by a <code>permission</code> sheet with a benefit title and a one-sentence why, spoken.</li>
+<li class="chk">Every permission has a fallback path and a way back in; nothing outside the one dependent action is gated.</li>
+<li class="chk"><em>Not now</em> never re-prompts on its own; permanently denied leads to <strong>Open settings</strong> with the guide clip.</li>
+<li class="chk">No permission is asked on first launch in a batch, during a job alert, or during SOS.</li>
+<li class="chk">Copy reviewed aloud in four languages.</li>
+</ul>
+  </main>
+</div>
+<script>
+(function(){
+const links=[...document.querySelectorAll('#nav a')];
+const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-10% 0px -80% 0px'});
+  targets.forEach(t=>io.observe(t));
+}
+})();
+</script>

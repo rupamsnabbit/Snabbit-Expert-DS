@@ -15,5 +15,6 @@ python3 site/build_doc.py patterns/check-in-out.md site/pattern-check-in-out.htm
 python3 site/build_doc.py patterns/payout.md site/pattern-payout.html "Snabbit Expert Pattern Payout" "Pattern · Payout"
 python3 site/build_doc.py patterns/onboarding.md site/pattern-onboarding.html "Snabbit Expert Pattern Onboarding" "Pattern · Onboarding and go-live"
 python3 site/build_doc.py patterns/error-recovery.md site/pattern-error-recovery.html "Snabbit Expert Pattern Errors" "Pattern · When something goes wrong"
+python3 site/build_doc.py patterns/permissions.md site/pattern-permissions.html "Snabbit Expert Pattern Permissions" "Pattern · Asking for permission"
 python3 site/build_doc.py ROADMAP.md               site/roadmap.html    "Snabbit Expert Roadmap"    "Roadmap"
 python3 site/build_audit.py
