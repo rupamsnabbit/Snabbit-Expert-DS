@@ -17,6 +17,7 @@ This repository is the **mobile design system** for the Snabbit Expert app (Comp
 - **Phosphor Icons only.** No other icon set, no custom glyphs, no emoji as icons. Weight `regular` by default, `fill` for selected/active, `bold` for emphasis only; never `thin`, `light`, `duotone`. Look up the icon's meaning in `foundations/icons.md` before using it; if the meaning is not registered, propose it there.
 - **Assets are two layers and registered.** Illustration (flat vector, soft shading, pink stage) for scenes, pictograms, characters, faces; metallic 3D only for rewards (badges, tiers, coins, red cards). Check `foundations/assets.md` before creating or placing one; one asset, one meaning; use the class's style prompt and the reference sheet; never make an informational asset glossy or a reward flat. Source archive: Figma *Snabbit Assets* (`QhbyjXwWU3rukCUuDcLuRD`).
 - **Tier every piece of UI** as Core / Composition / Local per `EXTENDING.md`, and say which. Never produce Tier 0 (a detached, hand-styled, unnamed thing).
+- **One project, one boundary.** Project work lives in `projects/<slug>/` — the PRD verbatim, its reference reads, its tier table, its scope contract. While building a project, read **that project's folder and the system** (`tokens/`, `components/`, `foundations/`, `principles/`, `patterns/`); **never another project's folder**. Another project's ask is a different ask from a different stakeholder, not context. Every decision traces to this project's ask, the principles or the tokens. Work travels between projects only as a capability landed in the shared system — never as content copied from another project. **Read `projects/ACTIVE` before any project work** — it names the one project in play, and is how a new session knows where it is; if it says `none`, ask. A project may start without a PRD: capture the ask into `prd.md` and get it confirmed before designing. See `projects/README.md`; run it with the `prd` skill.
 - **Translate, don't transplant.** A reference supplies ideas (structure, order, interaction); the system supplies expression (tokens, components, voice). "Don't stick strictly to the design system" means *run the reference read and translate*, never *restyle the screenshot*.
 - **Principles pass.** Anything with a state, an action or text runs the acceptance checklist in `PRINCIPLES.md`. Cite principle numbers when you make or request a change (*"P3: decline is adjacent to accept"*).
 - **Vocabulary.** Expert (not worker/runner/helper), Job, Shift, Check in/out, Earnings, Payout, Tier, Streak, SOS, Shield, Hub. See the table in `PRINCIPLES.md`.
@@ -28,12 +29,29 @@ Do the six-step reference read in `principles/EXTENDING.md` and deliver step 6 (
 
 **Mobbin is the preferred source of inspiration** (`EXTENDING.md` § Where inspiration comes from): it shows shipped flows with their states, which is the standard of evidence this system holds. Search Mobbin by *flow* (onboarding, check-in, earnings, payout, referral, permissions, offline), prefer worker-side and low-literacy-audience apps, read three apps' versions before translating, save the flow and its read under `references/<app>-<flow>/` (internal only — never published, never traced), then translate. Pinterest and Dribbble are for mood only; nothing structural is borrowed from a screen that never shipped.
 
+## Projects — one project, one boundary
+
+An ask — a PRD, or a conversation that starts "let's build X" — becomes a project in `projects/<slug>/` (`cp -r projects/_template projects/<slug> && echo "<slug>" > projects/ACTIVE`) holding `prd.md` (the ask, written down once and never edited afterwards — disagreements go to *Open questions*), `SCOPE.md` (the contract: boundary, answers with, asks of core, sits beside, open questions, log), `TIERS.md` (every surface placed in a tier before anything is drawn) and `reads/` (that project's reference reads).
+
+**A new session starts by reading `projects/ACTIVE`** — one slug, or `none`. That file, not the conversation, is what makes the boundary survive a new chat: it says which project is in play, and `SCOPE.md` → *Status* and *Log* say what was done last and what is next. Never infer the project from the git branch, from recently edited files, or from what happens to be open. Switching is explicit ("switch to `<slug>`"), carries nothing across, and rewrites `ACTIVE`. One project per sitting.
+
+**A project does not need a PRD to exist.** "Let's start a new project" is a valid start: create the folder, set `ACTIVE`, then capture the ask into `prd.md` in the detail a PRD would carry — what, for whom, what problem, in and out of scope, already decided, still open — read it back, get it confirmed, and only then design. Once confirmed it is evidence and is not edited. An ask that stays in conversation drifts and cannot be checked against later.
+
+The project folder is a **workspace**, not a second library. Working files stay in it; finished outputs graduate to the shared system — `patterns/<flow>.md`, `briefs/<slug>-<thing>.md`, changes to `components/`, `tokens/`, `foundations/` — because the expert uses one app and the app has one pattern library.
+
+Projects never read each other. They meet in exactly one place: the system. When a project needs something core does not have, that is an *ask of core*, made per `EXTENDING.md` → *Changing core* and named in `SCOPE.md`; once landed, every project has it, including ones not started. Solving it privately inside the project folder is a fork, and a fork is Tier 0.
+
+A new ask is usually a **variant of a flow that already exists**, not a new flow — `patterns/check-in-out.md` is already a job cycle, and *Shift* already has a meaning in the vocabulary table. Name the relationship in `SCOPE.md` → *Sits beside* at intake. A second pattern file that duplicates four of five screens is how the system rots.
+
+Two projects at once: land the shared core changes from both tier passes first, then finish one end to end, then the other. Sequence, do not interleave.
+
 ## Repository layout
 
 ```
 tokens/         DESIGN_TOKENS.md (contract) · tokens.json (source of truth)
 principles/     PRINCIPLES.md · EXTENDING.md
 components/     one spec per core component (button.md, …); each has a live page site/components/<name>.template.html
+projects/       one folder per project — prd.md (the ask: a PRD verbatim, or captured in conversation) · SCOPE.md (contract, asks of core, log) · TIERS.md · reads/; ACTIVE names the project in play; `_template/` to copy
 briefs/         Tier 3 / change-to-core briefs (template in EXTENDING.md)
 patterns/       one flow per file (new-job-alert.md, …); each has a page site/pattern-<name>.html built by build_doc.py
 references/     SCREENS.md (the two screen files: which pages, shipped vs proposed, open conflicts) · reference screenshots + their reads

@@ -142,6 +142,59 @@ hr{display:none}
 <p>Existing (~30): cash-in-hand, ok-hand, calendar-✓, calendar-✗, door-enter, door-exit (several), profile-blocked, phone-location, megaphone (two), alarm-✓, document-not-eligible, document-eligible, expert-with-tablet, search-document-✗, search-document-✓, id-card-✗, id-card-✓, id-back-✓, bank-✗, phone-✗, route, timer, phone-map-✓, wallet-coins.</p>
 <p>Proposed: <code>asset/picto/shield</code> — the Snabbit Shield (Kavach) mark, <strong>Kavach blue</strong> (feature colour, see <code>DESIGN_TOKENS.md</code> § feature colours), 32 / 96 dp — the one pictogram that is not pink, because a pink shield would read as a promotion and the safety promise must look like nothing else in the app. Decision pending (<code>shield-card.md</code>).</p>
 <p>Rule: the object says <em>what</em>, the dot says <em>status</em>. A pictogram without a dot is neutral. Never colour the object itself green or red — status is only ever the dot, so the same object can carry both outcomes.</p>
+<p><strong>Health cover — 12 new pictograms (2026-09-09, <code>patterns/insurance.md</code>).</strong> Illustration layer, 40 · 64 dp, 120 dp for the two hero uses; SVG.</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Asset</th>
+<th>Meaning</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>asset/picto/family</code></td>
+<td>The health cover itself; her family on it</td>
+<td>Hero on the cover screen and the confirmation (with a green ✓ dot); 40 dp in the Home card and the benefit row</td>
+</tr>
+<tr>
+<td><code>asset/picto/hospital-bed</code></td>
+<td>Hospital bills are covered</td>
+<td></td>
+</tr>
+<tr>
+<td><code>asset/picto/spouse</code></td>
+<td>Husband or wife</td>
+<td>A pair; the only relationship pictogram showing two figures</td>
+</tr>
+<tr>
+<td><code>asset/picto/mother</code> · <code>asset/picto/father</code></td>
+<td>Her mother · her father</td>
+<td></td>
+</tr>
+<tr>
+<td><code>asset/picto/brother</code> · <code>asset/picto/sister</code></td>
+<td>Her brother · her sister</td>
+<td></td>
+</tr>
+<tr>
+<td><code>asset/picto/mother-in-law</code> · <code>asset/picto/father-in-law</code></td>
+<td>Her husband's mother · father</td>
+<td><strong>Weak by nature</strong> — indistinguishable from <code>mother</code> / <code>father</code> at a glance. The <code>labelled</code> Divider heading and the voice carry them; watch this row in field testing</td>
+</tr>
+<tr>
+<td><code>asset/picto/child</code></td>
+<td>Her son or daughter, gender not yet known</td>
+<td>The relationship option</td>
+</tr>
+<tr>
+<td><code>asset/picto/boy</code> · <code>asset/picto/girl</code></td>
+<td>A son · a daughter on the cover</td>
+<td>The child gender choice; the words on screen are <em>Boy</em> and <em>Girl</em>, never <em>Male</em> / <em>Female</em></td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Cashless</em> needs no new asset: the existing <code>cash-in-hand</code> object takes a <strong>red ✗ dot</strong> and reads as <em>you pay nothing</em>. This is the register's own rule working as intended — one object, both outcomes, status only in the dot.</p>
 <h3 id="3-characters-asset-character">3. Characters — <code>asset/character/*</code></h3>
 <p>Semi-realistic flat vector, adult proportions, calm confident expressions, brown skin tones varied across scenes. Uniforms identify the role and are exact:</p>
 <div class="tbl-wrap"><table>

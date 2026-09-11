@@ -1,0 +1,5 @@
+# The project being worked on right now.
+# One slug, or `none`. Every session reads this file before doing project work.
+# Change it by saying "switch to <slug>" or "start a new project" — or edit it by hand.
+
+none
