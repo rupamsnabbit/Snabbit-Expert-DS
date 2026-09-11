@@ -33,6 +33,7 @@ One section per release, newest first; *Unreleased* on top. Sections inside: Tok
 - `PRINCIPLES.md` reference case corrected: Timer above the Button (pill ring), *Decline* as a ghost hold.
 
 ### Decisions
+- **One project, one boundary.** Project work now lives in `projects/<slug>/` (`prd.md` — a PRD verbatim or an ask captured and confirmed in conversation · `SCOPE.md` · `TIERS.md` · `reads/`; template in `projects/_template/`). A project reads its own folder and the shared system, never another project's folder; gaps are *asks of core* landed in `tokens/`, `foundations/` or `components/`, so work travels between projects as a capability and never as copied content. `projects/ACTIVE` names the project in play and is read at the start of every session, so the boundary survives a new chat. Procedure in `projects/README.md` and the `prd` skill; rules added to `CLAUDE.md`/`AGENTS.md`.
 - See `DECISIONS.md`: assets two layers; light mode only; navigation (shipped tab bar, HeaderAction); header and Stepper corrections after the screen read; no FAB component.
 - Open, awaiting the design lead: Kavach vs Shield as the user-facing name; primary Button label contrast (ButtonLg 18/24 recommended); token release 0.20; Telugu as a fifth script; Shield auto-start and the blue shield; HowToClip `guide`.
 
