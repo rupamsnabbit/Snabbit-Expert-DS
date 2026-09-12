@@ -20,7 +20,7 @@ One section per release, newest first; *Unreleased* on top. Sections inside: Tok
 - Stepper gains `unordered`; NumericKeypad `otp` supports 3–6 boxes; Timer `countdown` for time left, `elapsed` for overtime; Amount sign icons unified with Stat (`arrow-up` / `arrow-down`).
 
 ### Foundations
-- `foundations/icons.md` — 73 Phosphor meanings registered (`clock-clockwise` added for Tooltip).
+- `foundations/icons.md` — 73 Phosphor meanings registered (`clock-clockwise` added for Tooltip); `first-aid-kit`, `users-three`, `baby`, `address-book`, `pencil-simple` added for the health-cover pattern (78).
 - `foundations/assets.md` — two layers (illustration / metallic rewards); `asset/picto/shield` proposed as the one domain-coloured pictogram.
 - `foundations/motion.md` — three rules, durations, easing, timeouts, where motion is not, reduced motion per kind.
 - `foundations/type.md` — four scripts: fallback faces, ×1.15 table, English budgets / universal box, consolidated length table, wrapping, font scale 1.3, test strings.
@@ -29,6 +29,10 @@ One section per release, newest first; *Unreleased* on top. Sections inside: Tok
 - Sound & haptics register parked (`ROADMAP.md`).
 
 ### Patterns
+- `patterns/insurance.md` — **density pass after design review (2026-09-11):** four rules now stated in the pattern — one `Heading3` per screen, field/group names are `BodyMd` labels not headings, no body copy under a question (the VoicePrompt carries it), a fixed option set is a `tile` grid not a stack, and an answered question shrinks to a Chip. Relationship step goes from ~1400 dp of scroll to one 800 dp screen; roughly 100 words cut from screens 1–6.
+- `briefs/insurance-relationship-picker.md` — rewritten: proposes **SelectionCard `tile`** (2-up grid, 158 × 104 fixed, pictogram 48 above a short label, no radio, selected = border + fill + check badge). Withdraws the earlier "8 in one column with a `labelled` Divider" proposal. Third use in this flow alone, so `tile` is a promotion candidate for `selection-card.md`.
+- `references/mobbin-tile-pickers/` — Warby Parker · Strava · Afterpay · Lloyds; the read behind the `tile` variant.
+- `patterns/insurance.md` — free health cover, rewritten 2026-09-11 against the confirmed insurer payload (no phone number, max 3 children, ₹5,00,000) and a reduce-the-steps brief: 4 screens + one per child, name and birthday on one screen, children question + count + list on one screen, review as a `confirm` sheet. Measured in interactions, not artboards (~61 → ~40; typed characters ~27 → ~10; digits from memory 10 → 0). Mobbin reads in `references/alan-add-family-member/`, `references/grab-driver-emergency-contact/`, `references/marcus-add-beneficiary/`. Drawn in Paper (*Snabbit* → **Insurance**, artboards 01–10).
 - Ten patterns in `patterns/`: new job arrives · check in, work, check out · payout · onboarding and go-live · when something goes wrong · asking for permission · the first time she sees it · earnings · after SOS · offline.
 - `PRINCIPLES.md` reference case corrected: Timer above the Button (pill ring), *Decline* as a ghost hold.
 

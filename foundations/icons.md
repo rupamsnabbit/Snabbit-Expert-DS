@@ -80,5 +80,10 @@ Status: **seed**. Populated fully during the Button, Tab bar and Job-alert specs
 | `receipt` | Payout history | regular | Earnings statement row |
 | `hand-coins` | Early payout | regular | Earnings statement row |
 | `clock-clockwise` | Time added (job extended) | regular | Tooltip `status` success on the Timer |
+| `first-aid-kit` | The free health cover | regular | Home card Button, Profile row, Stepper `rail` node |
+| `users-three` | The person who gets the money — the family on the cover | regular | Stepper `rail` node |
+| `baby` | Children on the cover | regular | Stepper `rail` node |
+| `address-book` | Pick a person from the phone's contacts | regular | Button `secondary brand L` on the name step |
+| `pencil-simple` | Change this answer | regular | IconButton on an answered summary row, review card |
 
 Not icons: smileys for Rating and the mascot are illustrations, not Phosphor glyphs — they live in the illustration library.

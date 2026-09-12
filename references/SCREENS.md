@@ -8,7 +8,7 @@ Two Figma files hold the **real screens** of the Expert app. They are the eviden
 | --- | --- | --- | --- |
 | **Expert App 2.0** (master) | `Q0YzzdKk21ayyKHjvCGPzM` | `FINAL ONBOARDING` (14537:42610) · `📝 Onboarding (ER - training)` (0:1) · `📍 Training` (110:3666) · `🏁 Go live` (1067:4218) · `🍔 Lunch Selection` (28714:63473) · `WIP - Payout I` (3406:12122) | Everything else (Archive, V2, UAT, Page 30/33, Design System page — the DS lives in `QjXqQZVAqLoRmH1j7foH1I`) |
 | **Shift – Job Lifecycle DS** | `WEUPV9q19eAqRbkZSBj6OY` | `Job Lifecycle` (0:1) · `Shift Lifecycle` (28:18373) | UAT, BRANDING |
-| **Self-Serve ER/AR** (onboarding, latest — added 2026-09-08) | `HqmnjmxhZvyvZxmIaVMCrB` | `Final` (0:1): sections *TC Less house help* · *TC house help* · *TC Less house cook* · *Bank/UPI* · *Post Onboarding* | — · **Supersedes** `FINAL ONBOARDING` in the master file for onboarding evidence; the master file's onboarding pages are now older iterations |
+| **Self-Serve ER/AR** (onboarding, latest — added 2026-09-08) | `HqmnjmxhZvyvZxmIaVMCrB` | `Final` (0:1): sections *TC Less house help* · *TC house help* · *TC Less house cook* · *Bank/UPI* · *Post Onboarding* · *Step 5 - Insurance* (`664:86380`, added 2026-09-11 — 7 frames, 5 unique screens; read in `references/insurance-flow-current.md`, translated in `patterns/insurance.md`) | — · **Supersedes** `FINAL ONBOARDING` in the master file for onboarding evidence; the master file's onboarding pages are now older iterations |
 
 ## Telling shipped from proposed
 

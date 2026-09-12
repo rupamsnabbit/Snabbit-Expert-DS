@@ -4,7 +4,7 @@ What is done and what is left, against the 49-component core set in `audit/BENCH
 
 ---
 
-## Done — 54 pages · 49 of 49 core components + 2 compositions + 10 patterns
+## Done — 55 pages · 49 of 49 core components + 2 compositions + 11 patterns
 
 | # | Page | Covers | Status |
 | --- | --- | --- | --- |
@@ -48,6 +48,7 @@ What is done and what is left, against the 49-component core set in `audit/BENCH
 | 48 | ProgressButton | `countdown` (time used of a window, where no Timer is on screen) and `progress` (work done); band from the left, label still, count in numerals; from shipped Progress Buttons `1491:13660` (green → brand) | Proposed |
 | 49 | Popover | `actions` (2–3 rows) and `detail`; non-modal, anchored to a map marker; whitelist of three sites; no three-dots menus | Proposed |
 | — | FAB | Folded into IconButton: floating = `L` `circle` at `elevation.floating`; shutter and recentre only; no FAB component (`icon-button.md`) | Decided |
+| 47 | Pattern · Free health cover | `patterns/insurance.md` — from *Self-Serve ER/AR* `Step 5 - Insurance` (`664:86380`); nominee and children collected in 4 screens + one per child; contacts picker, DatePicker sheet, review as a `confirm` sheet; Mobbin reads (Alan · Grab Driver · Marcus); drawn in Paper | Proposed |
 | 46 | Pattern · Offline | `patterns/offline.md` — works / queues / waits table, the one Banner, the queue with tap times, truly-nothing state, slow network, data cost | Proposed |
 | 45 | Pattern · After SOS | `patterns/after-sos.md` — the minute, hour, day and week after; job stopped for safety, paid in full; the Home safety card; false alarms | Proposed |
 | 44 | Pattern · Earnings | `patterns/earnings.md` — Today / Week / Month tab, day view from 14 shipped attendance cases, per-job cards, rate card | Proposed |
@@ -87,7 +88,7 @@ Order decided 2026-09-08: the visual foundations first, sound parked.
 
 ## To do — patterns (10 of 10 done)
 
-~~New-job alert~~ (done) · ~~Check-in / check-out~~ (done) · ~~Payout~~ (done) · ~~Onboarding & go-live~~ (done) · ~~Error recovery~~ (done) · ~~Permission asking~~ (done) · ~~First run~~ (done) · ~~Earnings breakdown~~ (done) · ~~After SOS~~ (done) · ~~Offline~~ (done). All ten patterns written; each is Proposed until reviewed with experts.
+~~New-job alert~~ (done) · ~~Check-in / check-out~~ (done) · ~~Payout~~ (done) · ~~Onboarding & go-live~~ (done) · ~~Error recovery~~ (done) · ~~Permission asking~~ (done) · ~~First run~~ (done) · ~~Earnings breakdown~~ (done) · ~~After SOS~~ (done) · ~~Offline~~ (done) · ~~Free health cover~~ (done). All eleven patterns written; each is Proposed until reviewed with experts.
 
 ---
 
