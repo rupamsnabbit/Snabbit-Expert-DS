@@ -65,6 +65,8 @@ Every session reads that file before doing any project work — it is a hard rul
 | "carry on" in a new chat | `ACTIVE` is read, then that project's `SCOPE.md` — work resumes where the log ended |
 | `ACTIVE` says `none` | the session asks which project before touching anything |
 
+**If two chats disagree.** `ACTIVE` can change from a newer chat while you are still typing in an older one. Before writing anything, a session re-reads `ACTIVE`; if it names a different project than that session has been working on, the session **stops, writes nothing, names both, and asks which is right**. It never resolves the disagreement itself and never rewrites `ACTIVE` to match what it happens to believe — another chat set that value deliberately. So going back to an older conversation and carrying on is safe.
+
 Switching is always explicit. A session never guesses the project from what is lying around in the working tree, and never works on two in one sitting.
 
 ---
