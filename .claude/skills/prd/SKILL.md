@@ -33,6 +33,24 @@ Read `projects/ACTIVE` **first**, every time. It holds one slug, or `none`. That
 | `none` | ask which project before touching anything. Never guess from what is lying around in the working tree, from the git branch, or from the most recently edited file. |
 | a slug for a folder that does not exist | say so and stop; do not create it silently |
 
+### The guard — before writing anything
+
+A session learns its project once, at Step 0. `projects/ACTIVE` can change afterwards, from another chat. So:
+
+**Before every write to a project folder, and before every output made on that project's behalf, re-read `projects/ACTIVE`.**
+
+| What you find | Do |
+| --- | --- |
+| it names the project this session is working on | carry on |
+| it names a **different** project | **stop.** Write nothing. Say both names — "this chat has been working on `<a>`, but `projects/ACTIVE` now says `<b>`" — and ask which is right. |
+| it says `none` | stop and ask, same as above |
+
+Never resolve the disagreement yourself, and never rewrite `ACTIVE` to match what this session happens to believe. Another chat set that value deliberately; silently overwriting it is how two sessions write into each other's projects.
+
+Once the user answers: if this session is right, write its slug to `ACTIVE` and carry on; if the other chat is right, stop project work here and say so. `ACTIVE` is only ever written when the user has just said which project is in play.
+
+This is what makes it safe to go back to an older conversation and keep typing in it.
+
 Starting a new project — with or without a document:
 
 ```bash
