@@ -17,6 +17,10 @@ Status: **seed**. Populated fully during the Button, Tab bar and Job-alert specs
 | `clock` | Duration / time | regular | Job alert, shift |
 | `currency-inr` | Earnings tab / amount | regular / fill when selected | Bottom tab bar, job alert, earnings, payout |
 | `spray-bottle` | Home tab — her tool; already learned in the shipped app | regular / fill when selected | Bottom tab bar |
+| `scissors` | The **Waxing & Threading** pouch. Never *cut*, *trim* or *delete* — in this app the shears mean one pouch | regular | Inventory: pouch tile, pouch row |
+| `paint-brush` | The **Hair & Bleach** pouch. Never a generic *edit* or *customise* | regular | Inventory: pouch tile, pouch row |
+| `hand-soap` | The **Pedicure & Manicure** pouch. Never *wash your hands* as an instruction | regular | Inventory: pouch tile, pouch row |
+| `bandaids` | The **Hygiene & Disposables** pouch. Never injury, first aid or SOS — `siren` is SOS and `shield-check` is Kavach | regular | Inventory: pouch tile, pouch row |
 | `users` | Refer tab | regular / fill when selected | Bottom tab bar |
 | `user-circle` | Profile tab | regular / fill when selected | Bottom tab bar |
 | `siren` | SOS | fill | SOS control — this icon is used for nothing else |
@@ -80,5 +84,11 @@ Status: **seed**. Populated fully during the Button, Tab bar and Job-alert specs
 | `receipt` | Payout history | regular | Earnings statement row |
 | `hand-coins` | Early payout | regular | Earnings statement row |
 | `clock-clockwise` | Time added (job extended) | regular | Tooltip `status` success on the Timer |
+| `tote` | A pouch in her kit bag — one of the five service pouches | regular | Bag check pouch rows, live inventory |
+| `package` | A product she carries or is being sent; the *Packed* stage of a refill order | regular | Bag check refill rows, refill tracker, ledger |
+| `truck` | Out for delivery — a refill order on its way to her | regular | Refill tracker, Home refill card |
+| `polygon` | Her work area — the boundary she must be inside to start a shift (never a pin; a pin is a point, this is an area) | regular | Home shift card work-area row, boundary screen |
+| `armchair` | A rest hub — somewhere she can sit down between jobs. Rest, not work: never the `graduation-cap` used for a training `hub` | fill | LiveMap `rest-hub` marker, rest-hub sheet |
+| `hand-heart` | A Seva point — where she goes for help in person. Care offered, not a transaction | fill | LiveMap `seva` marker, Seva sheet |
 
 Not icons: smileys for Rating and the mascot are illustrations, not Phosphor glyphs — they live in the illustration library.

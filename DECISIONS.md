@@ -65,3 +65,47 @@ Design decisions that constrain everything downstream. One entry each, dated, wi
 **Consequence.** Core count 46 → 49. The shipped Colored Tooltip on the Timer and the shipped Progress Buttons have a home in the system instead of being explained away; the shipped green *Accept Job* becomes brand (no success Button tone), the red *15 mins remaining* becomes warning (the Timer's `attention` tone). Tooltip `status` is a second consumer of the 0.20.0 `text*Strong` tokens. BENCHMARK P2 Popover is closed.
 
 **Revisit if.** A year in, no screen has used a Popover — then deprecate it per `GOVERNANCE.md` § 1 rather than keep an unused core component. Or if experts in device review (checklist row 16) do not discover long-press labels at all — then `label` is dropped and only `status` remains.
+
+
+## 2026-09-22 — Reuse before you invent; the live app is the first reference
+
+**Decision.** Tech feedback: low bandwidth, reuse existing components, build new only where nothing existing serves.
+The Beauty inventory ledger was designed as new surfaces (a ProductTile grid, a two-segment bar) when the shipped
+**Earnings statement** already had the shape — and `patterns/payout.md` § 1 already said so. Seven screenshots of
+the live app are now registered in `references/shipped-app-2026-09-22/`, each region mapped to the component it
+*is*, and three rules follow. (1) **The first reference read is our own app**, before Mobbin and before the tier
+tree (`EXTENDING.md` § Reuse before you invent; `CLAUDE.md` hard rule). (2) Every spec's status line carries an
+**In app** mark when the app ships it; a Proposed spec without one is a **build request** and must say so and name
+the reuse it rejected (`GOVERNANCE.md` § 1). (3) A new component or variant must name the shipped component it
+tried. Landed from the read: **RateTable** and **BenefitTile** (genuinely missing, both In app); Card `hero`,
+Stepper `progression`, Accordion `week` with tier tint, HowToClip `story`, DatePicker month pager, ListItem
+*current* (variants of things that ship). Four shipped departures from principles are **recorded and kept as
+shipped** — hero and tile fills by colour (P6), Amount + Tag in one trailing slot, the tier tint — because reusing
+them costs nothing and changing them costs a sprint; the design lead decides, not the spec.
+
+**Consequence.** Two of this month's core proposals are re-marked: **QuantityStepper** is a genuine build request
+(no increment control ships); **ProductTile** is an *avoidable* one — every use can be a ListItem with an image
+leading, the shipped breakup row — and defaults to that. **Button `accept`** (2026-09-16) is recorded as superseding
+the 2026-09-10 *no success Button tone* decision, which was not consulted at the time. The Beauty ledger rework to
+the payout shape is project work, logged in that project. Core count 49 → 51.
+
+**Revisit if.** The package ships and the "In app" mark stops being the cheaper path — then the mark retires and
+**Stable** does its job.
+
+
+## 2026-09-22 — Statement, HeroCard, WeekStrip from the live app; ProductTile and QuantityStepper withdrawn from core
+
+**Decision.** Six more live-app crops (both earnings cards, the coins week view, the three tracker heroes) become
+three components drawn **exactly as shipped**: **Statement** (band · rows with breakup, asset count and caret ·
+total · schedule with a date tile · footer), **HeroCard** (filled two-part card with a Stat `L`, four tones), and
+**WeekStrip** (`band` for streaks, `dots` for independent days, reward markers). `patterns/payout.md`'s re-shape of
+the statement is withdrawn; the built card is the spec. Card `hero` (added the same morning) points at HeroCard.
+**ProductTile** and **QuantityStepper** — invented 2026-09-15/18 from Mobbin, not from any Snabbit screen — leave
+`components/` for `briefs/` as Tier 3, templates and nav entries removed; they return only by the rule of three.
+
+**Consequence.** Core 51 → 52 (−2 +3). Five shipped departures are recorded in the specs and **kept**: the
+statement band's green as a heading colour, the total shown twice, *Summer Bonus ☀️*, three hero hues, red Sunday.
+The Beauty inventory ledger's rework — a Statement per order, a week pager above it — is project work and waits.
+
+**Revisit if.** A browsing surface genuinely needs pictures over rows, and a third feature asks for the same tile —
+then ProductTile comes back through the rule of three, with the shipped ListItem named as the thing it tried.

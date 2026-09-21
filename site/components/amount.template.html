@@ -33,7 +33,7 @@ __NAVCSS__</style>
     <header id="overview">
       <div class="eyebrow">Core component</div><h1>Amount</h1>
       <p class="lede">The primary number on most screens — what a job pays, what today earned, what reached her bank. One component so the ₹, grouping, size, colour and sign are always the same.</p>
-      <div class="meta"><span class="chip status">Proposed</span><span class="chip">Tier 1 · Core</span><span class="chip"><code>SnabbitAmount</code></span><span class="chip">4 sizes × 5 tones × 6 states</span><span class="chip">Indian grouping · tabular</span></div>
+      <div class="meta"><span class="chip status">Proposed</span><span class="chip">Tier 1 · Core</span><span class="chip"><code>SnabbitAmount</code></span><span class="chip">4 sizes × 6 tones × 6 states</span><span class="chip">Indian grouping · tabular</span></div>
     </header>
 
     <section id="sizes">
@@ -42,7 +42,7 @@ __NAVCSS__</style>
     </section>
 
     <section id="tones">
-      <header><div class="eyebrow">Meaning</div><h2>Tones &amp; signs</h2><p>Sign is a property of the value, not typed into copy. Positive and negative differ by colour <em>and</em> sign <em>and</em> an arrow icon when the number stands alone — never colour alone.</p></header>
+      <header><div class="eyebrow">Meaning</div><h2>Tones &amp; signs</h2><p>Sign is a property of the value, not typed into copy. Positive and negative differ by colour <em>and</em> sign <em>and</em> an arrow icon when the number stands alone — never colour alone. <code>charge</code> is money she <em>spends</em>, not money she loses: it looks like <code>default</code> and must always carry a caption saying where it goes.</p></header>
       <div class="stage"><div class="grid3" id="tn"></div></div>
     </section>
 
@@ -82,7 +82,7 @@ const ICO={up:'M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.
  caret:'M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z'};
 const svg=n=>`<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="${ICO[n]}"/></svg>`;
 const SZ={hero:{ds:32,cs:24,fw:600,ic:24},lg:{ds:24,cs:18,fw:600,ic:20},md:{ds:16,cs:14,fw:600,ic:16},sm:{ds:14,cs:12,fw:500,ic:14}};
-const TONE={default:sem.textPrimary,positive:sem.textSuccess,negative:sem.textError,brand:sem.textBrand,muted:sem.textSecondary};
+const TONE={default:sem.textPrimary,positive:sem.textSuccess,negative:sem.textError,charge:sem.textPrimary,brand:sem.textBrand,muted:sem.textSecondary};
 function fmt(n){const neg=n<0;n=Math.abs(n);let [i,d]=n.toFixed(2).split('.');let last3=i.slice(-3),rest=i.slice(0,-3);if(rest)rest=rest.replace(/\B(?=(\d{2})+(?!\d))/g,',')+',';return {int:rest+last3,dec:d==='00'?'':'.'+d,neg};}
 function amt(o){const s=SZ[o.size||'md'];const f=fmt(o.value||0);const tone=o.tone||'default';
  let ink=TONE[tone]; let lead='';let sign='';
@@ -93,7 +93,7 @@ function amt(o){const s=SZ[o.size||'md'];const f=fmt(o.value||0);const tone=o.to
  return `<div class="amt ${o.state==='struck'?'muted':''}" style="--ds:${s.ds}px;--cs:${s.cs}px;--fw:${s.fw};--ic:${s.ic}px;--ink:${ink}">${o.label?`<span class="lbl">${o.label}</span>`:''}<span class="v" style="color:${ink}">${val}</span>${o.cap?`<span class="cap">${o.cap}</span>`:''}</div>`;}
 const W=(cap,html)=>`<div class="stg">${html}<div class="cap2">${cap}</div></div>`;
 $('#sz').innerHTML=[W('<b>hero</b> · Display 32 · one per screen',amt({size:'hero',value:1250,label:"Today's earnings"})),W('<b>lg</b> · Heading2 24 · card headline',amt({size:'lg',value:450})),W('<b>md</b> · BodyLg 16 · list rows',amt({size:'md',value:450})),W('<b>sm</b> · BodyMd 14 · inline',amt({size:'sm',value:450}))].join('');
-$('#tn').innerHTML=[W('<b>default</b>',amt({size:'lg',value:450})),W('<b>positive</b> · + and arrow',amt({size:'lg',value:50,tone:'positive'})),W('<b>negative</b> · true minus',amt({size:'lg',value:-50,tone:'negative'})),W('<b>brand</b> · incentive on offer',amt({size:'lg',value:50,tone:'brand',label:'Earn extra'})),W('<b>muted</b> · past / estimate',amt({size:'lg',value:400,tone:'muted'})),W('<b>struck</b> · old rate',amt({size:'lg',value:400,tone:'muted',state:'struck'}))].join('');
+$('#tn').innerHTML=[W('<b>default</b>',amt({size:'lg',value:450})),W('<b>positive</b> · + and arrow',amt({size:'lg',value:50,tone:'positive'})),W('<b>negative</b> · true minus',amt({size:'lg',value:-50,tone:'negative'})),W('<b>charge</b> · she is buying · caption required',amt({size:'lg',value:1240,tone:'charge',label:'Weekly refill',cap:"Taken from this month's pay"})),W('<b>brand</b> · incentive on offer',amt({size:'lg',value:50,tone:'brand',label:'Earn extra'})),W('<b>muted</b> · past / estimate',amt({size:'lg',value:400,tone:'muted'})),W('<b>struck</b> · old rate',amt({size:'lg',value:400,tone:'muted',state:'struck'}))].join('');
 $('#st').innerHTML=[W('<b>locked</b> · caption says how',amt({size:'lg',value:200,state:'locked',label:'Weekly bonus',cap:'Complete 3 more jobs'})),W('<b>unlocked</b> · ≤1.5 s then positive',amt({size:'lg',value:200,state:'unlocked',label:'Weekly bonus',cap:'Unlocked!'})),W('<b>loading</b> · skeleton, never ₹0',amt({size:'lg',value:0,state:'loading',label:"Today's earnings"})),W('<b>hidden</b> · eye to reveal',amt({size:'lg',value:12500,state:'hidden',label:'Balance'})),W('<b>estimated</b> · ~ + muted + caption',amt({size:'lg',value:450,state:'estimated',tone:'muted',cap:'Estimated'})),W('<b>rate</b> · unit in textSecondary',amt({size:'lg',value:169,unit:'/hr'}))].join('');
 const fin=$('#fin'),fout=$('#fout');const upd=()=>{const n=parseFloat(fin.value.replace(/[^\d.-]/g,''))||0;fout.innerHTML=amt({size:'hero',value:n});};fin.addEventListener('input',upd);upd();
 $('#ctx').innerHTML=[

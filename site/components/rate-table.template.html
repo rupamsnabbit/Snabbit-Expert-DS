@@ -1,0 +1,62 @@
+<meta charset="utf-8">
+<title>Snabbit Expert RateTable</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>__BASECSS__
+
+.rt{width:360px;border:1px solid #E5E7EB;border-radius:12px;background:#fff;overflow:hidden;font-family:var(--sans);color:#111827}
+.rt .bh{display:flex;align-items:center;gap:8px;padding:12px 16px;font-size:18px;font-weight:600;background:#FEF1F7}
+.rt .bh .bd{width:24px;height:24px;border-radius:999px;background:linear-gradient(135deg,#F9AECF,#C70C61)}
+.rt table{width:100%;border-collapse:collapse;font-size:14px}
+.rt th{font-size:12px;font-weight:500;color:#6B7280;text-align:right;padding:10px 12px;border-bottom:1px solid #F3F4F6}
+.rt th:first-child{text-align:left}
+.rt th small{display:block;font-weight:400;color:#9CA3AF}
+.rt td{padding:12px;text-align:right;font-variant-numeric:tabular-nums;border-bottom:1px solid #F3F4F6}
+.rt td:first-child{text-align:left;width:96px}
+.rt tr.op td{padding:2px 12px;color:#9CA3AF;font-size:12px;border-bottom:0}
+.rt tr.tot td{background:#F9FAFB;font-weight:600;border-bottom:0}
+.rt tr.cur td{background:#FEF1F7}
+.rt tr.lock td{color:#9CA3AF}
+.stg{display:flex;flex-direction:column;gap:8px}.stg .cap{font-family:var(--mono);font-size:12px;color:var(--text-2)}.stg .cap b{color:var(--text);font-weight:500}
+.row4{display:flex;gap:32px;flex-wrap:wrap}
+
+</style>__NAVCSS__
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · RateTable</small></div></div>
+    __SITENAV__
+    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#kinds">Kinds</a><a href="#figma">Figma changes</a></nav>
+    <div class="rail-foot">Rendered from tokens.json · spec in components/rate-table.md</div>
+  </aside>
+  <main class="main">
+    <header id="overview">
+      <div class="eyebrow">Core component · <b>In app</b> 2026-09-22</div><h1>RateTable</h1>
+      <p class="lede">The system's only table — the shipped Rate card. Rows are things she is paid for, columns are the conditions that change the rate, cells are money.</p>
+      <div class="meta"><span class="chip status">Proposed</span><span class="chip">In app 2026-09-22</span><span class="chip">Tier 1 · Core</span><span class="chip"><code>SnabbitRateTable</code></span><span class="chip">2 kinds × 4 states</span><span class="chip">No Figma component</span></div>
+    </header>
+
+    <section id="kinds">
+      <header><div class="eyebrow">Two kinds</div><h2>matrix · sum</h2><p>Rows are things she is paid for, columns are the conditions that change the rate, cells are money. The <b>columns</b> carry the meaning — which is the one thing a ListItem cannot do, and why this is the system's only table.</p></header>
+      <div class="stage"><div class="row4">
+        <div class="stg"><div class="rt"><table>
+<tr><th>Min G</th><th>Mon–Fri<small>6 hrs</small></th><th>Sat<small>8 hrs</small></th><th>Sun<small>8 hrs</small></th></tr>
+<tr class=""><td>No tier</td><td>₹350</td><td>₹400</td><td>₹400</td></tr><tr class=""><td>Silver</td><td>₹350</td><td>₹400</td><td>₹400</td></tr><tr class="cur"><td>Gold  ·  you</td><td>₹350</td><td>₹400</td><td>₹400</td></tr><tr class="lock"><td>Diamond 🔒</td><td>₹350</td><td>₹400</td><td>₹400</td></tr><tr class="lock"><td>Pink Diamond 🔒</td><td>₹350</td><td>₹400</td><td>₹400</td></tr>
+</table></div><div class="cap"><b>matrix</b> — one value per cell · her row is <code>current</code> · unreached tiers <code>locked</code></div></div>
+        <div class="stg"><div class="rt"><div class="bh"><span class="bd"></span>Gold</div><table>
+<tr><th>&nbsp;</th><th>Mon–Fri<small>6 hrs</small></th><th>Sat<small>8 hrs</small></th><th>Sun<small>8 hrs</small></th></tr>
+<tr class=""><td>Work</td><td>₹120/hr</td><td>₹130/hr</td><td>₹130/hr</td></tr><tr class="op"><td></td><td>+</td><td>+</td><td>+</td></tr>
+<tr class=""><td>Check in</td><td>₹5/hr</td><td>₹5/hr</td><td>₹5/hr</td></tr><tr class="op"><td></td><td>+</td><td>+</td><td>+</td></tr>
+<tr class=""><td>Summer bonus</td><td>₹20/hr</td><td>₹20/hr</td><td>₹20/hr</td></tr><tr class="op"><td></td><td>+</td><td>+</td><td>+</td></tr>
+<tr class=""><td>Distance bonus</td><td>₹4 to 30</td><td>₹4 to 30</td><td>₹4 to 30</td></tr><tr class="op"><td></td><td>=</td><td>=</td><td>=</td></tr>
+<tr class="tot"><td>Base pay</td><td>₹149 to 175/hr</td><td>₹149 to 175/hr</td><td>₹149 to 175/hr</td></tr>
+</table></div><div class="cap"><b>sum</b> — addends joined by <b>+</b>, total after <b>=</b> on a banded row · tier header tinted (reward colour, behind a badge)</div></div>
+      </div></div>
+      <ul class="rules"><li><b>Three value columns or fewer.</b> A fourth condition is a second table; 58 dp cannot hold <i>₹149 to 175/hr</i>.</li><li><b>Never horizontal scroll.</b> At font scale 1.3 the table re-flows to one ListItem per row with the values stacked in the description.</li><li><b>Read row by row</b>, with the column name repeated: <i>Work — Monday to Friday ₹120 an hour, Saturday ₹130, Sunday ₹130.</i></li><li><b>No colour in a cell.</b> A higher rate is not a status.</li></ul>
+    </section>
+    <section id="figma">
+      <header><div class="eyebrow">Reconciliation</div><h2>What changes in Figma</h2><p>No component exists; the Rate card is drawn frame by frame. Create <b>RateTable</b> on Components page <code>1:3886</code> with <code>Kind</code> (Matrix / Sum), <code>Columns</code> (2 / 3), boolean <code>TierHeader</code>, and a <code>Row</code> sub-component with <code>State</code> (Default / Current / Locked / Operator / Total). Bind cells to <code>Amount S</code>. The ⓘ tooltip on <i>Check In</i> goes — the words move to the row or the speaker.</p></header>
+    </section>
+  </main>
+</div>
+<script id="tokens-json" type="application/json">__TOKENS__</script>

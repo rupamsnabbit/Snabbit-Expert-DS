@@ -13,6 +13,7 @@ The primary number on most screens the expert looks at: what a job pays, what to
 | "Value" = one small ₹ line with lock/unlock + chevron; other amounts are hand-typed text | One `Amount` with **four sizes**, **tones**, **sign**, **locked** state, optional label/caption | Every ₹ in the app renders identically. |
 | Mixed formats (₹450, Rs. 450, 450/-) | Always `₹` + Indian grouping (`1,25,000`), tabular numerals, no paise unless non-zero | One format she learns once. |
 | Lock as a grey padlock beside the value | `locked` state: value in `textTertiary`, Phosphor `lock` leading, caption says what unlocks it | The lock must say *how to earn it*, not just that it's shut. |
+| Money leaving her is always a penalty (`negative`, red, minus) | **`charge`** tone: money she **spends**, not money she loses — `textPrimary`, no sign, and a required caption saying where it goes | She now buys her own stock, deducted from her pay. Rendering a purchase in penalty red tells her she was fined (`projects/beauty-shift-lifecycle`, PRD § 7). |
 
 ---
 
@@ -49,9 +50,22 @@ A screen has at most one `hero`. If two figures compete, one becomes `lg`.
 | `positive` | `textSuccess` | `+` | Earned, credited, bonus added |
 | `negative` | `textError` | `−` (true minus, U+2212) | Penalty, deduction |
 | `brand` | `textBrand` | none | Highlighted incentive on offer (*Earn ₹50 extra*) |
+| `charge` | `textPrimary` | none | Something she is **buying** — stock, a store item. Never a penalty |
 | `muted` | `textSecondary` | as value | Past, struck-through (`line-through`) or estimated figures |
 
 Sign is a property of the **value**, not typed into copy. `+₹50` and `−₹50` differ by colour **and** sign **and** — where the number stands alone — a Phosphor `arrow-up` / `arrow-down` 16 dp leading icon (P1: never colour alone). Negative amounts are never wrapped in parentheses.
+
+### `charge` — money she spends, not money she loses
+
+The two feel identical in a bank statement and are opposite in her life. A **penalty** is something the app did to her; a **charge** is something she bought. `negative` red with a minus sign says *you were fined*, and using it for her weekly kit order would misdescribe the single largest recurring number in the Beauty app.
+
+So `charge` looks like `default` — `textPrimary`, no sign, no icon — and carries its meaning in words instead. Three rules make that safe:
+
+- **A `charge` is never shown without a caption saying where the money goes**, in her words, directly under the number: *Taken from this month's pay.* The caption is not optional and not a tooltip. An amount she owes with no explanation is worse than a red one (P5).
+- **It never appears in a breakdown row beside penalties.** In Earnings, a deduction for stock is a line in her statement and takes whatever that statement's rules are; `charge` is for the surface where she is *looking at the thing she is buying* — the order screen, the confirmation, the ledger.
+- **The confirmation that commits it states both halves**: what she gets and what it costs — *34 items go into your stock · ₹1,240 comes out of this month's pay.* Never one without the other.
+
+`charge` is not a discount, a refund or a reversal. Money coming back is `positive`.
 
 ---
 
@@ -97,7 +111,7 @@ None. Sizes map directly to the type scale; the smaller `₹` uses the next step
 
 ## Figma reconciliation
 
-1. Rename Value → **Amount**. Properties: `Size` (Hero / Lg / Md / Sm), `Tone` (Default / Positive / Negative / Brand / Muted), `State` (Default / Locked / Loading / Hidden / Estimated), booleans `Label`, `Caption`, `Trailing chevron`.
+1. Rename Value → **Amount**. Properties: `Size` (Hero / Lg / Md / Sm), `Tone` (Default / Positive / Negative / **Charge** / Brand / Muted), `State` (Default / Locked / Loading / Hidden / Estimated), booleans `Label`, `Caption`, `Trailing chevron`.
 2. Build the ₹ as a separate text layer one type step smaller, cap-aligned.
 3. Replace every hand-typed ₹ figure in Earnings, Payout and Job card frames with an Amount instance.
 4. Bind digits to the type scale styles and colours to semantic variables.

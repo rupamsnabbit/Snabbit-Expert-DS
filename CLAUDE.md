@@ -11,6 +11,7 @@ This repository is the **mobile design system** for the Snabbit Expert app (Comp
 
 ## Hard rules
 
+- **Build from the system, and prove it before you draw.** No screen is drawn — in Paper, Figma or code — until its **build plan** exists: every region of the screen mapped to the system component it is built from, in this order of sources and no other: shipped app → `patterns/` → `components/` → Mobbin → invention. See *Before you draw a screen* below. A screen without a plan is Tier 0.
 - **Tokens only.** No raw hex, dp, sp, radius or shadow in anything you produce. Every value is a semantic token name from `tokens/tokens.json` (`textPrimary`, `spacing.5`, `radius.lg`, `ButtonLg`). Palette names (`pink600`) only while proposing a new semantic token.
 - **Light mode only** for now. Do not invent dark-mode values.
 - **Outfit** is the only type family. Sizes and line heights come from the type scale; nothing else. Indic scripts fall back to the system face — never add a second family; use line height × 1.15 where Hindi/Marathi/Kannada may appear.
@@ -27,11 +28,11 @@ This repository is the **mobile design system** for the Snabbit Expert app (Comp
 
 Do the six-step reference read in `principles/EXTENDING.md` and deliver step 6 (reference and translation side by side, every difference stated as one sentence). Save the screenshot and the read to `references/` with a short `.md`. Do not start drawing or coding before step 4 (tier named).
 
-**Mobbin is the preferred source of inspiration** (`EXTENDING.md` § Where inspiration comes from): it shows shipped flows with their states, which is the standard of evidence this system holds. Search Mobbin by *flow* (onboarding, check-in, earnings, payout, referral, permissions, offline), prefer worker-side and low-literacy-audience apps, read three apps' versions before translating, save the flow and its read under `references/<app>-<flow>/` (internal only — never published, never traced), then translate. Pinterest and Dribbble are for mood only; nothing structural is borrowed from a screen that never shipped.
+**Mobbin is source four of five** (*Before you draw a screen*, below): it is reached only for a region the shipped app, `patterns/` and `components/` cannot build, and the plan row says what was tried. When it is reached, **Mobbin is the preferred source of inspiration** (`EXTENDING.md` § Where inspiration comes from): it shows shipped flows with their states, which is the standard of evidence this system holds. Search Mobbin by *flow* (onboarding, check-in, earnings, payout, referral, permissions, offline), prefer worker-side and low-literacy-audience apps, read three apps' versions before translating, save the flow and its read under `references/<app>-<flow>/` (internal only — never published, never traced), then translate. Pinterest and Dribbble are for mood only; nothing structural is borrowed from a screen that never shipped.
 
 ## Projects — one project, one boundary
 
-An ask — a PRD, or a conversation that starts "let's build X" — becomes a project in `projects/<slug>/` (`cp -r projects/_template projects/<slug> && echo "<slug>" > projects/ACTIVE`) holding `prd.md` (the ask, written down once and never edited afterwards — disagreements go to *Open questions*), `SCOPE.md` (the contract: boundary, answers with, asks of core, sits beside, open questions, log), `TIERS.md` (every surface placed in a tier before anything is drawn) and `reads/` (that project's reference reads).
+An ask — a PRD, or a conversation that starts "let's build X" — becomes a project in `projects/<slug>/` (`cp -r projects/_template projects/<slug> && echo "<slug>" > projects/ACTIVE`) holding `prd.md` (the ask, written down once and never edited afterwards — disagreements go to *Open questions*), **`BUILD.md`** (the build plan — every region of every screen mapped to the component it is built from, written before drawing), `SCOPE.md` (the contract: boundary, answers with, asks of core, sits beside, open questions, log), `TIERS.md` (every surface placed in a tier before anything is drawn) and `reads/` (that project's reference reads).
 
 **A new session starts by reading `projects/ACTIVE`** — one slug, or `none`. That file, not the conversation, is what makes the boundary survive a new chat: it says which project is in play, and `SCOPE.md` → *Status* and *Log* say what was done last and what is next. Never infer the project from the git branch, from recently edited files, or from what happens to be open. Switching is explicit ("switch to `<slug>`"), carries nothing across, and rewrites `ACTIVE`. One project per sitting.
 
@@ -81,6 +82,37 @@ python3 site/lint.py     # spec lint alone; exit 1 on errors (raw hex, off-scale
 `build_all.sh` runs `site/build.py` (tokens.json → index.html + site/components/*.html), `site/build_doc.py` for each markdown doc, and `site/build_audit.py`. Add new docs/components to `build_all.sh` **and** to the site nav in `site/nav.py`.
 
 Status changes, reviews and releases follow `GOVERNANCE.md`; behaviour changes get a line in `CHANGELOG.md` § Unreleased. Regenerate the site in the same change as the source you edited. Never hand-edit a generated `site/*.html`. **Run `python3 site/lint.py` before committing** and fix every ERROR: E1 raw hex · E2 millisecond not on the motion/timeout scale · E3 Phosphor icon not registered in `foundations/icons.md` · E4 spec missing *What changes* / *Accessibility* / *Figma reconciliation* / checklist · E5 spec without a template (or the reverse) · E6 nav ↔ build mismatch · E7 generated page older than its source. Warnings (banned copy such as *OK / Submit / Continue / Oops*) are to be fixed too unless the line is quoting what *not* to write.
+
+## Before you draw a screen — the build plan
+
+Tech has low bandwidth and the system is large. Both facts point the same way: **read the system first, build from it,
+and write down what each part is built from before the first artboard.** This is a gate, not advice.
+
+**1. Read, in this order, every time.** `references/shipped-app-*/` (the live app, region by region) → `patterns/`
+(the flows already designed) → `components/` (every kind, state and slot). Not the ones you remember — all of them.
+Most of what a new screen needs already exists under a name you have not searched for: a ledger is a `Statement`, a
+tracker header is a `HeroCard`, a week is a `WeekStrip`, a money row is a `ListItem` with `Amount S`.
+
+**2. Write `projects/<slug>/BUILD.md` before drawing.** One row per region of each screen:
+
+| Screen · region | Built from | Source | Inherits | Tried first |
+| --- | --- | --- | --- | --- |
+| D1 · order line | `Statement` row | `components/statement.md` § Anatomy | 48 dp row · label BodyLg · description BodyMd secondary · signed Amount M trailing · space between rows, one Divider before the total | — |
+| A2 · pouch row | `ListItem` `selection` + `current` | `components/list-item.md` | — | — |
+| C1 · split bar | *none — Mobbin* | `references/mobbin-…` | `ProgressBar S` track and radius | `ProgressBar` (one segment only) · `Statement` band (no split) |
+
+- **Built from** names a component and its kind, or the shipped screen. *Composition* is allowed only when every part inside it is named.
+- **Source** is a file in this repository. Mobbin appears in this column only when the three system sources are exhausted **and** *Tried first* says which components were tried and why each failed.
+- **Inherits** is the partial-reuse column, and it is the one this rule exists for. **When no whole component fits, the region still takes the nearest component's anatomy** — row height, type roles, spacing, the amount format, the divider rule — and names it here. A new row that ignores `Statement`'s 48 dp and `BodyLg`/`BodyMd` pairing because it "isn't a statement" is the failure this column prevents.
+- **Tried first** is empty only when *Built from* is a system component.
+
+**3. Only then draw.** The plan is the checklist for the review: a drawn region with no row, or a row whose source is
+Mobbin with an empty *Tried first*, is rejected as Tier 0 regardless of how it looks.
+
+**Why the file and not the memory.** The Beauty inventory ledger (September 2026) was drawn with a new tile grid and
+a new two-segment bar while `patterns/payout.md` already described the ledger as a statement and the app already
+shipped the statement card. The designer had read those files once. A plan row saying *Built from: Statement* would
+have taken thirty seconds and saved a sprint.
 
 ## Designing on Paper
 

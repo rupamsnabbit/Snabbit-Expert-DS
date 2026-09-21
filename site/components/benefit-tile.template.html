@@ -1,0 +1,50 @@
+<meta charset="utf-8">
+<title>Snabbit Expert BenefitTile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>__BASECSS__
+
+.bt{width:99px;height:128px;border:1px solid #E5E7EB;border-radius:12px;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:12px;font-family:var(--sans);color:#111827;box-sizing:border-box;position:relative}
+.bt .dc{width:56px;height:56px;border-radius:999px;border:1.5px solid #F70F79;display:grid;place-items:center;color:#F70F79}
+.bt.earn .dc{border:0;background:#FEF1F7}
+.bt .dc svg{width:28px;height:28px}
+.bt .lb{font-size:14px;line-height:20px;font-weight:500;text-align:center}
+.bt.lock .dc{border-color:#E5E7EB;color:#9CA3AF}.bt.lock .lb{color:#9CA3AF}
+.bt.lock .lk{position:absolute;left:calc(50% + 14px);top:56px;width:16px;height:16px;border-radius:999px;background:#fff;border:1px solid #E5E7EB;display:grid;place-items:center;font-size:9px}
+.grid3{display:grid;grid-template-columns:repeat(3,99px);gap:12px}
+.stg{display:flex;flex-direction:column;gap:8px}.stg .cap{font-family:var(--mono);font-size:12px;color:var(--text-2)}.stg .cap b{color:var(--text);font-weight:500}
+.row4{display:flex;gap:32px;flex-wrap:wrap}
+.bad{border:1px dashed #DC2626;padding:12px;border-radius:12px}
+
+</style>__NAVCSS__
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · BenefitTile</small></div></div>
+    __SITENAV__
+    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#kinds">Kinds</a><a href="#departure">The shipped colours</a><a href="#figma">Figma changes</a></nav>
+    <div class="rail-foot">Rendered from tokens.json · spec in components/benefit-tile.md</div>
+  </aside>
+  <main class="main">
+    <header id="overview">
+      <div class="eyebrow">Core component · <b>In app</b> 2026-09-22</div><h1>BenefitTile</h1>
+      <p class="lede">A square tile with an icon in a disc and a label under it, three across — how the app shows a set of things she gets or can earn.</p>
+      <div class="meta"><span class="chip status">Proposed</span><span class="chip">In app 2026-09-22</span><span class="chip">Tier 1 · Core</span><span class="chip"><code>SnabbitBenefitTile</code></span><span class="chip">2 kinds × 4 states</span><span class="chip">No Figma component</span></div>
+    </header>
+
+    <section id="kinds">
+      <header><div class="eyebrow">Two kinds, one grid</div><h2>benefit · earn</h2><p>A set of things she gets or can earn, read as a whole. Not a SelectionCard (nothing is chosen), not a ListItem (twelve one-word rows is a wall; a 4 × 3 grid is a glance).</p></header>
+      <div class="stage"><div class="row4">
+        <div class="stg"><div class="grid3"><div class="bt "><div class="dc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg></div><div class="lb">Health insurance</div></div><div class="bt "><div class="dc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg></div><div class="lb">Loan access</div></div><div class="bt "><div class="dc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg></div><div class="lb">Accident insurance</div></div><div class="bt lock"><div class="dc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg></div><span class="lk">🔒</span><div class="lb">Lunch break</div></div><div class="bt lock"><div class="dc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg></div><span class="lk">🔒</span><div class="lb">Red card waivers</div></div><div class="bt lock"><div class="dc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg></div><span class="lk">🔒</span><div class="lb">Priority support</div></div></div><div class="cap"><b>benefit</b> — ring disc · locked tiles <b>stay in the grid</b>, dimmed, with the lock: they are the reason to reach the next tier</div></div>
+        <div class="stg"><div class="grid3"><div class="bt earn"><div class="dc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg></div><div class="lb">Early login</div></div><div class="bt earn"><div class="dc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg></div><div class="lb">Perfect job</div></div><div class="bt earn"><div class="dc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg></div><div class="lb">Daily streak</div></div></div><div class="cap"><b>earn</b> — filled disc, one colour · opens the tracker</div></div>
+      </div></div>
+    </section>
+    <section id="departure">
+      <header><div class="eyebrow">Recorded, not changed</div><h2>The shipped discs are blue, green and pink</h2><p>On the Coins screen the three <code>earn</code> discs are each a different hue. That is colour meaning only <i>different</i>, which P6 reserves for status. The spec says one disc colour with identity carried by the icon — <b>and the shipped fills stay until the design lead decides</b>, because reusing them costs tech nothing and changing them costs a sprint. That order — record, reuse, then decide — is the rule this component was written under.</p></header>
+    </section>
+    <section id="figma">
+      <header><div class="eyebrow">Reconciliation</div><h2>What changes in Figma</h2><p>No component exists. Create <b>BenefitTile</b> on Components page <code>1:3886</code> with <code>Kind</code> (Benefit / Earn) and <code>State</code> (Default / Pressed / Locked / Loading), icon as an instance-swap slot. Eight icon meanings the shipped tiles use are not yet in <code>foundations/icons.md</code> and are listed in the spec; register them before drawing to spec.</p></header>
+    </section>
+  </main>
+</div>
+<script id="tokens-json" type="application/json">__TOKENS__</script>

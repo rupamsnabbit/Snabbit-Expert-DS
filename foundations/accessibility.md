@@ -30,6 +30,8 @@ Ratios computed from `tokens.json` (WCAG 2.x). AA is 4.5:1 for text, 3:1 for lar
 | --- | --- | --- | --- |
 | `textInverse` on `bgBrand` (primary Button) | 4.0 | ❌ at 16 SemiBold | **Decision needed** — see *Open* below |
 | `textInverse` on `interactivePressed` | 5.8 | ✅ | |
+| `textInverse` on `interactiveAccept` (accept Button) | **5.5** | ✅ AA | Passes at ButtonLg 16 SemiBold outright. Do **not** substitute green.600 (3.8) to match a screenshot |
+| `textInverse` on `interactiveAcceptPressed` | 7.7 | ✅ | |
 | `textBrand` on `bgBrandSubtle` | 3.6 | ⚠ | Brand text on the pink wash only at Heading3+; selected SelectionCard titles use `textPrimary` |
 | `textSuccess` on `bgSuccess` / `Subtle` | 3.6 / 3.3 | ❌ | `textSuccessStrong` (green.700) → 5.5 / 5.3 ✅ |
 | `textWarning` on `bgWarning` / `Subtle` | 3.1 / 2.9 | ❌ | `textWarningStrong` (yellow.700) → 5.0 / 4.8 ✅ |

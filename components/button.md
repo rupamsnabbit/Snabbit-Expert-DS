@@ -11,7 +11,7 @@ The button is the one thing on a screen the expert is meant to do next. It is bi
 
 | Today (Figma) | Proposed | Why |
 | --- | --- | --- |
-| 9 styles: Primary, Secondary, Tertiary, Text, Link, Neutral Filled, Neutral Stroke, Destructive, Success | **4 variants × 3 tones** (see below); Success removed; Link removed | Status colours are not button styles (P6: status colours only for status). Green "success" buttons make the *action* look like a *result*. Link is not a button — it becomes its own small `Link` component. |
+| 9 styles: Primary, Secondary, Tertiary, Text, Link, Neutral Filled, Neutral Stroke, Destructive, Success | **4 variants × 4 tones** (see below); Success removed; **`accept` added**; Link removed | Status colours are not button styles (P6: status colours only for status) — a green *Success* button makes the **action** look like a **result**. `accept` is not that: it is one action, filled green **only where a decline sits beside it**, so the two doors are told apart without reading (P6, P3). Link is not a button — it becomes its own small `Link` component. |
 | 2 states: Active, Disabled | **5 states**: default, pressed, focused, disabled, loading — plus a **hold-to-confirm** behaviour | P3 needs a second gesture for costly actions; P5 needs loading to block duplicate taps and keep the label. |
 | Content: Default, Icon Left, Icon Right, Icon Both | Label · Icon leading · Icon trailing. **Icon Both removed.** | P1: one icon, one meaning. Two icons on one button is two meanings. |
 | Variables: palette-level (`Pink/color-primary-600`, `Body-M/16-Semibold`) | Semantic (`interactiveDefault`, `ButtonLg`) | Drift between Figma and the package ends when both speak the same names. |
@@ -50,6 +50,9 @@ A **variant** is emphasis. A **tone** is meaning. Choose emphasis by how importa
 | `brand` | Move forward: accept, start, continue, save | primary · secondary · tertiary · ghost |
 | `neutral` | Neither forward nor destructive: back, view, filter, change | secondary · tertiary · ghost (never primary — nothing neutral is the one next action) |
 | `danger` | Lose something: decline, cancel, end shift, remove | primary (only inside a confirmation sheet) · secondary · ghost |
+| `accept` | **Take the job.** Nothing else. | primary — **and only when a `danger` action is adjacent in the same footer** |
+
+> `accept` is a **build request** — a new tone in the package. It **supersedes the 2026-09-10 decision** (`DECISIONS.md`: *the shipped green Accept Job becomes brand, no success Button tone*), which was not consulted when this tone was added on 2026-09-16. The 2026-09-16 call stands; the record now says so.
 
 ### Colour by variant × tone × state
 
@@ -59,6 +62,7 @@ Every value is a semantic token from `tokens/tokens.json`.
 | --- | --- | --- | --- |
 | **primary · brand** | fill `interactiveDefault` · label `textInverse` | fill `interactivePressed` | fill `bgTertiary` · label `textTertiary` |
 | **primary · danger** | fill `borderError` (#EF4444) · label `textInverse` | fill `textError` (#DC2626) | fill `bgTertiary` · label `textTertiary` |
+| **primary · accept** | fill `interactiveAccept` (green.700 #047857) · label `textInverse` | fill `interactiveAcceptPressed` (green.800 #065F46) | fill `bgTertiary` · label `textTertiary` |
 | **secondary · brand** | border `borderBrand` · fill `bgPrimary` · label `textBrand` | fill `bgBrandSubtle` | border `borderDefault` · label `textTertiary` |
 | **secondary · neutral** | border `borderStrong` · fill `bgPrimary` · label `textBody` | fill `bgSecondary` | border `borderDefault` · label `textTertiary` |
 | **secondary · danger** | border `borderError` · fill `bgPrimary` · label `textError` | fill `bgError` | border `borderDefault` · label `textTertiary` |
@@ -73,6 +77,28 @@ Every value is a semantic token from `tokens/tokens.json`.
 **Token proposal (contrast):** `textDisabled` is gray.300 (#D1D5DB), 1.3:1 on `bgTertiary` — invisible on a sunlit ₹10k screen. This spec uses `textTertiary` (gray.400) for disabled labels instead, and proposes `textDisabled` move to gray.400.
 
 Focused (any variant): 2 dp `borderFocus` ring, 2 dp outside the container. Loading (any variant): colours of *default*, icon slot shows spinner in the label colour, label stays.
+
+### Why `accept` is green when *Success* was removed
+
+They are not the same green, and the difference is the whole rule.
+
+*Success* was a **tone available to any button** — green as decoration, or as a report that something worked. That
+makes an action look like a result, and it spends the one colour the expert reads as *finished* on a thing that has
+not happened yet. It stays removed.
+
+`accept` is **one action in one place**. It exists because of what sits next to it: on a job alert, *Accept Job* and
+*Deny* are two doors under a 1:23 countdown, and the expert decides before she has finished reading either label.
+Green against red is not *good against bad* here — it is **take against decline** (P6: for someone who reads slowly,
+colour is a language; P3: the decline is adjacent, never hidden). Green carries information only while the red is
+there to carry the other half.
+
+**So the constraint is the pairing, not the colour:** `primary · accept` is allowed **only when a `danger` action is
+adjacent in the same footer**. A green button standing alone is `primary · brand` — which is why *Check In*,
+*Complete Job* and *Save what I used* are pink even on the same flow. One green button per screen, or none.
+
+Contrast: `textInverse` on `interactiveAccept` is **5.48:1**, so the accept button passes AA at ButtonLg 16 sp
+SemiBold outright — better than `primary · brand`'s 3.96:1, which is still open in `foundations/accessibility.md`
+§ Open. Do not lighten it to green.600 (3.77:1) to match a screenshot.
 
 ---
 
@@ -140,13 +166,13 @@ Primary brand tap: the `confirm` sound family (short, rising) once the action *s
 
 **Do** — one primary at the bottom · verb labels · Phosphor icon that means the action · hold for anything that loses the expert money or a job · keep the label visible while loading.
 
-**Don't** — two primaries · green "success" buttons · icons on both sides · *OK* / *Submit* · a decline button next to accept in the same row · disable a button without telling the expert why · shrink text to fit a translation.
+**Don't** — two primaries · green as decoration or as a result · a green accept with no decline beside it · icons on both sides · *OK* / *Submit* · a decline button next to accept in the same row · disable a button without telling the expert why · shrink text to fit a translation.
 
 ---
 
 ## Figma reconciliation — what to change in the component
 
-1. Rename the variant property `Style` → **Variant** (`Primary / Secondary / Tertiary / Ghost`) and add **Tone** (`Brand / Neutral / Danger`). Delete *Success*, *Link*, *Neutral Filled*, *Neutral Stroke*, *Text* (Text → Ghost; Neutral Stroke → Secondary·Neutral; Link → new Link component).
+1. Rename the variant property `Style` → **Variant** (`Primary / Secondary / Tertiary / Ghost`) and add **Tone** (`Brand / Neutral / Danger / Accept`). Delete *Success* (it is not `Accept` — see *Why `accept` is green*), *Link*, *Neutral Filled*, *Neutral Stroke*, *Text* (Text → Ghost; Neutral Stroke → Secondary·Neutral; Link → new Link component).
 2. `State`: add **Pressed**, **Focused**, **Loading**; keep Disabled. Add a **Hold** boolean on Danger.
 3. `Content`: delete **Icon Both**.
 4. Rebind every fill, stroke and text colour to semantic variables named as in this spec; rebind text styles to `ButtonLg` / `ButtonMd`.

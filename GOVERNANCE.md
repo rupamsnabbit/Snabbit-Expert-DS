@@ -15,6 +15,8 @@ Every component spec carries one status line. It moves in one direction and neve
 | **Stable** | The package ships it and the app uses it | Package version in the status line; the component's Compose name resolves in the app repo; checklist rows 15–16 (copy heard aloud in four languages; device review with experts) ticked with the date | Design lead + one engineer |
 | **Deprecated** | Superseded; the status line names the replacement and the last version | DECISIONS.md entry | Design lead |
 
+**In app** — an evidence mark, not a status. Added to a status line (`Status: **Proposed** · **In app** 2026-09-22 · …`) when the live app ships the component or a version of it, with the screenshot in `references/shipped-app-<date>/`. It tells a project what a component costs: **In app** means reuse, no build. A Proposed spec **without** it is a **build request** and its status line must say `Build request` and name the reuse it rejected. Reviewers read the mark before the spec.
+
 Rules: a status change is its own commit (*"Button → Reconciled"*) with the evidence in the same commit; a Stable component's spec can still change, but the change goes through §3 and the status drops to Reconciled until the package catches up; a Reconciled component whose Figma drifts drops back to Proposed at the next screen re-read (`references/SCREENS.md` § When the screens change).
 
 Status line format (the lint reads it):

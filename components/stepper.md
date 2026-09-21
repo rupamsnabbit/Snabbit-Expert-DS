@@ -16,6 +16,7 @@ A short list of things to do, in order, with one of them lit. Onboarding (regist
 | Completed shows a green check and the word "Completed" | Kept: `check-circle` fill `iconSuccess` + *Done* in `textSuccess`. Row stays tappable to review | Status colour as status — correct use (P6). |
 | Grey future step with no reason | Upcoming: `textTertiary` with **a reason line** (*After ID proof*). Locked: same + `lock-simple` | A grey thing with no reason is a broken thing (P5). |
 | Step icons custom | Phosphor from the register: `user-plus`, `identification-card`, `bank`, `graduation-cap`, `camera` | Icon rule. |
+| Every step is something **she** does | **`tracker`** mode: the same rail for a process that runs **without her** — a refill order moving Placed → Packed → On the way → Delivered | A Stepper that points at her next action is wrong when there is no action: she is watching, not doing. Same shape, different promise (`projects/beauty-shift-lifecycle`, PRD § 7). |
 
 ---
 
@@ -53,6 +54,56 @@ Vertical; each step is a row 72 dp (88 with a description) inside one Card with 
 ## Order
 
 `ordered` (default): steps complete in sequence; one `current` row carries the Button; later rows are `upcoming` or `locked`. **`unordered`**: every unfinished row is `open` — tappable, same look as `current` without the wash, no Button inside; the screen's single primary Button (*Start training*) belongs to the flow, not to a row. The header line says so: *Finish your registration — complete them in any order* (the shipped Training screen). `unordered` has no `upcoming` or `locked` states. Use `unordered` only when the steps truly are independent (documents), never for a flow where step 3 needs step 2.
+
+### `tracker` — what is happening to me
+
+A third mode, and the only one where **she does nothing**. A refill order, a payout in flight, a document under review: stages that advance on their own, on someone else's clock.
+
+```
+  (📄)━━━━━━━(📦)━━━━━━━( 🚚 )────────( ✓ )
+  Placed     Packed    On the way   Delivered
+                          ▲ current
+```
+
+It borrows the `rail` layout and changes three things:
+
+| | `ordered` / `unordered` | `tracker` |
+| --- | --- | --- |
+| Who advances it | she does | the system does |
+| The current node | *Step 2* — a thing to do | *now* — a thing happening |
+| Buttons | the current row carries one | **never inside the Stepper.** The screen's action (*Mark received*) is the screen's, and it acts on the whole order, not on a stage |
+| Tapping a node | opens that step | nothing — stages are not screens |
+
+Rules:
+
+- **No step numbers.** *Placed · Packed · On the way · Delivered* are events, not tasks. An eyebrow reading *Step 3* would tell her she has three things to do.
+- States collapse to three: **`done`** (passed, `check-circle` fill `iconSuccess`), **`current`** (`iconBrand`, `borderBrand` ring, `bgBrandSubtle` disc), **`upcoming`** (`textTertiary`, `bgTertiary` disc). No `locked` — nothing here is earned — and no `attention`; a stalled or failed shipment is a **Banner above the tracker**, not a poisoned node, because the stage it stalled at is still true.
+- The tracker is **always paired with a plain-language line underneath** naming the current stage and what it means for her today: *Out for delivery · keep your phone reachable on 8 Feb.* Four labels of one or two words each cannot carry a date or an instruction, and P1 says the shape and the words work together.
+- The last stage may need her confirmation to be reached (*Delivered* only after she taps *Mark received*). The tracker does not know this — it renders the stage it is given. The screen owns the rule.
+- 3–5 stages. More than five is a log, and a log belongs in a ledger.
+- Announced as *stage 3 of 4, out for delivery* — the count is spoken even though it is not drawn, because a screen reader has no shape to read.
+
+### `progression` — what I have earned
+
+**In app** 2026-09-22 — the tier rail on the Tier screen: Base → Silver → **Gold** → Diamond → Pink Diamond.
+
+A fourth mode, for a rail whose nodes are **earned**. It borrows `tracker`'s shape and reverses its one prohibition:
+here `locked` is not only allowed, it is the point. Nodes are **reward assets** (`assets.md` metallic layer — the
+tier badges), not Phosphor icons; the current node is ringed and carries her Avatar `XS` beneath; locked nodes show
+the badge dimmed with the `lock-simple` badge; the connector is filled up to the current node.
+
+| | `tracker` | `progression` |
+| --- | --- | --- |
+| Nodes | Phosphor icons | reward assets (badges) |
+| `locked` | never — nothing is earned | yes — everything is |
+| Current node | *now* | *you*, with her Avatar under it |
+| Tapping a node | nothing | opens that tier's benefits |
+| Paired line | what is happening today | how far to the next: *3 more perfect jobs to Diamond* |
+
+No step numbers, no Buttons inside, 3–5 nodes, and the paired line under it is mandatory — the rail alone cannot say
+what she must do to move (P1).
+
+---
 
 ## States
 
@@ -109,8 +160,9 @@ None. Node ring `borderWidth.2`; row height from the ListItem scale.
 1. "Step Indicatorss" → **Stepper / Rail**: `Steps` (2–5), per-step `State` (Done / Current / Upcoming / Locked / Attention). Icons as Phosphor instances; labels always on.
 2. Onboarding Step Card → **Stepper / List / Row**: `State` (five + Open), booleans `Description`, `Button`; list-level `Order` (Ordered / Unordered). Remove the pink border variant; current = ring + wash. Compose four rows into a **Stepper / List** example.
 3. Bind node fills to `bgBrandSubtle` / `bgTertiary` / `iconSuccess`, rings to `borderBrand` / `borderWarning`.
+4. **Add** `Mode` (Ordered / Unordered / **Tracker**) at list level. In `Tracker`, hide the eyebrow and the Button slots; per-step `State` reduces to Done / Current / Upcoming.
 
-Result: **~14 variants** replacing 3 + 4 frames, and one component where there were two unrelated ones.
+Result: **~17 variants** replacing 3 + 4 frames, and one component where there were two unrelated ones.
 
 ---
 

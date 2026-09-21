@@ -16,6 +16,7 @@ One row in a list: a leading thing, a title with optional supporting lines, a tr
 | Hidden values shown **blurred** | `Amount` `hidden` state: `₹••••` + `eye` IconButton | Blur is illegible *and* looks like a rendering bug. |
 | Helper text in red/orange under the label | **Status line**: icon + text in the status colour, one line | Same rule as TextField errors: three channels, never colour alone. |
 | Trailing "Show" chip | Tapping the row or the `eye` reveals; no chip | Chips are for choosing, not for revealing. |
+| Trailing is a value (Amount), a status (Tag) or a way in (caret) | **`quantity`** trailing: a plain count — *add 2*, *used 6 of 8*, *9 items* | A kit is counted, not priced. Rendering *8 kits* as an Amount says it is money; rendering it as meta text makes it disappear (`projects/beauty-shift-lifecycle`, PRD § 5). |
 
 ---
 
@@ -64,9 +65,49 @@ Title + description + status = 3 lines max. More is a card.
 | Amount + `caret-right` | Value that opens detail |
 | `Switch` | Settings toggles (whole row toggles) |
 | meta text `Caption` `textSecondary` | Time, distance (*9:30 am*, *1.2 km*) |
+| `quantity` | A count of things she can hold — *add 2*, *used 6 of 8*, *9 items*, *+17* |
 | IconButton S (`phone`, `speaker-high`) | One row-level action — needs a 48 dp parent hit area; the row itself is then **not** tappable |
 
 Never two trailing elements except Amount + caret. Never a Button in a row (a row is a list, not a form); the exception is one IconButton from the allowed set.
+
+---
+
+### `quantity` — counting things, not money
+
+`BodyLg` 16 SemiBold `textPrimary` for the number and its unit, with an optional `BodyMd` `textSecondary` qualifier on the line below. It is deliberately built like `Amount md` and deliberately not it — same weight and size so a list of counts and a list of amounts feel like one family, no ₹ and no tone so that the two are never confused.
+
+| Form | Renders | Use |
+| --- | --- | --- |
+| bare count | *9 items* · *1 pack of 6* | What is in a pouch |
+| instruction | *add 2* | What she must physically do to this row — the strongest form, used when the row is a task |
+| of-total | *6 of 8* | Held against what she should hold; the second number is `textSecondary`. May carry a **fill bar** — see below |
+| delta | *+17* · *+6* | What is arriving. `+` is part of the value, never typed into the label |
+
+Rules:
+
+- **Never coloured.** A count is not a status. Green *6 of 8* would say the shortfall is fine; red would say it is a failure. Where a count *is* a problem, the row carries a status line and its icon (P1), and the number stays `textPrimary`.
+- **Never a bare digit.** *2* is unreadable at a glance; *add 2* and *9 items* are not. The unit or the verb is part of the value in every language (P9).
+- **`+` is a direction, not a sign.** It marks something arriving. There is no `−` form — stock she used is written as *used 6 of 8*, in words, because a red *−6* beside a product reads as a penalty.
+- Never in the same row as an Amount. If a row needs both a count and a price (*+6 · ₹360*), the count is the trailing `quantity` and the price goes on the description line — the trailing slot holds one thing.
+- Announced with its unit: *add two facial kits*, *used six of eight*.
+
+#### The fill bar — `of-total` only
+
+`of-total` may carry a **ProgressBar `S`** directly under the count, the width of the trailing slot — the same ProgressBar the app already ships on the coins card (**In app** 2026-09-22), not a new primitive. It is allowed on **no other form**, because only `of-total` has a
+denominator for a bar to mean anything.
+
+**Why it exists.** *6 of 8* asks her to read two numbers and infer a ratio between them. Over nine rows that is a
+ledger, and the stakeholder's word for the result was *"like a bill"* (2026-09-18). The bar answers the question
+before the numbers are read and confirms it after — the numerals stay, they are not replaced.
+
+**It is never coloured**, for the same reason the count is not: a red bar on a short pouch says she failed, and a
+green one says a shortfall is fine. Shortness is carried by **length**, which is the one channel that cannot lie
+about it (P6). A row whose shortfall is a problem still says so in words, in its own status line (P1).
+
+Evidence: Garmin Connect and Runna both render gear wear as the numerals **and** a bar, and Copilot Money does it
+per row and again in summary — `projects/beauty-shift-lifecycle/reads/mobbin-2026-09-18-visual-inventory/`. The
+same read **rejects a donut ring** for the summary: six of six ring references on Mobbin mean *loading* or *score*,
+and a percentage replaces a count she can act on with one she cannot.
 
 ---
 
@@ -88,6 +129,7 @@ Never two trailing elements except Amount + caret. Never a Button in a row (a ro
 | default | as above |
 | pressed (navigational/selection) | `bgSecondary` full-row wash 100 ms; `light` haptic |
 | selected (in a picker) | `bgBrandSubtle` fill, leading `check` replaces icon — used by Select sheets |
+| current (*you are here*) | the `selected` rendering, but the leading icon stays and an Avatar `XS` sits after the title — a row that is **her** in a list of tiers or ranks (**In app** 2026-09-22: the Gold row in *Base Pay across Tiers*) |
 | disabled | all text `textTertiary`, leading at 40 % opacity, not tappable; description says why when possible |
 | loading | skeleton: leading circle/box, 60 % title bar, 40 % description bar; 3 rows shown, never a spinner |
 | swipe | **not supported** — no swipe-to-delete or swipe actions (P3: gestures are shortcuts, never the only path; here they would be the only path) |

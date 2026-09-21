@@ -127,7 +127,11 @@ Copy follows `foundations/content.md`. Strings are real, in all four languages' 
 
 If Step 1 said *variant of*, this is a section inside the existing pattern instead — same rigour, no duplicate file.
 
-Draw in Paper on the 360 × 800 baseline, tokens by variable only (`CLAUDE.md` → *Designing on Paper*). Screens that become evidence export to `references/<slug>-<screen>/` with a short `.md`.
+**Before any artboard: `projects/<slug>/BUILD.md`.** One row per region of every screen — *Built from · Source ·
+Inherits · Tried first* — sources in the fixed order shipped app → `patterns/` → `components/` → Mobbin → invention
+(`CLAUDE.md` § Before you draw a screen). Read all three system sources first, every time, not from memory. A screen
+drawn without its rows is Tier 0 and is redrawn; a Mobbin row without *Tried first* is rejected. Then draw in Paper
+on the 360 × 800 baseline, tokens by variable only (`CLAUDE.md` → *Designing on Paper*). Screens that become evidence export to `references/<slug>-<screen>/` with a short `.md`.
 
 ## Step 6 — Publish and record
 

@@ -48,6 +48,9 @@ Kept as shipped: the month-by-month statement; deductions listed openly (cash co
 
 ## 1. Statement
 
+> **2026-09-22 — the shipped card is the spec.** The re-shaping proposed in the table above (hero as *You'll be paid*, the band folded into an Accordion `breakdown`, the total shown once) is **withdrawn** after tech feedback: reuse what ships. The card is now a component, **`components/statement.md`**, drawn exactly as the app has it; the departures from principles are recorded there and left for the design lead. The rows below stand as the *content* of the statement.
+
+
 ```
 ┌────────────────────────────────────────────┐
 │ ‹  March earnings                    Help  │  HeaderNav page

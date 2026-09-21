@@ -33,6 +33,8 @@ An Accordion hides information, never actions. If something inside it needs a ta
 └────────────────────────────────────────────────────────┘
 ```
 
+**`week` header tint.** The shipped trackers tint each week's header with its tier — Silver grey, Gold, Diamond blue, Pink Diamond pink, No Tier brown. Kept, with a reason: tiers are **rewards**, and `assets.md` already reserves colour for the reward layer; the tint is the badge's own colour at low opacity sitting behind the badge, not a status colour standing alone. It is the one Accordion that may be tinted, and the tint is never the only carrier — the badge and the word *Silver* are on the same line (P6).
+
 `breakdown` collapsed header: title left (`BodyMd textSecondary`), **Amount M** right, caret. Open: Amount L centred above a rule, then rows — label left, Amount S right, 48 dp each, `borderSubtle` between; one row may be `conditional`.
 
 Items sit in one Card each (as in Figma), 8 dp apart, or as rows of one Card with dividers when there are more than three FAQ items.
@@ -45,6 +47,7 @@ Items sit in one Card each (as in Figma), 8 dp apart, or as rows of one Card wit
 | --- | --- | --- | --- |
 | `faq` | Question, speaker, caret | Prose ≤ 3 paragraphs, optional *Ask Saathi ›* | Help, Rewards rules, penalties explained |
 | `breakdown` | Title + Amount M, speaker, caret | Amount L, then line rows (label · Amount S), one `conditional` row allowed | Job alert, job details, earnings day view, payout |
+| `week` | Reward asset (tier badge) · *Week 1 · Silver* · date range · Stat `S` coin count · caret | ListItem rows, one per day, Stat `S` trailing | Streak, Perfect Jobs and Early logins trackers — **In app** 2026-09-22 |
 
 ---
 

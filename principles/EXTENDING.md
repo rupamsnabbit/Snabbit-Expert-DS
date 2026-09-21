@@ -47,6 +47,42 @@ A detached, hand-styled, unnamed frame or composable that lives nowhere and foll
 
 ---
 
+## Reuse before you invent — the first reference is our own app
+
+Tech has low bandwidth. A new component costs a sprint; a variant costs a day; reusing what ships costs nothing.
+So the order of questions is fixed, and it starts **before** the tier tree and before Mobbin:
+
+1. **Does the app already do this?** Open `references/shipped-app-<date>/` — the live app read as a component map —
+   and `patterns/`. If a shipped screen has the shape (a statement with line rows, a tracker, a tier rail, a
+   benefit grid), **that is the design**, with the nouns changed. Match it region for region.
+2. **Does a spec already have it?** Search `components/` for the kind, state or slot. Most of what a new PRD needs is
+   a `breakdown` Accordion, a `navigational` ListItem, a `locked` Amount, a `strip` DatePicker that already exist.
+3. **Only then** the tier tree below — and a new component or variant must **name the shipped component it tried
+   and say in one sentence why it could not do the job.** A proposal without that sentence is not reviewed.
+
+Evidence of the failure this prevents: the Beauty inventory ledger (2026-09) was designed as a new tile grid and a
+new two-segment bar when the shipped **Earnings statement** — Accordion `breakdown`, ListItem rows with Amount `S`,
+dated schedule rows — already was the ledger, and `patterns/payout.md` already said so. Nobody read it. This
+section exists so that reading it is the first step, not a thing to remember.
+
+**The build plan makes this a gate.** Before a screen is drawn, `projects/<slug>/BUILD.md` maps every region to
+*Built from · Source · Inherits · Tried first* (format in `CLAUDE.md` § Before you draw a screen). Two rules the
+table enforces that prose did not:
+
+- **Sources in fixed order** — shipped app → `patterns/` → `components/` → Mobbin → invention. A region may not
+  cite a later source while an earlier one has a match, and a Mobbin or invention row must list what was tried.
+- **Partial reuse is still reuse.** When no whole component fits, the region inherits the **anatomy** of the nearest
+  one — heights, type roles, spacing, formats, divider rules — and the *Inherits* column names it. A row of amounts
+  that is not quite a `Statement` still uses the `Statement` row: 48 dp, label `BodyLg`, description `BodyMd`
+  `textSecondary`, signed `Amount M` trailing, rows separated by space, one Divider before a total. Drawing a
+  near-copy with different numbers is not a new component; it is a fork, and a fork is Tier 0.
+
+A component that ships in the app is marked **In app** in its status line (`GOVERNANCE.md` § 1). A Proposed
+component **without** that mark is a **build request**, and its status line must say so and name the reuse it
+rejected.
+
+---
+
 ## The reference read
 
 When the input is a screenshot or reference (Mobbin, Pinterest, Dribbble, a competitor, a customer-app screen), do this **before** drawing or coding anything. Write it down; it is the first half of the brief.
@@ -65,9 +101,9 @@ When the input is a screenshot or reference (Mobbin, Pinterest, Dribbble, a comp
 
 An agent asked to "make it like this but not strictly the design system" does steps 1–6 and delivers step 6. It does not skip to a restyled copy of the screenshot.
 
-### Where inspiration comes from — Mobbin first
+### Where inspiration comes from — our app first, then Mobbin
 
-**Mobbin is the preferred source** of references for this system, and the design lead uses it daily. It shows *shipped* product — real flows, with their states, edge cases and sequence — which is the same standard of evidence this repository holds itself to (`references/SCREENS.md`: screens are evidence). Pinterest and Dribbble show concept art: one screen, no states, no next screen, colours chosen to win a like. They are allowed for **mood** only; nothing structural is borrowed from a screen that never shipped.
+**After the shipped app** (§ *Reuse before you invent*), **Mobbin is the preferred source** of references for this system, and the design lead uses it daily. It shows *shipped* product — real flows, with their states, edge cases and sequence — which is the same standard of evidence this repository holds itself to (`references/SCREENS.md`: screens are evidence). Pinterest and Dribbble show concept art: one screen, no states, no next screen, colours chosen to win a like. They are allowed for **mood** only; nothing structural is borrowed from a screen that never shipped.
 
 How to use Mobbin here:
 
@@ -133,6 +169,9 @@ Where else this might be used. Promote to core on third use.
 
 ```
 Need something that doesn't exist?
+│
+├─ Does the shipped app already do it?  (references/shipped-app-*/ · patterns/)
+│    └─ Yes → It exists. Match the shipped screen, change the nouns. Done.
 │
 ├─ Can it be built only from core components + tokens?
 │    └─ Yes → Tier 2 composition. Build it in the feature namespace. Done.
