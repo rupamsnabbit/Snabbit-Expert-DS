@@ -21,6 +21,8 @@ For new Compose work, use `SnabbitTheme` semantic values and design-system compo
 | Brand text/action | `textBrand`, `bgBrand`, `borderBrand`, `iconBrand`, `interactiveDefault` | `#F70F79` | Primary brand action and selected emphasis |
 | Brand hover/loading | `interactiveHover` | `#F4368D` | Package-controlled interaction state |
 | Brand pressed | `interactivePressed` | `#C70C61` | Package-controlled pressed state |
+| **Accept action** | `interactiveAccept` | `#047857` | **The only filled green action.** A job accept that sits beside a decline — nowhere else |
+| Accept pressed | `interactiveAcceptPressed` | `#065F46` | Package-controlled pressed state |
 | Primary canvas | `bgPrimary` | `#FFFFFF` | Screen and card surfaces |
 | Secondary canvas | `bgSecondary` | `#F9FAFB` | Subtle grouped surface |
 | Tertiary canvas | `bgTertiary` | `#F3F4F6` | Muted/header surface |
@@ -50,7 +52,7 @@ Use semantic names in specifications. Palette names such as `pink600` or `gray70
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Pink | `#FEF1F7` | `#FDE4EF` | `#FBC9DF` | `#F9AECF` | `#F65CA1` | `#F4368D` | `#F70F79` | `#C70C61` | `#97094A` | `#670632` |
 | Gray | `#F9FAFB` | `#F3F4F6` | `#E5E7EB` | `#D1D5DB` | `#9CA3AF` | `#6B7280` | `#4B5563` | `#374151` | `#1F2937` | `#111827` |
-| Green | `#ECFDF5` | `#D1FAE5` | `#A7F3D0` | `#6EE7B7` | `#34D399` | `#10B981` | `#059669` | `#047857` | — | — |
+| Green | `#ECFDF5` | `#D1FAE5` | `#A7F3D0` | `#6EE7B7` | `#34D399` | `#10B981` | `#059669` | `#047857` | `#065F46` | — |
 | Red | `#FEF2F2` | `#FEE2E2` | `#FECACA` | `#FCA5A5` | `#F87171` | `#EF4444` | `#DC2626` | `#B91C1C` | — | — |
 | Yellow | `#FFFBEB` | `#FEF3C7` | `#FDE68A` | `#FCD34D` | `#FBBF24` | `#F59E0B` | `#D97706` | `#B45309` | — | — |
 | Blue | `#EFF6FF` | `#DBEAFE` | `#BFDBFE` | `#93C5FD` | `#60A5FA` | `#3B82F6` | `#2563EB` | `#1D4ED8` | — | — |

@@ -71,6 +71,11 @@ Selected is fill + colour + (strip) the *Today/weekday* text — three channels;
 
 `caret-left` / `caret-right` join the IconButton allowed set **for this header only**.
 
+**Standalone — the month pager.** The header is used **without a grid** on the Earnings statement and the Rate card
+(**In app** 2026-09-22: ‹ *March 2025* ›), paging a whole screen by month. Same anatomy, same disabled-arrow rule at
+the range limit, same swipe. `patterns/payout.md` calls it the *month pager*; it is this header, not a new component.
+A **week pager** (‹ **Week 1** · *01 Mar to 07 Mar* ›, **In app** 2026-09-22 on the Coins screen) is the same control with a two-line label — week name as Heading3, date range as Caption beneath. An **order pager** for a weekly ledger is the week pager with the order's range.
+
 ---
 
 ## Summary line

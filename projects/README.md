@@ -110,4 +110,5 @@ Slugs are `<vertical>-<flow>`: `beauty-shift-cycle`, `beauty-job-cycle`. One PRD
 
 | Project | PRD received | Status | Answers with |
 | --- | --- | --- | --- |
-| _none yet_ | | | |
+| [`beauty-shift-lifecycle`](beauty-shift-lifecycle/SCOPE.md) — Shift Lifecycle · Beauty Category | 2026-09-12 | Intake | the shift pattern, inventory update, weekly replenishment |
+| [`beauty-job-cycle`](beauty-job-cycle/SCOPE.md) — Job Lifecycle · Beauty Category | 2026-09-15 | Intake | the job pattern: buffer after check-in, per-job inventory check-in |

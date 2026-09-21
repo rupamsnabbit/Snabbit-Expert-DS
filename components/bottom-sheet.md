@@ -48,6 +48,42 @@ Padding 16 sides, 24 top (8 when grabber), 16 bottom + safe area. Content gap 12
 | `select` | yes | none | list of Radio rows (single) or Checkbox rows (multi), ≤ 8; search TextField above when > 8 | `primary` *Done* only for multi; single closes on pick | Language · Shift · Reason for leave |
 | `form` | yes, unless mid-submit | none | one TextField (OTP, phone, message) with helper | `primary` verb (*Start job*, *Send*) + optional `ghost` (*No OTP?*) | Enter OTP to start job · Customer's number · Message customer |
 | `permission` | yes (*Not now*) | scene asset 160 explaining the permission | body: why we need it, one sentence | `primary` *Allow camera* → OS prompt · `ghost` *Not now* | Camera · Location · Contacts · Notifications · Overlay |
+| **`persistent`** | **never** — no ✕, no scrim, it is part of the screen | none | whatever the screen's content is; scrolls **inside** the sheet at the tall detent | the screen's own actions, inside the content | Home while a shift is running, over the LiveMap |
+
+---
+
+## `persistent` — the sheet that lives on the screen
+
+Every other kind is modal: it arrives, takes a decision, leaves. `persistent` is furniture. It exists because of a
+**gesture conflict, not a layout preference**: a LiveMap (`map-marker.md`) is pannable, so a vertical drag anywhere
+on it pans the map. On a map-first screen there is therefore **no scroll gesture left** for anything below the map —
+content placed there is visible and unreachable, which is worse than absent.
+
+`persistent` resolves it by **owning the vertical gesture in its own area**. The map keeps pan where it is exposed;
+the sheet takes drag where it covers.
+
+```
+┌──────────────────────────┐   peek        ┌──────────────────────────┐   tall
+│                          │               │        ▁▁▁▁              │
+│      LiveMap, pannable   │               │   the screen's content   │
+│                          │               │   scrolls inside here    │
+├────────  ▁▁▁▁  ─────────-┤  ← handle     │                          │
+│  the one next action     │               │                          │
+└──────────────────────────┘               └──────────────────────────┘
+```
+
+- **Two detents, not three.** `peek` (the one next action, and enough map to be worth having) and `tall` (content
+  scrolls inside). A third detent is a third thing to learn for no gain.
+- **`peek` is the resting state** and must carry the screen's single next action in full — never a truncated card.
+  If the next action does not fit in `peek`, the screen has too many next actions (P2), not too small a sheet.
+- **A drag handle is required**, 32 × 4 dp `borderDefault`, 8 dp below the top edge, in a 48 dp drag target. It is
+  the only affordance that says the sheet moves; without it the content below is invisible and stays invisible.
+- **It never covers the BottomTabBar**, and it is never dismissible — she cannot end up on a screen with no sheet.
+- At `tall` the map is still visible above the sheet and still pannable there; the sheet does not take a scrim,
+  because the map is not disabled, just covered.
+- Snap between detents on `motion.standard`, `easing.move`; reduced motion snaps without the spring.
+- Screen reader: the sheet is a region labelled by its first heading, with *expand* / *collapse* actions. The map
+  behind it is reachable in the reading order **before** the sheet, so she is not trapped in it.
 
 ### Action rules (from the Button spec, applied here)
 

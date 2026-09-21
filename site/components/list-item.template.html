@@ -23,6 +23,7 @@
 .li .tr .am{font-variant-numeric:tabular-nums;font-weight:600;font-size:16px}.li .tr .am.pos{color:#059669}.li .tr .am.neg{color:#DC2626}.li .tr .am.lk{color:#9CA3AF;display:inline-flex;gap:4px;align-items:center}.li .tr .am svg{width:16px;height:16px}
 .li .tr .caret{width:20px;height:20px;color:#9CA3AF}
 .li .tr .meta{font-size:12px;color:#6B7280}
+.li .tr .qty{font-size:16px;font-weight:600;color:#111827;font-variant-numeric:tabular-nums}.li .tr .qty i{font-style:normal;color:#6B7280;font-weight:500}
 .li .tr .eye{width:40px;height:40px;border-radius:8px;display:grid;place-items:center;color:#374151;border:0;background:transparent;cursor:pointer}.li .tr .eye svg{width:20px;height:20px}
 .tagm{display:inline-flex;align-items:center;gap:4px;height:24px;padding:0 6px;border-radius:4px;font-size:12px;font-weight:500}
 .sw{width:52px;height:32px;border-radius:999px;background:#6B7280;position:relative}.sw .kn{position:absolute;top:4px;left:4px;width:24px;height:24px;border-radius:50%;background:#fff;display:grid;place-items:center}.sw .kn svg{width:14px;height:14px;color:#6B7280}.sw.on{background:#F70F79}.sw.on .kn{left:24px}.sw.on .kn svg{color:#F70F79}
@@ -59,7 +60,7 @@ __NAVCSS__</style>
     </section>
 
     <section id="slots">
-      <header><div class="eyebrow">Composition</div><h2>Slots</h2><p>Leading: icon, tonal icon box, avatar, badge, checkbox/radio, pictogram, or none. Trailing: Amount, Tag, caret, Amount + caret, Switch, meta, or one IconButton. Never two trailing elements except Amount + caret; never a Button in a row.</p></header>
+      <header><div class="eyebrow">Composition</div><h2>Slots</h2><p>Leading: icon, tonal icon box, avatar, badge, checkbox/radio, pictogram, or none. Trailing: Amount, <code>quantity</code>, Tag, caret, Amount + caret, Switch, meta, or one IconButton. Never two trailing elements except Amount + caret; never a Button in a row.</p></header>
       <div class="stage"><div class="mx" id="slots-grid"></div></div>
     </section>
 
@@ -110,6 +111,7 @@ function li(o){ // lead:{kind,icon,text,bx,bi}, title, desc, status:{tone,text},
   else if(k==='tag')tr=tag(Tt.v,Tt.tone);
   else if(k==='switch')tr=`<span class="sw ${Tt.on?'on':''}" data-sw><span class="kn">${svg(Tt.on?'check':'x')}</span></span>`;
   else if(k==='meta')tr=`<span class="meta">${Tt.v}</span>`;
+  else if(k==='qty')tr=`<span class="qty">${Tt.v}${Tt.of?`<i> of ${Tt.of}</i>`:''}</span>`;
   else if(k==='ibtn')tr=`<span class="ibtn">${svg(Tt.icon)}</span>`;
   else if(k==='hidden')tr=`<span class="am" data-amt="${Tt.v}">₹••••</span><button class="eye" aria-label="Show amount" data-eye>${svg('eye')}</button>`;
   else if(k==='blur')tr=`<span class="am blur">${Tt.v}</span>${svg('caret').replace('<svg','<svg class="caret"')}`;}
@@ -128,6 +130,8 @@ $('#slots-grid').innerHTML=[
  W('leading <b>avatar</b> · trailing <b>meta</b>',list([li({lead:{kind:'av',text:'MK'},title:'Meera K',desc:'Customer · 1.2 km',trail:{kind:'meta',v:'9:30 am'},kind:'nav'})])),
  W('leading <b>badge</b> · trailing <b>Amount locked</b>',list([li({lead:{kind:'badge'},title:'Weekly bonus',desc:'Complete 3 more jobs',trail:{kind:'amount',v:'₹200',cls:'lk'}})])),
  W('leading <b>checkbox</b> · selection row',list([li({lead:{kind:'cb',on:1},title:'Laundry & ironing',kind:'selrow'})])),
+ W('trailing <b>quantity</b> · an instruction',list([li({lead:{kind:'cb',on:1},title:'Facial kit',desc:'used 2 today',trail:{kind:'qty',v:'add 2'},kind:'selrow'})])),
+ W('trailing <b>quantity</b> · of-total, never coloured',list([li({lead:{kind:'box',icon:'broom'},title:'Facial kit',desc:'Facial &amp; Clean-up pouch',trail:{kind:'qty',v:'6',of:'8'}})])),
  W('trailing <b>Tag</b>',list([li({lead:{kind:'box',icon:'broom'},title:'Cleaning · 2 hr',desc:'Yesterday · 2:00 pm',trail:{kind:'tag',v:'Paid',tone:'success'}})])),
  W('trailing <b>Switch</b> · whole row toggles',list([li({lead:{kind:'icon',icon:'bell'},title:'Job alerts',desc:'Sound and vibration',trail:{kind:'switch',on:1},kind:'selrow'})])),
  W('trailing <b>Amount + caret</b>',list([li({title:'Total this week',trail:{kind:'amount-caret',v:'₹6,450'},kind:'nav'})])),

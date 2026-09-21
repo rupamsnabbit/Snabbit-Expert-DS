@@ -4,7 +4,7 @@ What is done and what is left, against the 49-component core set in `audit/BENCH
 
 ---
 
-## Done — 54 pages · 49 of 49 core components + 2 compositions + 10 patterns
+## Done — 57 pages · 52 of 52 core components + 2 compositions + 10 patterns
 
 | # | Page | Covers | Status |
 | --- | --- | --- | --- |
@@ -94,6 +94,16 @@ Order decided 2026-09-08: the visual foundations first, sound parked.
 ## Governance (4 of 4 written)
 
 ~~Token/spec lint~~ (`site/lint.py`, run by `build_all.sh`; now also checks status lines) · ~~Status lifecycle~~ · ~~Design-review step~~ · ~~Changelog~~ — all in `GOVERNANCE.md` and `CHANGELOG.md`. What remains is to **use** them: the first ten components in the reconciliation order (Button → HeaderNav → BottomTabBar → Card → ListItem → Amount → Timer → Tag → BottomSheet → SelectionCard) move to Reconciled as Figma is updated; token release 0.20.0 ships the accessibility fixes; CI runs the lint.
+
+---
+
+## Projects
+
+| Project | State | Landed in core |
+| --- | --- | --- |
+| `beauty-shift-lifecycle` — Shift Lifecycle, Beauty | Tiered · core gaps closed · pattern not yet drafted | MapMarker `area` · Stepper `tracker` · ListItem `quantity` · Amount `charge` · 4 icons (`tote` `package` `truck` `polygon`) · 4 pictograms (`bag` `pouch` `box` `rest-day`) · `briefs/beauty-shift-lifecycle-spot-check.md` |
+
+The Househelp **shift lifecycle** — attendance → login → job(s) → lunch → logout — has no pattern file, though it ships and is drawn in *Shift – Job Lifecycle DS* (`138:38552`). All ten existing patterns are job-, money- or safety-level. Whether to write the shared backbone first and add Beauty as variants, or write the Beauty pattern and backfill, is open (`projects/beauty-shift-lifecycle/SCOPE.md` Q1).
 
 ---
 

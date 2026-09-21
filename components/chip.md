@@ -40,8 +40,11 @@ Row: horizontal, 8 dp between chips, 16 dp side padding, scrolls with a 16 dp fa
 | `filter` | **exactly one**; first chip is *All* and is selected by default | on tap, filters the list below immediately | Job list by category, earnings by week, history by status |
 | `choice` | **zero or more** | on tap, toggles; the screen's Button commits | Days you work, services you offer, in a sheet or form |
 | `quick-reply` | none — fires once and the row disappears | sends the reply | Chat with customer/support: *On my way* · *5 min late* · *Reached* |
+| **`reason`** | **exactly one**, none selected to begin with | on tap, selects and commits; a second tap moves the selection, never clears it | Why a number or a state differs from expected — *client needed more · spilled/wasted · product ran out · client asked less* (`beauty-job-cycle` PRD § 6) |
 
 A `filter` row never has a "none selected" state. A `choice` row is not for exactly-one (that is Radio). `quick-reply` chips carry a `paper-plane-right` trailing icon so they look like they *do* something.
+
+**Why `reason` is a Chip and not a Radio.** The spec above says exactly-one is Radio, and for a form that holds. A reason picker is not a form: it appears *after* she has already done the thing, it offers three or four short answers, and it must not look like another question standing between her and finishing. A stacked radio list reads as a form to fill; a wrapped row of short answers reads as *pick the closest one*. It keeps Chip's exactly-one selection from `filter` but drops the *All*-selected-by-default rule — **there is no default reason, because guessing why something happened on her behalf is worse than asking.** Reasons wrap onto a second line rather than scrolling: a reason she cannot see is a reason she will not give.
 
 ---
 

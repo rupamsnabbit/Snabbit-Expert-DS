@@ -60,6 +60,14 @@ Colour is never the only signal: the stroke length, the digits and the sound all
 | `countdown` | time remaining | drains | Job alert (accept within), check in by, **job in progress (time left)**, login within, OTP resend |
 | `elapsed` | time since a moment, counts up | fills | **Overtime** (*Overtime 12:40*, after time left reaches 0), waiting at the door |
 | `deadline` | clock time (`6:45 am`) | none | Login by, job starts at — things she plans around rather than races |
+| **`buffer`** | time remaining **before** the timed thing starts | drains, but **always `calm`** | Setup window after check-in, before the service timer runs (`beauty-job-cycle` PRD § 4) |
+
+**`buffer` is the one mode that never escalates.** Every other countdown drains toward a cost — a job lost, a
+login missed. A buffer drains toward *work starting*, which is the thing she came for. Running it green → amber →
+red would teach her that setting her kit out is a race, which is the opposite of why the buffer exists. So
+`buffer` holds `calm` to zero, and the label above it names what is waiting, not what is ending: **Setting up** ·
+*Your service starts in 8:40*. At zero it does not alarm; it hands over to a `countdown` and the service timer
+begins. She may end the buffer early with an explicit action — it is a floor for her benefit, not a gate.
 
 `elapsed` uses `calm` only, unless it crosses a limit (overtime) → `attention`.
 

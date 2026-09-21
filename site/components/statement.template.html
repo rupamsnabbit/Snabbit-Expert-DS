@@ -1,0 +1,59 @@
+<meta charset="utf-8">
+<title>Snabbit Expert Statement</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>__BASECSS__
+.stg{display:flex;flex-direction:column;gap:8px}.stg .cap{font-family:var(--mono);font-size:12px;color:var(--text-2)}.stg .cap b{color:var(--text);font-weight:500}.row4{display:flex;gap:32px;flex-wrap:wrap;align-items:flex-start}
+
+.st{width:360px;border:1px solid #E5E7EB;border-radius:12px;background:#fff;overflow:hidden;font-family:var(--sans);color:#111827}
+.st .band{position:relative;background:#ECFDF5;padding:16px 16px 22px;display:flex;align-items:flex-start;gap:12px}
+.st .band .dc{width:40px;height:40px;border-radius:999px;background:#065F46;color:#fff;display:grid;place-items:center;font-weight:600;flex:none}
+.st .band .t{flex:1;font-size:18px;font-weight:600;color:#065F46;padding-top:8px}
+.st .band .a{text-align:right}.st .band .a b{display:block;font-size:24px;font-weight:600;color:#065F46;font-variant-numeric:tabular-nums}.st .band .a small{color:#6B7280;font-size:14px}
+.st .band:after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:8px;background:radial-gradient(circle at 8px 0,transparent 7px,#fff 8px) 0 0/16px 8px}
+.st .rows{padding:12px 16px 0}
+.st .r{display:flex;align-items:flex-start;gap:12px;min-height:48px;padding:10px 0}
+.st .r .ic{width:24px;height:24px;flex:none;border-radius:6px;background:#F3F4F6}
+.st .r .l{flex:1}.st .r .l small{display:block;color:#6B7280;font-size:14px}
+.st .r .v{font-variant-numeric:tabular-nums;font-weight:500;white-space:nowrap}.st .r .v.lk{color:#9CA3AF}
+.st .r .v.crt:after{content:" ›";color:#9CA3AF}
+.st .bk{margin:-4px 0 8px 36px;background:#F9FAFB;border-radius:12px;padding:8px 12px}
+.st .bk .r{min-height:36px;padding:6px 0;font-size:14px;color:#374151}.st .bk .r .v{color:#6B7280;font-weight:400}
+.st .cnt{display:inline-flex;align-items:center;gap:4px;background:#FEF2F2;border-radius:999px;padding:2px 10px;font-size:14px;margin-left:8px;color:#DC2626}
+.st hr{border:0;border-top:1px solid #E5E7EB;margin:8px 16px}
+.st .tot{display:flex;gap:12px;padding:12px 16px;font-weight:600;color:#065F46}.st .tot .l{flex:1}
+.st .sch{margin:8px 16px 16px;background:#F3F4F6;border-radius:12px;padding:12px}
+.st .sch .h{display:flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.2em;color:#6B7280;justify-content:center}.st .sch .h:before,.st .sch .h:after{content:"";flex:1;border-top:1px solid #E5E7EB}
+.st .sch .r{padding:12px 0 0}.st .dt{width:48px;height:48px;border-radius:8px;background:#111827;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;flex:none}.st .dt b{font-size:18px;line-height:20px}.st .dt small{font-size:10px;letter-spacing:.1em}
+.st .ft{background:#ECFDF5;color:#065F46;text-align:center;padding:12px;font-weight:500}
+
+</style>__NAVCSS__
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · Statement</small></div></div>
+    __SITENAV__
+    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#uses">Two shipped uses, one third</a><a href="#figma">Figma changes</a></nav>
+    <div class="rail-foot">Rendered from tokens.json · spec in components/statement.md</div>
+  </aside>
+  <main class="main">
+    <header id="overview">
+      <div class="eyebrow">Core component · <b>In app</b> 2026-09-22</div><h1>Statement</h1>
+      <p class="lede">The money card. A tinted band with the headline amount, a scalloped edge, the lines that make it up, a total, and where the money goes. Reuse this before drawing any new list of amounts.</p>
+      <div class="meta"><span class="chip status">Proposed</span><span class="chip">In app 2026-09-22</span><span class="chip">Tier 1 · Core</span><span class="chip"><code>SnabbitStatement</code></span><span class="chip">6 slots</span><span class="chip">Replaces the payout re-shape</span></div>
+    </header>
+
+    <section id="uses"><header><div class="eyebrow">As the app has it</div><h2>Month · Day · and a refill order</h2><p>Same component, different rows. The third use — a Beauty refill order as <i>band · products · dated tracker rows</i> — is why this is a component and not a payout composition.</p></header>
+    <div class="stage"><div class="row4"><div class="stg"><div class="st"><div class="band"><span class="dc">₹</span><span class="t">Total Earnings</span><div class="a"><b>₹11,800</b><small>+ 🔒 ₹8,500</small></div></div>
+<div class="rows"><div class="r"><span class=ic></span><div class="l">Cash collected</div><div class="v ">− ₹1,000</div></div><div class="r"><span class=ic></span><div class="l">Early payout</div><div class="v ">− ₹3,000</div></div><div class="r"><span class=ic></span><div class="l">Loan EMI</div><div class="v ">− ₹1,200</div></div><div class="r"><span class=ic></span><div class="l">Training and uniform fees<small>Deducted EMI · 1 of 4</small></div><div class="v ">− ₹500</div></div><div class="r"><span class=ic></span><div class="l">Joining bonus</div><div class="v lk">🔒 ₹8,500</div></div></div>
+<hr><div class="tot"><span class="ic" style="width:24px;height:24px;border-radius:6px;background:#D1FAE5"></span><span class="l">Remaining payout</span><span>₹800</span></div>
+<div class="sch"><div class="h">PAYOUT SCHEDULE</div><div class="r" style="display:flex;gap:12px;align-items:center"><div class="dt"><b>5</b><small>APR</small></div><div class="l" style="flex:1">Monthly payout</div><div class="v">₹11,800</div></div></div></div><div class="cap"><b>month</b> — band with a locked addition · deductions · total after the one divider · schedule with a date tile</div></div><div class="stg"><div class="st"><div class="band"><span class="dc">₹</span><span class="t">Total Daily Earnings</span><div class="a"><b>₹7,680</b></div></div>
+<div class="rows"><div class="r"><div class="l">Min G</div><div class="v ">₹2,000</div></div><div class="r"><div class="l">Last hour Min G loss</div><div class="v ">− ₹21</div></div><div class="r"><div class="l">Base pay</div><div class="v ">₹4,000</div></div>
+<div class="bk"><div class="r"><div class="l">Work</div><div class="v ">₹3,430</div></div><div class="r"><div class="l">Check in</div><div class="v ">₹250</div></div><div class="r"><div class="l">Distance bonus</div><div class="v ">₹10</div></div><div class="r"><div class="l">Summer bonus</div><div class="v ">₹1,345</div></div></div>
+<div class="r"><div class="l">OT</div><div class="v ">₹200</div></div><div class="r"><div class="l">Adjustments</div><div class="v ">₹800</div></div><div class="r"><div class="l">Red cards<span class="cnt">▮ 2</span></div><div class="v crt">− ₹100</div></div><div class="r"><div class="l">Red cards waiver</div><div class="v crt">₹50</div></div></div>
+<div class="ft">Cash collected : ₹150</div></div><div class="cap"><b>day</b> — a row with a nested breakup · rows with an asset count and a caret · footer band</div></div></div></div>
+    <ul class="rules"><li><b>True minus signs</b>, and nothing red for being a deduction — a deduction is a fact, a penalty is a status.</li><li><b>One Divider</b>, before the total. Rows are separated by space.</li><li><b>Recorded, not applied:</b> the band's green is a status colour used as a heading colour; the total appears twice; <i>Summer Bonus ☀️</i> is an emoji as an icon. Kept as shipped — the design lead decides.</li></ul></section>
+    <section id="figma"><header><div class="eyebrow">Reconciliation</div><h2>What changes in Figma</h2><p>No component; both cards are frames. Create <b>Statement</b> on Components page <code>1:3886</code> with slots <code>Band</code>, <code>Rows</code> (a <code>StatementRow</code> sub-component: Amount state Positive / Negative / Locked; booleans Description, AssetCount, Caret, Breakup), <code>Total</code>, <code>Schedule</code> with a <code>DateTile</code>, <code>Footer</code>. Bind the band to <code>bgSuccess</code> / <code>textSuccessStrong</code>.</p></header></section>
+  </main>
+</div>
+<script id="tokens-json" type="application/json">__TOKENS__</script>

@@ -1,0 +1,38 @@
+<meta charset="utf-8">
+<title>Snabbit Expert HeroCard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>__BASECSS__
+.stg{display:flex;flex-direction:column;gap:8px}.stg .cap{font-family:var(--mono);font-size:12px;color:var(--text-2)}.stg .cap b{color:var(--text);font-weight:500}.row4{display:flex;gap:32px;flex-wrap:wrap;align-items:flex-start}
+
+.hc{width:360px;border-radius:16px;overflow:hidden;font-family:var(--sans);color:#111827;background:#fff;border:1px solid #E5E7EB}
+.hc .top{position:relative;height:140px;padding:24px;color:#fff;overflow:hidden}
+.hc .top .lb{font-size:16px;font-weight:500;opacity:.95}.hc .top .fig{font-size:44px;font-weight:600;line-height:1;margin-top:6px;display:flex;align-items:center;gap:8px}.hc .top .fig small{font-size:22px}
+.hc .top .wm{position:absolute;right:16px;top:20px;font-size:84px;opacity:.6;line-height:1}
+.hc .top:before,.hc .top:after{content:"";position:absolute;border:1px solid rgba(255,255,255,.12);border-radius:999px;right:-20px;top:-40px;width:200px;height:200px}.hc .top:after{width:280px;height:280px;right:-60px;top:-80px}
+.hc.streak .top{background:linear-gradient(135deg,#F4368D,#F70F79)}.hc.jobs .top{background:linear-gradient(135deg,#34D399,#059669)}.hc.login .top{background:linear-gradient(135deg,#60A5FA,#2563EB)}.hc.reward .top{background:linear-gradient(135deg,#1F2937,#111827)}
+.hc .bot{padding:16px;color:#374151;font-size:16px}
+
+</style>__NAVCSS__
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · HeroCard</small></div></div>
+    __SITENAV__
+    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#tones">Tones</a><a href="#figma">Figma changes</a></nav>
+    <div class="rail-foot">Rendered from tokens.json · spec in components/hero-card.md</div>
+  </aside>
+  <main class="main">
+    <header id="overview">
+      <div class="eyebrow">Core component · <b>In app</b> 2026-09-22</div><h1>HeroCard</h1>
+      <p class="lede">A card in two parts: a filled top with one big figure and its name, a white bottom with the period and, optionally, the week. How every tracker screen opens.</p>
+      <div class="meta"><span class="chip status">Proposed</span><span class="chip">In app 2026-09-22</span><span class="chip">Tier 1 · Core</span><span class="chip"><code>SnabbitHeroCard</code></span><span class="chip">4 tones × 3 states</span><span class="chip">Supersedes Card · hero</span></div>
+    </header>
+
+    <section id="tones"><header><div class="eyebrow">As shipped</div><h2>streak · jobs · login · reward</h2><p>Label first, figure second, the same glyph small and as a watermark. The three tracker hues mean only <i>which tracker</i> — a P6 departure, <b>recorded and kept</b> because reusing them costs nothing.</p></header>
+    <div class="stage"><div class="row4"><div class="stg"><div class="hc streak"><div class="top"><div class="lb">Your current streak</div><div class="fig">3<small>🔥</small></div><div class="wm">🔥</div></div><div class="bot">Mar 1 – Mar 7 &nbsp;·&nbsp; <span style=color:#9CA3AF>+ WeekStrip band</span></div></div><div class="cap"><b>streak</b></div></div><div class="stg"><div class="hc jobs"><div class="top"><div class="lb">Perfect jobs done</div><div class="fig">18<small>👌</small></div><div class="wm">👌</div></div><div class="bot">Mar 7 – Mar 13</div></div><div class="cap"><b>jobs</b> — bottom is the period alone</div></div><div class="stg"><div class="hc login"><div class="top"><div class="lb">Early logins done</div><div class="fig">6<small>➜</small></div><div class="wm">➜</div></div><div class="bot">Mar 1 – Mar 7 &nbsp;·&nbsp; <span style=color:#9CA3AF>+ WeekStrip dots</span></div></div><div class="cap"><b>login</b></div></div></div></div>
+    <ul class="rules"><li><b>Zero is a figure</b>, not an empty state — <i>Your current streak · 0</i> is true.</li><li><b>Label on pink and green does not pass AA</b> at BodyLg (4.0 / 3.8) — recorded; the fix is Heading3 or a darker stop under the label.</li></ul></section>
+    <section id="figma"><header><div class="eyebrow">Reconciliation</div><h2>What changes in Figma</h2><p>No component. Create <b>HeroCard</b> on Components page <code>1:3886</code> with <code>Tone</code> (Streak / Jobs / Login / Reward), boolean <code>WeekStrip</code>, figure bound to <code>Stat L</code>. Delete the per-screen hero frames once instances are placed.</p></header></section>
+  </main>
+</div>
+<script id="tokens-json" type="application/json">__TOKENS__</script>

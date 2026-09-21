@@ -25,7 +25,7 @@
 
     <section id="variants">
       <header><div class="eyebrow">Emphasis × meaning</div><h2>Variants × tones</h2>
-        <p>A <em>variant</em> is how much the action matters on this screen. A <em>tone</em> is what kind of action it is. Greyed cells are combinations that are not allowed — nothing neutral is ever the one next action, and danger is filled only inside a confirmation sheet.</p></header>
+        <p>A <em>variant</em> is how much the action matters on this screen. A <em>tone</em> is what kind of action it is. Greyed cells are combinations that are not allowed — nothing neutral is ever the one next action, and danger is filled only inside a confirmation sheet, and <b>accept</b> is filled only where a decline sits beside it.</p></header>
       <div class="stage" id="vt"></div>
       <ul class="rules">
         <li><b>Success is not a variant.</b> Green is a status colour; a green button makes the action look like a result (P6).</li>
@@ -100,6 +100,7 @@ const svg=(n)=>`<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true
 const C={
  'primary|brand':  {fill:sem.interactiveDefault, ink:sem.textInverse, fillP:sem.interactivePressed},
  'primary|danger': {fill:sem.borderError, ink:sem.textInverse, fillP:sem.textError, note:'confirmation sheet only'},
+ 'primary|accept': {fill:sem.interactiveAccept, ink:sem.textInverse, fillP:sem.interactiveAcceptPressed, note:'only with a decline beside it'},
  'secondary|brand':{fill:sem.bgPrimary, ink:sem.textBrand, bw:1.5, bc:sem.borderBrand, fillP:sem.bgBrandSubtle},
  'secondary|neutral':{fill:sem.bgPrimary, ink:sem.textBody, bw:1.5, bc:sem.borderStrong, fillP:sem.bgSecondary},
  'secondary|danger':{fill:sem.bgPrimary, ink:sem.textError, bw:1.5, bc:sem.borderError, fillP:sem.bgError},
@@ -123,8 +124,8 @@ function btn(o){ // {v,t,size,label,icon,trail,state,full,cls}
 }
 
 // ---- variants × tones matrix
-const V=['primary','secondary','tertiary','ghost'], TN=['brand','neutral','danger'];
-const LBL={brand:'Accept job',neutral:'View details',danger:'Decline'}, IC={brand:'check',neutral:null,danger:'x'};
+const V=['primary','secondary','tertiary','ghost'], TN=['brand','neutral','danger','accept'];
+const LBL={brand:'Save what I used',neutral:'View details',danger:'Decline',accept:'Accept job'}, IC={brand:'check',neutral:null,danger:'x',accept:'check'};
 let m=`<div class="matrix" style="grid-template-columns:120px repeat(3,1fr)"><div></div>${TN.map(t=>`<div class="h">${t}</div>`).join('')}`;
 V.forEach(v=>{m+=`<div class="r">${v}</div>`+TN.map(t=>{const c=C[v+'|'+t];return `<div>${c?btn({v,t,size:'M',label:LBL[t],icon:IC[t]}):'<span class="na" title="not allowed"></span>'}${c&&c.note?`<div style="font-size:11px;color:#9CA3AF;margin-top:6px">${c.note}</div>`:''}</div>`;}).join('');});
 $('#vt').innerHTML=m+'</div>';
@@ -164,12 +165,14 @@ const jb=`<div class="hd">New job · 1.2 km</div><div class="tx">2 hours · Clea
 $('#phones').innerHTML=[
  phone('Job alert',jb,{html:btn({v:'ghost',t:'danger',size:'M',label:'Not now',icon:'x'})+btn({v:'primary',t:'brand',size:'L',icon:'check',full:1})},true,'One primary, L, full width, at the bottom. Decline is a quiet ghost <em>above</em> it, not beside it. (P2, P3)'),
  phone('Job alert',jb,{row:1,html:btn({v:'primary',t:'danger',size:'L',label:'Decline',icon:'x',full:1})+btn({v:'primary',t:'brand',size:'L',icon:'check',full:1})},false,'Two filled primaries side by side. A thumb on a moving e-bike hits the wrong one. Danger is only filled inside a confirmation sheet.'),
+ phone('Job alert',jb,{html:btn({v:'primary',t:'accept',size:'L',label:'Accept job',icon:'check',full:1})+btn({v:'secondary',t:'danger',size:'L',label:'Deny',icon:'x',full:1})},true,'<b>accept</b> is filled green only because the decline is right there. Green against red is <em>take</em> against <em>decline</em>, read before either label is. (P6, P3)'),
+ phone('Check in',`<div class="hd">Radhika S</div><div class="tx">HAL Old Airport Rd · 3.2 km</div>`,{html:btn({v:'primary',t:'accept',size:'L',label:'Check in',icon:'check',full:1})},false,'A green button standing alone. With nothing to contrast against, green stops meaning <em>take</em> and starts meaning <em>done</em> — this is <b>primary · brand</b>, pink.'),
  phone('Job done',`<div class="hd">Job complete</div><div class="tx">₹450 added to today’s earnings</div>`,{html:btn({v:'primary',t:'brand',size:'L',label:'Mark done',icon:'check',full:1})},true,'Verb label that names the outcome. Not <em>OK</em>, not <em>Submit</em>.'),
  phone('Job done',`<div class="hd">Job complete</div><div class="tx">₹450 added to today’s earnings</div>`,{html:`<button class="sbtn full" style="--h:56px;--px:24px;--r:12px;--fs:16px;--fw:600;--ic:24px;--gap:8px;--fill:${P.green['600']};--ink:#fff;--fill-p:${P.green['700']}">${svg('check')}<span class="lb">OK</span></button>`},false,'A green button says <em>result</em>, not <em>action</em> — and <em>OK</em> says nothing. Success is a status colour. (P6)')
 ].join('');
 
 // ---- tokens table
-const rows=[['Primary · brand fill','interactiveDefault'],['Primary · brand pressed','interactivePressed'],['Primary label','textInverse'],['Primary · danger fill','borderError'],['Primary · danger pressed','textError'],['Secondary · brand border','borderBrand'],['Secondary · neutral border','borderStrong'],['Secondary · danger border','borderError'],['Secondary fill','bgPrimary'],['Tertiary · brand fill','bgBrandSubtle'],['Tertiary · neutral fill','bgTertiary'],['Brand label / icon','textBrand'],['Neutral label / icon','textBody'],['Danger label / icon','textError'],['Pressed wash · brand','bgBrandSubtle'],['Pressed wash · neutral','bgSecondary'],['Pressed wash · danger','bgError'],['Disabled fill','bgTertiary'],['Disabled label','textTertiary'],['Focus ring','borderFocus']];
+const rows=[['Primary · brand fill','interactiveDefault'],['Primary · brand pressed','interactivePressed'],['Primary label','textInverse'],['Primary · danger fill','borderError'],['Primary · danger pressed','textError'],['Primary · accept fill','interactiveAccept'],['Primary · accept pressed','interactiveAcceptPressed'],['Secondary · brand border','borderBrand'],['Secondary · neutral border','borderStrong'],['Secondary · danger border','borderError'],['Secondary fill','bgPrimary'],['Tertiary · brand fill','bgBrandSubtle'],['Tertiary · neutral fill','bgTertiary'],['Brand label / icon','textBrand'],['Neutral label / icon','textBody'],['Danger label / icon','textError'],['Pressed wash · brand','bgBrandSubtle'],['Pressed wash · neutral','bgSecondary'],['Pressed wash · danger','bgError'],['Disabled fill','bgTertiary'],['Disabled label','textTertiary'],['Focus ring','borderFocus']];
 $('#tokens-tbl').innerHTML=rows.map(([w,t])=>`<tr><td>${w}</td><td class="tk">${t}</td><td class="tk"><span class="sw" style="background:${sem[t]}"></span>${sem[t]}</td></tr>`).join('')
  +`<tr><td>Tertiary · brand pressed</td><td class="tk">bgBrandSubtlePressed <span style="color:#B45309;font-family:var(--sans);font-size:11px;font-weight:600">proposed</span></td><td class="tk"><span class="sw" style="background:${prop.bgBrandSubtlePressed}"></span>${prop.bgBrandSubtlePressed} (pink.100)</td></tr>`
  +`<tr><td>Tertiary · neutral pressed</td><td class="tk">bgTertiaryPressed <span style="color:#B45309;font-family:var(--sans);font-size:11px;font-weight:600">proposed</span></td><td class="tk"><span class="sw" style="background:${prop.bgTertiaryPressed}"></span>${prop.bgTertiaryPressed} (gray.200)</td></tr>`;

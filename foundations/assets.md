@@ -54,6 +54,17 @@ Rule: the object says *what*, the dot says *status*. A pictogram without a dot i
 
 *Cashless* needs no new asset: the existing `cash-in-hand` object takes a **red ✗ dot** and reads as *you pay nothing*. This is the register's own rule working as intended — one object, both outcomes, status only in the dot.
 
+**Kit and refill — 4 new pictograms (2026-09-12, `projects/beauty-shift-lifecycle`).** Illustration layer, 40 · 64 dp, 96 dp for the two hero uses; SVG.
+
+| Asset | Meaning | Notes |
+| --- | --- | --- |
+| `asset/picto/bag` | Her kit bag — the whole thing she carries | Hero (96 dp) on the bag-check intro and the morning bag-status sheet. Takes a **green ✓ dot** when last night's check was clean and a **red ✗ dot** when something was flagged — one object, both outcomes, exactly as the register's rule intends |
+| `asset/picto/pouch` | One service pouch inside the bag | 40 dp beside pouch rows; the Phosphor `tote` icon carries the same meaning at icon scale, and the two must not both appear in one row |
+| `asset/picto/box` | A refill order — the parcel that arrives on her week off | Home refill card and the ledger; ✓ dot once received |
+| `asset/picto/rest-day` | Her week off | The attendance card. Warm and restful, never a crossed-out calendar — a mandatory day off is a good thing, not an absence (P6). Distinct from `calendar-✗`, which means *not available* |
+
+**Product images are not design-system assets.** The 40–50 items in her kit (facial kits, wax strips, rose water) are **catalogue content**, owned by the Category/Catalog team alongside the pouch master list, and delivered as product images with the item data. They are never drawn as pictograms and never registered here — a register with fifty consumables in it stops being a register. The four assets above are the *structure* (bag, pouch, order, rest day); the contents are data.
+
 ### 3. Characters — `asset/character/*`
 
 Semi-realistic flat vector, adult proportions, calm confident expressions, brown skin tones varied across scenes. Uniforms identify the role and are exact:

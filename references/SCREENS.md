@@ -6,9 +6,38 @@ Two Figma files hold the **real screens** of the Expert app. They are the eviden
 
 | File | Key | Read these pages only | Skip |
 | --- | --- | --- | --- |
+| **The live app** (Android screenshots, added 2026-09-22) | — | `references/shipped-app-2026-09-22/` — Tier, Base Pay sheet, Coins, three Trackers, Earnings statement, Rate card, each mapped region by region to the component it *is* | — · **Outranks every Figma file as evidence**: it is what tech has built. Read it first |
 | **Expert App 2.0** (master) | `Q0YzzdKk21ayyKHjvCGPzM` | `FINAL ONBOARDING` (14537:42610) · `📝 Onboarding (ER - training)` (0:1) · `📍 Training` (110:3666) · `🏁 Go live` (1067:4218) · `🍔 Lunch Selection` (28714:63473) · `WIP - Payout I` (3406:12122) | Everything else (Archive, V2, UAT, Page 30/33, Design System page — the DS lives in `QjXqQZVAqLoRmH1j7foH1I`) |
 | **Shift – Job Lifecycle DS** | `WEUPV9q19eAqRbkZSBj6OY` | `Job Lifecycle` (0:1) · `Shift Lifecycle` (28:18373) | UAT, BRANDING |
+| **Beauty Expert Master** (added 2026-09-16) | `MBl1qmM0jgAJn49V8oBxLO` | `Job lifecycle` (34:41693): section **Final Designs DS Compatible** `152:78592` — 62 screens · `Shift lifecycle` (1:9251) · `Onboarding` (0:1) | The second, **empty** `Final Designs DS Compatible` section `152:93447` (0 children) · **Supersedes `WEUPV9q19eAqRbkZSBj6OY` as the job-lifecycle build target.** Its job lifecycle is currently **Cook** content, not Beauty — see the note below |
 | **Self-Serve ER/AR** (onboarding, latest — added 2026-09-08) | `HqmnjmxhZvyvZxmIaVMCrB` | `Final` (0:1): sections *TC Less house help* · *TC house help* · *TC Less house cook* · *Bank/UPI* · *Post Onboarding* | — · **Supersedes** `FINAL ONBOARDING` in the master file for onboarding evidence; the master file's onboarding pages are now older iterations |
+
+## Beauty Expert Master — first read, 2026-09-16
+
+The file name says Beauty. **The `Job lifecycle` page does not contain a single Beauty string.** Its 62 screens are
+the **Cook** job lifecycle: *Customer preferences · Spice level · Oil level · View Recipes · Your cooking space ·
+Add photos of dishes you cooked*, and the home cards read *COOOOKS* and *Dosa*. So this file is the **master shell**
+— the category-agnostic job lifecycle with Cook filled in — and Beauty content has not been drawn into it yet.
+
+That makes it the right structure to inherit and the wrong content to copy. Read it for anatomy, order and states;
+take none of its category strings.
+
+**It is built on this repository's token values.** Sampled fills include `#F70F79` (`--color-brand`), `#FBC9DF`
+(`--color-brand-200`, the disabled primary), `#111827` (`--color-text-primary`), and emerald/red tint pairs for the
+in-progress gradient. Palette drift is not the problem here; **semantic drift is** — see the colour row below.
+
+| What the file does | What the system currently says | Status |
+| --- | --- | --- |
+| **Accept Job** is a **green** button; every other primary (*Check In*, *Complete Job*, *Okay*) is brand pink | `button.md`: primary is brand | **open** — is green-for-accept a deliberate semantic, or drift? |
+| Timer digits are green throughout, red when low (`03:23`) | `timer.md` escalation | consistent |
+| **Deny** is a white button with red label, directly under Accept | P3: decline is adjacent to accept | consistent |
+| Job In Progress uses a **ring-pill** timer over a green gradient header | `timer.md` `L` ring-pill | consistent |
+| **No map canvas anywhere in the job lifecycle.** Check-in gives Map / Call / Chat / Street view as four action tiles | — | the job cycle is **not** map-first; only Home is |
+| *What tasks did you do?* is a bottom sheet whose **body is an empty magenta dashed placeholder** | — | the slot is reserved and undesigned |
+| Block cap is **5** (*5/5 People blocked*, *Unblock someone to block Radhika S*) | — | the number is 5, not 3 |
+
+**Copy that cannot ship as-is** (same list as the Househelp read, confirmed present here): emoji as icons —
+*📞 Call SOS Team*, *😊 I am safe, end SOS*, *😰 I am in danger*, *Summer Bonus ☀️*; and *No storage available.*
 
 ## Telling shipped from proposed
 

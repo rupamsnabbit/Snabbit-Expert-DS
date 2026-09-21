@@ -35,6 +35,13 @@ Cards sit in a horizontal carousel (≤ 5, 12 dp gaps, 16 dp margins, first card
 
 A **watched** card shows a `check-circle` fill 20 dp `iconSuccess` top-right; watching is remembered per account.
 
+### `story` — the shipped circle
+
+**In app** 2026-09-22 — *How to earn Gold coins*, *Helpful tips and guide*: a row of **circular** 72 dp thumbnails
+with a 2 dp `borderBrand` ring, title beneath or none, in a horizontal scroll under a heading or inside an Accordion.
+The spec's `card` (144 × 180) is the richer form; `story` is what ships, kept as a second size because replacing it
+buys nothing. A watched circle drops the ring to `borderDefault`. Same player, same 8-second rule.
+
 ### `player`
 
 ```

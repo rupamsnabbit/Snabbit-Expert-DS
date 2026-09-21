@@ -1,0 +1,36 @@
+<meta charset="utf-8">
+<title>Snabbit Expert WeekStrip</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>__BASECSS__
+.stg{display:flex;flex-direction:column;gap:8px}.stg .cap{font-family:var(--mono);font-size:12px;color:var(--text-2)}.stg .cap b{color:var(--text);font-weight:500}.row4{display:flex;gap:32px;flex-wrap:wrap;align-items:flex-start}
+
+.ws{width:328px;font-family:var(--sans);color:#111827;display:grid;grid-template-columns:repeat(7,1fr);gap:4px;row-gap:6px;text-align:center}
+.ws .mk{height:16px;font-size:12px;color:#F4368D}.ws .wd{font-size:12px;font-weight:500;color:#6B7280}.ws .wd.su{color:#DC2626}
+.ws .band{grid-column:1/-1;display:grid;grid-template-columns:repeat(7,1fr);background:#FEF1F7;border-radius:999px;height:44px;align-items:center;font-size:16px}
+.ws .band.gap{background:none;gap:4px}.ws .band.gap span{background:#FEF1F7;height:44px;line-height:44px}.ws .band.gap span:first-child{border-radius:999px 0 0 999px}.ws .band.gap span.e{border-radius:0 999px 999px 0}.ws .band.gap span.x{background:none;color:#9CA3AF}
+.ws .dot{width:44px;height:44px;border-radius:999px;margin:0 auto;display:grid;place-items:center;font-size:16px;background:#BFDBFE}.ws .dot.miss{background:#F3F4F6;color:#374151}.ws .dot.today{box-shadow:inset 0 0 0 1.5px #F70F79}
+
+</style>__NAVCSS__
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · WeekStrip</small></div></div>
+    __SITENAV__
+    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#kinds">Kinds</a><a href="#figma">Figma changes</a></nav>
+    <div class="rail-foot">Rendered from tokens.json · spec in components/week-strip.md</div>
+  </aside>
+  <main class="main">
+    <header id="overview">
+      <div class="eyebrow">Core component · <b>In app</b> 2026-09-22</div><h1>WeekStrip</h1>
+      <p class="lede">Seven days, Monday first, read as a record: which days counted. Not the DatePicker strip — that is for choosing a day; this is for seeing a week she has already lived.</p>
+      <div class="meta"><span class="chip status">Proposed</span><span class="chip">In app 2026-09-22</span><span class="chip">Tier 1 · Core</span><span class="chip"><code>SnabbitWeekStrip</code></span><span class="chip">2 kinds · markers</span><span class="chip">Read-only</span></div>
+    </header>
+
+    <section id="kinds"><header><div class="eyebrow">Two messages</div><h2>band · dots</h2><p>A <b>band</b> says <i>these days ran together</i> — one unbroken pill. <b>Dots</b> say <i>each day did or did not count</i>. A band that breaks is two pills with a gap, and the gap is the most important pixel on the card.</p></header>
+    <div class="stage"><div class="row4"><div class="stg"><div class="ws"><div class="mk">●</div><div class="mk"></div><div class="mk"></div><div class="mk"></div><div class="mk">●</div><div class="mk">●</div><div class="mk">●</div><div class="wd ">Mo</div><div class="wd ">Tu</div><div class="wd ">We</div><div class="wd ">Th</div><div class="wd ">Fr</div><div class="wd ">Sa</div><div class="wd su">Su</div><div class="band"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span></div></div><div class="cap"><b>band</b> + coin markers — the shipped Streak</div></div><div class="stg"><div class="ws"><div class="wd ">Mo</div><div class="wd ">Tu</div><div class="wd ">We</div><div class="wd ">Th</div><div class="wd ">Fr</div><div class="wd ">Sa</div><div class="wd su">Su</div><div class="band gap"><span>1</span><span>2</span><span class="e">3</span><span class="x">4</span><span style="border-radius:999px 0 0 999px">5</span><span>6</span><span class="e">7</span></div></div><div class="cap"><b>band</b>, broken — Thursday missed</div></div><div class="stg"><div class="ws"><div class="wd ">Mo</div><div class="wd ">Tu</div><div class="wd ">We</div><div class="wd ">Th</div><div class="wd ">Fr</div><div class="wd ">Sa</div><div class="wd su">Su</div><div class="dot ">7</div><div class="dot ">8</div><div class="dot ">9</div><div class="dot miss">10</div><div class="dot ">11</div><div class="dot ">12</div><div class="dot ">13</div></div><div class="cap"><b>dots</b> — the shipped Early logins; the 10th missed</div></div></div></div>
+    <ul class="rules"><li><b>Seven fixed columns</b> — markers, weekdays and days align; never gap alone.</li><li><b>Sunday in red</b> is shipped and recorded as a departure — <code>date-picker.md</code> already ruled Sundays are <code>textSecondary</code>. Kept until the design lead decides.</li><li><b>Spoken as a sentence</b>: <i>Early login on six days; missed Thursday the 10th.</i></li></ul></section>
+    <section id="figma"><header><div class="eyebrow">Reconciliation</div><h2>What changes in Figma</h2><p>No component. Create <b>WeekStrip</b> on Components page <code>1:3886</code> with <code>Kind</code> (Band / Dots), boolean <code>Markers</code>, and a <code>Day</code> sub-component with <code>State</code> (Counted / Missed / Today / Future). Bind fills to <code>bgBrandSubtle</code>, <code>bgInfoSubtle</code>, <code>bgTertiary</code>. Set <i>Su</i> to <code>textSecondary</code> on the component.</p></header></section>
+  </main>
+</div>
+<script id="tokens-json" type="application/json">__TOKENS__</script>

@@ -41,7 +41,10 @@ Padding 16 dp all round; internal gap 12 dp; between cards 12 dp; screen margin 
 | `tappable` | whole card opens something | trailing `caret-right` in the header, or the body's own chevron row; pressed wash | Job card → job detail; navigation cards |
 | `expandable` | header toggles the body | trailing `caret-down` / `caret-up` IconButton XS ghost, rotates 180° in 200 ms | Earnings breakdown (*You will earn ₹150 ▾*) |
 | `empty` | whole card | dashed `borderStrong` 1.5 dp, `plus-circle` icon + one line, centred | *Add bank account*, *Add a document* |
+| `hero` | → **HeroCard** (own spec, 2026-09-22) | | the filled two-part card that opens every tracker screen |
 | `selectable` | → **SelectionCard** (own spec) | | Options with description/price/image |
+
+**`hero` and colour.** The shipped heroes are filled pink, green and blue by screen (streak · perfect jobs · early logins). That is three hues meaning only *different*, which P6 reserves for status — recorded in `references/shipped-app-2026-09-22/` as a departure. The spec's `hero` is `bgPrimary` with the figure carrying the weight; the shipped fills stay until the design lead decides, because reusing them costs tech nothing and changing them costs a sprint.
 
 A `tappable` card never also contains Buttons; if it needs an action it is a `static` card with a footer. One tap target per card, or many small ones — never both (P3).
 
