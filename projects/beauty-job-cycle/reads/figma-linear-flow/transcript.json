@@ -1,0 +1,1599 @@
+[
+ {
+  "file": "/Users/rupambanik/Downloads/Snabbit-Expert-DS/projects/beauty-job-cycle/reads/figma-linear-flow/f00.png",
+  "screen_title": "New Job",
+  "kind": "page",
+  "regions": [
+   {
+    "region": "Status bar",
+    "verbatim_text": "9:30",
+    "visual": "Light grey-white background. Time at left; wifi, cellular signal and battery glyphs at right."
+   },
+   {
+    "region": "Top-right utility buttons",
+    "verbatim_text": "Help | SOS",
+    "visual": "Two circular white buttons side by side at top right. Left: pink headset icon, with a pill label below reading 'Help' (pink text on light pink, pink border). Right: red siren/alarm-light icon, with a red pill label below reading 'SOS' (white text on red)."
+   },
+   {
+    "region": "Screen header",
+    "verbatim_text": "New Job",
+    "visual": "Centred bold dark heading with a black spray-bottle (cleaning sprayer) icon to its left."
+   },
+   {
+    "region": "Earnings card: headline",
+    "verbatim_text": "You Will Earn | \u20b9150",
+    "visual": "White rounded card. 'You Will Earn' in dark grey, medium weight, centred. '\u20b9150' very large, extra-bold, near-black, centred. Beneath it a thin grey horizontal divider with a small upward-pointing notch or caret at its centre."
+   },
+   {
+    "region": "Earnings card: line items",
+    "verbatim_text": "Fruit facial (1 hour) \u20b9120 | Check In by 7:45 PM \u20b95 | Summer Bonus \u2600\ufe0f (1 hour) \u20b920 | OT (15 min) \u20b940",
+    "visual": "Four rows: label left in grey regular weight, amount right-aligned in dark medium weight. Row 1 'Fruit facial (1 hour)' \u20b9120. Row 2 'Check In by 7:45 PM' \u20b95 is highlighted with a full-width light-blue band and a white diagonal double-stripe shimmer just right of 'PM'; '7:45 PM' is in blue. Row 3 'Summer Bonus' has a yellow sun emoji between 'Bonus' and '(1 hour)'. Row 4 'OT (15 min)' \u20b940. Dotted grey dividers between rows 3 and 4 (and faint ones between the others). The line items add up to \u20b9185 (120+5+20+40), but the headline total says \u20b9150."
+   },
+   {
+    "region": "Earnings card: items row",
+    "verbatim_text": "Items required for this job",
+    "visual": "Bottom row of the card with a pale-pink gradient background. Pink filled shopping-bag icon on the left, grey text, grey right chevron on the far right. No items are listed; it looks like a link to another screen."
+   },
+   {
+    "region": "Bottom action area: timer",
+    "verbatim_text": "ACCEPT IN | 1:23",
+    "visual": "White background panel. 'ACCEPT IN' in small dark-grey caps, centred. '1:23' large, bold, green, centred."
+   },
+   {
+    "region": "Bottom action area: primary button",
+    "verbatim_text": "Accept Job",
+    "visual": "Full-width rounded green button, white label. The button is split in two: lighter green from the left to about 75% of its width, and a darker green segment on the right 25%, which reads as a countdown or progress fill."
+   },
+   {
+    "region": "Android navigation bar",
+    "verbatim_text": "",
+    "visual": "Square (recents), circle (home) and triangle (back) glyphs in grey."
+   }
+  ],
+  "primary_action": "Accept Job (green full-width button), with a 1:23 green countdown above it",
+  "other_actions": "Help button; SOS button; 'Items required for this job' row with chevron (tappable)",
+  "services_and_addons": "One service shown: 'Fruit facial (1 hour)' \u20b9120. Other earnings lines: 'Check In by 7:45 PM' \u20b95 (highlighted incentive), 'Summer Bonus \u2600\ufe0f (1 hour)' \u20b920, 'OT (15 min)' \u20b940. 'OT (15 min)' is the only line suggesting extra time, but nothing labels it as added after booking: no add-on, extension or 'added' wording. Total \u20b9150 does not equal the sum of the lines (\u20b9185). No products are listed on this screen, only a collapsed 'Items required for this job' row.",
+  "what_changed_from_previous_frame": "First frame in the row, so there is no previous frame."
+ },
+ {
+  "file": "/Users/rupambanik/Downloads/Snabbit-Expert-DS/projects/beauty-job-cycle/reads/figma-linear-flow/f01.png",
+  "screen_title": "New Job",
+  "kind": "page",
+  "regions": [
+   {
+    "region": "Status bar",
+    "verbatim_text": "9:30",
+    "visual": "Same as f00: time left; wifi, signal, battery right."
+   },
+   {
+    "region": "Top-right utility buttons",
+    "verbatim_text": "Help | SOS",
+    "visual": "Same as f00: pink headset 'Help' and red siren 'SOS' circular buttons with pill labels."
+   },
+   {
+    "region": "Screen header",
+    "verbatim_text": "New Job",
+    "visual": "Centred bold heading. The icon on its left is now a black filled circle with a white check mark (f00 had a spray bottle)."
+   },
+   {
+    "region": "Earnings card: headline",
+    "verbatim_text": "You Will Earn | \u20b9150",
+    "visual": "Same as f00: centred label, huge bold \u20b9150, divider with a centre notch."
+   },
+   {
+    "region": "Earnings card: line items",
+    "verbatim_text": "Fruit facial (1 hour) \u20b9120 | Check In by 7:45 PM \u20b95 | Summer Bonus \u2600\ufe0f (1 hour) \u20b920 | OT (15 min) \u20b940",
+    "visual": "Same as f00: the 'Check In by 7:45 PM' row has a light-blue highlight band with a diagonal white shimmer and '7:45 PM' in blue; yellow sun emoji in the Summer Bonus row; dotted dividers."
+   },
+   {
+    "region": "Earnings card: items row",
+    "verbatim_text": "Items required for this job",
+    "visual": "Pink shopping-bag icon, grey text, right chevron, pale-pink gradient background."
+   },
+   {
+    "region": "Penalty banner",
+    "verbatim_text": "If job not accepted | -50",
+    "visual": "New full-width rounded banner below the card, with a pink border and a gradient from very light pink on the left to deeper pink on the right, plus faint concentric circles on the right. Left: red filled circle holding a white spray-bottle icon with a small red 'x' on it. Text 'If job not accepted' in dark grey. Right: a glossy 3D red card, tilted and overflowing the banner's top edge, printed with '-50' in white (a penalty 'red card' asset)."
+   },
+   {
+    "region": "Bottom action area: timer",
+    "verbatim_text": "ACCEPT IN | 00:23",
+    "visual": "The panel background is now a pink-to-red gradient (strongest at the top, fading toward the button). 'ACCEPT IN' in small dark-grey caps. '00:23' large, bold, red, in MM:SS format (f00 used '1:23')."
+   },
+   {
+    "region": "Bottom action area: primary button",
+    "verbatim_text": "Accept Job",
+    "visual": "Full-width rounded green button, white label. The lighter green segment now covers only the left 25% and darker green fills the remaining 75%, so the progress fill has depleted compared with f00."
+   },
+   {
+    "region": "Android navigation bar",
+    "verbatim_text": "",
+    "visual": "Square, circle and back-triangle glyphs."
+   }
+  ],
+  "primary_action": "Accept Job (green button), now under an urgent red 00:23 countdown",
+  "other_actions": "Help; SOS; 'Items required for this job' row with chevron",
+  "services_and_addons": "Same as f00: one service, 'Fruit facial (1 hour)' \u20b9120, plus 'Check In by 7:45 PM' \u20b95, 'Summer Bonus \u2600\ufe0f (1 hour)' \u20b920 and 'OT (15 min)' \u20b940; total \u20b9150, while the lines sum to \u20b9185. Nothing marks any service as added after booking. Products are still collapsed behind 'Items required for this job'.",
+  "what_changed_from_previous_frame": "Header icon changed from a spray bottle to a black check-circle. A new penalty banner 'If job not accepted' with a 3D red '-50' card appears below the earnings card. The timer went from green '1:23' to red '00:23' (format now MM:SS), and the bottom panel background turned from white to a pink/red gradient. The Accept Job button's lighter-green fill shrank from about 75% to about 25%."
+ },
+ {
+  "file": "/Users/rupambanik/Downloads/Snabbit-Expert-DS/projects/beauty-job-cycle/reads/figma-linear-flow/f02.png",
+  "screen_title": "Send a message to customer",
+  "kind": "bottom sheet over Check In",
+  "regions": [
+   {
+    "region": "Background screen (dimmed): status bar and utility buttons",
+    "verbatim_text": "9:30 | Help | SOS",
+    "visual": "The whole screen behind the sheet is covered by a grey scrim. Status bar, pink Help and red SOS buttons are still visible but dimmed."
+   },
+   {
+    "region": "Background screen (dimmed): header",
+    "verbatim_text": "Check In",
+    "visual": "Centred bold heading with a black check-circle icon on its left, dimmed."
+   },
+   {
+    "region": "Background screen (dimmed): collapsed earnings card",
+    "verbatim_text": "You Will Earn | \u20b9150 | \u20b9145 + \u20b95 | Check In by 7:45 PM",
+    "visual": "Compact card. 'You Will Earn' in grey at top left, with a down chevron at top right. '\u20b9150' bold, left. At right: '\u20b9145' in grey, then '+ \u20b95' in blue, then a blue-outlined light-blue pill reading 'Check In by 7:45 PM' in blue. This card has NO 'Items required for this job' row, unlike f03/f04."
+   },
+   {
+    "region": "Background screen (dimmed): customer card",
+    "verbatim_text": "Radhika S | Listen | HAL Old Airport rd, near railway over bridge, LN Pura, Marathahalli, Bengaluru | Map | Call | C\u2026 | Street view",
+    "visual": "Person icon and bold name 'Radhika S'. Grey pill 'Listen' with a speaker icon at top right. Two-line grey address. Divider. Three square light-pink tiles with pink icons: navigation arrow 'Map', phone 'Call', chat bubble (label hidden behind the close button, only 'C' partly visible). Street-view photo thumbnail at the right (road with a scooter rider) with an expand icon in its corner, labelled 'Street view'."
+   },
+   {
+    "region": "Close button",
+    "verbatim_text": "",
+    "visual": "Dark slate-grey circular button with a white X, floating just above the sheet's top edge and overlapping the Chat tile."
+   },
+   {
+    "region": "Bottom sheet: illustration or icon",
+    "verbatim_text": "",
+    "visual": "Very light grey sheet with rounded top corners. Centred: a large pale-pink circle containing a pink filled chat/message bubble icon with two white lines."
+   },
+   {
+    "region": "Bottom sheet: title",
+    "verbatim_text": "Send a message to customer",
+    "visual": "Large bold near-black heading, centred."
+   },
+   {
+    "region": "Bottom sheet: message input and send",
+    "verbatim_text": "Hi, I am on my way and will reach your location shortly.",
+    "visual": "White rounded text field with a light-grey border, holding the prefilled message in dark text over two lines. To its right, a pink circular send button with a white paper-plane icon."
+   },
+   {
+    "region": "Android navigation bar",
+    "verbatim_text": "",
+    "visual": "Square, circle and back-triangle glyphs on white."
+   }
+  ],
+  "primary_action": "Send (pink circular paper-plane button) to send the prefilled message",
+  "other_actions": "Close (dark X circle above the sheet); editing the prefilled text field",
+  "services_and_addons": "No service names are visible. The collapsed earnings card behind the sheet shows only the total \u20b9150, split as '\u20b9145 + \u20b95', and a 'Check In by 7:45 PM' pill. No add-on, extension or extra-service sign. No products or items row is visible on this frame.",
+  "what_changed_from_previous_frame": "The flow moved from the New Job screen to the Check In screen, now shown dimmed behind a bottom sheet. The header reads 'Check In' with a check-circle icon. The earnings card collapsed to one line (\u20b9150, '\u20b9145 + \u20b95', 'Check In by 7:45 PM' pill) and lost its line items. A customer card (Radhika S, address, Map/Call/Chat, Street view) appears. A 'Send a message to customer' sheet with a prefilled message and a pink send button is open. The penalty banner and Accept Job are gone."
+ },
+ {
+  "file": "/Users/rupambanik/Downloads/Snabbit-Expert-DS/projects/beauty-job-cycle/reads/figma-linear-flow/f03.png",
+  "screen_title": "Check In",
+  "kind": "page",
+  "regions": [
+   {
+    "region": "Status bar",
+    "verbatim_text": "9:30",
+    "visual": "Time left; wifi, signal, battery right."
+   },
+   {
+    "region": "Top-right utility buttons",
+    "verbatim_text": "Help | SOS",
+    "visual": "Pink headset 'Help' and red siren 'SOS' circular buttons with pill labels, as before."
+   },
+   {
+    "region": "Screen header",
+    "verbatim_text": "Check In",
+    "visual": "Centred bold heading with a black filled check-circle icon on its left."
+   },
+   {
+    "region": "Collapsed earnings card",
+    "verbatim_text": "You Will Earn | \u20b9150 | \u20b9145 + \u20b95 | Check In by 7:45 PM",
+    "visual": "White rounded card. 'You Will Earn' grey, top left; grey down-chevron at top right (expandable). '\u20b9150' bold near-black. Right side: '\u20b9145' in grey, '+ \u20b95' in blue, then a light-blue pill with a blue border reading 'Check In by 7:45 PM' in blue."
+   },
+   {
+    "region": "Collapsed earnings card: items row",
+    "verbatim_text": "Items required for this job",
+    "visual": "Attached to the bottom of the same card, on a pale-pink gradient background: pink shopping-bag icon, grey text, grey right chevron."
+   },
+   {
+    "region": "Customer card",
+    "verbatim_text": "Radhika S | Listen | HAL Old Airport rd, near railway over bridge, LN Pura, Marathahalli, Bengaluru",
+    "visual": "White rounded card. Black person icon and bold name 'Radhika S'. At top right a light-grey pill 'Listen' with a dark speaker icon. Address in grey over two lines, then a thin grey divider."
+   },
+   {
+    "region": "Customer card: actions",
+    "verbatim_text": "Map | Call | Chat | Street view",
+    "visual": "Three square light-pink rounded tiles with pink icons and grey labels below: navigation arrow 'Map', phone handset 'Call', chat bubble 'Chat'. On the right, a rounded street-view photo thumbnail (tree-lined road with a scooter rider) with a white expand icon at its bottom-right, labelled 'Street view'."
+   },
+   {
+    "region": "Bottom action area: timer",
+    "verbatim_text": "CHECK IN BY 7:45 PM | 1:23",
+    "visual": "White panel. 'CHECK IN BY 7:45 PM' in small dark-grey caps, centred. '1:23' large, bold, green."
+   },
+   {
+    "region": "Bottom action area: primary button",
+    "verbatim_text": "Check In",
+    "visual": "Full-width rounded pink/magenta button with a white label. A darker pink segment covers about the right 25% (a progress/countdown fill like the Accept Job button in f00)."
+   },
+   {
+    "region": "Android navigation bar",
+    "verbatim_text": "",
+    "visual": "Square, circle and back-triangle glyphs."
+   }
+  ],
+  "primary_action": "Check In (pink full-width button), with a green '1:23' countdown under 'CHECK IN BY 7:45 PM'",
+  "other_actions": "Expand the earnings card (down chevron); 'Items required for this job' row (chevron); Listen (address audio); Map; Call; Chat; Street view; Help; SOS",
+  "services_and_addons": "No service names, durations or per-service prices are visible. The earnings card is collapsed to \u20b9150 = '\u20b9145 + \u20b95' with the 'Check In by 7:45 PM' incentive pill. Service details (such as Fruit facial) are presumably behind the down chevron, but they are not shown. No add-on, extension, 'added' or 'extra' sign. Products are behind the 'Items required for this job' row and are not listed.",
+  "what_changed_from_previous_frame": "The message sheet and grey scrim are gone. The earnings card now includes the 'Items required for this job' row (absent in f02's background). The Chat tile label is fully visible. The bottom area shows 'CHECK IN BY 7:45 PM', a green '1:23' timer and the pink 'Check In' button."
+ },
+ {
+  "file": "/Users/rupambanik/Downloads/Snabbit-Expert-DS/projects/beauty-job-cycle/reads/figma-linear-flow/f04.png",
+  "screen_title": "Check In",
+  "kind": "page",
+  "regions": [
+   {
+    "region": "Status bar",
+    "verbatim_text": "9:30",
+    "visual": "Time left; wifi, signal, battery right."
+   },
+   {
+    "region": "Top-right utility buttons",
+    "verbatim_text": "Help | SOS",
+    "visual": "Pink headset 'Help' and red siren 'SOS' circular buttons with pill labels."
+   },
+   {
+    "region": "Screen header",
+    "verbatim_text": "Check In",
+    "visual": "Centred bold heading with a black check-circle icon."
+   },
+   {
+    "region": "Collapsed earnings card",
+    "verbatim_text": "You Will Earn | \u20b9150 | \u20b9145 + \u20b95 | Check In by 7:45 PM",
+    "visual": "Same as f03: grey label, bold \u20b9150, down chevron, grey '\u20b9145', blue '+ \u20b95', blue-outlined light-blue pill."
+   },
+   {
+    "region": "Collapsed earnings card: items row",
+    "verbatim_text": "Items required for this job",
+    "visual": "Pink shopping-bag icon, grey text, right chevron, pale-pink gradient background."
+   },
+   {
+    "region": "Customer card",
+    "verbatim_text": "Radhika S | Listen | HAL Old Airport rd, near railway over bridge, LN Pura, Marathahalli, Bengaluru",
+    "visual": "Person icon and bold name, grey 'Listen' pill with speaker icon, two-line grey address, divider."
+   },
+   {
+    "region": "Customer card: actions",
+    "verbatim_text": "Map | Call | Chat | Street view",
+    "visual": "Three light-pink tiles with pink icons (navigation arrow, phone, chat bubble) and a street-view photo thumbnail with an expand icon."
+   },
+   {
+    "region": "Bottom action area: timer",
+    "verbatim_text": "CHECK IN BY 7:45 PM | 1:23",
+    "visual": "White panel, small grey caps label, large bold green '1:23'."
+   },
+   {
+    "region": "Bottom action area: primary button",
+    "verbatim_text": "Check In",
+    "visual": "Full-width pink button with a white label and a darker pink right segment of about 25%."
+   },
+   {
+    "region": "Android navigation bar",
+    "verbatim_text": "",
+    "visual": "Square, circle and back-triangle glyphs."
+   }
+  ],
+  "primary_action": "Check In (pink full-width button)",
+  "other_actions": "Expand earnings card; Items required for this job; Listen; Map; Call; Chat; Street view; Help; SOS",
+  "services_and_addons": "Same as f03: no service names visible, total \u20b9150 split as '\u20b9145 + \u20b95', no add-on or extension sign, products collapsed behind 'Items required for this job'.",
+  "what_changed_from_previous_frame": "Nothing visible. A pixel comparison shows f04 matches f03 exactly apart from a 2 px horizontal shift, so this is a duplicate frame: same strings, same timer (1:23 green), same button state."
+ },
+ {
+  "file": "/Users/rupambanik/Downloads/Snabbit-Expert-DS/projects/beauty-job-cycle/reads/figma-linear-flow/f05.png",
+  "screen_title": "Check In",
+  "kind": "page",
+  "regions": [
+   {
+    "region": "Status bar",
+    "verbatim_text": "9:30",
+    "visual": "Time on the left; Wi-Fi, cellular signal and battery icons on the right. Light grey page background."
+   },
+   {
+    "region": "Top-right utility buttons",
+    "verbatim_text": "Help | SOS",
+    "visual": "Two circular white buttons side by side, top right. Left: pink headset icon, with a pill label 'Help' below it overlapping the circle (pink text on light-pink fill, pink outline). Right: red siren / alarm-light icon, with a pill label 'SOS' below it (white text on solid red fill)."
+   },
+   {
+    "region": "Page header",
+    "verbatim_text": "Check In",
+    "visual": "Centred. Black filled circle with a white check mark to the left of the bold dark-navy title 'Check In'."
+   },
+   {
+    "region": "Earnings card (collapsed)",
+    "verbatim_text": "You Will Earn | \u20b9145 | \u20b9150",
+    "visual": "White rounded card. 'You Will Earn' in grey, top left; chevron-down icon top right. Below: '\u20b9145' large, bold, dark; next to it '\u20b9150' small, grey, struck through. The '\u20b9145 + \u20b95' breakdown and the blue 'Check In by 7:45 PM' chip that were on f04 are gone."
+   },
+   {
+    "region": "Items row (bottom strip of the earnings card)",
+    "verbatim_text": "Items required for this job",
+    "visual": "Full-width strip with a light-pink gradient background at the bottom of the same card. Solid pink shopping-bag icon on the left, grey text, chevron-right on the right. Collapsed: no items are listed."
+   },
+   {
+    "region": "Customer card",
+    "verbatim_text": "Radhika S | Listen | HAL Old Airport rd, near railway over bridge, | LN Pura, Marathahalli, Bengaluru | Map | Call | Chat | Street view",
+    "visual": "White rounded card. Filled person-silhouette icon, then 'Radhika S' in bold dark text. Top right: grey pill 'Listen' with a speaker icon. Address on two lines in grey. Thin divider. Below it, three light-pink rounded-square tiles with pink icons: a navigation arrow (Map), a phone handset (Call) and a speech bubble with lines (Chat), each with a grey label underneath. On the right: a street-view photo thumbnail (road with a scooter rider and trees) with a small white circular expand icon at its bottom right, labelled 'Street view'."
+   },
+   {
+    "region": "Bottom sticky band: timer",
+    "verbatim_text": "RUNNING LATE | -01:23",
+    "visual": "Full-width band with a gradient from salmon / red-pink at the top to near-white at the bottom. 'RUNNING LATE' in small dark-grey caps. '-01:23' very large, bold and red."
+   },
+   {
+    "region": "Bottom sticky band: primary button",
+    "verbatim_text": "Check In",
+    "visual": "Full-width rounded pink button with a centred white label. The button has two tones: a lighter, brighter pink segment on the left (about the leftmost quarter) and a darker magenta-pink over the remaining three quarters. On f04 the darker segment covered only about the right quarter, so the darker fill has grown, which reads like a progress or swipe fill."
+   },
+   {
+    "region": "Android navigation bar",
+    "verbatim_text": "",
+    "visual": "Square, circle and back-triangle system buttons in grey."
+   }
+  ],
+  "primary_action": "Check In (full-width pink button in the bottom band)",
+  "other_actions": "Help, SOS, expand the earnings card (chevron-down), Items required for this job (chevron-right), Listen, Map, Call, Chat, Street view",
+  "services_and_addons": "No service names, durations or prices are shown on this frame; only the total '\u20b9145' with a struck-through '\u20b9150'. There is no sign of an added or extended service. Products are not listed: there is only the collapsed row 'Items required for this job' with a chevron.",
+  "what_changed_from_previous_frame": "Compared with f04: the bottom timer changed from 'CHECK IN BY 7:45 PM' with a green '1:23' on a white background to 'RUNNING LATE' with a red '-01:23' on a red-pink gradient band. The earnings changed from '\u20b9150' (with '\u20b9145 + \u20b95' and a blue 'Check In by 7:45 PM' chip) to '\u20b9145' with '\u20b9150' struck through, and the chip and breakdown text were removed. The darker part of the two-tone Check In button grew from about a quarter of the width to about three quarters. Everything else (header, Help/SOS, items row, customer card) is unchanged."
+ },
+ {
+  "file": "/Users/rupambanik/Downloads/Snabbit-Expert-DS/projects/beauty-job-cycle/reads/figma-linear-flow/f06.png",
+  "screen_title": "Check In",
+  "kind": "page (variant of f05, placed directly below it: earnings card expanded)",
+  "regions": [
+   {
+    "region": "Status bar",
+    "verbatim_text": "9:30",
+    "visual": "Same as f05."
+   },
+   {
+    "region": "Top-right utility buttons",
+    "verbatim_text": "Help | SOS",
+    "visual": "Same as f05: pink headset 'Help' and red siren 'SOS'."
+   },
+   {
+    "region": "Page header",
+    "verbatim_text": "Check In",
+    "visual": "Same as f05: black circle with a check mark, bold navy title."
+   },
+   {
+    "region": "Earnings card (expanded): header",
+    "verbatim_text": "You Will Earn | \u20b9145",
+    "visual": "'You Will Earn' is now centred in dark grey, with a chevron-up at the top right. '\u20b9145' is very large, bold, dark and centred. The struck-through '\u20b9150' is no longer shown. Under the amount is a thin grey divider with a small upward-pointing notch at its centre."
+   },
+   {
+    "region": "Earnings card (expanded): breakdown rows",
+    "verbatim_text": "Fruit facial (1 hour) | \u20b9120 | Check In by 7:45 PM | \u20b95 | Summer Bonus \u2600\ufe0f (1 hour) | \u20b920 | OT (15 min) | \u20b940",
+    "visual": "Four rows separated by dotted grey dividers. Labels are grey and left-aligned; amounts are right-aligned. '\u20b9120', '\u20b920' and '\u20b940' are bold and dark. The '\u20b95' on the 'Check In by 7:45 PM' row is very light grey (faded, like a forfeited or disabled value). The 'Summer Bonus' row has a sun emoji (\u2600\ufe0f, yellow) between 'Summer Bonus' and '(1 hour)'. Factual note: 120 + 5 + 20 + 40 = 185, and 120 + 20 + 40 = 180; neither equals the \u20b9145 total shown."
+   },
+   {
+    "region": "Items row (bottom strip of the earnings card)",
+    "verbatim_text": "Items required for this job",
+    "visual": "Same as f05: light-pink gradient strip, pink shopping-bag icon, chevron-right. Collapsed, with no items listed."
+   },
+   {
+    "region": "Customer card (partly visible)",
+    "verbatim_text": "Radhika S | Listen | HAL Old Airport rd, near railway over bridge, | LN Pura, Marathahalli, Bengaluru",
+    "visual": "Same card as f05, pushed down. The second address line is cut off by the sticky bottom band, and the Map/Call/Chat tiles and Street view are hidden under it (the content scrolls beneath the band)."
+   },
+   {
+    "region": "Bottom sticky band: timer",
+    "verbatim_text": "RUNNING LATE | -01:23",
+    "visual": "Same as f05: red-pink gradient band, dark-grey caps label, large bold red timer."
+   },
+   {
+    "region": "Bottom sticky band: primary button",
+    "verbatim_text": "Check In",
+    "visual": "Same as f05: two-tone pink button, lighter left quarter and darker right three quarters, white label."
+   },
+   {
+    "region": "Android navigation bar",
+    "verbatim_text": "",
+    "visual": "Square, circle, back triangle."
+   }
+  ],
+  "primary_action": "Check In",
+  "other_actions": "Collapse the earnings card (chevron-up), Items required for this job, Help, SOS, Listen",
+  "services_and_addons": "One service is shown: 'Fruit facial (1 hour)', \u20b9120. The other lines are not services: 'Check In by 7:45 PM' \u20b95 (faded, an on-time incentive), 'Summer Bonus \u2600\ufe0f (1 hour)' \u20b920, and 'OT (15 min)' \u20b940. 'OT (15 min)' is the only line that suggests extra time, but nothing labels it as an add-on, 'added' or 'extra' service, and no second service appears. The timer does not change because of it. Products are not listed: only the collapsed 'Items required for this job' row.",
+  "what_changed_from_previous_frame": "This is the same state as f05 with the earnings card expanded. The chevron flips to up, 'You Will Earn' and '\u20b9145' become centred and much larger, and the struck-through '\u20b9150' disappears. A notched divider and a four-row breakdown with dotted separators appear. The customer card is pushed down, partly under the sticky Running late band. The timer, the button and the items row are unchanged."
+ },
+ {
+  "file": "/Users/rupambanik/Downloads/Snabbit-Expert-DS/projects/beauty-job-cycle/reads/figma-linear-flow/f07.png",
+  "screen_title": "Enter OTP to start job",
+  "kind": "bottom sheet over Check In",
+  "regions": [
+   {
+    "region": "Dimmed background: status bar and utilities",
+    "verbatim_text": "9:30 | Help | SOS",
+    "visual": "The whole Check In page behind is covered by a grey scrim. Help (pink headset) and SOS (red siren) are still visible but dimmed."
+   },
+   {
+    "region": "Dimmed background: header",
+    "verbatim_text": "Check In",
+    "visual": "Check-mark circle and 'Check In' title, dimmed."
+   },
+   {
+    "region": "Dimmed background: earnings card",
+    "verbatim_text": "You Will Earn | \u20b9145 | \u20b9150",
+    "visual": "Collapsed card with chevron-down; '\u20b9150' struck through. The 'Items required for this job' strip is NOT present in this frame's card: the card ends right after the amount."
+   },
+   {
+    "region": "Dimmed background: customer card",
+    "verbatim_text": "Radhika S | Listen | HAL Old Airport rd, near railway over bridge, | LN Pura, Marathahalli, Bengaluru",
+    "visual": "Person icon, name, Listen pill with speaker, address and divider, dimmed. The tops of the pink Map (arrow), Call (phone) and Chat (bubble) tiles and the street-view thumbnail peek out above the sheet."
+   },
+   {
+    "region": "Sheet close control",
+    "verbatim_text": "",
+    "visual": "Dark slate circular button with a white X, floating centred just above the sheet's top edge."
+   },
+   {
+    "region": "Sheet title",
+    "verbatim_text": "Enter OTP to start job",
+    "visual": "Large, bold, dark, centred. The sheet is off-white with rounded top corners."
+   },
+   {
+    "region": "OTP input",
+    "verbatim_text": "",
+    "visual": "Three empty white rounded-square boxes with light-grey borders, centred in a row. No focus or cursor is visible."
+   },
+   {
+    "region": "Helper text",
+    "verbatim_text": "Please ask the customer to share the OTP with you",
+    "visual": "Grey, centred, one line."
+   },
+   {
+    "region": "Primary button",
+    "verbatim_text": "Start Job",
+    "visual": "Full-width rounded button with a pale light-pink fill and white label: disabled."
+   },
+   {
+    "region": "Secondary button",
+    "verbatim_text": "No OTP",
+    "visual": "Full-width rounded outline button: white fill, light-grey border, pink label."
+   },
+   {
+    "region": "Android navigation bar",
+    "verbatim_text": "",
+    "visual": "Square, circle, back triangle on white."
+   }
+  ],
+  "primary_action": "Start Job (disabled until the OTP is entered)",
+  "other_actions": "No OTP (secondary outline button), close the sheet (X)",
+  "services_and_addons": "No services, durations or prices are shown in the sheet; the background shows only the collapsed '\u20b9145' total with '\u20b9150' struck through. There is no add-on indicator and no product list, and the 'Items required for this job' row is not visible in this frame.",
+  "what_changed_from_previous_frame": "Coming from f05 (check-in tapped): a bottom sheet 'Enter OTP to start job' rises over a dimmed Check In page, with a floating X close button above it. The sticky Running late timer band and the Check In button are no longer visible because the sheet covers them. In the dimmed background the earnings card is collapsed and has lost its 'Items required for this job' strip, so the customer card sits higher."
+ },
+ {
+  "file": "/Users/rupambanik/Downloads/Snabbit-Expert-DS/projects/beauty-job-cycle/reads/figma-linear-flow/f08.png",
+  "screen_title": "Enter OTP to start job",
+  "kind": "bottom sheet over Check In",
+  "regions": [
+   {
+    "region": "Dimmed background",
+    "verbatim_text": "9:30 | Help | SOS | Check In | You Will Earn | \u20b9145 | \u20b9150 | Radhika S | Listen | HAL Old Airport rd, near railway over bridge, | LN Pura, Marathahalli, Bengaluru",
+    "visual": "Identical to f07: grey scrim, collapsed earnings card with '\u20b9150' struck through and no items strip, customer card with the tops of the Map/Call/Chat tiles and the street-view thumbnail peeking out."
+   },
+   {
+    "region": "Sheet close control",
+    "verbatim_text": "",
+    "visual": "Dark slate circle with a white X, centred above the sheet."
+   },
+   {
+    "region": "Sheet title",
+    "verbatim_text": "Enter OTP to start job",
+    "visual": "Bold, dark, centred."
+   },
+   {
+    "region": "OTP input (filled)",
+    "verbatim_text": "6 | 6 | 6",
+    "visual": "The same three white rounded boxes with light-grey borders, each now holding a dark digit '6'."
+   },
+   {
+    "region": "Helper text",
+    "verbatim_text": "Please ask the customer to share the OTP with you",
+    "visual": "Grey, centred."
+   },
+   {
+    "region": "Primary button",
+    "verbatim_text": "Start Job",
+    "visual": "Full-width, solid bright pink, white label: enabled."
+   },
+   {
+    "region": "Secondary button",
+    "verbatim_text": "No OTP",
+    "visual": "Outline button, white fill, grey border, pink label."
+   },
+   {
+    "region": "Android navigation bar",
+    "verbatim_text": "",
+    "visual": "Square, circle, back triangle."
+   }
+  ],
+  "primary_action": "Start Job (now enabled)",
+  "other_actions": "No OTP, close the sheet (X)",
+  "services_and_addons": "None shown. There are no service lines, no add-on or extension indicator and no product list.",
+  "what_changed_from_previous_frame": "The OTP boxes are filled with '6', '6', '6', and the 'Start Job' button changes from pale disabled pink to solid bright pink (enabled). Nothing else changed."
+ },
+ {
+  "file": "/Users/rupambanik/Downloads/Snabbit-Expert-DS/projects/beauty-job-cycle/reads/figma-linear-flow/f09.png",
+  "screen_title": "Enter customer phone number",
+  "kind": "bottom sheet over Check In",
+  "regions": [
+   {
+    "region": "Dimmed background",
+    "verbatim_text": "9:30 | Help | SOS | Check In | You Will Earn | \u20b9145 | \u20b9150 | Radhika S | Listen | HAL Old Airport rd, near railway over bridge, | LN Pura, Marathahalli, B\u2026aluru",
+    "visual": "Same dimmed Check In page as f07/f08. The sheet sits slightly higher here, so the floating X covers part of 'Bengaluru'. Only the empty pink tops of the Map/Call/Chat tiles and the top edge of the street-view thumbnail are visible, with no icons."
+   },
+   {
+    "region": "Sheet close control",
+    "verbatim_text": "",
+    "visual": "Dark slate circle with a white X, centred above the sheet, overlapping the address line."
+   },
+   {
+    "region": "Sheet title",
+    "verbatim_text": "Enter customer phone number",
+    "visual": "Large, bold, dark, centred; spans almost the full width."
+   },
+   {
+    "region": "Phone input",
+    "verbatim_text": "+91 | 8606653178",
+    "visual": "Full-width white rounded field with a light-grey border. A '+91' prefix is on the left, followed by the number, all in dark text."
+   },
+   {
+    "region": "Helper text",
+    "verbatim_text": "Please ask the customer to share the phone number used for this booking",
+    "visual": "Grey, centred, wrapping onto two lines ('\u2026phone number used' / 'for this booking')."
+   },
+   {
+    "region": "Primary button",
+    "verbatim_text": "Start Job",
+    "visual": "Full-width, solid bright pink, white label: enabled."
+   },
+   {
+    "region": "Secondary button",
+    "verbatim_text": "Use OTP instead",
+    "visual": "Outline button: white fill, light-grey border, pink label."
+   },
+   {
+    "region": "Android navigation bar",
+    "verbatim_text": "",
+    "visual": "Square, circle, back triangle."
+   }
+  ],
+  "primary_action": "Start Job (enabled, with the phone number filled)",
+  "other_actions": "Use OTP instead (switches back to the OTP sheet), close the sheet (X)",
+  "services_and_addons": "None shown. There are no service lines, no add-on or extension indicator and no product list.",
+  "what_changed_from_previous_frame": "This is the fallback reached from 'No OTP'. The title changes to 'Enter customer phone number', and the three OTP boxes are replaced by one '+91' phone field already holding '8606653178'. The helper text changes to 'Please ask the customer to share the phone number used for this booking' and wraps to two lines. The secondary button changes from 'No OTP' to 'Use OTP instead'. The sheet is slightly taller and starts higher. 'Start Job' stays enabled bright pink."
+ },
+ {
+  "file": "/Users/rupambanik/Downloads/Snabbit-Expert-DS/projects/beauty-job-cycle/reads/figma-linear-flow/f10.png",
+  "screen_title": "Job Started",
+  "kind": "bottom sheet over Job In Progress screen",
+  "regions": [
+   {
+    "region": "Status bar",
+    "verbatim_text": "9:30",
+    "visual": "Time on the left. Wi-fi, signal and battery icons on the right. Dimmed grey because a scrim sits over the whole screen behind the sheet."
+   },
+   {
+    "region": "Top-right utility buttons (behind the scrim)",
+    "verbatim_text": "Help | SOS",
+    "visual": "Two round white buttons. Help has a pink headset icon and a pink-outlined pill label saying 'Help'. SOS has a red siren or alarm-light icon and a solid red pill label saying 'SOS'. Both are dimmed by the scrim."
+   },
+   {
+    "region": "Screen header (behind the scrim)",
+    "verbatim_text": "Job In Progress",
+    "visual": "Filled clock icon to the left of a bold title, centred. Dimmed."
+   },
+   {
+    "region": "Timer pill (behind the scrim, partly covered)",
+    "verbatim_text": "TIME LEFT | 48:23 (the middle digits are hidden by the close button, so only '48' and '23' can be read)",
+    "visual": "Stadium-shaped ring timer with a thick green stroke and a small grey gap at the top centre. Green numerals. Only the top half shows above the sheet, and it is dimmed."
+   },
+   {
+    "region": "Close button",
+    "verbatim_text": "(none)",
+    "visual": "Round dark slate-grey button with a white X, floating centred just above the top edge of the sheet."
+   },
+   {
+    "region": "Sheet: status icon and title",
+    "verbatim_text": "Job Started",
+    "visual": "White sheet with rounded top corners. Solid green circle with a white checkmark, then a large bold dark title, both centred."
+   },
+   {
+    "region": "Sheet: illustration card",
+    "verbatim_text": "Snabbit (printed on the expert's uniform: chest and both sleeves)",
+    "visual": "Flat vector illustration in a rounded card. A female expert in a pink Snabbit uniform, black hair in a bun and a black backpack, smiles and does namaste in an open brown wooden doorway. A plant and a window with curtains are behind her. A female customer in a teal outfit with a bun stands in the foreground, seen from behind. The background is a pale peach and pink wall."
+   },
+   {
+    "region": "Sheet: illustration caption strip",
+    "verbatim_text": "\ud83d\ude4f Say Namaste",
+    "visual": "Mint-green strip joined to the bottom of the illustration card. A folded-hands emoji (\ud83d\ude4f) sits before green text, centred."
+   },
+   {
+    "region": "Sheet: primary button",
+    "verbatim_text": "OK",
+    "visual": "Full-width solid pink rounded button with white bold text. The right part (roughly the last quarter) is a darker pink block. This looks like a countdown or auto-dismiss progress fill inside the button."
+   },
+   {
+    "region": "Android navigation bar",
+    "verbatim_text": "(none)",
+    "visual": "Square (recents), circle (home) and triangle (back) glyphs in dark grey on a white bar."
+   }
+  ],
+  "primary_action": "OK (dismiss the Job Started sheet; the darker right section suggests it auto-dismisses on a countdown)",
+  "other_actions": "Close (X) button above the sheet",
+  "services_and_addons": "No services, products, durations or prices on the sheet. The only service-related thing visible is the dimmed timer behind it (48:23). No add-ons.",
+  "what_changed_from_previous_frame": "In f09 the sheet 'Enter customer phone number' (+91 8606653178, 'Start Job', 'Use OTP instead') sat over the dimmed Check In screen ('You Will Earn \u20b9145 \u20b9150', Radhika S, address). Now the job has started. The background screen changed from Check In to Job In Progress with a green 48:23 timer. The sheet changed to a success confirmation: green check, 'Job Started', namaste illustration, '\ud83d\ude4f Say Namaste' and an 'OK' button."
+ },
+ {
+  "file": "/Users/rupambanik/Downloads/Snabbit-Expert-DS/projects/beauty-job-cycle/reads/figma-linear-flow/f11.png",
+  "screen_title": "Get ready with your things",
+  "kind": "page (tall, scrolling)",
+  "regions": [
+   {
+    "region": "Status bar",
+    "verbatim_text": "9:30",
+    "visual": "Time on the left. Wi-fi, signal and battery on the right. The top of the screen has a soft pink gradient that fades to off-white."
+   },
+   {
+    "region": "Top-right utility buttons",
+    "verbatim_text": "Help | SOS",
+    "visual": "White round Help button with a pink headset icon and a pink-outlined 'Help' pill. White round SOS button with a red siren icon and a solid red 'SOS' pill."
+   },
+   {
+    "region": "Screen header",
+    "verbatim_text": "Get ready with your things",
+    "visual": "Filled dark clock icon, then a bold dark title, centred."
+   },
+   {
+    "region": "Timer pill",
+    "verbatim_text": "TIME LEFT | 08:23",
+    "visual": "Stadium-shaped ring. The stroke is almost fully green: lighter green on the left, darker green on the right, and a small light-grey gap at the top centre. 'TIME LEFT' is small, uppercase and grey. '08:23' is in large bold green numerals."
+   },
+   {
+    "region": "Customer and job card",
+    "verbatim_text": "Radhika S | Job Timing | 10:00 AM - 11:00 AM | Duration | 60 min",
+    "visual": "White rounded card. Row 1: person icon, 'Radhika S' in dark medium weight, and two square pale-pink icon buttons on the right (a pink chat bubble for message and a pink phone handset for call). A divider follows. Row 2: clock icon, grey 'Job Timing' label, bold dark value on the right. A divider follows. Row 3: hourglass icon, grey 'Duration' label, bold dark value '60 min' on the right."
+   },
+   {
+    "region": "Snabbit Kavach strip (attached below the card)",
+    "verbatim_text": "Snabbit Kavach | Activate",
+    "visual": "A strip joined under the card on a very pale blue-to-white gradient. On the left, a blue shield icon with a white four-point sparkle and the blue two-line text 'Snabbit' / 'Kavach'. On the right, a solid blue rounded button with a white play-triangle icon and white 'Activate' text."
+   },
+   {
+    "region": "Section heading",
+    "verbatim_text": "Customer Services",
+    "visual": "Bold dark section title, left-aligned."
+   },
+   {
+    "region": "Service card 1 (expanded)",
+    "verbatim_text": "Fruit facial | Cleansing milk | 1 | Fruit facial kit | 12",
+    "visual": "White rounded card. Bold service name at top left, with a thin grey up-chevron on the right showing the card is expanded. Two product rows follow, each with the product name in grey regular text on the left and the quantity in bold dark text on the right. The rows have no dividers."
+   },
+   {
+    "region": "Service card 2 (expanded)",
+    "verbatim_text": "Leg massage | Cleansing milk | 1 | Fruit facial kit | 12",
+    "visual": "Same layout as card 1: bold name, up-chevron (expanded) and two product rows with quantities. The product list is identical to Fruit facial's."
+   },
+   {
+    "region": "Empty space",
+    "verbatim_text": "(none)",
+    "visual": "A large empty off-white area below the cards."
+   },
+   {
+    "region": "Bottom action bar",
+    "verbatim_text": "Complete Job",
+    "visual": "Full-width rounded button on a white bar with a faint top border. The fill is pale pink and the text is white, which reads as DISABLED."
+   },
+   {
+    "region": "Android navigation bar",
+    "verbatim_text": "(none)",
+    "visual": "Square, circle and triangle glyphs."
+   }
+  ],
+  "primary_action": "Complete Job (disabled)",
+  "other_actions": "Help; SOS; Message customer (chat icon); Call customer (phone icon); Snabbit Kavach 'Activate'; collapse or expand each service card (up-chevron)",
+  "services_and_addons": "Two services, listed as separate cards under 'Customer Services': 'Fruit facial' and 'Leg massage'. Neither service card shows a duration or a price. The only duration anywhere is the single job-level 'Duration 60 min', with 'Job Timing 10:00 AM - 11:00 AM'. Products are grouped under each service, one row per product with a quantity: Fruit facial has 'Cleansing milk 1' and 'Fruit facial kit 12'. Leg massage has exactly the same 'Cleansing milk 1' and 'Fruit facial kit 12', which looks like placeholder or duplicated content. Nothing marks a service as added, add-on, extra or extended.",
+  "what_changed_from_previous_frame": "The Job Started sheet and scrim are gone and the full page is visible. The header reads 'Get ready with your things' instead of 'Job In Progress'. The timer shows 08:23, not 48:23, and the background gradient is pink. New content appears: the customer card with message and call buttons, Job Timing, Duration, the Snabbit Kavach strip, the 'Customer Services' list with two service cards and their products, and a disabled 'Complete Job' button."
+ },
+ {
+  "file": "/Users/rupambanik/Downloads/Snabbit-Expert-DS/projects/beauty-job-cycle/reads/figma-linear-flow/f12.png",
+  "screen_title": "Job In Progress",
+  "kind": "page (tall, scrolling)",
+  "regions": [
+   {
+    "region": "Status bar",
+    "verbatim_text": "9:30",
+    "visual": "Time on the left, system icons on the right. The top of the screen has a mint-green gradient fading to off-white."
+   },
+   {
+    "region": "Top-right utility buttons",
+    "verbatim_text": "Help | SOS",
+    "visual": "Same as f11: pink headset with a 'Help' pill, red siren with an 'SOS' pill."
+   },
+   {
+    "region": "Screen header",
+    "verbatim_text": "Job In Progress",
+    "visual": "Filled dark clock icon and a bold dark title, centred."
+   },
+   {
+    "region": "Timer pill",
+    "verbatim_text": "TIME LEFT | 48:23",
+    "visual": "Stadium ring, almost fully green (lighter on the left, darker on the right) with a small grey gap at the top centre. Large bold green numerals '48:23'."
+   },
+   {
+    "region": "Customer and job card",
+    "verbatim_text": "Radhika S | Job Timing | 10:00 AM - 11:00 AM | Duration | 60 min",
+    "visual": "Same as f11: person icon, name, pale-pink chat and phone buttons, then clock/Job Timing and hourglass/Duration rows separated by dividers."
+   },
+   {
+    "region": "Snabbit Kavach strip",
+    "verbatim_text": "Snabbit Kavach | Activate",
+    "visual": "Blue shield with sparkle, blue two-line text, blue 'Activate' button with a play icon."
+   },
+   {
+    "region": "Section heading",
+    "verbatim_text": "Customer Services",
+    "visual": "Bold dark, left-aligned."
+   },
+   {
+    "region": "Service card 1 (expanded)",
+    "verbatim_text": "Fruit facial | Cleansing milk | 1 | Fruit facial kit | 12",
+    "visual": "White rounded card with a bold name, grey up-chevron, grey product names and bold quantities."
+   },
+   {
+    "region": "Service card 2 (expanded)",
+    "verbatim_text": "Leg massage | Cleansing milk | 1 | Fruit facial kit | 12",
+    "visual": "Same layout as card 1."
+   },
+   {
+    "region": "Empty space",
+    "verbatim_text": "(none)",
+    "visual": "Large empty off-white area."
+   },
+   {
+    "region": "Bottom action bar",
+    "verbatim_text": "Complete Job",
+    "visual": "Pale pink button with white text, DISABLED."
+   },
+   {
+    "region": "Android navigation bar",
+    "verbatim_text": "(none)",
+    "visual": "Square, circle and triangle."
+   }
+  ],
+  "primary_action": "Complete Job (disabled)",
+  "other_actions": "Help; SOS; Message customer; Call customer; Snabbit Kavach 'Activate'; collapse or expand service cards",
+  "services_and_addons": "Same as f11. Two services, 'Fruit facial' and 'Leg massage', each expanded with the products 'Cleansing milk 1' and 'Fruit facial kit 12' (identical lists). No per-service duration or price. Job-level 'Duration 60 min' and 'Job Timing 10:00 AM - 11:00 AM'. No add-on or extension marker.",
+  "what_changed_from_previous_frame": "The header changed from 'Get ready with your things' to 'Job In Progress'. The top gradient changed from pink to mint green. The timer changed from 08:23 to 48:23 (still green). Everything else is the same: customer card, Kavach strip, the two service cards and the disabled Complete Job button."
+ },
+ {
+  "file": "/Users/rupambanik/Downloads/Snabbit-Expert-DS/projects/beauty-job-cycle/reads/figma-linear-flow/f13.png",
+  "screen_title": "Job In Progress",
+  "kind": "page (tall, scrolling)",
+  "regions": [
+   {
+    "region": "Status bar",
+    "verbatim_text": "9:30",
+    "visual": "The top of the screen has a pale yellow or amber gradient fading to off-white."
+   },
+   {
+    "region": "Top-right utility buttons",
+    "verbatim_text": "Help | SOS",
+    "visual": "Same as before: pink headset with a 'Help' pill, red siren with an 'SOS' pill."
+   },
+   {
+    "region": "Screen header",
+    "verbatim_text": "Job In Progress",
+    "visual": "Filled dark clock icon and a bold dark title, centred."
+   },
+   {
+    "region": "Timer pill",
+    "verbatim_text": "TIME LEFT | 14:23",
+    "visual": "Stadium ring. The stroke is light grey on the left half and amber or yellow on the right half. On the bottom edge, where the amber starts, there is a short segment with a lighter diagonal-hatched or striped amber fill. This looks like it marks the added or extended time. Large bold amber or orange numerals '14:23'."
+   },
+   {
+    "region": "Extension banner (tooltip under the timer)",
+    "verbatim_text": "Job extended by 15 min",
+    "visual": "Full-width mint-green rounded banner with a small upward caret pointing at the timer. On the left, a green clock icon with a small plus badge (a clock-plus 'time added' glyph), then green text."
+   },
+   {
+    "region": "Customer and job card",
+    "verbatim_text": "Radhika S | Job Timing | 10:00 AM - 11:00 AM | Duration | 60 min + 15 min",
+    "visual": "Same card as before. The Duration value is now '60 min' in bold dark text followed by '+ 15 min' in bold pink text. Job Timing still reads '10:00 AM - 11:00 AM'; the end time has not changed."
+   },
+   {
+    "region": "Snabbit Kavach strip",
+    "verbatim_text": "Snabbit Kavach | Activate",
+    "visual": "Same blue shield, blue text and blue 'Activate' button with a play icon."
+   },
+   {
+    "region": "Section heading",
+    "verbatim_text": "Customer Services",
+    "visual": "Bold dark, left-aligned."
+   },
+   {
+    "region": "Service card 1 (expanded)",
+    "verbatim_text": "Fruit facial | Cleansing milk | 1 | Fruit facial kit | 12",
+    "visual": "Same as before. Bold name, up-chevron, product rows with quantities."
+   },
+   {
+    "region": "Service card 2 (expanded)",
+    "verbatim_text": "Leg massage | Cleansing milk | 1 | Fruit facial kit | 12",
+    "visual": "Same as before."
+   },
+   {
+    "region": "Empty space",
+    "verbatim_text": "(none)",
+    "visual": "Empty off-white area."
+   },
+   {
+    "region": "Bottom action bar",
+    "verbatim_text": "Complete Job",
+    "visual": "Pale pink button with white text, DISABLED."
+   },
+   {
+    "region": "Android navigation bar",
+    "verbatim_text": "(none)",
+    "visual": "Square, circle and triangle."
+   }
+  ],
+  "primary_action": "Complete Job (disabled)",
+  "other_actions": "Help; SOS; Message customer; Call customer; Snabbit Kavach 'Activate'; collapse or expand service cards",
+  "services_and_addons": "This is the only frame with a sign that something was ADDED after booking. The banner says 'Job extended by 15 min', and it has a clock-plus icon. The Duration row reads '60 min + 15 min', with '+ 15 min' in pink. The timer ring has a hatched segment that seems to represent the extra time. The extension is shown only at the job level (timer, banner and Duration). The 'Customer Services' list still shows the same two services, 'Fruit facial' and 'Leg massage', with the same products ('Cleansing milk 1', 'Fruit facial kit 12' each). No new service card, add-on label, price or per-service duration was added. 'Job Timing' still ends at 11:00 AM and was not moved to 11:15 AM. No price or earnings change is shown.",
+  "what_changed_from_previous_frame": "The timer changed from green 48:23 to amber 14:23. The ring went from almost fully green to half grey and half amber, with a hatched segment. The top gradient changed from mint to yellow or amber. A new mint banner 'Job extended by 15 min' with a clock-plus icon appeared under the timer. Duration changed from '60 min' to '60 min + 15 min' (the '+ 15 min' is pink). The services list and the disabled Complete Job button did not change."
+ },
+ {
+  "file": "/Users/rupambanik/Downloads/Snabbit-Expert-DS/projects/beauty-job-cycle/reads/figma-linear-flow/f14.png",
+  "screen_title": "Job In Progress",
+  "kind": "page (tall, scrolling)",
+  "regions": [
+   {
+    "region": "Status bar",
+    "verbatim_text": "9:30",
+    "visual": "The top of the screen has a pale red or pink-salmon gradient fading to off-white."
+   },
+   {
+    "region": "Top-right utility buttons",
+    "verbatim_text": "Help | SOS",
+    "visual": "Same as before: pink headset with a 'Help' pill, red siren with an 'SOS' pill."
+   },
+   {
+    "region": "Screen header",
+    "verbatim_text": "Job In Progress",
+    "visual": "Filled dark clock icon and a bold dark title, centred."
+   },
+   {
+    "region": "Timer pill",
+    "verbatim_text": "TIME LEFT | 15:23",
+    "visual": "Stadium ring. The stroke is mostly light grey, with red only on the top-right and right end (about a quarter of the ring). There is no hatched segment. Large bold red numerals '15:23'."
+   },
+   {
+    "region": "Warning banner (tooltip under the timer)",
+    "verbatim_text": "15 mins remaining",
+    "visual": "Full-width light-red or pink rounded banner with an upward caret pointing at the timer. A red outlined warning-triangle icon sits before red text."
+   },
+   {
+    "region": "Customer and job card",
+    "verbatim_text": "Radhika S | Job Timing | 10:00 AM - 11:00 AM | Duration | 60 min",
+    "visual": "Same card as before. Duration is back to plain '60 min', with no '+ 15 min'."
+   },
+   {
+    "region": "Snabbit Kavach strip",
+    "verbatim_text": "Snabbit Kavach | Activate",
+    "visual": "Same blue shield, text and 'Activate' button."
+   },
+   {
+    "region": "Section heading",
+    "verbatim_text": "Customer Services",
+    "visual": "Bold dark, left-aligned."
+   },
+   {
+    "region": "Service card 1 (expanded)",
+    "verbatim_text": "Fruit facial | Cleansing milk | 1 | Fruit facial kit | 12",
+    "visual": "Same as before."
+   },
+   {
+    "region": "Service card 2 (expanded)",
+    "verbatim_text": "Leg massage | Cleansing milk | 1 | Fruit facial kit | 12",
+    "visual": "Same as before."
+   },
+   {
+    "region": "Empty space",
+    "verbatim_text": "(none)",
+    "visual": "Empty off-white area."
+   },
+   {
+    "region": "Bottom action bar",
+    "verbatim_text": "Complete Job",
+    "visual": "Full-width SOLID bright pink button with white bold text, now ENABLED."
+   },
+   {
+    "region": "Android navigation bar",
+    "verbatim_text": "(none)",
+    "visual": "Square, circle and triangle."
+   }
+  ],
+  "primary_action": "Complete Job (enabled)",
+  "other_actions": "Help; SOS; Message customer; Call customer; Snabbit Kavach 'Activate'; collapse or expand service cards",
+  "services_and_addons": "Same two services, 'Fruit facial' and 'Leg massage', with identical product lists ('Cleansing milk 1', 'Fruit facial kit 12'). No per-service duration or price. The Duration row shows '60 min' with no '+ 15 min', so this frame has no sign of the extension from f13. No add-on or extra marker.",
+  "what_changed_from_previous_frame": "The timer changed from amber 14:23 to red 15:23. The number is higher than the previous frame's, and the banner says '15 mins remaining', so the two values do not agree. The ring became mostly grey with a red arc on the right, and the hatched segment is gone. The top gradient changed from amber to red or pink. The mint 'Job extended by 15 min' banner was replaced by a red warning banner, '15 mins remaining', with a warning-triangle icon. Duration went from '60 min + 15 min' back to '60 min'. The 'Complete Job' button went from disabled pale pink to enabled solid pink."
+ },
+ {
+  "file": "/Users/rupambanik/Downloads/Snabbit-Expert-DS/projects/beauty-job-cycle/reads/figma-linear-flow/f15.png",
+  "screen_title": "Job In Progress (sheet: Ask if you can help quickly with anything.)",
+  "kind": "bottom sheet over Job In Progress",
+  "regions": [
+   {
+    "region": "status bar (dimmed)",
+    "verbatim_text": "9:30",
+    "visual": "Time top-left; wifi (faint), cellular signal and battery icons top-right. The whole screen above the sheet is under a grey scrim; the pink gradient at the top of the page shows through as a muted mauve."
+   },
+   {
+    "region": "top-right utility buttons (dimmed)",
+    "verbatim_text": "Help | SOS",
+    "visual": "Two circular buttons side by side. Left: pink headset icon in a light circle, with a 'Help' label in a pill with a pink outline. Right: red siren/alarm-light icon in a light circle, with an 'SOS' label in a red-filled pill with white text. Both dimmed by the scrim."
+   },
+   {
+    "region": "page title (dimmed)",
+    "verbatim_text": "Job In Progress",
+    "visual": "Centred, bold dark text, preceded by a filled dark clock icon."
+   },
+   {
+    "region": "timer (dimmed)",
+    "verbatim_text": "TIME LEFT | 03:23",
+    "visual": "Pill/stadium-shaped ring. A red arc runs clockwise from top-centre around the right side to the bottom-right; the rest of the track (left side) is grey. 'TIME LEFT' is small grey caps; '03:23' is large, bold and red."
+   },
+   {
+    "region": "close button",
+    "verbatim_text": "(none)",
+    "visual": "Dark slate filled circle with a white X, centred and sitting just above the top edge of the sheet."
+   },
+   {
+    "region": "job card behind sheet (mostly hidden)",
+    "verbatim_text": "(no text visible)",
+    "visual": "Only the top edge of the white rounded card shows, plus the tops of two square pinkish buttons on the right (the chat/call buttons). No '15 mins remaining' banner between the timer and the card: the card starts directly below the timer."
+   },
+   {
+    "region": "bottom sheet header",
+    "verbatim_text": "Ask if you can help quickly with anything.",
+    "visual": "Sheet in very light grey/off-white with rounded top corners. Headline is bold, dark and centred, on two lines ('Ask if you can help quickly with' / 'anything.')."
+   },
+   {
+    "region": "bottom sheet media placeholder",
+    "verbatim_text": "(none)",
+    "visual": "Large empty light-grey rounded rectangle at almost full width, about 720 x 525 px in the crop. Its size matches the f16 illustration, so it is probably the slot for that asset."
+   },
+   {
+    "region": "bottom sheet action",
+    "verbatim_text": "Okay",
+    "visual": "Full-width bright pink/magenta button with white bold 'Okay' centred. About the right quarter of the button is a darker pink/crimson segment with a hard vertical edge. It reads like a fill or countdown progress inside the button, or a pressed or split state."
+   },
+   {
+    "region": "system navigation bar",
+    "verbatim_text": "(none)",
+    "visual": "White Android nav bar with square (recents), circle (home) and triangle (back) icons in dark grey."
+   }
+  ],
+  "primary_action": "Okay (full-width pink button in the sheet, with a darker right segment)",
+  "other_actions": "Close X (dark circle above the sheet). Help and SOS in the dimmed background.",
+  "services_and_addons": "No services are shown; the sheet covers the service list and the job card. There is no duration or price, and nothing marks a service as added, add-on, extra or extended. The timer shows 03:23, which is shorter than in f14.",
+  "what_changed_from_previous_frame": "Compared with f14: the timer went from 15:23 to 03:23. The red '15 mins remaining' warning banner is gone; the card sits directly under the timer. The screen is dimmed and a bottom sheet appears with the prompt 'Ask if you can help quickly with anything.', an empty grey media placeholder and an 'Okay' button. A dark close X sits above the sheet. The 'Complete Job' footer button, the job card details, Snabbit Kavach and the 'Customer Services' list (Fruit facial, Leg massage) are all hidden behind the sheet."
+ },
+ {
+  "file": "/Users/rupambanik/Downloads/Snabbit-Expert-DS/projects/beauty-job-cycle/reads/figma-linear-flow/f16.png",
+  "screen_title": "Illustration: Expert speaking to customer (no title)",
+  "kind": "illustration",
+  "regions": [
+   {
+    "region": "illustration frame",
+    "verbatim_text": "Snabbit (wordmark on the Expert's tunic chest) | Snabbit (on each sleeve, rotated, partially visible as 'abbit' / 'snabbi')",
+    "visual": "Wide rounded-corner image about 720 x 523 px, on a dark grey canvas border. Flat vector with soft shading, warm beige palette. It fits the size of the grey placeholder in f15's sheet."
+   },
+   {
+    "region": "left figure: Expert",
+    "verbatim_text": "Snabbit",
+    "visual": "Smiling woman with black hair in a top bun and small earrings. She wears a hot-pink tunic with black mandarin-collar trim, a black wrap placket and black cuffs, with a white 'Snabbit' wordmark on the chest and along both sleeves. Both hands are out, palms up, in an offering/asking gesture."
+   },
+   {
+    "region": "speech bubble",
+    "verbatim_text": "(none)",
+    "visual": "Off-white rounded speech bubble with a pink outline and its tail pointing down-left towards the Expert. It holds three circular pink-outlined icons in a row: (1) a pink spray bottle with a yellow sponge/cloth, (2) a pink bucket with a mop, (3) a purple magic wand with a yellow star and sparkles. These are household-cleaning motifs, not beauty/salon ones."
+   },
+   {
+    "region": "right figure: customer",
+    "verbatim_text": "(none)",
+    "visual": "Woman seen from behind/three-quarter back on the right edge. Black hair in a low bun, hoop earring, teal/turquoise top with a lighter blue stripe (saree or dupatta)."
+   },
+   {
+    "region": "background scene",
+    "verbatim_text": "(none)",
+    "visual": "Living room: beige walls, a window with sheer curtains, a beige sofa with coral/pink cushions, a potted plant on a wooden cabinet at the left, a small potted plant and a book on a wooden coffee table, and a picture frame and shelf at the top-left."
+   }
+  ],
+  "primary_action": "none (static illustration)",
+  "other_actions": "none",
+  "services_and_addons": "No services, durations, prices or products. The speech bubble icons show cleaning tools (spray bottle and sponge, bucket and mop, magic wand), not beauty services.",
+  "what_changed_from_previous_frame": "Not a screen: this is a standalone illustration placed directly below f15. Its size and aspect match f15's empty grey placeholder, so it is most likely the asset for that sheet's media slot. It shows the Expert asking the customer if she can help with anything."
+ },
+ {
+  "file": "/Users/rupambanik/Downloads/Snabbit-Expert-DS/projects/beauty-job-cycle/reads/figma-linear-flow/f17.png",
+  "screen_title": "Job In Progress (sheet: Enter OTP to end job)",
+  "kind": "bottom sheet over Job In Progress",
+  "regions": [
+   {
+    "region": "status bar (dimmed)",
+    "verbatim_text": "9:30",
+    "visual": "Time top-left; wifi (faint), signal and battery top-right. Grey scrim over the whole screen above the sheet."
+   },
+   {
+    "region": "top-right utility buttons (dimmed)",
+    "verbatim_text": "Help | SOS",
+    "visual": "Pink headset icon with a pink-outlined 'Help' pill; red siren icon with a red-filled 'SOS' pill with white text. Dimmed."
+   },
+   {
+    "region": "page title (dimmed)",
+    "verbatim_text": "Job In Progress",
+    "visual": "Centred bold text with a filled clock icon on the left."
+   },
+   {
+    "region": "timer (dimmed)",
+    "verbatim_text": "TIME LEFT | 03:23",
+    "visual": "Stadium ring with a red arc from top-centre clockwise to the bottom-right and a grey remainder. '03:23' is large and bold red. There is no '15 mins remaining' banner below it."
+   },
+   {
+    "region": "job card behind sheet (dimmed)",
+    "verbatim_text": "Radhika S | Job Timing | 10:00 AM  -  11:00 AM | Duration | 60 min",
+    "visual": "White rounded card. Row 1: filled person icon + 'Radhika S', with two square light-pink buttons on the right (pink filled chat/message icon, pink phone icon). A divider. Row 2: clock icon + 'Job Timing' in grey on the left, '10:00 AM  -  11:00 AM' bold on the right. A divider. Row 3: hourglass icon + 'Duration' in grey on the left, '60 min' bold on the right."
+   },
+   {
+    "region": "Snabbit Kavach strip (partially visible, dimmed)",
+    "verbatim_text": "Snabbit | Kavach (cut off by the sheet) | Activate",
+    "visual": "Below the card: a blue shield icon with a white four-point star, 'Snabbit' in blue (the second line 'Kavach' is clipped by the sheet), and a blue filled 'Activate' button with a white play-triangle icon on the right."
+   },
+   {
+    "region": "close button",
+    "verbatim_text": "(none)",
+    "visual": "Dark slate circle with a white X, centred at the top edge of the sheet and overlapping the card's bottom and the Kavach strip."
+   },
+   {
+    "region": "bottom sheet header",
+    "verbatim_text": "Enter OTP to end job",
+    "visual": "Light off-white sheet with rounded top corners; bold dark centred headline on one line."
+   },
+   {
+    "region": "OTP input",
+    "verbatim_text": "(empty)",
+    "visual": "Three empty white rounded-square input boxes with thin light grey borders, centred in a row. No digits and no visible focus or cursor."
+   },
+   {
+    "region": "helper text",
+    "verbatim_text": "Please ask the customer to share the OTP with you",
+    "visual": "Grey regular text, centred, one line."
+   },
+   {
+    "region": "bottom sheet action",
+    "verbatim_text": "End Job",
+    "visual": "Full-width button, pale/light pink with white text: the disabled state."
+   },
+   {
+    "region": "system navigation bar",
+    "verbatim_text": "(none)",
+    "visual": "White Android nav bar with square, circle and triangle icons."
+   }
+  ],
+  "primary_action": "End Job (disabled, pale pink)",
+  "other_actions": "Close X above the sheet. Chat and call buttons on the dimmed job card. Help, SOS and Snabbit Kavach Activate in the dimmed background.",
+  "services_and_addons": "No service list is visible; 'Customer Services' is hidden behind the sheet. The job card still reads Job Timing '10:00 AM  -  11:00 AM' and Duration '60 min', the same as f14, although f14 listed two services (Fruit facial, Leg massage). Nothing marks an added service or extension, and the timer is still 03:23.",
+  "what_changed_from_previous_frame": "The 'Ask if you can help quickly with anything.' sheet (f15) is replaced by a shorter 'Enter OTP to end job' sheet, with three empty OTP boxes, the helper line 'Please ask the customer to share the OTP with you' and a disabled pale-pink 'End Job' button. Because the sheet is shorter, the dimmed job card (Radhika S, Job Timing, Duration) and part of the Snabbit Kavach strip now show behind it. The timer is unchanged at 03:23."
+ },
+ {
+  "file": "/Users/rupambanik/Downloads/Snabbit-Expert-DS/projects/beauty-job-cycle/reads/figma-linear-flow/f18.png",
+  "screen_title": "Job In Progress (sheet: Enter OTP to end job, OTP filled)",
+  "kind": "bottom sheet over Job In Progress",
+  "regions": [
+   {
+    "region": "status bar (dimmed)",
+    "verbatim_text": "9:30",
+    "visual": "Time top-left; wifi (faint), signal and battery top-right. Grey scrim above the sheet."
+   },
+   {
+    "region": "top-right utility buttons (dimmed)",
+    "verbatim_text": "Help | SOS",
+    "visual": "Pink headset with a pink-outlined 'Help' pill; red siren with a red-filled 'SOS' pill with white text."
+   },
+   {
+    "region": "page title (dimmed)",
+    "verbatim_text": "Job In Progress",
+    "visual": "Centred bold text with a filled clock icon."
+   },
+   {
+    "region": "timer (dimmed)",
+    "verbatim_text": "TIME LEFT | 03:23",
+    "visual": "Stadium ring with a red arc (top-centre clockwise to bottom-right) and a grey remainder; '03:23' is large bold red. No warning banner."
+   },
+   {
+    "region": "job card behind sheet (dimmed)",
+    "verbatim_text": "Radhika S | Job Timing | 10:00 AM  -  11:00 AM | Duration | 60 min",
+    "visual": "Same card as f17: person icon + name with light-pink chat and phone buttons, then clock icon + Job Timing, then hourglass icon + Duration, separated by dividers."
+   },
+   {
+    "region": "Snabbit Kavach strip (partially visible, dimmed)",
+    "verbatim_text": "Snabbit | Kavach (clipped) | Activate",
+    "visual": "Blue shield icon, blue 'Snabbit' text with 'Kavach' partly visible below and clipped, and a blue 'Activate' button with a play icon."
+   },
+   {
+    "region": "close button",
+    "verbatim_text": "(none)",
+    "visual": "Dark slate circle with a white X at the top-centre edge of the sheet."
+   },
+   {
+    "region": "bottom sheet header",
+    "verbatim_text": "Enter OTP to end job",
+    "visual": "Bold dark centred headline on a light off-white sheet with rounded top corners. The sheet top sits a few px lower than in f17."
+   },
+   {
+    "region": "OTP input",
+    "verbatim_text": "6 | 6 | 6",
+    "visual": "Three white rounded-square boxes with light grey borders, each holding a dark digit '6' centred."
+   },
+   {
+    "region": "helper text",
+    "verbatim_text": "Please ask the customer to share the OTP with you",
+    "visual": "Grey centred text, one line."
+   },
+   {
+    "region": "bottom sheet action",
+    "verbatim_text": "End Job",
+    "visual": "Full-width bright pink/magenta button with white bold text: the enabled state."
+   },
+   {
+    "region": "system navigation bar",
+    "verbatim_text": "(none)",
+    "visual": "White Android nav bar with square, circle and triangle icons."
+   }
+  ],
+  "primary_action": "End Job (enabled, bright pink)",
+  "other_actions": "Close X above the sheet. Chat and call on the dimmed card. Help, SOS and Kavach Activate in the dimmed background.",
+  "services_and_addons": "No service list is visible; it is hidden behind the sheet. The job card still shows 10:00 AM  -  11:00 AM and 60 min. Nothing marks an added service or extension, and the timer is still 03:23.",
+  "what_changed_from_previous_frame": "The OTP boxes are now filled with '6', '6', '6', and 'End Job' changed from disabled pale pink to enabled bright pink. Everything else is the same as f17, apart from the sheet sitting a few px lower."
+ },
+ {
+  "file": "/Users/rupambanik/Downloads/Snabbit-Expert-DS/projects/beauty-job-cycle/reads/figma-linear-flow/f19.png",
+  "screen_title": "Products you used",
+  "kind": "bottom sheet over Job In Progress screen",
+  "regions": [
+   {
+    "region": "status bar",
+    "verbatim_text": "9:30",
+    "visual": "Time at top left, wifi/signal/battery icons at top right, all sitting on the dimmed background."
+   },
+   {
+    "region": "top-right utilities (behind scrim)",
+    "verbatim_text": "Help | SOS",
+    "visual": "Two circular buttons: a headset icon with a pink-outlined 'Help' pill label, and a red siren/alarm-light icon with a red filled 'SOS' pill label. Dimmed by the pink-to-grey scrim."
+   },
+   {
+    "region": "background screen title (behind scrim)",
+    "verbatim_text": "Job In Progress",
+    "visual": "Dark clock icon to the left of the bold title 'Job In Progress'. Partly covered by the top edge of the sheet. The whole background has a dimmed pink-to-grey gradient scrim. No timer is visible because the sheet covers it."
+   },
+   {
+    "region": "sheet close control",
+    "verbatim_text": "(no text)",
+    "visual": "Dark slate filled circle with a white X, floating centred above the top edge of the sheet."
+   },
+   {
+    "region": "sheet title",
+    "verbatim_text": "Products you used",
+    "visual": "White sheet with rounded top corners. Large bold dark title, centred."
+   },
+   {
+    "region": "product group 1 header",
+    "verbatim_text": "Facial | 1",
+    "visual": "Group label 'Facial' at left, medium weight dark text; count '1' right-aligned in bold. Note: the header count reads 1 while the group lists 4 items."
+   },
+   {
+    "region": "product group 1 list",
+    "verbatim_text": "Facial cream | 1 unit ; Aloe vera gel | 35 g ; Sunscreen | 1 ; Gloves | 1",
+    "visual": "Very light grey rounded container with 4 rows, no dividers. Each row has a small light-pink rounded square holding a pink filled navigation-arrow (paper-plane pointer) icon, the product name in regular dark text, and a right-aligned quantity. Quantity units vary: '1 unit', '35 g', then bare '1'."
+   },
+   {
+    "region": "product group 2 header",
+    "verbatim_text": "Body | 4",
+    "visual": "Group label 'Body' at left; count '4' right-aligned in bold."
+   },
+   {
+    "region": "product group 2 list",
+    "verbatim_text": "Moisturizer | 1 ; Body scrub | 1 ; Body lotion | 1 ; Bath salts | 1",
+    "visual": "Same light grey rounded container, 4 rows, each with the same pink navigation-arrow icon in a pink square, the name, and a right-aligned bare '1'."
+   },
+   {
+    "region": "action bar",
+    "verbatim_text": "Yes, used as expected | No i used more/less",
+    "visual": "Full-width filled pink/magenta primary button with white bold text 'Yes, used as expected'. Below it a full-width white outlined secondary button with dark bold text 'No i used more/less' (lowercase 'i' as written)."
+   },
+   {
+    "region": "system nav bar",
+    "verbatim_text": "(no text)",
+    "visual": "Android navigation: square, circle, back-triangle icons."
+   }
+  ],
+  "primary_action": "Yes, used as expected",
+  "other_actions": "No i used more/less (secondary outlined button); X close button above the sheet; Help and SOS behind the scrim",
+  "services_and_addons": "No service names, durations or prices are shown. Products are grouped under two headers, 'Facial' (count shown as 1) and 'Body' (count shown as 4). These read as categories or services. 8 products in total: Facial cream 1 unit, Aloe vera gel 35 g, Sunscreen 1, Gloves 1 | Moisturizer 1, Body scrub 1, Body lotion 1, Bath salts 1. Nothing indicates a service added after booking: no 'added', 'extra' or 'add-on' label, and no change in duration.",
+  "what_changed_from_previous_frame": "f18 was the 'Enter OTP to end job' sheet (OTP 6 6 6, 'End Job' button) over the Job In Progress screen, with a red TIME LEFT 03:23 timer, the Radhika S card, Job Timing 10:00 AM - 11:00 AM, Duration 60 min and Snabbit Kavach Activate. In f19 that sheet is replaced by a taller 'Products you used' sheet covering almost the whole screen. The same dimmed Job In Progress background and X close circle remain. The timer and customer card are now hidden. This comes right after OTP entry, so it reads as the first step of ending the job."
+ },
+ {
+  "file": "/Users/rupambanik/Downloads/Snabbit-Expert-DS/projects/beauty-job-cycle/reads/figma-linear-flow/f20.png",
+  "screen_title": "What was different?",
+  "kind": "bottom sheet over Job In Progress screen",
+  "regions": [
+   {
+    "region": "status bar",
+    "verbatim_text": "9:30",
+    "visual": "Time at left, connectivity icons at right, on the dimmed background."
+   },
+   {
+    "region": "top-right utilities (behind scrim)",
+    "verbatim_text": "Help | SOS",
+    "visual": "Headset icon with a pink-outlined 'Help' pill; red siren icon with a red 'SOS' pill; both dimmed."
+   },
+   {
+    "region": "sheet close control",
+    "verbatim_text": "(no text)",
+    "visual": "Dark slate circle with a white X, floating above the sheet. The sheet starts higher than in f19, so the 'Job In Progress' title is fully hidden."
+   },
+   {
+    "region": "sheet title",
+    "verbatim_text": "What was different?",
+    "visual": "Large bold dark title, centred."
+   },
+   {
+    "region": "section 1 header",
+    "verbatim_text": "FRUIT FACIAL",
+    "visual": "All-caps grey overline label, left-aligned. No count, duration or price."
+   },
+   {
+    "region": "section 1 rows",
+    "verbatim_text": "Facial cream | 1 ; Sunscreen | 2 ; Moisturizer | 3",
+    "visual": "Each product is its own white card with a rounded border. From the left: an empty light-pink rounded square (image placeholder, no icon), the product name in regular dark text, then a stepper at the right with a light-grey circular minus button, the number in bold, and a light-grey circular plus button. All steppers look enabled; none is highlighted."
+   },
+   {
+    "region": "section 2 header",
+    "verbatim_text": "BACK MASSAGE",
+    "visual": "All-caps grey overline label."
+   },
+   {
+    "region": "section 2 rows",
+    "verbatim_text": "Eye serum | 4 ; Night cream | 5",
+    "visual": "Same white bordered cards, each with the empty pink placeholder square, the name, and a minus / number / plus stepper."
+   },
+   {
+    "region": "action bar",
+    "verbatim_text": "Save changes",
+    "visual": "Full-width filled pink/magenta button with white bold text. It appears enabled."
+   },
+   {
+    "region": "system nav bar",
+    "verbatim_text": "(no text)",
+    "visual": "Android square, circle, back-triangle."
+   }
+  ],
+  "primary_action": "Save changes",
+  "other_actions": "minus / plus steppers on each product; X close button above the sheet",
+  "services_and_addons": "Two services are named as section headers in caps: 'FRUIT FACIAL' and 'BACK MASSAGE'. No durations or prices. Products per service: FRUIT FACIAL has Facial cream 1, Sunscreen 2, Moisturizer 3; BACK MASSAGE has Eye serum 4, Night cream 5. The quantities run 1 to 5 in sequence and look like placeholders. This list does not match f19: f19 grouped by 'Facial' / 'Body', and here the groups are service names. Moisturizer sits under Body in f19 but under FRUIT FACIAL here. Eye serum and Night cream do not appear in f19. Aloe vera gel, Gloves, Body scrub, Body lotion and Bath salts from f19 are missing. Nothing marks a service as added after booking.",
+  "what_changed_from_previous_frame": "This follows the 'No i used more/less' branch of f19. The read-only grouped product list with quantities becomes an editable list, one bordered card per product, each with a minus/plus stepper. Group headers change from sentence-case 'Facial' / 'Body' with counts to caps service names 'FRUIT FACIAL' / 'BACK MASSAGE' with no counts. The pink navigation-arrow icons are replaced by empty pink placeholder squares. The two buttons become a single 'Save changes' button. The sheet is slightly taller, and the 'Job In Progress' title behind it is no longer visible."
+ },
+ {
+  "file": "/Users/rupambanik/Downloads/Snabbit-Expert-DS/projects/beauty-job-cycle/reads/figma-linear-flow/f21.png",
+  "screen_title": "You Earned (job complete / rate the customer)",
+  "kind": "page",
+  "regions": [
+   {
+    "region": "status bar",
+    "verbatim_text": "9:30",
+    "visual": "Light grey page background, no scrim."
+   },
+   {
+    "region": "top-right utilities",
+    "verbatim_text": "Help | SOS",
+    "visual": "White circular buttons: a pink headset icon with a pink-outlined 'Help' pill label, and a red siren icon with a red filled 'SOS' pill label. Now at full strength, not dimmed. There is no screen title and no 'Job In Progress' header."
+   },
+   {
+    "region": "success banner",
+    "verbatim_text": "Inventory updated successfully!",
+    "visual": "Full-width light mint-green rounded banner. At left, a dark green filled circle with a white check mark, followed by bold dark text."
+   },
+   {
+    "region": "earnings card header",
+    "verbatim_text": "You Earned | \u20b9150",
+    "visual": "White rounded card. 'You Earned' in regular dark grey text, centred. Below it '\u20b9150' in very large bold green. Under the amount is a thin grey divider with a small upward notch/caret at centre."
+   },
+   {
+    "region": "earnings breakdown rows",
+    "verbatim_text": "Work (1 hour) | \u20b9120 ; Check In by 7:45 PM | \u20b95 ; Summer Bonus \u2600\ufe0f (1 hour) | \u20b920 ; OT (15 min) | \u20b940",
+    "visual": "Four rows separated by dotted dividers, labels in grey at left and amounts in dark semibold at right. The 'Check In by 7:45 PM' row has a light mint-green highlighted background with a faint diagonal white shine stripe; '7:45 PM' is in blue. 'Summer Bonus' carries a sun emoji (\u2600\ufe0f) between the text and '(1 hour)'. Note: the rows sum to \u20b9185 (120+5+20+40), not the \u20b9150 headline."
+   },
+   {
+    "region": "rating section",
+    "verbatim_text": "Rate the customer",
+    "visual": "Bold dark heading, left-aligned."
+   },
+   {
+    "region": "rating faces",
+    "verbatim_text": "(no text)",
+    "visual": "Five large circular face illustrations in a row: (1) angry face with furrowed brows, red outline; (2) worried/sad face; (3) simple smile; (4) smiling face with closed happy eyes and orange blush cheeks; (5) big open-mouth grin with pink tongue. Faces 2 to 5 have yellow outlines. All are unfilled (white inside) and none is selected."
+   },
+   {
+    "region": "action bar",
+    "verbatim_text": "Ready for next job",
+    "visual": "Full-width button in pale pink with white text. Disabled state because no rating is selected."
+   },
+   {
+    "region": "system nav bar",
+    "verbatim_text": "(no text)",
+    "visual": "Android square, circle, back-triangle on a white strip."
+   }
+  ],
+  "primary_action": "Ready for next job (disabled until a rating is chosen)",
+  "other_actions": "Tap one of five rating faces; Help; SOS",
+  "services_and_addons": "No service names are listed. Earnings show a single 'Work (1 hour)' line at \u20b9120, not one line per service. Other components: Check In by 7:45 PM \u20b95, Summer Bonus \u2600\ufe0f (1 hour) \u20b920, OT (15 min) \u20b940. 'OT (15 min)' is the only sign of time beyond the booked hour. It is labelled overtime, not as an added service or extension. No products are listed. The banner 'Inventory updated successfully!' confirms the product step.",
+  "what_changed_from_previous_frame": "The bottom sheet and scrim are gone, replaced by a full page on a light grey background. Help and SOS are now undimmed. A green success banner, 'Inventory updated successfully!', confirms the saved product changes from f20. A new earnings card shows '\u20b9150' with a four-line breakdown, followed by a 'Rate the customer' five-face rating row and a disabled 'Ready for next job' button."
+ },
+ {
+  "file": "/Users/rupambanik/Downloads/Snabbit-Expert-DS/projects/beauty-job-cycle/reads/figma-linear-flow/f22.png",
+  "screen_title": "Rate the customer \u2014 Block Customer? (scrolled)",
+  "kind": "page",
+  "regions": [
+   {
+    "region": "status bar",
+    "verbatim_text": "9:30",
+    "visual": "Light background."
+   },
+   {
+    "region": "top-right utilities",
+    "verbatim_text": "Help | SOS",
+    "visual": "Pink headset 'Help' pill button and red siren 'SOS' pill button, undimmed, fixed at the top. There is a faint ghost of the earnings text scrolling under them."
+   },
+   {
+    "region": "earnings card (scrolled, top clipped)",
+    "verbatim_text": "\u20b9150 (bottom half visible only) | Work (1 hour) | \u20b9120 ; Check In by 7:45 PM | \u20b95 ; Summer Bonus \u2600\ufe0f (1 hour) | \u20b920 ; OT (15 min) | \u20b940",
+    "visual": "The page has scrolled up. The success banner and 'You Earned' are off-screen, and only the lower part of the green '\u20b9150' shows, clipped under the header. The same divider with the centre notch, dotted-divider rows, mint-green highlighted 'Check In by' row with blue '7:45 PM', and sun emoji on Summer Bonus."
+   },
+   {
+    "region": "rating section",
+    "verbatim_text": "Rate the customer",
+    "visual": "Bold heading."
+   },
+   {
+    "region": "rating faces",
+    "verbatim_text": "(no text)",
+    "visual": "The first face (angry) is now selected. It is filled solid red-orange with dark angry features. The other four faces (worried, smile, blushing smile, big grin) keep their yellow outlines and are unfilled."
+   },
+   {
+    "region": "block customer section",
+    "verbatim_text": "Block Customer? | Blocked customer won\u2019t be able to book you in future.",
+    "visual": "Bold dark heading 'Block Customer?', with a smaller regular dark helper line below."
+   },
+   {
+    "region": "block customer card",
+    "verbatim_text": "Radhika S | Block",
+    "visual": "White bordered rounded card. At left, a dark person icon and the bold name 'Radhika S'. At right, a red filled rounded button with a white prohibition/no-entry circle icon and white text 'Block'."
+   },
+   {
+    "region": "action bar",
+    "verbatim_text": "Ready for next job",
+    "visual": "Full-width filled pink/magenta button with white bold text, now enabled."
+   },
+   {
+    "region": "system nav bar",
+    "verbatim_text": "(no text)",
+    "visual": "Android square, circle, back-triangle."
+   }
+  ],
+  "primary_action": "Ready for next job (now enabled)",
+  "other_actions": "Block (red button in the Radhika S card); change the rating face; Help; SOS",
+  "services_and_addons": "Same as f21. No service list. Earnings show Work (1 hour) \u20b9120, Check In by 7:45 PM \u20b95, Summer Bonus \u2600\ufe0f (1 hour) \u20b920, OT (15 min) \u20b940, under \u20b9150 (the rows sum to \u20b9185). OT (15 min) is the only sign of extra time. There is no add-on or added-service label and no products.",
+  "what_changed_from_previous_frame": "The page is scrolled so the success banner and 'You Earned' header are off the top. The lowest rating (angry face) is selected and filled red-orange. Selecting it reveals a new 'Block Customer?' section with the helper line and a 'Radhika S' card holding a red 'Block' button. 'Ready for next job' changes from disabled pale pink to enabled solid pink."
+ },
+ {
+  "file": "/Users/rupambanik/Downloads/Snabbit-Expert-DS/projects/beauty-job-cycle/reads/figma-linear-flow/f23.png",
+  "screen_title": "Are you sure you want to block?",
+  "kind": "bottom sheet over the post-job 'Rate the customer' screen (f22)",
+  "regions": [
+   {
+    "region": "Status bar (dimmed)",
+    "verbatim_text": "9:30",
+    "visual": "Android status bar; wifi, signal and battery glyphs on the right. Whole background behind the sheet is dimmed with a dark grey scrim."
+   },
+   {
+    "region": "Top-right floating actions (dimmed)",
+    "verbatim_text": "Help | SOS",
+    "visual": "Two circular buttons: a headset icon with a pink 'Help' pill label under it, and a red siren/alarm-light icon with a red 'SOS' pill label. Both greyed by the scrim."
+   },
+   {
+    "region": "Earnings card (dimmed, background)",
+    "verbatim_text": "[large green amount, top half clipped by the scroll edge; only the lower half of the glyphs is visible: '\u20b9', '1', a '3' or '5', '0' - exact number not legible] | Work (1 hour) \u20b9120 | Check In by 7:45 PM \u20b95 | Summer Bonus (1 hour) \u20b920 | OT (15 min) \u20b940",
+    "visual": "White card, scrolled so the big amount is cut off at the top; a thin divider with a small upward notch/caret in the middle sits below the amount. Four rows, label left and amount right, separated by dotted dividers. The 'Check In by 7:45 PM' row has a light green highlight band with faint diagonal sheen stripes, and '7:45 PM' is in blue. 'Summer Bonus' has a sun emoji (yellow-orange sun) between 'Bonus' and '(1 hour)'. Visible rows sum to \u20b9185."
+   },
+   {
+    "region": "Rate the customer (dimmed, background)",
+    "verbatim_text": "Rate the customer",
+    "visual": "Row of five illustrated face emoji: 1) angry face, filled red-orange (selected/active), 2) worried/sad face, 3) plain smile, 4) smiling with closed eyes and pink blush cheeks, 5) big open-mouth grin. Faces 2-5 are yellow-outlined on white (unselected)."
+   },
+   {
+    "region": "Block Customer? (dimmed, partly covered by sheet)",
+    "verbatim_text": "Block Customer? | Blocked customer won't be able to book you in future.",
+    "visual": "Heading and one-line helper; the customer row and Block button below are hidden under the sheet."
+   },
+   {
+    "region": "Close button",
+    "verbatim_text": "",
+    "visual": "Dark slate circular button with white X icon, floating centred just above the sheet's top edge."
+   },
+   {
+    "region": "Bottom sheet - content",
+    "verbatim_text": "Are you sure you want to block? | Once blocked, customer will not be able to make future bookings with you.",
+    "visual": "Light grey/white sheet with rounded top corners. Bold dark centred title; grey centred two-line body text. No icon or illustration."
+   },
+   {
+    "region": "Bottom sheet - action bar",
+    "verbatim_text": "No | Yes",
+    "visual": "Two equal-width buttons side by side: left 'No' is a pale pink tonal button with pink text; right 'Yes' is a solid pink/magenta button with white text."
+   },
+   {
+    "region": "System nav bar",
+    "verbatim_text": "",
+    "visual": "Android nav: square, circle, back triangle."
+   }
+  ],
+  "primary_action": "Yes (confirm block)",
+  "other_actions": "No (cancel); X close button above sheet; tap scrim (implied)",
+  "services_and_addons": "No services shown on this frame. The dimmed background earnings breakdown lists only earnings lines, not services: 'Work (1 hour) \u20b9120', 'Check In by 7:45 PM \u20b95', 'Summer Bonus (1 hour) \u20b920', 'OT (15 min) \u20b940'. The only sign of extra time is the 'OT (15 min)' overtime line (\u20b940). No service names, no add-on/'added'/'extra' service labels, no product or item list.",
+  "what_changed_from_previous_frame": "f22 was the undimmed post-job screen with the angry face selected, a 'Radhika S' row with a red 'Block' button (prohibit icon) and the pink 'Ready for next job' CTA. In f23 the user has tapped Block: a dark scrim covers the screen, a confirmation bottom sheet 'Are you sure you want to block?' with No/Yes appears, with a floating X close button above it; the 'Ready for next job' CTA is covered."
+ },
+ {
+  "file": "/Users/rupambanik/Downloads/Snabbit-Expert-DS/projects/beauty-job-cycle/reads/figma-linear-flow/f24.png",
+  "screen_title": "Unblock someone to block Radhika S",
+  "kind": "bottom sheet (near full height) over the post-job screen",
+  "regions": [
+   {
+    "region": "Status bar and top-right actions (dimmed)",
+    "verbatim_text": "9:30",
+    "visual": "Dark grey scrim over the top strip; the Help (headset) and SOS (siren) circular buttons are faintly visible behind the scrim, their labels hidden by the sheet."
+   },
+   {
+    "region": "Sheet header",
+    "verbatim_text": "Unblock someone to block | Radhika S",
+    "visual": "Large orange gradient circle with a white exclamation mark '!' icon, centred. Bold dark centred title 'Unblock someone to block' with the name 'Radhika S' on the next line in pink/magenta."
+   },
+   {
+    "region": "Customer card",
+    "verbatim_text": "Radhika S | HAL Old Airport rd, near railway over bridge, LN Pura, Marathahalli, Bengaluru",
+    "visual": "White rounded card with a subtle border. Filled person silhouette icon before the bold name; address in grey on two lines."
+   },
+   {
+    "region": "Block list header",
+    "verbatim_text": "Block list | 5/5 People blocked",
+    "visual": "'Block list' bold dark on the left; '5/5 People blocked' in red on the right (limit reached)."
+   },
+   {
+    "region": "Block list rows",
+    "verbatim_text": "Sreelakshmi Raj / HAL Old Airport Rd, Near Railway Over Bridge,... / Unblock | Prashant K / HAL Old Airport Rd, Near Railway Over Bridge,... / Unblock | Neha Yadav / HAL Old Airport Rd, Near Railway Over Bridge,... / Unblock | Prashant K / HAL Old Airport Rd, Near Railway Over Bridge,... / Unblock | Sreelakshmi Raj / HAL Old Airport Rd, Near Railway Over Bridge,... / Unblock",
+    "visual": "Five rows separated by thin light dividers. Each row: small filled person icon, name in dark medium weight, truncated grey address with ellipsis on the line below, and a trailing outlined pink 'Unblock' button (pink border, pink text, white fill). The fifth row is partly cut off by the bottom nav area. Names repeat (Prashant K and Sreelakshmi Raj each twice)."
+   },
+   {
+    "region": "System nav bar",
+    "verbatim_text": "",
+    "visual": "Android nav: square, circle, back triangle, on white."
+   }
+  ],
+  "primary_action": "Unblock (on any row of the block list)",
+  "other_actions": "None visible. No close X, no cancel button and no 'Block Radhika S' confirm button on the sheet.",
+  "services_and_addons": "No services, add-ons, products or earnings shown. Only customer names and addresses.",
+  "what_changed_from_previous_frame": "After 'Yes' on the confirm sheet in f23, the app finds the block list full: a new, taller sheet replaces the confirmation sheet, with an orange '!' warning, the title 'Unblock someone to block Radhika S', Radhika S's card with full address, and the 5-person block list with '5/5 People blocked' in red."
+ },
+ {
+  "file": "/Users/rupambanik/Downloads/Snabbit-Expert-DS/projects/beauty-job-cycle/reads/figma-linear-flow/f25.png",
+  "screen_title": "Unblock someone to block Radhika S",
+  "kind": "bottom sheet (near full height) over the post-job screen",
+  "regions": [
+   {
+    "region": "Status bar and top-right actions (dimmed)",
+    "verbatim_text": "9:30",
+    "visual": "Same scrim, Help and SOS icons faintly visible behind it."
+   },
+   {
+    "region": "Sheet header",
+    "verbatim_text": "Unblock someone to block | Radhika S",
+    "visual": "Same orange circle with white '!' icon; dark title, 'Radhika S' in pink."
+   },
+   {
+    "region": "Customer card",
+    "verbatim_text": "Radhika S | HAL Old Airport rd, near railway over bridge, LN Pura, Marathahalli, Bengaluru",
+    "visual": "Same white rounded card, person icon, grey two-line address."
+   },
+   {
+    "region": "Block list header",
+    "verbatim_text": "Block list | 4/5 People blocked",
+    "visual": "Counter now reads '4/5 People blocked', still in red."
+   },
+   {
+    "region": "Block list rows",
+    "verbatim_text": "Prashant K / HAL Old Airport Rd, Near Railway Over Bridge,... / Unblock | Neha Yadav / HAL Old Airport Rd, Near Railway Over Bridge,... / Unblock | Prashant K / HAL Old Airport Rd, Near Railway Over Bridge,... / Unblock | Sreelakshmi Raj / HAL Old Airport Rd, Near Railway Over Bridge,... / Unblock",
+    "visual": "Four rows, same row anatomy (person icon, name, truncated grey address, outlined pink 'Unblock' button). Empty space below the last row."
+   },
+   {
+    "region": "System nav bar",
+    "verbatim_text": "",
+    "visual": "Android nav: square, circle, back triangle."
+   }
+  ],
+  "primary_action": "Unblock (on remaining rows)",
+  "other_actions": "None visible. Still no close, cancel or 'Block Radhika S' confirm button.",
+  "services_and_addons": "No services, add-ons, products or earnings shown.",
+  "what_changed_from_previous_frame": "The first 'Sreelakshmi Raj' row has been removed (unblocked); the list drops from 5 to 4 rows and the counter changes from '5/5 People blocked' to '4/5 People blocked'. Everything else is unchanged; no confirmation or success message is shown for the unblock."
+ },
+ {
+  "file": "/Users/rupambanik/Downloads/Snabbit-Expert-DS/projects/beauty-job-cycle/reads/figma-linear-flow/f26.png",
+  "screen_title": "Rate the customer (post-job, customer blocked)",
+  "kind": "page (post-job screen) with top toast",
+  "regions": [
+   {
+    "region": "Status bar",
+    "verbatim_text": "9:30",
+    "visual": "Android status bar, wifi, signal, battery."
+   },
+   {
+    "region": "Toast / snackbar (top)",
+    "verbatim_text": "The customer is blocked",
+    "visual": "Full-width red rounded banner at the top with a white circle-slash (prohibit) icon on the left and white bold text. It overlaps and hides the Help and SOS buttons (only their edges show)."
+   },
+   {
+    "region": "Earnings card",
+    "verbatim_text": "[large green amount, top half clipped, not legible] | Work (1 hour) \u20b9120 | Check In by 7:45 PM \u20b95 | Summer Bonus (1 hour) \u20b920 | OT (15 min) \u20b940",
+    "visual": "Same as f22: white card, clipped green amount, notched divider, four rows with dotted dividers, 'Check In by 7:45 PM' row highlighted light green with '7:45 PM' in blue, sun emoji in 'Summer Bonus'."
+   },
+   {
+    "region": "Rate the customer",
+    "verbatim_text": "Rate the customer",
+    "visual": "Five emoji faces; the first angry face is filled red-orange (selected); the other four are yellow-outlined (unselected)."
+   },
+   {
+    "region": "Block Customer?",
+    "verbatim_text": "Block Customer? | Blocked customer won't be able to book you in future. | Radhika S | Unblock",
+    "visual": "Customer row card now has a pink-to-white gradient background (blocked state). Filled person icon, bold 'Radhika S', trailing solid red button with white prohibit icon and white text 'Unblock'."
+   },
+   {
+    "region": "Action bar",
+    "verbatim_text": "Ready for next job",
+    "visual": "Full-width solid pink/magenta button, white text, enabled."
+   },
+   {
+    "region": "System nav bar",
+    "verbatim_text": "",
+    "visual": "Android nav: square, circle, back triangle."
+   }
+  ],
+  "primary_action": "Ready for next job",
+  "other_actions": "Unblock (on the Radhika S row); change the rating face",
+  "services_and_addons": "No services shown. Only the earnings breakdown lines: 'Work (1 hour) \u20b9120', 'Check In by 7:45 PM \u20b95', 'Summer Bonus (1 hour) \u20b920', 'OT (15 min) \u20b940'. 'OT (15 min)' is the only sign of time beyond the booking. No service names, no add-on/'added'/'extra' service label, no product or item list.",
+  "what_changed_from_previous_frame": "The block-list sheet is gone and the user is back on the post-job screen. A red toast 'The customer is blocked' with a prohibit icon appears at the top, covering Help/SOS. The Radhika S row changed from a white row with a red 'Block' button (f22) to a pink-gradient row with a red 'Unblock' button. The flow goes from unblocking one person in f25 straight to 'blocked' here, with no separate step to confirm blocking Radhika S."
+ }
+]

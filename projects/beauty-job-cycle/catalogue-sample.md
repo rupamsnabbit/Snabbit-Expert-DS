@@ -20,6 +20,9 @@ Units follow the PRD's own example: *"+1 pcs vs usual 1"*.
 | | | Cotton pads | 4 |
 | | | Face pack | 1 |
 | | | Massage cream | 1 |
+| **Leg massage** | 30 min | Massage cream | 1 |
+| | | Massage oil | 1 |
+| | | Wet wipes | 2 |
 | **Eyebrow threading** | 15 min | Cotton thread | 1 |
 | | | Astringent | 1 |
 | | | Talcum powder | 1 |
@@ -54,3 +57,18 @@ stands in and is flagged.
 
 One changed line out of nine is the honest case: the PRD's instruction is *"only the products that differed need to
 change — everything else stays at usual."* Drawing three or four changes would misrepresent the effort.
+
+
+## The job used on the linear board (page `Job lifecycle · linear`, from 2026-09-23)
+
+Replaces the story above for the redraw on the stakeholder's Figma linear flow. Two booked services, one add-on.
+
+> **Radhika S** — Tuesday 7 February, 10:00 – 11:30 am
+> Booked: **Fruit facial** · 60 min · 6 items — Cleansing milk 1 · Fruit facial kit 1 · Rose water toner 1 · Cotton pads 4 · Face pack 1 · Massage cream 1
+> Booked: **Leg massage** · 30 min · 3 items — Massage cream 1 · Massage oil 1 · Wet wipes 2
+> Added during the job: **Eyebrow threading** · 15 min · 2 items — Cotton thread 1 · Astringent 1
+> After the add-on: 10:00 – 11:45 am · 1 hr 45 min · 11 items
+
+*Massage cream* is used by two services and is **listed under each** (stakeholder, 2026-09-23 — `SCOPE.md` Q7).
+Threading is drawn with two items rather than the three above, to match the stakeholder's own example of an add-on
+(*"fruit facial – 15 mins – 2 items"*). Earnings stay on the Payout card and are not recomputed here.
