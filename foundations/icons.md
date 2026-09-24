@@ -90,5 +90,21 @@ Status: **seed**. Populated fully during the Button, Tab bar and Job-alert specs
 | `polygon` | Her work area — the boundary she must be inside to start a shift (never a pin; a pin is a point, this is an area) | regular | Home shift card work-area row, boundary screen |
 | `armchair` | A rest hub — somewhere she can sit down between jobs. Rest, not work: never the `graduation-cap` used for a training `hub` | fill | LiveMap `rest-hub` marker, rest-hub sheet |
 | `hand-heart` | A Seva point — where she goes for help in person. Care offered, not a transaction | fill | LiveMap `seva` marker, Seva sheet |
+| `hourglass` | Time still to run before something starts, or a job's duration — *Setting up* state header, *Duration* row. Never for a running countdown (that is the Timer's ring) | regular | HeaderNav `state` on the buffer screen, Job in progress card |
+| `bag` | Her kit bag — the products she carries to a job (*9 products from your bag*). The bag holds pouches (`tote`) and products (`package`) | regular | Job alert, Check in, Job completed rows |
+| `prohibit` | Block a customer — *Don't send me to Radhika again*. Never *disabled* or *unavailable* | regular | Rating screen ListItem, Block sheet |
+| `chat-circle` | Chat with the customer — one person. Saathi (support) is `chats-circle`, never this | regular | IconButton on the job card, Check in action tile |
+| `list-plus` | A service was added to the job while it is running — the customer's add-on (*Radhika added eyebrow threading*). Never *add one more* (that is `plus-circle`, an action she takes) and never *time added* alone (that is `clock-clockwise`) | regular | Add-on sheet pictogram (`beauty-job-cycle` 2.07) |
+| `file-text` | A document she can read in full — *Read the full terms ›*, a statement PDF. Never for *notes* or *edit* | regular | Go-live agreement row, Profile documents |
+| `moon` | Rest — her weekly off, a leave day. Never *night shift* (that is a time, said in words) | regular | Go-live *Your week* card, shift calendar |
+| `credit-card` | A repayment that comes off her payout — the kit EMI. Not a card she owns; Snabbit has no cards | regular | Go-live *Paying it back* Statement band |
+| `pencil-simple` | Edit this — change a saved detail (location, time). Never *write* or *notes* | regular | Go-live location row, Profile |
+| `heart` | Reaction — *I love this* on a post or story. Never *favourite* or *save* (that is `bookmark-simple`) | regular · fill when hers | Chip `reaction` (notifications) |
+| `thumbs-up` | Reaction — *I like this*. Never *yes* / *confirm* (a Button says the verb) | regular · fill when hers | Chip `reaction` |
+| `hands-clapping` | Reaction — *well done* to another expert's story | regular · fill when hers | Chip `reaction` |
+| `hands-praying` | Reaction — *thank you* (namaste). Never *Seva* (that is `hand-heart`) and never *pray* | regular · fill when hers | Chip `reaction` |
+| `bookmark-simple` | Save for later / the Saved list. Never *favourite* | regular · fill when saved | Notifications header trailing, Post and story footer (IconButton S) |
+| `whatsapp-logo` | WhatsApp — invite a friend, share, or message a friend she referred; opens WhatsApp. The one third-party mark allowed as an icon, because it is the app she already uses; never a generic *share* | regular | PromoCard `referral` Button leading, the friend's screen *Message on WhatsApp* row |
+| `corners-out` | Watch full screen — opens the HowToClip `player` from an inline `guide`. Never *expand a card* (that is `caret-down`) | regular | HowToClip `guide` bar |
 
 Not icons: smileys for Rating and the mascot are illustrations, not Phosphor glyphs — they live in the illustration library.

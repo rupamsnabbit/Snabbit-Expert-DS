@@ -109,3 +109,78 @@ The Beauty inventory ledger's rework — a Statement per order, a week pager abo
 
 **Revisit if.** A browsing surface genuinely needs pictures over rows, and a third feature asks for the same tile —
 then ProductTile comes back through the rule of three, with the shipped ListItem named as the thing it tried.
+
+## 2026-09-23 — Beauty job cycle: add-ons are told, not asked; *Complete job* any time
+
+**Decision.** For the Beauty job cycle (`projects/beauty-job-cycle`, stakeholder answers 2026-09-23): (1) a customer's
+**add-on is a service** with its own time and items, it can arrive **only while the job is in progress**, and the
+expert **cannot refuse it** — so it arrives as a `BottomSheet info` with one action and a way to call help, never a
+Banner with Accept / Decline; (2) **Complete job is available at any point during the job**, with no reason line.
+
+**Departs from.** `patterns/check-in-out.md` § 3 (*Complete job* enables 10 min before the end; early completion is
+a support decision) and its *Customer extends the job* edge (Accept by tap / Decline by hold). The Figma linear flow
+(`686:12720`) enables *Complete job* at 15 min left.
+
+**Why it is safe.** Finishing needs the customer's end code (NumericKeypad `otp`), so she cannot end a job the
+customer has not agreed to end — the code is the second gesture P3 asks for. An add-on she cannot refuse must never
+arrive silently (P5): sound, spoken line, the sheet, a `Tooltip status` on the Timer, and the *Job timing* and
+*Duration* rows all change in the same moment (`components/timer.md` § Behaviour, landed the same day).
+
+**Consequence.** The Househelp flow is unchanged; the pattern gains a Beauty variant section when the project writes
+its pattern (Step 5). Open, and asked of the stakeholder: what happens when an add-on needs an item she does not carry
+(`SCOPE.md` Q23), and whether completing early changes earnings (Q26, Payout).
+
+**Revisit if.** Experts report finishing early by mistake, or customers dispute early completions.
+
+## 2026-09-24 — Promotions have one shape; reactions are Chips; a day's detail is a sheet
+
+**Decision.** The *Expert (Sahil)* sheet (`KiQaNqLFaH1orma4Uf7hzU` → `8510:23259`, ~70 frames, read in
+`references/expert-sahil-rewards-2026-09-24/`) is registered as a **proposed, not shipped** file and translated, not
+transplanted. (1) Its twenty-two referral, contest and festival cards — six fills, six border colours, six button
+colours — become **one PromoCard** (`components/promo-card.md`, Tier 1, build request): `bgPrimary`, `borderDefault`,
+a `bgBrandSubtle` media ground, one Button tone, identity carried by the asset and an eyebrow Tag. Colour that means
+only *a different prize* is decorative colour, and for an expert who reads slowly colour is a language (P6). (2) Emoji
+reactions become **Chip `reaction`** — the Chip already has the two slots (icon, count); `fire` is not offered because
+it means *streak*. (3) The seven centred day cards become **BottomSheet `info`** with a day-detail recipe: attendance
+as a Tag, wins as reward assets, *Got it* as the one action — the sheet is the app's only modal surface and *Okay!* is
+banned copy. (4) Stories reuse the shipped HowToClip `story` circle and the clip player gains a `story` mode with a
+time Caption and the reactions row, still without a scrubber knob (P3). (5) A bonus wallet is a HeroCard `reward` with
+a `facts` bottom. Nothing on the sheet needed a second new component.
+
+**Consequence.** Core 52 → 53; patterns 10 → 11 (`patterns/notification-centre.md`). Six icon meanings and two assets
+registered; `whatsapp-logo` is the one third-party mark allowed as an icon. Copy masters are English (*Invite on
+WhatsApp* · *See contest* · *Claim bonus* · *Got it*); the sheet's romanised Hindi is not one of the four scripts and
+is not a master. Growth supplies prize photos as campaign content, never as registered assets.
+
+**Open, for the design lead.** Festival and religious imagery (the Ganesh idol) — proposal: a generic festive scene
+and a diya-motif reward disc, the festival named in text. Whether *Utsav Bonus* is a brand word or a bonus name. Which
+surface opens the day-detail sheets (a month calendar with markers is implied but not drawn). Whether the Hub accepts
+*a friend* for *Saheli* in English copy.
+
+**Revisit if.** Growth ships a campaign that cannot be said in one title line and one Button — then PromoCard gains a
+slot, not a colour. Or the Rewards home is drawn and the day sheets turn out to open from a Statement, not a calendar.
+
+## 2026-09-24 — The Refer tab is a Statement and a leaderboard, not new components
+
+**Decision.** The proposed Refer screen (`references/refer-tab-2026-09-24/`) is translated with **no new component**.
+Its friend cards — placeholder avatar, name, *Day 7 completed*, a green **Claim Bonus** Button, phone and WhatsApp
+icons in the row, an orange *Processing* strip, a *Claimed 🤑* pill — are the shipped **Statement** with an Avatar
+leading each row: ready to claim is Amount `brand` with a caret, in progress is Amount `locked` with its condition,
+claimed is Amount `positive`, and a bonus on its way is a `schedule` row with a date tile. Claim, call and message
+move to the friend's own screen, because a Button in a list row and two IconButtons in one row are the two things
+`list-item.md` forbids. The contest is a Card: prizes on a metallic podium asset, ListItem rows with a new **`rank`**
+leading (medal assets for 1–3), her row `current` with a **You** Tag (in a list of people the marker is the word),
+a Nudge whose consequence is a rank. The inline video becomes **HowToClip `guide`**, the form the roadmap had open
+since 2026-09-08, without the drawn scrubber knob. The purple and pink sections become Cards on the page; the
+confetti hero becomes the PromoCard `referral` specified the same morning.
+
+**Consequence.** Patterns 11 → 12 (`patterns/referral.md`); ROADMAP's *HowToClip `guide`* item closes. Four reward
+assets (`rank-1/2/3`, `podium`) and one icon (`corners-out`) registered; `whatsapp-logo` now also means *message a
+friend she referred*. Growth supplies podium prize photos as campaign content.
+
+**Open.** What the leaderboard ranks (drawn as referral earnings); whether the per-screen language toggle belongs on
+the share sheet instead of the header; the *Saheli* wordmark; what *day 7* counts.
+
+**Revisit if.** Experts in device review do not find the claim on the friend's screen — then the ready-to-claim row
+gets the one allowed IconButton (`hand-coins`) as an `actionable` row, still never a labelled Button in a list.
+

@@ -79,6 +79,12 @@ Scene compositions exist: meeting a customer, hand-washing, selfie, showing ID (
 
 Rule (P-persona): the expert is always competent and dignified — working, greeting, celebrating, learning. Never confused, scolded, or the butt of a joke. Distress appears only as *concern* in safety contexts, and the trainer or support is always in frame with her.
 
+**Referral — 1 new scene (2026-09-24, `components/promo-card.md`).** Illustration layer, 96 · 160 dp; WebP.
+
+| Asset | Meaning | Notes |
+| --- | --- | --- |
+| `asset/character/referral-handover` | She brings a friend to Snabbit | Two women: the expert in uniform handing a Snabbit box to a friend in plain clothes; both smiling, adult proportions. The *Expert (Sahil)* sheet draws it six times with amounts painted in (*KAMAO 15,000*) — the amount is text on the card, never in the art. The only asset for referral; the cash bundle and money bag on the same sheet are **not** registered (currency belongs to the reward layer, and the amount is an `Amount`) |
+
 ### 4. Rewards — `asset/reward/*`, `asset/badge/*`, `asset/tier/*`
 
 Metallic 3D: hexagonal badges with a star and laurel, discs for coins, cards for penalties. Strong top-left specular, darker rim, optional soft glow on dark backgrounds. Sizes 40 · 64 · 96 · 160 dp. WebP; Lottie for the earn moment.
@@ -93,6 +99,11 @@ Metallic 3D: hexagonal badges with a star and laurel, discs for coins, cards for
 | `asset/badge/winback` | Winback bonus (bronze hex) | |
 | `asset/badge/joining` | Joining bonus (purple hex) | |
 | `asset/tier/bronze` … `pink-diamond`, `asset/tier/locked` | Expert tier gems | From the DS file; same metallic layer. |
+| `asset/reward/spin-wheel` | A free spin — a chance at coins | Metallic wheel, pink and gold segments, pointer at top. Day detail sheet for a spin day and for a spin with no win (at 40 % opacity). From *Expert (Sahil)* `8510:23259`, 2026-09-24 |
+| `asset/reward/utsav-bonus` | **Proposed** — a festival bonus | Open (`references/expert-sahil-rewards-2026-09-24/` § Open 1–2): the sheet uses a *UTSAV BONUS* wordmark and a Ganesh idol. Words cannot be in assets, and the register has no rule on religious imagery. Proposal: a metallic disc with a diya motif for the bonus (reward layer), the festival named in text; a generic festive scene (`asset/scene/festival` — diya, marigold, sparkles) for the day card. Needs the design lead's yes before anything is drawn |
+| — prize photos (fridge, phone, TV, gold coin…) | **Not assets.** Contest prizes are campaign content | Supplied by Growth per contest, transparent ground, 160 dp, placed in the PromoCard media slot. Same rule as kit products: the register holds meanings, not merchandise |
+| `asset/reward/rank-1` · `rank-2` · `rank-3` | First, second, third place in a contest | Metallic medals — gold, silver, bronze discs with the numeral as their identity (the one numeral allowed). 24 dp in a ListItem `rank` leading, 40 in a Nudge, 64 on the podium. Rank is the reward layer's domain (*if it shines, it's about what I earned*). From the proposed Refer tab, 2026-09-24 |
+| `asset/reward/podium` | The contest's three places, as one stage | Three metallic blocks — silver left, gold centre and tallest, bronze right — each carrying its medal. 328 × 64 dp, the prize photos (campaign content) sit on it. One asset, so every contest looks like the same contest |
 
 ### 5. Faces — `asset/face/*`
 

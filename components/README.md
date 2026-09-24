@@ -43,3 +43,4 @@ One spec per core component. `button.md` is the template. Status per component: 
 | Tooltip | Proposed | `tooltip.md` | `site/components/tooltip.html` |
 | ProgressButton | Proposed | `progress-button.md` | `site/components/progress-button.html` |
 | Popover | Proposed | `popover.md` | `site/components/popover.html` |
+| PromoCard | Proposed · build request | `promo-card.md` | `site/components/promo-card.html` |

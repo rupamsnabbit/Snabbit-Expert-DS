@@ -55,7 +55,7 @@ total. Signs: a deduction is written `− ₹1,000` with a true minus; nothing i
 | Slot | Required | Holds |
 | --- | --- | --- |
 | `band` | yes | disc icon · title · Amount `L` · optional `+ 🔒 Amount S` locked addition |
-| `rows` | yes, 1–8 | icon · label · optional description · Amount `M` (`positive` / signed negative / `locked`) · optional **asset count** (red card + number) · optional `caret-right` when the row opens a detail |
+| `rows` | yes, 1–8 | icon **or Avatar 40** (when the line is a person — a friend's referral bonus) · label · optional description · Amount `M` (`positive` / signed negative / `locked` / `brand` when ready to claim) · optional **asset count** (red card + number) · optional `caret-right` when the row opens a detail |
 | `breakup` | optional, per row | a `bgSecondary` panel of 2–5 sub-rows under one row — how a figure was made |
 | `total` | optional | one emphasised row after the divider, `textSuccessStrong` |
 | `schedule` | optional | a `bgSecondary` panel under a labelled Caption heading, 1–3 rows each with a **date tile** leading |
@@ -72,8 +72,9 @@ Not kinds — **uses**. The same component, different rows:
 | Month statement | *Total Earnings* + locked bonus | deductions | total + schedule |
 | Day statement | *Total Daily Earnings* | additions, one with a breakup, two with caret | footer band |
 | **Refill order** (Beauty) | *This refill* ₹1,240 · *from this month's pay* | products: name · *used 6 of 8* · ₹360 | schedule: Placed · Packed · On the way · Delivered as dated rows |
+| **Referral earnings** (`patterns/referral.md`, 2026-09-24) | *Earned from friends* ₹2,000 | one row per friend, **Avatar 40** leading: *Kriti Patel · 7 of 7 days · ready to claim* Amount `brand` › · *Sita Rao · 5 of 7 days* Amount `locked` *after day 7* · *Kriti Patel · claimed Fri 12 Sep* `+ ₹2,000` | schedule **ON ITS WAY**: date tile · *Sita's bonus* · ₹2,000 |
 
-The third row is why this exists as a component and not a payout composition.
+The third row is why this exists as a component and not a payout composition; the fourth is why the row's leading slot takes an Avatar — the proposed Refer screen drew each friend as a card with a green *Claim* Button, a phone and a WhatsApp icon in the row, and the shipped money card already had every one of those states as a row.
 
 ## States
 

@@ -28,7 +28,7 @@ One line that ties **what she does next** to **what it is worth** — a coin if 
 
 | Kind | Fill | Leading | Trailing | Reads |
 | --- | --- | --- | --- | --- |
-| `gain` | `bgReward` (proposed) | `arrow-right` in a `bgWarningSubtle` disc, `textWarning` icon | coin asset · *+3* | *do this by then → you get* |
+| `gain` | `bgReward` (proposed) | `arrow-right` in a `bgWarningSubtle` disc, `textWarning` icon | coin asset · *+3* — or, in a contest, a rank medal `asset/reward/rank-1` · *Top 3* (`patterns/referral.md`) | *do this by then → you get* |
 | `loss` | `bgError` | `clock` (deadline) or `warning-circle` (behaviour), `iconError` | red-card asset · *5* or coin · *−50* | *if this lapses → you lose* |
 
 `list` form: 2–3 rows in one Card with `borderSubtle` dividers, used only in the job alert and the check-in screen where several consequences hold at once — *Accept in time → +5 coins*, *Ignore → −50 coins*, *No show → 5 red cards*. Never more than three; the first row is the one she can still change.

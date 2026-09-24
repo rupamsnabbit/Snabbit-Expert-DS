@@ -1,0 +1,275 @@
+<meta charset="utf-8">
+<title>Snabbit Expert Pattern Notifications</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --bg-2:#F9FAFB; --bg-3:#F3F4F6;
+  --text:#111827; --text-body:#374151; --text-2:#6B7280; --text-3:#9CA3AF;
+  --border:#E5E7EB; --border-subtle:#F3F4F6;
+  --brand:#F70F79; --brand-wash:#FEF1F7; --brand-ink:#97094A;
+  --ok:#059669; --ok-wash:#ECFDF5; --focus:#3B82F6;
+  --sans:"Outfit",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+    --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+    --border:#374151; --border-subtle:#1F2937;
+    --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+    --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+  --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+  --border:#374151; --border-subtle:#1F2937;
+  --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+  --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--text-body);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+code{font-family:var(--mono);font-size:.85em;background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--text)}
+pre{background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:14px 16px;overflow-x:auto;margin:12px 0 20px} pre code{background:none;border:0;padding:0;font-size:12.5px;line-height:1.55;white-space:pre}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+.shell{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}
+.rail{position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--border);padding:24px 16px 32px;background:var(--bg);display:flex;flex-direction:column;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;padding:0 8px}
+.brand-mark{width:28px;height:28px;border-radius:8px;background:var(--brand);display:grid;place-items:center;flex:none}
+.brand-mark span{width:12px;height:12px;border-radius:3px;background:#fff;transform:rotate(45deg)}
+.brand b{font-weight:600;color:var(--text);font-size:15px;line-height:1.2;display:block}
+.brand small{color:var(--text-2);font-size:12px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:block;padding:6px 8px;border-radius:6px;text-decoration:none;color:var(--text);font-size:13.5px;font-weight:500}
+.nav a.sub{font-weight:400;color:var(--text-body);padding-left:14px;font-size:13px}
+.nav a.sub b{font-family:var(--mono);font-weight:500;color:var(--text-3);font-size:11.5px;margin-right:2px}
+.nav a:hover{background:var(--bg-2)}
+.nav a.on{background:var(--brand-wash);color:var(--brand-ink)}
+.rail-foot{margin-top:auto;padding:0 8px;font-size:12px;color:var(--text-3);line-height:1.5}
+.main{padding:40px 56px 96px;max-width:860px;width:100%}
+.eyebrow{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);font-weight:600}
+h1{font-size:40px;line-height:1.1;font-weight:600;color:var(--text);margin:8px 0 12px;letter-spacing:-.015em;text-wrap:balance}
+.lede{font-size:18px;color:var(--text-2);max-width:60ch;margin:0 0 8px}
+.lede strong{color:var(--text);font-weight:500}
+h2{font-size:26px;line-height:1.2;font-weight:600;color:var(--text);margin:72px 0 16px;letter-spacing:-.01em;text-wrap:balance;padding-top:24px;border-top:1px solid var(--border)}
+h3{font-size:20px;font-weight:600;color:var(--text);margin:48px 0 8px;letter-spacing:-.005em}
+h3::before{content:"";display:block;width:32px;height:3px;background:var(--brand);border-radius:2px;margin-bottom:14px}
+p{margin:0 0 14px;max-width:66ch}
+h3 + p{font-size:17px;color:var(--text);font-weight:500}
+p.why{color:var(--text-2);font-size:15px;padding-left:14px;border-left:2px solid var(--border)}
+p.why::before{content:"Why · ";color:var(--text-3);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+p.lbl{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2);font-weight:600;margin:22px 0 8px}
+strong{color:var(--text);font-weight:600}
+em{font-style:italic}
+ul,ol{margin:0 0 14px;padding-left:0;list-style:none;max-width:68ch}
+ul li{position:relative;padding-left:20px;margin:6px 0;font-size:15.5px}
+ul li::before{content:"";position:absolute;left:0;top:11px;width:9px;height:2px;background:var(--brand)}
+ul li.chk{padding-left:30px}
+ul li.chk::before{width:16px;height:16px;top:4px;background:var(--bg);border:1.5px solid var(--text-3);border-radius:4px}
+ol{counter-reset:s}
+ol li{counter-increment:s;display:grid;grid-template-columns:32px 1fr;gap:12px;margin:10px 0;font-size:15.5px}
+ol li::before{content:counter(s);width:28px;height:28px;border-radius:50%;background:var(--brand-wash);color:var(--brand-ink);font-weight:600;font-size:13px;display:grid;place-items:center;margin-top:1px}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px;margin:8px 0 20px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);font-weight:500;padding:10px 14px;background:var(--bg-2);border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:10px 14px;border-bottom:1px solid var(--border-subtle);vertical-align:top;color:var(--text-body)}
+tr:last-child td{border-bottom:0}
+td:first-child{color:var(--text);font-weight:500;white-space:nowrap}
+hr{display:none}
+
+.sitenav{display:flex;flex-direction:column;gap:2px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.sitenav .grp{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);padding:10px 8px 4px;font-weight:500}
+.sitenav a{display:block;padding:5px 8px;border-radius:6px;text-decoration:none;color:var(--text-body);font-size:13.5px;border:0}
+.sitenav a:hover{background:var(--bg-2);color:var(--text)} .sitenav a.on{color:var(--brand-ink);background:var(--brand-wash);font-weight:500}
+@media (max-width:900px){.sitenav{flex-direction:row;flex-wrap:wrap;gap:4px;border-bottom:0;padding-bottom:0}.sitenav .grp{display:none}}
+
+@media (max-width:900px){
+  .shell{grid-template-columns:1fr}
+  .rail{position:static;height:auto;border-right:0;border-bottom:1px solid var(--border);padding:16px}
+  .nav{flex-direction:row;flex-wrap:wrap;gap:4px} .nav a.sub{padding-left:8px} .rail-foot{display:none}
+  .main{padding:32px 20px 80px} h1{font-size:32px} h2{margin-top:56px}
+}
+</style>
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Pattern · Notifications and stories</small></div></div>
+    <nav class="sitenav" aria-label="Site"><div class="grp">Foundations</div><a href="index.html">Tokens</a><a href="principles.html">Principles</a><a href="extending.html">Extending</a><a href="icons.html">Icons</a><a href="assets.html">Assets</a><a href="motion.html">Motion</a><a href="type.html">Type · four scripts</a><a href="accessibility.html">Accessibility</a><a href="content.html">Content</a><div class="grp">Components</div><a href="components/accordion.html">Accordion</a><a href="components/amount.html">Amount</a><a href="components/avatar.html">Avatar</a><a href="components/badge.html">Badge</a><a href="components/benefit-tile.html">BenefitTile</a><a href="components/feedback.html">Banner · Toast · Snackbar</a><a href="components/bottom-sheet.html">BottomSheet</a><a href="components/bottom-tab-bar.html">BottomTabBar</a><a href="components/button.html">Button</a><a href="components/card.html">Card</a><a href="components/selection-controls.html">Checkbox · Radio · Switch</a><a href="components/chip.html">Chip</a><a href="components/coachmark.html">Coachmark</a><a href="components/date-picker.html">DatePicker</a><a href="components/empty-state.html">EmptyState</a><a href="components/header-nav.html">HeaderNav</a><a href="components/hero-card.html">HeroCard</a><a href="components/how-to-clip.html">HowToClip</a><a href="components/icon-button.html">IconButton</a><a href="components/job-alert.html">JobAlert</a><a href="components/list-item.html">ListItem</a><a href="components/map-marker.html">MapMarker · MapSnippet</a><a href="components/media-capture.html">MediaCapture</a><a href="components/nudge.html">Nudge</a><a href="components/numeric-keypad.html">NumericKeypad</a><a href="components/page-indicator.html">PageIndicator</a><a href="components/popover.html">Popover</a><a href="components/progress-bar.html">ProgressBar</a><a href="components/progress-button.html">ProgressButton</a><a href="components/promo-card.html">PromoCard</a><a href="components/rate-table.html">RateTable</a><a href="components/selection-card.html">SelectionCard</a><a href="components/shield-card.html">ShieldCard</a><a href="components/skeleton.html">Skeleton · Spinner</a><a href="components/sos-control.html">SOSControl</a><a href="components/stat-rating-divider.html">Stat · Rating · Divider</a><a href="components/statement.html">Statement</a><a href="components/stepper.html">Stepper</a><a href="components/tabs.html">Tabs · Segmented</a><a href="components/tag.html">Tag</a><a href="components/text-field.html">TextField</a><a href="components/timer.html">Timer</a><a href="components/tooltip.html">Tooltip</a><a href="components/voice-prompt.html">VoicePrompt</a><a href="components/week-strip.html">WeekStrip</a><div class="grp">Patterns</div><a href="pattern-new-job-alert.html">New job arrives</a><a href="pattern-check-in-out.html">Check in · work · check out</a><a href="pattern-payout.html">Payout</a><a href="pattern-onboarding.html">Onboarding · go-live</a><a href="pattern-error-recovery.html">When something goes wrong</a><a href="pattern-permissions.html">Asking for permission</a><a href="pattern-first-run.html">First run</a><a href="pattern-earnings.html">Earnings</a><a href="pattern-after-sos.html">After SOS</a><a href="pattern-offline.html">Offline</a><a class="on" href="pattern-notification-centre.html">Notifications · stories</a><a href="pattern-referral.html">Referral</a><div class="grp">Research</div><a href="benchmark.html">Benchmark</a><a href="audit.html">Figma audit</a><a href="roadmap.html">Roadmap</a><a href="governance.html">Governance</a><a href="changelog.html">Changelog</a></nav><nav class="nav" id="nav"><a href="#the-screen">The screen</a><a href="#what-changes-from-the-figma-screens">What changes from the Figma screens</a><a href="#post-a-tier-2-composition">Post — a Tier 2 composition</a><a href="#the-story-viewer">The story viewer</a><a href="#content">Content</a><a href="#spec-follow-ups">Spec follow-ups</a><a href="#checklist-for-the-pattern">Checklist for the pattern</a></nav>
+    <div class="rail-foot">Snabbit Expert Design System · generated from patterns/notification-centre.md</div>
+  </aside>
+  <main class="main">
+    <header>
+      <div class="eyebrow">Snabbit Expert · Mobile</div>
+      <h1>Pattern — notifications and stories</h1>
+      <p class="lede">The bell. Everything the app has to tell her that is not a job, a shift or money — a training tip, a contest, a change in rates, a story from another expert — arrives here, and a story can be opened full screen. Evidence: <em>Expert (Sahil)</em> <code>KiQaNqLFaH1orma4Uf7hzU</code> → section <code>8510:23259</code>, two screens (<em>Notification Centre</em>, story viewer), read 2026-09-24 → <code>references/expert-sahil-rewards-2026-09-24/</code> (<code>09a</code>, <code>09b</code>, <code>10</code>). Proposed, not shipped. This page owns the screen, the <strong>Post</strong> composition and the story viewer; the reaction control is Chip <code>reaction</code> (<code>components/chip.md</code>) and the story circles are HowToClip <code>story</code> (<code>components/how-to-clip.md</code>).</p>
+    </header>
+    <h2 id="the-screen">The screen</h2>
+<pre><code>┌────────────────────────────────────────────┐
+│ ‹  Notifications                    [🔖]  │  HeaderNav page · trailing IconButton M ghost `bookmark-simple` → Saved
+│ Stories                                    │  section heading BodyMd Medium textSecondary
+│ (○) (○) (○) (○) →                          │  HowToClip `story` · 72 dp circles · borderBrand ring = not watched · ≤ 8, then it scrolls
+│ [All] [Updates] [Important] [Training] [Bonuses]   Chip filter row · All selected by default
+│ ┌ Post ─────────────────────────────────┐  │
+│ │ [icon] Rates change on 1 Oct   Today  │  │  header · icon box 40 or Avatar 40 · title BodyLg wraps 2 lines · meta Caption
+│ │ ───────── media 16:9 ── (▶) · 120 views │  │  media · optional · play disc for video · views chip bottom-right
+│ │ From 1 Oct you earn ₹140 an hour…     │  │  body BodyMd textBody · ≤ 3 lines · *Read more ›* opens the post
+│ │ (♥ 12) (👍 4) (👏 2) (🙏 120)     [🔖] │  │  footer · Chip reaction × ≤ 4 · IconButton S bookmark-simple
+│ └───────────────────────────────────────┘  │
+│ ┌ Post … ┐                                 │  12 dp between posts
+│                                            │
+│ Home · Earnings · Refer · Profile          │  BottomTabBar (the bell lives in the Home header, `header-nav.md`)
+└────────────────────────────────────────────┘
+</code></pre>
+<ul>
+<li>Opened from the bell in the Home header (IconButton with a Badge <code>dot</code> while there is something unread). The Badge clears when this screen opens (<code>badge.md</code>: a badge that lingers trains her to ignore badges).</li>
+<li>One scroll. Stories first because they are the newest and the shortest; then the filter row; then posts, newest first, paginated.</li>
+<li>Five states (P5): <strong>loading</strong> — three Post skeletons and story skeleton circles; <strong>empty</strong> — EmptyState <code>section</code> <em>Nothing new · We'll ring you when there is</em>; <strong>error</strong> — EmptyState <code>error</code> with <strong>Try again</strong>; <strong>offline</strong> — the Offline Banner at the top, posts already fetched stay readable, media shows <em>Needs internet</em> on its ground; <strong>loaded</strong>.</li>
+</ul>
+<hr />
+<h2 id="what-changes-from-the-figma-screens">What changes from the Figma screens</h2>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Figma</th>
+<th>Proposed</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Title <em>Notification Centre</em></td>
+<td><strong>Notifications</strong> — the bell's registered meaning (<code>icons.md</code>)</td>
+<td>one word she knows; <em>Centre</em> is a system word</td>
+</tr>
+<tr>
+<td>Stories as portrait rounded rectangles, one with a pink ring</td>
+<td>HowToClip <code>story</code> <strong>circles</strong> (72 dp), ring <code>borderBrand</code> unwatched → <code>borderDefault</code> watched</td>
+<td>the shipped circle from the Coins and tracker screens; nothing gained by a second shape</td>
+</tr>
+<tr>
+<td>Chips <em>All · Information · Alert · Training · Incentive</em></td>
+<td>Chip <code>filter</code> <strong>All · Updates · Important · Training · Bonuses</strong></td>
+<td>her words (<code>content.md</code> § 8: <em>Bonus</em>, never <em>incentive</em>); <em>Alert</em> is kept for safety</td>
+</tr>
+<tr>
+<td>Post title truncated (<em>…consectetur.co</em>)</td>
+<td>title wraps to two lines, never truncates</td>
+<td>P9</td>
+</tr>
+<tr>
+<td>Icon disc with a badge glyph; avatar with an emoji face</td>
+<td>ListItem leading: <strong>icon in a tonal box</strong> 40 dp for Snabbit posts (<code>bell</code> for updates, <code>graduation-cap</code> for training, <code>trophy</code> for contests, <code>currency-inr</code> for rates) or <strong>Avatar</strong> 40 for a post from a named expert</td>
+<td>one icon, one meaning; emoji are not icons</td>
+</tr>
+<tr>
+<td>👁 <em>120</em> · <em>1.1K</em> · <em>100K</em> on the image</td>
+<td>Caption <code>textInverse</code> on <code>bgInverse</code> at 60 % opacity, bottom-right of the media: <em>120 views</em> · <em>1,100 views</em> · <em>10,000+ views</em></td>
+<td><code>eye</code> already means <em>show / hide an amount</em>; words say it; Indian grouping to 9,999 then <em>10,000+</em></td>
+</tr>
+<tr>
+<td>Reactions ♥ · 🔥 2 · 👍 1 · 😍 1 · 🙏 120 as emoji pills</td>
+<td><strong>Chip <code>reaction</code></strong> × ≤ 4: <code>heart</code> · <code>thumbs-up</code> · <code>hands-clapping</code> · <code>hands-praying</code>, count trailing, <code>fill</code> when hers</td>
+<td>Phosphor only; <code>fire</code> means <em>streak</em> and is not offered</td>
+</tr>
+<tr>
+<td>Dots on the image for a media carousel</td>
+<td>PageIndicator 12 dp <strong>below</strong> the media, inside the card, ≤ 5 images</td>
+<td><code>page-indicator.md</code></td>
+</tr>
+<tr>
+<td>Bookmark glyph in the header and on every post</td>
+<td>IconButton <code>bookmark-simple</code> — header opens <strong>Saved</strong>; on a post it saves; <code>fill</code> when saved</td>
+<td>one meaning: <em>save for later</em></td>
+</tr>
+<tr>
+<td>Android nav bar drawn in the frame</td>
+<td>system UI, not ours</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="post-a-tier-2-composition">Post — a Tier 2 composition</h2>
+<p>A Post is a <code>Card</code> <code>static</code> with every slot filled from existing parts. It is recorded here and in <code>card.md</code> § Compositions; it is not a new component.</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Slot</th>
+<th>Built from</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>header</td>
+<td>ListItem leading (icon box 40 / Avatar 40) · title <code>BodyLg</code> <code>textPrimary</code> 2 lines · trailing meta <code>Caption</code> <code>textSecondary</code> <em>Today</em> · <em>Yesterday</em> · <em>Mon 22 Sep</em></td>
+<td>relative time only for a week, then the date (<code>content.md</code> § 5)</td>
+</tr>
+<tr>
+<td>media</td>
+<td>Card media 16:9, full-bleed · optional · a <code>play</code> disc 40 dp <code>bgPrimary</code> / <code>iconBrand</code> for video · views chip · for 2–5 images, a swipeable row with a PageIndicator below</td>
+<td>never required for meaning (P8); tapping video opens the story viewer, tapping an image opens it full screen with the same close</td>
+</tr>
+<tr>
+<td>body</td>
+<td><code>BodyMd</code> <code>textBody</code>, ≤ 3 lines, then a ListItem-style <em>Read more ›</em> row that opens the full post</td>
+<td>one idea per line</td>
+</tr>
+<tr>
+<td>footer</td>
+<td>Chip <code>reaction</code> × ≤ 4 (<code>spacing.3</code> apart) · IconButton <code>S</code> <code>bookmark-simple</code> trailing, wrapped to 48 dp</td>
+<td>the Card footer's <code>reactions</code> option (<code>card.md</code> § Slots)</td>
+</tr>
+</tbody>
+</table></div>
+<p>The whole card is not tappable; its targets are the media, the reactions, the bookmark and <em>Read more ›</em>. A post with a single action from Snabbit (<em>See the new rate card</em>) carries it as a <code>tertiary brand</code> Button <strong>above</strong> the reactions — the footer holds one or the other row, never both stacked with a Button between reactions.</p>
+<p><strong>Unread.</strong> A post she has not seen has a 4 dp <code>bgBrand</code> bar down its left edge inside the border, and its title is <code>SemiBold</code>; both go when it scrolls fully into view once. Colour plus weight — two channels (P1).</p>
+<hr />
+<h2 id="the-story-viewer">The story viewer</h2>
+<p>HowToClip <code>player</code> in <strong><code>story</code></strong> mode (<code>how-to-clip.md</code>): full screen, portrait, <code>bgInverse</code>, close <code>x</code> top-right, back top-left, autoplay with voice, <strong>knob-less</strong> progress, and — because a story runs minutes, not seconds — a <code>Caption</code> <code>textInverse</code> <em>1:31 / 2:42</em> at the bar's right. Below the bar, over the scrim: title <code>BodyLg</code> SemiBold <code>textInverse</code>, body <code>BodyMd</code> <code>textInverse</code> ≤ 2 lines, then the same reaction row and bookmark as the Post. Tap the video to pause; back or ✕ to leave; no swipe to the next story — a swipe is never the only path (P3), and <em>Up next</em> is banned copy. When one ends, <strong>Replay</strong> and the next story's circle appear as a ListItem <code>navigational</code> <em>Next: Sunita's first week ›</em>.</p>
+<hr />
+<h2 id="content">Content</h2>
+<ul>
+<li>Section heading <em>Stories</em>; chips <em>All · Updates · Important · Training · Bonuses</em>; header <em>Notifications</em>; the Saved screen <em>Saved</em>.</li>
+<li>Post title ≤ 40 characters, sentence case, the fact first: <em>Rates change on 1 Oct</em> · <em>New: Utsav bonus this week</em> · <em>Sunita's first month at Snabbit</em>.</li>
+<li>Body: what it means for her and, if anything, what to do: <em>From 1 Oct you earn ₹140 an hour. Nothing changes until then.</em></li>
+<li>Views: <em>120 views</em> · <em>1,100 views</em> · <em>10,000+ views</em>. Reaction counts ≤ 999 exact, then <em>999+</em>.</li>
+<li>Never <em>Notification Centre</em>, <em>Information</em>, <em>Incentive</em>, <em>Alert</em> as a category, <em>Up next</em>, <em>New!</em>, an emoji.</li>
+<li>Spoken: a post is read on its Listen (title, then body); the story's voice is its own.</li>
+</ul>
+<hr />
+<h2 id="spec-follow-ups">Spec follow-ups</h2>
+<ul>
+<li><code>chip.md</code> — <strong><code>reaction</code></strong> kind (landed 2026-09-24).</li>
+<li><code>card.md</code> — media gains the <code>play</code> disc, the views chip and the ≤ 5 image carousel with a PageIndicator below; footer gains <code>reactions</code>; Post recorded as a composition (landed).</li>
+<li><code>how-to-clip.md</code> — <code>player · story</code> mode (landed).</li>
+<li><code>icons.md</code> — <code>heart</code>, <code>thumbs-up</code>, <code>hands-clapping</code>, <code>hands-praying</code>, <code>bookmark-simple</code> (landed).</li>
+<li><code>header-nav.md</code> — the bell's Badge clears on opening this screen; a <strong>Saved</strong> screen is a plain list of Posts (to add when the screen is drawn).</li>
+<li><code>empty-state.md</code> — copy <em>Nothing new · We'll ring you when there is</em> to add to the examples.</li>
+</ul>
+<hr />
+<h2 id="checklist-for-the-pattern">Checklist for the pattern</h2>
+<ul>
+<li class="chk">Stories are the shipped 72 dp circles; the ring means unwatched.</li>
+<li class="chk">Filter chips are her words; <em>All</em> is first and selected.</li>
+<li class="chk">Every post has a title that wraps, a leading icon or avatar with a registered meaning, and no emoji anywhere.</li>
+<li class="chk">Reactions are Phosphor, ≤ 4, <code>fill</code> when hers; <code>fire</code> is not among them.</li>
+<li class="chk">Media is never required for meaning; views are words; dots sit below the image.</li>
+<li class="chk">Story viewer has no scrubber knob and no swipe-only path; <em>1:31 / 2:42</em> is the only place digits appear.</li>
+<li class="chk">Five states designed; the bell's Badge clears on open.</li>
+<li class="chk">Copy reviewed aloud in four languages; <em>Bonuses</em> and <em>Important</em> verified with the Hub.</li>
+</ul>
+  </main>
+</div>
+<script>
+(function(){
+const links=[...document.querySelectorAll('#nav a')];
+const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-10% 0px -80% 0px'});
+  targets.forEach(t=>io.observe(t));
+}
+})();
+</script>

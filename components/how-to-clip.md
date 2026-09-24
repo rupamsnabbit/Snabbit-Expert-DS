@@ -61,6 +61,45 @@ buys nothing. A watched circle drops the ring to `borderDefault`. Same player, s
 
 Tap anywhere on the video to pause / resume (a 64 dp `pause` / `play` glyph flashes `motion.emphasis` (400 ms)). Nothing else: no scrubber, no speed, no share, no fullscreen toggle, no next-clip autoplay. The header and SOS are hidden — a clip is never watched during a job.
 
+### `player · story` — a story, not a lesson
+
+A **story** is a two- to three-minute film from an expert or from Snabbit (*Sunita's first month*), opened from a `story` circle or a Post (`patterns/notification-centre.md`; *Expert (Sahil)* `8510:23259`, `references/expert-sahil-rewards-2026-09-24/` `10`). It uses the same player with four changes, and no others:
+
+| Clip player | Story mode | Why |
+| --- | --- | --- |
+| no time shown | `Caption` `textInverse` **1:31 / 2:42** at the bar's right, tabular | minutes need a number; seconds did not |
+| burned-in captions | title `BodyLg` SemiBold `textInverse` + body `BodyMd` `textInverse` ≤ 2 lines over the scrim, under the bar | a story has a caption, not instructions |
+| nothing under the bar | the Post's **reactions** row — Chip `reaction` × ≤ 4 and IconButton `S` `bookmark-simple` | she can answer it |
+| loops once, then *Replay* | plays once, then **Replay** and a ListItem `navigational` *Next: Sunita's first week ›* | never autoplay the next, never a swipe to it (P3); *Up next* is banned copy |
+
+The progress bar stays **knob-less and not draggable** — the Figma scrubber is dropped (P3: nothing essential is drag-only; on a moving bus a knob is a mis-tap). Tap pauses, back and ✕ leave. Stories are never bundled; they stream on Wi-Fi or on tap over data with the *Using data · 12 MB* Toast, and are never watched during a job.
+
+### `guide` — the presenter, inline
+
+A 16:9 clip **inside a screen**, not full screen: a trainer or an expert explains the screen she is on — the bank form (`patterns/onboarding.md`), how referral works (`patterns/referral.md`). Proposed on the Bank/UPI screens (2026-09-08) and drawn on the Refer tab (`references/refer-tab-2026-09-24/` `06`, with a mute glyph, a scrubber knob and a fullscreen glyph); this closes the ROADMAP item.
+
+```
+┌──────────────────────────────────────────┐  Card media slot · 16:9 · radius lg · first frame as poster
+│                                          │
+│                (▶)                       │  play disc 56 dp bgPrimary / iconBrand while paused · tap anywhere toggles
+│                                          │
+│ [🔊] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━  [⤢]   │  bottom bar on a 40 % scrim: speaker-high / speaker-slash · knob-less progress 4 dp bgBrand · corners-out
+└──────────────────────────────────────────┘
+  How referral works · 0:40                    title BodyMd Medium textPrimary + duration Caption textSecondary, under the media
+```
+
+| Rule | |
+| --- | --- |
+| Plays | on tap only — never autoplays inside a screen (P8, and a form she is typing into must not start talking) |
+| Sound | `speaker-high` / `speaker-slash` IconButton `S` in the bar; starts with sound **on** (the voice is the point), honours the silent switch; captions burned in as for every clip |
+| Progress | 4 dp bar, **no knob, not draggable** — the drawn scrubber is dropped (P3) |
+| Full screen | `corners-out` IconButton `S` opens the `player` at the same moment; back returns here at the same moment |
+| Length | ≤ 60 s — longer is a story, and a story is not inline |
+| Scroll | on a **form** screen it collapses to a 56 dp bar (play glyph · title · duration) once it scrolls under the header, so the field she is filling stays in view; on a tab it simply scrolls away |
+| Offline | poster + *Needs internet* Caption on the ground; the tap gives a Toast |
+
+The three IconButtons are `S` inside 48 dp hit areas at the bar's ends; the middle of the bar is not a target.
+
 ---
 
 ## Behaviour
@@ -101,7 +140,8 @@ Card announces *"Video: Daily earnings, twelve seconds, watched"*. Player: pause
 ## Figma reconciliation
 
 1. **Create** HowToClip / Card: `Size` (M / S), booleans `Watched`, `NeedsInternet`; duration chip and ≤ 3-word title.
-2. **Create** HowToClip / Player: `State` (Playing / Paused / Ended), `Sound` (On / Off); knob-less progress, captions block, Replay.
+2. **Create** HowToClip / Player: `Mode` (Clip / Story), `State` (Playing / Paused / Ended), `Sound` (On / Off); knob-less progress, captions block, Replay; Story adds the time Caption, title + body and the reactions row. Rebuild the story viewer in *Expert (Sahil)* `8510:23259` from it, without the scrubber knob.
+2b. **Create** HowToClip / Guide: 16:9 inline, `State` (Poster / Playing / Paused / Collapsed / Offline), `Sound` (On / Off); bar with `speaker-high`, knob-less progress and `corners-out`; title + duration beneath. Replace the video on the proposed Refer tab and the Bank/UPI presenter video with instances.
 3. Rebuild the rate-card carousel with three Card instances and a PageIndicator; add clip cards to the onboarding Stepper steps that have one.
 
 Result: **~8 variants**, and the app's third channel — video — drawn for the first time.

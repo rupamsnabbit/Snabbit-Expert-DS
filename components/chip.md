@@ -41,12 +41,15 @@ Row: horizontal, 8 dp between chips, 16 dp side padding, scrolls with a 16 dp fa
 | `choice` | **zero or more** | on tap, toggles; the screen's Button commits | Days you work, services you offer, in a sheet or form |
 | `quick-reply` | none — fires once and the row disappears | sends the reply | Chat with customer/support: *On my way* · *5 min late* · *Reached* |
 | **`reason`** | **exactly one**, none selected to begin with | on tap, selects and commits; a second tap moves the selection, never clears it | Why a number or a state differs from expected — *client needed more · spilled/wasted · product ran out · client asked less* (`beauty-job-cycle` PRD § 6) |
+| **`reaction`** | **zero or more**, each toggles on its own | on tap, adds or removes *her* reaction and updates the count at once | How she feels about a post or a story — `heart` · `thumbs-up` · `hands-clapping` · `hands-praying`, with a count (`patterns/notification-centre.md`, 2026-09-24) |
 
 A `filter` row never has a "none selected" state. A `choice` row is not for exactly-one (that is Radio). `quick-reply` chips carry a `paper-plane-right` trailing icon so they look like they *do* something.
 
 **Why `reason` is a Chip and not a Radio.** The spec above says exactly-one is Radio, and for a form that holds. A reason picker is not a form: it appears *after* she has already done the thing, it offers three or four short answers, and it must not look like another question standing between her and finishing. A stacked radio list reads as a form to fill; a wrapped row of short answers reads as *pick the closest one*. It keeps Chip's exactly-one selection from `filter` but drops the *All*-selected-by-default rule — **there is no default reason, because guessing why something happened on her behalf is worse than asking.** Reasons wrap onto a second line rather than scrolling: a reason she cannot see is a reason she will not give.
 
 ---
+
+**Why `reaction` is a Chip and not a new control.** The Figma sheet drew reactions as emoji pills with a count — which is a Chip with a leading icon and a trailing count, the two slots this component already has. `reaction` keeps `choice`'s zero-or-more toggling and changes two things: the leading icon **stays** when selected and goes to Phosphor `fill` in `textBrand` (a `check` would hide which reaction it is), and there is no label — the icon is the word, so the chip is 40 dp tall and hugs icon + count. ≤ 4 in a row, `spacing.3` apart, never scrolling: a reaction she cannot see is a reaction she cannot give. The count is `Caption` Medium `textSecondary`, ≤ 999 then *999+*, and it changes with `motion.fast` when she taps. The set is fixed by the register: `fire` is not offered because it already means *streak* (`foundations/icons.md`).
 
 ## States
 
@@ -99,7 +102,7 @@ None new (reuses `bgBrandSubtlePressed`). Row fade uses `bgPrimary` → transpar
 
 ## Figma reconciliation
 
-1. Selection Chips → **Chip**: `Kind` (Filter / Choice / Quick reply), `State` (Unselected / Selected / Pressed / Disabled), booleans `Leading icon`, `Count`.
+1. Selection Chips → **Chip**: `Kind` (Filter / Choice / Quick reply / Reason / Reaction), `State` (Unselected / Selected / Pressed / Disabled), booleans `Leading icon`, `Count`. `Reaction` has no label slot; its icon swaps to the `fill` weight when selected.
 2. Height 40, radius full, padding 16, gap 8; selected = `bgBrandSubtle` fill + `borderBrand` 1.5 + leading `check`.
 3. Add a **Chip row** component (auto-layout, 8 dp gap, 48 dp tall) with the trailing fade.
 4. Move Selection Pill (Camera / Gallery) to SelectionCard.
