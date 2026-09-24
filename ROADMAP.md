@@ -4,7 +4,7 @@ What is done and what is left, against the 49-component core set in `audit/BENCH
 
 ---
 
-## Done — 57 pages · 52 of 52 core components + 2 compositions + 10 patterns
+## Done — 60 pages · 53 of 53 core components + 2 compositions + 12 patterns
 
 | # | Page | Covers | Status |
 | --- | --- | --- | --- |
@@ -47,6 +47,9 @@ What is done and what is left, against the 49-component core set in `audit/BENCH
 | 47 | Tooltip | `label` (dark, long-press name) and `status` (tinted, a change at the thing it points at; tone computed from the Timer); arrow above / below; from shipped Tooltips `537:4918` + Colored Tooltip `1491:17618` | Proposed |
 | 48 | ProgressButton | `countdown` (time used of a window, where no Timer is on screen) and `progress` (work done); band from the left, label still, count in numerals; from shipped Progress Buttons `1491:13660` (green → brand) | Proposed |
 | 49 | Popover | `actions` (2–3 rows) and `detail`; non-modal, anchored to a map marker; whitelist of three sites; no three-dots menus | Proposed |
+| 53 | PromoCard | `referral` · `contest` · `campaign`; `full` · `pair` · `carousel`; one surface, one Button tone; from *Expert (Sahil)* `8510:23259` — **build request** | Proposed |
+| 51 | Pattern · Referral | `patterns/referral.md` — the Refer tab: PromoCard hero, stories, contest (podium, leaderboard, rank Nudge), peers, joining bonus, the friends Statement, the friend's screen, HowToClip `guide` | Proposed |
+| 50 | Pattern · Notifications and stories | `patterns/notification-centre.md` — the bell's screen: story circles, filter chips, the Post composition (Chip `reaction`), the story viewer, five states | Proposed |
 | — | FAB | Folded into IconButton: floating = `L` `circle` at `elevation.floating`; shutter and recentre only; no FAB component (`icon-button.md`) | Decided |
 | 46 | Pattern · Offline | `patterns/offline.md` — works / queues / waits table, the one Banner, the queue with tap times, truly-nothing state, slow network, data cost | Proposed |
 | 45 | Pattern · After SOS | `patterns/after-sos.md` — the minute, hour, day and week after; job stopped for safety, paid in full; the Home safety card; false alarms | Proposed |
@@ -85,9 +88,9 @@ Order decided 2026-09-08: the visual foundations first, sound parked.
 
 ---
 
-## To do — patterns (10 of 10 done)
+## To do — patterns (12 of 12 done)
 
-~~New-job alert~~ (done) · ~~Check-in / check-out~~ (done) · ~~Payout~~ (done) · ~~Onboarding & go-live~~ (done) · ~~Error recovery~~ (done) · ~~Permission asking~~ (done) · ~~First run~~ (done) · ~~Earnings breakdown~~ (done) · ~~After SOS~~ (done) · ~~Offline~~ (done). All ten patterns written; each is Proposed until reviewed with experts.
+~~New-job alert~~ (done) · ~~Check-in / check-out~~ (done) · ~~Payout~~ (done) · ~~Onboarding & go-live~~ (done) · ~~Error recovery~~ (done) · ~~Permission asking~~ (done) · ~~First run~~ (done) · ~~Earnings breakdown~~ (done) · ~~After SOS~~ (done) · ~~Offline~~ (done) · ~~Notifications and stories~~ (done 2026-09-24) · ~~Referral~~ (done 2026-09-24). All twelve patterns written; each is Proposed until reviewed with experts.
 
 ---
 
@@ -113,7 +116,7 @@ The Househelp **shift lifecycle** — attendance → login → job(s) → lunch 
 - `1Login` question superseded: onboarding evidence now comes from *Self-Serve ER/AR* (`HqmnjmxhZvyvZxmIaVMCrB`); the master file's FINAL ONBOARDING is an older iteration.
 - Shield: two product decisions to confirm — auto-start at check-in (vs shipped per-job *Activate*), and the Kavach-blue shield as the one domain-coloured pictogram (`shield-card.md`).
 - **Telugu**: the latest onboarding file offers five languages (adds Telugu). If it launches, P9 / `type.md` / `typography.indic` update from four scripts to five in one commit (`patterns/onboarding.md` follow-ups).
-- HowToClip `guide` form (inline presenter video on form screens) — add to `how-to-clip.md`.
+- ~~HowToClip `guide` form~~ — landed 2026-09-24 (`how-to-clip.md` § `guide`).
 - Content: **Kavach** as the name she sees and hears, *Shield* as the component name (`foundations/content.md` § 8) — needs a yes.
 - Accessibility decisions: (1) primary Button label is 4.0:1 at 16 sp SemiBold — recommend ButtonLg 18 / 24 for L Buttons; (2) token release 0.20 with the `text*Strong` steps, `iconSuccess` → green.600, `iconWarning` → yellow.600 and the accumulated proposals (`foundations/accessibility.md` § Open).
 - Figma reconciliation: every spec lists its changes; none applied yet. Until Figma matches, designers still draw from old frames.

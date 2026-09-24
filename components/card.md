@@ -43,6 +43,7 @@ Padding 16 dp all round; internal gap 12 dp; between cards 12 dp; screen margin 
 | `empty` | whole card | dashed `borderStrong` 1.5 dp, `plus-circle` icon + one line, centred | *Add bank account*, *Add a document* |
 | `hero` | → **HeroCard** (own spec, 2026-09-22) | | the filled two-part card that opens every tracker screen |
 | `selectable` | → **SelectionCard** (own spec) | | Options with description/price/image |
+| `promo` | → **PromoCard** (own spec, 2026-09-24) | | A referral, contest or festival offer: picture on a pink ground, one line, one Button |
 
 **`hero` and colour.** The shipped heroes are filled pink, green and blue by screen (streak · perfect jobs · early logins). That is three hues meaning only *different*, which P6 reserves for status — recorded in `references/shipped-app-2026-09-22/` as a departure. The spec's `hero` is `bgPrimary` with the figure carrying the weight; the shipped fills stay until the design lead decides, because reusing them costs tech nothing and changing them costs a sprint.
 
@@ -66,13 +67,13 @@ A `tappable` card never also contains Buttons; if it needs an action it is a `st
 
 ## Slots
 
-**Header.** Title `Title` 18 sp Medium `textPrimary`, one line, ≤ 24 chars; optional leading Phosphor 24 dp or Avatar 40; trailing **one** of: Tag (status), IconButton XS ghost (expand / overflow-free actions), Amount `md`, `caret-right`. Banded option: `bgTertiary` fill on the header row only, for grouped cards (*Today · 3 jobs*).
+**Header.** Title `Title` 18 sp Medium `textPrimary`, one line, ≤ 24 chars; optional leading Phosphor 24 dp or Avatar 40; trailing **one** of: Tag (status), IconButton XS ghost (expand / overflow-free actions), Amount `md`, `caret-right`. Optional **description line** under the title, `BodyMd` `textSecondary`, the card's key facts joined by a middle dot (*60 min · 6 items*), wrapping to two lines, never truncated. **When the trailing slot is taken** — an `expandable` card's caret always takes it — a status Tag moves to the **start of the description line** (`Tag` M, then the facts), never beside the caret and never replacing it (*[Added] 15 min · 2 items*; `beauty-job-cycle`, 2026-09-23). Banded option: `bgTertiary` fill on the header row only, for grouped cards (*Today · 3 jobs*).
 
-**Media.** 16:9, full-bleed to the card edges, top corners clipped to radius `lg`. Photo or scene asset. Never required for meaning (P8): with images blocked the card still reads.
+**Media.** 16:9, full-bleed to the card edges, top corners clipped to radius `lg`. Photo or scene asset. Never required for meaning (P8): with images blocked the card still reads. Three additions from the notifications pattern (2026-09-24): a video shows a **`play` disc** 40 dp `bgPrimary` / `iconBrand` centred; a **views chip** — `Caption` `textInverse` on `bgInverse` at 60 %, bottom-right, *120 views* — may sit on the media (words, never an `eye`, which means *show / hide an amount*); and **2–5 images** may be a swipeable row with a PageIndicator **12 dp below the media, inside the card**, never on the image (`page-indicator.md`).
 
 **Body.** Free composition from core components: Amount `hero`/`lg`, ListItem rows (with `borderSubtle` dividers inset 16), Tags, ProgressBar, text at `BodyLg`/`BodyMd`. Max hierarchy inside a card: **three levels** (P-type rule) — a title, a hero figure or lead line, and supporting rows.
 
-**Footer.** One or two Buttons at `M`. One → full-width `secondary` or `tertiary`. Two → `ghost` left, `secondary` right, 12 dp apart, equal width. A filled `primary` in a card footer is allowed **only** when the card is the screen's one next action (the job card's *Accept* on the alert). Footer sits 16 dp below the body with a `borderSubtle` divider when the body has rows.
+**Footer.** One or two Buttons at `M`. One → full-width `secondary` or `tertiary`. Two → `ghost` left, `secondary` right, 12 dp apart, equal width. A filled `primary` in a card footer is allowed **only** when the card is the screen's one next action (the job card's *Accept* on the alert). Footer sits 16 dp below the body with a `borderSubtle` divider when the body has rows. **`reactions` option** (2026-09-24): instead of Buttons, a row of ≤ 4 Chip `reaction` (`chip.md`) at `spacing.3` gaps with one IconButton `S` `bookmark-simple` trailing, wrapped to 48 dp — the Post's footer (`patterns/notification-centre.md`). A footer holds Buttons **or** reactions, never both.
 
 ---
 
@@ -85,6 +86,7 @@ A `tappable` card never also contains Buttons; if it needs an action it is a `st
 - **Flat.** The only shadow in the app is the floating card over the map (`elevation.floating`), which is a pattern-level exception documented there.
 - **Colour by content, not by container.** A card's fill is `bgPrimary`; status is shown by a Tag, an Amount tone or a Banner inside. Tinted cards (green for earned, red for penalty) are not allowed — with two tinted cards on a screen the page stops reading as one surface.
 - Cards live on `bgSecondary` pages (`#F9FAFB`) so the border and fill separate without a shadow. On a `bgPrimary` page the border does the work alone.
+- **Post** (`patterns/notification-centre.md`) is the composition that fills every slot: header with an icon box or Avatar, a title that wraps to two lines and a `Caption` date; media with the `play` disc and views chip; a ≤ 3-line body; the `reactions` footer. It is recorded there, not as a kind here.
 
 ---
 

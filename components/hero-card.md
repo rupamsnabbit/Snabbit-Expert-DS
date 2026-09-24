@@ -26,13 +26,17 @@ period and, optionally, the week. It is how every tracker screen opens. Supersed
 │                                        ╰───╯  │  two concentric arcs at 10 % textInverse behind the watermark (shipped decoration, kept)
 ├───────────────────────────────────────────────┤
 │ Mar 1 – Mar 7                                 │  BOTTOM · bgPrimary · padding 16 · period BodyLg textBody
-│ [WeekStrip]                                   │  optional
+│ [WeekStrip]                                   │  optional — OR —
+│ Deducted        Balance                       │  `facts` · two Stat S side by side · label Caption textSecondary · value BodyLg SemiBold
+│ ₹0              ₹6,000                        │  (2026-09-24, the Utsav bonus card)
 └───────────────────────────────────────────────┘
 ```
 
 Top height 160 dp without a WeekStrip below, 140 with. The figure is a Stat `L`: a plain count for streaks, jobs and
 logins, or an Amount `L` on a money hero. The small icon after the figure and the watermark are the **same
 glyph** — one meaning, twice (P1 allows the repeat because the watermark is decoration, not a second message).
+
+**`facts` bottom.** A bonus wallet — the *Utsav bonus* card in *Expert (Sahil)* `8510:23259` (`references/expert-sahil-rewards-2026-09-24/` `01`) — needs two facts under the headline rather than a week: *Deducted ₹0 · Balance ₹6,000*. The bottom holds **two Stat `S`** in a row, labels first, `Divider` `row` between them, on the same `bgPrimary` 16 dp bottom. Tone is `reward` (a bonus is earned); the top's asset is the bonus's reward asset and the label is the bonus's name as text (*Utsav bonus*, like *Summer bonus*) — never a wordmark painted into the art (`assets.md`). A HeroCard has a WeekStrip **or** facts, never both; more than two facts is a Statement.
 
 ## Tones
 
@@ -81,8 +85,8 @@ None.
 
 ## Figma reconciliation
 
-No component. Create **HeroCard** on Components page `1:3886` with `Tone` (Streak / Jobs / Login / Reward), boolean
-`WeekStrip`, and the figure bound to `Stat L`. Bind fills to the three status gradients and `bgInverse`. Delete the
+No component. Create **HeroCard** on Components page `1:3886` with `Tone` (Streak / Jobs / Login / Reward), `Bottom`
+(None / WeekStrip / Facts), and the figure bound to `Stat L`. Rebuild the Utsav bonus card in *Expert (Sahil)* as `Reward` + `Facts`. Bind fills to the three status gradients and `bgInverse`. Delete the
 per-screen hero frames once instances are placed.
 
 ## Acceptance checklist

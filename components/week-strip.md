@@ -4,7 +4,7 @@ Status: **Proposed** · **In app** 2026-09-22 (Streak hero, Early logins hero) �
 
 Seven days, Monday first, read as a record: which days counted. It is **not** the DatePicker `strip` — that is
 64 dp tiles for *choosing* a day; this is a row of small marks for *seeing* a week she has already lived. Nothing is
-selected; at most a day opens its detail.
+selected; at most a day opens its detail — a BottomSheet `info` with the **day detail** recipe (`bottom-sheet.md`, 2026-09-24).
 
 ## What ships
 

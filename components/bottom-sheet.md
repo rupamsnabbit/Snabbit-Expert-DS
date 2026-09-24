@@ -52,6 +52,36 @@ Padding 16 sides, 24 top (8 when grabber), 16 bottom + safe area. Content gap 12
 
 ---
 
+## `info` · day detail — what happened on one day
+
+Tapping a day on a WeekStrip, a tracker or the rewards calendar opens an `info` sheet with a fixed recipe (from *Expert (Sahil)* `8510:23259`, seven day cards drawn as centred dialogs — `references/expert-sahil-rewards-2026-09-24/` `08`; translated here because the sheet is the app's one modal surface).
+
+```
+╭──────────────────────────────────────────────╮
+│ Sat 13 Sep                               [✕] │  date · Caption textSecondary · weekday + day + month (content.md § 5)
+│                 ( asset 96 )                 │  a registered asset: reward for a coin or bonus · pictogram calendar-✓ / calendar-✗ for present / absent · spin-wheel for a spin day
+│  Utsav day                                   │  title Heading3 · the event, in her words
+│  [Present · Full shift]                      │  a Tag success / error ONLY for attendance — never a coloured title
+│  You earned a Snabbit coin for logging in    │  body BodyLg textBody · ≤ 2 lines · fact first
+│  ┌ Work on Utsav day            −₹2,000 ┐    │  optional Nudge `loss` / `gain` for a day still ahead (condition → consequence)
+│  [ Got it ]                                  │  one Button primary L · *Got it* — never *Okay!*
+╰──────────────────────────────────────────────╯
+```
+
+| Day | Asset | Title | Body | Extra |
+| --- | --- | --- | --- | --- |
+| ahead, with a penalty | festival scene (open — see `assets.md`) | *Utsav day* | *Working today counts double for your streak* | Nudge `loss` *Miss today · − ₹2,000* |
+| ahead, with a spin | `asset/reward/spin-wheel` | *Free spin day* | *Spin once after your shift to win coins* | — |
+| coin won | `asset/reward/snabbit-coin` | *1 Snabbit coin* | *For logging in by 6:40 am* | — |
+| present | `asset/picto/calendar-✓` | Tag `success` **Present · Full shift** | *7:00 am – 12:00 pm · 5 hr* | — |
+| absent | `asset/picto/calendar-✗` | Tag `error` **Absent · Full shift** | *Log in by 6:40 am tomorrow to keep your streak* | never *You missed…* as a headline (`content.md` § 9) |
+| prize won | the prize asset or photo | *1 gram gold coin* | *We'll call you about delivery this week* | — |
+| spin with no win | `asset/reward/spin-wheel` at 40 % | *No coin this spin* | *Next spin Thu 18 Sep* | no face, no *Better luck next time!* (§ 4 miss) |
+
+One Button, always **Got it** — the sheet informs; it never asks. Colour is never the title's job: present and absent are Tags, wins are reward assets, everything else is words.
+
+---
+
 ## `persistent` — the sheet that lives on the screen
 
 Every other kind is modal: it arrives, takes a decision, leaves. `persistent` is furniture. It exists because of a
@@ -132,7 +162,7 @@ Role dialog, modal; focus moves to the title on open and returns to the trigger 
 
 ## Figma reconciliation
 
-1. Merge the 15 sheets into **BottomSheet**: `Kind` (Info / Confirm / Select / Form / Permission), booleans `Hero`, `Grabber`, `Close`, `Facts strip`, `Secondary action`.
+1. Merge the 15 sheets into **BottomSheet**: `Kind` (Info / Confirm / Select / Form / Permission), booleans `Hero`, `Grabber`, `Close`, `Facts strip`, `Secondary action`. Add an **Info / Day detail** instance set (date line · asset · title or Tag · body · Nudge · *Got it*) and rebuild the seven day cards in *Expert (Sahil)* `8510:23259` from it.
 2. Close ✕ moves inside the sheet, top-right, IconButton M ghost; removed on Confirm.
 3. Replace green/red/status buttons with Button instances per the action rules; *No | Yes* → stacked verbs; *Absent | Present* → two `secondary neutral`.
 4. Costly confirms (*Emergency logout*, *Block*, *Lose earnings*) get `secondary danger` + Hold.

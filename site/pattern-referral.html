@@ -1,0 +1,302 @@
+<meta charset="utf-8">
+<title>Snabbit Expert Pattern Referral</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --bg-2:#F9FAFB; --bg-3:#F3F4F6;
+  --text:#111827; --text-body:#374151; --text-2:#6B7280; --text-3:#9CA3AF;
+  --border:#E5E7EB; --border-subtle:#F3F4F6;
+  --brand:#F70F79; --brand-wash:#FEF1F7; --brand-ink:#97094A;
+  --ok:#059669; --ok-wash:#ECFDF5; --focus:#3B82F6;
+  --sans:"Outfit",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+    --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+    --border:#374151; --border-subtle:#1F2937;
+    --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+    --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111827; --bg-2:#1F2937; --bg-3:#374151;
+  --text:#F9FAFB; --text-body:#E5E7EB; --text-2:#9CA3AF; --text-3:#6B7280;
+  --border:#374151; --border-subtle:#1F2937;
+  --brand:#F65CA1; --brand-wash:rgba(247,15,121,.14); --brand-ink:#FBC9DF;
+  --ok:#34D399; --ok-wash:rgba(16,185,129,.14);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--text-body);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+code{font-family:var(--mono);font-size:.85em;background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--text)}
+pre{background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:14px 16px;overflow-x:auto;margin:12px 0 20px} pre code{background:none;border:0;padding:0;font-size:12.5px;line-height:1.55;white-space:pre}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+.shell{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}
+.rail{position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--border);padding:24px 16px 32px;background:var(--bg);display:flex;flex-direction:column;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;padding:0 8px}
+.brand-mark{width:28px;height:28px;border-radius:8px;background:var(--brand);display:grid;place-items:center;flex:none}
+.brand-mark span{width:12px;height:12px;border-radius:3px;background:#fff;transform:rotate(45deg)}
+.brand b{font-weight:600;color:var(--text);font-size:15px;line-height:1.2;display:block}
+.brand small{color:var(--text-2);font-size:12px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:block;padding:6px 8px;border-radius:6px;text-decoration:none;color:var(--text);font-size:13.5px;font-weight:500}
+.nav a.sub{font-weight:400;color:var(--text-body);padding-left:14px;font-size:13px}
+.nav a.sub b{font-family:var(--mono);font-weight:500;color:var(--text-3);font-size:11.5px;margin-right:2px}
+.nav a:hover{background:var(--bg-2)}
+.nav a.on{background:var(--brand-wash);color:var(--brand-ink)}
+.rail-foot{margin-top:auto;padding:0 8px;font-size:12px;color:var(--text-3);line-height:1.5}
+.main{padding:40px 56px 96px;max-width:860px;width:100%}
+.eyebrow{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);font-weight:600}
+h1{font-size:40px;line-height:1.1;font-weight:600;color:var(--text);margin:8px 0 12px;letter-spacing:-.015em;text-wrap:balance}
+.lede{font-size:18px;color:var(--text-2);max-width:60ch;margin:0 0 8px}
+.lede strong{color:var(--text);font-weight:500}
+h2{font-size:26px;line-height:1.2;font-weight:600;color:var(--text);margin:72px 0 16px;letter-spacing:-.01em;text-wrap:balance;padding-top:24px;border-top:1px solid var(--border)}
+h3{font-size:20px;font-weight:600;color:var(--text);margin:48px 0 8px;letter-spacing:-.005em}
+h3::before{content:"";display:block;width:32px;height:3px;background:var(--brand);border-radius:2px;margin-bottom:14px}
+p{margin:0 0 14px;max-width:66ch}
+h3 + p{font-size:17px;color:var(--text);font-weight:500}
+p.why{color:var(--text-2);font-size:15px;padding-left:14px;border-left:2px solid var(--border)}
+p.why::before{content:"Why · ";color:var(--text-3);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+p.lbl{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2);font-weight:600;margin:22px 0 8px}
+strong{color:var(--text);font-weight:600}
+em{font-style:italic}
+ul,ol{margin:0 0 14px;padding-left:0;list-style:none;max-width:68ch}
+ul li{position:relative;padding-left:20px;margin:6px 0;font-size:15.5px}
+ul li::before{content:"";position:absolute;left:0;top:11px;width:9px;height:2px;background:var(--brand)}
+ul li.chk{padding-left:30px}
+ul li.chk::before{width:16px;height:16px;top:4px;background:var(--bg);border:1.5px solid var(--text-3);border-radius:4px}
+ol{counter-reset:s}
+ol li{counter-increment:s;display:grid;grid-template-columns:32px 1fr;gap:12px;margin:10px 0;font-size:15.5px}
+ol li::before{content:counter(s);width:28px;height:28px;border-radius:50%;background:var(--brand-wash);color:var(--brand-ink);font-weight:600;font-size:13px;display:grid;place-items:center;margin-top:1px}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px;margin:8px 0 20px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);font-weight:500;padding:10px 14px;background:var(--bg-2);border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:10px 14px;border-bottom:1px solid var(--border-subtle);vertical-align:top;color:var(--text-body)}
+tr:last-child td{border-bottom:0}
+td:first-child{color:var(--text);font-weight:500;white-space:nowrap}
+hr{display:none}
+
+.sitenav{display:flex;flex-direction:column;gap:2px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.sitenav .grp{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);padding:10px 8px 4px;font-weight:500}
+.sitenav a{display:block;padding:5px 8px;border-radius:6px;text-decoration:none;color:var(--text-body);font-size:13.5px;border:0}
+.sitenav a:hover{background:var(--bg-2);color:var(--text)} .sitenav a.on{color:var(--brand-ink);background:var(--brand-wash);font-weight:500}
+@media (max-width:900px){.sitenav{flex-direction:row;flex-wrap:wrap;gap:4px;border-bottom:0;padding-bottom:0}.sitenav .grp{display:none}}
+
+@media (max-width:900px){
+  .shell{grid-template-columns:1fr}
+  .rail{position:static;height:auto;border-right:0;border-bottom:1px solid var(--border);padding:16px}
+  .nav{flex-direction:row;flex-wrap:wrap;gap:4px} .nav a.sub{padding-left:8px} .rail-foot{display:none}
+  .main{padding:32px 20px 80px} h1{font-size:32px} h2{margin-top:56px}
+}
+</style>
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Pattern · Referral</small></div></div>
+    <nav class="sitenav" aria-label="Site"><div class="grp">Foundations</div><a href="index.html">Tokens</a><a href="principles.html">Principles</a><a href="extending.html">Extending</a><a href="icons.html">Icons</a><a href="assets.html">Assets</a><a href="motion.html">Motion</a><a href="type.html">Type · four scripts</a><a href="accessibility.html">Accessibility</a><a href="content.html">Content</a><div class="grp">Components</div><a href="components/accordion.html">Accordion</a><a href="components/amount.html">Amount</a><a href="components/avatar.html">Avatar</a><a href="components/badge.html">Badge</a><a href="components/benefit-tile.html">BenefitTile</a><a href="components/feedback.html">Banner · Toast · Snackbar</a><a href="components/bottom-sheet.html">BottomSheet</a><a href="components/bottom-tab-bar.html">BottomTabBar</a><a href="components/button.html">Button</a><a href="components/card.html">Card</a><a href="components/selection-controls.html">Checkbox · Radio · Switch</a><a href="components/chip.html">Chip</a><a href="components/coachmark.html">Coachmark</a><a href="components/date-picker.html">DatePicker</a><a href="components/empty-state.html">EmptyState</a><a href="components/header-nav.html">HeaderNav</a><a href="components/hero-card.html">HeroCard</a><a href="components/how-to-clip.html">HowToClip</a><a href="components/icon-button.html">IconButton</a><a href="components/job-alert.html">JobAlert</a><a href="components/list-item.html">ListItem</a><a href="components/map-marker.html">MapMarker · MapSnippet</a><a href="components/media-capture.html">MediaCapture</a><a href="components/nudge.html">Nudge</a><a href="components/numeric-keypad.html">NumericKeypad</a><a href="components/page-indicator.html">PageIndicator</a><a href="components/popover.html">Popover</a><a href="components/progress-bar.html">ProgressBar</a><a href="components/progress-button.html">ProgressButton</a><a href="components/promo-card.html">PromoCard</a><a href="components/rate-table.html">RateTable</a><a href="components/selection-card.html">SelectionCard</a><a href="components/shield-card.html">ShieldCard</a><a href="components/skeleton.html">Skeleton · Spinner</a><a href="components/sos-control.html">SOSControl</a><a href="components/stat-rating-divider.html">Stat · Rating · Divider</a><a href="components/statement.html">Statement</a><a href="components/stepper.html">Stepper</a><a href="components/tabs.html">Tabs · Segmented</a><a href="components/tag.html">Tag</a><a href="components/text-field.html">TextField</a><a href="components/timer.html">Timer</a><a href="components/tooltip.html">Tooltip</a><a href="components/voice-prompt.html">VoicePrompt</a><a href="components/week-strip.html">WeekStrip</a><div class="grp">Patterns</div><a href="pattern-new-job-alert.html">New job arrives</a><a href="pattern-check-in-out.html">Check in · work · check out</a><a href="pattern-payout.html">Payout</a><a href="pattern-onboarding.html">Onboarding · go-live</a><a href="pattern-error-recovery.html">When something goes wrong</a><a href="pattern-permissions.html">Asking for permission</a><a href="pattern-first-run.html">First run</a><a href="pattern-earnings.html">Earnings</a><a href="pattern-after-sos.html">After SOS</a><a href="pattern-offline.html">Offline</a><a href="pattern-notification-centre.html">Notifications · stories</a><a class="on" href="pattern-referral.html">Referral</a><div class="grp">Research</div><a href="benchmark.html">Benchmark</a><a href="audit.html">Figma audit</a><a href="roadmap.html">Roadmap</a><a href="governance.html">Governance</a><a href="changelog.html">Changelog</a></nav><nav class="nav" id="nav"><a href="#the-tab">The tab</a><a href="#what-changes-from-the-proposed-screen">What changes from the proposed screen</a><a href="#the-friend-s-screen">The friend's screen</a><a href="#contest-the-podium-and-the-leaderboard">Contest — the podium and the leaderboard</a><a href="#content">Content</a><a href="#spec-follow-ups">Spec follow-ups</a><a href="#checklist-for-the-pattern">Checklist for the pattern</a></nav>
+    <div class="rail-foot">Snabbit Expert Design System · generated from patterns/referral.md</div>
+  </aside>
+  <main class="main">
+    <header>
+      <div class="eyebrow">Snabbit Expert · Mobile</div>
+      <h1>Pattern — referral</h1>
+      <p class="lede">The Refer tab: how she brings a friend to Snabbit, what she earns for it, and how she follows each friend's first weeks. Evidence: the proposed Refer screen from the design lead, 2026-09-24 → <code>references/refer-tab-2026-09-24/</code>, and the referral, contest and story surfaces on <em>Expert (Sahil)</em> <code>8510:23259</code> → <code>references/expert-sahil-rewards-2026-09-24/</code>. Proposed, not shipped; the shipped app has the <strong>Refer</strong> tab with a <code>₹4000</code> promo Badge (<code>bottom-tab-bar.md</code>) and nothing else read yet. Everything on this tab is a Tier 2 composition of core components — the money list is a <strong>Statement</strong>, the offer is a <strong>PromoCard</strong>, the stories are <strong>HowToClip</strong>.</p>
+    </header>
+    <h2 id="the-tab">The tab</h2>
+<pre><code>┌────────────────────────────────────────────┐
+│ ‹  Refer a friend                    [A/अ] │  HeaderNav page · trailing IconButton translate (one control; no (i))
+│ ┌ PromoCard referral · full ────────────┐  │
+│ │   (two experts, a Snabbit box)        │  │  media ground bgBrandSubtle · asset/character/referral-handover
+│ │   Up to ₹15,000 when a friend joins   │  │  title BodyLg Medium
+│ │   Paid as she completes her first weeks│ │  body BodyMd textSecondary
+│ │   [whatsapp] Invite on WhatsApp       │  │  Button primary L — THE tab's one primary
+│ └───────────────────────────────────────┘  │
+│ Stories                                    │  section heading
+│ (○) Pooja's win  (○) Sita's first month  → │  HowToClip story · 72 dp · title beneath · ring = unwatched
+│ ┌ Contest ─────────────────────────────┐   │  Card static · header title + description *Refer friends, win prizes · Ends Mon 23 Mar 2026*
+│ │  [cooler]   [gold coin]   [phone]    │   │  PODIUM composition · three prize photos over asset/reward/podium
+│ │  ▁▁2▁▁     ▔▔▔1▔▔▔      ▁▁3▁▁        │   │
+│ │ (1) (A) Pooja Sharma        ₹20,000  │   │  ListItem rank 1–3 · medal asset · Avatar 40 · Amount md
+│ │ (2) (A) Meena Rao           ₹18,500  │   │
+│ │ (3) (A) Asha Devi           ₹17,000  │   │
+│ │ ─────────────────────────────────── │   │  Divider
+│ │ 25  (A) Sunita Rao   [You]  ₹6,000   │   │  ListItem current · rank number · Tag You
+│ │ (→) Refer 3 more friends   🥇 Top 3  │   │  Nudge gain · rank medal as the consequence
+│ │ [ See leaderboard ]                  │   │  Button secondary neutral M
+│ └──────────────────────────────────────┘   │
+│ ┌ Referral earnings near you ───────────┐  │  Card · horizontal Stat M tiles
+│ │ (A56)     (A56)     (A56)   →         │  │  Avatar 56 · name · locality Caption · Amount md positive
+│ │ Sunita    Rekha     Nasreen           │  │
+│ │ HSR Layout Koramangala BTM            │  │
+│ │ + ₹21,000 + ₹18,000 + ₹15,500         │  │
+│ └───────────────────────────────────────┘  │
+│ ┌ Your joining bonus                  › ┐  │  Card tappable · description *3 milestones to ₹1,000* → Stepper progression screen
+│ Your friends                               │  section heading
+│ ┌ Statement ────────────────────────────┐  │
+│ │ (₹) Earned from friends       ₹2,000  │  │  band
+│ │~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~│  │
+│ │ (A) Kriti Patel                       │  │  row · Avatar 40 leading · description *7 of 7 days · ready to claim*
+│ │     7 of 7 days · ready to claim ₹2,000 › │  Amount md brand + caret → friend screen
+│ │ (A) Sita Rao                🔒 ₹2,000 │  │  Amount locked · *after day 7* · description *5 of 7 days*
+│ │ (A) Kriti Patel · claimed Fri 12 Sep  + ₹2,000 │  Amount positive
+│ │ ┌─ ON ITS WAY ───────────────────────┐│  │  schedule panel · date tile
+│ │ │ [26 SEP] Sita's bonus       ₹2,000 ││  │
+│ │ └────────────────────────────────────┘│  │
+│ └───────────────────────────────────────┘  │
+│ See all 12 friends                       › │  ListItem navigational
+│ ┌ HowToClip guide · How referral works ─┐  │  16:9 inline · tap to play · sound · knob-less bar · fullscreen
+│ How referral works                    ⌄   │  Accordion faq with Listen (replaces the (i))
+│ Home · Earnings · Refer · Profile          │  BottomTabBar · Refer selected
+└────────────────────────────────────────────┘
+</code></pre>
+<p>Order kept from the proposed screen: <strong>offer → stories → contest → peers → her bonus → her friends → how it works</strong>. The one primary is <em>Invite on WhatsApp</em>; every other action is <code>secondary</code>, <code>tertiary</code> or a row.</p>
+<p>Five states (P5): <strong>loading</strong> — PromoCard skeleton, story skeleton circles, Statement band with skeleton rows; <strong>empty</strong> (no friends yet) — the Statement is replaced by EmptyState <code>section</code> <em>No friends yet · Your first invite lands here</em>, the contest and peers still show; <strong>error</strong> — EmptyState <code>error</code> with <strong>Try again</strong> in place of the lists, the PromoCard stays (inviting needs no server); <strong>offline</strong> — Offline Banner; <em>Invite on WhatsApp</em> works, <em>See leaderboard</em> and <em>Claim</em> are disabled with <em>Needs internet</em>; <strong>loaded</strong>.</p>
+<hr />
+<h2 id="what-changes-from-the-proposed-screen">What changes from the proposed screen</h2>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Proposed</th>
+<th>Pattern</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Confetti hero with the <em>Saheli</em> wordmark, <em>₹15,000 tak</em> pill, <strong>Refer Saheli</strong></td>
+<td>PromoCard <code>referral</code> <code>full</code> <code>primary</code>: <em>Up to ₹15,000 when a friend joins</em> · <strong>Invite on WhatsApp</strong></td>
+<td><code>promo-card.md</code>; words are text, not art (<code>assets.md</code>)</td>
+</tr>
+<tr>
+<td>(i) and a language toggle in the header</td>
+<td><code>translate</code> alone; <em>How referral works</em> Accordion <code>faq</code> at the foot</td>
+<td><code>header-nav.md</code>: one trailing, no (i)</td>
+</tr>
+<tr>
+<td>Portrait story tiles with <em>Winner 🎁</em> / <em>Trending 🔥</em></td>
+<td><code>story</code> circles with titles (<em>Pooja's win</em>)</td>
+<td>the shipped circle; no emoji</td>
+</tr>
+<tr>
+<td>Purple <em>Bumper Contest</em> section</td>
+<td>Card <em>Contest</em> with the date on its description line</td>
+<td>colour by content, not container (P6)</td>
+</tr>
+<tr>
+<td>Prize photos on a three-block podium</td>
+<td><strong>Podium</strong> composition on <code>asset/reward/podium</code></td>
+<td>rank is the reward layer's domain</td>
+</tr>
+<tr>
+<td><em>Earnings ₹20,000</em> as a description</td>
+<td>Amount <code>md</code> trailing</td>
+<td>a value is a value</td>
+</tr>
+<tr>
+<td><em>25 · You</em> row</td>
+<td>ListItem <code>current</code> with Tag <em>You</em></td>
+<td><code>list-item.md</code> (rule added 2026-09-24)</td>
+</tr>
+<tr>
+<td><em>Refer 3 more to people enter Top 3</em> ○</td>
+<td>Nudge <code>gain</code> → medal · <em>Top 3</em></td>
+<td><code>nudge.md</code></td>
+</tr>
+<tr>
+<td><strong>View Leaderboard</strong> black · <em>Ends on 23 March 2026</em></td>
+<td><strong>See leaderboard</strong> <code>secondary neutral</code>; <em>Ends Mon 23 Mar 2026</em> in the Card header</td>
+<td>one primary; date format (<code>content.md</code> § 5)</td>
+</tr>
+<tr>
+<td>Pink scalloped <em>Top Saheli earnings near you!</em></td>
+<td>Card <em>Referral earnings near you</em> with Stat tiles</td>
+<td>the scallop belongs to the Statement</td>
+</tr>
+<tr>
+<td>Friend cards: <strong>Claim Bonus</strong> green, phone + WhatsApp, <em>Processing</em>, <em>Claimed 🤑</em></td>
+<td><strong>Statement</strong> rows per friend; claim, call and message on the friend's screen</td>
+<td>never a Button in a row (<code>list-item.md</code>); the shipped money card has every state</td>
+</tr>
+<tr>
+<td><strong>View all ›</strong> Button</td>
+<td>ListItem <em>See all 12 friends ›</em></td>
+<td><code>card.md</code></td>
+</tr>
+<tr>
+<td>Video with a scrubber knob</td>
+<td>HowToClip <code>guide</code></td>
+<td>P3</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="the-friend-s-screen">The friend's screen</h2>
+<p>Tapping a friend's row opens her screen. It is where the two things the proposed card crammed into a row actually live.</p>
+<pre><code>┌────────────────────────────────────────────┐
+│ ‹  Sita Rao                                │  HeaderNav page
+│ (A56) Sita Rao · joined Mon 15 Sep         │  Avatar 56 · BodyLg · Caption
+│ ●──●──●──●──●──○──○                        │  Stepper progression · 7 nodes (her first 7 working days) · coin asset on the last
+│ 5 of 7 days · ₹2,000 after day 7           │  the mandatory paired line
+│ Call Sita                                › │  ListItem navigational · phone
+│ Message on WhatsApp                      › │  ListItem navigational · whatsapp-logo
+│ Her bonus so far                           │  Statement (band + rows) when there is more than one milestone
+│ [ Claim ₹2,000 ]                           │  Button primary L — only when ready; otherwise the disabled reason *Available after day 7*
+└────────────────────────────────────────────┘
+</code></pre>
+<p><strong>Claim ₹2,000</strong> opens a BottomSheet <code>info</code>: <em>₹2,000 reaches your bank with Friday's payout</em> · <strong>Got it</strong>; the row moves to the Statement's <code>schedule</code> panel as <em>ON ITS WAY · 26 SEP</em>, and a Toast <em>₹2,000 on its way</em> plays <code>confirm</code>. Claiming is money she has already earned, so it is one tap (P3: desired actions are not protected).</p>
+<p><strong>Call</strong> and <strong>Message on WhatsApp</strong> are for a friend who has stalled — <em>Sita hasn't worked since Tue</em>. They are <code>navigational</code> rows, not IconButtons in a row, so each is a 56 dp target with a label she can read.</p>
+<hr />
+<h2 id="contest-the-podium-and-the-leaderboard">Contest — the podium and the leaderboard</h2>
+<ul>
+<li><strong>Podium</strong>: a Card body holding three prize photos (campaign content, transparent ground, 96 dp) over <code>asset/reward/podium</code> — gold centre and tallest, silver left, bronze right. Never Buttons on the prizes; the Card's footer holds <strong>See leaderboard</strong>.</li>
+<li><strong>Leaderboard</strong> rows are ListItems: <code>rank</code> leading (medal assets <code>asset/reward/rank-1/2/3</code> for the top three, then a number), Avatar 40, name, Amount <code>md</code> trailing (what is ranked — earnings from referrals, to confirm). Her row is <code>current</code> with Tag <em>You</em>, pinned after a Divider even when she is 25th, because <em>where am I</em> is the question the list answers.</li>
+<li>The Nudge under the rows says how far: <em>Refer 3 more friends</em> → medal · <em>Top 3</em>. It disappears when she is in the top three, replaced by a Tag <code>success</code> <em>You're in the top 3</em>.</li>
+<li><strong>See leaderboard</strong> opens the full list (≤ 100 rows, paginated, her row pinned at the bottom while scrolling).</li>
+<li>The contest's end date is on the Card header's description line, never a countdown Timer (a contest is days away; <code>timer.md</code> is for minutes).</li>
+</ul>
+<hr />
+<h2 id="content">Content</h2>
+<ul>
+<li><em>Refer a friend</em> (title) · <em>Up to ₹15,000 when a friend joins</em> · <em>Paid as she completes her first weeks</em> · <strong>Invite on WhatsApp</strong> · <em>Stories</em> · <em>Contest</em> · <em>Refer friends, win prizes · Ends Mon 23 Mar 2026</em> · <strong>See leaderboard</strong> · <em>Refer 3 more friends</em> · <em>Referral earnings near you</em> · <em>Your joining bonus · 3 milestones to ₹1,000</em> · <em>Your friends</em> · <em>Earned from friends</em> · <em>7 of 7 days · ready to claim</em> · <em>after day 7</em> · <em>ON ITS WAY</em> · <em>claimed Fri 12 Sep</em> · <em>See all 12 friends</em> · <em>How referral works</em> · <strong>Claim ₹2,000</strong> · <em>Call Sita</em> · <em>Message on WhatsApp</em>.</li>
+<li><em>Saheli</em> is the Hindi / Marathi word for the friend she refers (<code>content.md</code> § 8); English says <em>a friend</em>.</li>
+<li>Never <em>Refer Saheli</em> as a Button, <em>Bumper</em>, <em>tak</em>, <em>Winner</em> / <em>Trending</em> as tags, <em>Processing</em>, <em>Claimed</em> with an emoji, <em>View all</em>, <em>Complete milestones to earn</em>.</li>
+<li>Spoken: the PromoCard is read on the tab's Listen; the Statement is read row by row; the friend's screen says <em>"Sita has worked five of seven days. Two thousand rupees after day seven."</em></li>
+</ul>
+<hr />
+<h2 id="spec-follow-ups">Spec follow-ups</h2>
+<ul>
+<li><code>how-to-clip.md</code> — <strong><code>guide</code></strong> form (landed 2026-09-24; closes the ROADMAP open item).</li>
+<li><code>list-item.md</code> — <strong><code>rank</code></strong> leading; <code>current</code> in a list of people carries Tag <em>You</em> (landed).</li>
+<li><code>statement.md</code> — rows may lead with an Avatar 40; <em>Referral earnings</em> recorded as a fourth use (landed).</li>
+<li><code>nudge.md</code> — a <code>gain</code> consequence may be a rank medal (landed).</li>
+<li><code>assets.md</code> — <code>asset/reward/rank-1/2/3</code>, <code>asset/reward/podium</code> (landed); <code>icons.md</code> — <code>corners-out</code>, <code>whatsapp-logo</code> widened to <em>message on WhatsApp</em> (landed).</li>
+<li><code>bottom-tab-bar.md</code> — the Refer tab's promo Badge shows the live bonus (<code>₹15,000</code>), unchanged.</li>
+<li>Open: what the leaderboard ranks; whether the language toggle belongs on the share sheet; the <em>Saheli</em> wordmark.</li>
+</ul>
+<hr />
+<h2 id="checklist-for-the-pattern">Checklist for the pattern</h2>
+<ul>
+<li class="chk">One primary on the tab — <em>Invite on WhatsApp</em>; everything else <code>secondary</code>, <code>tertiary</code> or a row.</li>
+<li class="chk">No tinted sections; the contest and peers are Cards on <code>bgSecondary</code>.</li>
+<li class="chk">The friend list is a Statement; claim, call and message live on the friend's screen.</li>
+<li class="chk">Ranks 1–3 are medal assets, the rest numbers; her row is <code>current</code> with <em>You</em> and is always visible.</li>
+<li class="chk">Stories are 72 dp circles with titles; no <em>Winner</em> / <em>Trending</em> tags.</li>
+<li class="chk">The inline video has no knob; fullscreen opens the player.</li>
+<li class="chk">Five states designed; offline keeps inviting alive.</li>
+<li class="chk">Copy heard aloud in four languages; <em>a friend</em> for <em>Saheli</em> confirmed with the Hub.</li>
+</ul>
+  </main>
+</div>
+<script>
+(function(){
+const links=[...document.querySelectorAll('#nav a')];
+const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-10% 0px -80% 0px'});
+  targets.forEach(t=>io.observe(t));
+}
+})();
+</script>

@@ -47,6 +47,7 @@ Heights: **56** title only · **64** title + one line · **72** title + two line
 | AchievementBadge / asset | 40 | Earnings lines tied to a badge or bonus |
 | Checkbox / Radio | 24 | Then it is a **selection row** — see Selection controls; the whole row toggles |
 | Pictogram asset | 40 | Status rows where the object + dot says it |
+| **`rank`** | 40 box | A place in an ordered list — a leaderboard. **1–3** are the medal assets `asset/reward/rank-1/2/3` (rank is the reward layer's domain); **4 and after** are the number, `BodyLg` SemiBold `textPrimary`, tabular, centred in the box. Always followed by an Avatar 40 — a rank belongs to a person (`patterns/referral.md`, 2026-09-24) |
 | none | — | Plain text rows (settings sub-items); title aligns to the 16 dp margin |
 
 ### Content
@@ -129,7 +130,7 @@ and a percentage replaces a count she can act on with one she cannot.
 | default | as above |
 | pressed (navigational/selection) | `bgSecondary` full-row wash 100 ms; `light` haptic |
 | selected (in a picker) | `bgBrandSubtle` fill, leading `check` replaces icon — used by Select sheets |
-| current (*you are here*) | the `selected` rendering, but the leading icon stays and an Avatar `XS` sits after the title — a row that is **her** in a list of tiers or ranks (**In app** 2026-09-22: the Gold row in *Base Pay across Tiers*) |
+| current (*you are here*) | the `selected` rendering, but the leading icon stays and an Avatar `XS` sits after the title — a row that is **her** in a list of tiers or ranks (**In app** 2026-09-22: the Gold row in *Base Pay across Tiers*). **In a list of people** (a leaderboard), every row already carries an avatar, so the marker is a Tag `M soft brand` **You** in the trailing slot before the value instead — the word, not a second face (2026-09-24, `patterns/referral.md`) |
 | disabled | all text `textTertiary`, leading at 40 % opacity, not tappable; description says why when possible |
 | loading | skeleton: leading circle/box, 60 % title bar, 40 % description bar; 3 rows shown, never a spinner |
 | swipe | **not supported** — no swipe-to-delete or swipe actions (P3: gestures are shortcuts, never the only path; here they would be the only path) |

@@ -161,6 +161,7 @@ Rules of the road: numerals stay Latin in every language; brand words (*Snabbit*
 | Bank account · UPI ID | payment method, KYC | Plain nouns |
 | Directions | navigate, maps, route | Opens the maps app |
 | Time left · Overtime | remaining, extra time, ETA | Timer labels |
+| A friend · **Saheli** | referral, referee, lead, contact | The friend she brings to Snabbit. *Saheli* is the shipped word (*Refer Saheli* tab) and the Hindi / Marathi UI word; English copy says *a friend*; Kannada uses its own word. Never *Refer Saheli* as an English Button — the verb is *Invite on WhatsApp* (`promo-card.md`, 2026-09-24) |
 
 **Open decision — Kavach or Shield.** The shipped product calls the feature *Snabbit Kavach*; `PRINCIPLES.md` says *Shield*; `shield-card.md` uses *Shield* in the UI and *Kavach* as the feature's proper name. Recommendation: **Kavach** as the name she hears and sees (it is what the Hub calls it and it is a word in her language), *Shield* as the component name in code and specs. Needs the design lead's yes; then one pass through `shield-card.md`, `patterns/after-sos.md` and the vocabulary table.
 

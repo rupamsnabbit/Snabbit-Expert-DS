@@ -76,6 +76,7 @@ begins. She may end the buffer early with an explicit action — it is a floor f
 ## Behaviour
 
 - Updates every second; digits never skip. When the app resumes from background the Timer recomputes from the server deadline, not from local ticks.
+- **The window can grow while it runs** — the customer adds a service during the job (`beauty-job-cycle` PRD § 4). The deadline moves, the digits jump to the new time left, and the ring and tone **recompute from the new total**: the drained share stays drained, the rest of the ring is the new remaining share, and a tone that had reached `attention` may fall back to `calm`. There is **no added-time segment**, stripe or second colour on the ring — what changed is said by a `Tooltip status` pinned to the Timer (`clock-clockwise` *15 min added*, spoken once) and by the screen's own *Job timing* and *Duration* rows, which change in the same frame. The window never grows silently (P5) and never by the expert's tap.
 - A Timer is never the only place a deadline lives: the label names it, and the screen's helper text states it in words for the spoken guidance (*Accept in the next 30 seconds*).
 - On the job alert the Timer sits **directly above the accept Button**, centred, L size; the Button is not wrapped by the ring (a ring around a 56 dp button is too thin to read at arm's length). The window is 30 s; `attention` at 15 s, `urgent` at 6 s.
 - Reduced motion: the stroke updates in 1 s steps rather than animating; no pulse.
