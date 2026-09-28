@@ -10,14 +10,16 @@ Everything here applies to UI text, spoken lines, notifications, SMS, and traini
 
 Write the way a good trainer at the Hub talks to an expert she respects: plainly, warmly, one thing at a time, assuming intelligence but not literacy.
 
-- **One idea per line.** A Button says one thing; a Banner says what happened and what to do, nothing else; a sheet body says at most four lines. If a sentence needs a comma to survive, split it.
+- **Words are the last layer.** Before writing a line, ask whether a picture, a shape, an icon or a number already says it (P1 · *Text is the last medium*). If it does, the line is not written. Most screens need fewer words than the first draft has — a task screen has **one instruction line** and a Button, and the sequence of a task is a sequence of screens, never a numbered list of sentences.
+- **Say only what is new, or what she could get wrong.** She does this work every day. A line that narrates what the screen already shows, restates the obvious, or gives the reason for a step she knows is talking down to her. Warm is not wordy: warmth comes from the moment, the name and the specific number, not from explaining more.
+- **One idea per line.** A Button says one thing; a Banner says what happened and what to do, nothing else; a sheet body says at most four lines — a ceiling for information sheets, not a target; a task sheet has one. If a sentence needs a comma to survive, split it.
 - **Verbs for actions, nouns for things, numbers first.** *Accept job* · *Check in* · *3 more jobs to Gold* · *15 min added*. The number leads because it is the part she reads fastest and the part that is the same in every language.
 - **Concrete over abstract.** *Your ₹450 will reach your bank by Tuesday* beats *Payout processing*. Name the amount, the day, the person, the place.
 - **Her words, not ours.** She says *job*, *shift*, *check in*, *earnings*, *payout*, *tier*, *SOS*, *Shield*, *Hub* — the vocabulary in `PRINCIPLES.md` § Vocabulary. She does not say *booking*, *task*, *wallet*, *settlement*, *KYC*, *OTP verification*, *ETA*, *UTR*. When a system word is unavoidable, put the plain meaning first and the word after: *Reference number (UTR) 4021…*.
 - **No idiom, no cleverness.** Every English line will be translated by someone who has met an expert; a pun or a phrasal verb makes their job impossible and the Kannada line 1.6× long. *Keep going!* is untranslatable and says nothing; *3 more jobs to Gold* translates itself.
 - **Adult to adult.** She is a professional having a normal day or a hard one. No cheerleading, no scolding, no baby talk, no *Oops*.
 
-The test for any line: **would you say this to a colleague, out loud, at her door?** If it would sound odd spoken, it is wrong written.
+The test for any line: **would you say this to a colleague, out loud, at her door — and would she need you to?** If it would sound odd spoken, it is wrong written. If she already knows it, or the screen already shows it, it is not written at all.
 
 ---
 
@@ -184,6 +186,8 @@ Consolidated from every spec. The lint warns on the first group.
 
 Run before a string enters a spec or a build. Rows 15–16 of the component checklist depend on it.
 
+- [ ] The line says something no picture, shape, icon or number on the screen already says, and something she does not already know.
+- [ ] It is the only instruction line on its screen; a second instruction is a second screen, a *why* is behind a tap.
 - [ ] Verb for an action, noun for a thing, number first where there is one.
 - [ ] ≤ its budget in English (`type.md`); Kannada fits the same box at 1.3.
 - [ ] Sentence case; no caps, exclamation marks, emoji, idiom, question in a status.

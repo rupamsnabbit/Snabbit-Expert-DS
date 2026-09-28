@@ -23,6 +23,7 @@ This repository is the **mobile design system** for the Snabbit Expert app (Comp
 - **Principles pass.** Anything with a state, an action or text runs the acceptance checklist in `PRINCIPLES.md`. Cite principle numbers when you make or request a change (*"P3: decline is adjacent to accept"*).
 - **Vocabulary.** Expert (not worker/runner/helper), Job, Shift, Check in/out, Earnings, Payout, Tier, Streak, SOS, Shield, Hub. See the table in `PRINCIPLES.md`.
 - **Copy** follows `foundations/content.md`: warm, specific, sentence case, one idea per line, numbers first, designed to fit Hindi, Kannada and Marathi at large font size. Actions are verbs (*Accept job*), never *OK / Submit / Continue*; the § 9 banned list is enforced by the lint.
+- **Show, don't tell — words are the last medium.** Picture → shape → icon → number → word, in that order (P1 · *Text is the last medium*). One instruction line per task screen; a sequence of steps is a sequence of screens, never a numbered list of sentences; a rule about what to avoid goes into the picture or the voice line, not a caption; context she already has is not repeated on a step screen. Say only what is new to her or what she could get wrong — she does this job every day, and explaining more is talking down to her, not being kind. A placeholder illustration is *described* (what it must show), never compensated for with text. Understanding the persona is not the same as writing it onto the screen: the persona tells you what to leave out.
 
 ## When the user shares a screenshot or reference
 
@@ -107,7 +108,20 @@ tracker header is a `HeroCard`, a week is a `WeekStrip`, a money row is a `ListI
 - **Tried first** is empty only when *Built from* is a system component.
 
 **3. Only then draw.** The plan is the checklist for the review: a drawn region with no row, or a row whose source is
-Mobbin with an empty *Tried first*, is rejected as Tier 0 regardless of how it looks.
+Mobbin with an empty *Tried first*, is rejected as Tier 0 regardless of how it looks. Draw the pictures, shapes and
+numbers first and the words last.
+
+**4. Then take words away.** Before a screen is shown to anyone, run P1's delete-a-line check: remove each line of
+text in turn, and any line whose loss costs her nothing — because the picture, the Timer, the icon or the number
+already says it, or because she already knows it — stays removed. More than one instruction line, or a numbered list
+of instructions, means the screen is really several screens. A first draft that is "too explanatory" has failed this
+step, not the persona.
+
+**Why the step and not the instinct.** The Beauty setup-photo screen (2026-09-28,
+`references/setup-photo-text-vs-visual-2026-09-28/`) was drawn with a title, a heading, two numbered instruction
+lines, a caption rule, a customer card, a Kavach banner and nine product rows on one scroll — every line was true and
+the persona was understood, and it still read like explaining to a child. The shipped flow says the same with a setup
+scene, a Timer ring, one line and one Button per screen: arrange → camera → saving → started.
 
 **Why the file and not the memory.** The Beauty inventory ledger (September 2026) was drawn with a new tile grid and
 a new two-segment bar while `patterns/payout.md` already described the ledger as a statement and the app already

@@ -108,6 +108,7 @@ hr{display:none}
     <h2 id="who-we-design-for">Who we design for</h2>
 <p>An expert is an adult professional — most often a woman from the same neighbourhood as her customers — who was doing this work informally before Snabbit and now does it on a schedule, in uniform, with a phone as her dispatcher.</p>
 <p><strong>She reads slowly, in her own script.</strong> Hindi, Kannada or Marathi first; some English. Short, familiar words work. Sentences, abbreviations and anything she has to <em>work out</em> do not. She is not illiterate and must never be treated as if she were — but the app must never <em>depend</em> on reading to be safe or to earn.</p>
+<p><strong>She knows her job better than the app does.</strong> She does this work every day. What she needs from a screen is what is new to her and what she could get wrong — never the obvious, never the reason for a step she already knows. Explaining more is not kinder; it is talking down to her, and it is one more line to read at the door.</p>
 <p><strong>Her phone is a ₹8–15k Android.</strong> Small screen, older OS, limited RAM, cracked glass more often than not. Data is prepaid and sometimes runs out mid-shift. Network drops in lifts, basements and stairwells — exactly where she spends her day.</p>
 <p><strong>She is usually moving.</strong> Walking or on an e-bike between homes in a sub-1 km cluster, in sunlight, one-handed, bag on the other shoulder. Inside a home her hands are wet or soapy. The app is glanced at, not studied.</p>
 <p><strong>Her income depends on the app.</strong> Punctuality, attendance and quality incentives make the difference between ₹10k and ₹35k a month. Every job accepted, every check-in on time, every tier climbed is real money. Getting this wrong is not a UX bug; it is her rent.</p>
@@ -125,10 +126,19 @@ hr{display:none}
 <li>Icons are Phosphor Icons only — <code>regular</code> by default, <code>fill</code> when selected or active — with one meaning each. The same icon never means two things; two icons never mean the same thing.</li>
 <li>Amounts, times and distances are large and numeric (<code>Heading2</code> or bigger for the primary figure), with the unit shown as a symbol or short word (₹, min, km).</li>
 <li>Text is short, sentence case, in the expert's language. One idea per line. No abbreviations she was not taught in training.</li>
+<li><strong>Text is the last medium.</strong> Reach for the channels in this order: a picture of the thing or the scene (an illustration asset) → a shape that changes (ring, bar, fill, colour) → an icon → a number → a word. A line of text carries only what nothing before it can.</li>
+<li><strong>An instruction a picture can show is a picture.</strong> <em>Lay out your products in one place</em> is the setup scene, not a sentence. A rule about what to avoid (<em>only your things in the photo</em>) goes into the picture — a frame that shows only the kit — or into the spoken line, never into a sub-caption.</li>
+<li><strong>A step is a screen, not a numbered line.</strong> A task with a sequence — arrange, photograph, saved, started — is lived one moment at a time: each moment is its own screen or sheet with one picture, one line and one action. A numbered list of instructions on a task screen is a sequence she must read and remember, and is not allowed. (A Stepper that shows <em>where she is</em> in onboarding is progress, not instruction, and is fine.)</li>
+<li><strong>One instruction line per screen.</strong> A task screen carries at most one line of instruction, within its component's budget in <code>foundations/type.md</code>, plus the action label. Data she acts on — amounts, times, names, list items — is not instruction and is not counted. A second instruction is a second screen; a <em>why</em> sits behind one tap (Listen, Accordion <code>faq</code>, HowToClip), never on the screen by default.</li>
+<li><strong>Related is not needed.</strong> A step screen shows what that step needs and nothing else. Context she already has — the customer card, the job time, a feature prompt — lives on the job screen one tap back and is not repeated on every step. SOS and Help stay in the header (P7): they are safety, not context.</li>
+<li><strong>A missing picture is not a reason for text.</strong> While an illustration is a placeholder, the placeholder says what the picture must show, and the copy is written as if the picture were there. Text added to cover for a stand-in outlives it, and the screen ends up said twice.</li>
 </ul>
 <p class="lbl">Checks</p>
 <ul>
 <li class="chk">Cover the text: can a first-week expert still tell what this screen is for and what to do?</li>
+<li class="chk">Delete each line of text, one at a time: did she lose something the picture, shape, icon or number could not give her? If not, the line goes.</li>
+<li class="chk">Is there more than one instruction line, or a numbered list of instructions? Then it is more than one screen.</li>
+<li class="chk">Would an expert who has done this job a hundred times find any line patronising?</li>
 <li class="chk">Set the screen to greyscale: are all states still distinguishable?</li>
 <li class="chk">Is every icon on this screen in the approved set, with its meaning recorded?</li>
 </ul>
@@ -139,7 +149,7 @@ hr{display:none}
 <ul>
 <li>One primary action per screen, full-width at the bottom (<code>SnabbitButton</code> L, 56 dp) above the safe area. Secondary actions are visually quieter and never adjacent to the primary in the same row.</li>
 <li>The primary action states its outcome as a verb: <em>Accept job</em>, <em>Start work</em>, <em>Mark done</em>. Never <em>OK</em>, <em>Submit</em>, <em>Continue</em>.</li>
-<li>Everything on the screen either helps her decide to take the action or is removed.</li>
+<li>Everything on the screen either helps her decide to take the action or is removed — including things that are true and related but not needed for this step (P1 · <em>Related is not needed</em>).</li>
 <li>Where two outcomes are both legitimate (accept / decline), the safer or more common one is primary; the other is secondary and placed away from it, not mirrored beside it.</li>
 </ul>
 <p class="lbl">Checks</p>
@@ -473,7 +483,7 @@ hr{display:none}
 <hr />
 <h2 id="how-to-use-this-document">How to use this document</h2>
 <ul>
-<li><strong>Designing:</strong> start every brief by naming the one next action and the two channels (visual + audio) that carry each state.</li>
+<li><strong>Designing:</strong> start every brief by naming the one next action and the two channels (visual + audio) that carry each state. Draw the pictures, shapes and numbers first and the words last; then run P1's delete-a-line check before calling the screen done.</li>
 <li><strong>Building:</strong> run the acceptance checklist before opening a PR; paste the ticked list in the PR description.</li>
 <li><strong>Reviewing (human or AI):</strong> cite the principle number when requesting a change — <em>fails P3: decline is adjacent to accept</em>.</li>
 <li><strong>Changing this document:</strong> a principle changes only with evidence from experts — field observation, support tickets, or hub feedback — recorded in the change.</li>
