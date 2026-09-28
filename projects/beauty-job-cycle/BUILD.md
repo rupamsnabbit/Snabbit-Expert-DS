@@ -171,6 +171,63 @@ Landed **before** drawing where they are one line; the rest are named and open.
 | 6 | Beauty variant of the job cycle: start code + phone fallback, buffer, add-on arrives (told, not asked), *Complete job* any time | pattern | `patterns/check-in-out.md` | Step 5 |
 | 7 | Labelled action tile (Map · Call · Chat · Street view) | component variant | `icon-button.md` | open (from v1) |
 
+## Change — 2026-09-24 · no buffer; set up, send a photo, then *Job started*
+
+**The ask** (stakeholder, 2026-09-24): *"right now we are not going to do that [the 10-min Getting ready timer]
+because we just came to know that these people take 2-3 mins, so in a way we just communicate that set up the
+scene properly and take a pic and send it to us, after they take the pic we say job started."*
+
+So the buffer (PRD § 4 *Buffer time*) is **not built**. After the start code she sets up, takes one photo of the
+setup, and only then is she told *Job started* and the service clock runs. The PRD stays verbatim; the departure is
+recorded in `SCOPE.md` (Q3, Q4, Q25 closed; Q27–Q30 opened) and `DECISIONS.md` 2026-09-24.
+
+**New main line:** 2.03 code → **2.04 Get ready** (set up, then a photo) → **2.05 Photo of your setup** (camera) →
+**2.05b Job started** (the result of 2.05) → 2.06 Job in progress. Variant under 2.05: **2.05a Too dark — retake**.
+2.05b is lettered, not numbered, so 2.06–2.13 keep the numbers every note and decision already cites; it is the
+*success* result of 2.05 as 2.05a is its *fail* result.
+
+**Retired from the board** (moved to a *Dropped 2026-09-24* row on the same page, not deleted): old **2.05 Get
+ready — buffer** and **2.05a Start before the buffer ends**. Old **2.04 Job started** is reused as 2.05b.
+
+| Screen · region | Built from | Source | Inherits | Tried first |
+| --- | --- | --- | --- | --- |
+| **2.03 / 2.03a** · action | `Button primary brand L` **Check in** (was *Start job*) · helper *Checks in when you enter the last digit* | P5: the code no longer starts the job — the photo does; a button that says *Start job* would be false. `check-in-out.md` § 2 (the code is the check-in) | — | — |
+| **2.04** · header | `HeaderNav state` `bag` *Get ready* | old 2.05 header; `icons.md` `bag` (*her kit bag — the products she carries*); `hourglass` dropped: nothing is counting down | — | `hourglass` (means time still to run — no longer true) |
+| 2.04 · example | **scene stand-in** *A good setup: products laid out in one place* — 16:9 in the slot the Timer held | P1 (show first: what a good photo looks like); `assets.md` § Scenes — new scene, ask 8 | Card `media` 16:9 | — |
+| 2.04 · steps | `Heading2` *Set up, then send a photo* · two numbered rows — `ListItem informational` with a number disc as leading (*Put out everything below, in one place* · *Take one photo of your setup*) · `BodyMd textSecondary` *Only your things in the photo — not Radhika* | `list-item.md` `informational`; `content.md` (one idea per line, numbers first); P9 | leading disc = `Stepper` node anatomy, not its line | Stepper (a process across screens; this is two actions on one) |
+| 2.04 · customer | as old 2.05 — `Card static` name + chat · call · *Job timing* · *Duration* | old 2.05; `check-in-out.md` § 3 | — | — |
+| 2.04 · Kavach row | as old 2.05 (open item c) | — | — | — |
+| 2.04 · services | `Heading3` *What you need* · 2 × `Beauty / Service card`, all open | composition; PRD § 4 *Services & inventory shown* | — | — |
+| 2.04 · action | `Button primary brand L` `camera` **Take photo** · no timer, no auto-start line | `media-capture.md` § Content (*Take photo*); P2 one next action | — | old *Start service* + *Or it starts on its own* (no clock now) |
+| 2.04 · voice | spoken on arrival: *Set up your things, then take one photo* | P4; `media-capture.md` | — | — |
+| **2.05** · camera | `MediaCapture preview`, guide **`scene`** (no frame, 16 dp inset), camera-only (no gallery) | `media-capture.md` § `preview`; check-in photos are camera-only | — | `face` guide (the check-in selfie — wrong subject) |
+| 2.05 · header | `HeaderNav transparent` — back on a 40 dp disc · **SOS stays** rightmost | `media-capture.md` (SOS on check-in previews, P7); `header-nav.md` `transparent` | — | — |
+| 2.05 · instruction bar | 48 dp scrim strip, `BodyLg textInverse` *Get all your things in the photo* (≤ 40 chars, spoken) | `media-capture.md` § Content | — | — |
+| 2.05 · shutter | `IconButton L primary brand circle` `camera` 56 dp, bottom centre | `icon-button.md` (one of the two allowed floating controls) | — | — |
+| **2.05a** · result | `fail` — `bgErrorSubtle` @ 60 % over the frozen frame · reason `Heading3 textInverse` on the scrim strip *Too dark to see your things* · `Button primary brand L` **Retake**; after 3 fails `secondary` *Call help* joins it | `media-capture.md` § Result `fail` | — | — |
+| **2.05b** · behind | 2.06 Job in progress, dimmed, Timer at the full window *1:30:00* (`timer.md` `h:mm:ss`) | `check-in-out.md` § 2 (dismissal lands on in-progress) | — | old 2.04 over the buffer |
+| 2.05b · sheet | old 2.04 `BottomSheet info` — `check-circle` fill 40 on `bgSuccess` disc · scene stand-in · `Heading2` **Job started** · `BodyLg` *Photo sent · Your 1 hr 30 min starts now* · `Button primary brand L` **Start work** | `check-in-out.md` § 2 (Job started sheet, *Start work*); `media-capture.md` `success` (*Photo taken*) folded into this sheet rather than shown twice | — | old *Say namaste…* tip (the greeting now happens before setup, on 2.04's arrival) · old *Start setting up* |
+| 2.05b · sound | `sound.confirm` + spoken *Job started. Your time starts now* | `check-in-out.md` § 2; P4 | — | — |
+
+**Behaviour written down, not drawn:**
+
+- **The job starts when the photo is taken, not when it has uploaded.** The photo is kept on the phone and sent in
+  the background (`media-capture.md` § Behaviour; `patterns/offline.md`). A weak signal never holds her at the
+  door with the customer watching.
+- **The photo is not checked by a person before the job starts** — the only gate is the on-phone result (too dark,
+  blurred). What happens to it afterwards is Q27.
+- **Camera permission** is asked through the Permission sheet before the first 2.05, as `media-capture.md`
+  requires; denied → the preview's `error` EmptyState with *Allow camera*. Not drawn: shared with every camera.
+
+**Core touched by this change:** `timer.md` `buffer` mode loses its only consumer — marked in the spec, not
+deleted (ask 9). `icons.md` `hourglass` loses *Setting up header* as a listed use; it keeps *Duration*. A new
+scene (ask 8).
+
+| # | Ask | Kind | Lands in | When |
+| --- | --- | --- | --- | --- |
+| 8 | Scene: *a good Beauty setup* — products laid out in one place (2.04); reused as the example on any future setup photo | asset | `foundations/assets.md` | open — stand-in on Paper |
+| 9 | `buffer` Timer mode has **no consumer** after 2026-09-24 | component | `components/timer.md` | marked now; withdraw at the next release unless a flow claims it |
+
 ## Drawn — 2026-09-23
 
 All 27 artboards drawn on page `Job lifecycle · linear` from the rows above: 2.06 by hand as the service-card

@@ -24,8 +24,9 @@ content inside it**. So the column below is not *invent / inherit* but **how muc
 | 3.3 | **Enter OTP to start job** | 3 | 2 | match | `4:9621` `4:9885` | exists |
 | 3.4 | **No OTP** fallback · *Use OTP instead* | 3 | 2 | match | `4:10055` | exists |
 | 3.5 | Reach job location · **CHECK IN BY** | 3 | 2 | match | `16:14340` | exists |
-| 4.1 | **Buffer running** — *"before the service timer starts… take out tools and set up"* | 4 | 2 | **new state** | `10:8552` anatomy | **needs core change** |
-| 4.2 | Buffer ends → service timer starts | 4 | 2 | new state | `10:8552` | needs core change |
+| 4.1 | ~~**Buffer running**~~ — **dropped 2026-09-24**, replaced by 4.1b — *"before the service timer starts… take out tools and set up"* | 4 | 2 | **new state** | `10:8552` anatomy | **needs core change** |
+| 4.2 | ~~Buffer ends → service timer starts~~ — dropped 2026-09-24 | 4 | 2 | new state | `10:8552` | needs core change |
+| 4.1b | **Set up, then a photo of the setup → Job started** (stakeholder, 2026-09-24; replaces the buffer) | 4 | 2 | **new state** | `check-in-out.md` § 2 Job started sheet · `media-capture.md` `preview` `scene` | exists — composed from core, no core change |
 | 4.3 | Job In Progress · TIME LEFT · Kavach · Complete Job | 4 | 2 | match | `6:8405` `10:9397` | exists |
 | 4.4 | *"keeps showing the services booked and the products/inventory needed… at any point"* | 4 | 2 | **fill** | `6:8405` (h1268 — the tall scrolling variant) | exists |
 | 4.5 | Extension as addon — visibility *"at both time and service level"* | 4 | 2 | fill | status line only, `9:8300` | exists (see Q2) |

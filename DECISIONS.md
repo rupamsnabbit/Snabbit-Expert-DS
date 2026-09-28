@@ -132,6 +132,32 @@ its pattern (Step 5). Open, and asked of the stakeholder: what happens when an a
 
 **Revisit if.** Experts report finishing early by mistake, or customers dispute early completions.
 
+## 2026-09-24 — Beauty job cycle: no setup buffer; a photo of the setup starts the job
+
+**Decision.** For the Beauty job cycle (`projects/beauty-job-cycle`, stakeholder 2026-09-24) the setup buffer is
+**not built**. Experts take 2–3 minutes to set up, so a 10-minute countdown only adds a wait. After the start code
+she is told to set up properly and take **one photo of her setup**; the app says **Job started** only after the
+photo, and the service clock runs from there. The start code now *checks her in* (its button reads *Check in*, not
+*Start job*), because it no longer starts anything.
+
+**Departs from.** PRD § 4 *Buffer time* (*"a fixed buffer window opens before the service timer starts"*). The PRD
+stays verbatim; this entry is the record. Also leaves `components/timer.md` `buffer` mode, landed for this project on
+2026-09-15, with no consumer.
+
+**Why it is safe.** Nothing new is invented: the setup screen is the old buffer screen without the Timer, the camera
+is `MediaCapture preview` with the `scene` guide (camera-only, SOS in the header, Retake on a failed shot), and
+*Job started* is the shipped sheet from `patterns/check-in-out.md` § 2. The job starts when the photo is **taken**,
+not when it has uploaded, so a weak signal never holds her at the door. The photo asks her to keep the customer out
+of it.
+
+**Consequence.** Setup time is no longer protected by a clock — she sets up on her own pace, then starts. Open, and
+asked of the stakeholder (`SCOPE.md` Q27–Q30): who reviews the photo and whether it can lead to a penalty (if so she
+must be told before she takes it, P6); what a correct setup must show; whether the clock starts at the photo or the
+code; and what happens when she cannot take a photo at all.
+
+**Revisit if.** Setup times in the field grow past a few minutes, or photos turn out to be unused — then either the
+buffer returns (the Timer mode is still specified) or the photo step goes.
+
 ## 2026-09-24 — Promotions have one shape; reactions are Chips; a day's detail is a sheet
 
 **Decision.** The *Expert (Sahil)* sheet (`KiQaNqLFaH1orma4Uf7hzU` → `8510:23259`, ~70 frames, read in

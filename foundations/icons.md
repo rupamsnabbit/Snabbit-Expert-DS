@@ -90,7 +90,7 @@ Status: **seed**. Populated fully during the Button, Tab bar and Job-alert specs
 | `polygon` | Her work area — the boundary she must be inside to start a shift (never a pin; a pin is a point, this is an area) | regular | Home shift card work-area row, boundary screen |
 | `armchair` | A rest hub — somewhere she can sit down between jobs. Rest, not work: never the `graduation-cap` used for a training `hub` | fill | LiveMap `rest-hub` marker, rest-hub sheet |
 | `hand-heart` | A Seva point — where she goes for help in person. Care offered, not a transaction | fill | LiveMap `seva` marker, Seva sheet |
-| `hourglass` | Time still to run before something starts, or a job's duration — *Setting up* state header, *Duration* row. Never for a running countdown (that is the Timer's ring) | regular | HeaderNav `state` on the buffer screen, Job in progress card |
+| `hourglass` | Time still to run before something starts, or a job's duration — *Setting up* state header, *Duration* row. Never for a running countdown (that is the Timer's ring) | regular | *Duration* row on the Job in progress card (the buffer screen that used it as a header was dropped 2026-09-24) |
 | `bag` | Her kit bag — the products she carries to a job (*9 products from your bag*). The bag holds pouches (`tote`) and products (`package`) | regular | Job alert, Check in, Job completed rows |
 | `prohibit` | Block a customer — *Don't send me to Radhika again*. Never *disabled* or *unavailable* | regular | Rating screen ListItem, Block sheet |
 | `chat-circle` | Chat with the customer — one person. Saathi (support) is `chats-circle`, never this | regular | IconButton on the job card, Check in action tile |
