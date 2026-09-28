@@ -12,6 +12,8 @@ An expert is an adult professional — most often a woman from the same neighbou
 
 **She reads slowly, in her own script.** Hindi, Kannada or Marathi first; some English. Short, familiar words work. Sentences, abbreviations and anything she has to *work out* do not. She is not illiterate and must never be treated as if she were — but the app must never *depend* on reading to be safe or to earn.
 
+**She knows her job better than the app does.** She does this work every day. What she needs from a screen is what is new to her and what she could get wrong — never the obvious, never the reason for a step she already knows. Explaining more is not kinder; it is talking down to her, and it is one more line to read at the door.
+
 **Her phone is a ₹8–15k Android.** Small screen, older OS, limited RAM, cracked glass more often than not. Data is prepaid and sometimes runs out mid-shift. Network drops in lifts, basements and stairwells — exactly where she spends her day.
 
 **She is usually moving.** Walking or on an e-bike between homes in a sub-1 km cluster, in sunlight, one-handed, bag on the other shoulder. Inside a home her hands are wet or soapy. The app is glanced at, not studied.
@@ -39,10 +41,19 @@ Rules
 - Icons are Phosphor Icons only — `regular` by default, `fill` when selected or active — with one meaning each. The same icon never means two things; two icons never mean the same thing.
 - Amounts, times and distances are large and numeric (`Heading2` or bigger for the primary figure), with the unit shown as a symbol or short word (₹, min, km).
 - Text is short, sentence case, in the expert's language. One idea per line. No abbreviations she was not taught in training.
+- **Text is the last medium.** Reach for the channels in this order: a picture of the thing or the scene (an illustration asset) → a shape that changes (ring, bar, fill, colour) → an icon → a number → a word. A line of text carries only what nothing before it can.
+- **An instruction a picture can show is a picture.** *Lay out your products in one place* is the setup scene, not a sentence. A rule about what to avoid (*only your things in the photo*) goes into the picture — a frame that shows only the kit — or into the spoken line, never into a sub-caption.
+- **A step is a screen, not a numbered line.** A task with a sequence — arrange, photograph, saved, started — is lived one moment at a time: each moment is its own screen or sheet with one picture, one line and one action. A numbered list of instructions on a task screen is a sequence she must read and remember, and is not allowed. (A Stepper that shows *where she is* in onboarding is progress, not instruction, and is fine.)
+- **One instruction line per screen.** A task screen carries at most one line of instruction, within its component's budget in `foundations/type.md`, plus the action label. Data she acts on — amounts, times, names, list items — is not instruction and is not counted. A second instruction is a second screen; a *why* sits behind one tap (Listen, Accordion `faq`, HowToClip), never on the screen by default.
+- **Related is not needed.** A step screen shows what that step needs and nothing else. Context she already has — the customer card, the job time, a feature prompt — lives on the job screen one tap back and is not repeated on every step. SOS and Help stay in the header (P7): they are safety, not context.
+- **A missing picture is not a reason for text.** While an illustration is a placeholder, the placeholder says what the picture must show, and the copy is written as if the picture were there. Text added to cover for a stand-in outlives it, and the screen ends up said twice.
 
 Checks
 
 - [ ] Cover the text: can a first-week expert still tell what this screen is for and what to do?
+- [ ] Delete each line of text, one at a time: did she lose something the picture, shape, icon or number could not give her? If not, the line goes.
+- [ ] Is there more than one instruction line, or a numbered list of instructions? Then it is more than one screen.
+- [ ] Would an expert who has done this job a hundred times find any line patronising?
 - [ ] Set the screen to greyscale: are all states still distinguishable?
 - [ ] Is every icon on this screen in the approved set, with its meaning recorded?
 
@@ -56,7 +67,7 @@ Rules
 
 - One primary action per screen, full-width at the bottom (`SnabbitButton` L, 56 dp) above the safe area. Secondary actions are visually quieter and never adjacent to the primary in the same row.
 - The primary action states its outcome as a verb: *Accept job*, *Start work*, *Mark done*. Never *OK*, *Submit*, *Continue*.
-- Everything on the screen either helps her decide to take the action or is removed.
+- Everything on the screen either helps her decide to take the action or is removed — including things that are true and related but not needed for this step (P1 · *Related is not needed*).
 - Where two outcomes are both legitimate (accept / decline), the safer or more common one is primary; the other is secondary and placed away from it, not mirrored beside it.
 
 Checks
@@ -276,7 +287,7 @@ Use these words everywhere — UI, code, docs, training. Do not introduce synony
 
 ## How to use this document
 
-- **Designing:** start every brief by naming the one next action and the two channels (visual + audio) that carry each state.
+- **Designing:** start every brief by naming the one next action and the two channels (visual + audio) that carry each state. Draw the pictures, shapes and numbers first and the words last; then run P1's delete-a-line check before calling the screen done.
 - **Building:** run the acceptance checklist before opening a PR; paste the ticked list in the PR description.
 - **Reviewing (human or AI):** cite the principle number when requesting a change — *fails P3: decline is adjacent to accept*.
 - **Changing this document:** a principle changes only with evidence from experts — field observation, support tickets, or hub feedback — recorded in the change.

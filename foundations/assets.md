@@ -19,6 +19,17 @@ The rule the expert learns without being told: *if it shines, it's about what I 
 
 ---
 
+## Pictures are the instruction
+
+On a task screen an illustration is not decoration above the words; it **is** the instruction, and the words confirm it (P1 · *Text is the last medium*). A scene that shows a good setup replaces *put everything in one place*; a scene that shows her greeting at the door replaces a paragraph about arriving. So a scene on a task screen is briefed as an instruction:
+
+- **It shows the right outcome**, not the idea of the task: the products laid out on a towel, not a woman thinking about products.
+- **It carries the rules** that would otherwise be a caption: what is in frame and what is not, where the phone is held, which way the thing faces.
+- **The line under it is one line** — often a Tag or a band on the scene's own card (*Say Namaste*) — and it names the action or the moment, never re-describes the picture.
+- **A placeholder names what the picture must show** (*scene: kit laid out on a towel, only her things in frame*) and the copy beside it is written as if the picture were there. Text is never added to make up for an illustration that has not been drawn yet.
+
+---
+
 ## Classes and their register
 
 Names are `asset/<class>/<name>`. One asset, one meaning. Before making one, look here; if the meaning exists, use it. If not, add the row in the same change.

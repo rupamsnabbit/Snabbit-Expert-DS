@@ -184,3 +184,28 @@ the share sheet instead of the header; the *Saheli* wordmark; what *day 7* count
 **Revisit if.** Experts in device review do not find the claim on the friend's screen — then the ready-to-claim row
 gets the one allowed IconButton (`hand-coins`) as an `actionable` row, still never a labelled Button in a list.
 
+## 2026-09-28 — Words are the last medium; a step is a screen
+
+**Decision.** P1 gains six rules and three checks that turn *show first, then say* from an intention into a method:
+**text is the last medium** (picture → shape → icon → number → word); **an instruction a picture can show is a
+picture**, and a rule about what to avoid goes into the picture or the voice line, not a caption; **a step is a
+screen, not a numbered line**; **one instruction line per task screen**, with the *why* behind one tap; **related is
+not needed** — context she already has is not repeated on a step screen (SOS and Help stay); **a missing picture is
+not a reason for text**. The persona gains *She knows her job better than the app does*: explain only what is new to
+her or what she could get wrong. `content.md`, `assets.md` and `CLAUDE.md` carry the same rule in their own terms, and
+the build plan gains step 4, *then take words away*.
+
+**Evidence.** The design lead's review of a *Get ready* screen drawn for the Beauty job cycle against the shipped
+setup-photo flow (`references/setup-photo-text-vs-visual-2026-09-28/`): every line on the drawn screen was true and
+the persona had been read, and it still "explained like to a kid". The existing rules already said *one idea per
+line* and *text confirms*, but nothing said *how few* lines, or that a sequence belongs in screens rather than in a
+list — so a careful reader of the persona produced more text, not less. Field evidence from experts is not yet
+recorded; the shipped flow is the only in-use evidence.
+
+**Consequence.** A screen review now fails a task screen with two instruction lines, a numbered list of instructions,
+a caption that restates the picture, or a context card the step does not need. Placeholder illustrations are briefed
+by what they must show. The 16-row component checklist is unchanged — this is a screen rule, checked by P1's checks
+and `content.md` § 10. Governance asks a founder to confirm a principle change: **pending**.
+
+**Revisit if.** Device review shows experts missing a step because its reason was behind a tap — then that step's
+*why* moves onto the screen as its one line, and the rule stays.
