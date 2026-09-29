@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="white">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<title>__TITLE__</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Tokens as they are in the Paper file this flow was pulled from */
+:root {
+/*TOKENS*/
+  /* foundations/motion.md */
+  --motion-standard: 200ms;
+  --motion-slow: 300ms;
+  --easing-enter: cubic-bezier(0, 0, 0.2, 1);
+  --easing-exit: cubic-bezier(0.4, 0, 1, 1);
+}
+html, body { margin: 0; height: 100%; overflow: hidden; background: var(--color-bg-secondary);
+  -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none; overscroll-behavior: none; }
+/* Paper artboards are 393 wide; the phone is scaled to match, so every screen looks as drawn. */
+#app { position: relative; width: 393px; overflow: hidden; }
+.screen { position: absolute; inset: 0; will-change: transform, opacity; }
+[hidden] { display: none !important; }
+.screen > div { position: relative; }
+[data-scroll] { scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+[data-scroll]::-webkit-scrollbar { display: none; }
+[data-go], [data-acc], [data-swap], [data-step], [data-chip], [data-key] { cursor: pointer; }
+[data-go]:active, [data-step]:active, [data-chip]:active, [data-key]:active { filter: brightness(0.94); }
+/* Tap somewhere that does nothing: the tappable places light up for a moment */
+.hint :is([data-go], [data-acc], [data-swap], [data-step], [data-chip], [data-key]) { outline: 2px solid var(--color-brand); outline-offset: 2px; border-radius: var(--radius-lg);
+  animation: hint var(--motion-slow) var(--easing-enter) 2 alternate; }
+@keyframes hint { from { outline-color: transparent; } }
+/* Screen list: long-press anywhere */
+#menu { position: fixed; inset: 0; z-index: 10; display: none; background: color-mix(in srgb, var(--color-bg-inverse) 60%, transparent); }
+#menu.open { display: flex; align-items: flex-end; }
+#menu .panel { width: 100%; max-height: 80%; overflow-y: auto; background: var(--color-bg); border-radius: var(--radius-xxl) var(--radius-xxl) 0 0;
+  padding: var(--space-3) 0 var(--space-6); font-family: Outfit, system-ui, sans-serif; }
+#menu .grab { width: 32px; height: 4px; border-radius: var(--radius-full); background: var(--color-border); margin: 0 auto var(--space-4); }
+#menu button { display: flex; gap: var(--space-4); width: 100%; min-height: 48px; align-items: center; border: 0; background: none;
+  padding: 0 var(--space-6); font: inherit; font-size: var(--text-body-lg); line-height: var(--leading-body-lg); color: var(--color-text-primary); text-align: left; }
+#menu button b { width: 44px; flex-shrink: 0; font-weight: var(--font-weight-semibold); color: var(--color-text-secondary); }
+#menu button.on { background: var(--color-brand-subtle); }
+@media (prefers-reduced-motion: reduce) { .screen, [data-sheet], [data-scrim] { animation: none !important; transition: none !important; } }
+</style>
+</head>
+<body>
+<div id="app">
+<!--SCREENS-->
+</div>
+<div id="menu"><div class="panel"><div class="grab"></div></div></div>
+<script>
+const app = document.getElementById('app');
+const screens = Object.fromEntries([...document.querySelectorAll('.screen')].map(s => [s.dataset.id, s]));
+const order = Object.keys(screens);
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const T = { standard: 200, slow: 300 };
+const EASE = { enter: 'cubic-bezier(0, 0, 0.2, 1)', exit: 'cubic-bezier(0.4, 0, 1, 1)' };
+let current = null, depth = 0;
+
+// Fit the 393-wide artboards to this phone
+function size() {
+  const z = innerWidth / 393;
+  app.style.zoom = z;
+  app.style.height = (innerHeight / z) + 'px';
+}
+addEventListener('resize', size); size();
+
+const sheetOf = s => s && s.querySelector(':scope > div > [data-sheet]');
+const scrimOf = s => s && s.querySelector(':scope > div > [data-scrim]');
+const anim = (el, frames, ms, ease) => el && !reduce ? el.animate(frames, { duration: ms, easing: ease, fill: 'both' }).finished : Promise.resolve();
+
+function statusColour(s) {
+  const probe = document.createElement('div');
+  probe.style.color = s.dataset.bg; document.body.appendChild(probe);
+  const c = getComputedStyle(probe).color; probe.remove();
+  document.querySelector('meta[name=theme-color]').content = c;
+}
+
+async function show(id, dir) {
+  const next = screens[id];
+  if (!next || next === current) return;
+  const prev = current;
+  current = next;
+  next.hidden = false;
+  [sheetOf(next), scrimOf(next)].forEach(el => el && (el.style.visibility = ''));
+  next.querySelectorAll('[data-scroll]').forEach(el => el.scrollTop = 0);
+  statusColour(next);
+  enter(next);
+  next.getAnimations({ subtree: true }).forEach(a => a.cancel());
+  const nextSheet = sheetOf(next), prevSheet = sheetOf(prev);
+  next.style.zIndex = 2; if (prev) prev.style.zIndex = 1;
+
+  if (prevSheet) {                                   // a sheet leaves the way it came
+    await Promise.all([anim(prevSheet, [{ transform: 'none' }, { transform: 'translateY(100%)' }], T.standard, EASE.exit),
+                       anim(scrimOf(prev), [{ opacity: 1 }, { opacity: 0 }], T.standard, EASE.exit)]);
+  }
+  if (nextSheet) {                                   // a sheet rises over the screen it belongs to
+    const base = prev && !prevSheet && dir !== 'back' ? anim(next, [{ opacity: 0 }, { opacity: 1 }], T.standard, EASE.enter) : Promise.resolve();
+    await Promise.all([base,
+      anim(nextSheet, [{ transform: 'translateY(100%)' }, { transform: 'none' }], T.slow, EASE.enter),
+      anim(scrimOf(next), [{ opacity: 0 }, { opacity: 1 }], T.slow, EASE.enter)]);
+  } else if (prev && prevSheet) {
+    await anim(next, [{ opacity: 0 }, { opacity: 1 }], T.standard, EASE.enter);
+  } else if (prev) {                                 // screen to screen: push, or pop on back
+    const x = dir === 'back' ? -1 : 1;
+    await Promise.all([anim(next, [{ transform: `translateX(${x * 100}%)` }, { transform: 'none' }], T.slow, EASE.enter),
+                       anim(prev, [{ transform: 'none', opacity: 1 }, { transform: `translateX(${x * -30}%)`, opacity: 0.6 }], T.slow, EASE.enter)]);
+  }
+  if (prev && prev !== current) { prev.hidden = true; prev.getAnimations({ subtree: true }).forEach(a => a.cancel()); }
+}
+
+async function dismiss() {
+  const s = sheetOf(current);
+  if (!s) return;
+  await Promise.all([anim(s, [{ transform: 'none' }, { transform: 'translateY(100%)' }], T.standard, EASE.exit),
+                     anim(scrimOf(current), [{ opacity: 1 }, { opacity: 0 }], T.standard, EASE.exit)]);
+  [s, scrimOf(current)].forEach(el => el && (el.style.visibility = 'hidden'));
+}
+
+function go(id) {
+  depth++;
+  history.pushState({ id, depth }, '', '#' + id);
+  show(id, 'forward');
+}
+addEventListener('popstate', e => {
+  const id = (e.state && e.state.id) || location.hash.slice(1) || order[0];
+  const back = !e.state || e.state.depth < depth;
+  depth = e.state ? e.state.depth : 0;
+  show(id, back ? 'back' : 'forward');
+});
+
+// ── Inside a screen ────────────────────────────────────────────────────────────────────────────────
+// Grow or shrink an element to its new height, so an opening card pushes the page down instead of jumping.
+function resize(el, change) {
+  const from = el.offsetHeight;
+  change();
+  const to = el.offsetHeight;
+  if (reduce || from === to) return;
+  el.style.overflow = 'hidden';
+  el.animate([{ height: from + 'px' }, { height: to + 'px' }], { duration: T.standard, easing: EASE.enter })
+    .finished.then(() => el.style.overflow = '');
+}
+
+// Expandable cards (Card expandable, card.md: caret turns 180° in 200 ms)
+function toggleCard(head) {
+  const card = head.parentElement;
+  const bodies = [...card.children].filter(c => c.hasAttribute('data-acc-body'));
+  const opening = bodies.some(b => b.hidden);
+  resize(card, () => bodies.forEach(b => b.hidden = !opening));
+  head.querySelectorAll('[data-caret]').forEach(c => {
+    c.style.transition = `transform ${T.standard}ms ${EASE.enter}`;
+    c.style.transform = c.style.transform ? '' : 'rotate(180deg)';
+  });
+}
+
+// A card Paper draws as a column on one screen and as a row on another: a tap moves between the two drawings.
+// The screen keeps its own drawing for the layout it started in.
+function toggleSwap(card) {
+  const other = card.dataset.layout === 'column' ? 'row' : 'column';
+  const own = card._own || { [card.dataset.layout]: card.outerHTML };
+  const html = own[other] || document.getElementById(`swap-${card.dataset.swap}-${other}`).innerHTML;
+  resize(card.parentElement, () => {
+    const t = document.createElement('div'); t.innerHTML = html;
+    const next = t.firstElementChild;
+    next.dataset.swap = card.dataset.swap; next.dataset.layout = other;
+    next._own = { ...own, [card.dataset.layout]: card.outerHTML };
+    card.replaceWith(next);
+  });
+}
+
+// Countdowns run while the screen is showing
+let ticker = null;
+const toSec = s => s.split(':').reduce((a, b) => a * 60 + +b, 0);
+const fromSec = (n, like) => {
+  const h = Math.floor(n / 3600), m = Math.floor(n / 60) % 60, s = n % 60, p = v => String(v).padStart(2, '0');
+  return like.split(':').length === 3 ? `${h}:${p(m)}:${p(s)}` : `${Math.floor(n / 60)}:${p(s)}`;
+};
+function startTimers(s) {
+  clearInterval(ticker);
+  const timers = [...s.querySelectorAll('[data-timer]')].map(el => (el.textContent = el.dataset.timer, { el, left: toSec(el.dataset.timer) }));
+  if (timers.length) ticker = setInterval(() => timers.forEach(t => { if (t.left > 0) t.el.textContent = fromSec(--t.left, t.el.dataset.timer); }), 1000);
+}
+
+// The 3-digit code: empty boxes, the first one ready; digits fill in; the last digit moves on
+let focusBox = null, cursorHTML = '', filledBox = null, digitHTML = '';
+(() => {
+  const boxes = [...document.querySelectorAll('[data-box]')];
+  const withCursor = boxes.find(b => b.firstElementChild && !b.textContent.trim());
+  const withDigit = boxes.find(b => b.textContent.trim());
+  if (withCursor) { focusBox = withCursor.getAttribute('style'); cursorHTML = withCursor.innerHTML; }
+  if (withDigit) { filledBox = withDigit.getAttribute('style'); digitHTML = withDigit.innerHTML; }
+})();
+function resetCode(s) {
+  s.querySelectorAll('[data-code]').forEach(row => { row._typed = []; paintCode(row); });
+}
+function paintCode(row) {
+  [...row.children].forEach((b, i) => {
+    const d = row._typed[i];
+    b.setAttribute('style', i === row._typed.length && focusBox ? focusBox : filledBox);
+    if (d !== undefined) { b.innerHTML = digitHTML; b.firstElementChild.textContent = d; }
+    else b.innerHTML = i === row._typed.length ? cursorHTML : '';
+  });
+}
+function typeKey(k) {
+  const row = current.querySelector('[data-code]');
+  if (!row) return;
+  if (k === 'del') row._typed.pop();
+  else if (row._typed.length < row.children.length) row._typed.push(k);
+  paintCode(row);
+  if (row._typed.length === row.children.length) setTimeout(() => go(row.dataset.done), T.slow);
+}
+
+// Steppers: − n +, never below zero; the "vs usual" line under the name follows
+function step(btn) {
+  const group = btn.parentElement;
+  const num = [...group.children].find(c => !c.hasAttribute('data-step'));
+  const row = group.parentElement;
+  if (num.dataset.usual === undefined) num.dataset.usual = num.textContent;
+  const n = Math.max(0, +num.textContent + +btn.dataset.step);
+  num.textContent = n;
+  const note = [...row.querySelectorAll('div')].find(d => /vs usual/.test(d.textContent) && !d.children.length);
+  if (note) {
+    const usual = +(note.dataset.usual ??= note.textContent.match(/usual (\d+)/)[1]);
+    const diff = n - usual;
+    note.hidden = diff === 0;
+    note.textContent = `${diff > 0 ? '+' : '−'}${Math.abs(diff)} ${Math.abs(diff) === 1 ? 'pc' : 'pcs'} vs usual ${usual}`;
+  }
+}
+
+// Single-choice chips: the drawn selected chip's look moves to the one she taps
+function pick(chip) {
+  const group = chip.parentElement, on = group.querySelector('[data-chip="on"]');
+  if (!on || on === chip) return;
+  const off = [...group.children].find(c => c.dataset.chip !== 'on');
+  const onStyle = on.getAttribute('style'), offStyle = off.getAttribute('style');
+  const check = on.querySelector('svg'), onText = on.lastElementChild.getAttribute('style'), offText = off.lastElementChild.getAttribute('style');
+  on.setAttribute('style', offStyle); on.lastElementChild.setAttribute('style', offText); on.dataset.chip = '';
+  chip.setAttribute('style', onStyle); chip.lastElementChild.setAttribute('style', onText); chip.dataset.chip = 'on';
+  if (check) chip.prepend(check);
+}
+
+function enter(s) { startTimers(s); resetCode(s); }
+
+// Taps
+let pressTimer = null, pressed = false, startY = 0;
+app.addEventListener('click', e => {
+  if (pressed) { pressed = false; return; }
+  const key = e.target.closest('[data-key]');
+  if (key && !key.dataset.go) return typeKey(key.dataset.key);
+  const el = e.target.closest('[data-acc], [data-swap], [data-step], [data-chip]');
+  if (el && !e.target.closest('[data-go]')) {
+    if (el.hasAttribute('data-acc')) return toggleCard(el);
+    if (el.hasAttribute('data-swap')) return toggleSwap(el);
+    if (el.hasAttribute('data-step')) return step(el);
+    if (el.hasAttribute('data-chip')) return pick(el);
+  }
+  const t = e.target.closest('[data-go]');
+  if (!t) { current.classList.remove('hint'); void current.offsetWidth; current.classList.add('hint'); return; }
+  const to = t.dataset.go;
+  if (to === 'back') history.back();
+  else if (to === 'dismiss') dismiss();
+  else go(to);
+});
+
+// Long-press anywhere: the list of every screen, for jumping to a variant
+const menu = document.getElementById('menu'), panel = menu.querySelector('.panel');
+order.forEach(id => {
+  const b = document.createElement('button');
+  b.innerHTML = `<b>${id}</b><span></span>`;
+  b.querySelector('span').textContent = screens[id].dataset.title;
+  b.onclick = e => { e.stopPropagation(); menu.classList.remove('open'); go(id); };
+  b.dataset.id = id; panel.appendChild(b);
+});
+menu.addEventListener('click', e => { if (e.target === menu) menu.classList.remove('open'); });
+app.addEventListener('pointerdown', e => {
+  startY = e.clientY;
+  pressTimer = setTimeout(() => {
+    pressed = true;
+    panel.querySelectorAll('button').forEach(b => b.classList.toggle('on', screens[b.dataset.id] === current));
+    menu.classList.add('open');
+    navigator.vibrate && navigator.vibrate(10);
+  }, 600);
+});
+['pointerup', 'pointercancel'].forEach(t => app.addEventListener(t, () => clearTimeout(pressTimer)));
+app.addEventListener('pointermove', e => { if (Math.abs(e.clientY - startY) > 8) clearTimeout(pressTimer); });
+app.addEventListener('contextmenu', e => e.preventDefault());
+
+const first = location.hash.slice(1), start = screens[first] ? first : (screens['__START__'] ? '__START__' : order[0]);
+history.replaceState({ id: start, depth: 0 }, '', '#' + start);
+show(start);
+</script>
+</body>
+</html>

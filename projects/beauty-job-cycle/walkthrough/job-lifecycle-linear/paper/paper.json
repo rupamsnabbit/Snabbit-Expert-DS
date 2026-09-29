@@ -1,0 +1,673 @@
+{
+ "tokens": [
+  {
+   "name": "--color-bg",
+   "type": "color",
+   "value": "#FFFFFF"
+  },
+  {
+   "name": "--color-bg-secondary",
+   "type": "color",
+   "value": "#F9FAFB"
+  },
+  {
+   "name": "--color-bg-tertiary",
+   "type": "color",
+   "value": "#F3F4F6"
+  },
+  {
+   "name": "--color-bg-inverse",
+   "type": "color",
+   "value": "#111827"
+  },
+  {
+   "name": "--color-text-primary",
+   "type": "color",
+   "value": "#111827"
+  },
+  {
+   "name": "--color-text-body",
+   "type": "color",
+   "value": "#374151"
+  },
+  {
+   "name": "--color-text-secondary",
+   "type": "color",
+   "value": "#6B7280"
+  },
+  {
+   "name": "--color-text-tertiary",
+   "type": "color",
+   "value": "#9CA3AF"
+  },
+  {
+   "name": "--color-text-disabled",
+   "type": "color",
+   "value": "#D1D5DB"
+  },
+  {
+   "name": "--color-text-inverse",
+   "type": "color",
+   "value": "#FFFFFF"
+  },
+  {
+   "name": "--color-border",
+   "type": "color",
+   "value": "#E5E7EB"
+  },
+  {
+   "name": "--color-border-subtle",
+   "type": "color",
+   "value": "#F3F4F6"
+  },
+  {
+   "name": "--color-brand",
+   "type": "color",
+   "value": "#F70F79"
+  },
+  {
+   "name": "--color-brand-subtle",
+   "type": "color",
+   "value": "#FEF1F7"
+  },
+  {
+   "name": "--color-brand-100",
+   "type": "color",
+   "value": "#FDE4EF"
+  },
+  {
+   "name": "--color-brand-200",
+   "type": "color",
+   "value": "#FBC9DF"
+  },
+  {
+   "name": "--color-brand-300",
+   "type": "color",
+   "value": "#F9AECF"
+  },
+  {
+   "name": "--color-brand-500",
+   "type": "color",
+   "value": "#F4368D"
+  },
+  {
+   "name": "--color-brand-700",
+   "type": "color",
+   "value": "#C70C61"
+  },
+  {
+   "name": "--color-brand-900",
+   "type": "color",
+   "value": "#670632"
+  },
+  {
+   "name": "--color-success",
+   "type": "color",
+   "value": "#059669"
+  },
+  {
+   "name": "--color-success-icon",
+   "type": "color",
+   "value": "#10B981"
+  },
+  {
+   "name": "--color-success-bg",
+   "type": "color",
+   "value": "#ECFDF5"
+  },
+  {
+   "name": "--color-warning",
+   "type": "color",
+   "value": "#D97706"
+  },
+  {
+   "name": "--color-warning-bg",
+   "type": "color",
+   "value": "#FFFBEB"
+  },
+  {
+   "name": "--color-warning-subtle",
+   "type": "color",
+   "value": "#FEF3C7"
+  },
+  {
+   "name": "--color-error",
+   "type": "color",
+   "value": "#DC2626"
+  },
+  {
+   "name": "--color-error-bg",
+   "type": "color",
+   "value": "#FEF2F2"
+  },
+  {
+   "name": "--color-info",
+   "type": "color",
+   "value": "#2563EB"
+  },
+  {
+   "name": "--color-info-bg",
+   "type": "color",
+   "value": "#EFF6FF"
+  },
+  {
+   "name": "--color-info-subtle",
+   "type": "color",
+   "value": "#BFDBFE"
+  },
+  {
+   "name": "--color-border-strong",
+   "type": "color",
+   "value": "#6B7280"
+  },
+  {
+   "name": "--color-warning-text",
+   "type": "color",
+   "value": "#92400E"
+  },
+  {
+   "name": "--color-border-brand",
+   "type": "color",
+   "value": "var(--color-brand)",
+   "description": "Selected card, boundary stroke, brand outline"
+  },
+  {
+   "name": "--color-bg-reward",
+   "type": "color",
+   "value": "#FFFBEB",
+   "description": "Nudge gain strip — the only reward-tinted surface"
+  },
+  {
+   "name": "--color-success-text",
+   "type": "color",
+   "value": "#065F46",
+   "description": "Success text on a success wash — meets contrast"
+  },
+  {
+   "name": "--color-error-text",
+   "type": "color",
+   "value": "#991B1B",
+   "description": "Error text on an error wash — meets contrast"
+  },
+  {
+   "name": "--color-accept",
+   "type": "color",
+   "value": "#047857",
+   "description": "Accept a job — the only filled green action in the system. Allowed only where a decline sits beside it in the same footer (components/button.md, tone `accept`). A green button standing alone is --color-brand. textInverse on this measures 5.5:1."
+  },
+  {
+   "name": "--color-accept-pressed",
+   "type": "color",
+   "value": "#065F46",
+   "description": "Pressed state of --color-accept. Package-controlled."
+  },
+  {
+   "name": "--font-sans",
+   "type": "fontFamily",
+   "value": "Outfit"
+  },
+  {
+   "name": "--text-small",
+   "type": "fontSize",
+   "value": "10px"
+  },
+  {
+   "name": "--text-caption",
+   "type": "fontSize",
+   "value": "12px"
+  },
+  {
+   "name": "--text-body-md",
+   "type": "fontSize",
+   "value": "14px"
+  },
+  {
+   "name": "--text-body-lg",
+   "type": "fontSize",
+   "value": "16px"
+  },
+  {
+   "name": "--text-title",
+   "type": "fontSize",
+   "value": "18px"
+  },
+  {
+   "name": "--text-h3",
+   "type": "fontSize",
+   "value": "20px"
+  },
+  {
+   "name": "--text-h2",
+   "type": "fontSize",
+   "value": "24px"
+  },
+  {
+   "name": "--text-h1",
+   "type": "fontSize",
+   "value": "28px"
+  },
+  {
+   "name": "--text-display",
+   "type": "fontSize",
+   "value": "32px"
+  },
+  {
+   "name": "--font-weight-regular",
+   "type": "fontWeight",
+   "value": "400"
+  },
+  {
+   "name": "--font-weight-medium",
+   "type": "fontWeight",
+   "value": "500"
+  },
+  {
+   "name": "--font-weight-semibold",
+   "type": "fontWeight",
+   "value": "600"
+  },
+  {
+   "name": "--leading-small",
+   "type": "lineHeight",
+   "value": "14px",
+   "description": "Small 10/14"
+  },
+  {
+   "name": "--leading-caption",
+   "type": "lineHeight",
+   "value": "16px",
+   "description": "Caption 12/16"
+  },
+  {
+   "name": "--leading-body-md",
+   "type": "lineHeight",
+   "value": "20px",
+   "description": "BodyMd 14/20"
+  },
+  {
+   "name": "--leading-body-lg",
+   "type": "lineHeight",
+   "value": "24px",
+   "description": "BodyLg 16/24"
+  },
+  {
+   "name": "--leading-title",
+   "type": "lineHeight",
+   "value": "24px",
+   "description": "Title 18/24"
+  },
+  {
+   "name": "--leading-h3",
+   "type": "lineHeight",
+   "value": "28px",
+   "description": "Heading3 20/28"
+  },
+  {
+   "name": "--leading-h2",
+   "type": "lineHeight",
+   "value": "32px",
+   "description": "Heading2 24/32"
+  },
+  {
+   "name": "--leading-h1",
+   "type": "lineHeight",
+   "value": "37px",
+   "description": "Heading1 28/37"
+  },
+  {
+   "name": "--leading-display",
+   "type": "lineHeight",
+   "value": "40px",
+   "description": "Display 32/40"
+  },
+  {
+   "name": "--container-content",
+   "type": "container",
+   "value": "328px",
+   "description": "Content width inside the 16dp screen margin"
+  },
+  {
+   "name": "--container-screen",
+   "type": "container",
+   "value": "360px",
+   "description": "Baseline viewport width — the cheapest phone in the fleet"
+  },
+  {
+   "name": "--space-2",
+   "type": "spacing",
+   "value": "4px"
+  },
+  {
+   "name": "--space-3",
+   "type": "spacing",
+   "value": "8px"
+  },
+  {
+   "name": "--space-4",
+   "type": "spacing",
+   "value": "12px"
+  },
+  {
+   "name": "--space-5",
+   "type": "spacing",
+   "value": "16px"
+  },
+  {
+   "name": "--space-6",
+   "type": "spacing",
+   "value": "20px"
+  },
+  {
+   "name": "--space-7",
+   "type": "spacing",
+   "value": "24px"
+  },
+  {
+   "name": "--space-8",
+   "type": "spacing",
+   "value": "32px"
+  },
+  {
+   "name": "--space-border-thin",
+   "type": "spacing",
+   "value": "1px",
+   "description": "Default border"
+  },
+  {
+   "name": "--space-border-thick",
+   "type": "spacing",
+   "value": "1.5px",
+   "description": "Control borders — secondary Button, Checkbox, Radio"
+  },
+  {
+   "name": "--space-border-emphasis",
+   "type": "spacing",
+   "value": "2px",
+   "description": "Selected / focused border"
+  },
+  {
+   "name": "--radius-sm",
+   "type": "radius",
+   "value": "4px"
+  },
+  {
+   "name": "--radius-md",
+   "type": "radius",
+   "value": "8px"
+  },
+  {
+   "name": "--radius-lg",
+   "type": "radius",
+   "value": "12px"
+  },
+  {
+   "name": "--radius-xl",
+   "type": "radius",
+   "value": "16px"
+  },
+  {
+   "name": "--radius-xxl",
+   "type": "radius",
+   "value": "24px"
+  },
+  {
+   "name": "--radius-full",
+   "type": "radius",
+   "value": "9999px"
+  }
+ ],
+ "artboards": [
+  {
+   "id": "BIR-0",
+   "name": "2.01 · New job · accept in",
+   "childCount": 4,
+   "width": 393,
+   "height": 852,
+   "worldX": 0,
+   "worldY": 1120
+  },
+  {
+   "id": "BL2-0",
+   "name": "2.01a · Last seconds to accept",
+   "childCount": 4,
+   "width": 393,
+   "height": 852,
+   "worldX": 0,
+   "worldY": 2900
+  },
+  {
+   "id": "BND-0",
+   "name": "2.01b · Deny — last-hour job only",
+   "childCount": 3,
+   "width": 393,
+   "height": 852,
+   "worldX": 0,
+   "worldY": 3900
+  },
+  {
+   "id": "BO2-0",
+   "name": "2.01c · Denial reasons — inherited",
+   "childCount": 2,
+   "width": 393,
+   "height": 852,
+   "worldX": 0,
+   "worldY": 4900
+  },
+  {
+   "id": "BOB-0",
+   "name": "2.02 · Check in",
+   "childCount": 4,
+   "width": 393,
+   "height": 1226,
+   "worldX": 453,
+   "worldY": 1120
+  },
+  {
+   "id": "BR2-0",
+   "name": "2.02a · Message Radhika",
+   "childCount": 3,
+   "width": 393,
+   "height": 852,
+   "worldX": 453,
+   "worldY": 2900
+  },
+  {
+   "id": "BTT-0",
+   "name": "2.02b · Running late",
+   "childCount": 4,
+   "width": 393,
+   "height": 1286,
+   "worldX": 453,
+   "worldY": 3900
+  },
+  {
+   "id": "BWK-0",
+   "name": "2.03 · Enter the code to start",
+   "childCount": 5,
+   "width": 393,
+   "height": 852,
+   "worldX": 906,
+   "worldY": 1120
+  },
+  {
+   "id": "BY1-0",
+   "name": "2.03a · No code — her phone number",
+   "childCount": 5,
+   "width": 393,
+   "height": 852,
+   "worldX": 906,
+   "worldY": 2900
+  },
+  {
+   "id": "GXX-0",
+   "name": "2.04 · Get ready — set up, then a photo",
+   "childCount": 6,
+   "width": 393,
+   "height": 852,
+   "worldX": 1359,
+   "worldY": 1120
+  },
+  {
+   "id": "G02-0",
+   "name": "2.05 · Photo of your setup",
+   "childCount": 5,
+   "width": 393,
+   "height": 852,
+   "worldX": 1812,
+   "worldY": 1120
+  },
+  {
+   "id": "G15-0",
+   "name": "2.05a · Too dark — retake",
+   "childCount": 5,
+   "width": 393,
+   "height": 852,
+   "worldX": 1812,
+   "worldY": 2900
+  },
+  {
+   "id": "BYN-0",
+   "name": "2.05b · Job started",
+   "childCount": 6,
+   "width": 393,
+   "height": 852,
+   "worldX": 2265,
+   "worldY": 1120
+  },
+  {
+   "id": "C3L-0",
+   "name": "2.06 · Job in progress",
+   "childCount": 4,
+   "width": 393,
+   "height": 1276,
+   "worldX": 2718,
+   "worldY": 1120
+  },
+  {
+   "id": "C62-0",
+   "name": "2.06a · 15 min left",
+   "childCount": 4,
+   "width": 393,
+   "height": 1341,
+   "worldX": 2718,
+   "worldY": 2900
+  },
+  {
+   "id": "C8J-0",
+   "name": "2.07 · A service was added",
+   "childCount": 6,
+   "width": 393,
+   "height": 852,
+   "worldX": 3171,
+   "worldY": 1120
+  },
+  {
+   "id": "CB0-0",
+   "name": "2.08 · In progress · after the add-on",
+   "childCount": 4,
+   "width": 393,
+   "height": 1539,
+   "worldX": 3624,
+   "worldY": 1120
+  },
+  {
+   "id": "CDH-0",
+   "name": "2.09 · Ask Radhika if she needs anything",
+   "childCount": 6,
+   "width": 393,
+   "height": 852,
+   "worldX": 4077,
+   "worldY": 1120
+  },
+  {
+   "id": "CGE-0",
+   "name": "2.10 · Enter the code to finish",
+   "childCount": 6,
+   "width": 393,
+   "height": 852,
+   "worldX": 4530,
+   "worldY": 1120
+  },
+  {
+   "id": "CHV-0",
+   "name": "2.10a · Checked out for you",
+   "childCount": 4,
+   "width": 393,
+   "height": 852,
+   "worldX": 4530,
+   "worldY": 2900
+  },
+  {
+   "id": "CJ2-0",
+   "name": "2.11 · Products you used",
+   "childCount": 4,
+   "width": 393,
+   "height": 974,
+   "worldX": 4983,
+   "worldY": 1120
+  },
+  {
+   "id": "CKP-0",
+   "name": "2.12 · What was different",
+   "childCount": 4,
+   "width": 393,
+   "height": 1346,
+   "worldX": 5436,
+   "worldY": 1120
+  },
+  {
+   "id": "CMN-0",
+   "name": "2.12a · Ran out — down to zero",
+   "childCount": 4,
+   "width": 393,
+   "height": 1344,
+   "worldX": 5436,
+   "worldY": 2900
+  },
+  {
+   "id": "CO1-0",
+   "name": "2.13 · Job completed · rate Radhika",
+   "childCount": 3,
+   "width": 393,
+   "height": 852,
+   "worldX": 5889,
+   "worldY": 1120
+  },
+  {
+   "id": "CPD-0",
+   "name": "2.13a · Unhappy — block offered",
+   "childCount": 3,
+   "width": 393,
+   "height": 852,
+   "worldX": 5889,
+   "worldY": 2900
+  },
+  {
+   "id": "CS1-0",
+   "name": "2.13b · Stop jobs from Radhika?",
+   "childCount": 2,
+   "width": 393,
+   "height": 852,
+   "worldX": 6342,
+   "worldY": 2900
+  },
+  {
+   "id": "CSJ-0",
+   "name": "2.13c · Block list is full",
+   "childCount": 2,
+   "width": 393,
+   "height": 852,
+   "worldX": 6795,
+   "worldY": 2900
+  },
+  {
+   "id": "CQP-0",
+   "name": "2.13d · Radhika blocked",
+   "childCount": 4,
+   "width": 393,
+   "height": 852,
+   "worldX": 7248,
+   "worldY": 2900
+  }
+ ]
+}

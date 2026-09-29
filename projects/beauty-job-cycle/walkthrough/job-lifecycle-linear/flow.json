@@ -1,0 +1,123 @@
+{
+  "name": "Snabbit Beauty · job flow",
+  "short_name": "Beauty flow",
+  "paper": {
+    "file": "01M22VKGP5HFH65684E23F8EMD",
+    "file_name": "Snabbit Beauty",
+    "page": "p-6-0",
+    "page_name": "Job lifecycle · linear"
+  },
+  "start": "2.01",
+  "notes": {
+    "2.06": "Tap the timer: Radhika adds a service (2.07).",
+    "2.08": "Tap the timer: the end-of-job prompt (2.09).",
+    "2.13": "Very unhappy face → block path; the other faces start the next job."
+  },
+  "taps": {
+    "2.01": [
+      ["Accept job", "2.02"]
+    ],
+    "2.01a": [
+      ["Accept job", "2.02"]
+    ],
+    "2.01b": [
+      ["Accept job", "2.02"],
+      ["Decline", "2.01c"]
+    ],
+    "2.01c": [],
+    "2.02": [
+      ["Check in", "2.03"],
+      ["Chat", "2.02a"]
+    ],
+    "2.02a": [
+      ["I'm on my way", "back"],
+      ["I have reached", "back"],
+      ["Running 10 min late", "2.02b"],
+      ["Send", "back"]
+    ],
+    "2.02b": [
+      ["Check in", "2.03"],
+      ["Chat", "2.02a"]
+    ],
+    "2.03": [
+      ["keypad", "2.04"],
+      ["No code? Use her phone number", "2.03a"]
+    ],
+    "2.03a": [
+      ["keypad", "2.04"],
+      ["Check in", "2.04"],
+      ["Use the code instead", "2.03"]
+    ],
+    "2.04": [
+      ["Take photo", "2.05"]
+    ],
+    "2.05": [
+      ["@4.0", "2.05b"],
+      ["@1.0", "back"]
+    ],
+    "2.05a": [
+      ["Retake", "2.05"],
+      ["@1.0", "back"]
+    ],
+    "2.05b": [
+      ["Start work", "2.06"]
+    ],
+    "2.06": [
+      ["Complete job", "2.10"],
+      ["48:23", "2.07"]
+    ],
+    "2.06a": [
+      ["Complete job", "2.10"]
+    ],
+    "2.07": [
+      ["Got it", "2.08"]
+    ],
+    "2.08": [
+      ["Complete job", "2.10"],
+      ["58:12", "2.09"]
+    ],
+    "2.09": [
+      ["Got it", "dismiss"],
+      ["Complete job", "2.10"]
+    ],
+    "2.10": [
+      ["keypad", "2.11"]
+    ],
+    "2.10a": [
+      ["Tell us what you used", "2.11"]
+    ],
+    "2.11": [
+      ["Something was different", "2.12"],
+      ["Yes, used as expected", "2.13"]
+    ],
+    "2.12": [
+      ["Save what I used", "2.13"]
+    ],
+    "2.12a": [
+      ["Save what I used", "2.13"]
+    ],
+    "2.13": [
+      ["@1.3.1.0", "2.13a"],
+      ["@1.3.1.1", "2.01"],
+      ["@1.3.1.2", "2.01"],
+      ["@1.3.1.3", "2.01"],
+      ["@1.3.1.4", "2.01"]
+    ],
+    "2.13a": [
+      ["Block", "2.13b"],
+      ["Ready for next job", "2.01"]
+    ],
+    "2.13b": [
+      ["Yes, block Radhika", "2.13d"],
+      ["Keep her", "back"]
+    ],
+    "2.13c": [
+      ["Unblock", "2.13d"],
+      ["Leave it for now", "back"]
+    ],
+    "2.13d": [
+      ["Undo", "2.13a"],
+      ["Ready for next job", "2.01"]
+    ]
+  }
+}
