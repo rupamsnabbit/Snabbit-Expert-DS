@@ -235,3 +235,26 @@ and `content.md` § 10. Governance asks a founder to confirm a principle change:
 
 **Revisit if.** Device review shows experts missing a step because its reason was behind a tap — then that step's
 *why* moves onto the screen as its one line, and the rule stays.
+
+## 2026-09-29 — Walkthroughs: a Paper page, tapped through on a phone
+
+**Decision.** A flow drawn in Paper may be shown as a **walkthrough** — the page's screens played on the Android
+emulator, tapping from screen to screen with the drawn controls working (expandable cards, countdowns, code entry
+with the keypad, steppers, chips, sheets rising and falling). It is built from Paper's own code by
+`tools/walkthrough/`, run by the `walkthrough` skill, and kept per project in
+`projects/<slug>/walkthrough/<page>/` (`flow.json` holds the taps). This narrows the rule in `CLAUDE.md` that
+nothing in the repository is a prototype: a walkthrough is a way to *show* a design, not to make one.
+
+**Why.** Stakeholders and experts understand a flow by moving through it; a row of screenshots hides the order, the
+sheets, the timers and what a tap does (P5). The design lead draws in Paper, and Paper's code is already the design,
+so the walkthrough can be built without redrawing anything.
+
+**Consequence.** Screens are never redrawn to make them work and a state Paper does not draw is never invented — a
+missing state (a card's open state, a filled field) is reported to the designer and appears on the next refresh.
+Artboards are named `N.NN · title`, variants `N.NNa`, dropped screens start with `✕`; anything without a number is
+not a screen. A walkthrough is not evidence for a spec and is not published on claude.ai; it runs on this Mac and the
+emulator only. The first one is Beauty's *Job lifecycle · linear* (28 screens).
+
+**Revisit if.** Walkthroughs start being used to decide a design instead of showing one, or the team needs them on
+real phones outside this Mac — then hosting and a review step are decided here first.
+

@@ -55,7 +55,7 @@ Two projects at once: land the shared core changes from both tier passes first, 
 tokens/         DESIGN_TOKENS.md (contract) · tokens.json (source of truth)
 principles/     PRINCIPLES.md · EXTENDING.md
 components/     one spec per core component (button.md, …); each has a live page site/components/<name>.template.html
-projects/       one folder per project — prd.md (the ask: a PRD verbatim, or captured in conversation) · SCOPE.md (contract, asks of core, log) · TIERS.md · reads/; ACTIVE names the project in play; `_template/` to copy
+projects/       one folder per project — prd.md (the ask: a PRD verbatim, or captured in conversation) · SCOPE.md (contract, asks of core, log) · TIERS.md · reads/; ACTIVE names the project in play; `_template/` to copy; walkthrough/<page>/ — flow.json (the taps) and the built walkthrough of a Paper page
 briefs/         Tier 3 / change-to-core briefs (template in EXTENDING.md)
 patterns/       one flow per file (new-job-alert.md, …); each has a page site/pattern-<name>.html built by build_doc.py
 references/     SCREENS.md (the two screen files: which pages, shipped vs proposed, open conflicts) · reference screenshots + their reads
@@ -65,6 +65,7 @@ GOVERNANCE.md   status lifecycle (Proposed → Reconciled → Stable), review st
 CHANGELOG.md    one section per release, Unreleased on top — a line for anything that changes what a designer or engineer must do
 ROADMAP.md      what is done and what is left (components, foundations, patterns, governance) — update in the same commit as the work
 audit/          FIGMA_AUDIT.md — tier classification of every Figma frame · BENCHMARK.md — gaps vs M3/Base/Asphalt · frames.json
+tools/walkthrough/  a Paper page → a tap-through walkthrough on the Android emulator (walkthrough.py · shell.html · serve.py · open.sh); run with the `walkthrough` skill
 site/           generated documentation site
   build.py               tokens.json + template.html → index.html
   build_doc.py           any markdown → page in site chrome (principles.html, benchmark.html)
@@ -140,7 +141,7 @@ The design lead draws in **Paper** (the desktop app), not in a prototype. The Pa
 - **Copy** on any Paper screen follows `foundations/content.md` — real strings from the specs, never lorem ipsum, never `OK` / `Submit` / `Continue`.
 - Screens that become evidence for a spec are exported as PNG into `references/` with a short `.md`, like any other reference.
 
-Nothing in this repository is a prototype and none of it needs to be: the live pages under `site/` exist so engineers and reviewers can see behaviour; the visual source of truth for a new screen is the Paper file, and the spec is what makes it buildable.
+Nothing in this repository is a prototype of a design: the live pages under `site/` exist so engineers and reviewers can see behaviour; the visual source of truth for a new screen is the Paper file, and the spec is what makes it buildable. The one exception is a **walkthrough** (`DECISIONS.md` 2026-09-29): a Paper page played on the Android emulator so people can tap through a flow instead of reading screenshots. It is built only from Paper's own code by `tools/walkthrough/` and the `walkthrough` skill, lives in `projects/<slug>/walkthrough/<page>/`, never redraws a screen or invents a state Paper did not draw, is never evidence for a spec, and is not published on claude.ai.
 
 ## Publishing
 

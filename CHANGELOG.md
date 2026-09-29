@@ -73,6 +73,7 @@ One section per release, newest first; *Unreleased* on top. Sections inside: Tok
 - `PRINCIPLES.md` reference case corrected: Timer above the Button (pill ring), *Decline* as a ghost hold.
 
 ### Decisions
+- 2026-09-29 — **Walkthroughs**: a Paper page tapped through on the Android emulator, built from Paper's own code, per project in `projects/<slug>/walkthrough/<page>/`; `CLAUDE.md` / `AGENTS.md` narrow *nothing here is a prototype* accordingly.
 - 2026-09-28 — Words are the last medium; a step is a screen (founder confirmation pending).
 - **Beauty job cycle: no setup buffer** (`DECISIONS.md` 2026-09-24) — after the start code the expert sets up, takes one photo of the setup (`MediaCapture` `scene`), and *Job started* follows the photo. `components/timer.md` `buffer` mode is marked as having no consumer; `foundations/icons.md` `hourglass` loses its buffer-header use; `foundations/assets.md` asks for a `beauty-setup` scene.
 - **Promotions have one shape and one colour** (`DECISIONS.md` 2026-09-24): the six fills and six button colours on the *Expert (Sahil)* sheet are translated to one PromoCard; reactions are Chips, not emoji; a day's detail is a sheet, not a dialog; stories reuse the shipped circle and the clip player. Open for the design lead: festival and religious imagery, the *Utsav Bonus* wordmark, which surface opens the day sheets.
@@ -81,6 +82,7 @@ One section per release, newest first; *Unreleased* on top. Sections inside: Tok
 - Open, awaiting the design lead: Kavach vs Shield as the user-facing name; primary Button label contrast (ButtonLg 18/24 recommended); token release 0.20; Telugu as a fifth script; Shield auto-start and the blue shield; HowToClip `guide`.
 
 ### Site
+- `tools/walkthrough/` (new) and the `walkthrough` skill (`.claude/skills/walkthrough/`): name a Paper page → pull, draft the taps, check, build, open on the emulator. First flow: `projects/beauty-job-cycle/walkthrough/job-lifecycle-linear/`.
 - Documentation site under `site/` built by `build_all.sh`: tokens page (with Motion & timeouts and the four-script sample), foundations, 39 component pages, 10 pattern pages, roadmap, benchmark, audit.
 - `site/lint.py` — spec lint run by the build; first run found and fixed 55 errors. W1 now warns on the whole `content.md` § 9 banned list.
 - `EXTENDING.md` § *Where inspiration comes from — Mobbin first*: search by flow, prefer worker-side apps, read three, save under `references/<app>-<flow>/`, internal only; mirrored in `CLAUDE.md` / `AGENTS.md`.

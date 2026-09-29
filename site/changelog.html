@@ -182,6 +182,7 @@ hr{display:none}
 </ul>
 <h3 id="decisions">Decisions</h3>
 <ul>
+<li>2026-09-29 — <strong>Walkthroughs</strong>: a Paper page tapped through on the Android emulator, built from Paper's own code, per project in <code>projects/&lt;slug&gt;/walkthrough/&lt;page&gt;/</code>; <code>CLAUDE.md</code> / <code>AGENTS.md</code> narrow <em>nothing here is a prototype</em> accordingly.</li>
 <li>2026-09-28 — Words are the last medium; a step is a screen (founder confirmation pending).</li>
 <li><strong>Beauty job cycle: no setup buffer</strong> (<code>DECISIONS.md</code> 2026-09-24) — after the start code the expert sets up, takes one photo of the setup (<code>MediaCapture</code> <code>scene</code>), and <em>Job started</em> follows the photo. <code>components/timer.md</code> <code>buffer</code> mode is marked as having no consumer; <code>foundations/icons.md</code> <code>hourglass</code> loses its buffer-header use; <code>foundations/assets.md</code> asks for a <code>beauty-setup</code> scene.</li>
 <li><strong>Promotions have one shape and one colour</strong> (<code>DECISIONS.md</code> 2026-09-24): the six fills and six button colours on the <em>Expert (Sahil)</em> sheet are translated to one PromoCard; reactions are Chips, not emoji; a day's detail is a sheet, not a dialog; stories reuse the shipped circle and the clip player. Open for the design lead: festival and religious imagery, the <em>Utsav Bonus</em> wordmark, which surface opens the day sheets.</li>
@@ -191,6 +192,7 @@ hr{display:none}
 </ul>
 <h3 id="site">Site</h3>
 <ul>
+<li><code>tools/walkthrough/</code> (new) and the <code>walkthrough</code> skill (<code>.claude/skills/walkthrough/</code>): name a Paper page → pull, draft the taps, check, build, open on the emulator. First flow: <code>projects/beauty-job-cycle/walkthrough/job-lifecycle-linear/</code>.</li>
 <li>Documentation site under <code>site/</code> built by <code>build_all.sh</code>: tokens page (with Motion &amp; timeouts and the four-script sample), foundations, 39 component pages, 10 pattern pages, roadmap, benchmark, audit.</li>
 <li><code>site/lint.py</code> — spec lint run by the build; first run found and fixed 55 errors. W1 now warns on the whole <code>content.md</code> § 9 banned list.</li>
 <li><code>EXTENDING.md</code> § <em>Where inspiration comes from — Mobbin first</em>: search by flow, prefer worker-side apps, read three, save under <code>references/&lt;app&gt;-&lt;flow&gt;/</code>, internal only; mirrored in <code>CLAUDE.md</code> / <code>AGENTS.md</code>.</li>
