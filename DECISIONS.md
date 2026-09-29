@@ -236,6 +236,25 @@ and `content.md` § 10. Governance asks a founder to confirm a principle change:
 **Revisit if.** Device review shows experts missing a step because its reason was behind a tap — then that step's
 *why* moves onto the screen as its one line, and the rule stays.
 
+## 2026-09-29 — Beauty setup: a 5-minute window returns; the job starts at the photo or at zero
+
+**Decision.** After the start code, the Beauty expert gets a **5-minute setup window**, shown as Timer `buffer`
+(*Job starts in 4:23*, calm to zero) in a sheet over the job screen. **Take photo** ends it early and the service
+clock starts at the photo; if the window runs out, **the job starts on its own** and the sheet keeps asking for the
+photo. This partly reverses 2026-09-24 (*no setup buffer*): the photo still starts the job, but there is again a
+countdown and an automatic start. The length is a config value (PRD § 4).
+
+**Why.** The design lead's redraw of 2.04 under P1 (2026-09-28) — the shipped setup sheet carries a ring (P5: time
+as a shape), and an open-ended wait with a customer watching gives her no sense of how long she has. The
+stakeholder's 2–3 minutes fits inside 5 with room to spare.
+
+**Consequence.** `timer.md` `buffer` has its consumer back and is not withdrawn. SCOPE Q29 is answered. Still open:
+what the sheet shows at zero (2.04a, specified in `BUILD.md`, not yet drawn), and whether a non-dismissible `info`
+sheet is an allowed variant (ask 10). Needs the stakeholder's confirmation, since it changes their 2026-09-24 call.
+
+**Revisit if.** Experts routinely run past zero (the window is too short), or the automatic start leaves photos
+missing (then the photo becomes a gate, Q30).
+
 ## 2026-09-29 — Walkthroughs: a Paper page, tapped through on a phone
 
 **Decision.** A flow drawn in Paper may be shown as a **walkthrough** — the page's screens played on the Android

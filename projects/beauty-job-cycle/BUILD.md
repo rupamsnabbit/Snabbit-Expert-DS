@@ -228,6 +228,48 @@ scene (ask 8).
 | 8 | Scene: *a good Beauty setup* — products laid out in one place (2.04); reused as the example on any future setup photo | asset | `foundations/assets.md` | open — stand-in on Paper |
 | 9 | `buffer` Timer mode has **no consumer** after 2026-09-24 | component | `components/timer.md` | marked now; withdraw at the next release unless a flow claims it |
 
+## Change — 2026-09-29 · 2.04 redrawn under P1; a 5-minute setup window returns
+
+**The ask** (design lead, 2026-09-29): redraw 2.04 under the new P1 rules (`DECISIONS.md` 2026-09-28 — *words are
+the last medium; a step is a screen*), on the model of the shipped setup sheet (`references/setup-photo-text-vs-visual-2026-09-28/`
+`02`). Two answers given in the same conversation: **a 5-minute setup Timer**, and **at zero the job starts on its
+own** — the photo is still asked for. This partly reverses 2026-09-24 (no countdown); recorded in `DECISIONS.md`
+2026-09-29, and it gives `timer.md` `buffer` mode its consumer back.
+
+**What the redraw removes, and why** (the 2026-09-24 rows for 2.04 above are superseded):
+
+| Removed | Rule | Where it lives instead |
+| --- | --- | --- |
+| `Heading2` *Set up, then send a photo* + two numbered rows + sub-caption *Only your things — not Radhika* | P1 *a step is a screen* · *one instruction line* · *a picture carries its rules* | One title line; the photo is 2.05; the rule is in the scene (only her kit in frame) |
+| Customer card, Kavach row | P1 *related is not needed* | 2.06, one tap after this step |
+| *What you need* — two open service cards, nine rows | P1 *related is not needed*; PRD § 4 puts services and inventory on the **in-progress** screen | 2.06 (PRD § 4 *Services & inventory shown*); she has seen them at 1.02 / 2.02 |
+| Full-screen layout | P1 *a step is a screen* — this step is one moment | `BottomSheet` over the dimmed job screen, like 2.05b |
+
+| Screen · region | Built from | Source | Inherits | Tried first |
+| --- | --- | --- | --- | --- |
+| **2.04** · behind | 2.05b's job screen, dimmed by the scrim; header `HeaderNav state` `bag` **Get ready**; ring shows the job's full window, not running — label *Job time* · *1:30:00* | 2.05b (`check-in-out.md` § 2); `icons.md` `bag` | 2.05b behind | — |
+| 2.04 · sheet | `BottomSheet info`, **not dismissible** (no grabber, no ✕): the step ends with the photo or at zero | `bottom-sheet.md` § Kinds `info`; 2.05b sheet | 2.05b sheet as drawn on this board: padding 24 top · 20 sides, gap 12, radius xxl | `persistent` (part of a screen, never a step) · `info` as specified (dismissible — would leave her on a screen that has not started, with no way back to the photo) → **ask 10** |
+| 2.04 · pictogram | `camera` regular 32 on a 64 `bgBrandSubtle` disc | `icons.md` `camera` (*take photo*); 2.05b hero row | 2.05b pictogram slot, 64 disc | — |
+| 2.04 · the one line | `Heading2` **Set up your things** | `content.md` § 1 (*one instruction line*, verb first) | — | — |
+| 2.04 · time | `Timer` **`buffer`**, ring-pill, `calm` to zero · label *Job starts in* · `4:23` | `timer.md` § Modes `buffer` (never escalates; label names what is waiting; at zero hands over to the service countdown) | old 2.05 ring-pill (dropped board) | — |
+| 2.04 · the instruction | **scene stand-in** `asset/scene/beauty-setup` 16:9 — *her kit laid out on a towel, only her things in frame, no customer* | `assets.md` § Pictures are the instruction; ask 8 | 2.05b photo slot, radius xl, `bgBrandSubtle` (the pink stage) | — |
+| 2.04 · action | `Button primary brand L` `camera` **Take photo** | `media-capture.md` § Content; P2 | 2.05b action | — |
+| 2.04 · voice | on arrival: *"Set up, then take a photo. Your job starts in five minutes."* (11 words) | P4; `content.md` § 6 | — | — |
+
+**Behaviour written down, not drawn:**
+
+- **At zero the job starts on its own.** The Timer hands over to the service `countdown` (`timer.md` `buffer`), the
+  job screen behind becomes 2.06, and the sheet stays asking for the photo — title unchanged, the Timer's slot
+  becomes a `Tag success` `check-circle` **Job started · 10:05 am** (P5: say what changed). Drawn as **2.04a** when
+  confirmed — not yet on the board.
+- **Take photo before zero** ends the window early (`timer.md`: *she may end the buffer early with an explicit
+  action*); 2.05 → 2.05b, and the service clock starts at the photo.
+- The 5-minute length is a config value (PRD § 4: *configurability should be maintained*).
+
+| # | Ask | Kind | Lands in | When |
+| --- | --- | --- | --- | --- |
+| 10 | `BottomSheet info` **non-dismissible** when the sheet *is* the step (it ends with its action or its timer) — or a sixth kind | component | `components/bottom-sheet.md` | open — drawn without ✕ on Paper |
+
 ## Drawn — 2026-09-23
 
 All 27 artboards drawn on page `Job lifecycle · linear` from the rows above: 2.06 by hand as the service-card

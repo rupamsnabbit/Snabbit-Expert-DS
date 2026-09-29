@@ -69,7 +69,7 @@ red would teach her that setting her kit out is a race, which is the opposite of
 *Your service starts in 8:40*. At zero it does not alarm; it hands over to a `countdown` and the service timer
 begins. She may end the buffer early with an explicit action — it is a floor for her benefit, not a gate.
 
-**No consumer since 2026-09-24.** Its only flow, the Beauty setup window (`projects/beauty-job-cycle`), was dropped: experts set up in 2–3 minutes, so setup ends with a photo (`media-capture.md` `scene`), not a countdown. The mode stays specified so nothing that cites it breaks; withdraw it at the next release unless a flow claims it.
+**Consumer restored 2026-09-29.** The Beauty setup window (`projects/beauty-job-cycle` 2.04) is back as a **5-minute** `buffer` in a sheet — *Job starts in 4:23* — ended early by **Take photo**, and at zero it hands over to the service countdown on its own. It was dropped on 2026-09-24 and reinstated by the design lead (`DECISIONS.md` 2026-09-29).
 
 `elapsed` uses `calm` only, unless it crosses a limit (overtime) → `attention`.
 

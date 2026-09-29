@@ -11,6 +11,7 @@ One section per release, newest first; *Unreleased* on top. Sections inside: Tok
 - Proposed for 0.20.0 (not yet in `tokens.json`): `textSuccessStrong` / `textWarningStrong` / `textErrorStrong` / `textInfoStrong`; `iconSuccess` → green.600; `iconWarning` → yellow.600; `bgErrorStrong`, `bgReward`, `bgInfoSubtle`, `bgNeutralStrong`; `overlay.scrim`, `overlay.result`; `ButtonLg` size decision. See `foundations/accessibility.md` § Open.
 
 ### Components
+- **Timer `buffer` has a consumer again** (`components/timer.md`) — the Beauty 5-minute setup window, *Job starts in*, ended early by the photo, starts the job on its own at zero (`DECISIONS.md` 2026-09-29).
 - **PromoCard** (new, build request — `components/promo-card.md` + live page) — one shape for every promotion: pink media ground with a registered asset or a campaign photo, optional eyebrow Tag, a two-line title, one Button (*Invite on WhatsApp* · *See contest* · *Claim bonus*); kinds `referral` / `contest` / `campaign`, layouts `full` / `pair` / `carousel`, states `ended` / `entered`. Replaces 22 loose frames in six colours on the *Expert (Sahil)* sheet; names the shipped Home image carousel as the reuse it rejected.
 - **Chip gains `reaction`** (`components/chip.md`) — icon + count, zero or more, the icon stays and goes `fill` when hers; ≤ 4, never scrolling; `fire` not offered because it means *streak*.
 - **Card**: media gains the `play` disc, a *120 views* chip (words, never `eye`) and a ≤ 5-image carousel with the PageIndicator below the image; footer gains the `reactions` option; the **Post** composition recorded (`patterns/notification-centre.md`).
@@ -74,6 +75,7 @@ One section per release, newest first; *Unreleased* on top. Sections inside: Tok
 
 ### Decisions
 - 2026-09-29 — **Walkthroughs**: a Paper page tapped through on the Android emulator, built from Paper's own code, per project in `projects/<slug>/walkthrough/<page>/`; `CLAUDE.md` / `AGENTS.md` narrow *nothing here is a prototype* accordingly.
+- 2026-09-29 — Beauty setup: a 5-minute window returns; the job starts at the photo or at zero.
 - 2026-09-28 — Words are the last medium; a step is a screen (founder confirmation pending).
 - **Beauty job cycle: no setup buffer** (`DECISIONS.md` 2026-09-24) — after the start code the expert sets up, takes one photo of the setup (`MediaCapture` `scene`), and *Job started* follows the photo. `components/timer.md` `buffer` mode is marked as having no consumer; `foundations/icons.md` `hourglass` loses its buffer-header use; `foundations/assets.md` asks for a `beauty-setup` scene.
 - **Promotions have one shape and one colour** (`DECISIONS.md` 2026-09-24): the six fills and six button colours on the *Expert (Sahil)* sheet are translated to one PromoCard; reactions are Chips, not emoji; a day's detail is a sheet, not a dialog; stories reuse the shipped circle and the clip player. Open for the design lead: festival and religious imagery, the *Utsav Bonus* wordmark, which surface opens the day sheets.
