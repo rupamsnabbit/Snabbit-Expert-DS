@@ -112,3 +112,4 @@ Slugs are `<vertical>-<flow>`: `beauty-shift-cycle`, `beauty-job-cycle`. One PRD
 | --- | --- | --- | --- |
 | [`beauty-shift-lifecycle`](beauty-shift-lifecycle/SCOPE.md) — Shift Lifecycle · Beauty Category | 2026-09-12 | Intake | the shift pattern, inventory update, weekly replenishment |
 | [`beauty-job-cycle`](beauty-job-cycle/SCOPE.md) — Job Lifecycle · Beauty Category | 2026-09-15 | Building — redrawn 2026-09-23 on the stakeholder's Figma linear flow | the job pattern: buffer after check-in, add-ons mid-job, per-job inventory check-in |
+| [`deallocation-penalties`](deallocation-penalties/SCOPE.md) — Penalty constructs: offline gaming, check-in actions (De-allocation) | 2026-10-27 (Hardik, doc rev 16) | Intake — open questions with the lead | sections in `patterns/offline.md`, `permissions.md`, `check-in-out.md` § 1: the live penalty sheet, the on-return screen, Decline / Early logout by distance, the call-the-customer gate |
