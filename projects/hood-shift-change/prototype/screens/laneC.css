@@ -1,0 +1,14 @@
+/* Lane C — only what the V3 friend results need beyond the shared styles (get_design_context values; colours are tokens). */
+
+/* ---- results (Figma V3 436:6261 · 436:6310 · 436:6388): white TopNav with the gray-200 rule; body p 16 gap 16 on gray-50. The Change timing card (V4 492:52510), banner, hood card and area card are the shared renderers. ---- */
+[data-screen^="C4"] .topnav { background: var(--color-bg-primary); }
+[data-screen^="C4"] .body { gap: 16px; }
+/* "A Anita works here" (436:6292): blue-50, 24 tall, px 8, radius 4, gap 4; white avatar 20 with "A" 10/14 regular blue-700; words 12/16 medium blue-700. Set 4 above her time (inside the row column). */
+.c-ftag { display: inline-flex; align-items: center; gap: 4px; height: 24px; padding: 0 8px; border-radius: 4px; background: var(--color-blue-50); color: var(--color-blue-700); white-space: nowrap; }
+.c-ftag .av { width: 20px; height: 20px; border-radius: 999px; background: var(--color-bg-primary); display: inline-flex; align-items: center; justify-content: center; font-size: 10px; line-height: 14px; font-weight: 400; }
+.c-ftag .tx { font-size: 12px; line-height: 16px; font-weight: 500; }
+/* C4a: "Work near Anita’s area" 16/24 medium gray-900, pt 8; the cards gap 12; the ticked card's radio */
+.c-section { padding-top: 8px; font-size: 16px; line-height: 24px; font-weight: 500; color: var(--color-gray-900); }
+.c-areas { display: flex; flex-direction: column; gap: 12px; }
+[data-screen="C4a"] .radio.on { border-color: var(--color-pink-600); }
+[data-screen="C4a"] .radio.on::after { content: ""; width: 10px; height: 10px; border-radius: 5px; background: var(--color-pink-600); }

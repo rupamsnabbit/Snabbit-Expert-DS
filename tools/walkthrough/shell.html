@@ -20,17 +20,22 @@
   --easing-enter: cubic-bezier(0, 0, 0.2, 1);
   --easing-exit: cubic-bezier(0.4, 0, 1, 1);
 }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }   /* no Android font boosting: sizes as drawn */
 html, body { margin: 0; height: 100%; overflow: hidden; background: var(--color-bg-secondary);
   -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none; overscroll-behavior: none; }
-/* Paper artboards are 393 wide; the phone is scaled to match, so every screen looks as drawn. */
-#app { position: relative; width: 393px; overflow: hidden; }
+/* The phone is scaled to the artboards' width, so every screen looks as drawn. */
+#app { position: relative; width: __W__px; overflow: hidden; }
 .screen { position: absolute; inset: 0; will-change: transform, opacity; }
 [hidden] { display: none !important; }
 .screen > div { position: relative; }
 [data-scroll] { scrollbar-width: none; -webkit-overflow-scrolling: touch; }
 [data-scroll]::-webkit-scrollbar { display: none; }
-[data-go], [data-acc], [data-swap], [data-step], [data-chip], [data-key] { cursor: pointer; }
-[data-go]:active, [data-step]:active, [data-chip]:active, [data-key]:active { filter: brightness(0.94); }
+[data-input] { width: 0 !important; min-width: 0 !important; flex: 1 1 0% !important; overflow: hidden; }   /* the field, not the input, sets the width */
+input.typed { all: unset; box-sizing: border-box; display: block; width: 100%; min-width: 0; max-width: 100%; user-select: text; -webkit-user-select: text; caret-color: var(--color-interactive-default, currentColor); }
+input.typed::placeholder { color: var(--color-text-tertiary); opacity: 1; }
+[data-input-box] { cursor: text; }
+[data-go], [data-acc], [data-swap], [data-step], [data-chip], [data-key], [data-pick] { cursor: pointer; }
+[data-go]:active, [data-step]:active, [data-chip]:active, [data-key]:active, [data-pick]:active { filter: brightness(0.94); }
 /* Tap somewhere that does nothing: the tappable places light up for a moment */
 .hint :is([data-go], [data-acc], [data-swap], [data-step], [data-chip], [data-key]) { outline: 2px solid var(--color-brand); outline-offset: 2px; border-radius: var(--radius-lg);
   animation: hint var(--motion-slow) var(--easing-enter) 2 alternate; }
@@ -38,13 +43,28 @@ html, body { margin: 0; height: 100%; overflow: hidden; background: var(--color-
 /* Screen list: long-press anywhere */
 #menu { position: fixed; inset: 0; z-index: 10; display: none; background: color-mix(in srgb, var(--color-bg-inverse) 60%, transparent); }
 #menu.open { display: flex; align-items: flex-end; }
-#menu .panel { width: 100%; max-height: 80%; overflow-y: auto; background: var(--color-bg); border-radius: var(--radius-xxl) var(--radius-xxl) 0 0;
-  padding: var(--space-3) 0 var(--space-6); font-family: Outfit, system-ui, sans-serif; }
-#menu .grab { width: 32px; height: 4px; border-radius: var(--radius-full); background: var(--color-border); margin: 0 auto var(--space-4); }
-#menu button { display: flex; gap: var(--space-4); width: 100%; min-height: 48px; align-items: center; border: 0; background: none;
-  padding: 0 var(--space-6); font: inherit; font-size: var(--text-body-lg); line-height: var(--leading-body-lg); color: var(--color-text-primary); text-align: left; }
+#menu .panel { width: 100%; max-height: 80%; overflow-y: auto; background: var(--color-bg, var(--color-bg-primary)); border-radius: var(--radius-xxl) var(--radius-xxl) 0 0;
+  padding: var(--space-3, 8px) 0 var(--space-6, 24px); font-family: Outfit, system-ui, sans-serif; }
+#menu .grab { width: 32px; height: 4px; border-radius: var(--radius-full); background: var(--color-border, var(--color-border-default)); margin: 0 auto var(--space-4, 12px); }
+#menu button { display: flex; gap: var(--space-4, 12px); width: 100%; min-height: 48px; align-items: center; border: 0; background: none;
+  padding: 0 var(--space-6, 24px); font: inherit; font-size: var(--text-body-lg); line-height: var(--leading-body-lg); color: var(--color-text-primary); text-align: left; }
 #menu button b { width: 44px; flex-shrink: 0; font-weight: var(--font-weight-semibold); color: var(--color-text-secondary); }
-#menu button.on { background: var(--color-brand-subtle); }
+#menu button.on { background: var(--color-brand-subtle, var(--color-bg-brand-subtle)); }
+/* Saathi talking (voice-prompt.md): the control that says the line pulses while it speaks */
+[data-go="voice"].speaking { animation: talk 900ms var(--easing-enter) infinite; border-radius: 50%; }
+@keyframes talk { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-brand, #E91E63) 45%, transparent); } 100% { box-shadow: 0 0 0 14px transparent; } }
+/* Flow switcher: the project's other flows, for the presenter (not part of the app) */
+#flows { position: fixed; top: 50%; left: 0; transform: translateY(-50%); z-index: 9; display: flex; align-items: center; gap: 2px; padding: 3px;
+  border-radius: 0 999px 999px 0; background: rgba(17, 24, 39, 0.72); backdrop-filter: blur(6px); font: 500 11px/1 Outfit, system-ui, sans-serif; }
+#flows .tab { width: 10px; height: 28px; display: grid; place-items: center; color: rgba(255,255,255,.8); font-size: 10px; cursor: pointer; }
+#flows:not(.open) a { display: none; }
+#flows a { padding: 7px 10px; border-radius: 999px; color: rgba(255, 255, 255, 0.75); text-decoration: none; }
+#flows a.on { background: #fff; color: #111827; }
+#menu .flows { display: flex; gap: 8px; padding: 0 var(--space-6, 24px) var(--space-4, 12px); }
+#menu .flows a { flex: 1; text-align: center; padding: 10px 0; border-radius: 12px; border: 1px solid var(--color-border, #EAECF0); color: var(--color-text-primary, #101828);
+  text-decoration: none; font: 500 14px/1.2 Outfit, system-ui, sans-serif; }
+#menu .flows a.on { background: var(--color-brand-subtle, #FDF2F8); border-color: var(--color-brand, #EC1C7A); }
+.confetti { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 50; }
 @media (prefers-reduced-motion: reduce) { .screen, [data-sheet], [data-scrim] { animation: none !important; transition: none !important; } }
 </style>
 </head>
@@ -60,11 +80,12 @@ const order = Object.keys(screens);
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const T = { standard: 200, slow: 300 };
 const EASE = { enter: 'cubic-bezier(0, 0, 0.2, 1)', exit: 'cubic-bezier(0.4, 0, 1, 1)' };
-let current = null, depth = 0;
+const W = __W__, HINTS = __HINTS__, LISTS = __LISTS__, TRAILS = __TRAILS__, VOICE_LANG = '__VOICE_LANG__', SIBLINGS = __SIBLINGS__;
+let current = null;
 
-// Fit the 393-wide artboards to this phone
+// Fit the artboards to this phone
 function size() {
-  const z = innerWidth / 393;
+  const z = innerWidth / W;
   app.style.zoom = z;
   app.style.height = (innerHeight / z) + 'px';
 }
@@ -72,7 +93,7 @@ addEventListener('resize', size); size();
 
 const sheetOf = s => s && s.querySelector(':scope > div > [data-sheet]');
 const scrimOf = s => s && s.querySelector(':scope > div > [data-scrim]');
-const anim = (el, frames, ms, ease) => el && !reduce ? el.animate(frames, { duration: ms, easing: ease, fill: 'both' }).finished : Promise.resolve();
+const anim = (el, frames, ms, ease) => el && !reduce ? el.animate(frames, { duration: ms, easing: ease, fill: 'both' }).finished.catch(() => {}) : Promise.resolve();   // a cancelled animation is not an error
 
 function statusColour(s) {
   const probe = document.createElement('div');
@@ -81,11 +102,13 @@ function statusColour(s) {
   document.querySelector('meta[name=theme-color]').content = c;
 }
 
+let seen = {}, tick = 0;
 async function show(id, dir) {
   const next = screens[id];
   if (!next || next === current) return;
   const prev = current;
   current = next;
+  seen[id] = ++tick;
   next.hidden = false;
   [sheetOf(next), scrimOf(next)].forEach(el => el && (el.style.visibility = ''));
   next.querySelectorAll('[data-scroll]').forEach(el => el.scrollTop = 0);
@@ -95,7 +118,9 @@ async function show(id, dir) {
   const nextSheet = sheetOf(next), prevSheet = sheetOf(prev);
   next.style.zIndex = 2; if (prev) prev.style.zIndex = 1;
 
-  if (prevSheet) {                                   // a sheet leaves the way it came
+  if (dir === 'replace' && prev && (prevSheet && nextSheet || !prevSheet && !nextSheet)) {   // same place, new state: no travel
+    if (!nextSheet) await anim(next, [{ opacity: 0 }, { opacity: 1 }], T.standard, EASE.enter);
+  } else if (prevSheet) {                            // a sheet leaves the way it came
     await Promise.all([anim(prevSheet, [{ transform: 'none' }, { transform: 'translateY(100%)' }], T.standard, EASE.exit),
                        anim(scrimOf(prev), [{ opacity: 1 }, { opacity: 0 }], T.standard, EASE.exit)]);
   }
@@ -122,16 +147,62 @@ async function dismiss() {
   [s, scrimOf(current)].forEach(el => el && (el.style.visibility = 'hidden'));
 }
 
-function go(id) {
-  depth++;
-  history.pushState({ id, depth }, '', '#' + id);
-  show(id, 'forward');
+async function raise() {
+  const s = sheetOf(current);
+  if (!s) return;
+  [s, scrimOf(current)].forEach(el => el && (el.style.visibility = ''));
+  await Promise.all([anim(s, [{ transform: 'translateY(100%)' }, { transform: 'none' }], T.slow, EASE.enter),
+                     anim(scrimOf(current), [{ opacity: 0 }, { opacity: 1 }], T.slow, EASE.enter)]);
 }
-addEventListener('popstate', e => {
-  const id = (e.state && e.state.id) || location.hash.slice(1) || order[0];
-  const back = !e.state || e.state.depth < depth;
-  depth = e.state ? e.state.depth : 0;
-  show(id, back ? 'back' : 'forward');
+
+// Where a tap goes. A target is steps: "2.1" push · "back" · "back:0.1" pop to it · "~1.10" replace this one ·
+// "dismiss" / "sheet" close or raise this screen's sheet. Conditions pick another target:
+// seen:<screen> (the latest seen wins) · picked:<text> (a chosen chip or card) · typed:<value> / typed!:<value>.
+let stack = [], pending = null, typed = null;
+const picked = () => [...current.querySelectorAll('[data-chip="on"], [data-pick="on"]')].map(e => e.textContent.replace(/\s+/g, ' '));
+function choose(go, when) {
+  if (!when) return go;
+  let best = null, score = -1;
+  for (const [cond, to] of when) {
+    const i = cond.indexOf(':'), k = cond.slice(0, i), v = cond.slice(i + 1);
+    const s = k === 'seen' ? (seen[v] || -1) : (k === 'picked' && picked().some(t => t.includes(v))) ||
+      (k === 'typed' && typed === v) || (k === 'typed!' && typed !== v) ? Infinity : -1;
+    if (s > score) { score = s; best = to; }
+  }
+  return best || go;
+}
+function navigate(target, already = 0) {          // already: entries the phone's back has popped already
+  let s = stack.slice(), dir = 'forward';
+  for (const st of target.split(' ')) {
+    if (st.startsWith('chip:')) { pendingChip = st.slice(5).replace(/_/g, ' '); continue; }
+    if (st === 'dismiss') return dismiss();
+    if (st === 'sheet') return raise();
+    if (st === 'back') { if (s.length > 1) s.pop(); dir = 'back'; }
+    else if (st.startsWith('back:')) {
+      const id = st.slice(5), i = s.lastIndexOf(id);
+      if (i >= 0) { s = s.slice(0, i + 1); dir = 'back'; } else { s.push(id); dir = 'forward'; }
+    }
+    else if (st.startsWith('~')) { s[s.length - 1] = st.slice(1); if (dir !== 'back') dir = 'replace'; }
+    else { s.push(st); dir = 'forward'; }
+  }
+  let k = 0; while (k < s.length && k < stack.length && s[k] === stack[k]) k++;
+  const keep = Math.max(k, 1), pops = stack.length - keep - already;
+  stack = s;
+  const finish = () => {
+    if (k === 0) history.replaceState({ d: 0 }, '', '#' + s[0]);
+    for (let j = keep; j < s.length; j++) history.pushState({ d: j }, '', '#' + s[j]);
+    show(s[s.length - 1], dir);
+    if (pendingChip && current) { setChip(current, pendingChip); pendingChip = null; carry(current); }
+  };
+  if (pops > 0) { pending = finish; history.go(-pops); } else finish();
+}
+const go = id => navigate(id);
+addEventListener('popstate', e => {                // the phone's own back
+  if (pending) { const f = pending; pending = null; return f(); }
+  const d = e.state ? e.state.d : 0;
+  if (current && current.dataset.onback && d === stack.length - 2) return navigate(current.dataset.onback, 1);
+  if (d < stack.length - 1) { stack = stack.slice(0, d + 1); show(stack[d], 'back'); }
+  else if (d > stack.length - 1) history.go(stack.length - 1 - d);
 });
 
 // ── Inside a screen ────────────────────────────────────────────────────────────────────────────────
@@ -207,6 +278,12 @@ function paintCode(row) {
   });
 }
 function typeKey(k) {
+  const field = current.querySelector('[data-field]');
+  if (field) {                                      // a number field: digits add, the delete key takes one away
+    const v = field.textContent;
+    field.textContent = typed = k === 'del' ? v.slice(0, -1) : v.length < 6 ? v + k : v;
+    return;
+  }
   const row = current.querySelector('[data-code]');
   if (!row) return;
   if (k === 'del') row._typed.pop();
@@ -232,52 +309,567 @@ function step(btn) {
   }
 }
 
-// Single-choice chips: the drawn selected chip's look moves to the one she taps
-function pick(chip) {
+// Single-choice chips: the drawn selected chip's look moves to the one she taps. On a picker with "lists" in
+// flow.json, the chip also swaps the rows for that chip's options (4 hrs, 6 hrs, 8 hrs …).
+function pick(chip, silent) {
   const group = chip.parentElement, on = group.querySelector('[data-chip="on"]');
-  if (!on || on === chip) return;
-  const off = [...group.children].find(c => c.dataset.chip !== 'on');
-  const onStyle = on.getAttribute('style'), offStyle = off.getAttribute('style');
-  const check = on.querySelector('svg'), onText = on.lastElementChild.getAttribute('style'), offText = off.lastElementChild.getAttribute('style');
-  on.setAttribute('style', offStyle); on.lastElementChild.setAttribute('style', offText); on.dataset.chip = '';
-  chip.setAttribute('style', onStyle); chip.lastElementChild.setAttribute('style', onText); chip.dataset.chip = 'on';
-  if (check) chip.prepend(check);
+  if (on && on !== chip) {
+    const off = [...group.children].find(c => c.dataset.chip !== 'on');
+    const onStyle = on.getAttribute('style'), offStyle = off.getAttribute('style');
+    const check = on.querySelector('svg'), onText = on.lastElementChild.getAttribute('style'), offText = off.lastElementChild.getAttribute('style');
+    on.setAttribute('style', offStyle); on.lastElementChild.setAttribute('style', offText); on.dataset.chip = '';
+    chip.setAttribute('style', onStyle); chip.lastElementChild.setAttribute('style', onText); chip.dataset.chip = 'on';
+    if (check) chip.prepend(check);
+  }
+  chipBy[group.dataset.sig] = { on: norm(chip.textContent), relabel: group._relabel || null };
+  const picks = chip.closest('.screen').querySelector('[data-picks]');
+  const rows = picks && (LISTS_BY_SIG[picks.dataset.sig] || {})[norm(chip.textContent)];
+  if (!rows) return;
+  const keep = chosenBy[picks.dataset.sig] ?? (GROUPS[picks.dataset.sig] || {}).drawnText;   // her pick, else the one Paper drew chosen
+  fillRows(picks, rows);
+  const cards = cardsOf(picks);
+  pickCard(cards.find(c => norm(c.textContent) === keep) || cards[0], silent);
+  if (!silent && !reduce) cardsOf(picks).forEach((c, i) => anim(c, [{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }], T.standard + i * 40, EASE.enter));
+}
+// The chip a step names on arrival (chip:10_hrs). If no chip says it, her own chip (the one Paper drew chosen) takes the words.
+function setChip(s, text) {
+  const g = s.querySelector('[data-chips]');
+  if (!g) return;
+  let chip = [...g.children].find(c => norm(c.textContent) === text);
+  if (!chip) { chip = g.querySelector('[data-drawn-on]'); chip.lastElementChild.textContent = text; g._relabel = text; }
+  pick(chip, true);
 }
 
-function enter(s) { startTimers(s); resetCode(s); }
+// ── Times she picks ─────────────────────────────────────────────────────────────────────────────────
+// Times as Paper writes them: "11 am – 7 pm", "7–11 am", "11 AM– 7 PM", "9:30 AM". Hours are decimal, 24 h.
+const TIME = /(\d{1,2})(?::(\d{2}))?\s*(am|pm)?\s*[–-]\s*(\d{1,2})(?::(\d{2}))?\s*(am|pm)\b|(\d{1,2})(?::(\d{2}))?\s*(am|pm)\b/gi;
+const h24 = (h, m, mer) => h % 12 + (mer === 'pm' ? 12 : 0) + m / 60;
+function times(text) {
+  const out = [];
+  for (const m of text.matchAll(TIME)) {
+    if (m[4]) {
+      let a = h24(+m[1], +(m[2] || 0), (m[3] || m[6]).toLowerCase()), b = h24(+m[4], +(m[5] || 0), m[6].toLowerCase());
+      if (!m[3] && a > b) a -= 12;                      // "11–3 pm" is 11 am – 3 pm
+      if (b <= a) b += 24;                              // ends after midnight
+      out.push({ span: [a, b], at: m.index, src: m[0] });
+    } else out.push({ span: [h24(+m[7], +(m[8] || 0), m[9].toLowerCase())], at: m.index, src: m[0] });
+  }
+  return out;
+}
+function hm(h, up) {
+  h = ((h % 24) + 24) % 24;
+  const H = Math.floor(h + 1e-6), M = Math.round((h - H) * 60), mer = H >= 12 ? 'pm' : 'am';
+  return [(H % 12 || 12) + (M ? ':' + String(M).padStart(2, '0') : ''), up ? mer.toUpperCase() : mer];
+}
+function say(spans, up) {                           // content.md: "7 am – 3 pm"; a split day "7–11 am · 3–7 pm"
+  return spans.map(([a, b]) => {
+    const [x, xm] = hm(a, up);
+    if (b === undefined) return `${x} ${xm}`;
+    const [y, ym] = hm(b, up);
+    return spans.length > 1 && xm === ym ? `${x}–${y} ${ym}` : `${x} ${xm} – ${y} ${ym}`;
+  }).join(' · ');
+}
+const near = (a, b) => Math.abs(a - b) < 0.01;
+const sameSpans = (a, b) => a.length === b.length && a.every((x, i) => x.length === b[i].length && x.every((v, j) => near(v, b[i][j])));
+const same12 = (a, b) => a.length === b.length && a.every((x, i) => b[i].length === 2 && near(x[0] % 12, b[i][0] % 12) && near(x[1] - x[0], b[i][1] - b[i][0]));
+const norm = t => t.replace(/\s+/g, ' ').trim();
+const leaves = el => [...el.querySelectorAll('*')].filter(e => !e.children.length && e.textContent.trim() && !e.closest('svg'));
+const cardsOf = g => [...g.children].filter(c => c.hasAttribute('data-pick'));
+function infoOf(card) {                             // a card's times, and its other lines in order
+  const spans = [], srcs = [], rest = [];
+  for (const l of leaves(card)) {
+    const t = norm(l.textContent), ts = times(t);
+    if (ts.length) ts.forEach(x => { spans.push(x.span); srcs.push(x.src); }); else rest.push(t);
+  }
+  return { spans, rest, text: spans.length === 1 ? srcs[0] : say(spans) };
+}
+
+// The shift ring reads like the clock she knows: 12 at the top, the chosen time an arc from its start to its end. The
+// time sweeps to its place; a split day is two arcs, a notch where they meet and the break's cup in the gap. One ring
+// only: a shift is never longer than 12 hours, so the most it draws is the full circle, notched where it starts.
+// (A ring drawn as a 24-hour day is read from its own drawing and kept so.)
+const COFFEE = 'M80,56V24a8,8,0,0,1,16,0V56a8,8,0,0,1-16,0Zm40,8a8,8,0,0,0,8-8V24a8,8,0,0,0-16,0V56A8,8,0,0,0,120,64Zm32,0a8,8,0,0,0,8-8V24a8,8,0,0,0-16,0V56A8,8,0,0,0,152,64Zm96,56v8a40,40,0,0,1-37.51,39.91,96.59,96.59,0,0,1-27,40.09H208a8,8,0,0,1,0,16H32a8,8,0,0,1,0-16H56.54A96.3,96.3,0,0,1,24,136V88a8,8,0,0,1,8-8H208A40,40,0,0,1,248,120ZM200,96H40v40a80.27,80.27,0,0,0,45.12,72h69.76A80.27,80.27,0,0,0,200,136Zm32,24a24,24,0,0,0-16-22.62V136a95.78,95.78,0,0,1-1.2,15A24,24,0,0,0,232,128Z';
+const nums = d => d.match(/-?[\d.]+/g).map(Number);
+function ringOf(svg) {
+  if (svg._ring) return svg._ring;
+  const track = svg.querySelector('circle'), arcs = [...svg.querySelectorAll('path')].filter(p => /bg-brand/.test(p.getAttribute('stroke') || ''));
+  const g = { svg, track, cx: +track.getAttribute('cx'), cy: +track.getAttribute('cy'), r: +track.getAttribute('r'),
+              w: +(track.getAttribute('stroke-width') || 12), tpl: arcs[0], arcs, cups: [] };
+  const label = svg.parentElement.querySelector(':scope > [data-ring-label]');
+  const drawn = label ? times(leaves(label).map(l => l.textContent).join(' ')).map(x => x.span).filter(x => x.length === 2) : [];
+  const n = nums(arcs[0].getAttribute('d')), seen = Math.atan2(n[0] - g.cx, g.cy - n[1]) * 180 / Math.PI;
+  const off = (deg, h) => Math.abs(((deg - h + 540) % 360) - 180);
+  g.turn = drawn.length && off(seen, (drawn[0][0] - 12) * 15) < off(seen, drawn[0][0] % 12 * 30) ? 24 : 12;
+  g.now = drawn.length ? drawn : [[0, 0]];
+  return svg._ring = g;
+}
+const ringAngle = (g, h) => (g.turn === 24 ? (h - 12) * 15 : (h % 12) * 30) * Math.PI / 180;
+function arcPath(g, a, b, r) {
+  if (b - a < 0.02) return '';
+  b = Math.min(b, a + g.turn - 0.02);
+  const pt = h => [g.cx + r * Math.sin(ringAngle(g, h)), g.cy - r * Math.cos(ringAngle(g, h))];
+  const [x0, y0] = pt(a), [x1, y1] = pt(b);
+  return `M${x0.toFixed(2)} ${y0.toFixed(2)} A${r} ${r} 0 ${(b - a) * 360 / g.turn > 180 ? 1 : 0} 1 ${x1.toFixed(2)} ${y1.toFixed(2)}`;
+}
+function segments(g, spans) {                        // what to draw: one arc per block, a full circle at most
+  const segs = spans.map(([a, b]) => ({ a, b: Math.min(b, a + g.turn), r: g.r }));
+  const cut = 6 / (360 / g.turn);                    // a notch where one arc ends and another starts at the same place
+  const same = (x, y) => near(((x - y) % g.turn + g.turn) % g.turn, 0) || near(((x - y) % g.turn + g.turn) % g.turn, g.turn);
+  for (const s of segs) for (const t of segs) if (s.r === t.r && s.b - s.a > 2 * cut && t.b - t.a > 2 * cut && same(s.b, t.a)) { s.b -= cut; t.a += cut; }
+  return segs;
+}
+function drawRing(g, spans) {
+  const segs = segments(g, spans);
+  while (g.arcs.length < segs.length) { const p = g.tpl.cloneNode(); g.tpl.after(p); g.arcs.push(p); }
+  g.arcs.forEach((p, i) => p.setAttribute('d', i < segs.length ? arcPath(g, segs[i].a, segs[i].b, segs[i].r) : ''));
+  g.now = spans;
+}
+function cups(g, spans, fade) {
+  g.cups.forEach(c => c.remove()); g.cups = [];
+  const size = Math.max(10, g.w);
+  for (let i = 0; i + 1 < spans.length; i++) {
+    const t = ringAngle(g, (spans[i][1] + spans[i + 1][0]) / 2);
+    const cup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    cup.setAttribute('transform', `translate(${(g.cx + g.r * Math.sin(t) - size / 2).toFixed(2)} ${(g.cy - g.r * Math.cos(t) - size / 2).toFixed(2)}) scale(${(size / 256).toFixed(4)})`);
+    cup.innerHTML = `<path d="${COFFEE}" fill="var(--color-text-secondary)"/>`;
+    g.svg.appendChild(cup); g.cups.push(cup);
+    if (fade) anim(cup, [{ opacity: 0 }, { opacity: 1 }], T.standard, EASE.enter);
+  }
+}
+function pieces([a, b], n) { return Array.from({ length: n }, (_, i) => [a + (b - a) * i / n, a + (b - a) * (i + 1) / n]); }
+function pairUp(from, to) {                          // one arc splits into a split day's two, and two join into one
+  if (from.length === to.length) return [from, to];
+  if (from.length === 1) return [pieces(from[0], to.length), to];
+  if (to.length === 1) return [from, pieces(to[0], from.length)];
+  const n = Math.max(from.length, to.length), pad = l => l.concat(Array(n - l.length).fill([l[l.length - 1][1], l[l.length - 1][1]]));
+  return [pad(from), pad(to)];
+}
+const easeOut = t => 1 - Math.pow(1 - t, 3);
+function setRing(svg, spans, animate) {
+  const g = ringOf(svg), to = spans.filter(s => s.length === 2);
+  if (!to.length) return;
+  cancelAnimationFrame(g.raf);
+  if (!animate || reduce) { drawRing(g, to); cups(g, to, false); return; }
+  const [a, b] = pairUp(g.now, to), t0 = performance.now();
+  cups(g, [], false);
+  const frame = now => {
+    const t = Math.min(1, (now - t0) / T.slow), e = easeOut(t);
+    drawRing(g, a.map((x, i) => [x[0] + (b[i][0] - x[0]) * e, x[1] + (b[i][1] - x[1]) * e]));
+    if (t < 1) g.raf = requestAnimationFrame(frame); else { drawRing(g, to); cups(g, to, true); }
+  };
+  g.raf = requestAnimationFrame(frame);
+}
+function setRingLabel(svg, spans, animate) {
+  const label = svg.parentElement.querySelector(':scope > [data-ring-label]');
+  const to = spans.filter(s => s.length === 2);
+  if (!label || !to.length) return;
+  const lines = leaves(label);
+  label._drawn ??= lines.map(l => l.textContent);
+  const up = /AM|PM/.test(label._drawn.join(' ')), tight = /\S–\s*$/.test(label._drawn[0] || '');
+  let text;
+  if (to.length > 1) text = to.map(s => say([s, s], up).split(' · ')[0]);
+  else { const [x, xm] = hm(to[0][0], up), [y, ym] = hm(to[0][1], up); text = [`${x} ${xm}${tight ? '–' : ' –'}`, `${y} ${ym}`]; }
+  if (lines.map(l => l.textContent).join('|') === text.join('|')) return;
+  lines.forEach((l, i) => l.textContent = text[i] ?? '');
+  if (animate) anim(label, [{ opacity: 0, transform: 'scale(0.96)' }, { opacity: 1, transform: 'none' }], T.slow, EASE.enter);
+}
+function follow(s, spans, animate) {                 // the rings on a screen follow the time chosen on it
+  s.querySelectorAll('svg[data-ring]').forEach(svg => { setRing(svg, spans, animate); setRingLabel(svg, spans, animate); });
+}
+
+// The 12-hour shift clock: a pink wedge for the time; a split day is two wedges; the hour hand points at the start.
+function clockOf(svg) {
+  if (svg._clock) return svg._clock;
+  const paths = [...svg.querySelectorAll('path')];
+  const ws = paths.filter(p => /^M20 20 L/.test(p.getAttribute('d')) && /A15/.test(p.getAttribute('d')));
+  const hands = paths.filter(p => /^M20 20 L-?[\d.]+ -?[\d.]+$/.test(p.getAttribute('d').trim()));
+  const len = p => { const n = nums(p.getAttribute('d')); return Math.hypot(n[2] - 20, n[3] - 20); };
+  const hour = (x, y) => ((Math.atan2(x - 20, 20 - y) * 6 / Math.PI) % 12 + 12) % 12;
+  const drawn = ws.map(p => { const n = nums(p.getAttribute('d')); let a = hour(n[2], n[3]), b = hour(n[n.length - 2], n[n.length - 1]); if (b <= a) b += 12; return [a, b]; });
+  const hand = hands.sort((p, q) => len(p) - len(q))[0];
+  return svg._clock = { ws, tpl: ws[0], drawn, hand, handLen: hand ? len(hand) : 8 };
+}
+function wedge(a, b) {
+  if (b - a >= 11.99) return 'M20 5 A15 15 0 1 1 19.99 5 Z';
+  const pt = h => [20 + 15 * Math.sin(h * Math.PI / 6), 20 - 15 * Math.cos(h * Math.PI / 6)];
+  const [x0, y0] = pt(a), [x1, y1] = pt(b);
+  return `M20 20 L${x0.toFixed(2)} ${y0.toFixed(2)} A15 15 0 ${b - a > 6 ? 1 : 0} 1 ${x1.toFixed(2)} ${y1.toFixed(2)} Z`;
+}
+function setClock(svg, spans) {
+  const c = clockOf(svg), to = spans.filter(s => s.length === 2);
+  if (!to.length) return;
+  while (c.ws.length < to.length) { const p = c.tpl.cloneNode(); c.tpl.after(p); c.ws.push(p); }
+  c.ws.forEach((p, i) => p.setAttribute('d', i < to.length ? wedge(to[i][0] % 12, to[i][0] % 12 + to[i][1] - to[i][0]) : ''));
+  if (c.hand) { const t = to[0][0] % 12 * Math.PI / 6; c.hand.setAttribute('d', `M20 20 L${(20 + c.handLen * Math.sin(t)).toFixed(2)} ${(20 - c.handLen * Math.cos(t)).toFixed(2)}`); }
+}
+
+// Single-choice cards (SelectionCard with a Radio): the drawn chosen look moves to the card she taps; the ring on the
+// screen follows its time; what she picked carries to the other screens of the same lane (2.1 → 2.2 confirm → 2.3).
+const GROUPS = {}, chosenBy = {}, chipBy = {}, carries = {}, typedIn = {}, LISTS_BY_SIG = {};
+let pendingChip = null;
+let onCard = null, onRadio = null;
+(() => {
+  const c = document.querySelector('[data-pick="on"]');
+  if (c) { onCard = c.getAttribute('style'); onRadio = c.querySelector('[data-radio]').outerHTML; }
+  document.querySelectorAll('[data-picks]').forEach(g => {
+    const cards = cardsOf(g), sig = g.dataset.sig = cards.map(c => norm(c.textContent)).join('|');
+    if (GROUPS[sig]) return;
+    const on = cards.find(c => c.dataset.pick === 'on'), off = cards.find(c => c.dataset.pick !== 'on');
+    const offCopy = c => { if (!c) return null; const k = c.cloneNode(true); if (c === on && off) { k.setAttribute('style', off.getAttribute('style')); k.querySelector('[data-radio]').outerHTML = off.querySelector('[data-radio]').outerHTML; } k.dataset.pick = ''; return k; };
+    const nT = c => leaves(c).filter(l => times(l.textContent).length).length;
+    GROUPS[sig] = { onStyle: on ? on.getAttribute('style') : onCard, onRadio: on ? on.querySelector('[data-radio]').outerHTML : onRadio,
+      offStyle: off && off.getAttribute('style'), offRadio: off && off.querySelector('[data-radio]').outerHTML,
+      drawn: on ? infoOf(on) : null, drawnText: on ? norm(on.textContent) : null, single: offCopy(cards.find(c => nT(c) === 1)), split: offCopy(cards.find(c => nT(c) > 1)) };
+  });
+  document.querySelectorAll('[data-chips]').forEach(g => {
+    g.dataset.sig = [...g.children].map(c => norm(c.textContent)).join('|');
+    const on = g.querySelector('[data-chip="on"]'); if (on) on.dataset.drawnOn = '';
+  });
+  for (const [sid, list] of Object.entries(LISTS)) {
+    const g = screens[sid] && screens[sid].querySelector('[data-picks]');
+    if (g) LISTS_BY_SIG[g.dataset.sig] = list;
+  }
+})();
+function fillRows(group, rows) {                     // a picker's rows from flow.json "lists", drawn from Paper's own rows
+  const G = GROUPS[group.dataset.sig];
+  cardsOf(group).forEach(c => c.remove());
+  for (const r of rows) {
+    const tpl = (r.filter(v => times(v).length).length > 1 ? G.split : G.single) || G.single || G.split;
+    const c = tpl.cloneNode(true);
+    const ls = leaves(c); r.forEach((v, i) => { if (ls[i]) ls[i].textContent = v; });
+    group.appendChild(c);
+  }
+}
+function pickCard(card, silent) {
+  const group = card.parentElement, G = GROUPS[group.dataset.sig], s = card.closest('.screen');
+  cardsOf(group).forEach(c => {
+    const on = c === card, r = c.querySelector('[data-radio]');
+    if ((c.dataset.pick === 'on') === on && !silent) return;
+    c.setAttribute('style', on ? G.onStyle : (G.offStyle || c.getAttribute('style')));
+    if (r) r.outerHTML = on ? G.onRadio : (G.offRadio || r.outerHTML);
+    c.dataset.pick = on ? 'on' : '';
+  });
+  chosenBy[group.dataset.sig] = norm(card.textContent);
+  const info = infoOf(card);
+  if (info.spans.length) follow(s, info.spans, !silent);
+  if (silent || !G.drawn) return;
+  const from = G.drawn, sig = group.dataset.sig;
+  if (sameSpans(from.spans, info.spans) && from.rest.join('|') === info.rest.join('|')) delete carries[sig];
+  else carries[sig] = { lane: lane(s), from, to: info, words: from.rest.flatMap((r, i) => info.rest[i] === undefined ? [] : diffWords(r, info.rest[i])) };
+  carry(s);
+}
+const lane = s => s.dataset.id.split('.')[0];
+function diffWords(a, b) {                          // the runs of words that differ: "6th Sector · 1.2 km" → [6th→8th, 1.2→1.8]
+  const x = a.split(' '), y = b.split(' '), n = x.length, m = y.length;
+  const L = Array.from({ length: n + 1 }, () => Array(m + 1).fill(0));
+  for (let i = n - 1; i >= 0; i--) for (let j = m - 1; j >= 0; j--) L[i][j] = x[i] === y[j] ? L[i + 1][j + 1] + 1 : Math.max(L[i + 1][j], L[i][j + 1]);
+  const out = []; let i = 0, j = 0, ox = [], oy = [];
+  const flush = () => { if (ox.length && oy.length) out.push([ox.join(' '), oy.join(' ')]); ox = []; oy = []; };
+  while (i < n || j < m) {
+    if (i < n && j < m && x[i] === y[j]) { flush(); i++; j++; }
+    else if (j < m && (i === n || L[i][j + 1] >= L[i + 1][j])) oy.push(y[j++]);
+    else ox.push(x[i++]);
+  }
+  flush();
+  return out;
+}
+const esc = t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+function isNow(l, s) {                               // a value under "Now" is what she has, never what she picked
+  for (let e = l.parentElement; e && e !== s; e = e.parentElement) {
+    const ls = leaves(e);
+    if (ls.filter(x => times(x.textContent).length).length > 1) return false;
+    if (ls.some(x => norm(x.textContent) === 'Now')) return true;
+  }
+  return false;
+}
+function carryText(t, c) {
+  if (c.from.spans.length === 1)
+    for (const x of times(t).reverse())
+      if (sameSpans([x.span], c.from.spans)) {
+        const up = /AM|PM/.test(x.src), rep = up ? c.to.text.replace(/\b(am|pm)\b/g, m => m.toUpperCase()) : c.to.text.replace(/\b(AM|PM)\b/g, m => m.toLowerCase());
+        t = t.slice(0, x.at) + rep + t.slice(x.at + x.src.length);
+      }
+  for (const [o, n] of c.words) t = t.replace(new RegExp(`(^|[\\s(])${esc(o)}(?=$|[\\s?.,!)])`, 'g'), (m, p) => p + n);
+  return t;
+}
+function carry(s) {                                  // what she picked, on this screen: lines, toasts, clocks
+  const mine = Object.values(carries).filter(c => c.lane === lane(s));
+  for (const l of leaves(s)) {
+    if (l.closest('[data-picks], [data-chips], [data-ring-label], [data-input-box]')) continue;
+    l.dataset.orig ??= l.textContent;
+    let t = l.dataset.orig;
+    if (mine.length && !isNow(l, s)) for (const c of mine) t = carryText(t, c);
+    if (t !== l.textContent) l.textContent = t;
+  }
+  s.querySelectorAll('svg[data-clock="new"]').forEach(svg => {
+    if (svg.closest('[data-picks]')) return;
+    const c = clockOf(svg);
+    let spans = c.drawn;
+    for (const k of mine) if (same12(c.drawn, k.from.spans)) spans = k.to.spans;
+    setClock(svg, spans);
+  });
+}
+// A screen as she left it: her chips, her row, her words, and what she picked on the screens before
+function live(s) {
+  s.querySelectorAll('[data-chips]').forEach(g => {
+    const m = chipBy[g.dataset.sig];
+    if (!m) return;
+    if (m.relabel) { g.querySelector('[data-drawn-on]').lastElementChild.textContent = m.relabel; g._relabel = m.relabel; }
+    const chip = [...g.children].find(c => norm(c.textContent) === m.on);
+    if (chip) pick(chip, true);
+  });
+  if (pendingChip) { setChip(s, pendingChip); pendingChip = null; }
+  s.querySelectorAll('[data-picks]').forEach(g => {
+    const t = chosenBy[g.dataset.sig], c = t && cardsOf(g).find(c => norm(c.textContent) === t);
+    if (c) pickCard(c, true);
+  });
+  carry(s);
+}
+
+// A number field keeps what she typed from screen to screen; the first time it shows what Paper drew
+function fillField(s) {
+  const f = s.querySelector('[data-field]');
+  if (!f) return;
+  if (typed === null) typed = f.dataset.field;
+  f.textContent = typed;
+}
+
+// An in-flight screen moves on by itself
+let autoTimer = null;
+function autoStep(s) {
+  clearTimeout(autoTimer);
+  if (!s.dataset.auto) return;
+  const when = s.dataset.autoWhen && JSON.parse(s.dataset.autoWhen);
+  autoTimer = setTimeout(() => { if (current === s) navigate(choose(s.dataset.auto, when)); }, +s.dataset.autoMs);
+}
+
+// Saathi's line for a screen (flow.json "voice"): said once, 500 ms after the screen first settles, and again whenever
+// she taps Saathi (a "voice" target). Leaving the screen stops it. One voice at a time (voice-prompt.md).
+let voiceTimer = null; const heard = {};
+function pickVoice() { const vs = speechSynthesis.getVoices(); return vs.find(v => v.lang === VOICE_LANG) || vs.find(v => v.lang.startsWith(VOICE_LANG.slice(0, 2))); }
+function sayLine(s) {
+  if (!window.speechSynthesis || !s || !s.dataset.voice) return;
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(s.dataset.voice); u.lang = VOICE_LANG; u.rate = 0.95;
+  const v = pickVoice(); if (v) u.voice = v;
+  const orbs = [...s.querySelectorAll('[data-go="voice"]')];
+  u.onstart = () => orbs.forEach(o => o.classList.add('speaking'));
+  u.onend = u.onerror = () => orbs.forEach(o => o.classList.remove('speaking'));
+  speechSynthesis.speak(u);
+}
+function voiceOnEnter(s) {
+  clearTimeout(voiceTimer); if (window.speechSynthesis) speechSynthesis.cancel();
+  document.querySelectorAll('.speaking').forEach(o => o.classList.remove('speaking'));
+  if (!s.dataset.voice || heard[s.dataset.id]) return;
+  voiceTimer = setTimeout(() => { if (current === s) { heard[s.dataset.id] = true; sayLine(s); } },
+    s.dataset.intro ? INTRO.settle + INTRO.row + INTRO.count + 300 : 500);   // after an intro has landed
+}
+function speak(el) {                                // "Hear again": say the line it sits beside
+  const box = el.parentElement.closest('div:not([data-go])') || el.parentElement;
+  const line = [...box.querySelectorAll('div')].find(n => !n.children.length && n.textContent.trim() && !el.contains(n));
+  if (line && window.speechSynthesis) { speechSynthesis.cancel(); speechSynthesis.speak(new SpeechSynthesisUtterance(line.textContent)); }
+}
+
+// A drawn search field takes the phone's keyboard. Grey text is its placeholder; dark text is what she typed. On the
+// keyboard's search key, what she typed picks the screen (flow.json "fields"); that screen shows her words in its field
+// and wherever it quotes the drawn query.
+let query = null;
+function inputs(s) {
+  s.querySelectorAll('[data-input]').forEach(t => {
+    let inp = t.querySelector('input.typed');
+    if (!inp) {
+      inp = document.createElement('input'); inp.className = 'typed'; inp.type = 'search'; inp.size = 1;
+      inp.setAttribute('enterkeyhint', 'search'); inp.setAttribute('autocomplete', 'off');
+      if (t.dataset.input === 'placeholder') inp.placeholder = t.dataset.drawn;
+      t.textContent = ''; t.appendChild(inp);
+      inp.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); submit(s, inp.value); } });
+    }
+    if (!inp._kept) { inp._kept = true; inp.addEventListener('input', () => typedIn[t.dataset.drawn] = inp.value); }
+    inp.value = t.dataset.input === 'value' ? (query ?? t.dataset.drawn) : (typedIn[t.dataset.drawn] ?? '');
+  });
+  const drawn = s.querySelector('[data-input="value"]');
+  s.querySelectorAll('div').forEach(n => {           // the screen's own echo of the query: We couldn't find "Nexus Mall"
+    if (n.children.length || !drawn) return;
+    n.dataset.echo ??= n.textContent;
+    const q = `"${drawn.dataset.drawn}"`;
+    n.textContent = query && n.dataset.echo.includes(q) ? n.dataset.echo.replace(q, `"${query}"`) : n.dataset.echo;
+  });
+}
+function submit(s, value) {
+  const v = value.trim();
+  if (!v) return;
+  query = v;
+  const rules = s.dataset.fields && JSON.parse(s.dataset.fields);
+  if (!rules) return;
+  const hit = rules.find(([m]) => m === '*' || v.toLowerCase().includes(m.toLowerCase()));
+  document.activeElement && document.activeElement.blur();
+  const before = current;
+  if (hit) navigate(hit[1]);
+  if (current === before) inputs(current);         // the same screen: her new words still show
+}
+
+// A toast slides up, holds 3 s (4 s on two lines) and fades (feedback.md · Toast)
+let toastTimers = [];
+function toasts(s) {
+  toastTimers.forEach(clearTimeout); toastTimers = [];
+  s.querySelectorAll('[data-toast]').forEach(t => {
+    t.style.visibility = '';
+    anim(t, [{ transform: 'translateY(16px)', opacity: 0 }, { transform: 'none', opacity: 1 }], T.standard, EASE.enter);
+    toastTimers.push(setTimeout(() => anim(t, [{ opacity: 1 }, { opacity: 0 }], T.standard, EASE.exit)
+      .then(() => { if (current === s) t.style.visibility = 'hidden'; }), +t.dataset.toast));
+  });
+}
+
+// An intro (flow.json "intro"): the screen arrives without the line Paper drew, the line slides in (motion.slow, its
+// height over motion.standard), the amounts count to what Paper drew (motion.celebrate, linear) and party poppers burst
+// from both edges and are gone within 1.5 s (P6). Paper's drawing is the end state. Reduced motion: the end state, at once.
+const INTRO = { settle: 800, row: 400, count: 1600, life: 2400 };   // slowed at the lead's ask (2026-10-22)
+let introTimers = [], introAnims = [];
+const fmtIN = n => Math.round(n).toLocaleString('en-IN');
+function intro(s) {
+  introTimers.forEach(clearTimeout); introTimers = []; introAnims.forEach(a => a.cancel()); introAnims = [];
+  if (!s.dataset.intro) return;
+  const rows = [...s.querySelectorAll('[data-intro-row]')], counts = [...s.querySelectorAll('[data-count-from]')];
+  counts.forEach(el => { el.dataset.countText ??= el.textContent; el.dataset.countColour ??= el.style.color; el.dataset.countTo ??= el.textContent.match(/\d[\d,]*/)[0].replace(/,/g, ''); });
+  const put = (el, n) => { el.textContent = el.dataset.countText.replace(/\d[\d,]*/, fmtIN(n)); };
+  rows.forEach(r => { r.dataset.display ??= r.style.display; });
+  const end = () => { rows.forEach(r => { r.style.display = r.dataset.display; }); counts.forEach(el => { put(el, +el.dataset.countTo); el.style.color = el.dataset.countColour; }); };
+  if (reduce) { end(); return; }
+  rows.forEach(r => { r.style.display = 'none'; });
+  counts.forEach(el => put(el, +el.dataset.countFrom));
+  introTimers.push(setTimeout(() => {
+    if (current !== s) return;
+    rows.forEach(r => {
+      r.style.display = r.dataset.display; const h = r.offsetHeight;
+      r.style.overflow = 'hidden';
+      introAnims.push(r.animate([{ height: '0px', opacity: 0, transform: 'translateY(-8px)' }, { height: h + 'px', opacity: 1, transform: 'none' }],
+        { duration: INTRO.row, easing: EASE.enter }));
+      introAnims.at(-1).finished.then(() => { r.style.overflow = ''; }).catch(() => {});
+    });
+  }, INTRO.settle));
+  introTimers.push(setTimeout(() => {
+    if (current !== s) return;
+    const t0 = performance.now(), up = el => +el.dataset.countTo > +el.dataset.countFrom;
+    counts.forEach(el => { if (up(el)) el.style.color = 'var(--color-text-success)'; });
+    const step = now => {
+      if (current !== s) return;
+      const k = Math.min((now - t0) / INTRO.count, 1);
+      counts.forEach(el => put(el, +el.dataset.countFrom + (+el.dataset.countTo - +el.dataset.countFrom) * k));
+      if (k < 1) requestAnimationFrame(step);
+      else introTimers.push(setTimeout(() => counts.forEach(el => { el.style.color = el.dataset.countColour; }), INTRO.count));
+    };
+    requestAnimationFrame(step);
+    if (s.dataset.intro === 'confetti') poppers(s);
+  }, INTRO.settle + INTRO.row + 100));
+}
+
+// Party poppers: two bursts from the screen's edges, at the height of the first counting amount, in the brand's colours.
+function poppers(s) {
+  const c = document.createElement('canvas'); c.className = 'confetti'; s.appendChild(c);
+  const z = parseFloat(app.style.zoom) || 1, box = s.getBoundingClientRect();
+  const w = c.width = box.width * devicePixelRatio, h = c.height = box.height * devicePixelRatio, px = devicePixelRatio;
+  const ctx = c.getContext('2d'), css = getComputedStyle(document.documentElement);
+  const colours = ['--color-pink-600', '--color-pink-400', '--color-yellow-300', '--color-yellow-500', '--color-green-500', '--color-blue-500']
+    .map(v => css.getPropertyValue(v).trim()).filter(Boolean);
+  const anchor = [...s.querySelectorAll('[data-count-from]')].find(el => +el.dataset.countTo > +el.dataset.countFrom), ar = anchor ? anchor.getBoundingClientRect() : null;
+  const y0 = ((ar ? ar.top + ar.height / 2 : box.top + box.height * 0.3) - box.top) * px;
+  const bits = [];
+  for (const side of [0, 1]) for (let i = 0; i < 70; i++) {
+    const a = (side ? Math.PI + 0.25 : -0.25) + (side ? 1 : -1) * Math.random() * 1.1;     // up and inwards
+    const v = (7 + Math.random() * 7) * px;
+    bits.push({ x: side ? w : 0, y: y0, vx: Math.cos(a) * v * (side ? 1 : 1), vy: -Math.abs(Math.sin(a)) * v - 3 * px,
+      r: Math.random() * Math.PI, vr: (Math.random() - 0.5) * 0.4, s: (4 + Math.random() * 5) * px,
+      round: Math.random() < 0.3, col: colours[(Math.random() * colours.length) | 0] });
+  }
+  const t0 = performance.now();
+  const frame = now => {
+    const t = now - t0; ctx.clearRect(0, 0, w, h);
+    if (t > INTRO.life || !s.contains(c)) { c.remove(); return; }
+    const fade = Math.min(1, (INTRO.life - t) / 700);
+    for (const b of bits) {
+      b.vy += 0.22 * px; b.vx *= 0.99; b.vy *= 0.99; b.x += b.vx; b.y += b.vy; b.r += b.vr;
+      ctx.save(); ctx.globalAlpha = fade; ctx.translate(b.x, b.y); ctx.rotate(b.r); ctx.fillStyle = b.col;
+      if (b.round) { ctx.beginPath(); ctx.arc(0, 0, b.s / 2.4, 0, 7); ctx.fill(); } else ctx.fillRect(-b.s / 2, -b.s / 4, b.s, b.s / 2);
+      ctx.restore();
+    }
+    requestAnimationFrame(frame);
+  };
+  requestAnimationFrame(frame);
+}
+
+function enter(s) { live(s); startTimers(s); resetCode(s); fillField(s); autoStep(s); inputs(s); toasts(s); intro(s); voiceOnEnter(s); }
 
 // Taps
 let pressTimer = null, pressed = false, startY = 0;
 app.addEventListener('click', e => {
   if (pressed) { pressed = false; return; }
+  if (dragged) { dragged = false; return; }
+  const box = e.target.closest('[data-input-box]');
+  if (box && !e.target.closest('[data-go]')) { const i = box.querySelector('input.typed'); if (i && e.target !== i) i.focus(); return; }
   const key = e.target.closest('[data-key]');
   if (key && !key.dataset.go) return typeKey(key.dataset.key);
-  const el = e.target.closest('[data-acc], [data-swap], [data-step], [data-chip]');
+  const el = e.target.closest('[data-acc], [data-swap], [data-step], [data-chip], [data-pick]');
   if (el && !e.target.closest('[data-go]')) {
     if (el.hasAttribute('data-acc')) return toggleCard(el);
     if (el.hasAttribute('data-swap')) return toggleSwap(el);
     if (el.hasAttribute('data-step')) return step(el);
     if (el.hasAttribute('data-chip')) return pick(el);
+    if (el.hasAttribute('data-pick')) return pickCard(el);
   }
   const t = e.target.closest('[data-go]');
-  if (!t) { current.classList.remove('hint'); void current.offsetWidth; current.classList.add('hint'); return; }
-  const to = t.dataset.go;
-  if (to === 'back') history.back();
-  else if (to === 'dismiss') dismiss();
-  else go(to);
+  if (!t) {
+    if (HINTS) { current.classList.remove('hint'); void current.offsetWidth; current.classList.add('hint'); }
+    return;
+  }
+  if (t.dataset.go === 'speak') return speak(t);
+  if (t.dataset.go === 'voice') return sayLine(current);
+  navigate(choose(t.dataset.go, t.dataset.when && JSON.parse(t.dataset.when)));
 });
 
+// The project's other flows: a small switcher at the top, and the same links atop the screen list
+if (SIBLINGS.length) {
+  const bar = document.createElement('div'); bar.id = 'flows';
+  const tab = document.createElement('span'); tab.className = 'tab'; tab.textContent = '⇄'; bar.appendChild(tab);
+  tab.addEventListener('click', e => { e.stopPropagation(); bar.classList.toggle('open'); });
+  tab.addEventListener('pointerdown', e => e.stopPropagation());
+  const row = document.createElement('div'); row.className = 'flows';
+  SIBLINGS.forEach(f => [bar, row].forEach(p => { const a = document.createElement('a'); a.textContent = f.label; a.href = f.href;
+    if (f.on) { a.className = 'on'; a.onclick = e => e.preventDefault(); }
+    else a.onclick = e => { e.preventDefault(); const u = new URL(f.href, location.href); u.searchParams.set('v', Date.now()); location.href = u.href; };
+    a.addEventListener('pointerdown', e => e.stopPropagation()); p.appendChild(a); }));
+  document.body.appendChild(bar);
+  document.querySelector('#menu .panel').appendChild(row);
+}
 // Long-press anywhere: the list of every screen, for jumping to a variant
 const menu = document.getElementById('menu'), panel = menu.querySelector('.panel');
 order.forEach(id => {
   const b = document.createElement('button');
   b.innerHTML = `<b>${id}</b><span></span>`;
   b.querySelector('span').textContent = screens[id].dataset.title;
-  b.onclick = e => { e.stopPropagation(); menu.classList.remove('open'); go(id); };
+  b.onclick = e => { e.stopPropagation(); menu.classList.remove('open'); navigate(id); };
   b.dataset.id = id; panel.appendChild(b);
 });
 menu.addEventListener('click', e => { if (e.target === menu) menu.classList.remove('open'); });
+// A dismissible sheet (its scrim closes it) follows her finger down and closes past 30 % (bottom-sheet.md)
+let drag = null, dragged = false;
 app.addEventListener('pointerdown', e => {
+  const sheet = e.target.closest('[data-sheet]'), scrim = scrimOf(current);
+  if (sheet && scrim && scrim.dataset.go === 'back' && !e.target.closest('input')) drag = { sheet, y: e.clientY, dy: 0 };
+});
+app.addEventListener('pointermove', e => {
+  if (!drag) return;
+  drag.dy = Math.max(0, (e.clientY - drag.y) / (parseFloat(app.style.zoom) || 1));
+  if (drag.dy > 8) { dragged = true; drag.sheet.style.transform = `translateY(${drag.dy}px)`; }
+});
+['pointerup', 'pointercancel'].forEach(t => app.addEventListener(t, () => {
+  if (!drag) return;
+  const { sheet, dy } = drag; drag = null;
+  if (dy > sheet.offsetHeight * 0.3) { sheet.style.transform = ''; navigate('back'); }
+  else if (dy > 0) { sheet.animate([{ transform: `translateY(${dy}px)` }, { transform: 'none' }], { duration: T.standard, easing: EASE.enter }); sheet.style.transform = ''; }
+  setTimeout(() => dragged = false, 0);
+}));
+app.addEventListener('pointerdown', e => {
+  if (e.target.closest('input')) return;
   startY = e.clientY;
   pressTimer = setTimeout(() => {
     pressed = true;
@@ -291,7 +883,9 @@ app.addEventListener('pointermove', e => { if (Math.abs(e.clientY - startY) > 8)
 app.addEventListener('contextmenu', e => e.preventDefault());
 
 const first = location.hash.slice(1), start = screens[first] ? first : (screens['__START__'] ? '__START__' : order[0]);
-history.replaceState({ id: start, depth: 0 }, '', '#' + start);
+stack = (TRAILS[start] || [start]).slice();          // opened straight on a screen: back goes the way she came
+history.replaceState({ d: 0 }, '', '#' + stack[0]);
+for (let j = 1; j < stack.length; j++) history.pushState({ d: j }, '', '#' + stack[j]);
 show(start);
 </script>
 </body>

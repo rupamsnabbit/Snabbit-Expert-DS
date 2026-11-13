@@ -160,7 +160,7 @@ hr{display:none}
 <tr>
 <td>Payout Schedule: date tile + name + status line (<em>Paid on 5 Feb · UTR…</em> / <em>Payment is under processing…</em> / <em>Add UPI / bank account to enable payout ›</em>)</td>
 <td>ListItem with a date tile leading, Tag for status (<code>success</code> Paid · <code>warning</code> Processing · <code>error</code> Blocked · <code>error</code> Failed), status line as supporting text, UTR with a <strong>copy</strong> IconButton; Blocked and Failed rows carry the fix as a Button <code>secondary M</code></td>
-<td>State by Tag + words + icon, not by a coloured sentence (row 4); the fix is on the row that needs it (P2)</td>
+<td>State by Tag + words + icon, not by a coloured sentence (row 4); the fix is on the row that needs it (P2). <strong>Withdrawn 2026-10-23</strong>: the shipped tile + status line is kept and given tones and an icon (<code>statement.md</code> § <em>Schedule row status</em>); the fix opens one tap down, because the Statement holds no Button</td>
 </tr>
 <tr>
 <td>Monthly Earnings Breakdown rows with brown 3D coin icons, a <strong>Show</strong> pill on Karma bonus, 🔒 on locked rows</td>
@@ -245,55 +245,119 @@ hr{display:none}
 <li>Empty month: EmptyState <code>empty</code> <em>No earnings in February</em> with <em>See March ›</em>.</li>
 </ul>
 <h2 id="2-schedule-and-states">2. Schedule and states</h2>
+<blockquote>
+<p><strong>2026-10-23 — the payout journey</strong> (<code>projects/payouts-revamp</code>). Today she sees only a payout's final status.
+She now sees <strong>where her monthly payout is at every step</strong>, on the <strong>one row that already ships</strong> — the
+<em>Monthly payout</em> row in the statement's <em>Payout schedule</em> panel. Each step is a <strong>status</strong> of that row, rendered
+by <code>statement.md</code> § <em>Schedule row status</em> (date-tile tone + icon + one status line). Anything she must read or do
+opens one tap down in a BottomSheet <code>info</code>. The Tag-per-row proposal of 2026-09-22 is withdrawn in favour of the
+shipped tile and line.</p>
+</blockquote>
+<p><strong>One row, its current step only.</strong> Earlier attempts are never listed; the row moves on.</p>
+<pre><code> approaching ─► sent ─► paid
+ (T−2 … T)       │
+                 └─► failed ─► retrying (in [X] hours) ─► sent ─► paid
+                                   │  (two automatic retries)
+                                   └─► send it yourself ─► sent ─► paid
+                 └─► bank details wrong ─► (she fixes them) ─► next batch ─► sent
+ bank not added ─────────────────────────► (she adds a bank) ─► next batch ─► sent
+</code></pre>
 <div class="tbl-wrap"><table>
 <thead>
 <tr>
-<th>State</th>
-<th>Tag</th>
-<th>Supporting line</th>
-<th>Action on the row</th>
+<th>Step</th>
+<th>When</th>
+<th>Tone</th>
+<th>Status line (her words)</th>
+<th>Icon</th>
+<th>Opens</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>scheduled</code></td>
-<td><code>neutral</code> <em>15 Mar</em></td>
-<td><em>Monthly payout</em></td>
+<td><code>approaching</code></td>
+<td>from 2 days before the trigger date</td>
+<td><code>neutral</code></td>
+<td><em>Coming on 2 Nov</em></td>
+<td><code>calendar-blank</code></td>
 <td>—</td>
 </tr>
 <tr>
-<td><code>processing</code></td>
-<td><code>warning</code> <strong>Processing</strong></td>
-<td><em>Usually by evening · started 9:10 am</em></td>
-<td>— (never a spinner; a date, a word)</td>
+<td><code>sent</code></td>
+<td>the trigger date</td>
+<td><code>moving</code> (blue — fine, on its way; 2026-10-29)</td>
+<td><em>Sent · in your bank by 3 Nov</em></td>
+<td><code>clock</code></td>
+<td>—</td>
 </tr>
 <tr>
 <td><code>paid</code></td>
-<td><code>success</code> <strong>Paid</strong></td>
-<td><em>5 Feb · UTR 1234 5678 90</em></td>
-<td>IconButton <code>S</code> <strong>copy</strong> the UTR (Toast <em>Copied</em>)</td>
+<td>the bank confirms</td>
+<td><code>done</code></td>
+<td><em>Paid on 3 Nov · UTR 1234567890</em></td>
+<td><code>check-circle</code></td>
+<td>sheet: UTR with <strong>copy</strong> (Toast <em>Copied</em>), the account it went to (masked), <em>Payout issue</em> → Help</td>
+</tr>
+<tr>
+<td><code>retrying</code></td>
+<td>an attempt failed; an automatic retry is due</td>
+<td><code>waiting</code></td>
+<td><em>Didn't reach your bank · trying again in [X] hours</em></td>
+<td><code>arrow-clockwise</code></td>
+<td>sheet <code>info</code>: reason pictogram · the reason in one line · <em>We'll send it again at 2 pm. You don't need to do anything.</em> · <strong>Got it</strong></td>
+</tr>
+<tr>
+<td><code>send-yourself</code></td>
+<td>the second automatic retry also failed</td>
+<td><code>needs-her</code></td>
+<td><em>Couldn't send it · send it yourself</em></td>
+<td><code>x-circle</code></td>
+<td>sheet <code>info</code>: reason · one Button <code>primary brand</code> <strong>Send to my bank</strong> → the row returns to <code>sent</code></td>
+</tr>
+<tr>
+<td><code>details-wrong</code></td>
+<td>the failure is her account (wrong number, closed account) — retrying cannot fix it</td>
+<td><code>needs-her</code></td>
+<td><em>Bank details are wrong · fix them</em></td>
+<td><code>bank</code></td>
+<td>sheet <code>info</code>: <em>account details</em> pictogram · <em>Your bank couldn't find this account</em> · <strong>Fix bank details</strong> → § 3</td>
 </tr>
 <tr>
 <td><code>blocked</code></td>
-<td><code>error</code> <strong>Blocked</strong></td>
-<td><em>Add a UPI or bank account to get paid</em></td>
-<td>Button <code>secondary brand M</code> <strong>Add UPI or bank</strong></td>
+<td>no bank account added — at any step, through every trigger date</td>
+<td><code>needs-her</code></td>
+<td><em>Add a bank account · your payout waits until you do</em></td>
+<td><code>bank</code></td>
+<td>§ 3 <em>Get paid</em></td>
 </tr>
 <tr>
-<td><code>failed</code></td>
-<td><code>error</code> <strong>Failed</strong></td>
-<td><em>Bank returned it · check the account number</em></td>
-<td>Button <code>secondary brand M</code> <strong>Fix account</strong> · Help</td>
+<td><code>next-batch</code></td>
+<td>she has just added or fixed her bank after a trigger date</td>
+<td><code>neutral</code></td>
+<td><em>In the next batch · sent on 3 Nov</em></td>
+<td><code>calendar-blank</code></td>
+<td>— · plus a Toast at the end of § 3: <em>Bank account added · your payout goes on 3 Nov</em></td>
 </tr>
 <tr>
 <td><code>held</code></td>
-<td><code>warning</code> <strong>On hold</strong></td>
-<td><em>Talk to Help about this payout</em></td>
-<td>Button <code>secondary neutral M</code> <strong>Call help</strong></td>
+<td>ops has paused it</td>
+<td><code>waiting</code></td>
+<td><em>On hold · talk to us about this payout</em></td>
+<td><code>clock</code></td>
+<td>sheet: <strong>Call Saathi</strong> (the shipped <em>Payout Issue</em> menu)</td>
 </tr>
 </tbody>
 </table></div>
-<p class="lbl">Rules: a payout row never shows an amount without a state; <em>Processing</em> has a plain-language expectation (<em>Usually by evening</em>), never a percentage; a <code>failed</code> or <code>blocked</code> row is also a Snackbar on Home the day it happens (<em>Payout blocked · Add UPI ›</em>), and the <em>Get paid</em> Stepper appears at the top of the statement until it is fixed.</p>
+<p><strong>Rules</strong></p>
+<ul>
+<li><strong>Red means she must act; amber means we are acting</strong> (<code>statement.md</code>). <code>retrying</code> is amber even though an attempt failed: she has nothing to do, and the line says so. Red is only <code>send-yourself</code>, <code>details-wrong</code> and <code>blocked</code>.</li>
+<li><strong>Every failure names its reason</strong> — in the sheet, one line and one pictogram. Until the payment partner's list is mapped, three reasons: <strong>the bank's side</strong> (<em>Your bank didn't accept it today</em>, <code>bank</code> ✗) · <strong>our side</strong> (<em>We couldn't send it — our problem, not yours</em>, <code>transfer</code> ✗) · <strong>account details</strong> (<em>Your bank couldn't find this account</em>, <code>passbook</code> ✗). The first two retry; the third goes to <code>details-wrong</code>.</li>
+<li><strong>Dates, not durations, for the monthly payout.</strong> <em>In your bank by 3 Nov</em>, never <em>within 24 hours</em>. The retry time is a placeholder <em>[X] hours</em> until the gap is configured.</li>
+<li><strong>Trigger dates.</strong> The 2nd of the month from October 2026; the 1st from January 2027. <code>approaching</code> starts two days before.</li>
+<li><strong>PAN missing</strong> does not change the row. It is said in the three shipped places, in one message: the <em>Income tax (20 %)</em> row, the <em>Add your PAN card</em> card, and the tax sheet — <em>20 % tax is cut until you add PAN. With PAN: 1 %.</em></li>
+<li><strong>Nothing on Home</strong> (ask of 2026-10-23). The status lives on the statement; notifications are § 6.</li>
+<li><strong>This journey is the monthly payout's.</strong> Bonus rows in the schedule (<em>Winback</em>, <em>Joining</em>) keep <code>neutral</code> / <code>paid</code> / <code>blocked</code> as shipped.</li>
+</ul>
 <h2 id="3-get-paid-account-and-pan">3. Get paid — account and PAN</h2>
 <ul>
 <li><strong>Add UPI or bank account</strong> → BottomSheet <code>select</code>: <em>UPI ID</em> or <em>Bank account</em> (Radio rows with pictograms). UPI → <code>form</code> sheet: one TextField <em>UPI ID</em> (<code>sushila@okaxis</code>), helper <em>It's in your UPI app, under your name</em>, Button <strong>Verify and save</strong> → a ₹1 verification with a spoken <em>"Your account is verified"</em> and the name from the bank shown for her to confirm (<em>Is this you? Sushila Devi</em>). Bank → account number and IFSC through the NumericKeypad (<code>otp</code>-style boxes for the account number, plain field for IFSC), then the same verification.</li>
@@ -302,10 +366,53 @@ hr{display:none}
 <li>Verification and PAN checks can take a day: the row shows <code>processing</code> with <em>Checking with the bank · usually a day</em> — and payouts are <strong>not</strong> blocked in the meantime if a previous account exists.</li>
 </ul>
 <h2 id="4-early-payout">4. Early payout</h2>
+<blockquote>
+<p><strong>2026-10-23 — as shipped, plus its missing states</strong> (<code>projects/payouts-revamp</code>;
+<code>references/shipped-app-2026-10-23-early-payout/</code>). The earlier proposal here (NumericKeypad, fee row, confirm
+sheet) is withdrawn: the live flow is kept — <em>Max. early payout</em> card · <strong>Withdraw</strong> · <em>How much do you need?</em> with
+an amount field and slider · <em>Arrives in your bank</em> · the sent screen · <em>Recent withdrawals</em>.</p>
+</blockquote>
+<p>Early payout runs the § 2 journey with three differences: <strong>no <code>approaching</code></strong> (she asks for it), <strong>no automatic
+retry</strong> (a failure waits for her), <strong>no PAN message</strong>.</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Where she sees it</th>
+<th>Rendering</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sent</code></td>
+<td>the shipped sent screen, then the <em>Recent withdrawals</em> row</td>
+<td>screen: <em>₹5,000 will reach your bank in [X] hours</em> (hours, as shipped) · row: Tag <code>info</code> <strong>On its way</strong> with <code>clock</code> (blue: moving, nothing wrong — <code>statement.md</code> § Schedule row status)</td>
+</tr>
+<tr>
+<td><code>paid</code></td>
+<td><em>Recent withdrawals</em> row</td>
+<td>Tag <code>success</code> <strong>Paid</strong> with <code>check-circle</code> (the shipped <em>● Successful</em> pill); the row opens the UTR sheet as § 2 <code>paid</code></td>
+</tr>
+<tr>
+<td><code>failed</code></td>
+<td><em>Recent withdrawals</em> row <strong>and</strong> the home card</td>
+<td>row: Tag <code>error</code> <strong>Failed</strong> with <code>x-circle</code>, opens a sheet <code>info</code>: reason (§ 2 reasons) · <strong>Send again</strong> <code>primary brand</code> → <code>sent</code>. Home card: a Banner <code>error</code> above <strong>Withdraw</strong> while a failure is unresolved — <em>₹5,000 didn't reach your bank · Send again ›</em> (the whiteboard's <em>nudge to re-trigger</em>). As many times as it takes</td>
+</tr>
+<tr>
+<td><code>details-wrong</code></td>
+<td>as <code>failed</code></td>
+<td>the sheet's action is <strong>Fix bank details</strong> → § 3 instead of <em>Send again</em></td>
+</tr>
+<tr>
+<td><code>blocked</code></td>
+<td>home card</td>
+<td><strong>Withdraw</strong> is replaced by <strong>Add bank account</strong> (one next action, P2) and a Banner <code>warning</code> says <em>Add a bank account to take an early payout</em>; the amount screen is not reachable</td>
+</tr>
+</tbody>
+</table></div>
 <ul>
-<li>Row <em>Early payout · up to ₹25,000</em> → screen: Amount <code>L</code> picker with a NumericKeypad <code>amount</code> (₹ steps of 500, max the limit), the fee stated as a row <em>Fee ₹X (Y %)</em> and <em>You'll get ₹Z on Monday</em>, Button <code>primary brand L</code> <strong>Take early payout</strong> → <code>confirm</code> sheet with the consequence strip (<em>−₹3,000 from your 15 Mar payout · fee ₹X</em>), safe option <strong>Not now</strong> above, <strong>Confirm</strong> below (plain tap — it is her money; the sheet is the protection).</li>
-<li>It lands in the schedule as <em>Early payout · Processing</em> and in the statement as the <em>Early payout taken</em> deduction.</li>
-<li>Limit reached → the row shows <em>Available again after 15 Mar</em> and is not disabled without that reason.</li>
+<li>It lands in the month statement as the <em>Early payout</em> deduction once <code>paid</code>.</li>
+<li>Limit reached → the card shows <em>Available again after 2 Nov</em>; <strong>Withdraw</strong> is never disabled without that reason.</li>
 </ul>
 <h2 id="5-history">5. History</h2>
 <ul>
@@ -315,7 +422,7 @@ hr{display:none}
 <h2 id="6-paid-the-moment">6. Paid — the moment</h2>
 <ul>
 <li>On payout day: a notification <em>₹10,474 paid to your account</em> with the bank's name; in the app a Snackbar <em>₹10,474 paid · See ›</em>; the schedule row flips to <code>paid</code>. A short <code>celebrate</code> moment on the Earnings tab the first time she opens it that day — this is the whole point of the week (P6).</li>
-<li>Failed: notification + Snackbar with the fix; never silent.</li>
+<li>Failed: a notification with the reason and what happens next (§ 2); never silent. No Snackbar on Home (2026-10-23).</li>
 <li>Help from any payout row opens Help with the payout pre-attached (the shipped <em>Payout Issue</em>).</li>
 </ul>
 <hr />

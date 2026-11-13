@@ -1,0 +1,163 @@
+/* V3 entry + Expert ID (Figma V3 436:4761 · 454:20138, 2026-10-15) — screens/spine.js and screens/expert.js. Loaded globally.
+   Colours are tokens. The card inks are the pearl cards' own illustration colours (as V2's deck in styles.css): place/ID ink and ink-2 reuse
+   --deck-place-ink / --deck-place-ink2; the lilac Time card's ink is new in V3 and lives here. */
+:root { --v3-lilac-ink: #2f2459; --v3-spring: cubic-bezier(.22, 1.18, .5, 1); }
+
+/* ---------- 1.01 How to speak (436:5072 / 436:5122): stage 596 at 116 with 16 margins, pink-50 r16; Replay sound 40 at 12/12; bottom p16 ---------- */
+.v3video { flex: 1; min-height: 0; padding: 8px 16px 0; display: flex; }
+.v3video .v3screen { flex: 1; border-radius: var(--radius-xl); background: var(--color-pink-50); position: relative; overflow: hidden; }
+.v3sound { position: absolute; top: 12px; right: 12px; width: 40px; height: 40px; border-radius: var(--radius-full); background: var(--color-bg-primary); display: flex; align-items: center; justify-content: center; }
+.v3sound img { width: 20px; height: 20px; display: block; }
+.v3vbottom { padding: 16px; flex-shrink: 0; }
+.v3try { position: relative; overflow: hidden; height: 56px; padding: 12px 28px; }
+.v3try[disabled] { padding: 16px 24px; }
+.v3try .vprog { position: absolute; right: 0; top: 0; bottom: 0; width: 100%; background: var(--color-pink-700); animation: v3drain linear forwards; pointer-events: none; }
+@keyframes v3drain { from { width: 100% } to { width: 0 } }
+
+/* ---------- FQ · V4 Select an option (481:41035 / 492:48652 / 492:51797): three cards 140 tall, gap 16; pictos clipped by the card ---------- */
+.fqbody { flex: 1; min-height: 0; overflow: hidden; padding: 24px 16px 0; display: flex; flex-direction: column; gap: 24px; }
+.fqcards { display: flex; flex-direction: column; gap: 16px; }
+.fqcard { position: relative; height: 140px; border-radius: var(--radius-lg); overflow: hidden; background: var(--color-bg-primary); border: 1.5px solid var(--color-gray-100); padding: 16px; display: flex; align-items: center; }
+.fqcard.on { border: 2px solid var(--color-pink-600); background: linear-gradient(-59.5deg, var(--color-bg-primary) 0.57%, var(--color-pink-100) 100%); }
+.fqrow { position: relative; z-index: 1; display: flex; align-items: center; gap: 8px; }
+.fqradio { width: 20px; height: 20px; border-radius: 10px; border: 2px solid var(--color-gray-300); background: var(--color-bg-primary); flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+.fqcard.on .fqradio { border-color: var(--color-pink-600); }
+.fqcard.on .fqradio::after { content: ""; width: 10px; height: 10px; border-radius: 5px; background: var(--color-pink-600); }
+.fqlabel { font-size: 16px; line-height: 24px; font-weight: 600; color: var(--color-gray-800); white-space: nowrap; }
+.fqart { position: absolute; pointer-events: none; display: block; }
+.fqcard.time .fqart { left: 207px; top: 18px; width: 105px; height: 105px; }     /* V4 481:41035 (2026-10-18): clock picto 105, centred, x 191 in the row */
+.fqcard.hood .fqart { left: 195px; top: 11px; width: 118px; height: 118px; }     /* V4: map picto 118, centred, x 179 in the row */
+.fqcard.friend .fqart { left: 185.5px; top: 8.5px; width: 130px; height: 130px; }
+#stage:has(.screen[data-screen="FQ"]) .orb { left: 240px; top: 592px; }
+.actions.fqactions { padding: 16px; gap: 8px; }
+
+/* ---------- the V3 listen stage (FB2 441:5988 · 441:6032 · 441:6090 · 442:16439 · 454:25098 · 454:25131 · 454:28928 · 454:29099) ---------- */
+.v3head { position: absolute; left: 0; top: 56px; width: 360px; height: 48px; z-index: 6; }
+.v3hbtn { position: absolute; top: 0; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; }
+.v3hbtn.l { left: 12px; } .v3hbtn.r { left: 300px; }
+.v3hbtn img { width: 22px; height: 22px; display: block; }
+.v3prompt { position: absolute; left: 56px; top: 132px; width: 252px; margin: 0; text-align: center; font-size: 18px; line-height: 24px; font-weight: 400; color: var(--color-gray-900); }
+.v3words { position: absolute; left: 24px; top: 444px; width: 312px; margin: 0; text-align: center; font-size: 24px; line-height: 37px; font-weight: 600; color: var(--color-gray-900); z-index: 4; }
+.v3words .v3dim { color: var(--color-gray-300); }
+
+/* the deck: group 360 × 240 (top 280 · 180 · 150); cards 164 × 200 r16 dealt from off-stage right (430, 10, 15°) on a spring */
+.deck[data-to^="v3"] { left: 0; width: 360px; height: 240px; top: 280px; transition: top 700ms var(--v3-spring); }
+.deck.v3n4 { top: 180px; }
+.deck.v3e4w { top: 150px; }
+.v3card { position: absolute; width: 164px; height: 200px; border-radius: var(--radius-xl); overflow: hidden; left: 401px; top: 28px; transform: rotate(15deg);
+  transition: left 700ms var(--v3-spring), top 700ms var(--v3-spring), transform 700ms var(--v3-spring); }
+.v3card.place { z-index: 1; filter: drop-shadow(0 16px 16px rgba(56, 130, 170, .18)); color: var(--deck-place-ink); }
+.v3card.time { z-index: 2; filter: drop-shadow(0 16px 16px rgba(120, 90, 200, .2)); color: var(--v3-lilac-ink); }
+.v3card.id { z-index: 3; color: var(--deck-place-ink); }
+.deck.v3n1a .place, .deck.v3n1 .place, .deck.v3n4 .place { left: 50.01px; top: 28.01px; transform: rotate(-8deg); }
+.deck.v3n1 .time, .deck.v3n4 .time { left: 145.99px; top: 28.04px; transform: rotate(8deg); }
+.deck.v3e1 .id, .deck.v3e4 .id, .deck.v3e4w .id { left: 98px; top: 20px; transform: none; }
+/* V4 one-card decks: Time alone (481:41190 · 481:41234) and Place alone (492:48807 at 38.48 · 492:48838 at 28.04), centred, upright; group at 280 → 180 */
+.deck.v3t4, .deck.v3p4 { top: 180px; }
+.deck.v3t1 .time, .deck.v3t4 .time, .deck.v3p4 .place { left: 98.28px; top: 28.04px; transform: none; }
+.deck.v3p1 .place { left: 98.28px; top: 38.48px; transform: none; }
+.v3pearl { position: absolute; left: 0; top: 0; width: 164px; height: 200px; display: block; }
+.v3lines { position: absolute; left: 0; top: 88px; width: 164px; height: 112px; overflow: hidden; }
+.v3lg { position: absolute; }
+.v3lg img { display: block; width: 100%; height: 100%; max-width: none; }
+.v3lab { position: absolute; left: 16px; top: 48px; font-size: 20px; line-height: 28px; font-weight: 600; white-space: nowrap; }
+.v3val { position: absolute; left: 16px; top: 152px; font-size: 20px; line-height: 27px; font-weight: 500; white-space: nowrap; opacity: .5; }
+.v3ic { position: absolute; left: 15.87px; top: 18.23px; width: 24px; height: 24px; display: block; }
+.v3card.id .v3lab { top: 16px; }
+.v3card.id .v3val { top: 84px; font-size: 16px; line-height: 24px; opacity: 1; color: var(--deck-place-ink2); }
+.v3card.id .v3ic { left: 16px; top: 160px; }
+@media (prefers-reduced-motion: reduce) { .v3card, .deck[data-to^="v3"] { transition: none; } }
+
+/* glow from the bottom edge (243 at 557): base gradient 275 at 105, four blurred ellipses, the wave (39 × 24 at 160.5 / 168) or the loader (80 at 118) */
+.v3glow { position: absolute; left: 0; top: 557px; width: 360px; height: 243px; overflow: hidden; }
+.v3base { position: absolute; left: 0; top: 105px; width: 360px; height: 275px; background: linear-gradient(to bottom, transparent, color-mix(in srgb, var(--color-pink-100) 75%, transparent) 35%, var(--color-pink-200)); }
+.v3e { position: absolute; display: block; max-width: none; pointer-events: none; }
+.v3e.e1 { left: -190px; top: 40px; width: 480px; height: 420px; }
+.v3e.e2 { left: 70px; top: 50px; width: 490px; height: 420px; }
+.v3e.e3 { left: -50px; top: 0; width: 460px; height: 400px; }
+.v3e.e4 { left: 50px; top: 190px; width: 270px; height: 210px; }
+.v3wave { position: absolute; left: 160.5px; top: 168px; width: 39px; height: 24px; }
+.v3wave i { position: absolute; width: 3px; border-radius: 2px; background: var(--color-bg-primary); left: calc(var(--i) * 6px); }
+.v3wave i:nth-child(1) { height: 8px; top: 8px; } .v3wave i:nth-child(2) { height: 16px; top: 4px; } .v3wave i:nth-child(3) { height: 24px; top: 0; }
+.v3wave i:nth-child(4) { height: 12px; top: 6px; } .v3wave i:nth-child(5) { height: 20px; top: 2px; } .v3wave i:nth-child(6) { height: 10px; top: 7px; } .v3wave i:nth-child(7) { height: 6px; top: 9px; }
+.v3listening .v3wave i { animation: v3wave 900ms ease-in-out infinite; animation-delay: calc(var(--i) * -130ms); }
+@keyframes v3wave { 0%, 100% { transform: scaleY(1) } 50% { transform: scaleY(.45) } }
+.v3loader { position: absolute; left: 140px; top: 118px; width: 80px; height: 80px; display: block; animation: spin 1s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .v3listening .v3wave i, .v3loader { animation: none; } }
+
+/* ---------- S1b (436:5282): title and transcript 10 apart; the card 24 below ---------- */
+.body.s1b-body { gap: 24px; }
+/* V4 read-backs (481:37540 / 492:48268): the 62 Saathi disc at (279, 448) in the middle, i.e. 556 on the screen, under the three-row card */
+#stage:has(.screen[data-screen="S1b"]) .orb.small { top: 529px; }
+.s1b-head { display: flex; flex-direction: column; gap: 10px; }
+
+/* ---------- EID · the page under the keypad (436:5585 / 436:5722): the title inside the middle at 24; Tap to record gray-400 at 326;
+   disc 162 at (92, 420); Saathi 144 at (101, 430); mic badge 56 at (193, 542); "I'll enter it" at (130, 624) ---------- */
+.x-stage { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.x-stage img { display: block; }
+.x-stage .x-title { position: absolute; left: 16px; right: 16px; top: 24px; margin: 0; font-size: 24px; line-height: 32px; font-weight: 600; color: var(--color-gray-900); }
+.x-stage .prompt { color: var(--color-gray-400); }
+.x-disc { position: absolute; left: 92px; top: 420px; width: 162px; height: 162px; }
+.x-saathi { position: absolute; left: 101px; top: 430px; width: 144px; height: 144px; border-radius: 71.28px; background: var(--color-bg-primary); overflow: hidden; }
+.x-saathi .el { position: absolute; left: -18px; top: -18px; width: 180px; height: 180px; }
+.x-saathi .bd { position: absolute; left: 36.72px; top: 5.04px; width: 69.84px; height: 162.112px; }
+.x-saathi .eye { position: absolute; top: 50.81px; width: 10.158px; height: 6.614px; }
+.x-saathi .eye.r { left: 77.11px; }
+.x-saathi .eye.l { left: 57.36px; transform: scaleX(-1); }
+.x-badge { position: absolute; left: 193px; top: 542px; width: 56px; height: 56px; }
+.x-badge img { position: absolute; left: 0; top: 0; width: 56px; height: 56px; }
+.x-badge .mic { left: 14px; top: 14px; width: 28px; height: 28px; }
+.x-foot { position: absolute; left: 130px; top: 624px; display: flex; align-items: center; gap: 4px; font-size: 14px; line-height: 20px; font-weight: 600; color: var(--color-pink-600); white-space: nowrap; }
+.x-foot img { width: 16px; height: 16px; }
+
+/* ---------- sheets (454:29319 · 454:29389 · 454:29457 · 436:5585 · 436:5722): scrim gray-900 40 %, radius 16 top, close orb gray-700 40 ---------- */
+.x-wrap { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; z-index: 35; }
+.x-dim { position: absolute; inset: 0; background: var(--color-gray-900); opacity: .4; }
+.x-sheet { position: relative; background: var(--color-bg-primary); border-radius: var(--radius-xl) var(--radius-xl) 0 0; display: flex; flex-direction: column; animation: up 240ms ease-out; }
+.x-close { position: absolute; left: 50%; transform: translateX(-50%); top: -56px; width: 40px; height: 40px; border-radius: 24px; background: var(--color-gray-700); color: var(--color-bg-primary); display: flex; align-items: center; justify-content: center; }
+.x-close svg { width: 20px; height: 20px; }
+.x-keys .x-close { top: -60px; }
+/* her / miss: pt 8 · px 16 · pb 20 · gap 12, centred; avatar 96 pink-50 with the photo 96 × 104 r15 and the verified badge 32 at 64/64 */
+.x-her { padding: 8px 16px 20px; gap: 12px; align-items: center; }
+.x-avatar { position: relative; width: 96px; height: 96px; border-radius: 99px; background: var(--color-pink-50); overflow: hidden; flex-shrink: 0; }
+.x-avatar .verified { position: absolute; left: 64px; top: 64px; width: 32px; height: 32px; border-radius: var(--radius-full); background: var(--color-bg-primary); display: flex; align-items: center; justify-content: center; }
+.x-avatar .verified img { width: 24px; height: 24px; display: block; }
+.x-avatar .photo { position: absolute; left: 0; top: 0; display: block; width: 96px; height: 104px; object-fit: cover; border-radius: 15px; }
+.x-htitle { font-size: 24px; line-height: 32px; font-weight: 600; color: var(--color-gray-900); text-align: center; }
+.x-hsub { font-size: 16px; line-height: 24px; font-weight: 400; color: var(--color-gray-500); text-align: center; }
+.x-action { width: 100%; padding-top: 8px; display: flex; flex-direction: column; gap: 12px; }
+.x-action .btn-secondary { padding: 16px 24px; }
+/* keypad sheet: content p16 gap 12 · title pt 8 20/28 · line 16/24 gray-700 · field 56 pink-600 2 px + caret · Find her · keypad on gray-50, keys 64 white r8 */
+.x-content { padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+.x-stitle { padding-top: 8px; font-size: 20px; line-height: 28px; font-weight: 600; color: var(--color-gray-900); }
+.x-ssub { font-size: 16px; line-height: 24px; font-weight: 400; color: var(--color-gray-700); }
+.x-field { height: 56px; border: 2px solid var(--color-pink-600); border-radius: var(--radius-lg); padding: 0 16px; display: flex; align-items: center; gap: 4px; font-size: 24px; line-height: 32px; font-weight: 600; color: var(--color-gray-900); }
+.x-field .caret { width: 2px; height: 24px; background: var(--color-pink-600); animation: x-blink 1s steps(2) infinite; }
+@keyframes x-blink { 50% { opacity: 0 } }
+.x-keypad { background: var(--color-gray-50); padding: 8px 8px 16px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
+.x-keypad .k { height: 64px; padding: 0; border: 0; border-radius: var(--radius-md); background: var(--color-bg-primary); font-family: inherit; font-size: 24px; line-height: 32px; font-weight: 500; color: var(--color-gray-900); display: flex; align-items: center; justify-content: center; }
+.x-keypad .k:active { background: var(--color-gray-100); }
+.x-keypad .k.empty, .x-keypad .k.del { background: transparent; }
+.x-keypad .k.del svg { width: 28px; height: 28px; }
+
+/* V4 rev S1b time look (610:69114): two tiles side by side, gap 16 — white, border gray-200, radius 16, px 16 · py 20;
+   label row: glyph 20 + 14/20 regular gray-500, gap 4; value row 4 below: 20/28 semibold gray-900, caret 18 on the right */
+.s1t-tiles { display: flex; gap: 16px; width: 100%; }
+.s1t-tile { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 4px; padding: 20px 16px; background: var(--color-bg-primary); border: 1px solid var(--color-gray-200); border-radius: var(--radius-xl); cursor: pointer; }
+.s1t-tile .lab { display: flex; align-items: flex-start; gap: 4px; font-size: 14px; line-height: 20px; font-weight: 400; color: var(--color-gray-500); white-space: nowrap; }
+.s1t-tile .lab img, .s1t-tile .val img { display: block; flex-shrink: 0; }
+.s1t-tile .val { display: flex; align-items: center; justify-content: space-between; }
+.s1t-tile .val b { font-size: 20px; line-height: 28px; font-weight: 600; color: var(--color-gray-900); white-space: nowrap; }
+
+/* V4 rev 1.09 Done (481:37852 time · 481:37864 hood): title → info 24; info rows 12, centred; "New timing" 16/24 medium gray-500;
+   clock 24 + time 18/24 medium (time lane gray-800, hood gray-600), gap 8; "From …" 18/24 medium pink-600 */
+.d-text { display: flex; flex-direction: column; gap: 24px; width: 100%; }
+.d-info { display: flex; flex-direction: column; align-items: center; gap: 12px; width: 100%; }
+.d-info .d-lab { font-size: 16px; line-height: 24px; font-weight: 500; color: var(--color-gray-500); }
+.d-info .d-time { display: flex; align-items: center; gap: 8px; font-size: 18px; line-height: 24px; font-weight: 500; color: var(--color-gray-800); white-space: nowrap; }
+.d-info.h .d-time { color: var(--color-gray-600); }
+.d-info .d-time img { display: block; flex-shrink: 0; }
+.d-info .when { font-size: 18px; line-height: 24px; font-weight: 500; color: var(--color-pink-600); }
+
+/* the time card's value on the one-card time deck (481:41190): two lines, 130 from the card top */
+.v3card.time .v3val { top: 130px; white-space: pre; }

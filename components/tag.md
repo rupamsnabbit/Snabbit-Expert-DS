@@ -72,7 +72,7 @@ Tags are never full-width and never wrap; a label that does not fit is shortened
 
 ## Rules
 
-- **Tone is meaning, not decoration.** success = done/paid/verified; warning = waiting/attention; error = failed/penalty; info = neutral fact the expert should notice; brand = new/featured; neutral = category. A category is never green; a penalty is never blue.
+- **Tone is meaning, not decoration.** success = done/paid/verified; warning = delayed, we are fixing it (retrying, on hold) — not a normal *in progress*, which is info (2026-10-29); error = failed/penalty; info = neutral fact the expert should notice; brand = new/featured; neutral = category. A category is never green; a penalty is never blue.
 - **Tier colours never appear in a tag.** Tier is `TierBadge`.
 - **At most two tags per card**, and at most one `solid`. More than that and nothing is highlighted.
 - **Not interactive.** No pressed state, no ripple. If it must be tapped, it is a Chip.

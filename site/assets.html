@@ -236,6 +236,50 @@ hr{display:none}
 </tr>
 </tbody>
 </table></div>
+<p><strong>Earnings — 1 new pictogram (2026-10-05, <code>projects/earnings-page-revamp</code>).</strong> Illustration layer, 40 dp; SVG.</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Asset</th>
+<th>Meaning</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>asset/picto/business-made</code></td>
+<td><strong>Customers paid this for her work</strong> — the business she generated this month, as distinct from her pay</td>
+<td>A customer's hand passing notes into hers over a pink disc. It leads the month's <em>Customers paid ₹1,00,000 for your work</em> row and nowhere else; never a wallet (that is her money, <code>wallet-coins</code>) and never a shop front (she goes to homes). Takes no status dot — it is a fact to be proud of, not an outcome</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Payout failure reasons — 2 new pictograms, 1 reused (2026-10-23, <code>projects/payouts-revamp</code>).</strong> Illustration layer, 64 dp as the hero of the payout failure sheet (<code>patterns/payout.md</code> § 2); SVG. One per failure reason, so she can tell <em>whose</em> problem it was before reading the line; the status is only the ✗ dot.</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Asset</th>
+<th>Meaning</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>asset/picto/bank</code> (existing <code>bank-✗</code>)</td>
+<td><strong>The bank's side</strong> — her bank did not accept the transfer today</td>
+<td>Reused, not redrawn: the register already holds the bank object with a red ✗ dot</td>
+</tr>
+<tr>
+<td><code>asset/picto/transfer</code></td>
+<td><strong>Our side</strong> — Snabbit could not send the money</td>
+<td>Two arrows passing a rupee note from a phone towards a bank front. ✗ dot when the send failed; never used for a payout that went through (the paid state is the <code>paid</code> status line, not a picture). Distinct from <code>bank</code> (her bank) and <code>wallet-coins</code> (her money)</td>
+</tr>
+<tr>
+<td><code>asset/picto/passbook</code></td>
+<td><strong>Her account details</strong> — the account number or name the money was sent to</td>
+<td>A bank passbook, open, with an account-number line. ✗ dot when the bank could not find the account (<em>fix your bank details</em>); ✓ dot when her account is verified. Never her ID or PAN (that is <code>id-card</code>)</td>
+</tr>
+</tbody>
+</table></div>
 <p><strong>Product images are not design-system assets.</strong> The 40–50 items in her kit (facial kits, wax strips, rose water) are <strong>catalogue content</strong>, owned by the Category/Catalog team alongside the pouch master list, and delivered as product images with the item data. They are never drawn as pictograms and never registered here — a register with fifty consumables in it stops being a register. The four assets above are the <em>structure</em> (bag, pouch, order, rest day); the contents are data.</p>
 <h3 id="3-characters-asset-character">3. Characters — <code>asset/character/*</code></h3>
 <p>Semi-realistic flat vector, adult proportions, calm confident expressions, brown skin tones varied across scenes. Uniforms identify the role and are exact:</p>

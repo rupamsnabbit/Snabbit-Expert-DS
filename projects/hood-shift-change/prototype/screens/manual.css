@@ -1,0 +1,63 @@
+/* Manual pickers — Figma V4 rev 2026-10-21 (cIAH24e13VZJu31OmiMWrj): Pick your area (481:37876 / 481:38383) · Select shift time, hours (481:38664) ·
+   Shift hours (492:51101) · Select shift start time (481:38530 / 492:50895) · Modify areas (481:40333). No end-time pickers. Values are the frames' dp; colours are tokens. */
+
+/* ---- chrome shared by the M screens: the Top band is gray-50 with no rule under the nav (V4 draws no "Speak" chip); actions p 16, gap 8 ---- */
+.screen[data-screen^="M"] .top { background: var(--color-gray-50); }
+.screen[data-screen^="M"] .topnav { border-bottom: 0; padding-bottom: 0; }
+.screen[data-screen^="M"] .actions { padding: 16px; gap: 8px; }
+
+/* ---- body: G4 pt 8 · px 16 (no pb); G5 / G5b pt 8 · px 16 · pb 16; gap 16. Modify: py 8 · px 16, gap 24; a section header sits 12 over its list ---- */
+.body.m-body { padding: 8px 16px 16px; gap: 16px; }
+.body.m-body.m-area { padding-bottom: 0; }
+.body.m-body.m-plain { padding: 8px 16px; gap: 24px; }
+.m-stack { display: flex; flex-direction: column; gap: 16px; }
+.m-group { display: flex; flex-direction: column; gap: 12px; }
+
+/* ---- step bar: three 4 dp segments, round caps, gap 8; done = pink-600, rest gray-200 ---- */
+.m-progress { display: flex; gap: 8px; height: 4px; width: 100%; }
+.m-progress i { flex: 1; height: 4px; border-radius: 2px; background: var(--color-gray-200); }
+.m-progress i.on { background: var(--color-pink-600); }
+
+/* ---- search field: white, border gray-200, 56 tall, radius 12, px 16, gap 8, 22 glass, 16/24 placeholder gray-400 ---- */
+.m-search { height: 56px; border-radius: 12px; background: var(--color-bg-primary); border: 1px solid var(--color-gray-200); display: flex; align-items: center; gap: 8px; padding: 0 16px; color: var(--color-gray-500); }
+.m-search svg { width: 22px; height: 22px; flex-shrink: 0; }
+.m-search input { flex: 1; min-width: 0; border: 0; background: transparent; outline: 0; padding: 0; margin: 0; font-family: inherit; font-size: 16px; line-height: 24px; font-weight: 400; color: var(--color-gray-900); -webkit-appearance: none; appearance: none; }
+.m-search input::placeholder { color: var(--color-gray-400); }
+.m-search input::-webkit-search-cancel-button, .m-search input::-webkit-search-decoration { -webkit-appearance: none; }
+
+/* ---- section header: 16/24 semibold gray-900, optional "N of 3" 14/20 medium gray-500 ---- */
+.m-sec { display: flex; align-items: center; justify-content: space-between; }
+.m-sec .t { font-size: 16px; line-height: 24px; font-weight: 600; color: var(--color-gray-900); }
+
+/* ---- list of areas: one bordered white card, rows p 16 gap 12 with a gray-100 rule between; checkbox 24 · pin 22 · name · km ---- */
+.m-list { background: var(--color-bg-primary); border: 1px solid var(--color-gray-200); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
+.m-row { display: flex; align-items: center; gap: 12px; padding: 16px; box-shadow: 0 -1px 0 var(--color-gray-100); cursor: pointer; }
+.m-row.modify.on { background: var(--color-pink-50); }
+.m-row .m-cb { width: 24px; height: 24px; border-radius: 6px; border: 2px solid var(--color-gray-300); background: var(--color-gray-50); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--color-bg-primary); }
+.m-row .m-cb svg { width: 14px; height: 14px; display: none; }
+.m-row.on .m-cb { background: var(--color-pink-600); border-color: var(--color-pink-600); }
+.m-row.on .m-cb svg { display: block; }
+.m-row .pin { width: 22px; height: 22px; flex-shrink: 0; color: var(--color-pink-600); display: flex; }
+.m-row .pin svg { width: 22px; height: 22px; }
+.m-row .name { flex: 1; min-width: 0; font-size: 16px; line-height: 24px; font-weight: 600; color: var(--color-gray-900); }
+.m-row .km { font-size: 14px; line-height: 20px; font-weight: 400; color: var(--color-gray-500); white-space: nowrap; }
+/* three picked: the rest lose their checkbox and go gray-300 (G4a) */
+.m-row.off { pointer-events: none; }
+.m-row.off .m-cb { visibility: hidden; }
+.m-row.off .pin, .m-row.off .name, .m-row.off .km { color: var(--color-gray-300); }
+.m-row[hidden], .m-list[hidden], .m-sec[hidden], .m-group[hidden] { display: none; }
+/* "Your area" on Pick your area (481:37876): her own area, a plain row — no checkbox, not a pick; its list border is gray-100 */
+.m-list.m-own { border-color: var(--color-gray-100); }
+.m-row.own { cursor: default; box-shadow: none; }
+
+/* ---- one-choice cards (hours · start): white, r12, p16, radio 20 · 16/24 medium gray-800, gap 12; idle border 1.5 gray-100, chosen 2 pink-600.
+   Read-back pickers: body p16 · gap 12. Manual row: body pt 8 · px 16, progress then 16 ---- */
+.body.m-body.m-pick.m-plain { padding: 16px; gap: 16px; }
+.m-opts { display: flex; flex-direction: column; gap: 12px; }
+/* Figma strokes sit inside the 56 dp card (p16 + 24 line), so the card is a fixed 56 with the border inside — the row pitch stays 68 whichever card is chosen */
+.m-opt { display: flex; align-items: center; gap: 12px; height: 56px; box-sizing: border-box; padding: 0 16px; border-radius: var(--radius-lg); background: var(--color-bg-primary); border: 1.5px solid var(--color-gray-100); cursor: pointer; }
+.m-opt.on { border: 2px solid var(--color-pink-600); }
+.m-opt .t { flex: 1; min-width: 0; font-size: 16px; line-height: 24px; font-weight: 500; color: var(--color-gray-800); }
+
+/* ---- orb as V4 draws it on the pickers: (240, 593); Modify areas draws none ---- */
+#stage:has(.screen[data-screen^="M"]:not([data-screen="M1a"])) .orb { left: 240px; top: 593px; }

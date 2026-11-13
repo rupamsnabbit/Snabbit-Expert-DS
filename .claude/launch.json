@@ -1,0 +1,13 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "walkthrough",
+      "url": "http://localhost:8765"
+    },
+    {
+      "name": "prototype",
+      "url": "http://localhost:8767"
+    }
+  ]
+}

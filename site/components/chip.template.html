@@ -9,6 +9,7 @@
 .chp.sel{--fill:#FEF1F7;--ink:#F70F79;--bw:1.5px;--bc:#F70F79}.chp.sel .cnt{color:#F70F79}
 .chp.dis{--fill:#F3F4F6;--ink:#9CA3AF;cursor:default}
 .chp.qr{--ink:#F70F79}
+.chp.ans-no{--fill:#F3F4F6;--ink:#374151;--bw:1px;--bc:#E5E7EB}
 .chp:active:not(.dis){background:var(--pf,#F9FAFB)}.chp.sel:active{--pf:#FDE4EF}
 .chp.pressed{background:#F9FAFB}.chp.sel.pressed{background:#FDE4EF}
 .chp.foc{outline:2px solid #3B82F6;outline-offset:2px}
@@ -30,13 +31,32 @@
 .chat .msg.me{align-self:flex-end;background:#FEF1F7;color:#97094A;border-radius:12px 12px 4px 12px}
 .chat .qrs{display:flex;gap:8px;flex-wrap:wrap;padding-top:4px}
 .logline{font-family:var(--mono);font-size:12px;color:var(--text-2);min-height:16px}
+/* removable kind + picked-areas demo: colours, spacing, radius, border from tokens.json via --t-* (set in the script) */
+.chp.rm{--fill:var(--t-bgBrandSubtle);--ink:var(--t-textBrand);--bw:var(--t-bw-thick);--bc:var(--t-borderBrand);padding:0 var(--t-s3) 0 var(--t-s5);gap:var(--t-s3);cursor:default}
+.chp.rm:active,.chp.rm.pressed{background:var(--t-pink100)}
+.chp.rm .rmx{position:relative;width:var(--t-icon20);height:var(--t-icon20);display:grid;place-items:center;border:0;background:none;color:inherit;padding:0;cursor:pointer}
+.chp.rm .rmx::before{content:"";position:absolute;width:var(--t-s10);height:var(--t-s10);left:50%;top:50%;transform:translate(-50%,-50%);border-radius:var(--t-r-full)}
+.chp.rm .rmx.hit::before{box-shadow:inset 0 0 0 var(--t-bw-thin) var(--t-borderBrand);opacity:.6}
+.chp.rm .rmx:focus-visible{outline:none}.chp.rm .rmx:focus-visible::before{box-shadow:0 0 0 var(--t-bw-thicker) var(--t-borderFocus)}
+.strip{display:flex;flex-wrap:wrap;gap:var(--t-s3);padding:var(--t-s3) var(--t-s5) 0}
+.lh{display:flex;justify-content:space-between;align-items:baseline;padding:var(--t-s5) var(--t-s5) var(--t-s3)}
+.lh b{font-size:16px;line-height:24px;font-weight:600;color:var(--t-textPrimary)}.lh span{font-size:14px;font-weight:500;color:var(--t-textSecondary);font-variant-numeric:tabular-nums}
+.ar{display:flex;align-items:center;gap:var(--t-s4);min-height:64px;width:100%;padding:0 var(--t-s5);border:0;background:var(--t-bgPrimary);text-align:left;cursor:pointer;font-family:var(--sans);box-shadow:inset 0 calc(-1 * var(--t-bw-thin)) 0 var(--t-borderSubtle)}
+.ar.on{background:var(--t-bgBrandSubtle)}
+.ar .lead{width:24px;height:24px;color:var(--t-textBody);flex:none}.ar .lead svg{width:24px;height:24px}
+.ar .tx{flex:1;display:flex;flex-direction:column}
+.ar .t{font-size:16px;line-height:24px;font-weight:600;color:var(--t-textPrimary)}.ar .d{font-size:14px;line-height:20px;color:var(--t-textSecondary)}
+.ar .box{width:24px;height:24px;border-radius:var(--t-r-sm);box-shadow:inset 0 0 0 var(--t-bw-thick) var(--t-borderStrong);background:var(--t-bgPrimary);display:grid;place-items:center;flex:none;color:var(--t-textInverse)}
+.ar .box svg{width:16px;height:16px}
+.ar.on .box{background:var(--t-interactiveDefault);box-shadow:none}
+.ar.cap{cursor:default}.ar.cap .lead,.ar.cap .t,.ar.cap .d{color:var(--t-textDisabled)}.ar.cap .box{visibility:hidden}
 __NAVCSS__</style>
 
 <div class="shell">
   <aside class="rail">
     <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · Chip</small></div></div>
     __SITENAV__
-    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#kinds">Kinds</a><a href="#states">States</a><a href="#live">Live: filter row</a><a href="#quick">Live: quick replies</a><a href="#figma">Figma changes</a></nav>
+    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#kinds">Kinds</a><a href="#states">States</a><a href="#live">Live: filter row</a><a href="#quick">Live: quick replies</a><a href="#removable">Live: picked areas</a><a href="#figma">Figma changes</a></nav>
     <div class="rail-foot">Rendered from tokens.json · spec in components/chip.md</div>
   </aside>
   <main class="main">
@@ -47,7 +67,7 @@ __NAVCSS__</style>
     </header>
 
     <section id="kinds">
-      <header><div class="eyebrow">Three jobs</div><h2>Kinds</h2><p><b>Filter</b> picks exactly one and the list below changes now — <em>All</em> is first and selected by default. <b>Choice</b> toggles zero or more and the screen's Button commits. <b>Quick reply</b> fires once and the row disappears.</p></header>
+      <header><div class="eyebrow">Three jobs</div><h2>Kinds</h2><p><b>Filter</b> picks exactly one and the list below changes now. <em>All</em> is first and selected by default. When the list is about something she already has, such as her hours a day, her current value is selected instead, the chips run in natural order and <em>All</em> comes last (added 2026-10-01 for timings lists). <b>Choice</b> toggles zero or more and the screen's Button commits. <b>Quick reply</b> fires once and the row disappears. <b>Answer</b> (added 2026-10-01 for the attendance flow) has two chosen states and no unselected one: a shift starts as <em>Coming</em> (check) and a tap flips it to <em>Can't come</em> (moon). <b>Removable</b> (added 2026-10-07 for the work-area picker, <code>projects/hood-shift-change</code>) shows a value she already picked, in the selected look with no check, and a trailing ✕ that takes it back.</p></header>
       <div class="stage"><div class="grid2" id="kinds-grid"></div></div>
       <ul class="rules"><li>Selected changes <b>shape</b>: the leading icon becomes a <code>check</code>, the fill goes brand-subtle, the border goes brand. Never border colour alone (P1).</li><li><b>≤ 6 chips.</b> More categories than that is a Select sheet — a row must be scannable in one look.</li><li>The Camera / Gallery "Selection Pill" in Figma is a <code>SelectionCard</code>, not a chip.</li></ul>
     </section>
@@ -67,9 +87,15 @@ __NAVCSS__</style>
       <div class="stage"><div class="chat" id="chat"></div></div>
     </section>
 
+    <section id="removable">
+      <header><div class="eyebrow">Try it</div><h2>Live: picked areas</h2><p><b>Removable</b> chips over a capped multi-select list (<em>up to 3</em>). Each row keeps its <code>map-pin</code> leading and has its checkbox trailing; a picked row is tinted. Tap a row to pick it; tap a chip's ✕ to take it back, and its row unticks. At <em>3 of 3</em> the other rows go quiet and lose their box.</p></header>
+      <div class="demo"><div class="ph" id="areas"></div><div class="card" style="max-width:360px"><h4>The ✕ is the only target</h4><p>The chip has the selected look with no check, because the list already shows the checks. The ✕ hit area is 48 × 48, centred on the icon, and may run past the chip's edge (outlined below). The label does nothing, so a mis-tap never removes a pick. The strip wraps; it never scrolls.</p><div class="strip" id="hitdemo" style="padding:12px 0"></div><div class="logline" id="alog"></div></div></div>
+      <ul class="rules"><li>One state, shown twice: removing a chip unticks its row; ticking a row adds its chip at the end of the strip.</li><li>Row titles are SemiBold here because this is a <b>choice list</b> (<code>list-item.md</code> § Content); the weight never changes on selection.</li><li>At the cap, unpicked rows use <code>textDisabled</code>, no checkbox, and keep the empty slot so the column stays straight. The counter <em>3 of 3</em> is the reason in words.</li></ul>
+    </section>
+
     <section id="figma">
       <header><div class="eyebrow">Reconciliation</div><h2>What changes in Figma</h2></header>
-      <ol class="rules"><li>Selection Chips → Chip: Kind (Filter / Choice / Quick reply), State (Unselected / Selected / Pressed / Disabled), booleans Leading icon, Count.</li><li>Height 40, radius full, padding 16, gap 8; selected = bgBrandSubtle + borderBrand 1.5 + leading check.</li><li>Add a Chip row component (48 dp, 8 gap, trailing fade).</li><li>Move Selection Pill to SelectionCard.</li><li>Rebind colours; label BodyMd Medium.</li></ol>
+      <ol class="rules"><li>Selection Chips → Chip: Kind (Filter / Choice / Quick reply / Reason / Reaction / Answer / Removable), State (Unselected / Selected / Pressed / Disabled; Answer: Coming / Can't come), booleans Leading icon, Count.</li><li>Height 40, radius full, padding 16, gap 8; selected = bgBrandSubtle + borderBrand 1.5 + leading check.</li><li>Add a Chip row component (48 dp, 8 gap, trailing fade).</li><li>Move Selection Pill to SelectionCard.</li><li>Rebind colours; label BodyMd Medium.</li><li><b>New ask (2026-10-07):</b> Removable kind (selected look, no leading slot, trailing x 20 with a 48 × 48 hit frame, padding 16 / 8) and a wrapping Chip row. Not in the DS library yet.</li></ol>
       <p class="sub" style="margin-top:14px">Result: ~20 variants from 2.</p>
     </section>
   </main>
@@ -79,19 +105,36 @@ __NAVCSS__</style>
 <script>
 (function(){
 const $=s=>document.querySelector(s);
-const ICO={check:'M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z',
+const T=JSON.parse(document.getElementById('tokens-json').textContent);
+const sem={};Object.values(T.color.semantic).flat().forEach(t=>sem[t.name]=t.value);
+const sp=n=>T.spacing.scale.find(x=>x.name===String(n)).value+'px', rad=n=>T.radius.scale.find(x=>x.name===n).value+'px', bw=n=>T.borderWidth.scale.find(x=>x.name===n).value+'px';
+const rootStyle=document.documentElement.style;
+['bgPrimary','bgBrandSubtle','borderBrand','borderStrong','borderSubtle','borderFocus','textBrand','textPrimary','textBody','textSecondary','textDisabled','textInverse','interactiveDefault'].forEach(k=>rootStyle.setProperty('--t-'+k,sem[k]));
+rootStyle.setProperty('--t-pink100',T.color.palette.pink['100']); // proposed bgBrandSubtlePressed (Button spec)
+[3,4,5,10].forEach(n=>rootStyle.setProperty('--t-s'+n,sp(n)));
+rootStyle.setProperty('--t-r-sm',rad('sm'));rootStyle.setProperty('--t-r-full',rad('full'));
+['thin','thick','thicker'].forEach(n=>rootStyle.setProperty('--t-bw-'+n,bw(n)));
+rootStyle.setProperty('--t-icon20',T.icon.sizes.find(v=>v===20)+'px');
+const ICO={x:'M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z',
+ pin:'M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z',
+ check:'M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z',
  broom:'M235.5,216.81c-22.56-11-35.5-34.58-35.5-64.8V134.73a15.94,15.94,0,0,0-10.09-14.87L165,110a8,8,0,0,1-4.48-10.34l21.32-53a28,28,0,0,0-16.1-37,28.14,28.14,0,0,0-35.82,16,.61.61,0,0,0,0,.12L108.9,79a8,8,0,0,1-10.37,4.49L73.11,73.14A15.89,15.89,0,0,0,55.74,76.8C34.68,98.45,24,123.75,24,152a111.45,111.45,0,0,0,31.18,77.53A8,8,0,0,0,61,232H232a8,8,0,0,0,3.5-15.19ZM67.14,88l25.41,10.3a24,24,0,0,0,31.23-13.45l21-53c2.56-6.11,9.47-9.27,15.43-7a12,12,0,0,1,6.88,15.92L145.69,93.76a24,24,0,0,0,13.43,31.14L184,134.73V152c0,.33,0,.66,0,1L55.77,101.71A108.84,108.84,0,0,1,67.14,88Zm48,128a87.53,87.53,0,0,1-24.34-42,8,8,0,0,0-15.49,4,105.16,105.16,0,0,0,18.36,38H64.44A95.54,95.54,0,0,1,40,152a85.9,85.9,0,0,1,7.73-36.29l137.8,55.12c3,18,10.56,33.48,21.89,45.16Z',
  pot:'M88,48V16a8,8,0,0,1,16,0V48a8,8,0,0,1-16,0Zm40,8a8,8,0,0,0,8-8V16a8,8,0,0,0-16,0V48A8,8,0,0,0,128,56Zm32,0a8,8,0,0,0,8-8V16a8,8,0,0,0-16,0V48A8,8,0,0,0,160,56Zm92.8,46.4L224,124v60a32,32,0,0,1-32,32H64a32,32,0,0,1-32-32V124L3.2,102.4a8,8,0,0,1,9.6-12.8L32,104V88a8,8,0,0,1,8-8H216a8,8,0,0,1,8,8v16l19.2-14.4a8,8,0,0,1,9.6,12.8ZM208,96H48v88a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16Z',
  shirt:'M245.4,61.32,187.2,24.4A8,8,0,0,0,183,23.14H73a8,8,0,0,0-4.2,1.26L10.6,61.32A15.91,15.91,0,0,0,4.86,82.83l23.47,42.55a15.92,15.92,0,0,0,21,6.89L64,124.9V208a16,16,0,0,0,16,16h96a16,16,0,0,0,16-16V124.9l14.65,7.37a15.92,15.92,0,0,0,21-6.89l23.47-42.55A15.91,15.91,0,0,0,245.4,61.32ZM64,106.93l-21.82,11L18.74,75.35,64,46.65Zm128,101.07H80V39.14h34.34a13.67,13.67,0,0,0,27.32,0H176V208Zm21.82-90.07L192,106.93V46.65l45.26,28.7Z',
  plane:'M227.32,28.68a16,16,0,0,0-15.66-4.08l-.15,0L19.57,82.84a16,16,0,0,0-2.49,29.8L102,154l41.3,84.87A15.86,15.86,0,0,0,157.74,248q.69,0,1.4-.06a15.88,15.88,0,0,0,14-11.51l58.2-191.94c0-.05,0-.1,0-.15A16,16,0,0,0,227.32,28.68ZM157.83,231.85l-.05.14,0-.07-40.06-82.3,48-48a8,8,0,0,0-11.31-11.31l-48,48L24.08,98.25l-.07,0,.14,0L216,40Z',
+ moon:'M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23ZM188.9,190.34A88,88,0,0,1,65.66,67.11a89,89,0,0,1,31.4-26A106,106,0,0,0,96,56,104.11,104.11,0,0,0,200,160a106,106,0,0,0,14.92-1.06A89,89,0,0,1,188.9,190.34Z',
  all:'M104,40H56A16,16,0,0,0,40,56v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,104,40Zm0,64H56V56h48v48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,200,40Zm0,64H152V56h48v48Zm-96,32H56a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,104,136Zm0,64H56V152h48v48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,200,136Zm0,64H152V152h48v48Z'};
 const svg=n=>`<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="${ICO[n]}"/></svg>`;
-const chip=(o)=>`<button type="button" class="chp ${o.sel?'sel':''} ${o.dis?'dis':''} ${o.qr?'qr':''} ${o.cls||''}" ${o.id?`data-id="${o.id}"`:''} aria-pressed="${!!o.sel}">${o.sel?svg('check'):o.icon?svg(o.icon):''}<span>${o.label}</span>${o.count!=null?`<span class="cnt">${o.count>99?'99+':o.count}</span>`:''}${o.qr?svg('plane'):''}</button>`;
+const chip=(o)=>`<button type="button" class="chp ${o.sel?'sel':''} ${o.dis?'dis':''} ${o.qr?'qr':''} ${o.no?'ans-no':''} ${o.cls||''}" ${o.id?`data-id="${o.id}"`:''} aria-pressed="${!!o.sel}">${o.sel?svg('check'):o.no?svg('moon'):o.icon?svg(o.icon):''}<span>${o.label}</span>${o.count!=null?`<span class="cnt">${o.count>99?'99+':o.count}</span>`:''}${o.qr?svg('plane'):''}</button>`;
+const rchip=(label,o={})=>`<span class="chp rm ${o.cls||''}" role="group" aria-label="${label}"><span>${label}</span><button type="button" class="rmx ${o.hit?'hit':''}" data-v="${label}" aria-label="Remove ${label}">${svg('x')}</button></span>`;
 const W=(cap,html)=>`<div class="stg">${html}<div class="cap">${cap}</div></div>`;
 $('#kinds-grid').innerHTML=[
  W('<b>filter</b> · exactly one · All first, selected',`<div style="display:flex;gap:8px;flex-wrap:wrap">${chip({label:'All',sel:1,count:12})}${chip({label:'Cleaning',icon:'broom',count:7})}${chip({label:'Cooking',icon:'pot',count:3})}</div>`),
+ W('<b>filter · her current value</b> · a list about something she has (hours a day) · her value selected · natural order · All last · only hours the list offers',`<div style="display:flex;gap:8px;flex-wrap:wrap">${chip({label:'4 hrs'})}${chip({label:'6 hrs'})}${chip({label:'8 hrs',sel:1})}${chip({label:'All'})}</div>`),
  W('<b>choice</b> · zero or more · Button commits',`<div style="display:flex;gap:8px;flex-wrap:wrap">${chip({label:'Mon',sel:1})}${chip({label:'Tue',sel:1})}${chip({label:'Wed'})}${chip({label:'Thu'})}${chip({label:'Fri',sel:1})}</div>`),
- W('<b>quick reply</b> · fires once · brand text + plane',`<div style="display:flex;gap:8px;flex-wrap:wrap">${chip({label:'On my way',qr:1})}${chip({label:'Reached',qr:1})}${chip({label:'Need 5 more min',qr:1})}</div>`)].join('');
+ W('<b>answer</b> · two chosen states · Coming (check) / Can\'t come (moon) · time-range label',`<div style="display:flex;gap:8px;flex-wrap:wrap">${chip({label:'8 am – 12 pm',sel:1})}${chip({label:'4 – 8 pm',no:1})}</div>`),
+ W('<b>quick reply</b> · fires once · brand text + plane',`<div style="display:flex;gap:8px;flex-wrap:wrap">${chip({label:'On my way',qr:1})}${chip({label:'Reached',qr:1})}${chip({label:'Need 5 more min',qr:1})}</div>`),
+ W('<b>removable</b> · a value she already picked · selected look, no check · trailing ✕ (48 dp target) · wraps',`<div class="strip" style="padding:0">${rchip('Agara')}${rchip('HSR Layout')}${rchip('Bellandur')}</div>`)].join('');
 const ST=['unselected','selected','pressed','disabled','focused'];
 $('#mx').innerHTML=`<div></div>${ST.map(s=>`<div class="h">${s}</div>`).join('')}`
  +`<div class="r">with icon</div>${[chip({label:'Cleaning',icon:'broom'}),chip({label:'Cleaning',icon:'broom',sel:1}),chip({label:'Cleaning',icon:'broom',cls:'pressed'}),chip({label:'Cleaning',icon:'broom',dis:1}),chip({label:'Cleaning',icon:'broom',cls:'foc'})].map(x=>`<div>${x}</div>`).join('')}`
@@ -110,6 +153,16 @@ ph();
 function chat(sent){$('#chat').innerHTML=`<div class="msg">Are you close? The door is open.</div>${sent?`<div class="msg me">${sent}</div>`:`<div class="qrs">${chip({label:'On my way',qr:1})}${chip({label:'Reached',qr:1})}${chip({label:'Need 5 more min',qr:1})}</div>`}`;
  $('#chat').querySelectorAll('.chp').forEach(b=>b.onclick=()=>chat(b.querySelector('span').textContent));}
 chat();
+// picked areas: removable chips + capped multi-select list with trailing checkboxes
+const AREAS=[{n:'Agara',d:'1.2 km'},{n:'HSR Layout',d:'2 km'},{n:'Koramangala',d:'3.5 km'},{n:'Bellandur',d:'4 km'},{n:'BTM Layout',d:'5 km'}];
+const CAP=3;let picked=['Agara','HSR Layout'];
+function areas(focusAfter){const full=picked.length>=CAP;
+ $('#areas').innerHTML=`<div class="hdr">Pick your area</div>${picked.length?`<div class="strip">${picked.map(n=>rchip(n)).join('')}</div>`:''}<div class="lh"><b>Areas near you</b><span aria-live="polite">${picked.length} of ${CAP}</span></div><div>${AREAS.map(a=>{const on=picked.includes(a.n),cap=full&&!on;return `<button type="button" class="ar ${on?'on':''} ${cap?'cap':''}" role="checkbox" aria-checked="${on}" ${cap?'aria-disabled="true"':''} data-n="${a.n}" aria-label="${a.n}, ${a.d}, ${on?'selected':cap?'not available':'not selected'}, ${picked.length} of ${CAP}"><span class="lead">${svg('pin')}</span><span class="tx"><span class="t">${a.n}</span><span class="d">${a.d}</span></span><span class="box">${on?svg('check'):''}</span></button>`;}).join('')}</div>`;
+ $('#areas').querySelectorAll('.ar').forEach(b=>b.onclick=()=>{const n=b.dataset.n;if(picked.includes(n)){picked=picked.filter(x=>x!==n);$('#alog').textContent=`untick ${n} → chip removed · ${picked.length} of ${CAP}`;}else if(picked.length<CAP){picked.push(n);$('#alog').textContent=`tick ${n} → chip added · ${picked.length} of ${CAP}`;}else return;areas();});
+ $('#areas').querySelectorAll('.rmx').forEach(b=>b.onclick=()=>{const n=b.dataset.v,i=picked.indexOf(n);picked=picked.filter(x=>x!==n);$('#alog').textContent=`✕ ${n} → row unticked · ${picked.length} of ${CAP}`;areas(i);});
+ if(focusAfter!=null){const xs=$('#areas').querySelectorAll('.rmx');(xs[focusAfter]||xs[xs.length-1]||$('#areas .lh'))?.focus?.();}}
+areas();
+$('#hitdemo').innerHTML=rchip('HSR Layout',{hit:1})+rchip('Bellandur',{hit:1});
 const links=[...document.querySelectorAll('#nav a')];const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
 if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-20% 0px -70% 0px'});targets.forEach(t=>io.observe(t));}
 })();

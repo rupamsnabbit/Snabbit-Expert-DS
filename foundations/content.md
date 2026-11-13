@@ -146,7 +146,9 @@ Rules of the road: numerals stay Latin in every language; brand words (*Snabbit*
 | Expert | worker, runner, helper, maid, partner | *Runner* survives in package names only |
 | Customer · her name | client, user, household | Name whenever known |
 | Job | booking, order, task, gig, visit | One customer visit |
-| Shift | slot, session, duty | The block of hours she chose |
+| Shift | slot, session, duty, *Full time*, *Part time*, *Smart Shift* | The block of hours she chose. Describe it by its hours a day and its times (*8 hrs a day*, *9 am – 5 pm*). The shift-type words are internal and never reach her (2026-10-01) |
+| Hood | cluster, zone, locality, area (for this level) | Where she works, named by its landmark and sector (*Kudlu Gate*, *Near Forum Mall · 6th Sector*). Used as *My hood*, *Change my hood*, *Your hood now* (`projects/hood-shift-change`, 2026-10-01) |
+| Area | *Near your home* as a list heading | The bigger place a hood sits in (*Koramangala*, *Bommanahalli*). Used only as a list heading or a card's second line, because we know only where she is now, not where she lives |
 | Check in / Complete job | login, punch, attendance, check out, submit | *Check out* is the pattern's name; the Button says *Complete job* |
 | Present / Login (Home card) | attendance, mark attendance | The pre-shift confirmation; shipped word |
 | Earnings | income, wallet, balance | What she has earned |

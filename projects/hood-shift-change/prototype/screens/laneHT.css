@@ -1,0 +1,161 @@
+/* Lane HT — CSS only this lane needs. Every value is from get_design_context on the V2 frames (re-synced 2026-10-13); colours are tokens from tokens.css. */
+
+/* ---- 1.07 (239:19724) · "Best match" tag over the selected time, gap 4 ---- */
+.ht-lc { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
+
+/* ---- 1.07 (213:14102) · body gap 16; "Work nearby" 16/24 medium pt 8; area card: radio 20 before the words, Divider, meta row 14/20 medium gray-500 with the 16 buildings glyph, py 2 ---- */
+.body.ht-gap16 { gap: 16px; }
+.ht-nearby-h { padding-top: 8px; font-size: 16px; line-height: 24px; font-weight: 500; color: var(--color-gray-900); }
+.ht-cards { display: flex; flex-direction: column; gap: 12px; }
+.ht-area .head .l { flex: 1; min-width: 0; display: flex; align-items: center; gap: 12px; }
+.ht-area .head .l .left { flex: 1; min-width: 0; }
+.ht-meta { display: flex; align-items: center; gap: 6px; padding: 2px 0; font-size: 14px; line-height: 20px; font-weight: 500; color: var(--color-gray-500); white-space: nowrap; }
+.ht-meta img { width: 16px; height: 16px; display: block; flex-shrink: 0; }
+
+/* ---- 1.06 / 1.08 floor cards and the P2 shift card (299:3390): ₹ 16/24 semibold gray-900 over "a month" / "₹ less" 14/20 gray-500; clock 20 + 14/20 medium gray-700 ---- */
+.ht-plain .head .left { gap: 2px; }
+.ht-plain .pay { display: flex; flex-direction: column; align-items: flex-end; white-space: nowrap; }
+.ht-plain .amt { font-size: 16px; line-height: 24px; font-weight: 600; color: var(--color-gray-900); }
+.ht-plain .per { font-size: 14px; line-height: 20px; font-weight: 400; color: var(--color-gray-500); }
+.ht-plain .meta { font-weight: 500; }
+.ht-plain .meta svg { width: 20px; height: 20px; }
+.ht-ar { display: flex; align-items: center; gap: 2px; font-size: 14px; line-height: 20px; font-weight: 500; color: var(--color-gray-500); white-space: nowrap; }
+.ht-ar svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+/* ---- G5 (213:14259) · H4 (and H5's floor): Top band gray-50, "Speak" chip pink-50 / pink-600 with a 16 mic, body 24/16/16 gap 24, actions pb 16 gap 8 ---- */
+.screen[data-screen="H4"] .top, .screen[data-screen="H5"] .top { background: var(--color-gray-50); }
+.screen[data-screen="H4"] .topnav .chip, .screen[data-screen="H5"] .topnav .chip { background: var(--color-pink-50); border: 0; color: var(--color-pink-600); }
+.body.ht-pick { padding: 24px 16px 16px; gap: 24px; }
+.actions.ht-pick-actions { padding: 16px; gap: 8px; }
+
+/* ---- Sheets drawn as 1.06 / 1.08: radius 16, padding 20/16, gap 16 (compare: 24), scrim 45 %, X close orb gray-700 above the sheet ---- */
+.sheet:has(> .ht-sheet) { border-radius: 16px 16px 0 0; padding: 0; gap: 0; overflow: visible; }
+.sheet-wrap:has(.ht-sheet) .dim { opacity: .45; }
+.ht-sheet { display: flex; flex-direction: column; gap: 16px; padding: 20px 16px; }
+.ht-sheet.ht-compare { gap: 24px; }
+.ht-sheet .orb-close { top: -56px; background: var(--color-gray-700); }
+/* 1.06 scene: 180 box, 2 px gray-100 border, the 381×190 street image bled 28 px left */
+.ht-sheet .scene { height: 180px; border: 2px solid var(--color-gray-100); border-radius: 12px; background: var(--color-pink-50) url(../assets/scene-street.png) -28px -1px / 381px 190px no-repeat; }
+.ht-sheet .stitle { font-size: 24px; line-height: 32px; font-weight: 600; color: var(--color-gray-900); text-align: center; }
+.ht-sheet .sbody { font-size: 16px; line-height: 24px; font-weight: 400; color: var(--color-gray-700); text-align: center; }
+.ht-sheet .sactions { display: flex; flex-direction: column; gap: 8px; padding-top: 8px; }
+.ht-sheet.ht-compare .sactions { gap: 12px; padding-top: 0; }
+/* W1 · one bordered row: label over hint, hourglass trailing */
+.ht-sheet .ht-row { display: flex; align-items: center; gap: 12px; padding: 16px; border: 1px solid var(--color-gray-200); border-radius: 12px; background: var(--color-bg-primary); }
+.ht-sheet .ht-row .l { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.ht-sheet .ht-row .ic { width: 24px; height: 24px; color: var(--color-pink-600); flex-shrink: 0; } .ht-sheet .ht-row .ic svg { width: 24px; height: 24px; }
+/* 1.08 · compare cards: border 1.5 gray-200, radius 12, padding 16, gap 12; the first (Now) is gray-50 and gray-400 throughout */
+.ht-cmp { background: var(--color-bg-primary); border: 1.5px solid var(--color-gray-200); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 12px; overflow: hidden; }
+.ht-cmp.muted { background: var(--color-gray-50); }
+.ht-cmp .row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.ht-cmp .l { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.ht-cmp .nm { font-size: 16px; line-height: 24px; font-weight: 600; color: var(--color-gray-800); white-space: nowrap; }
+.ht-cmp .ar { display: flex; align-items: center; gap: 2px; font-size: 14px; line-height: 20px; font-weight: 500; color: var(--color-gray-500); white-space: nowrap; }
+.ht-cmp .ar svg { width: 16px; height: 16px; }
+.ht-cmp .earn { text-align: right; font-size: 14px; line-height: 20px; font-weight: 500; color: var(--color-green-600); white-space: nowrap; }
+.ht-cmp .meta { display: flex; align-items: center; gap: 6px; padding: 2px 0; font-size: 14px; line-height: 20px; font-weight: 500; color: var(--color-gray-500); white-space: nowrap; }
+.ht-cmp .meta svg { width: 16px; height: 16px; }
+.ht-cmp .nb { display: flex; flex-direction: column; min-width: 0; }
+.ht-cmp.muted .nm, .ht-cmp.muted .ar, .ht-cmp.muted .earn, .ht-cmp.muted .meta { color: var(--color-gray-400); }
+
+/* ---- P4a (262:24799) · H6: body 24/16, gap 16; place card (pink stage 100 with the 328×147 HSR street image bled 27 up + white row: name 16 semibold, area + pin, navigation arrow + min); detail cards (gray-50 header, 52 rows, 24 pink icons); banner; actions with a top hairline ---- */
+.body.ht-move { padding: 24px 16px 16px; gap: 16px; }
+.ht-place { display: flex; flex-direction: column; }
+.ht-place .stage { height: 100px; border-radius: 12px 12px 0 0; background: var(--color-pink-50) url(../assets/stage-confirm-hood.png) 0 -27px / 100% auto no-repeat; }
+.ht-place .row { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; padding: 16px; background: var(--color-bg-primary); border: 1px solid var(--color-gray-200); border-top: 0; border-radius: 0 0 12px 12px; }
+.ht-place .l { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.ht-place .nm { font-size: 16px; line-height: 24px; font-weight: 600; color: var(--color-gray-900); white-space: nowrap; }
+.ht-place .min { display: flex; align-items: center; gap: 4px; font-size: 14px; line-height: 20px; font-weight: 500; color: var(--color-gray-900); white-space: nowrap; }
+.ht-place .min svg { width: 16px; height: 16px; color: var(--color-pink-600); }
+.ht-detail { background: var(--color-bg-primary); border: 1px solid var(--color-gray-200); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
+.ht-detail .hd { background: var(--color-gray-50); padding: 12px 16px; font-size: 16px; line-height: 24px; font-weight: 600; color: var(--color-gray-900); }
+.ht-detail .li { display: flex; align-items: center; gap: 16px; height: 52px; padding: 0 16px; }
+.ht-detail .li + .li { border-top: 1px solid var(--color-gray-100); }
+.ht-detail .li svg { width: 24px; height: 24px; flex-shrink: 0; color: var(--color-pink-600); }
+.ht-detail .li .tx { flex: 1; min-width: 0; font-size: 16px; line-height: 24px; font-weight: 500; color: var(--color-gray-900); }
+.ht-diff { padding: 2px 8px; border-radius: 4px; background: var(--color-gray-100); font-size: 12px; line-height: 16px; font-weight: 500; color: var(--color-gray-500); white-space: nowrap; }
+.ht-banner { flex-shrink: 0; padding: 6px 10px; border-radius: 12px 12px 0 0; background: var(--color-green-100); text-align: center; font-size: 14px; line-height: 20px; font-weight: 500; color: var(--color-green-600); }
+.actions.ht-move-actions { padding: 16px; gap: 4px; border-top: 1px solid var(--color-gray-100); }
+
+/* ---- A1 (301:4171) · WhatsApp in system greys: header 56 gap 12 px 12 (arrow 24 · avatar 40 pink-600 · name 16 medium over 12 gray-500) · chat px 12 py 16 gap 12 centred · message 296 (body 12/12/4 gap 8, Divider gray-200, URL button 48 blue-600) · compose bar px 12 pt 8 pb 24 ---- */
+.ht-wa-head { height: 56px; flex-shrink: 0; display: flex; align-items: center; gap: 12px; padding: 0 12px; background: var(--color-bg-primary); border-bottom: 1px solid var(--color-gray-200); }
+.ht-wa-head > svg { width: 24px; height: 24px; color: var(--color-gray-900); flex-shrink: 0; }
+.ht-wa-head .av { width: 40px; height: 40px; border-radius: 20px; background: var(--color-pink-600); color: var(--color-bg-primary); display: flex; align-items: center; justify-content: center; font-size: 16px; line-height: 24px; font-weight: 600; flex-shrink: 0; }
+.ht-wa-head .who { flex: 1; min-width: 0; display: flex; flex-direction: column; white-space: nowrap; }
+.ht-wa-head .n { font-size: 16px; line-height: 24px; font-weight: 500; color: var(--color-gray-900); }
+.ht-wa-head .s { font-size: 12px; line-height: 16px; font-weight: 400; color: var(--color-gray-500); }
+.ht-wa-chat { flex: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 16px 12px; background: var(--color-bg-primary); }
+.ht-wa-chat .date { flex-shrink: 0; padding: 4px 12px; border-radius: 8px; font-size: 12px; line-height: 16px; color: var(--color-gray-500); background: var(--color-bg-primary); }
+.ht-wa-chat .msg { width: 296px; flex-shrink: 0; background: var(--color-bg-primary); border: 1px solid var(--color-gray-200); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
+.ht-wa-chat .mb { display: flex; flex-direction: column; gap: 8px; padding: 12px 12px 4px; font-size: 16px; line-height: 24px; font-weight: 400; color: var(--color-gray-900); }
+.ht-wa-chat .mb .t { font-weight: 600; }
+.ht-wa-chat .mb .time { text-align: right; font-size: 12px; line-height: 16px; color: var(--color-gray-400); }
+.ht-wa-chat .cta { height: 48px; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 16px; line-height: 24px; font-weight: 500; color: var(--color-blue-600); }
+.ht-wa-chat .cta img { width: 20px; height: 20px; display: block; }
+.ht-wa-compose { flex-shrink: 0; display: flex; align-items: center; gap: 8px; padding: 8px 12px 24px; background: var(--color-bg-primary); }
+.ht-wa-compose .in { flex: 1; min-width: 0; height: 48px; display: flex; align-items: center; padding: 0 16px; border: 1px solid var(--color-gray-200); border-radius: 24px; font-size: 16px; line-height: 24px; color: var(--color-gray-400); }
+.ht-wa-compose .mic { width: 48px; height: 48px; border-radius: 24px; background: var(--color-gray-300); color: var(--color-bg-primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.ht-wa-compose .mic svg { width: 24px; height: 24px; }
+
+/* ---- P2 (299:3371) / C4 (303:32159) · the offer page: bare status bar on gray-50, close 48 in a p-8 header, result pt 24 px 16 gap 16 centred (image 266×200 · H2 or 28/37 title · 16/24 gray-700 line · card), footer px 16 pb 20 gap 8 with the bordered "Not now" ---- */
+.screen[data-screen="P2"] .top.plain, .screen[data-screen="P2late"] .top.plain { background: transparent; }
+.ht-close { flex-shrink: 0; display: flex; justify-content: flex-end; padding: 8px; }
+.ht-close .ib { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; color: var(--color-gray-900); }
+.ht-close .ib svg { width: 24px; height: 24px; }
+.ht-result { flex: 1; min-height: 0; overflow: hidden; display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 24px 16px 0; }
+.ht-result > * { flex-shrink: 0; }
+.ht-result .pic { width: 266px; height: 200px; object-fit: cover; display: block; }
+.ht-result .ttl, .ht-result .ln { width: 100%; text-align: center; }
+.ht-result .card { width: 100%; }
+.ht-h1 { font-size: 28px; line-height: 37px; font-weight: 600; }
+.ht-footer { flex-shrink: 0; display: flex; flex-direction: column; gap: 8px; padding: 0 16px 20px; }
+.btn.ht-ghost { background: var(--color-bg-primary); color: var(--color-gray-800); border: 1px solid var(--color-gray-200); padding: 16px 24px; }
+
+/* ---- Orb positions on this lane's frames: 1.06 / W1 top 244, 1.08 top 196 (above the scrim, as drawn), P4a top 556, P2 416, C4 431, C2 491 ---- */
+#stage:has(.sheet-wrap .ht-wait) .orb { top: 244px; z-index: 36; }
+#stage:has(.sheet-wrap .ht-compare) .orb { top: 196px; z-index: 36; }
+#stage:has(.screen[data-screen="H6"]) .orb { top: 556px; }
+#stage:has(.screen[data-screen="P2"]) .orb { top: 523px; left: 240px; }
+#stage:has(.screen[data-screen="P2late"]) .orb { top: 547px; left: 241px; }   /* 454:33365: 431 inside the result frame that starts at 108 (+8 for our 52 px status bar) */
+#stage:has(.screen[data-screen="W2b"]) .orb { top: 491px; left: 241px; }
+
+/* ================= V3 (2026-10-15) ================= */
+/* H4 · 436:6705: H2, then the chips and the cards 16 apart (the chips sit on gray-50, no white band) */
+.ht-pick-list { display: flex; flex-direction: column; gap: 16px; }
+
+/* P2 · 454:33449 "Before 12 AM": gray-50 page, a green-100 glow (706 × 623, blur 50) bleeding from the top and a green-300 one above it;
+   content from y 139: clock 20 + H3 20/28 · 20 · the 243 × 98 stadium (6 px stroke, "ACCEPT BY" 12/16 medium gray-500, "11 PM" 36/40 semibold green-600) · 32 · the card
+   (white, 1.5 gray-100, radius 16, p 16, gap 12: user 16 + 16/24 medium hood; gray-200 rules; Timing / Earnings 16/24 gray-500 with 16 glyphs | 16/24 semibold gray-700);
+   footer white with a 1.5 gray-100 top rule, p 16, gap 18 */
+.screen[data-screen="P2"] .top.plain { background: transparent; position: relative; z-index: 1; }
+.p2-glow { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+.p2-glow i { position: absolute; display: block; border-radius: 9999px; filter: blur(50px); }
+.p2-glow .g1 { width: 706px; height: 623px; left: calc(50% - 364.5px); top: -460px; background: var(--color-green-100); }
+.p2-glow .g2 { width: 680px; height: 680px; left: calc(50% - 339.5px); top: -887px; background: var(--color-green-300); }
+.p2-body { position: relative; z-index: 1; flex: 1; min-height: 0; display: flex; flex-direction: column; align-items: center; padding: 87px 16px 0; }
+.p2-head { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 20px; line-height: 28px; font-weight: 600; color: var(--color-gray-900); white-space: nowrap; }
+.p2-head img { display: block; }
+.p2-timer { position: relative; width: 243px; height: 98px; margin-top: 20px; flex-shrink: 0; }
+.p2-timer svg { position: absolute; inset: 0; display: block; }
+.p2-timer rect { fill: none; stroke-width: 6px; }
+.p2-timer .trk { stroke: var(--color-gray-200); }
+.p2-timer .bar { stroke: var(--color-green-500); stroke-linecap: round; transition: stroke-dasharray 600ms; }
+.p2-timer .tx { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
+.p2-timer .lab { font-size: 12px; line-height: 16px; font-weight: 500; color: var(--color-gray-500); }
+.p2-timer .by { font-size: 36px; line-height: 40px; font-weight: 600; color: var(--color-green-600); white-space: nowrap; }
+.p2-card { width: 100%; margin-top: 32px; background: var(--color-bg-primary); border: 1.5px solid var(--color-gray-100); border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+/* lane C 454:31528: blue-50 tag, radius 4, px 8, gap 4; white 20 avatar with the initial 10/14 blue-700; label 12/16 medium blue-700; 8 above the hood row */
+.p2-ftag { align-self: flex-start; height: 24px; display: inline-flex; align-items: center; gap: 4px; padding: 0 8px; border-radius: 4px; background: var(--color-blue-50); color: var(--color-blue-700); font-size: 12px; line-height: 16px; font-weight: 500; white-space: nowrap; margin-bottom: -4px; }
+.p2-ftag .av { width: 20px; height: 20px; border-radius: 9999px; background: var(--color-bg-primary); display: flex; align-items: center; justify-content: center; font-size: 10px; line-height: 14px; font-weight: 400; }
+.p2-hood { display: flex; align-items: center; gap: 8px; font-size: 16px; line-height: 24px; font-weight: 500; color: var(--color-gray-900); white-space: nowrap; }
+.p2-hood img, .p2-row img { display: block; flex-shrink: 0; }
+.p2-rows { display: flex; flex-direction: column; gap: 12px; }
+.p2-row { display: flex; align-items: center; justify-content: space-between; white-space: nowrap; }
+.p2-row .k { display: flex; align-items: center; gap: 8px; font-size: 16px; line-height: 24px; color: var(--color-gray-500); }
+.p2-row .v { font-size: 16px; line-height: 24px; font-weight: 600; color: var(--color-gray-700); white-space: pre; }
+.p2-row .v .up { font-size: 14px; line-height: 20px; font-weight: 500; color: var(--color-gray-500); }
+.p2-foot { position: relative; z-index: 1; flex-shrink: 0; display: flex; flex-direction: column; gap: 18px; padding: 16px; background: var(--color-bg-primary); border-top: 1.5px solid var(--color-gray-100); }
+
+/* P2late · 454:33354: result pt 24, gap 24; title 28/37 over the 16/24 gray-700 line, 8 apart */
+.ht-result.late { gap: 24px; }
+.ht-result .ht-txt { width: 100%; display: flex; flex-direction: column; gap: 8px; text-align: center; }

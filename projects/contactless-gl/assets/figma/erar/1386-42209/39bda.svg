@@ -1,0 +1,21 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="64.0029" height="30.1078" viewBox="0 0 64.0029 30.1078" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="Rectangle 1891603340" filter="url(#filter0_d_0_173)">
+<use xlink:href="#stroke0_0_173" fill="white"/>
+<mask id="stroke1_0_173" fill="white">
+<use xlink:href="#stroke0_0_173"/>
+</mask>
+<path d="M32.8263 28.8266H56.9564C60.8481 28.8266 64.0029 25.6718 64.0029 21.7801V7.04651C64.0029 3.15483 60.848 0 56.9564 0H8.69622C4.80454 0 1.64971 3.15483 1.64971 7.04651V14.4133V21.4759C1.64971 21.5708 1.62865 21.6644 1.58806 21.7502L0.0553579 24.9862C-0.175154 25.4729 0.359413 25.9663 0.826095 25.6976L1.2254 25.4676C1.41411 25.359 1.64971 25.4952 1.64971 25.7129C1.64971 27.4326 3.04376 28.8266 4.76341 28.8266H9.44386H13.3409H17.238H32.8263Z" stroke-width="1.28118" stroke="#FBC9DF" mask="url(#stroke1_0_173)"/>
+</g>
+<defs>
+<filter id="filter0_d_0_173" x="0" y="0" width="64.0029" height="30.1078" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="1.28118"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.968627 0 0 0 0 0.0588235 0 0 0 0 0.47451 0 0 0 1 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_173"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_173" result="shape"/>
+</filter>
+<path id="stroke0_0_173" d="M1.64971 7.04651C1.64971 3.15483 4.80454 0 8.69623 0H56.9564C60.848 0 64.0029 3.15483 64.0029 7.04651V21.7801C64.0029 25.6718 60.8481 28.8266 56.9564 28.8266H32.8263H17.238H13.3409H9.44386H4.76341C3.04376 28.8266 1.64971 27.4326 1.64971 25.7129C1.64971 25.4952 1.41411 25.359 1.2254 25.4676L0.826095 25.6976C0.359413 25.9663 -0.175154 25.4729 0.0553579 24.9862L1.58806 21.7502C1.62865 21.6644 1.64971 21.5708 1.64971 21.4759V14.4133V7.04651Z"/>
+</defs>
+</svg>

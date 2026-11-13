@@ -1,0 +1,7 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="124" height="123.957" viewBox="0 0 124 123.957" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="stroke0_0_159" maskUnits="userSpaceOnUse" x="0" y="0" width="124" height="124" fill="black">
+<rect fill="white" width="124" height="124"/>
+<path d="M120 61.9785C120 93.9992 94.0325 119.957 62 119.957C29.9675 119.957 4 93.9992 4 61.9785C4 29.9579 29.9675 4 62 4C94.0325 4 120 29.9579 120 61.9785Z"/>
+</mask>
+<path id="outline" d="M120 61.9785C120 93.9992 94.0325 119.957 62 119.957C29.9675 119.957 4 93.9992 4 61.9785C4 29.9579 29.9675 4 62 4C94.0325 4 120 29.9579 120 61.9785Z" stroke-width="8" stroke="#006B5F" mask="url(#stroke0_0_159)"/>
+</svg>

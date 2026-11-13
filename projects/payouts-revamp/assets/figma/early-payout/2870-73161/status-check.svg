@@ -1,0 +1,18 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="Frame 2147241156">
+<circle id="Ellipse 13689" cx="5" cy="5" r="5" fill="#059669"/>
+<g id="Check-Bold--Streamline-Phosphor">
+<g id="Vector">
+<use xlink:href="#stroke0_0_5464" fill="white"/>
+<mask id="stroke1_0_5464" maskUnits="userSpaceOnUse" x="1.5" y="2.32812" width="7" height="5" fill="black">
+<rect fill="white" x="1.5" y="2.32812" width="7" height="5"/>
+<use xlink:href="#stroke0_0_5464"/>
+</mask>
+<path d="M7.31679 3.81111L4.30229 6.8256C4.19185 6.93643 4.01237 6.93643 3.90193 6.8256L2.58309 5.50676C2.42899 5.35266 2.4995 5.08953 2.71 5.03313C2.8077 5.00695 2.91194 5.03488 2.98345 5.1064L4.10235 6.22529L6.91689 3.41122C7.07099 3.25712 7.33412 3.32762 7.39053 3.53813C7.41671 3.63582 7.38877 3.74006 7.31726 3.81158L7.31679 3.81111Z" stroke-width="0.25" stroke="white" mask="url(#stroke1_0_5464)"/>
+</g>
+</g>
+</g>
+<defs>
+<path id="stroke0_0_5464" d="M7.31679 3.81111L4.30229 6.8256C4.19185 6.93643 4.01237 6.93643 3.90193 6.8256L2.58309 5.50676C2.42899 5.35266 2.4995 5.08953 2.71 5.03313C2.8077 5.00695 2.91194 5.03488 2.98345 5.1064L4.10235 6.22529L6.91689 3.41122C7.07099 3.25712 7.33412 3.32762 7.39053 3.53813C7.41671 3.63582 7.38877 3.74006 7.31726 3.81158L7.31679 3.81111Z"/>
+</defs>
+</svg>

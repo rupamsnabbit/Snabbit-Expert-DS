@@ -1,0 +1,77 @@
+/* Lane T — styles only this lane needs. Values from Figma V2 get_design_context (2026-10-13 re-read):
+   239:19892 (T1) · 239:20009 + 239:20138 (T1f) · 258:24106 (T2 compare sheet) · 262:24269 (T3 final check). Colours are tokens. */
+
+/* ---- T1 (239:19892): the card has no km line; hide the empty slot so the 2 px column gap does not show ---- */
+[data-screen="T1"] .card .sub:empty, [data-screen="T2"] .card .sub:empty, [data-screen="T3"] .card .sub:empty { display: none; }
+
+/* ---- T1f (443:16708): body gap 16 (T1's is 12) under the V3 status banner; the 1.06 floor keeps 12 ---- */
+.body.t-gap16 { gap: 16px; }
+
+/* ---- Sheets (239:20138 · 258:24106): white, 16 px top radius, padding 20/16, no handle; scrim 45 %; close X 40 px gray-700, 16 px above the sheet ---- */
+.sheet-wrap:has(.t-sheet) .dim { opacity: .45; }
+.sheet:has(.t-sheet) { border-radius: 16px 16px 0 0; padding: 20px 16px; gap: 0; overflow: visible; }
+.t-sheet { display: flex; flex-direction: column; width: 100%; }
+.t-sheet.full-sheet { gap: 16px; align-items: center; }
+.t-sheet.cmp-sheet { gap: 24px; }
+.sheet .orb-close.t-close { top: -56px; background: var(--color-gray-700); }
+
+/* 1.06 · Requested time sheet: scene 180 with a 2 px gray-100 frame, image 352091 (381 × 190 at −28 / −1), H2 24/32 centred, body 16/24 gray-700, actions 8 above */
+.t-sheet .scene { height: 180px; border: 2px solid var(--color-gray-100); border-radius: 12px; background: var(--color-pink-50) url(../assets/scene-waitlist-hood.png) -28px -1px / 381px 190px no-repeat; background-origin: border-box; }
+.t-sheet .sbody { font-size: 16px; line-height: 24px; font-weight: 400; color: var(--color-gray-700); }
+.t-sheet .sact { width: 100%; display: flex; flex-direction: column; gap: 8px; padding-top: 8px; }
+.t-sheet.cmp-sheet .sact { gap: 12px; padding-top: 0; }
+
+/* 1.08 · Compare sheet: H3 20/28 header, two cards (muted gray-50 · highlighted white 1.5 px), 16 px inner inset, divider, clock row */
+.t-sheet .shead { font-size: 20px; line-height: 28px; font-weight: 600; color: var(--color-gray-900); }
+.cmp { border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 12px; overflow: hidden; }
+.cmp.now { background: var(--color-gray-50); border: 1px solid var(--color-gray-200); }
+.cmp.new { background: var(--color-bg-primary); border: 1.5px solid var(--color-gray-200); }
+.cmp .row { display: flex; align-items: center; justify-content: space-between; padding: 0 16px; }
+.cmp .col { display: flex; flex-direction: column; align-items: flex-start; }
+.cmp.new .col { gap: 5px; }
+.cmp .nm { font-size: 16px; line-height: 24px; font-weight: 400; color: var(--color-gray-400); white-space: nowrap; }
+.cmp.new .nm { font-weight: 600; color: var(--color-gray-800); }
+.cmp .sb { display: flex; align-items: center; gap: 2px; font-size: 14px; line-height: 20px; font-weight: 400; color: var(--color-gray-400); white-space: nowrap; }
+.cmp.new .sb { font-weight: 500; color: var(--color-gray-500); }
+.cmp .sb svg { width: 16px; height: 16px; }
+.cmp .amt { font-size: 14px; line-height: 20px; font-weight: 400; color: var(--color-gray-400); text-align: right; white-space: nowrap; }
+.cmp .earn { font-size: 14px; line-height: 20px; font-weight: 500; color: var(--color-green-600); text-align: right; white-space: nowrap; }
+.cmp .foot { display: flex; align-items: center; gap: 6px; padding: 2px 16px; font-size: 14px; line-height: 20px; font-weight: 400; color: var(--color-gray-400); white-space: nowrap; }
+.cmp.new .foot { font-weight: 500; color: var(--color-gray-500); }
+.cmp .foot img, .cmp .foot svg { width: 16px; height: 16px; flex-shrink: 0; display: block; }
+
+/* Orb: V2 draws it above the scrim while a sheet is up — 1.06 at 241 / 241, 1.08 at 240 / 196; on 1.07 + status card at 241 / 590; on P4a at 240 / 556 */
+#stage:has([data-screen="T2"]) .orb.raised { left: 240px; top: 196px; z-index: 36; }
+#stage:has([data-screen="T1f"]) .orb { left: 241px; top: 590px; }
+#stage:has([data-screen="T1f"]):has(.v3-sheet) .orb { left: 241px; top: 241px; z-index: 36; }
+#stage:has([data-screen="T3"]) .orb { left: 240px; top: 556px; }
+
+/* ---- T3 (262:24269) · Confirm: pink stage 100 with image 352100 (328 × 147 at 0 / −27) + white foot, two detail cards with gray-50 headers and 52 px rows, green banner, actions 16 with a gray-100 top line ---- */
+.stage-card { display: flex; flex-direction: column; width: 100%; }
+.stage-card .stage { height: 100px; border-radius: 12px 12px 0 0; background: var(--color-pink-50) url(../assets/stage-confirm-hood.png) 0 -27px / 328px 147px no-repeat; overflow: hidden; }
+.stage-card .foot { background: var(--color-bg-primary); border: 1px solid var(--color-gray-200); border-top: 0; border-radius: 0 0 12px 12px; padding: 16px; display: flex; align-items: flex-start; justify-content: space-between; }
+.stage-card .foot .col { flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: center; gap: 2px; }
+.stage-card .foot .nm { font-size: 16px; line-height: 24px; font-weight: 600; color: var(--color-gray-900); white-space: nowrap; }
+.stage-card .foot .sb { display: flex; align-items: center; gap: 2px; font-size: 14px; line-height: 20px; font-weight: 500; color: var(--color-gray-500); white-space: nowrap; }
+.stage-card .foot .sb svg { width: 16px; height: 16px; }
+.stage-card .foot .eta { display: flex; align-items: center; gap: 4px; font-size: 14px; line-height: 20px; font-weight: 500; color: var(--color-gray-900); white-space: nowrap; flex-shrink: 0; }
+.stage-card .foot .eta svg { width: 16px; height: 16px; color: var(--color-pink-600); }
+.dcard { background: var(--color-bg-primary); border: 1px solid var(--color-gray-200); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; width: 100%; }
+.dcard .hd { background: var(--color-gray-50); padding: 12px 16px; font-size: 16px; line-height: 24px; font-weight: 500; color: var(--color-gray-900); }
+.dcard .li { height: 52px; padding: 0 16px; display: flex; align-items: center; gap: 16px; border-bottom: 1px solid var(--color-gray-100); }
+.dcard .li:last-child { border-bottom: 0; }
+.dcard .li .ic { width: 24px; height: 24px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: var(--color-pink-600); }
+.dcard .li .ic svg { width: 24px; height: 24px; display: block; }
+.dcard .li .lab { flex: 1; min-width: 0; font-size: 16px; line-height: 24px; font-weight: 500; color: var(--color-gray-900); }
+.dcard .li .diff { background: var(--color-gray-100); color: var(--color-gray-500); border-radius: 4px; padding: 2px 8px; font-size: 12px; line-height: 16px; font-weight: 500; white-space: nowrap; }
+.banner { flex-shrink: 0; background: var(--color-green-100); color: var(--color-green-600); border-radius: 12px 12px 0 0; padding: 6px 10px; text-align: center; font-size: 14px; line-height: 20px; font-weight: 500; }
+[data-screen="T3"] .actions { padding: 16px; gap: 4px; border-top: 1px solid var(--color-gray-100); }
+
+/* T0 · no open slots anywhere (V4 rev 502:55128): result column centred, gap 24, px 24; H2 24/32 semibold gray-900 centred; Restart in a white band p 20/16 */
+.result.t0 { gap: 24px; }
+.t0-h { width: 100%; font-size: 24px; line-height: 32px; font-weight: 600; color: var(--color-gray-900); text-align: center; }
+.t0-foot { flex-shrink: 0; padding: 20px 16px; background: var(--color-bg-primary); }
+
+/* TH (629:71703) · TA (632:72095): body p 16 gap 16 (banner · card · list); the hood / area cards 12 apart; orb at 241 / 590 (bottom 90) */
+.t-cards { display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
+#stage:has([data-screen="TH"]) .orb, #stage:has([data-screen="TA"]) .orb { left: 241px; top: 590px; }

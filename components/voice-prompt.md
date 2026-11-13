@@ -16,6 +16,7 @@ Spoken guidance is a first-class channel (P4): she processes speech faster than 
 | Autoplay undefined | **Autoplay policy** below: first visit of onboarding / first-run screens, errors and offline speak on their own; in-job screens never speak unasked | A customer's home is not the place for the phone to start talking (P7 tone, persona). |
 | Speaker icon on the right does nothing defined | Right slot = **sound on/off** for autoplay, `speaker-high` / `speaker-slash`, remembered per account | One place to quiet the app without losing the ability to replay. |
 | After a voice ends on its own, the disc shows `play` again; experts on the hood-shift screens did not know they could tap it to hear it again | **`finished`** state: the disc shows `arrow-counter-clockwise`, a full ring, and a `bgBrand` glow that breathes twice and then holds still (asked by `projects/hood-shift-change`, 2026-11-13) | With autoplay her first sight of the control is *after* it spoke; `play` reads as *not played yet* and is already *resume* when paused. One icon, one meaning: pause · resume · again (P1, P6). |
+| Nothing shows the app *hearing* her; voice is output only | **`listen`** (proposed, asked by `projects/hood-shift-change`): the mic disc inside a shader field that moves with her voice | She must see that it is listening, and that it heard her, before she reads anything (P1, P7). |
 
 ---
 
@@ -30,7 +31,7 @@ Spoken guidance is a first-class channel (P4): she processes speech faster than 
 ```
 
 - **Disc**: four states, each its own glyph. `play` (idle — autoplay off or blocked, nothing has played) · `pause` (playing) · `play` (paused — resumes where it stopped) · **`arrow-counter-clockwise` (finished)**. 48 dp hit area. Tapping when finished replays from the start.
-- **Finished invites the second listen.** When the voice reaches its end, the ring is full, the glyph turns to `arrow-counter-clockwise` (bold, emphasis) on a `bgBrand` disc, and a `bgBrand` glow (proposed `elevation.glowBrand`) rises behind the disc, or behind the Saathi avatar where a screen uses one. The glow breathes for two cycles of `motion.loop`, then holds still — it does not keep pulsing (`foundations/motion.md`: no idle animation). It clears when she taps (replay starts, state → playing) or leaves the screen. Reduced motion: the glow appears without breathing. One glow per screen: while a microphone on the screen is listening, the mic owns the glow and the voice control shows `finished` without it.
+- **Finished invites the second listen.** When the voice reaches its end, the ring is full, the glyph turns to `arrow-counter-clockwise` (bold, emphasis) on a `bgBrand` disc, and a `bgBrand` glow (proposed `elevation.glowBrand`) rises behind the disc or Saathi. The glow breathes for two cycles of `motion.loop`, then holds still — it does not keep pulsing (`foundations/motion.md`: no idle animation). It clears when she taps (replay starts, state → playing) or leaves the screen. Reduced motion: the glow appears without breathing. One glow per screen: while the mic is listening (`listen`) the mic owns the glow and Saathi shows `finished` without it.
 - **Track**: fills left→right in real time; no knob; not draggable. Tapping the track does nothing.
 - **Sound toggle**: `speaker-high` = the app may speak on its own; `speaker-slash` = it speaks only when she taps play. Persistent per account; a Toast confirms *Voice on* / *Voice off — tap ▶ to hear*.
 - Never carries text: the screen's own copy is the transcript.
@@ -38,6 +39,25 @@ Spoken guidance is a first-class channel (P4): she processes speech faster than 
 ### `inline` — speaks one thing
 
 IconButton `M tertiary brand` with `speaker-high`, at the trailing edge of the thing it reads (address, breakdown body, coachmark sentence, empty-state message, an amount). With room, a *Listen* label to its left in `Caption` `textBrand`. Playing: `speaker-high` **fill**, disc `bgBrand`, icon `iconInverse`; tapping again stops. 48 dp target; in a ListItem row it takes the trailing slot.
+
+### `listen` — hears her (proposed)
+
+Asked by `projects/hood-shift-change` (screen 1.3, *Say the place*). Not landed; the live page shows it under *Listen (proposed)*.
+
+```
+            ·  ◖ ◗  ·                 136 dp shader field · Paper Shaders Metaballs · bgBrandSubtle + pink200 blobs, transparent back
+         ◖   ( 🎙 )   ◗               mic disc 72 dp bgBrand · glyph 32 iconInverse · tap = stop listening
+            ·  ◖ ◗  ·
+          Say the place               Heading3 — the one instruction
+   “Indiranagar metro ke paas…”       BodyMd textSecondary — her words as she says them
+          Type instead                ghost Button — the way out
+```
+
+- **The field shows her voice level.** The blob size follows the microphone level (fast attack, slow release); the blobs drift only while she is speaking and stop when she is quiet. When she stops speaking, a short quiet ends listening (proposed `timeout.endOfSpeech`, value from device review) and the field fades over `motion.standard`.
+- **Information motion** (`foundations/motion.md` rule 3). Reduced motion stops the drift and keeps the swell, as the Shield level meter keeps moving. The idle-animation rule in `motion.md` needs *a live listening field* added beside the Timer and the record dot; that edit lands with this form.
+- **Phones without the shader.** The fragment shader is ported to AGSL on Android 13 and up, and to a Skia runtime effect on iOS. Below that, or if the shader fails, a still frame (WebP, the Paper placeholder) scales with her voice level instead. Nothing depends on the shader for meaning.
+- **Colours** come from tokens (`bgBrandSubtle`, `pink200` while proposed, `bgBrand`). The React package `@paper-design/shaders-react` is for the site and Paper only; it does not ship in the app.
+- Never plays sound. One voice at a time still holds: listening stops any VoicePrompt that is speaking.
 
 ---
 
@@ -86,7 +106,7 @@ Anything that autoplays also shows the control, so what spoke can be replayed an
 
 ## Accessibility
 
-Bar: `group` labelled *Voice guidance*; disc announces *Play guidance* / *Pause* / *Play again* (finished); toggle announces *Voice on* / *Voice off*. Inline: *Listen, {what}* / *Stop*. Live region announces *Playing* once. Contrast: disc `iconInverse` on `bgBrand`; track `bgBrand` on `bgBrandSubtle` 3.2:1 (non-text). Targets 48 dp.
+Bar: `group` labelled *Voice guidance*; disc announces *Play guidance* / *Pause* / *Play again* (finished); toggle announces *Voice on* / *Voice off*. Inline: *Listen, {what}* / *Stop*. Live region announces *Playing* once. Listen (proposed): the field is decorative to the screen reader; the disc announces *Stop listening*; a live region says *Listening* and *Stopped listening* once each. Contrast: disc `iconInverse` on `bgBrand`; track `bgBrand` on `bgBrandSubtle` 3.2:1 (non-text). Targets 48 dp.
 
 ---
 
@@ -95,7 +115,7 @@ Bar: `group` labelled *Voice guidance*; disc announces *Play guidance* / *Pause*
 | Token | Value | Note |
 | --- | --- | --- |
 | `sound.voiceStart` | — | Tick haptic only; no sound (into the sound register) |
-| `elevation.glowBrand` | `pink600` glow, no offset (Figma: two shadows, 45 % blur 18 spread 3 and 25 % blur 6 spread 1) | The `finished` invitation behind the disc / Saathi. Proposed by `projects/hood-shift-change`, 2026-11-13 |
+| `elevation.glowBrand` | `pink600` glow, no offset (Figma: two shadows, 45 % blur 18 spread 3 and 25 % blur 6 spread 1) | The `finished` invitation behind the disc / Saathi; also a candidate for the listening mic. Proposed by `projects/hood-shift-change`, 2026-11-13 |
 
 ---
 

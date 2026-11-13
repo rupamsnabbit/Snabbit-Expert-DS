@@ -60,6 +60,8 @@ Seven month cells at 44 dp plus six 4 dp gutters = 332 dp — fits the 328 dp co
 | disabled (past, or no shift) | `textDisabled`, no border | `textDisabled`; not a target |
 | off (weekly off) | *Off* `Caption` under the number | small `Caption` *Off* replaces the amount slot |
 | pressed | `bgSecondary` wash 100 ms; `light` haptic | same |
+| `marked` (earnings view only, 2026-10-05) | — | a 6 dp `iconError` dot centred under the amount — the day a red card was given. Never a red number or a red cell: the amount keeps its own tone, the dot is the mark. Spoken *"red card"* after the amount |
+| `worked` / `not worked` (earnings view only) | — | a day with an amount is `textPrimary`; a day with no shift and no amount is `textTertiary` with the slot empty — never *₹0* (`amount.md`) |
 
 Selected is fill + colour + (strip) the *Today/weekday* text — three channels; greyscale keeps the fill.
 
@@ -96,7 +98,7 @@ The confirm Button belongs to the flow (*Confirm leave*, *Submit attendance*) an
 - Every selection is spoken: *"Wednesday, 10 June"*; a range end: *"10 to 12 June, 3 days"*.
 - Past days are `disabled` in pickers about the future; future days are `disabled` in date of birth and history.
 - The strip's first tile is always **today**, labelled *Today*; it never scrolls and never starts on a past day.
-- Earnings-by-day `month` is **read-only**: tapping a day opens that day's breakdown (Accordion); no selection state.
+- Earnings-by-day `month` is **read-only**: tapping a day **opens that day's screen** (the Earnings day view — `patterns/earnings.md`), not an Accordion and not a selection; the pressed wash is the only feedback on the cell. Cells are 44 × 56 with the Amount `S` beneath, weekday row above; every day with an amount is a 48 dp target with the gutter; days with nothing are not targets. The month header's *next* arrow is disabled on the current month. (`projects/earnings-page-revamp`, 2026-10-05.)
 - Reduced motion: the range band appears without the `motion.standard` grow.
 
 ---
@@ -124,7 +126,7 @@ None. Cell size 44 uses `spacing` multiples; the ring uses `borderWidth.2`.
 
 ## Figma reconciliation
 
-1. Calendar (×2) + Date Picker + Date + Day Properties + Day Strip → **DatePicker** with `Kind` (Strip / Month), `Select` (Single / Range), booleans `Amounts`, `YearStepper`; **DayCell** component with `State` (Default / Today / Selected / InRange / Disabled / Off) and `Amount` boolean.
+1. Calendar (×2) + Date Picker + Date + Day Properties + Day Strip → **DatePicker** with `Kind` (Strip / Month), `Select` (Single / Range / **ReadOnly**), booleans `Amounts`, `YearStepper`; **DayCell** component with `State` (Default / Today / Selected / InRange / Disabled / Off / **Marked**) and `Amount` boolean.
 2. Remove the red Sunday colour; add the *Off* caption variant.
 3. Delete DOB Selection (TextField) — replace with DatePicker `month` + `YearStepper`.
 4. Date Selection Cards → instances of the strip tile.

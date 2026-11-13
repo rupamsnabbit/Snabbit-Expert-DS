@@ -1,0 +1,18 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="1.09 &#194;&#183; You&#39;re moving">
+<g id="Result">
+<g id="Illustration &#194;&#183; moved (pin + check)" clip-path="url(#clip0_26_291)">
+<path id="Vector" d="M60 120C93.1371 120 120 93.1371 120 60C120 26.8629 93.1371 0 60 0C26.8629 0 0 26.8629 0 60C0 93.1371 26.8629 120 60 120Z" fill="#FDE4EF"/>
+<path id="Vector_2" d="M60 26C46.7 26 36 36.5 36 49.6C36 67 60 90 60 90C60 90 84 67 84 49.6C84 36.5 73.3 26 60 26Z" fill="#F4368D"/>
+<path id="Vector_3" d="M60 58C64.9706 58 69 53.9706 69 49C69 44.0294 64.9706 40 60 40C55.0294 40 51 44.0294 51 49C51 53.9706 55.0294 58 60 58Z" fill="#FDE4EF"/>
+<path id="Vector_4" d="M96 112C104.837 112 112 104.837 112 96C112 87.1634 104.837 80 96 80C87.1634 80 80 87.1634 80 96C80 104.837 87.1634 112 96 112Z" fill="#10B981"/>
+<path id="Vector_5" d="M88.5 96.5L93.5 101.5L103.5 91" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_26_291">
+<rect width="120" height="120" fill="white"/>
+</clipPath>
+</defs>
+</svg>

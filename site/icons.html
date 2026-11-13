@@ -127,15 +127,15 @@ hr{display:none}
 </tr>
 <tr>
 <td><code>x</code></td>
-<td>Close / dismiss</td>
+<td>Close / dismiss; <strong>remove this value</strong> — takes one picked value back out of a selection (the same <em>take it away</em> gesture, applied to a pick instead of a layer). Never <em>delete</em> her data, <em>decline</em> a job or <em>wrong</em> (that is <code>x-circle</code>)</td>
 <td>regular</td>
-<td>Sheets, banners</td>
+<td>Sheets, banners; trailing ✕ on Chip <code>removable</code>, the picked-areas strip (<code>projects/hood-shift-change</code>, 2026-10-07)</td>
 </tr>
 <tr>
 <td><code>map-pin</code></td>
-<td>Job location / distance</td>
+<td>Job location / distance; <strong>show this place on a map</strong></td>
 <td>regular</td>
-<td>Job alert, job card (never as a map marker — markers carry <code>house</code> / <code>graduation-cap</code>)</td>
+<td>Job alert, job card, the <em>Show map</em> text button on the SelectionCard <code>rich</code> shift option (<code>projects/hood-shift-change</code>, 2026-10-01; it replaced the pin after the area · km line). Never as a map marker — markers carry <code>house</code> / <code>graduation-cap</code></td>
 </tr>
 <tr>
 <td><code>house</code></td>
@@ -157,9 +157,9 @@ hr{display:none}
 </tr>
 <tr>
 <td><code>clock</code></td>
-<td>Duration / time</td>
+<td>Duration / time; <strong>waiting until a time</strong> — money on its way, a payout on hold</td>
 <td>regular</td>
-<td>Job alert, shift</td>
+<td>Job alert, shift; payout status line <code>sent</code> / <code>held</code>, Tag <em>On its way</em> (<code>patterns/payout.md</code> § 2, 2026-10-23)</td>
 </tr>
 <tr>
 <td><code>currency-inr</code></td>
@@ -264,6 +264,12 @@ hr{display:none}
 <td>Banner, Toast, ShieldRow blocked / stopped reason</td>
 </tr>
 <tr>
+<td><code>shield-warning</code></td>
+<td><strong>A Trust and Safety case against her</strong> — a penalty taken from her payout, or a payout held for a check. Never Shield / Kavach (that is <code>shield-check</code>), never <em>attention</em> in general (that is <code>warning-circle</code>)</td>
+<td>regular</td>
+<td>Statement <em>Deductions</em> line <em>Trust and Safety Penalty</em>, its sheet (<code>projects/payouts-revamp</code> workstream 4, 2026-10-26 — <strong>proposed</strong>)</td>
+</tr>
+<tr>
 <td><code>x-circle</code></td>
 <td>Error</td>
 <td>regular</td>
@@ -291,7 +297,7 @@ hr{display:none}
 <td><code>calendar-blank</code></td>
 <td>A date / choose a day</td>
 <td>regular</td>
-<td>Leave, shift date rows</td>
+<td>Leave, shift date rows; payout status line <code>approaching</code> / <code>next-batch</code> (<em>Coming on 2 Nov</em>)</td>
 </tr>
 <tr>
 <td><code>arrow-up</code> / <code>arrow-down</code></td>
@@ -301,9 +307,9 @@ hr{display:none}
 </tr>
 <tr>
 <td><code>arrow-right</code></td>
-<td>Do this → get that (gain nudge)</td>
+<td>Do this → get that (gain nudge); <strong>what she has now → what she'll have</strong> on a change confirm, between the old (grey) and the new (brand) picture. Never <em>next</em> or <em>go</em> (that is <code>caret-right</code> on a row, or the Button)</td>
 <td>regular</td>
-<td>Nudge leading icon</td>
+<td>Nudge leading icon · BottomSheet confirm for a hood or shift-time change (<code>projects/hood-shift-change</code>, 2026-10-06)</td>
 </tr>
 <tr>
 <td><code>backspace</code></td>
@@ -331,9 +337,9 @@ hr{display:none}
 </tr>
 <tr>
 <td><code>arrow-clockwise</code></td>
-<td>Retry / refresh</td>
+<td>Retry / refresh — including <strong>the system retrying on its own</strong> (<em>trying again in 3 hours</em>)</td>
 <td>regular</td>
-<td>Error states</td>
+<td>Error states; payout status line <code>retrying</code> (<code>patterns/payout.md</code> § 2, 2026-10-23)</td>
 </tr>
 <tr>
 <td><code>camera</code></td>
@@ -363,7 +369,7 @@ hr{display:none}
 <td><code>bank</code></td>
 <td>Bank account</td>
 <td>regular</td>
-<td>Stepper, Earnings payout</td>
+<td>Stepper, Earnings payout; payout status line <code>blocked</code> / <code>details-wrong</code></td>
 </tr>
 <tr>
 <td><code>graduation-cap</code></td>
@@ -459,7 +465,19 @@ hr{display:none}
 <td><code>copy</code></td>
 <td>Copy a reference number (UTR, job ID)</td>
 <td>regular</td>
-<td>Payout rows, payout detail</td>
+<td>Payout rows, payout detail, Job screen</td>
+</tr>
+<tr>
+<td><code>hash</code></td>
+<td>A reference number itself (job ID, UTR) — the row's leading icon; <code>copy</code> is the action beside it</td>
+<td>regular</td>
+<td>Job screen <em>Job ID</em> row (<code>projects/earnings-page-revamp</code>, 2026-10-05)</td>
+</tr>
+<tr>
+<td><code>gift</code></td>
+<td>A bonus or extra she earned (joining bonus, winback, tips) — the Bonuses line on Earnings</td>
+<td>regular</td>
+<td>Earnings statement row (<code>projects/earnings-page-revamp</code>, 2026-10-06)</td>
 </tr>
 <tr>
 <td><code>lock-simple</code> / <code>lock</code></td>
@@ -649,9 +667,9 @@ hr{display:none}
 </tr>
 <tr>
 <td><code>moon</code></td>
-<td>Rest — her weekly off, a leave day. Never <em>night shift</em> (that is a time, said in words)</td>
+<td>Rest — her weekly off, a leave day, <strong>a shift she will not work</strong> (<em>Can't come</em>). Never <em>night shift</em> (that is a time, said in words)</td>
 <td>regular</td>
-<td>Go-live <em>Your week</em> card, shift calendar</td>
+<td>Go-live <em>Your week</em> card, shift calendar, Chip <code>answer</code> and the weekly-off row in the attendance sheet and Home record (<code>projects/advance-attendance</code>, 2026-10-01)</td>
 </tr>
 <tr>
 <td><code>credit-card</code></td>
@@ -707,8 +725,23 @@ hr{display:none}
 <td>regular</td>
 <td>HowToClip <code>guide</code> bar</td>
 </tr>
+<tr>
+<td><code>coffee</code></td>
+<td>Break — the gap in a split day (<em>Break · 4 hrs</em>). Never a day off or leave (that is <code>moon</code>), and never food or a meal</td>
+<td>regular</td>
+<td>SelectionCard <code>rich</code> shift option day rail, between two <code>clock</code> blocks (<code>projects/hood-shift-change</code>, 2026-10-01)</td>
+</tr>
+<tr>
+<td><code>users-three</code></td>
+<td>Work with a friend — find a hood by a friend's expert ID. Never Refer (that is <code>users</code>) or a team</td>
+<td>regular</td>
+<td>Button secondary neutral on the change-hood screens and search (<code>projects/hood-shift-change</code>, 2026-10-01)</td>
+</tr>
 </tbody>
 </table></div>
+<p>| <code>briefcase</code> | <strong>Earned</strong> — what her jobs paid, before anything was added or taken. The first of the three money buckets on every Statement (<code>patterns/earnings.md</code>). Never <em>work</em> as a tab or <em>job</em> (a job row carries the customer's Avatar) | regular | Statement bucket row, month · day · job |
+| <code>arrow-circle-up</code> | <strong>Added</strong> — what the company put in on top of her work: the guaranteed top-up, overtime, bonuses, tips. Never a Stat delta (that is <code>arrow-up</code>) and never <em>add one more</em> (that is <code>plus-circle</code>) | regular | Statement bucket row |
+| <code>arrow-circle-down</code> | <strong>Taken</strong> — what came out of her pay: products from her kit, the daily pass, red cards, EMIs, tax, cash she already collected. A fact, not a penalty — the row is <code>textPrimary</code>. Never a Stat delta (that is <code>arrow-down</code>) | regular | Statement bucket row |</p>
 <p>Not icons: smileys for Rating and the mascot are illustrations, not Phosphor glyphs — they live in the illustration library.</p>
   </main>
 </div>

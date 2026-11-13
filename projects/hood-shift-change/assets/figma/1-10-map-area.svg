@@ -1,0 +1,30 @@
+<svg width="328" height="321" viewBox="0 0 328 321" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="1.10 &#194;&#183; Work area &#38; time &#194;&#183; move booked">
+<g id="Body">
+<g id="Map &#194;&#183; Koramangala 6th Block (placeholder)">
+<g clip-path="url(#clip0_26_291)">
+<path d="M0 12C0 5.37259 5.37258 0 12 0H316C322.627 0 328 5.37258 328 12V309C328 315.627 322.627 321 316 321H12C5.37259 321 0 315.627 0 309V12Z" fill="#F3F4F6"/>
+<g id="Map illustration &#194;&#183; area outline" clip-path="url(#clip1_26_291)">
+<path id="Vector" d="M328 0H0V321H328V0Z" fill="#F3F4F6"/>
+<path id="Vector_2" d="M-10 93.625L340 53.5" stroke="white" stroke-width="10"/>
+<path id="Vector_3" d="M-10 240.75L340 267.5" stroke="white" stroke-width="10"/>
+<path id="Vector_4" d="M70 -13.375L95 334.375" stroke="white" stroke-width="8"/>
+<path id="Vector_5" d="M250 -13.375L225 334.375" stroke="white" stroke-width="8"/>
+<path id="Vector_6" d="M-10 167.188L340 157.825" stroke="white" stroke-width="5"/>
+<path id="Vector_7" d="M160 -13.375L165 334.375" stroke="white" stroke-width="5"/>
+<path id="Vector_8" d="M20 307.625L120 187.25L300 26.75" stroke="#E5E7EB" stroke-width="4"/>
+<path id="Vector_9" d="M104 74.9589L232 64L268 138.521L236 215.233L116 224L80 147.288L104 74.9589Z" fill="#FEF1F7" stroke="#F70F79" stroke-width="2" stroke-linejoin="round"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_26_291">
+<path d="M0 12C0 5.37259 5.37258 0 12 0H316C322.627 0 328 5.37258 328 12V309C328 315.627 322.627 321 316 321H12C5.37259 321 0 315.627 0 309V12Z" fill="white"/>
+</clipPath>
+<clipPath id="clip1_26_291">
+<rect width="328" height="321" fill="white"/>
+</clipPath>
+</defs>
+</svg>

@@ -74,6 +74,20 @@ Rule: the object says *what*, the dot says *status*. A pictogram without a dot i
 | `asset/picto/box` | A refill order — the parcel that arrives on her week off | Home refill card and the ledger; ✓ dot once received |
 | `asset/picto/rest-day` | Her week off | The attendance card. Warm and restful, never a crossed-out calendar — a mandatory day off is a good thing, not an absence (P6). Distinct from `calendar-✗`, which means *not available* |
 
+**Earnings — 1 new pictogram (2026-10-05, `projects/earnings-page-revamp`).** Illustration layer, 40 dp; SVG.
+
+| Asset | Meaning | Notes |
+| --- | --- | --- |
+| `asset/picto/business-made` | **Customers paid this for her work** — the business she generated this month, as distinct from her pay | A customer's hand passing notes into hers over a pink disc. It leads the month's *Customers paid ₹1,00,000 for your work* row and nowhere else; never a wallet (that is her money, `wallet-coins`) and never a shop front (she goes to homes). Takes no status dot — it is a fact to be proud of, not an outcome |
+
+**Payout failure reasons — 2 new pictograms, 1 reused (2026-10-23, `projects/payouts-revamp`).** Illustration layer, 64 dp as the hero of the payout failure sheet (`patterns/payout.md` § 2); SVG. One per failure reason, so she can tell *whose* problem it was before reading the line; the status is only the ✗ dot.
+
+| Asset | Meaning | Notes |
+| --- | --- | --- |
+| `asset/picto/bank` (existing `bank-✗`) | **The bank's side** — her bank did not accept the transfer today | Reused, not redrawn: the register already holds the bank object with a red ✗ dot |
+| `asset/picto/transfer` | **Our side** — Snabbit could not send the money | Two arrows passing a rupee note from a phone towards a bank front. ✗ dot when the send failed; never used for a payout that went through (the paid state is the `paid` status line, not a picture). Distinct from `bank` (her bank) and `wallet-coins` (her money) |
+| `asset/picto/passbook` | **Her account details** — the account number or name the money was sent to | A bank passbook, open, with an account-number line. ✗ dot when the bank could not find the account (*fix your bank details*); ✓ dot when her account is verified. Never her ID or PAN (that is `id-card`) |
+
 **Product images are not design-system assets.** The 40–50 items in her kit (facial kits, wax strips, rose water) are **catalogue content**, owned by the Category/Catalog team alongside the pouch master list, and delivered as product images with the item data. They are never drawn as pictograms and never registered here — a register with fifty consumables in it stops being a register. The four assets above are the *structure* (bag, pouch, order, rest day); the contents are data.
 
 ### 3. Characters — `asset/character/*`

@@ -5,7 +5,9 @@ UNITLESS = {"fontWeight", "flex", "flexGrow", "flexShrink", "opacity", "zIndex",
 SVG_ATTR = {"strokeWidth": "stroke-width", "strokeLinecap": "stroke-linecap", "strokeLinejoin": "stroke-linejoin",
             "fillRule": "fill-rule", "clipRule": "clip-rule", "strokeDasharray": "stroke-dasharray",
             "strokeDashoffset": "stroke-dashoffset", "strokeMiterlimit": "stroke-miterlimit", "stopColor": "stop-color",
-            "stopOpacity": "stop-opacity", "fillOpacity": "fill-opacity", "strokeOpacity": "stroke-opacity"}
+            "stopOpacity": "stop-opacity", "fillOpacity": "fill-opacity", "strokeOpacity": "stroke-opacity",
+            "clipPath": "clip-path", "xlinkHref": "xlink:href", "xmlnsXlink": "xmlns:xlink", "floodOpacity": "flood-opacity",
+            "floodColor": "flood-color", "colorInterpolationFilters": "color-interpolation-filters"}
 
 class Node:
     def __init__(self, tag, attrs, style):
@@ -32,16 +34,18 @@ def parse_style(src):
         style[k] = fix_css(v)
     return style
 
-TOKEN = re.compile(r"<(/?)([a-zA-Z][\w.]*)((?:\s+[a-zA-Z][\w-]*=(?:\"[^\"]*\"|\{\{.*?\}\}))*)\s*(/?)>", re.S)
-ATTR = re.compile(r"([a-zA-Z][\w-]*)=(\"[^\"]*\"|\{\{(.*?)\}\})", re.S)
+TOKEN = re.compile(r"<(/?)([a-zA-Z][\w.]*)((?:\s+[a-zA-Z][\w:-]*=(?:\"[^\"]*\"|\{\{.*?\}\}))*)\s*(/?)>", re.S)
+ATTR = re.compile(r"([a-zA-Z][\w:-]*)=(\"[^\"]*\"|\{\{(.*?)\}\})", re.S)
 
 def parse(jsx):
     start = jsx.index("<")
     root, stack, pos = None, [], start
     for m in TOKEN.finditer(jsx, start):
         txt = jsx[pos:m.start()]
-        if stack and txt.strip():
-            stack[-1].children.append(" ".join(txt.split()))
+        if stack and txt.strip():                     # JSX text: indentation and line breaks go, a space Paper typed stays
+            t = re.sub(r"\n\s*$", "", re.sub(r"^\s*\n[ \t]*", "", txt))
+            t = re.sub(r"\{(['\"`])(.*?)\1\}", lambda m: m.group(2), t)    # JSX string expressions: {' '} → ' '
+            stack[-1].children.append(re.sub(r"\s*\n\s*", " ", t))
         pos = m.end()
         closing, tag, attrs_src, selfclose = m.groups()
         if closing:
@@ -50,7 +54,10 @@ def parse(jsx):
             continue
         attrs, style = {}, {}
         for a in ATTR.finditer(attrs_src):
-            if a.group(1) == "style": style = parse_style(a.group(3))
+            if a.group(1) == "style" and a.group(3) is not None: style = parse_style(a.group(3))
+            elif a.group(1) == "style":                # an SVG's plain style="a: b; c: d" string
+                style = {re.sub(r"-([a-z])", lambda m: m.group(1).upper(), k.strip()): fix_css(v.strip())
+                         for k, v in (d.split(":", 1) for d in a.group(2)[1:-1].split(";") if ":" in d)}
             else: attrs[a.group(1)] = a.group(2)[1:-1]
         n = Node(tag, attrs, style)
         if stack: stack[-1].children.append(n)
