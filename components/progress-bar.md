@@ -16,6 +16,7 @@ How far she has come toward something she wants: the next tier, this week's coin
 | Progress-fill *Button* ("Small / Half / Full fill") | **Deleted.** A button that fills is the Button's hold-to-confirm state, specified in `button.md` | A control and a status must not look alike (P3). |
 | Segmented bars with 3–5 segments as separate frames | One `segmented` kind, `count` 2–7 | Fewer frames, same look. |
 | Milestone markers (weeks) and goal asset drawn ad hoc in Progress Cards | `Marker` slot: `goal` (asset at the end) and `milestones` (dots on the track, each reached / locked) | The best idea in Figma, made reusable. |
+| The daily guarantee shown as arithmetic (*MinBG ₹2,000 − Business Pay ₹1,800 = ₹200*) on the Earnings day card | **`target`** marker (2026-10-05): a line across the track at a value that is a **floor, not a goal**, with the fill allowed to pass it (`overflow`) | The guarantee is the one idea the Earnings page exists to explain; a subtraction she must do in her head fails P1. Asked by `projects/earnings-page-revamp` |
 
 ---
 
@@ -55,7 +56,7 @@ Not a kind: **indeterminate**. If the end is unknown there is nothing to show pr
 | `success` | value ≥ goal | `iconSuccess` fill; goal asset lit; `check` in the value line | `textSuccess` |
 | `neutral` | locked / upcoming (a future week, a tier not yet unlocked) | `borderDefault` fill on `bgTertiary` track, `lock` on the goal | `textTertiary` |
 
-Empty (value 0) is `brand` with no fill — the track alone reads as "nothing yet, here is the goal". Never `warning` or `error`: a bar that turns red is a punishment, and a shortfall is told with a Banner or a spoken line, not a colour.
+Empty (value 0) is `brand` with no fill — the track alone reads as "nothing yet, here is the goal". Never `warning` or `error`: a bar that turns red is a punishment, and a shortfall is told with a Banner or a spoken line, not a colour. A bar with a `target` marker is always `brand`, even past the target (§ `overflow`).
 
 **Tier compositions** (Tier 2 — `TierProgressCard`, `TierRail`): the fill may take the colour of the *next* tier's metallic asset (bronze, silver, gold, blue, pink), because the asset is right there at the end of the track and the colour points at it. This is the only place a ProgressBar fill is not brand/success/neutral, and it must be paired with the asset.
 
@@ -66,6 +67,11 @@ Empty (value 0) is `brand` with no fill — the track alone reads as "nothing ye
 - **`goal`**: the reward asset (metallic layer — coin, tier badge, red card) at the end of the track, 24/32 dp, overlapping the track end by half. Lit when reached, grey with a `lock-simple` badge when locked. One goal per bar.
 - **`milestones`**: 1–4 dots on the track at their values (weeks of a month, the three tiers on the way to pink). Reached: `bgBrand` fill dot with a 2 dp `bgPrimary` ring. Not yet: `bgPrimary` dot with `borderDefault` ring. Milestone labels (Week 1, Week 2) sit below the track as `Small` — the one allowed use of `Small`, because the value line above already carries the meaning.
 - **Position marker** (her avatar on the tier rail, as in TIER PROGRESS): allowed only in the `TierRail` composition at `L`; it is the Avatar `XS` under the current tier node.
+- **`target`** (2026-10-05, `projects/earnings-page-revamp`): a **floor she is guaranteed**, not a goal she is chasing — the daily minimum guarantee on the Earnings day card. A 2 dp `borderStrong` line crosses the track at the target value, extending 4 dp above and below it, with a `Caption` `textSecondary` label beneath (*guaranteed ₹2,000*). The track runs to **1.25 × target** so there is room to pass it. The fill is her own earnings; the gap between fill and line is the **top-up**, drawn as a `bgBrandSubtle` hatch and named in the value line (*₹1,800 earned · top-up ₹200*). One target per bar; never combined with `goal` (a floor and a goal on one track is two stories) — milestones are allowed.
+
+### `overflow` — when she passes the target
+
+When value ≥ target the fill crosses the line and the hatch disappears; the value line reads *₹2,300 earned · more than the guarantee*. Tone stays **`brand`**, never `success`: reaching the guarantee is the floor, not a win, and the coin sound and pulse do not fire. The line stays visible so she can see how far past it she is. Value beyond 1.25 × target clamps the fill at full and the value line still carries the true figure.
 
 ---
 
@@ -86,6 +92,7 @@ Empty (value 0) is `brand` with no fill — the track alone reads as "nothing ye
 - Segmented: *3 of 5* beside the label; the segments do the rest.
 - Completed: value line becomes *Done · 20 of 20* with `check`; spoken *"Goal reached, 20 coins"*.
 - Locked: *Unlocks after Gold* — the reason, not just a lock.
+- Target: label *Today's pay* (or the day), value line **`₹{earned} earned · top-up ₹{gap}`** under the target and **`₹{earned} earned · more than the guarantee`** at or past it; the line's own caption is *guaranteed ₹{target}*. Spoken: *"You earned 1,800 rupees; the guarantee adds 200."*
 
 ---
 
@@ -103,7 +110,7 @@ None. Segment gap uses `spacing.2` (4 dp). Milestone ring uses `borderWidth.2`.
 
 ## Figma reconciliation
 
-1. Progress Bar → **ProgressBar**: `Kind` (Linear / Segmented), `Size` (S / M / L), `Marker` (None / Goal / Milestones), `Tone` (Brand / Success / Neutral); fill level via a number property, not variants. Bind track to `bgTertiary`, fill to `bgBrand` / `iconSuccess`.
+1. Progress Bar → **ProgressBar**: `Kind` (Linear / Segmented), `Size` (S / M / L), `Marker` (None / Goal / Milestones / **Target**), `Tone` (Brand / Success / Neutral); fill level via a number property, not variants. Bind track to `bgTertiary`, fill to `bgBrand` / `iconSuccess`; the target line to `borderStrong`, the top-up hatch to `bgBrandSubtle`.
 2. Delete the dark-grey and light-grey fill variants; delete the **Progress Buttons** frame.
 3. Progress Cards → rebuild as **TierProgressCard** (Card + ProgressBar M `goal`) and **WeeklyGoalCard** (ProgressBar M `milestones`); tier header colours come from the tier asset palette in `foundations/assets.md`.
 4. TIER PROGRESS → **TierRail** composition: ProgressBar L with five tier assets as milestones and the Avatar position marker.

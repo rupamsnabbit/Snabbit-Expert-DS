@@ -1,0 +1,13 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Pictogram &#194;&#183; dial" clip-path="url(#clip0_0_75)">
+<path id="Vector" d="M20 38.5C30.2173 38.5 38.5 30.2173 38.5 20C38.5 9.78273 30.2173 1.5 20 1.5C9.78273 1.5 1.5 9.78273 1.5 20C1.5 30.2173 9.78273 38.5 20 38.5Z" fill="white" stroke="#E5E7EB" stroke-width="2"/>
+<path id="Vector_2" d="M20 20L12.5 32.99C10.2197 31.6735 8.32612 29.7799 7.00959 27.4996C5.69307 25.2193 4.99998 22.6326 5 19.9995C5.00002 17.3665 5.69314 14.7798 7.00969 12.4995C8.32625 10.2192 10.2198 8.32565 12.5002 7.00914C14.7805 5.69264 17.3672 4.99958 20.0002 4.99962C22.6333 4.99966 25.22 5.6928 27.5002 7.00938C29.7805 8.32596 31.6741 10.2196 32.9905 12.4999C34.307 14.7802 35.0001 17.3669 35 20H20Z" fill="#FBC9DF"/>
+<path id="Vector_3" d="M20 20V9" stroke="#111827" stroke-width="2" stroke-linecap="round"/>
+<path id="Vector_4" d="M20 20L16 26.93" stroke="#111827" stroke-width="3" stroke-linecap="round"/>
+</g>
+<defs>
+<clipPath id="clip0_0_75">
+<rect width="40" height="40" fill="white"/>
+</clipPath>
+</defs>
+</svg>

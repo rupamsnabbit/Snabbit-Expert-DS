@@ -1,0 +1,16 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="164" height="200" viewBox="0 0 164 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Pearl" clip-path="url(#clip0_0_23)">
+<path id="Vector" d="M164 0H0V200H164V0Z" fill="url(#paint0_radial_0_23)"/>
+</g>
+<defs>
+<radialGradient id="paint0_radial_0_23" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(164) scale(300.67 238.62)">
+<stop stop-color="#A69CE8"/>
+<stop offset="0.52" stop-color="#DDE0FA"/>
+<stop offset="0.82" stop-color="#E8E8FC"/>
+<stop offset="1" stop-color="#C5BCEF"/>
+</radialGradient>
+<clipPath id="clip0_0_23">
+<rect width="164" height="200" fill="white"/>
+</clipPath>
+</defs>
+</svg>

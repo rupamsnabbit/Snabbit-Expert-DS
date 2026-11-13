@@ -1,2 +1,31 @@
 .DS_Store
 __pycache__/
+
+# Third-party reference screenshots (Mobbin, Pinterest, Dribbble, other apps).
+# CLAUDE.md: internal only — never published. The repo is public, so the images
+# stay on this machine; each read's .md (the translation) is committed.
+**/*mobbin*/**/*.webp
+**/*mobbin*/**/*.png
+**/*mobbin*/**/*.jpg
+**/*mobbin*/**/*.jpeg
+projects/advance-attendance/reads/doordash-dasher-schedule/*.*
+projects/advance-attendance/reads/fiverr-asana-unavailable/*.*
+projects/advance-attendance/reads/octopus-energy-slot-grid/*.*
+projects/advance-attendance/reads/turo-block-availability/*.*
+projects/advance-attendance/reads/uber-eats-zomato-day-slot/*.*
+projects/advance-attendance/reads/visible-daily-check-in/*.*
+projects/earnings-page-revamp/reads/dasher-earnings/*.*
+projects/earnings-page-revamp/reads/grab-driver-earnings/*.*
+projects/earnings-page-revamp/reads/turo-host-earnings/*.*
+projects/hood-shift-change/reads/filters-readable/*.*
+projects/hood-shift-change/reads/lead-refs-deep-cards-2026-10-13/*.*
+projects/hood-shift-change/reads/voice-mood-refs/*.*
+projects/hood-shift-change/reads/pinterest-voice-ui/*.*
+projects/hood-shift-change/reads/summary-confirm-ref/*.*
+projects/hood-shift-change/reads/al-dente-voice-intake/*.*
+projects/hood-shift-change/reads/glow-refs/0[1-9]-*.*
+projects/hood-shift-change/reads/audio-sphere-cards/reference.png
+projects/hood-shift-change/reads/promo-card-status-banner/reference-*
+projects/payouts-revamp/reads/sheet-many-updates/*.*
+projects/payouts-revamp/reads/earnings-breakdown/*.*
+!**/*.md

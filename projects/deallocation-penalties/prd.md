@@ -284,3 +284,23 @@ One event for the check-in action surface, parallel to :
 
 - Same discipline as the offline event: configs snapshotted at trigger, and the tap recorded even when she backs out.
 
+
+---
+
+## v1.1 — scope cut from product (2026-10-27)
+
+| | |
+| --- | --- |
+| From | Product, relayed by the design lead in conversation |
+| Received | 2026-10-27 |
+| Kind | Scope change — the v1 body above is unchanged |
+
+"We're going to be doing only these three cases, ignore other cases." The three, from the v1 table *Penalty cases — what the expert sees*:
+
+| Case | Group | What the expert sees on the app | Timer | Red cards | Auto-logout |
+| --- | --- | --- | --- | --- | --- |
+| Data off | Live, on device | Bottom sheet on open + voice ringer: "Your mobile data is off. Turn it on in [timer] or you'll get [N] red cards[ and be logged out]." Live countdown. CTA: Turn on data. | Grace to revert | N | On / Off |
+| Location off | Live, on device | Same sheet + ringer: "Location is off." CTA: Turn on location. | Grace to revert | N | On / Off |
+| Permission off | Live, on device | Same sheet + ringer: "Location permission is off." CTA deep-links to the permission screen. | Grace to revert | N | On / Off |
+
+Out: airplane, phone off, force stop (all of Group B). The check-in actions (PX gate, Deny / Early Logout) are not penalty *cases*; whether they stay is open question 18.

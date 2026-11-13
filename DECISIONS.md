@@ -277,3 +277,55 @@ emulator only. The first one is Beauty's *Job lifecycle · linear* (28 screens).
 **Revisit if.** Walkthroughs start being used to decide a design instead of showing one, or the team needs them on
 real phones outside this Mac — then hosting and a review step are decided here first.
 
+
+## 2026-10-01 — Hood and shift change: hours not types, the shipped shift card, no Saathi, hood + area
+
+From `projects/hood-shift-change` (design lead and PM, 2026-10-01).
+
+**Decision.**
+- **Hours, not shift types.** The expert never sees *Full time*, *Part time* or *Smart Shift*. Timings are offered as hours a day, anchored on the hours she works now (never asked). Lists open on a `Chip filter` row of the hours open in that hood, with **her hours pre-selected**. Hours a hood does not offer are not shown. A split day is drawn as block · break · block. The confirm says *2 hrs more a day* or *2 hrs less a day* only when the hours change.
+- **The shipped shift option card is the card for every timings list.** Pay sits top right as *Earn up to* · ₹ · *a month*, then the hood, area · km and `map-pin`, a divider, and the day. Kept departures from the shipped card: pay neutral, not green (P6); *up to* spelt correctly; `content.md` time format; hours that add up plus the break's length (P9).
+- **No Talk to Saathi in this flow.** Change hood, change shift time and start late never offer Talk to Saathi, including locked and closed states and searches that find nothing. Help stays in Profile → Help. *This overrides the 2026-09-30 project rule that "the way out is Talk to Saathi".* (Design lead: "don't let me talk unnecessarily".)
+- **Hood + area.** *Hood* is where she works, named by its landmark and sector (*Kudlu Gate*, *Near Forum Mall · 6th Sector*). *Area* is the bigger place (*Koramangala*, *Bommanahalli*), used only as a list heading and a card's second line. List headings are area names, never *Near your home*, because we know only where she is now. The top row reads *Your hood now · Kudlu Gate · 12 km*. *Supersedes the 2026-09-30 project choice "Area = cluster; hoods by name, no word".*
+
+**Consequence.** `components/selection-card.md` § rich is reconciled to the shipped card (pay trailing, divider, a day rail of up to three lines). `components/chip.md` § filter allows a default other than *All* (her current value). `foundations/icons.md` gains `coffee` = break. *Hood* and *Area* enter the vocabulary in `principles/PRINCIPLES.md` and `foundations/content.md`. Each lands as its own change, with CHANGELOG, site and lint.
+
+**Revisit if.** Research shows experts need the type word to understand a split or shorter day, or that without Talk to Saathi they stall on a locked state rather than wait for the date.
+
+## 2026-10-07 — A trailing checkbox beside a meaning icon; a choice-list title may be SemiBold
+
+From `projects/hood-shift-change` (G4 · *Pick instead*: she picks up to 3 work areas from a list). Approved by the design lead, 2026-10-07.
+
+**Decision.**
+- **Trailing checkbox.** `components/selection-controls.md` puts the Checkbox at the start of the row. In a **multi-select** row whose leading slot already holds a **meaning icon or pictogram that must stay** (`map-pin` for a place), the Checkbox moves **trailing**: the icon keeps saying *what*, the box says *picked*. The whole row stays the ≥ 48 dp target; the box is the same 24 dp with the `interactiveDefault` fill and white `check`; a picked row is tinted `bgBrandSubtle`. With a cap, a counter (*2 of 3*) sits by the list heading, and at the cap the unpicked rows go `textDisabled` with no box and the slot kept. Radio never moves, and a row with no meaning icon keeps the box leading. *This is an exception to "Checkbox and Radio sit leading".*
+- **SemiBold choice-list title.** `components/list-item.md` sets the title Regular. In a **choice list** (rows the expert picks from, single or multi-select) the title may be **SemiBold**, because the title is the thing being chosen. Every row takes the same weight, and the weight never changes on selection. Information lists stay Regular. *This is an exception to "Title `BodyLg` 16 Regular".*
+
+**Consequence.** Both specs carry the exception with its limits, a Figma ask (a `Control position` / `Trailing` = Checkbox property and a capped state; a `Title weight` property allowed only on selection rows), and checklist rows updated. The same change adds Chip `removable` (`components/chip.md`) for the picked-values strip above such a list, and widens `x` in `foundations/icons.md` to *remove this value*. A screen that puts a checkbox and an icon side by side in the leading slot, or bolds an information list's titles, is not using this exception.
+
+**Revisit if.** Experts on device miss the trailing box (tap the icon and expect nothing), or a list with a trailing box and another with a leading box appear on the same flow and confuse her; or SemiBold titles spread to information lists.
+
+## 2026-10-23 — Payout status lives on the shipped schedule row; red only when she must act
+
+From `projects/payouts-revamp` (monthly payout visibility, early payout visibility). Asked by the payouts stakeholder in the 2026-10-22 review; approved by the design lead, 2026-10-23.
+
+**Decision.**
+- **One row, its current step.** The monthly payout's whole journey — approaching, sent, paid, retrying, send it yourself, bank details wrong, bank not added, next batch — is shown as a **status of the shipped *Monthly payout* schedule row** in the month statement, not as a timeline, a new card or a Home element. `components/statement.md` gains § *Schedule row status*; `patterns/payout.md` § 2 holds the steps.
+- **Red means she must act; amber means we are acting.** A failed attempt that the system will retry is `waiting` (amber, `arrow-clockwise`, *trying again in [X] hours*), because she has nothing to do and the stakeholder's brief was *no anxiety*. Red is reserved for the three steps that need her tap.
+- **The action is one tap down.** The Statement holds no Button; the row opens a BottomSheet `info` with the reason and the one action, as the shipped red *Add UPI / bank account ›* row already does.
+- **Departure from the shipped tile.** The app fills the date tile solid green / orange / red under white digits; white on `textWarning` is 3.2:1 and on `textSuccess` below 4.5:1. The spec keeps the tile and uses the soft wash + strong text step (`tag.md`'s measured pairing).
+- **Withdrawn**: `payout.md`'s 2026-09-22 proposals of a Tag per schedule row with the fix as a Button on the row, the NumericKeypad early-payout picker with a fee row and a confirm sheet, and the Home Snackbar for a failed or blocked payout. The shipped screens carry the states instead.
+
+**Consequence.** The early-payout flow keeps every shipped screen; its *Recent withdrawals* row takes Tags (*On its way* · *Paid* · *Failed*), and a Banner on the home card carries the unresolved failure. Two pictograms are proposed for the failure reasons (`transfer`, `passbook`). Figma: a `Tone` variant on the `DateTile` and a `StatusLine` on the schedule row.
+
+**Revisit if.** Experts read amber *trying again* as *my money is lost*; or the payment partner's real failure reasons do not fit the three placeholders; or a payout needs more than one row's worth of explanation.
+
+## 2026-10-29 — A payout on its way is blue; the date tile gives way to a flat status disc
+
+**Decision.** The Statement schedule row gets a fifth tone, `moving` (blue: `bgInfoSubtle` wash, `textInfoStrong` line and icon, `clock`), for *sent* and *processing*. Amber (`waiting`) now means only *something went wrong and we are fixing it* (retrying, on hold). The leading 48 dp slot holds the **date tile while the money is coming** (`neutral`) and a **flat status disc** once something has happened; the status line then carries the only date. Status discs are flat Phosphor icons, never a metallic 3D asset. Recorded in `components/statement.md` § Schedule row status, `patterns/payout.md` § 2 and § 4, `components/tag.md` (tone meanings), `projects/payouts-revamp`.
+
+**Why.** The design lead (2026-10-29) asked whether *processing* should be yellow since it is good news. Amber was carrying both *fine, on its way* and *failed, we are retrying*, so a normal payout looked like a troubled one — one colour, two meanings (P1). The tile-to-disc rule came from the lead's card C2: after the payout is sent, a tile showing the send date beside a line saying *Expected by 3 August* shows two dates. The 3D clock and tick on the Figma cards read as rewards (`assets.md`: metallic 3D for rewards only).
+
+**Consequence.** Departs from the shipped app, which shows processing in orange (*Payment is under processing…*); engineers follow the spec, not the old orange. Early payout's *On its way* Tag becomes `info`. `bgInfoSubtle` and `textInfoStrong` are still the token-0.20 proposals in `foundations/accessibility.md`; this decision is a reason to land them. In Figma *Payment revamp* → *Monthly Payout*, 1.02 *Sent*, its sheet and 1.12d are blue, and the three 3D images on 1.02 / 1.04 / 1.03 are the flat discs the sheets already used.
+
+**Revisit if.** Field review shows blue read as a link or as "nothing is happening".
+

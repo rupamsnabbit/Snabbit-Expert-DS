@@ -22,6 +22,7 @@ fi
 "$ADB" wait-for-device
 until [ "$("$ADB" shell getprop sys.boot_completed | tr -d '\r')" = "1" ]; do sleep 2; done
 "$ADB" reverse tcp:$PORT tcp:$PORT > /dev/null
-URL="http://localhost:$PORT/projects/$PROJECT/walkthrough/$FLOW/index.html"
-"$ADB" shell am start -a android.intent.action.VIEW -d "$URL" com.android.chrome > /dev/null
+URL="http://localhost:$PORT/projects/$PROJECT/walkthrough/$FLOW/index.html?v=$(date +%s)"   # a new load every time, never a hash jump in the old page
+# one app id: Chrome reuses the same tab on every open instead of stacking new ones
+"$ADB" shell am start -a android.intent.action.VIEW -d "$URL" --es com.android.browser.application_id walkthrough com.android.chrome > /dev/null
 echo "Open on the emulator: $URL"

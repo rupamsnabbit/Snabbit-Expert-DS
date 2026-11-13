@@ -44,7 +44,7 @@ Padding 16 sides, 24 top (8 when grabber), 16 bottom + safe area. Content gap 12
 | Kind | Dismissible | Hero | Content | Actions | Use |
 | --- | --- | --- | --- | --- | --- |
 | `info` | yes (✕, drag, scrim tap) | scene/pictogram 96–160 | body text | one: `primary` *Got it* / a verb | Job started · Battery low · Kavach reminder |
-| `confirm` | **no** while the decision is pending (no ✕, scrim tap does nothing; back = the safe option) | pictogram 96 or a **consequence strip** | body names the consequence; optional facts strip (red card · missed shift · −₹200) | two, stacked: safe option `ghost` **above**, the costly option `secondary danger` with **hold** below — or `primary brand` when the decision is safe | Go offline? · Emergency logout · Block customer · Change attendance |
+| `confirm` | **no** while the decision is pending (no ✕, scrim tap does nothing; back = the safe option). **Safe confirm** — one `primary brand`, nothing lost: ✕ top-right is the way out instead of a `ghost` option; drag and scrim tap still do nothing | pictogram 96 or a **consequence strip** | body names the consequence; optional facts strip (red card · missed shift · −₹200) | two, stacked: safe option `ghost` **above**, the costly option `secondary danger` with **hold** below. Safe confirm: one `primary brand`, the ✕ replaces the `ghost` | Go offline? · Emergency logout · Block customer · Change attendance |
 | `select` | yes | none | list of Radio rows (single) or Checkbox rows (multi), ≤ 8; search TextField above when > 8 | `primary` *Done* only for multi; single closes on pick | Language · Shift · Reason for leave |
 | `form` | yes, unless mid-submit | none | one TextField (OTP, phone, message) with helper | `primary` verb (*Start job*, *Send*) + optional `ghost` (*No OTP?*) | Enter OTP to start job · Customer's number · Message customer |
 | `permission` | yes (*Not now*) | scene asset 160 explaining the permission | body: why we need it, one sentence | `primary` *Allow camera* → OS prompt · `ghost` *Not now* | Camera · Location · Contacts · Notifications · Overlay |
@@ -130,6 +130,7 @@ the sheet takes drag where it covers.
 - Opens in `motion.slow` (300 ms) `easing.enter` from the bottom; scrim fades in over the same time. Closes in `motion.standard` (200 ms) `easing.exit`. Reduced motion → appear/disappear.
 - `info`, `select`, `form`, `permission`: drag down past 30 % dismisses; scrim tap dismisses; back dismisses; ✕ dismisses. A dismissed `form` keeps its typed value for 5 minutes.
 - `confirm`: **cannot be dismissed accidentally.** No ✕, no drag, scrim tap does nothing, back button = the safe option. The only ways out are the two labelled actions. This is the P3 second gesture for anything costly.
+- **Safe confirm** (added 2026-09-30, asked by `projects/hood-shift-change`: *Move to 6th Sector?*, *Change to 11 am – 7 pm?*): when nothing is lost and the primary is `primary brand`, the ✕ top-right replaces the `ghost` safe option. Closing is the safe outcome, so a deliberate ✕ tap does not weaken P3; drag and scrim tap still do nothing, and back still closes. A confirm that is final or costly (Start late, Go offline, Block) keeps both labelled actions. A safe confirm's body may be a **composition** rather than text — the evening attendance sheet holds a day header and a row of Chip `answer` pills — and its one Button's label may **follow the content** (*I'll come* → *Come to 1 of 2*), because the Button is the sentence she is saying back (`content.md` § 3). Asked by `projects/advance-attendance`, 2026-10-01.
 - On open the sheet **speaks its title and body** on first-time flows and whenever the kind is `confirm` or `permission` (P4). A `speaker-high` IconButton beside the title lets her hear it again.
 - Keyboard (form): the sheet rises above the keyboard; the TextField is focused on open; the primary Button stays visible above the keyboard.
 - One sheet at a time. A sheet never opens another sheet; it closes and the next opens (200 ms gap).
@@ -163,7 +164,7 @@ Role dialog, modal; focus moves to the title on open and returns to the trigger 
 ## Figma reconciliation
 
 1. Merge the 15 sheets into **BottomSheet**: `Kind` (Info / Confirm / Select / Form / Permission), booleans `Hero`, `Grabber`, `Close`, `Facts strip`, `Secondary action`. Add an **Info / Day detail** instance set (date line · asset · title or Tag · body · Nudge · *Got it*) and rebuild the seven day cards in *Expert (Sahil)* `8510:23259` from it.
-2. Close ✕ moves inside the sheet, top-right, IconButton M ghost; removed on Confirm.
+2. Close ✕ moves inside the sheet, top-right, IconButton M ghost; removed on a costly Confirm, kept on a safe Confirm (one primary, no ghost).
 3. Replace green/red/status buttons with Button instances per the action rules; *No | Yes* → stacked verbs; *Absent | Present* → two `secondary neutral`.
 4. Costly confirms (*Emergency logout*, *Block*, *Lose earnings*) get `secondary danger` + Hold.
 5. Illustrations swapped for asset instances; delete the stray `1825:6967`.
@@ -180,7 +181,7 @@ Result: 5 kinds × booleans ≈ **20 core variants**; the 15 feature sheets beco
 | 1 | ⚙ Targets | ✅ actions 56; ✕ 48 |
 | 2 | ⚙ Semantic tokens only | ✅ (scrim token proposed) |
 | 3 | ⚙ Type scale | ✅ Heading3 / BodyLg / BodyMd |
-| 4 | ⚙ States by ≥ 2 channels | ✅ confirm = no ✕ + hold + consequence strip |
+| 4 | ⚙ States by ≥ 2 channels | ✅ costly confirm = no ✕ + hold + consequence strip; safe confirm = ✕ + one primary |
 | 5 | ⚙ Loading / offline | ✅ button loading; Offline Banner inside |
 | 6 | ⚙ Tap guard | ✅ via Button |
 | 8 | ⚙ Motion ≤ 300 ms, reduced motion | ✅ `motion.slow` / `motion.standard` |

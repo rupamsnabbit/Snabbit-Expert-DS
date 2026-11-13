@@ -16,7 +16,7 @@ What is done and what is left, against the 49-component core set in `audit/BENCH
 | 6 | Amount | Amount (₹, tabular, sizes) | Proposed |
 | 7 | Timer | Timer (countdown, deadline) | Proposed |
 | 8 | Banner · Toast · Snackbar | Banner (incl. **Offline banner**), Toast, **Snackbar with action** | Proposed |
-| 9 | Chip | Chip (filter, input) | Proposed |
+| 9 | Chip | Chip (filter, input, removable — 2026-10-07) | Proposed |
 | 10 | Avatar | Avatar | Proposed |
 | 11 | Badge | Badge (dot, count, promo), AchievementBadge | Proposed |
 | 12 | Card | Card | Proposed |

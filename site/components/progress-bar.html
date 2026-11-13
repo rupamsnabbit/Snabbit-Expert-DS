@@ -97,6 +97,7 @@ td.tk{font-family:var(--mono);font-size:12.5px;color:var(--text)}
 .pb .mslab{position:relative;height:14px;margin-top:-2px}.pb .mslab span{position:absolute;transform:translateX(-50%);font-size:10px;line-height:14px;color:#6B7280;white-space:nowrap}
 .pb .goal{position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:24px;height:24px}.pb.L .goal{width:32px;height:32px;right:-16px}
 .pb .trk.hasgoal{margin-right:12px}.pb.L .trk.hasgoal{margin-right:16px}
+.pb .tgt{position:absolute;top:-4px;bottom:-4px;width:2px;background:#374151;transform:translateX(-50%);border-radius:1px}.pb .hatch{position:absolute;top:0;bottom:0;background:repeating-linear-gradient(135deg,#FBC9DF 0 3px,transparent 3px 6px);border-radius:999px}.pb .tgtlab{position:relative;height:14px;margin-top:2px}.pb .tgtlab span{position:absolute;transform:translateX(-50%);font-size:11px;line-height:14px;color:#6B7280;white-space:nowrap}
 .ast{border-radius:50%;width:100%;height:100%;display:grid;place-items:center;position:relative}
 .ast.coin{background:radial-gradient(circle at 35% 35%,#FDE68A,#F59E0B 60%,#B45309)}
 .ast.gold{background:radial-gradient(circle at 35% 35%,#FDE68A,#D97706 60%,#92400E)}
@@ -153,7 +154,7 @@ td.tk{font-family:var(--mono);font-size:12.5px;color:var(--text)}
     </section>
 
     <section id="markers">
-      <header><div class="eyebrow">Slots</div><h2>Markers</h2><p>A <b>goal</b> asset at the end of the track (metallic layer — coin, tier badge), lit when reached, grey with a lock when not yet available. <b>Milestones</b> are dots on the track at their values with <code>Small</code> labels beneath — the one place <code>Small</code> is allowed, because the value line above carries the meaning.</p></header>
+      <header><div class="eyebrow">Slots</div><h2>Markers</h2><p>A <b>goal</b> asset at the end of the track (metallic layer — coin, tier badge), lit when reached, grey with a lock when not yet available. <b>Milestones</b> are dots on the track at their values with <code>Small</code> labels beneath — the one place <code>Small</code> is allowed, because the value line above carries the meaning. A <b>target</b> is a floor she is guaranteed, not a goal she is chasing — the daily minimum guarantee on Earnings: a line across the track, the fill is what she earned, the hatched gap is the top-up, and when she earns past the line the hatch goes and the tone stays brand (reaching the floor is not a win).</p></header>
       <div class="stage"><div class="grid2" id="markers-grid"></div></div>
     </section>
 
@@ -187,7 +188,12 @@ const T=JSON.parse(document.getElementById("tokens-json").textContent); const $=
 const ICO={check:'M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z',lock:'M208,80H176V56a48,48,0,0,0-96,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM96,56a32,32,0,0,1,64,0V80H96Z',checkc:'M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,85.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z',caret:'M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z'};
 const svg=n=>`<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="${ICO[n]}"/></svg>`;
 const asset=(kind,o={})=>`<span class="ast ${kind} ${o.locked?'locked':''} ${o.lit?'lit':''} ${o.pulse?'pulse':''}" title="${o.name||kind}">${o.locked?`<span class="lk">${svg('lock')}</span>`:''}</span>`;
-function pb(o){ // {label,value,goal,noun,size,kind,count,goalAsset,milestones:[{at,label}],tone,tier}
+function pb(o){ // {label,value,goal,noun,size,kind,count,goalAsset,milestones:[{at,label}],tone,tier,target,fmt}
+ if(o.target){ // a floor, not a goal: track runs to 1.25 × target, fill may pass the line, tone stays brand
+  const size=o.size||'M', max=o.target*1.25, pct=Math.max(0,Math.min(100,o.value/max*100)), tp=o.target/max*100, over=o.value>=o.target, f=o.fmt||(n=>'₹'+n.toLocaleString('en-IN'));
+  const valTxt=over?`${f(o.value)} earned · more than the guarantee`:`${f(o.value)} earned · top-up ${f(o.target-o.value)}`;
+  const hatch=over?'':`<div class="hatch" style="left:${pct}%;width:${tp-pct}%"></div>`;
+  return `<div class="pb ${size} t-brand"><div class="lrow"><span class="lab">${o.label}</span><span class="val">${valTxt}</span></div><div class="trk" role="progressbar" aria-valuenow="${o.value}" aria-valuemax="${max}" aria-valuetext="${valTxt}"><div class="fill" style="width:${pct}%"></div>${hatch}<span class="tgt" style="left:${tp}%"></span></div><div class="tgtlab"><span style="left:${tp}%">guaranteed ${f(o.target)}</span></div></div>`;}
  const size=o.size||'M', pct=Math.max(0,Math.min(100,o.value/o.goal*100));
  const tone=o.tone||(o.value>=o.goal?'success':'brand');
  const done=o.value>=o.goal;
@@ -218,7 +224,9 @@ $('#markers-grid').innerHTML=[
  W('<b>goal</b> · coin asset at the end, overlapping the track by half',pb({label:'Snabbit coins this week',value:7,goal:20,noun:'coins',goalAsset:'coin'})),
  W('<b>goal · locked</b> · grey asset + lock-simple',pb({label:'To Diamond tier',value:0,goal:6000,tone:'neutral',lockedText:'Unlocks after Gold',goalAsset:'blue',goalName:'Diamond tier'})),
  W('<b>milestones</b> · weeks of a month · Small labels beneath',pb({label:'Coins this month',value:34,goal:80,noun:'coins',goalAsset:'coin',milestones:[{at:20,label:'Week 1'},{at:40,label:'Week 2'},{at:60,label:'Week 3'}]})),
- W('<b>milestones · L</b> · reached dots are brand with a white ring',pb({label:'To Gold tier',value:2100,goal:3000,size:'L',noun:'coins',goalAsset:'gold',goalName:'Gold tier',milestones:[{at:1000},{at:2000}]}))].join('');
+ W('<b>milestones · L</b> · reached dots are brand with a white ring',pb({label:'To Gold tier',value:2100,goal:3000,size:'L',noun:'coins',goalAsset:'gold',goalName:'Gold tier',milestones:[{at:1000},{at:2000}]})),
+ W('<b>target</b> · the daily guarantee is a floor, not a goal · fill = her earnings · hatch = the top-up · line = guaranteed amount · tone stays brand',pb({label:"Today's pay",value:1800,target:2000})),
+ W('<b>target · overflow</b> · she earned past the guarantee · no top-up · the line stays so she sees by how much',pb({label:"Today's pay",value:2300,target:2000}))].join('');
 // live
 let v=14,goal=20,prev=14;
 function live(pulse){$('#livecard').innerHTML=`<div class="hd"><span class="ic">${asset('coin')}</span><div><div class="t">Snabbit coins</div><div class="s">This week</div></div></div>${pb({label:'To your weekly bonus',value:v,goal,noun:'coins',goalAsset:'coin',pulse})}`;}

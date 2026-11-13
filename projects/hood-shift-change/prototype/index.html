@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#FFFFFF">
+<title>Hood & shift · Saathi</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="tokens.css?v=1791881295">
+<link rel="stylesheet" href="styles.css?v=1791881295">
+<link rel="stylesheet" href="screens/laneT.css?v=1791881295">
+<link rel="stylesheet" href="screens/laneHT.css?v=1791881295">
+<link rel="stylesheet" href="screens/manual.css?v=1791881295">
+<link rel="stylesheet" href="screens/profile.css?v=1791881295">
+<link rel="stylesheet" href="coach.css?v=1">
+<link rel="stylesheet" href="screens/late.css?v=1791881295">
+<link rel="stylesheet" href="screens/laneC.css?v=1791881295">
+<link rel="stylesheet" href="screens/expert.css?v=1">
+<link rel="stylesheet" href="screens/home.css?v=1">
+</head>
+<body>
+<div id="viewport">
+  <div id="stage">
+    <div id="statusbar"><span id="clock">9:30</span><span class="sb-right"><img src="assets/sb-wifi.svg" alt=""><img src="assets/sb-signal.svg" alt=""><img class="bat" src="assets/sb-battery.svg" alt=""></span></div>
+    <div id="screen"></div>
+    <div id="orb" class="orb idle" title="Saathi"><span class="r2"></span><span class="r1"></span><div class="face" data-act="orb"></div><span class="dot"></span></div>
+    <div id="toast"></div>
+    <div id="scrim" hidden></div>
+    <div id="switch" hidden>
+      <div class="switch-sheet">
+        <div class="switch-title">Prototype switch</div>
+        <div class="switch-row"><span>Lane</span><div class="seg" data-key="lane"><button data-v="T">T · my hood</button><button data-v="HT">HT · new hood</button><button data-v="C">C · friend</button></div></div>
+        <div class="switch-row"><span>State</span><div class="seg" data-key="mode"><button data-v="open">open</button><button data-v="full">full</button><button data-v="hood">other hoods</button><button data-v="area">other areas</button><button data-v="none">no slots</button></div></div>
+        <div class="switch-row"><span>Voice</span><div class="seg" data-key="voice"><button data-v="real">real</button><button data-v="script">scripted</button></div></div>
+        <div class="switch-row"><span>Go to</span><div class="seg" data-key="goto"><button data-v="home">Home</button><button data-v="entry">Profile</button><button data-v="FQ">Friend?</button><button data-v="N4">Record</button><button data-v="S1b">Read-back</button><button data-v="results">Results</button><button data-v="M1">Type it</button><button data-v="P2">Offer</button><button data-v="LL1">Login time</button></div></div>
+        <div class="switch-row"><span>Day</span><div class="seg" data-key="day"><button data-v="none">No move</button><button data-v="booked">Booked</button><button data-v="lastday">Last day</button><button data-v="afterlogout">After logout</button><button data-v="day0">Day 0</button></div></div>
+        <div class="switch-row"><span>Reset</span><div class="seg" data-key="reset"><button data-v="login">Login time</button><button data-v="coach">Spotlight</button><button data-v="all">Everything</button></div></div>
+        <div class="switch-foot"><span id="switch-info"></span><button class="btn btn-md" data-act="switch-close">Close</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="data.js?v=1791881295"></script>
+<script src="roman.js?v=1791881295"></script>
+<script src="voice.js?v=1791881295"></script>
+<script src="components.js?v=1791881295"></script>
+<script src="app.js?v=1791881295"></script>
+<script src="coach.js?v=1"></script>
+<script src="filters.js?v=1791881295"></script>
+<script src="screens/spine.js?v=1791881295"></script>
+<script src="screens/laneT.js?v=1791881295"></script>
+<script src="screens/laneHT.js?v=1791881295"></script>
+<script src="screens/laneC.js?v=1791881295"></script>
+<script src="screens/profile.js?v=1791881295"></script>
+<script src="screens/manual.js?v=1791881295"></script>
+<script src="screens/late.js?v=1791881295"></script>
+<script src="screens/expert.js?v=1"></script>
+<script src="screens/home.js?v=1"></script>
+<script>App.start();</script>
+</body>
+</html>

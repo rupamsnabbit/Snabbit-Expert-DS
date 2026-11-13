@@ -83,6 +83,16 @@ Rules:
 - 3–5 stages. More than five is a log, and a log belongs in a ledger.
 - Announced as *stage 3 of 4, out for delivery* — the count is spoken even though it is not drawn, because a screen reader has no shape to read.
 
+#### `tracker` · vertical — what happened, in order (2026-10-23, `projects/payouts-revamp`)
+
+A payout that failed and is being sent again is a story with times in it: *Sent 2 August, 10:00 AM → Your bank didn't accept it 4:00 PM → Sending again in [X] hours → In your bank by 3 August*. Four one-word rail labels cannot carry those times, and the design lead asked for the failure sheet to *tell what happened, as a journey, with less text*. So the tracker may stand **vertically** inside a BottomSheet, as the sheet's one hero, in place of a paragraph.
+
+- **Row:** node 40 dp (icon 20) on the left with a 2 dp `borderDefault` connector down to the next node; label `BodyLg` Medium; under it one `BodyMd` `textSecondary` line with the **time** (*2 August, 10:00 AM*, *In [X] hours*, *By 3 August*), or nothing. No other text.
+- **States:** `done` (`check-circle` fill on `bgSuccessSubtle`, `textSuccessStrong`) · **`failed`** — a stage that **happened** and did not succeed, followed by a later stage (`x-circle` on `bgErrorSubtle`, `textErrorStrong`, label `textPrimary`) · `current` in the tone of who acts: **we act** = warning (`bgWarningSubtle` disc, 2 dp `borderWarning` ring, label `textWarningStrong`, `arrow-clockwise`) · **she acts** = brand (`bgBrandSubtle`, `borderBrand` ring, label `textBrand`) · `upcoming` (`bgTertiary`, `textTertiary`, label `textSecondary`).
+- `failed` is allowed **only in the vertical tracker and only before a later stage** — a retry, a send-again. A failure that is the current state with nothing after it is still a Banner (above), never a red last node.
+- Repeated attempts collapse into one row (*We tried 2 more times · 3 August*); 3–5 rows, as the rail.
+- The sheet's one Button stays outside the tracker (*Got it*, *Send to my bank*).
+
 ### `progression` — what I have earned
 
 **In app** 2026-09-22 — the tier rail on the Tier screen: Base → Silver → **Gold** → Diamond → Pink Diamond.

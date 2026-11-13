@@ -1,0 +1,15 @@
+/* Spotlight (Figma V3 436:15527): scrim gray-900 at 50 %, the lit card section (radius 16), Saathi's pointing face (62 × 64) and the white bubble (217 × 61, its own pink edge and drop) */
+.coach { position: absolute; inset: 0; z-index: 40; opacity: 0; transition: opacity 200ms cubic-bezier(0, 0, 0.2, 1); cursor: pointer; }
+.coach.in { opacity: 1; }
+.coach.out { opacity: 0; transition: opacity 100ms cubic-bezier(0.4, 0, 1, 1); }
+.coach-hole { position: absolute; border-radius: 16px; box-shadow: 0 0 0 2000px color-mix(in srgb, var(--color-gray-900) 50%, transparent); pointer-events: none; }
+.coach-face { position: absolute; left: 30px; width: 62px; height: 64px; background: url(assets/home/saathi-point.png) center / 100% 100% no-repeat; transform: scale(0.96); transition: transform 200ms cubic-bezier(0, 0, 0.2, 1); }
+.coach-face.talk { animation: talk 900ms ease-in-out infinite; }
+.coach-bubble { position: absolute; left: 86px; width: 217.12px; height: 61px; transform: scale(0.96); transform-origin: 0 100%; transition: transform 200ms cubic-bezier(0, 0, 0.2, 1); }
+.coach-bubble.below { transform-origin: 0 0; }
+.coach.in .coach-bubble, .coach.in .coach-face { transform: scale(1); }
+.coach-shape { position: absolute; left: 0; top: 0; width: 217.12px; height: 61px; display: block; }
+.coach-bubble.below .coach-shape { transform: scaleY(-1); }
+.coach-text { position: absolute; left: 18.6px; top: 11px; width: 189px; font-size: 14px; line-height: 20px; font-weight: 500; color: var(--color-gray-900); }
+.coach-bubble.below .coach-text { top: 13px; }
+@media (prefers-reduced-motion: reduce) { .coach-face, .coach-bubble, .coach.in .coach-face, .coach.in .coach-bubble { transform: none; transition: none; } .coach-face.talk { animation: none; } }

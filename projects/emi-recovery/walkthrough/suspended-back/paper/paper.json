@@ -1,0 +1,1025 @@
+{
+ "file_name": "EMI recovery",
+ "tokens": [
+  {
+   "name": "--color-text-primary",
+   "type": "color",
+   "value": "#111827"
+  },
+  {
+   "name": "--color-text-body",
+   "type": "color",
+   "value": "#374151"
+  },
+  {
+   "name": "--color-text-secondary",
+   "type": "color",
+   "value": "#6B7280"
+  },
+  {
+   "name": "--color-text-tertiary",
+   "type": "color",
+   "value": "#9CA3AF"
+  },
+  {
+   "name": "--color-text-inverse",
+   "type": "color",
+   "value": "#FFFFFF"
+  },
+  {
+   "name": "--color-text-brand",
+   "type": "color",
+   "value": "#F70F79"
+  },
+  {
+   "name": "--color-text-success",
+   "type": "color",
+   "value": "#059669"
+  },
+  {
+   "name": "--color-text-warning",
+   "type": "color",
+   "value": "#D97706"
+  },
+  {
+   "name": "--color-text-warning-strong",
+   "type": "color",
+   "value": "#B45309",
+   "description": "PROPOSED (yellow.700) — status text on tinted surfaces"
+  },
+  {
+   "name": "--color-text-error",
+   "type": "color",
+   "value": "#DC2626"
+  },
+  {
+   "name": "--color-text-info",
+   "type": "color",
+   "value": "#2563EB"
+  },
+  {
+   "name": "--color-text-disabled",
+   "type": "color",
+   "value": "#D1D5DB",
+   "description": "gray.300 · Disabled labels only"
+  },
+  {
+   "name": "--color-bg-primary",
+   "type": "color",
+   "value": "#FFFFFF"
+  },
+  {
+   "name": "--color-bg-secondary",
+   "type": "color",
+   "value": "#F9FAFB"
+  },
+  {
+   "name": "--color-bg-tertiary",
+   "type": "color",
+   "value": "#F3F4F6"
+  },
+  {
+   "name": "--color-bg-inverse",
+   "type": "color",
+   "value": "#111827"
+  },
+  {
+   "name": "--color-bg-brand",
+   "type": "color",
+   "value": "#F70F79"
+  },
+  {
+   "name": "--color-bg-brand-subtle",
+   "type": "color",
+   "value": "#FEF1F7"
+  },
+  {
+   "name": "--color-bg-success",
+   "type": "color",
+   "value": "#ECFDF5"
+  },
+  {
+   "name": "--color-bg-success-subtle",
+   "type": "color",
+   "value": "#D1FAE5"
+  },
+  {
+   "name": "--color-bg-warning",
+   "type": "color",
+   "value": "#FFFBEB"
+  },
+  {
+   "name": "--color-bg-warning-subtle",
+   "type": "color",
+   "value": "#FEF3C7"
+  },
+  {
+   "name": "--color-bg-error",
+   "type": "color",
+   "value": "#FEF2F2"
+  },
+  {
+   "name": "--color-bg-error-subtle",
+   "type": "color",
+   "value": "#FEE2E2",
+   "description": "red.100 · Error emphasis"
+  },
+  {
+   "name": "--color-bg-info",
+   "type": "color",
+   "value": "#EFF6FF"
+  },
+  {
+   "name": "--color-border-default",
+   "type": "color",
+   "value": "#E5E7EB"
+  },
+  {
+   "name": "--color-border-subtle",
+   "type": "color",
+   "value": "#F3F4F6"
+  },
+  {
+   "name": "--color-border-strong",
+   "type": "color",
+   "value": "#6B7280"
+  },
+  {
+   "name": "--color-border-brand",
+   "type": "color",
+   "value": "#F70F79"
+  },
+  {
+   "name": "--color-border-warning",
+   "type": "color",
+   "value": "#F59E0B"
+  },
+  {
+   "name": "--color-border-focus",
+   "type": "color",
+   "value": "#3B82F6"
+  },
+  {
+   "name": "--color-border-success",
+   "type": "color",
+   "value": "#10B981"
+  },
+  {
+   "name": "--color-border-error",
+   "type": "color",
+   "value": "#EF4444"
+  },
+  {
+   "name": "--color-icon-success",
+   "type": "color",
+   "value": "#10B981"
+  },
+  {
+   "name": "--color-icon-warning",
+   "type": "color",
+   "value": "#F59E0B"
+  },
+  {
+   "name": "--color-icon-brand",
+   "type": "color",
+   "value": "#F70F79"
+  },
+  {
+   "name": "--color-icon-error",
+   "type": "color",
+   "value": "#EF4444"
+  },
+  {
+   "name": "--color-interactive-default",
+   "type": "color",
+   "value": "#F70F79"
+  },
+  {
+   "name": "--color-interactive-hover",
+   "type": "color",
+   "value": "#F4368D"
+  },
+  {
+   "name": "--color-interactive-pressed",
+   "type": "color",
+   "value": "#C70C61"
+  },
+  {
+   "name": "--color-gray-50",
+   "type": "color",
+   "value": "#F9FAFB",
+   "description": "palette — only while proposing a semantic token"
+  },
+  {
+   "name": "--color-gray-100",
+   "type": "color",
+   "value": "#F3F4F6",
+   "description": "palette"
+  },
+  {
+   "name": "--color-gray-200",
+   "type": "color",
+   "value": "#E5E7EB",
+   "description": "palette"
+  },
+  {
+   "name": "--color-gray-300",
+   "type": "color",
+   "value": "#D1D5DB",
+   "description": "palette"
+  },
+  {
+   "name": "--color-gray-400",
+   "type": "color",
+   "value": "#9CA3AF",
+   "description": "palette"
+  },
+  {
+   "name": "--color-gray-500",
+   "type": "color",
+   "value": "#6B7280",
+   "description": "palette"
+  },
+  {
+   "name": "--color-gray-600",
+   "type": "color",
+   "value": "#4B5563",
+   "description": "palette"
+  },
+  {
+   "name": "--color-gray-700",
+   "type": "color",
+   "value": "#374151",
+   "description": "palette"
+  },
+  {
+   "name": "--color-gray-800",
+   "type": "color",
+   "value": "#1F2937",
+   "description": "palette"
+  },
+  {
+   "name": "--color-gray-900",
+   "type": "color",
+   "value": "#111827",
+   "description": "palette"
+  },
+  {
+   "name": "--color-pink-50",
+   "type": "color",
+   "value": "#FEF1F7",
+   "description": "palette"
+  },
+  {
+   "name": "--color-pink-100",
+   "type": "color",
+   "value": "#FDE4EF",
+   "description": "palette"
+  },
+  {
+   "name": "--color-pink-200",
+   "type": "color",
+   "value": "#FBC9DF",
+   "description": "palette"
+  },
+  {
+   "name": "--color-pink-300",
+   "type": "color",
+   "value": "#F9AECF",
+   "description": "palette"
+  },
+  {
+   "name": "--color-pink-400",
+   "type": "color",
+   "value": "#F65CA1",
+   "description": "palette"
+  },
+  {
+   "name": "--color-pink-500",
+   "type": "color",
+   "value": "#F4368D",
+   "description": "palette"
+  },
+  {
+   "name": "--color-pink-600",
+   "type": "color",
+   "value": "#F70F79",
+   "description": "palette"
+  },
+  {
+   "name": "--color-pink-700",
+   "type": "color",
+   "value": "#C70C61",
+   "description": "palette"
+  },
+  {
+   "name": "--color-pink-800",
+   "type": "color",
+   "value": "#97094A",
+   "description": "palette"
+  },
+  {
+   "name": "--color-pink-900",
+   "type": "color",
+   "value": "#670632",
+   "description": "palette"
+  },
+  {
+   "name": "--color-green-50",
+   "type": "color",
+   "value": "#ECFDF5",
+   "description": "palette"
+  },
+  {
+   "name": "--color-green-100",
+   "type": "color",
+   "value": "#D1FAE5",
+   "description": "palette"
+  },
+  {
+   "name": "--color-green-200",
+   "type": "color",
+   "value": "#A7F3D0",
+   "description": "palette"
+  },
+  {
+   "name": "--color-green-300",
+   "type": "color",
+   "value": "#6EE7B7",
+   "description": "palette"
+  },
+  {
+   "name": "--color-green-400",
+   "type": "color",
+   "value": "#34D399",
+   "description": "palette"
+  },
+  {
+   "name": "--color-green-500",
+   "type": "color",
+   "value": "#10B981",
+   "description": "palette"
+  },
+  {
+   "name": "--color-green-600",
+   "type": "color",
+   "value": "#059669",
+   "description": "palette"
+  },
+  {
+   "name": "--color-green-700",
+   "type": "color",
+   "value": "#047857",
+   "description": "palette"
+  },
+  {
+   "name": "--color-red-50",
+   "type": "color",
+   "value": "#FEF2F2",
+   "description": "palette"
+  },
+  {
+   "name": "--color-red-100",
+   "type": "color",
+   "value": "#FEE2E2",
+   "description": "palette"
+  },
+  {
+   "name": "--color-red-200",
+   "type": "color",
+   "value": "#FECACA",
+   "description": "palette"
+  },
+  {
+   "name": "--color-red-300",
+   "type": "color",
+   "value": "#FCA5A5",
+   "description": "palette"
+  },
+  {
+   "name": "--color-red-400",
+   "type": "color",
+   "value": "#F87171",
+   "description": "palette"
+  },
+  {
+   "name": "--color-red-500",
+   "type": "color",
+   "value": "#EF4444",
+   "description": "palette"
+  },
+  {
+   "name": "--color-red-600",
+   "type": "color",
+   "value": "#DC2626",
+   "description": "palette"
+  },
+  {
+   "name": "--color-red-700",
+   "type": "color",
+   "value": "#B91C1C",
+   "description": "palette"
+  },
+  {
+   "name": "--color-yellow-50",
+   "type": "color",
+   "value": "#FFFBEB",
+   "description": "palette"
+  },
+  {
+   "name": "--color-yellow-100",
+   "type": "color",
+   "value": "#FEF3C7",
+   "description": "palette"
+  },
+  {
+   "name": "--color-yellow-200",
+   "type": "color",
+   "value": "#FDE68A",
+   "description": "palette"
+  },
+  {
+   "name": "--color-yellow-300",
+   "type": "color",
+   "value": "#FCD34D",
+   "description": "palette"
+  },
+  {
+   "name": "--color-yellow-400",
+   "type": "color",
+   "value": "#FBBF24",
+   "description": "palette"
+  },
+  {
+   "name": "--color-yellow-500",
+   "type": "color",
+   "value": "#F59E0B",
+   "description": "palette"
+  },
+  {
+   "name": "--color-yellow-600",
+   "type": "color",
+   "value": "#D97706",
+   "description": "palette"
+  },
+  {
+   "name": "--color-yellow-700",
+   "type": "color",
+   "value": "#B45309",
+   "description": "palette"
+  },
+  {
+   "name": "--color-blue-50",
+   "type": "color",
+   "value": "#EFF6FF",
+   "description": "palette"
+  },
+  {
+   "name": "--color-blue-100",
+   "type": "color",
+   "value": "#DBEAFE",
+   "description": "palette"
+  },
+  {
+   "name": "--color-blue-500",
+   "type": "color",
+   "value": "#3B82F6",
+   "description": "palette"
+  },
+  {
+   "name": "--color-blue-600",
+   "type": "color",
+   "value": "#2563EB",
+   "description": "palette"
+  },
+  {
+   "name": "--color-blue-700",
+   "type": "color",
+   "value": "#1D4ED8",
+   "description": "palette"
+  },
+  {
+   "name": "--color-illustration-yellow",
+   "type": "color",
+   "value": "var(--color-yellow-300)",
+   "description": "inside illustration assets only, never on UI"
+  },
+  {
+   "name": "--color-bg-reward",
+   "type": "color",
+   "value": "#FFFBEB",
+   "description": "PROPOSED (components/nudge.md) — reward-layer tint for gain nudges; = yellow.50"
+  },
+  {
+   "name": "--font-sans",
+   "type": "fontFamily",
+   "value": "Outfit",
+   "description": "Outfit — the only type family"
+  },
+  {
+   "name": "--text-small",
+   "type": "fontSize",
+   "value": "10px",
+   "description": "Small · Latin-only tabular metadata"
+  },
+  {
+   "name": "--text-caption",
+   "type": "fontSize",
+   "value": "12px",
+   "description": "Caption · Regular"
+  },
+  {
+   "name": "--text-body-md",
+   "type": "fontSize",
+   "value": "14px",
+   "description": "BodyMd · Regular · 14 sp floor"
+  },
+  {
+   "name": "--text-button-md",
+   "type": "fontSize",
+   "value": "14px",
+   "description": "ButtonMd · SemiBold"
+  },
+  {
+   "name": "--text-body-lg",
+   "type": "fontSize",
+   "value": "16px",
+   "description": "BodyLg · Regular"
+  },
+  {
+   "name": "--text-button-lg",
+   "type": "fontSize",
+   "value": "16px",
+   "description": "ButtonLg · SemiBold"
+  },
+  {
+   "name": "--text-title",
+   "type": "fontSize",
+   "value": "18px",
+   "description": "Title · Medium"
+  },
+  {
+   "name": "--text-heading3",
+   "type": "fontSize",
+   "value": "20px",
+   "description": "Heading3 · SemiBold"
+  },
+  {
+   "name": "--text-heading2",
+   "type": "fontSize",
+   "value": "24px",
+   "description": "Heading2 · SemiBold"
+  },
+  {
+   "name": "--text-heading1",
+   "type": "fontSize",
+   "value": "28px",
+   "description": "Heading1 · SemiBold"
+  },
+  {
+   "name": "--text-display",
+   "type": "fontSize",
+   "value": "32px",
+   "description": "Display · SemiBold"
+  },
+  {
+   "name": "--font-weight-regular",
+   "type": "fontWeight",
+   "value": "400"
+  },
+  {
+   "name": "--font-weight-medium",
+   "type": "fontWeight",
+   "value": "500"
+  },
+  {
+   "name": "--font-weight-semibold",
+   "type": "fontWeight",
+   "value": "600"
+  },
+  {
+   "name": "--tracking-normal",
+   "type": "letterSpacing",
+   "value": "0em",
+   "description": "The only letter-spacing: none"
+  },
+  {
+   "name": "--leading-small",
+   "type": "lineHeight",
+   "value": "14px"
+  },
+  {
+   "name": "--leading-button-md",
+   "type": "lineHeight",
+   "value": "14px"
+  },
+  {
+   "name": "--leading-caption",
+   "type": "lineHeight",
+   "value": "16px"
+  },
+  {
+   "name": "--leading-button-lg",
+   "type": "lineHeight",
+   "value": "16px"
+  },
+  {
+   "name": "--leading-body-md",
+   "type": "lineHeight",
+   "value": "20px"
+  },
+  {
+   "name": "--leading-body-lg",
+   "type": "lineHeight",
+   "value": "24px"
+  },
+  {
+   "name": "--leading-title",
+   "type": "lineHeight",
+   "value": "24px"
+  },
+  {
+   "name": "--leading-heading3",
+   "type": "lineHeight",
+   "value": "28px"
+  },
+  {
+   "name": "--leading-heading2",
+   "type": "lineHeight",
+   "value": "32px"
+  },
+  {
+   "name": "--leading-heading1",
+   "type": "lineHeight",
+   "value": "37px"
+  },
+  {
+   "name": "--leading-display",
+   "type": "lineHeight",
+   "value": "40px"
+  },
+  {
+   "name": "--breakpoint-sm",
+   "type": "breakpoint",
+   "value": "320px"
+  },
+  {
+   "name": "--breakpoint-base",
+   "type": "breakpoint",
+   "value": "360px"
+  },
+  {
+   "name": "--breakpoint-lg",
+   "type": "breakpoint",
+   "value": "412px"
+  },
+  {
+   "name": "--container-content",
+   "type": "container",
+   "value": "328px"
+  },
+  {
+   "name": "--container-screen",
+   "type": "container",
+   "value": "360px"
+  },
+  {
+   "name": "--spacing-0",
+   "type": "spacing",
+   "value": "0px"
+  },
+  {
+   "name": "--spacing-border-thin",
+   "type": "spacing",
+   "value": "1px",
+   "description": "borderWidth · default"
+  },
+  {
+   "name": "--spacing-border-thick",
+   "type": "spacing",
+   "value": "1.5px",
+   "description": "borderWidth · emphasised"
+  },
+  {
+   "name": "--spacing-1",
+   "type": "spacing",
+   "value": "2px"
+  },
+  {
+   "name": "--spacing-border-thicker",
+   "type": "spacing",
+   "value": "2px",
+   "description": "borderWidth · selection"
+  },
+  {
+   "name": "--spacing-2",
+   "type": "spacing",
+   "value": "4px"
+  },
+  {
+   "name": "--spacing-elevation-floating",
+   "type": "spacing",
+   "value": "4px",
+   "description": "the only control shadow (y 4, blur 12, gray.900 @ 12 %)"
+  },
+  {
+   "name": "--spacing-3",
+   "type": "spacing",
+   "value": "8px"
+  },
+  {
+   "name": "--spacing-4",
+   "type": "spacing",
+   "value": "12px"
+  },
+  {
+   "name": "--spacing-5",
+   "type": "spacing",
+   "value": "16px",
+   "description": "Default padding and screen margin"
+  },
+  {
+   "name": "--spacing-icon-16",
+   "type": "spacing",
+   "value": "16px"
+  },
+  {
+   "name": "--spacing-6",
+   "type": "spacing",
+   "value": "20px"
+  },
+  {
+   "name": "--spacing-icon-20",
+   "type": "spacing",
+   "value": "20px"
+  },
+  {
+   "name": "--spacing-7",
+   "type": "spacing",
+   "value": "24px"
+  },
+  {
+   "name": "--spacing-icon-24",
+   "type": "spacing",
+   "value": "24px"
+  },
+  {
+   "name": "--spacing-8",
+   "type": "spacing",
+   "value": "32px"
+  },
+  {
+   "name": "--spacing-icon-32",
+   "type": "spacing",
+   "value": "32px"
+  },
+  {
+   "name": "--spacing-9",
+   "type": "spacing",
+   "value": "40px"
+  },
+  {
+   "name": "--spacing-icon-40",
+   "type": "spacing",
+   "value": "40px"
+  },
+  {
+   "name": "--spacing-10",
+   "type": "spacing",
+   "value": "48px"
+  },
+  {
+   "name": "--spacing-touch-min",
+   "type": "spacing",
+   "value": "48px"
+  },
+  {
+   "name": "--spacing-button-m",
+   "type": "spacing",
+   "value": "48px",
+   "description": "button.sizes M height"
+  },
+  {
+   "name": "--spacing-button-l",
+   "type": "spacing",
+   "value": "56px",
+   "description": "button.sizes L height"
+  },
+  {
+   "name": "--spacing-11",
+   "type": "spacing",
+   "value": "64px"
+  },
+  {
+   "name": "--radius-none",
+   "type": "radius",
+   "value": "0px"
+  },
+  {
+   "name": "--radius-sm",
+   "type": "radius",
+   "value": "4px"
+  },
+  {
+   "name": "--radius-md",
+   "type": "radius",
+   "value": "8px"
+  },
+  {
+   "name": "--radius-button-m",
+   "type": "radius",
+   "value": "10px",
+   "description": "button.sizes M radius"
+  },
+  {
+   "name": "--radius-lg",
+   "type": "radius",
+   "value": "12px"
+  },
+  {
+   "name": "--radius-button-l",
+   "type": "radius",
+   "value": "12px",
+   "description": "button.sizes L radius"
+  },
+  {
+   "name": "--radius-xl",
+   "type": "radius",
+   "value": "16px"
+  },
+  {
+   "name": "--radius-xxl",
+   "type": "radius",
+   "value": "24px"
+  },
+  {
+   "name": "--radius-full",
+   "type": "radius",
+   "value": "9999px"
+  }
+ ],
+ "artboards": [
+  {
+   "id": "7EH-0",
+   "name": "1.00 · S00 · First visit · Saathi points at the money card",
+   "childCount": 8,
+   "width": 393,
+   "height": 854,
+   "worldX": 40,
+   "worldY": 140
+  },
+  {
+   "id": "5UU-0",
+   "name": "1.01 · S01 · Home · ₹7,600 on hold",
+   "childCount": 5,
+   "width": 393,
+   "height": 854,
+   "worldX": 513,
+   "worldY": 140
+  },
+  {
+   "id": "7EI-0",
+   "name": "1.02 · S02 · Tap the card · what makes ₹7,600",
+   "childCount": 7,
+   "width": 393,
+   "height": 854,
+   "worldX": 986,
+   "worldY": 140
+  },
+  {
+   "id": "5KL-0",
+   "name": "1.03 · S03 · See 2 reasons",
+   "childCount": 7,
+   "width": 393,
+   "height": 854,
+   "worldX": 1459,
+   "worldY": 140
+  },
+  {
+   "id": "5ZD-0",
+   "name": "1.04 · S04 · Request sent · our team will call",
+   "childCount": 6,
+   "width": 393,
+   "height": 854,
+   "worldX": 1932,
+   "worldY": 140
+  },
+  {
+   "id": "6BV-0",
+   "name": "1.05 · S05 · Waiting to be let back",
+   "childCount": 5,
+   "width": 393,
+   "height": 854,
+   "worldX": 2405,
+   "worldY": 140
+  },
+  {
+   "id": "ALY-0",
+   "name": "1.06 · S06 · Back · ₹2,600 is coming back",
+   "childCount": 2,
+   "width": 393,
+   "height": 852,
+   "worldX": 2878,
+   "worldY": 140
+  },
+  {
+   "id": "AQS-0",
+   "name": "1.06a · S06b · Attendance marked · ₹3,600 added to early payout",
+   "childCount": 2,
+   "width": 393,
+   "height": 852,
+   "worldX": 3351,
+   "worldY": 140
+  },
+  {
+   "id": "B17-0",
+   "name": "1.07 · S07 · Oct statement · Refundable EMI",
+   "childCount": 8,
+   "width": 393,
+   "height": 2095,
+   "worldX": 40,
+   "worldY": 1194
+  },
+  {
+   "id": "9W5-0",
+   "name": "1.08 · S08 · Nov statement · EMI refund",
+   "childCount": 8,
+   "width": 393,
+   "height": 2095,
+   "worldX": 513,
+   "worldY": 1194
+  },
+  {
+   "id": "5JO-0",
+   "name": "1.09 · S09 · Early payout · ₹2,600 back counts",
+   "childCount": 5,
+   "width": 393,
+   "height": 852,
+   "worldX": 986,
+   "worldY": 1194
+  },
+  {
+   "id": "6QN-0",
+   "name": "1.10 · S10 · Early payout · choose amount",
+   "childCount": 5,
+   "width": 393,
+   "height": 852,
+   "worldX": 1459,
+   "worldY": 1194
+  },
+  {
+   "id": "7UP-0",
+   "name": "1.11 · S11 · Early payout · amount entered",
+   "childCount": 5,
+   "width": 393,
+   "height": 852,
+   "worldX": 1932,
+   "worldY": 1194
+  },
+  {
+   "id": "8QH-0",
+   "name": "1.12 · S12 · Early payout · done",
+   "childCount": 6,
+   "width": 393,
+   "height": 852,
+   "worldX": 2405,
+   "worldY": 1194
+  },
+  {
+   "id": "9BI-0",
+   "name": "1.13 · S13 · Early payout · after",
+   "childCount": 4,
+   "width": 393,
+   "height": 852,
+   "worldX": 2878,
+   "worldY": 1194
+  },
+  {
+   "id": "AVW-0",
+   "name": "1.14 · S14 · Ledger · back, ₹2,600 refunded",
+   "childCount": 4,
+   "width": 393,
+   "height": 1004,
+   "worldX": 40,
+   "worldY": 3489
+  },
+  {
+   "id": "BAH-0",
+   "name": "1.15 · S15 · Ledger · suspended, waiting",
+   "childCount": 4,
+   "width": 393,
+   "height": 854,
+   "worldX": 986,
+   "worldY": 3489
+  },
+  {
+   "id": "BG6-0",
+   "name": "1.16 · S16 · Ledger · not back by 31 Dec",
+   "childCount": 4,
+   "width": 393,
+   "height": 854,
+   "worldX": 1459,
+   "worldY": 3489
+  }
+ ]
+}

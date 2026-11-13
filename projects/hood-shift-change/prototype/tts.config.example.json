@@ -1,0 +1,6 @@
+{
+  "provider": "gemini",
+  "key": "PASTE-YOUR-GEMINI-API-KEY-HERE",
+  "voice": "Aoede",
+  "model": "gemini-2.5-flash-preview-tts"
+}

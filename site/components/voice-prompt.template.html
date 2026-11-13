@@ -26,13 +26,27 @@
 .logline{font-family:var(--mono);font-size:12px;color:var(--text-2);min-height:16px;margin-top:8px;white-space:pre-line}
 .tbl{width:100%;border-collapse:collapse;font-size:14px}.tbl th,.tbl td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top;color:var(--text)}.tbl th{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--text-2)}
 .toast{position:absolute;left:16px;right:16px;bottom:88px;background:#111827;color:#fff;border-radius:12px;padding:12px 16px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none}.toast.on{opacity:1}
+.lsn-hd .srch{flex:1;height:48px;border-radius:12px;background:#F3F4F6;display:flex;align-items:center;padding:0 12px;font-size:16px;color:#6B7280}
+.lsn-scrim{position:absolute;inset:0;background:rgba(17,24,39,.5)}
+.lsn-sheet{position:absolute;left:0;right:0;bottom:0;background:#fff;border-radius:20px 20px 0 0;padding:32px 16px 16px;display:flex;flex-direction:column;align-items:center;gap:16px}
+.lsn-field{position:relative;width:136px;height:136px;display:grid;place-items:center}
+.lsn-shader,.lsn-still{position:absolute;left:0;top:0;width:136px;height:136px;transition:opacity .2s linear}
+.lsn-still{transform-origin:50% 50%}
+.lsn-shader{-webkit-mask-image:radial-gradient(circle closest-side,#000 82%,transparent 100%);mask-image:radial-gradient(circle closest-side,#000 82%,transparent 100%)}
+.lsn-field.still .lsn-shader,.lsn-field:not(.still) .lsn-still,.lsn-field.done .lsn-shader,.lsn-field.done .lsn-still{opacity:0}
+.lsn-disc{position:relative;width:72px;height:72px;border-radius:50%;border:0;display:grid;place-items:center;color:#fff;cursor:pointer;padding:0}.lsn-disc svg{width:32px;height:32px}
+.lsn-t{font-size:20px;font-weight:600;line-height:28px}
+.lsn-tx{font-size:14px;line-height:20px;color:#6B7280;min-height:20px;text-align:center}
+.lsn-type{height:48px;border:0;background:transparent;font:600 16px var(--sans);color:#374151;cursor:pointer}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){.lsn-shader,.lsn-still{transition:none}}
 __NAVCSS__</style>
 
 <div class="shell">
   <aside class="rail">
     <div class="brand"><div class="brand-mark"><span></span></div><div><b>Snabbit Expert</b><small>Components · VoicePrompt</small></div></div>
     __SITENAV__
-    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#forms">Two forms</a><a href="#live">Live</a><a href="#where">What gets a voice</a><a href="#rules">Rules</a><a href="#dont">Don't</a><a href="#figma">Figma changes</a></nav>
+    <nav class="nav" id="nav"><div class="grp">On this page</div><a href="#overview">Overview</a><a href="#forms">Two forms</a><a href="#live">Live</a><a href="#listen">Listen (proposed)</a><a href="#where">What gets a voice</a><a href="#rules">Rules</a><a href="#dont">Don't</a><a href="#figma">Figma changes</a></nav>
     <div class="rail-foot">Rendered from tokens.json · spec in components/voice-prompt.md</div>
   </aside>
   <main class="main">
@@ -50,6 +64,29 @@ __NAVCSS__</style>
     <section id="live">
       <header><div class="eyebrow">Try it</div><h2>Live</h2><p>Press play on the bar, then Listen on the address: starting one stops the other. Toggle sound off and the bar stops autoplaying (a Toast confirms); tap play still works. Finished → the disc returns to play and replays from the start.</p></header>
       <div class="demo" style="align-items:flex-start;flex-wrap:wrap;gap:28px"><div class="ph" id="ph"></div><div class="card" style="max-width:320px"><h4>Log</h4><div class="ctl"><button id="reenter">Re-enter screen</button><button id="talkback">Toggle TalkBack</button></div><div class="logline" id="log">first visit → bar autoplays 500 ms after settle</div></div></div>
+    </section>
+
+    <section id="listen">
+      <header><div class="eyebrow">Proposed · asked by projects/hood-shift-change</div><h2>Listen — the app hears her</h2><p>A third form, for when she speaks and the app listens: the place search first, then any screen that takes her voice. The picture is a Paper Shaders <b>Metaballs</b> field around the mic disc. The blobs swell and drift with her voice, rest when she is quiet, and fade when listening ends. This is information motion, like the Shield level meter. With reduced motion the drift stops, but the swell still follows her voice. On a phone that can't run the shader, a still frame scales with her voice instead.</p></header>
+      <div class="demo" style="align-items:flex-start;flex-wrap:wrap;gap:28px">
+        <div class="ph" id="lph">
+          <div class="sb"><span>9:41</span><span>▂▄▆ 4G ▮</span></div>
+          <div class="hn lsn-hd"><span style="width:24px;height:24px;color:#374151"><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"/></svg></span><span class="srch">Metro, market, temple…</span></div>
+          <div class="lsn-scrim"></div>
+          <div class="lsn-sheet" role="dialog" aria-label="Say the place">
+            <div class="lsn-field" id="l-field">
+              <div class="lsn-shader" id="l-shader" aria-hidden="true"></div>
+              <svg class="lsn-still" id="l-still" viewBox="0 0 136 136" aria-hidden="true"><path class="c0" d="M70 10 C104 8 130 36 126 70 C123 102 98 130 64 126 C32 123 6 100 10 64 C13 32 38 12 70 10Z"/><circle class="c0" cx="116" cy="28" r="9"/><circle class="c0" cx="20" cy="112" r="6"/><path class="c1" d="M74 20 C102 20 118 44 114 72 C110 98 88 116 62 112 C38 108 22 88 26 62 C30 38 48 20 74 20Z"/><circle class="c1" cx="104" cy="40" r="7"/></svg>
+              <button class="lsn-disc" id="l-disc" aria-label="Stop listening"><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M128,176a48.05,48.05,0,0,0,48-48V64a48,48,0,0,0-96,0v64A48.05,48.05,0,0,0,128,176ZM96,64a32,32,0,0,1,64,0v64a32,32,0,0,1-64,0Zm40,143.6V240a8,8,0,0,1-16,0V207.6A80.11,80.11,0,0,1,48,128a8,8,0,0,1,16,0,64,64,0,0,0,128,0,8,8,0,0,1,16,0A80.11,80.11,0,0,1,136,207.6Z"/></svg></button>
+            </div>
+            <div class="lsn-t">Say the place</div>
+            <div class="lsn-tx" id="l-tx"></div>
+            <button class="lsn-type">Type instead</button>
+            <div class="sr" aria-live="polite" id="l-live"></div>
+          </div>
+        </div>
+        <div class="card" style="max-width:320px"><h4>Log</h4><div class="ctl"><button id="l-say">Say “Indiranagar metro ke paas”</button><button id="l-mic">Use my microphone</button><button id="l-stop">Stop listening</button><button id="l-again">Listen again</button><button id="l-rm">Reduced motion: off</button><button id="l-sh">Shader: on</button></div><div class="logline" id="l-log">loading the shader…</div></div>
+      </div>
     </section>
 
     <section id="where">
@@ -117,4 +154,66 @@ $('#dont-grid').innerHTML=[
 const links=[...document.querySelectorAll('#nav a')];const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
 if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));}});},{rootMargin:'-20% 0px -70% 0px'});targets.forEach(t=>io.observe(t));}
 })();
+</script>
+<script type="module">
+// Proposed `listen` form — Paper Shaders Metaballs driven by her voice level (projects/hood-shift-change, screen 1.3)
+const $=s=>document.querySelector(s);
+const T=JSON.parse($('#tokens-json').textContent);
+const sem={}; Object.values(T.color.semantic).flat().forEach(t=>sem[t.name]=t.value); const P=T.color.palette;
+const COLORS=[sem.bgBrandSubtle,P.pink['200']];            // blob colours, from tokens
+document.querySelectorAll('#l-still .c0').forEach(n=>n.setAttribute('fill',COLORS[0]));
+document.querySelectorAll('#l-still .c1').forEach(n=>n.setAttribute('fill',COLORS[1]));
+$('#l-disc').style.background=sem.bgBrand;
+const REST=.7, SWELL=.2, DRIFT=1.4, END_AFTER_QUIET=1500;  // u_size at rest · extra at full voice · drift at full voice · proposed end-of-speech wait
+const UTT=[['Indiranagar',0,900],['metro',1000,1500],['ke',1600,1800],['paas',1850,2400]]; // word · start ms · end ms
+const field=$('#l-field'), log=m=>$('#l-log').textContent=m, live=m=>$('#l-live').textContent=m;
+let mount=null, rm=matchMedia('(prefers-reduced-motion: reduce)').matches, still=false;
+let src=null, lvl=0, lastSize=-1, frame=0, last=0, t0=0, heard=false, quietSince=0, shown=0, raf=0, ac=null, an=null, buf=null, stream=null;
+
+async function loadShader(){
+  try{
+    const lib=await import('https://cdn.jsdelivr.net/npm/@paper-design/shaders@0.0.81/+esm');
+    const noise=lib.getShaderNoiseTexture(); await noise.decode();
+    mount=new lib.ShaderMount($('#l-shader'),lib.metaballsFragmentShader,{
+      u_colorBack:[0,0,0,0],u_colors:COLORS.map(lib.getShaderColorFromString),u_colorsCount:COLORS.length,
+      u_count:10,u_size:REST,u_noiseTexture:noise,
+      u_fit:lib.ShaderFitOptions.contain,u_scale:2.4,u_rotation:0,u_offsetX:0,u_offsetY:0,u_originX:.5,u_originY:.5,u_worldWidth:0,u_worldHeight:0
+    },undefined,0,0);                                          // speed 0: the page drives time, so silence costs no frames
+    return true;
+  }catch(e){ mount=null; return false; }
+}
+function simLevel(ms){for(const [w,s,e] of UTT){if(ms>=s&&ms<=e){const x=(ms-s)/(e-s);return Math.pow(Math.sin(x*Math.PI),.6)*(.55+.45*Math.abs(Math.sin(x*Math.PI*(w.length>5?3:1.5))));}}return 0;}
+function micLevel(){an.getFloatTimeDomainData(buf);let s=0;for(const v of buf)s+=v*v;return Math.min(1,Math.max(0,(Math.sqrt(s/buf.length)-.01)*9));}
+function draw(dt){
+  const size=REST+SWELL*lvl;
+  if(mount&&!still){
+    if(Math.abs(size-lastSize)>.002){mount.setUniforms({u_size:size});lastSize=size;}
+    if(!rm&&lvl>.02){frame+=dt*DRIFT*lvl;mount.setFrame(frame);}   // drift is the decoration: reduced motion drops it
+  }
+  if(still)$('#l-still').style.transform=`scale(${(.9+.2*lvl).toFixed(3)})`; // the fallback still carries her level
+}
+function tick(now){
+  const dt=last?now-last:16; last=now; const ms=now-t0;
+  const raw=src==='sim'?simLevel(ms):src==='mic'?micLevel():0;
+  lvl+=(raw-lvl)*(raw>lvl?.5:.12);                           // fast attack, slow release
+  if(src==='sim'){const n=UTT.filter(u=>ms>=u[1]).length;if(n!==shown){shown=n;$('#l-tx').textContent='“'+UTT.slice(0,n).map(u=>u[0]).join(' ')+(n<UTT.length?'…':'')+'”';}}
+  if(raw>.06){heard=true;quietSince=now;}
+  draw(dt);
+  if(heard&&now-quietSince>END_AFTER_QUIET){end('quiet');return;}
+  raf=requestAnimationFrame(tick);
+}
+function releaseMic(){if(stream)stream.getTracks().forEach(t=>t.stop());if(ac)ac.close();stream=ac=an=null;}
+function reset(){cancelAnimationFrame(raf);releaseMic();src=null;lvl=0;last=0;heard=false;shown=0;draw(16);field.classList.remove('done');$('#l-tx').textContent='';}
+function begin(source){reset();src=source;t0=performance.now();quietSince=t0;live('Listening');raf=requestAnimationFrame(tick);}
+function end(why){cancelAnimationFrame(raf);releaseMic();src=null;lvl=0;draw(16);field.classList.add('done');live('Stopped listening');
+  log(why==='quiet'?'she stops speaking → a short quiet ends listening; the blobs fade (motion.standard) and the search opens with her words filled in (1.2)':'Stop listening → the blobs fade; the search keeps what she said');}
+function idle(){reset();live('Listening');log(`listening, she is quiet → the blobs rest; nothing moves, nothing renders${rm?' · reduced motion on':''}`);}
+$('#l-say').onclick=()=>{begin('sim');log('she speaks → the blobs swell and drift with her voice; the words appear as she says them');};
+$('#l-mic').onclick=async()=>{try{reset();stream=await navigator.mediaDevices.getUserMedia({audio:true});ac=new AudioContext();an=ac.createAnalyser();an.fftSize=1024;buf=new Float32Array(an.fftSize);ac.createMediaStreamSource(stream).connect(an);src='mic';t0=performance.now();quietSince=t0;live('Listening');raf=requestAnimationFrame(tick);log('your microphone drives the level · nothing is recognised or recorded on this page · stop talking for a moment and listening ends');}catch(e){releaseMic();log('microphone not allowed → nothing moves; “Say the place” still says what to do');}};
+$('#l-stop').onclick=$('#l-disc').onclick=()=>end('tap');
+$('#l-again').onclick=idle;
+$('#l-rm').onclick=()=>{rm=!rm;$('#l-rm').textContent=`Reduced motion: ${rm?'on':'off'}`;log(rm?'reduced motion → the drift stops; the swell still follows her voice (information, motion.md rule 3)':'reduced motion off → swell and drift');};
+$('#l-sh').onclick=()=>{still=!still;field.classList.toggle('still',still);$('#l-sh').textContent=`Shader: ${still?'off (below Android 13)':'on'}`;$('#l-still').style.transform='';lastSize=-1;draw(16);log(still?'no shader on this phone → a still frame (WebP) scales with her voice instead':'shader on');};
+$('#l-rm').textContent=`Reduced motion: ${rm?'on':'off'}`;
+loadShader().then(ok=>{if(!ok){still=true;field.classList.add('still');$('#l-sh').disabled=true;$('#l-sh').textContent='Shader: unavailable here';}idle();if(!ok)log('shader could not load (no WebGL 2 or offline) → the still frame stands in, as on an older phone');});
 </script>

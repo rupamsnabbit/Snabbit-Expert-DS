@@ -16,6 +16,7 @@ One row in a list: a leading thing, a title with optional supporting lines, a tr
 | Hidden values shown **blurred** | `Amount` `hidden` state: `₹••••` + `eye` IconButton | Blur is illegible *and* looks like a rendering bug. |
 | Helper text in red/orange under the label | **Status line**: icon + text in the status colour, one line | Same rule as TextField errors: three channels, never colour alone. |
 | Trailing "Show" chip | Tapping the row or the `eye` reveals; no chip | Chips are for choosing, not for revealing. |
+| Title is always Regular | **Choice-list exception:** in a list she picks from (single or multi-select), the title may be **SemiBold** | In a choice list the title *is* the thing being chosen; the weight makes the options scan as a column of answers. Information lists stay Regular (`projects/hood-shift-change`, 2026-10-07). |
 | Trailing is a value (Amount), a status (Tag) or a way in (caret) | **`quantity`** trailing: a plain count — *add 2*, *used 6 of 8*, *9 items* | A kit is counted, not priced. Rendering *8 kits* as an Amount says it is money; rendering it as meta text makes it disappear (`projects/beauty-shift-lifecycle`, PRD § 5). |
 
 ---
@@ -45,14 +46,16 @@ Heights: **56** title only · **64** title + one line · **72** title + two line
 | Icon in a tonal box | 40 dp box, radius `md`, `bgBrandSubtle` + `textBrand` (or a status wash) | Job rows, earnings lines — gives the eye a shape to land on |
 | Avatar | 40 | People |
 | AchievementBadge / asset | 40 | Earnings lines tied to a badge or bonus |
-| Checkbox / Radio | 24 | Then it is a **selection row** — see Selection controls; the whole row toggles |
+| Checkbox / Radio | 24 | Then it is a **selection row** — see Selection controls; the whole row toggles. In a multi-select row whose leading slot holds a meaning icon (`map-pin` for a place), the icon stays here and the Checkbox moves **trailing** (`selection-controls.md` § Trailing checkbox) |
 | Pictogram asset | 40 | Status rows where the object + dot says it |
 | **`rank`** | 40 box | A place in an ordered list — a leaderboard. **1–3** are the medal assets `asset/reward/rank-1/2/3` (rank is the reward layer's domain); **4 and after** are the number, `BodyLg` SemiBold `textPrimary`, tabular, centred in the box. Always followed by an Avatar 40 — a rank belongs to a person (`patterns/referral.md`, 2026-09-24) |
 | none | — | Plain text rows (settings sub-items); title aligns to the 16 dp margin |
 
 ### Content
 
-**Title** `BodyLg` 16 Regular `textPrimary`, one line, ≤ 28 characters, truncated with an ellipsis only when the row opens a detail that shows the full text. **Description** `BodyMd` 14 `textSecondary`, one line, ≤ 40 chars — where the `(i)` explanation now lives (*Bonus for 5-star ratings this week*). **Status line** `BodyMd` 14 in `textSuccess` / `textWarning` / `textError` with the matching Phosphor 16 dp icon (`check-circle`, `warning-circle`, `x-circle`) — *Paid on Friday*, *Pending customer confirmation*, *Missed check-in*.
+**Title** `BodyLg` 16 Regular `textPrimary`, one line, ≤ 28 characters, truncated with an ellipsis only when the row opens a detail that shows the full text.
+
+**Exception — the title of a choice list may be SemiBold** (`BodyLg` 16 SemiBold 600). A *choice list* is rows the expert picks from: a `selection` list, single or multi-select (work areas, services, languages). There the title is the thing being chosen, so it carries the weight. Rules: every row in the list takes the same weight, picked or not, and the weight **never changes on selection** (state is the control, the tint and the check, never weight, and a width jump on tap would move the text); the description stays `BodyMd` Regular; **information lists** (`navigational`, `informational`, `actionable`) stay Regular. Asked by `projects/hood-shift-change` (G4 area list), approved by the design lead 2026-10-07 (`DECISIONS.md`). **Description** `BodyMd` 14 `textSecondary`, one line, ≤ 40 chars — where the `(i)` explanation now lives (*Bonus for 5-star ratings this week*). **Status line** `BodyMd` 14 in `textSuccess` / `textWarning` / `textError` with the matching Phosphor 16 dp icon (`check-circle`, `warning-circle`, `x-circle`) — *Paid on Friday*, *Pending customer confirmation*, *Missed check-in*.
 
 Title + description + status = 3 lines max. More is a card.
 
@@ -118,7 +121,7 @@ and a percentage replaces a count she can act on with one she cannot.
 | --- | --- | --- |
 | `navigational` | opens detail | `caret-right` (default), optional Amount/meta before it |
 | `informational` | none | Amount / Tag / meta |
-| `selection` | toggles | leading Checkbox/Radio, or trailing Switch |
+| `selection` | toggles | leading Checkbox/Radio, or trailing Switch, or trailing Checkbox when the leading holds a meaning icon. The title may be SemiBold (choice list) |
 | `actionable` | none on row | one IconButton in trailing |
 
 ---
@@ -129,7 +132,7 @@ and a percentage replaces a count she can act on with one she cannot.
 | --- | --- |
 | default | as above |
 | pressed (navigational/selection) | `bgSecondary` full-row wash 100 ms; `light` haptic |
-| selected (in a picker) | `bgBrandSubtle` fill, leading `check` replaces icon — used by Select sheets |
+| selected (in a picker) | `bgBrandSubtle` fill, leading `check` replaces icon — used by Select sheets. With a **trailing** Checkbox the leading icon stays and the filled box is the check (`selection-controls.md`) |
 | current (*you are here*) | the `selected` rendering, but the leading icon stays and an Avatar `XS` sits after the title — a row that is **her** in a list of tiers or ranks (**In app** 2026-09-22: the Gold row in *Base Pay across Tiers*). **In a list of people** (a leaderboard), every row already carries an avatar, so the marker is a Tag `M soft brand` **You** in the trailing slot before the value instead — the word, not a second face (2026-09-24, `patterns/referral.md`) |
 | disabled | all text `textTertiary`, leading at 40 % opacity, not tappable; description says why when possible |
 | loading | skeleton: leading circle/box, 60 % title bar, 40 % description bar; 3 rows shown, never a spinner |
@@ -159,7 +162,7 @@ and a percentage replaces a count she can act on with one she cannot.
 
 ## Accessibility
 
-Navigational rows are a single button named by their content. Informational rows are read as text. Selection rows carry the control's role. Hit area is the full row height (≥ 56). Status line icon + text; colour never alone. Truncated titles expose the full text to the reader.
+Navigational rows are a single button named by their content. Informational rows are read as text. Selection rows carry the control's role. Hit area is the full row height (≥ 56). A SemiBold choice-list title is not a state and is not announced as one; selection is announced by the control's role and state. Status line icon + text; colour never alone. Truncated titles expose the full text to the reader.
 
 ---
 
@@ -177,6 +180,7 @@ None. Tonal leading boxes use existing `bg*Subtle` washes; status lines reuse st
 4. Rebuild the eight domain list frames as compositions of ListItem on their feature pages.
 5. Add **List section header** and **Skeleton row** components.
 6. Bind text, dividers and washes to tokens.
+7. **New ask (2026-10-07, `projects/hood-shift-change`):** add a `Title weight` property (Regular / **SemiBold**), SemiBold allowed only with `Kind` = Selection; and a `Trailing` = **Checkbox** option for selection rows that keep their leading icon. Neither exists in the DS library yet.
 
 Result: ListItem ≈ **60 meaningful variants** replacing 11 frames / 46 rows.
 
@@ -188,8 +192,8 @@ Result: ListItem ≈ **60 meaningful variants** replacing 11 frames / 46 rows.
 | --- | --- | --- |
 | 1 | ⚙ Targets ≥ 48 dp | ✅ rows ≥ 56; IconButton wrapped |
 | 2 | ⚙ Semantic tokens only | ✅ |
-| 3 | ⚙ Type scale | ✅ BodyLg / BodyMd / Caption |
-| 4 | ⚙ States by ≥ 2 channels | ✅ status line = icon + colour + words; selected = fill + check |
+| 3 | ⚙ Type scale | ✅ BodyLg / BodyMd / Caption; choice-list title BodyLg SemiBold (scale weight 600) |
+| 4 | ⚙ States by ≥ 2 channels | ✅ status line = icon + colour + words; selected = fill + check; title weight is never a state channel |
 | 5 | ⚙ Loading / empty | ✅ skeleton rows; Empty state component |
 | 6 | ⚙ Tap guard | ✅ row debounced 300 ms |
 | 7 | ⚙ Four languages | ⬜ title ≤ 28, description ≤ 40; verify |

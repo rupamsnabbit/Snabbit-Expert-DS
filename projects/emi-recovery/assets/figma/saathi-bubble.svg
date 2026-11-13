@@ -1,0 +1,37 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="17.9989" height="17.9998" viewBox="0 0 17.9989 17.9998" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="faq-frequently-asked-questions--faq-frequently-asked-questionsbubble">
+<g id="Vector">
+<use xlink:href="#stroke0_0_136" fill="url(#paint0_linear_0_136)"/>
+<mask id="stroke1_0_136" fill="white">
+<use xlink:href="#stroke0_0_136"/>
+</mask>
+<path d="M12.2143 0.642857H1.92857C1.58757 0.642857 1.26055 0.778316 1.01943 1.01943C0.778316 1.26055 0.642857 1.58757 0.642857 1.92857V10.2857C0.642857 10.6267 0.778316 10.9537 1.01943 11.1949C1.26055 11.436 1.58757 11.5714 1.92857 11.5714H3.85714V14.1429L7.22571 11.5714H12.2143C12.5553 11.5714 12.8823 11.436 13.1234 11.1949C13.3645 10.9537 13.5 10.6267 13.5 10.2857V1.92857C13.5 1.58757 13.3645 1.26055 13.1234 1.01943C12.8823 0.778316 12.5553 0.642857 12.2143 0.642857Z" stroke-width="2.57143" stroke="url(#paint1_linear_0_136)" mask="url(#stroke1_0_136)"/>
+</g>
+<path id="Vector_2" d="M12.2143 0.642857H1.92857C1.58757 0.642857 1.26055 0.778316 1.01943 1.01943C0.778316 1.26055 0.642857 1.58757 0.642857 1.92857V10.2857C0.642857 10.6267 0.778316 10.9537 1.01943 11.1949C1.26055 11.436 1.58757 11.5714 1.92857 11.5714H3.85714V14.1429L7.22571 11.5714H12.2143C12.5553 11.5714 12.8823 11.436 13.1234 11.1949C13.3645 10.9537 13.5 10.6267 13.5 10.2857V1.92857C13.5 1.58757 13.3645 1.26055 13.1234 1.01943C12.8823 0.778316 12.5553 0.642857 12.2143 0.642857Z" stroke-width="1.28571" stroke-linecap="round" stroke-linejoin="round" stroke="url(#paint2_linear_0_136)"/>
+<path id="Vector_3" d="M16.0704 5.14266C16.4113 5.14266 16.7384 5.27812 16.9795 5.51923C17.2206 5.76036 17.3561 6.08738 17.3561 6.42838V13.4998C17.3561 13.8408 17.2206 14.1679 16.9795 14.4089C16.7384 14.65 16.4113 14.7855 16.0704 14.7855H14.1418V17.3569L10.7732 14.7855H7.71322" stroke-width="1.28571" stroke-linecap="round" stroke-linejoin="round" stroke="url(#paint3_linear_0_136)"/>
+<path id="Ellipse 2774" d="M5.46322 4.4998C5.46322 3.6122 6.18276 2.89266 7.07036 2.89266C7.95797 2.89266 8.6775 3.6122 8.6775 4.4998C8.6775 5.38741 7.95797 6.10695 7.07036 6.10695V6.7498" stroke-width="1.28571" stroke-linecap="round" stroke-linejoin="round" stroke="#FEF1F7"/>
+<g id="Group 2668">
+<path id="Vector_4" d="M7.07361 9.32068C6.89609 9.32068 6.75218 9.17677 6.75218 8.99925C6.75218 8.82173 6.89609 8.67782 7.07361 8.67782" stroke-width="1.28571" stroke-linecap="round" stroke-linejoin="round" stroke="#FEF1F7"/>
+<path id="Vector_2_2" d="M7.07259 9.32068C7.25011 9.32068 7.39402 9.17677 7.39402 8.99925C7.39402 8.82173 7.25011 8.67782 7.07259 8.67782" stroke-width="1.28571" stroke-linecap="round" stroke-linejoin="round" stroke="#FEF1F7"/>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_136" x1="7.07143" y1="0.642857" x2="7.07143" y2="14.1429" gradientUnits="userSpaceOnUse">
+<stop stop-color="#C70C61"/>
+<stop offset="1" stop-color="#F4368D"/>
+</linearGradient>
+<linearGradient id="paint1_linear_0_136" x1="7.07143" y1="0.642857" x2="7.07143" y2="14.1429" gradientUnits="userSpaceOnUse">
+<stop stop-color="#C70C61"/>
+<stop offset="1" stop-color="#F4368D"/>
+</linearGradient>
+<linearGradient id="paint2_linear_0_136" x1="7.07143" y1="0.642857" x2="7.07143" y2="14.1429" gradientUnits="userSpaceOnUse">
+<stop stop-color="#C70C61"/>
+<stop offset="1" stop-color="#F4368D"/>
+</linearGradient>
+<linearGradient id="paint3_linear_0_136" x1="12.5346" y1="5.14266" x2="12.5346" y2="17.3569" gradientUnits="userSpaceOnUse">
+<stop stop-color="#C70C61"/>
+<stop offset="1" stop-color="#F4368D"/>
+</linearGradient>
+<path id="stroke0_0_136" d="M12.2143 0.642857H1.92857C1.58757 0.642857 1.26055 0.778316 1.01943 1.01943C0.778316 1.26055 0.642857 1.58757 0.642857 1.92857V10.2857C0.642857 10.6267 0.778316 10.9537 1.01943 11.1949C1.26055 11.436 1.58757 11.5714 1.92857 11.5714H3.85714V14.1429L7.22571 11.5714H12.2143C12.5553 11.5714 12.8823 11.436 13.1234 11.1949C13.3645 10.9537 13.5 10.6267 13.5 10.2857V1.92857C13.5 1.58757 13.3645 1.26055 13.1234 1.01943C12.8823 0.778316 12.5553 0.642857 12.2143 0.642857Z"/>
+</defs>
+</svg>

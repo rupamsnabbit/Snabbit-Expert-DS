@@ -7,7 +7,7 @@ The app does not do **turn-by-turn** — it hands that off to the phone's maps a
 
 | Surface | What it is | Where |
 | --- | --- | --- |
-| **MapSnippet** | **Static**, in a card, one destination, one *Show directions* Button that hands off. Not pannable; markers are not targets — the snippet is. | Arrival card, the work-area row's detail view, anywhere a single place must be shown before travelling to it |
+| **MapSnippet** | **Static**, in a card, one destination, one *Show directions* Button that hands off. Not pannable; markers are not targets — the snippet is. | Arrival card, the work-area row's detail view, anywhere a single place must be shown before travelling to it · the *Show map* sheet on a shift option card (`selection-card.md`, 2026-10-01) |
 | **LiveMap** | **Interactive and full-bleed.** She pans it, and the markers **are** tap targets — it is how she finds a **rest hub** or a **Seva point** near her. Content floats over it in cards. | Home, for the whole time her shift is running |
 
 **Do not shrink the LiveMap into a snippet.** It looks like decoration when the only pin is the job, but that is not

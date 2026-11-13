@@ -1,0 +1,355 @@
+{
+  "name": "EMI · Suspended → back",
+  "short_name": "EMI suspended",
+  "paper": {
+    "file": "01M56X1QN9PTEGJP74N7EVBNPG",
+    "file_name": "EMI recovery",
+    "page": "p-B-0",
+    "page_name": "Final figma designs"
+  },
+  "numbers": {
+    "7EH-0": "1.00",
+    "5UU-0": "1.01",
+    "7EI-0": "1.02",
+    "5KL-0": "1.03",
+    "5ZD-0": "1.04",
+    "6BV-0": "1.05",
+    "9W5-0": "1.08",
+    "5JO-0": "1.09",
+    "6QN-0": "1.10",
+    "7UP-0": "1.11",
+    "8QH-0": "1.12",
+    "9BI-0": "1.13",
+    "ALY-0": "1.06",
+    "AQS-0": "1.06a",
+    "B17-0": "1.07",
+    "AVW-0": "1.14",
+    "BAH-0": "1.15",
+    "BG6-0": "1.16"
+  },
+  "start": "1.00",
+  "voice_lang": "en-IN",
+  "voice": {
+    "1.00": "₹3,600 is waiting for you. Tap the card to see how to get it.",
+    "1.01": "Your account is on hold. Request to come back to get ₹3,600.",
+    "1.02": "₹2,600 is your EMI refund. Take it in early payout. Work 15 days for a ₹1,000 bonus.",
+    "1.03": "These are the 2 reasons your account is on hold.",
+    "1.04": "Request mil gayi. Our team will call you soon.",
+    "1.05": "Please wait. You will be active soon. Your ₹3,600 is safe.",
+    "1.06": "Welcome back! Mark your attendance to claim ₹3,600.",
+    "1.06a": "₹3,600 is added to your early payout!",
+    "1.07": "This month ₹2,600 extra was cut. Join by 31 December to get it back.",
+    "1.08": "Your ₹2,600 is back in this payout.",
+    "1.09": "₹2,600 is added to your earnings! Earn ₹1,000 more to unlock early payout.",
+    "1.10": "Kitna chahiye? Choose the amount.",
+    "1.12": "₹1,500 will reach your bank in 12 hours.",
+    "1.13": "You can still take ₹2,500.",
+    "1.14": "On top, what is left to pay. Below, what you have paid.",
+    "1.15": "Abhi kuch nahi dena. Your EMI starts again when you come back.",
+    "1.16": "All paid. Claim your ₹2,600 in early payout."
+  },
+  "taps": {
+    "1.00": [
+      [
+        "@5",
+        "~1.01 1.02"
+      ],
+      [
+        "@6",
+        "~1.01 1.02"
+      ],
+      [
+        "@4",
+        "~1.01"
+      ],
+      [
+        "@7",
+        "voice"
+      ]
+    ],
+    "1.01": [
+      [
+        "@1.0.3.0",
+        "1.02"
+      ],
+      [
+        "See 2 reasons",
+        "1.03"
+      ],
+      [
+        "Request to come back",
+        "1.04"
+      ],
+      [
+        "See earnings",
+        "1.07"
+      ],
+      [
+        "Earnings",
+        "1.07"
+      ],
+      [
+        "@1.0.2.0.0.1.0",
+        "voice"
+      ],
+      [
+        "@3",
+        "voice"
+      ]
+    ],
+    "1.02": [
+      [
+        "Request to come back#2",
+        "~1.04"
+      ],
+      [
+        "@5",
+        "back"
+      ],
+      [
+        "@4",
+        "back"
+      ]
+    ],
+    "1.03": [
+      [
+        "Request to come back#2",
+        "~1.04"
+      ],
+      [
+        "@5",
+        "back"
+      ],
+      [
+        "@4",
+        "back"
+      ]
+    ],
+    "1.04": [
+      [
+        "Okay",
+        "back:1.01 ~1.05"
+      ],
+      [
+        "@5.1",
+        "back:1.01 ~1.05"
+      ]
+    ],
+    "1.05": [
+      [
+        "@1.0.2.1.0",
+        "voice"
+      ],
+      [
+        "@4",
+        "voice"
+      ]
+    ],
+    "1.06": [
+      [
+        "Absent",
+        "~1.06a"
+      ],
+      [
+        "Present",
+        "~1.06a"
+      ],
+      [
+        "Earnings",
+        "1.08"
+      ],
+      [
+        "@0.0.2.0.1.1",
+        "voice"
+      ]
+    ],
+    "1.07": [
+      [
+        "@1.1.0.0",
+        "back"
+      ],
+      [
+        "@5.0.0.0.3.0",
+        "1.15"
+      ],
+      [
+        "@5.0.0.0.3.1.1",
+        "1.15"
+      ],
+      [
+        "@6",
+        "voice"
+      ],
+      [
+        "@7",
+        "voice"
+      ]
+    ],
+    "1.08": [
+      [
+        "@1.1.0.0",
+        "back"
+      ],
+      [
+        "@4.0.0.0.3.0",
+        "1.14"
+      ],
+      [
+        "@4.0.0.0.3.1.1",
+        "1.09"
+      ],
+      [
+        "@4.3.1.0",
+        "1.09"
+      ],
+      [
+        "@6",
+        "voice"
+      ],
+      [
+        "@7",
+        "voice"
+      ]
+    ],
+    "1.09": [
+      [
+        "@0.1.0.0",
+        "back"
+      ],
+      [
+        "@3",
+        "voice"
+      ]
+    ],
+    "1.10": [
+      [
+        "@0.1.0.0",
+        "back"
+      ],
+      [
+        "@1.1.1.0.0",
+        "~1.11"
+      ],
+      [
+        "@2",
+        "voice"
+      ]
+    ],
+    "1.11": [
+      [
+        "@0.1.0.0",
+        "back"
+      ],
+      [
+        "@4",
+        "~1.12"
+      ],
+      [
+        "@1",
+        "voice"
+      ]
+    ],
+    "1.12": [
+      [
+        "@0.1.0.0",
+        "~1.13"
+      ],
+      [
+        "Go back",
+        "~1.13"
+      ],
+      [
+        "@3",
+        "voice"
+      ]
+    ],
+    "1.13": [
+      [
+        "@0.1.0.0",
+        "back"
+      ],
+      [
+        "@1",
+        "voice"
+      ]
+    ],
+    "1.14": [
+      [
+        "@1.0.0",
+        "back"
+      ],
+      [
+        "@3",
+        "voice"
+      ]
+    ],
+    "1.15": [
+      [
+        "@1.0.0",
+        "back"
+      ],
+      [
+        "@3",
+        "voice"
+      ]
+    ],
+    "1.16": [
+      [
+        "@1.0.0",
+        "back"
+      ],
+      [
+        "@3",
+        "voice"
+      ]
+    ],
+    "1.06a": [
+      [
+        "@0.0.3.0",
+        "1.09"
+      ],
+      [
+        "Earnings",
+        "1.08"
+      ],
+      [
+        "@0.0.2.0.1.1",
+        "voice"
+      ]
+    ]
+  },
+  "switch_label": "Suspended",
+  "auto": {
+    "1.05": [
+      "~1.06",
+      4500
+    ]
+  },
+  "notes": "1.05 → 1.06 moves on by itself after 4.5 s (she is let back). On 1.06 the green card comes only after she taps Absent or Present (→ 1.06a); the green card opens early payout, locked, with the refund intro (1.09). The unlocked early payout (1.10 → 1.13) opens from the switcher's 'Early payout'. On the Oct statement the Cycle rows have no ledger drawn yet, so they are not wired. 1.16 is reached from the long-press screen list. Saathi replays each screen's line.",
+  "entries": [
+    {
+      "label": "Early payout",
+      "screen": "1.10"
+    }
+  ],
+  "onback": {
+    "1.04": "back:1.01 ~1.05",
+    "1.12": "~1.13"
+  },
+  "intro": {
+    "1.09": {
+      "row": "@1.0.0.1.3.0",
+      "count": [
+        [
+          "@1.0.0.1.2.0.1",
+          6400
+        ],
+        [
+          "@1.0.0.1.0.1.1.2",
+          3600
+        ]
+      ],
+      "confetti": true
+    }
+  }
+}

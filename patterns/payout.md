@@ -34,7 +34,7 @@ Where the money goes. The expert earns per job, sees a running total on the Earn
 | Green band **Total Earnings ₹26,674**, then deductions, then *Remaining Payout ₹15,474* — and the green Total band again at the bottom | Hero Card: **You'll be paid** · Amount `L` **₹15,474** · *on 15 Mar*; under it Accordion `breakdown` **collapsed**: *Earned ₹26,674* then each deduction as a negative row; the total appears once | The number she needs is what reaches her account (P1, P2); green is a status colour, not a heading colour (row 14); the same total twice is noise |
 | ⓘ tooltips (*Locked bonuses*, *Joining bonus unlocks when…*) | Supporting text in the row + the section's Listen; no tooltips | A tooltip is a tap she cannot discover (`coachmark.md`); words she can hear |
 | *Locked Bonuses 🔒 ₹8,500 ›* | Amount `locked` in the row, supporting line *Unlocks after 20 jobs*, row opens the rules Accordion `faq` | `amount.md` already has the state |
-| Payout Schedule: date tile + name + status line (*Paid on 5 Feb · UTR…* / *Payment is under processing…* / *Add UPI / bank account to enable payout ›*) | ListItem with a date tile leading, Tag for status (`success` Paid · `warning` Processing · `error` Blocked · `error` Failed), status line as supporting text, UTR with a **copy** IconButton; Blocked and Failed rows carry the fix as a Button `secondary M` | State by Tag + words + icon, not by a coloured sentence (row 4); the fix is on the row that needs it (P2) |
+| Payout Schedule: date tile + name + status line (*Paid on 5 Feb · UTR…* / *Payment is under processing…* / *Add UPI / bank account to enable payout ›*) | ListItem with a date tile leading, Tag for status (`success` Paid · `warning` Processing · `error` Blocked · `error` Failed), status line as supporting text, UTR with a **copy** IconButton; Blocked and Failed rows carry the fix as a Button `secondary M` | State by Tag + words + icon, not by a coloured sentence (row 4); the fix is on the row that needs it (P2). **Withdrawn 2026-10-23**: the shipped tile + status line is kept and given tones and an icon (`statement.md` § *Schedule row status*); the fix opens one tap down, because the Statement holds no Button |
 | Monthly Earnings Breakdown rows with brown 3D coin icons, a **Show** pill on Karma bonus, 🔒 on locked rows | ListItem rows with the **reward asset** 24 dp leading (coin / badge — the metallic layer is right here, these are rewards), Amount `S` trailing, `caret-right`; locked rows use Amount `locked`; no *Show* pill — the row opens | `assets.md`: rewards are metallic, informational icons are not; a pill inside a row is a second target (P3) |
 | *Income Tax (20 %) −₹500 · Upload PAN Card to reduce tax* as a red link | Row with Amount negative + supporting *20 % until PAN is added*; below the card a **Nudge `gain`** *Add PAN → tax drops to 10 %* with the PAN pictogram | A red link reads as an error; it is an opportunity (P6) and Nudge is the component for *do this → get that* |
 | Rewards & Penalties: two tiles *Gold Coins 40* / *Red Cards 15* | Two Stat `M` tiles in a Card: **Snabbit coins 40** with the pink coin, **Red cards 15** with the red-card asset; tap → the rewards / penalties screens | Gold coin is deprecated (`assets.md`); Stat is the component |
@@ -98,16 +98,46 @@ Kept as shipped: the month-by-month statement; deductions listed openly (cash co
 
 ## 2. Schedule and states
 
-| State | Tag | Supporting line | Action on the row |
-| --- | --- | --- | --- |
-| `scheduled` | `neutral` *15 Mar* | *Monthly payout* | — |
-| `processing` | `warning` **Processing** | *Usually by evening · started 9:10 am* | — (never a spinner; a date, a word) |
-| `paid` | `success` **Paid** | *5 Feb · UTR 1234 5678 90* | IconButton `S` **copy** the UTR (Toast *Copied*) |
-| `blocked` | `error` **Blocked** | *Add a UPI or bank account to get paid* | Button `secondary brand M` **Add UPI or bank** |
-| `failed` | `error` **Failed** | *Bank returned it · check the account number* | Button `secondary brand M` **Fix account** · Help |
-| `held` | `warning` **On hold** | *Talk to Help about this payout* | Button `secondary neutral M` **Call help** |
+> **2026-10-23 — the payout journey** (`projects/payouts-revamp`). Today she sees only a payout's final status.
+> She now sees **where her monthly payout is at every step**, on the **one row that already ships** — the
+> *Monthly payout* row in the statement's *Payout schedule* panel. Each step is a **status** of that row, rendered
+> by `statement.md` § *Schedule row status* (date-tile tone + icon + one status line). Anything she must read or do
+> opens one tap down in a BottomSheet `info`. The Tag-per-row proposal of 2026-09-22 is withdrawn in favour of the
+> shipped tile and line.
 
-Rules: a payout row never shows an amount without a state; *Processing* has a plain-language expectation (*Usually by evening*), never a percentage; a `failed` or `blocked` row is also a Snackbar on Home the day it happens (*Payout blocked · Add UPI ›*), and the *Get paid* Stepper appears at the top of the statement until it is fixed.
+**One row, its current step only.** Earlier attempts are never listed; the row moves on.
+
+```
+ approaching ─► sent ─► paid
+ (T−2 … T)       │
+                 └─► failed ─► retrying (in [X] hours) ─► sent ─► paid
+                                   │  (two automatic retries)
+                                   └─► send it yourself ─► sent ─► paid
+                 └─► bank details wrong ─► (she fixes them) ─► next batch ─► sent
+ bank not added ─────────────────────────► (she adds a bank) ─► next batch ─► sent
+```
+
+| Step | When | Tone | Status line (her words) | Icon | Opens |
+| --- | --- | --- | --- | --- | --- |
+| `approaching` | from 2 days before the trigger date | `neutral` | *Coming on 2 Nov* | `calendar-blank` | — |
+| `sent` | the trigger date | `moving` (blue — fine, on its way; 2026-10-29) | *Sent · in your bank by 3 Nov* | `clock` | — |
+| `paid` | the bank confirms | `done` | *Paid on 3 Nov · UTR 1234567890* | `check-circle` | sheet: UTR with **copy** (Toast *Copied*), the account it went to (masked), *Payout issue* → Help |
+| `retrying` | an attempt failed; an automatic retry is due | `waiting` | *Didn't reach your bank · trying again in [X] hours* | `arrow-clockwise` | sheet `info`: reason pictogram · the reason in one line · *We'll send it again at 2 pm. You don't need to do anything.* · **Got it** |
+| `send-yourself` | the second automatic retry also failed | `needs-her` | *Couldn't send it · send it yourself* | `x-circle` | sheet `info`: reason · one Button `primary brand` **Send to my bank** → the row returns to `sent` |
+| `details-wrong` | the failure is her account (wrong number, closed account) — retrying cannot fix it | `needs-her` | *Bank details are wrong · fix them* | `bank` | sheet `info`: *account details* pictogram · *Your bank couldn't find this account* · **Fix bank details** → § 3 |
+| `blocked` | no bank account added — at any step, through every trigger date | `needs-her` | *Add a bank account · your payout waits until you do* | `bank` | § 3 *Get paid* |
+| `next-batch` | she has just added or fixed her bank after a trigger date | `neutral` | *In the next batch · sent on 3 Nov* | `calendar-blank` | — · plus a Toast at the end of § 3: *Bank account added · your payout goes on 3 Nov* |
+| `held` | ops has paused it | `waiting` | *On hold · talk to us about this payout* | `clock` | sheet: **Call Saathi** (the shipped *Payout Issue* menu) |
+
+**Rules**
+
+- **Red means she must act; amber means we are acting** (`statement.md`). `retrying` is amber even though an attempt failed: she has nothing to do, and the line says so. Red is only `send-yourself`, `details-wrong` and `blocked`.
+- **Every failure names its reason** — in the sheet, one line and one pictogram. Until the payment partner's list is mapped, three reasons: **the bank's side** (*Your bank didn't accept it today*, `bank` ✗) · **our side** (*We couldn't send it — our problem, not yours*, `transfer` ✗) · **account details** (*Your bank couldn't find this account*, `passbook` ✗). The first two retry; the third goes to `details-wrong`.
+- **Dates, not durations, for the monthly payout.** *In your bank by 3 Nov*, never *within 24 hours*. The retry time is a placeholder *[X] hours* until the gap is configured.
+- **Trigger dates.** The 2nd of the month from October 2026; the 1st from January 2027. `approaching` starts two days before.
+- **PAN missing** does not change the row. It is said in the three shipped places, in one message: the *Income tax (20 %)* row, the *Add your PAN card* card, and the tax sheet — *20 % tax is cut until you add PAN. With PAN: 1 %.*
+- **Nothing on Home** (ask of 2026-10-23). The status lives on the statement; notifications are § 6.
+- **This journey is the monthly payout's.** Bonus rows in the schedule (*Winback*, *Joining*) keep `neutral` / `paid` / `blocked` as shipped.
 
 ## 3. Get paid — account and PAN
 
@@ -118,9 +148,24 @@ Rules: a payout row never shows an amount without a state; *Processing* has a pl
 
 ## 4. Early payout
 
-- Row *Early payout · up to ₹25,000* → screen: Amount `L` picker with a NumericKeypad `amount` (₹ steps of 500, max the limit), the fee stated as a row *Fee ₹X (Y %)* and *You'll get ₹Z on Monday*, Button `primary brand L` **Take early payout** → `confirm` sheet with the consequence strip (*−₹3,000 from your 15 Mar payout · fee ₹X*), safe option **Not now** above, **Confirm** below (plain tap — it is her money; the sheet is the protection).
-- It lands in the schedule as *Early payout · Processing* and in the statement as the *Early payout taken* deduction.
-- Limit reached → the row shows *Available again after 15 Mar* and is not disabled without that reason.
+> **2026-10-23 — as shipped, plus its missing states** (`projects/payouts-revamp`;
+> `references/shipped-app-2026-10-23-early-payout/`). The earlier proposal here (NumericKeypad, fee row, confirm
+> sheet) is withdrawn: the live flow is kept — *Max. early payout* card · **Withdraw** · *How much do you need?* with
+> an amount field and slider · *Arrives in your bank* · the sent screen · *Recent withdrawals*.
+
+Early payout runs the § 2 journey with three differences: **no `approaching`** (she asks for it), **no automatic
+retry** (a failure waits for her), **no PAN message**.
+
+| Step | Where she sees it | Rendering |
+| --- | --- | --- |
+| `sent` | the shipped sent screen, then the *Recent withdrawals* row | screen: *₹5,000 will reach your bank in [X] hours* (hours, as shipped) · row: Tag `info` **On its way** with `clock` (blue: moving, nothing wrong — `statement.md` § Schedule row status) |
+| `paid` | *Recent withdrawals* row | Tag `success` **Paid** with `check-circle` (the shipped *● Successful* pill); the row opens the UTR sheet as § 2 `paid` |
+| `failed` | *Recent withdrawals* row **and** the home card | row: Tag `error` **Failed** with `x-circle`, opens a sheet `info`: reason (§ 2 reasons) · **Send again** `primary brand` → `sent`. Home card: a Banner `error` above **Withdraw** while a failure is unresolved — *₹5,000 didn't reach your bank · Send again ›* (the whiteboard's *nudge to re-trigger*). As many times as it takes |
+| `details-wrong` | as `failed` | the sheet's action is **Fix bank details** → § 3 instead of *Send again* |
+| `blocked` | home card | **Withdraw** is replaced by **Add bank account** (one next action, P2) and a Banner `warning` says *Add a bank account to take an early payout*; the amount screen is not reachable |
+
+- It lands in the month statement as the *Early payout* deduction once `paid`.
+- Limit reached → the card shows *Available again after 2 Nov*; **Withdraw** is never disabled without that reason.
 
 ## 5. History
 
@@ -130,7 +175,7 @@ Rules: a payout row never shows an amount without a state; *Processing* has a pl
 ## 6. Paid — the moment
 
 - On payout day: a notification *₹10,474 paid to your account* with the bank's name; in the app a Snackbar *₹10,474 paid · See ›*; the schedule row flips to `paid`. A short `celebrate` moment on the Earnings tab the first time she opens it that day — this is the whole point of the week (P6).
-- Failed: notification + Snackbar with the fix; never silent.
+- Failed: a notification with the reason and what happens next (§ 2); never silent. No Snackbar on Home (2026-10-23).
 - Help from any payout row opens Help with the payout pre-attached (the shipped *Payout Issue*).
 
 ---

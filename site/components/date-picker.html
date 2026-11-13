@@ -102,6 +102,7 @@ td.tk{font-family:var(--mono);font-size:12.5px;color:var(--text)}
 .cell.dis{color:#D1D5DB;cursor:default}
 .cell .off{position:absolute;bottom:-2px;left:0;right:0;text-align:center;font-size:9px;line-height:10px;color:#6B7280}
 .cell.amt{height:56px}.cell.amt .c{margin-top:-10px}.cell .am{position:absolute;bottom:2px;left:0;right:0;text-align:center;font-size:11px;font-weight:600;font-variant-numeric:tabular-nums}
+.cell .mark{position:absolute;left:50%;bottom:-8px;width:6px;height:6px;border-radius:50%;background:#DC2626;transform:translateX(-50%)}.cell.none .c{color:#9CA3AF}
 .cell .am.pos{color:#059669}.cell .am.neg{color:#DC2626}.cell .am.zero{color:#9CA3AF}
 .cell.blank{cursor:default}
 .sum{font-size:18px;line-height:24px;color:#111827;min-height:24px}.sum.empty{color:#6B7280}
@@ -199,7 +200,7 @@ function month(){const first=new Date(y,m,1),off=dow(first),n=new Date(y,m+1,0).
  const isPast=d=>d<TODAY,isFut=d=>d>TODAY;
  const cells=[];for(let i=0;i<off;i++)cells.push('<span class="cell blank"></span>');
  for(let d=1;d<=n;d++){const dt=new Date(y,m,d);let cls=[],dis=false,extra='';
-  if(mode==='earn'){dis=isFut(dt);const v=isFut(dt)?null:[800,650,0,920,-200,700,0][d%7];if(v!==null)extra=`<span class="am ${v>0?'pos':v<0?'neg':'zero'}">${v===0?'—':(v<0?'−':'')+'₹'+Math.abs(v)}</span>`;cls.push('amt');}
+  if(mode==='earn'){dis=isFut(dt);const v=isFut(dt)?null:[800,650,0,920,350,700,0][d%7];if(v!==null&&v>0)extra=`<span class="am pos">₹${v}</span>${d%7===4?'<span class="mark" aria-label="red card"></span>':''}`;else if(v===0)cls.push('none');cls.push('amt');if(v===0)dis=true;}
   else if(mode==='dob'){dis=false;}
   else{dis=isPast(dt);if(mode==='range'&&a&&!b&&(dt<a||(dt-a)/864e5>LIM-1))dis=true;}
   if(same(dt,TODAY)&&mode!=='dob')cls.push('today');
@@ -209,7 +210,7 @@ function month(){const first=new Date(y,m,1),off=dow(first),n=new Date(y,m+1,0).
   if(dis)cls.push('dis');
   cells.push(`<button class="cell ${cls.join(' ')}" data-d="${d}" ${dis?'disabled':''} aria-label="${fmtLong(dt)}${dis?', not available':''}"><span class="c">${d}</span>${extra}</button>`);}
  let sum='Choose a day',empty=true;
- if(mode==='earn'){sum='Tap a day to see its breakdown';}
+ if(mode==='earn'){sum='Tap a day to open it · a dot marks a red-card day · no shift, no number';}
  else if(a&&b){const days=Math.round((b-a)/864e5)+1;sum=`${a.getDate()} to ${b.getDate()} ${MO[m]} · ${days} day${days>1?'s':''}`;empty=false;}
  else if(a){sum=mode==='range'?`From ${fmtLong(a)} — now the last day`:fmtLong(a);empty=mode==='range';}
  const canPrev=mode==='dob'||mode==='earn'||new Date(y,m,1)>new Date(TODAY.getFullYear(),TODAY.getMonth(),1);
@@ -226,13 +227,13 @@ function setMode(md){mode=md;a=b=null;if(md==='dob'){y=dobY;m=2;}else if(md==='e
 $('#mode-range').onclick=()=>{setMode('range');$('#log2').textContent='range · up to 6 days · past days disabled';};
 $('#mode-single').onclick=()=>{setMode('single');$('#log2').textContent='single · past days disabled';};
 $('#mode-dob').onclick=()=>{setMode('dob');$('#log2').textContent='date of birth · year stepper above the month · no typed digits';};
-$('#mode-earn').onclick=()=>{setMode('earn');$('#log2').textContent='earnings by day · read-only · Amount S under each day · future disabled';};
+$('#mode-earn').onclick=()=>{setMode('earn');$('#log2').textContent='earnings by day · read-only · Amount S under each day · a tap opens the day screen · red-card day marked with a dot · days with no shift are not targets · future disabled';};
 setMode('range');
 // cell matrix
 const tile=(n,w,cls)=>`<button class="tile ${cls}"><span class="n">${n}</span><span class="w">${w}</span></button>`;
 const cell=(n,cls,extra='')=>`<div class="grid" style="grid-template-columns:44px"><button class="cell ${cls}"><span class="c">${n}</span>${extra}</button></div>`;
-const ST=[['default','',''],['today','today','Today'],['selected','sel',''],['disabled','dis',''],['off (weekly off)','','off'],['amount (earnings view)','amt','amt']];
-$('#mx').innerHTML=`<div></div>${ST.map(s=>`<div class="h">${s[0]}</div>`).join('')}<div class="r">strip tile</div>${ST.map(([h,c,x])=>`<div class="c">${h.startsWith('amount')?'<span style="font-size:11px;color:var(--text-3)">—</span>':tile(10,x==='Today'?'Today':x==='off'?'Off':'Wed',c)}</div>`).join('')}<div class="r">month cell</div>${ST.map(([h,c,x])=>`<div class="c">${cell(10,c,x==='off'?'<span class="off">Off</span>':x==='amt'?'<span class="am pos">₹800</span>':'')}</div>`).join('')}`;
+const ST=[['default','',''],['today','today','Today'],['selected','sel',''],['disabled','dis',''],['off (weekly off)','','off'],['amount (earnings view)','amt','amt'],['marked (red card, earnings view)','amt','mark']];
+$('#mx').innerHTML=`<div></div>${ST.map(s=>`<div class="h">${s[0]}</div>`).join('')}<div class="r">strip tile</div>${ST.map(([h,c,x])=>`<div class="c">${h.startsWith('amount')?'<span style="font-size:11px;color:var(--text-3)">—</span>':tile(10,x==='Today'?'Today':x==='off'?'Off':'Wed',c)}</div>`).join('')}<div class="r">month cell</div>${ST.map(([h,c,x])=>`<div class="c">${cell(10,c,x==='off'?'<span class="off">Off</span>':x==='amt'?'<span class="am pos">₹800</span>':x==='mark'?'<span class="am pos">₹350</span><span class="mark"></span>':'')}</div>`).join('')}`;
 // time
 $('#time-grid').innerHTML=[
  `<div class="stg"><div class="sheet"><div class="tt">Shift start</div>${['7:00 am','9:00 am','11:00 am','2:00 pm'].map((t,i)=>`<div class="row"><span class="rd ${i===1?'on':''}"></span>${t}<span style="margin-left:auto;font-size:14px;color:#6B7280">${['4 hrs','5 hrs','4 hrs','5 hrs'][i]}</span></div>`).join('')}</div><div class="cap"><b>select sheet</b> · named slots with what they mean · spoken "nine in the morning"</div></div>`,

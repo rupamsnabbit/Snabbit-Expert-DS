@@ -1,0 +1,26 @@
+/* Start late tomorrow — layout from Paper 3.1–3.3, values from the DS tokens */
+.ll-body { padding-top: 24px; gap: 16px; }
+.ll-h { font-size: 20px; line-height: 28px; font-weight: 600; color: var(--color-gray-900); }
+.ll-head { display: flex; align-items: center; gap: 16px; }
+.ll-head .ll-h { flex: 1; }
+/* DayCell strip tile, default (neutral): 64 × 64, radius.lg, bgPrimary, 1 dp borderDefault, number Heading3 textPrimary, weekday Caption uppercase textSecondary */
+.ll-day { flex-shrink: 0; width: 64px; height: 64px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: var(--radius-lg); background: var(--color-bg-primary); border: 1px solid var(--color-border-default); }
+.ll-day .n { font-size: var(--text-heading3); line-height: var(--leading-heading3); font-weight: 600; color: var(--color-text-primary); }
+.ll-day .w { font-size: var(--text-caption); line-height: var(--leading-caption); font-weight: 500; color: var(--color-text-secondary); text-transform: uppercase; }
+.ll-usual { display: flex; align-items: center; justify-content: space-between; padding: 16px; border-radius: 12px; background: var(--color-gray-100); font-size: 16px; line-height: 24px; color: var(--color-gray-500); }
+.ll-usual b { font-weight: 600; color: var(--color-gray-900); }
+.ll-card { padding: 16px; align-items: flex-start; }
+.ll-card .radio { margin-top: 2px; }
+.ll-loss { font-size: 14px; line-height: 20px; font-weight: 500; color: var(--color-red-600); }
+.ll-sheet { gap: 0; }
+.ll-sheet .ftitle span:first-child { font-size: 20px; line-height: 28px; }
+.ll-cost { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 20px 16px; margin-bottom: 20px; border-radius: 12px; background: var(--color-red-50); }
+.ll-amt { font-size: 32px; line-height: 40px; font-weight: 600; color: var(--color-red-600); }
+.ll-from { font-size: 14px; line-height: 20px; color: var(--color-gray-700); }
+.ll-not { margin-top: 8px; color: var(--color-gray-800); font-size: 16px; line-height: 24px; font-weight: 600; }
+/* Profile row once it is set: muted, cannot be changed (3.3) */
+.profile .prow.ll-set .plabel { color: var(--color-gray-400); }
+.profile .prow.ll-set .psub { display: block; font-size: 14px; line-height: 20px; color: var(--color-gray-500); }
+.profile .prow .l .lt { display: flex; flex-direction: column; }
+#toast:has(.ll-tick) { display: flex; align-items: center; gap: 8px; text-align: left; }
+.ll-tick { width: 20px; height: 20px; color: var(--color-green-400); flex-shrink: 0; } .ll-tick svg { width: 20px; height: 20px; }

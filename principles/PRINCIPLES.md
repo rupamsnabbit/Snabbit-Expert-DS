@@ -268,7 +268,9 @@ Use these words everywhere — UI, code, docs, training. Do not introduce synony
 | --- | --- | --- |
 | Expert | worker, runner, helper, maid | *Runner* survives in package names only |
 | Job | booking, order, task, gig | A single customer visit |
-| Shift | slot, session | The block of hours she has chosen to work |
+| Shift | slot, session | The block of hours she has chosen to work. Describe a shift by its hours a day and its times (*8 hrs a day*, *9 am – 5 pm*). *Full time*, *Part time* and *Smart Shift* are internal words and never reach her: say *8 hrs a day* (2026-10-01) |
+| Hood | cluster, zone, locality, area (for this level) | Where she works, named by its landmark and sector (*Kudlu Gate*, *Near Forum Mall · 6th Sector*). Used as *My hood*, *Change my hood*, *Your hood now* |
+| Area | *Near your home* as a list heading | The bigger place a hood sits in (*Koramangala*, *Bommanahalli*). Used only as a list heading or a card's second line |
 | Check in / Check out | login, punch, attendance | Arriving at / leaving a customer's home |
 | Earnings | income, wallet balance | What she has earned |
 | Payout | settlement, transfer | Money reaching her bank |

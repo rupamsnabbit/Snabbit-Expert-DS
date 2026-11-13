@@ -1,0 +1,12 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Pictogram &#194;&#183; dial" clip-path="url(#clip0_0_139)">
+<path id="Vector" d="M20 38.5C30.2173 38.5 38.5 30.2173 38.5 20C38.5 9.78273 30.2173 1.5 20 1.5C9.78273 1.5 1.5 9.78273 1.5 20C1.5 30.2173 9.78273 38.5 20 38.5Z" fill="white" stroke="#E5E7EB" stroke-width="2"/>
+<path id="Vector_2" d="M20 20V5C22.633 5.00007 25.2196 5.69321 27.4999 7.00976C29.7801 8.32631 31.6736 10.2199 32.9901 12.5002C34.3066 14.7804 34.9996 17.3671 34.9996 20.0001C34.9996 22.6331 34.3065 25.2197 32.99 27.5L20 20Z" fill="#FBC9DF"/>
+<path id="Vector_3" d="M20 22C21.1046 22 22 21.1046 22 20C22 18.8954 21.1046 18 20 18C18.8954 18 18 18.8954 18 20C18 21.1046 18.8954 22 20 22Z" fill="#111827"/>
+</g>
+<defs>
+<clipPath id="clip0_0_139">
+<rect width="40" height="40" fill="white"/>
+</clipPath>
+</defs>
+</svg>
