@@ -15,6 +15,7 @@ Spoken guidance is a first-class channel (P4): she processes speech faster than 
 | No playing state | Playing: disc shows `pause`, track fills, inline control goes `fill`; **only one voice at a time** across the screen | She must see what is talking to stop it. |
 | Autoplay undefined | **Autoplay policy** below: first visit of onboarding / first-run screens, errors and offline speak on their own; in-job screens never speak unasked | A customer's home is not the place for the phone to start talking (P7 tone, persona). |
 | Speaker icon on the right does nothing defined | Right slot = **sound on/off** for autoplay, `speaker-high` / `speaker-slash`, remembered per account | One place to quiet the app without losing the ability to replay. |
+| After a voice ends on its own, the disc shows `play` again; experts on the hood-shift screens did not know they could tap it to hear it again | **`finished`** state: the disc shows `arrow-counter-clockwise`, a full ring, and a `bgBrand` glow that breathes twice and then holds still (asked by `projects/hood-shift-change`, 2026-11-13) | With autoplay her first sight of the control is *after* it spoke; `play` reads as *not played yet* and is already *resume* when paused. One icon, one meaning: pause · resume · again (P1, P6). |
 
 ---
 
@@ -28,7 +29,8 @@ Spoken guidance is a first-class channel (P4): she processes speech faster than 
 └────────────────────────────────────────────────────────────────┘
 ```
 
-- **Disc**: `play` (idle / finished) ↔ `pause` (playing). 48 dp hit area. Tapping after finishing replays from the start.
+- **Disc**: four states, each its own glyph. `play` (idle — autoplay off or blocked, nothing has played) · `pause` (playing) · `play` (paused — resumes where it stopped) · **`arrow-counter-clockwise` (finished)**. 48 dp hit area. Tapping when finished replays from the start.
+- **Finished invites the second listen.** When the voice reaches its end, the ring is full, the glyph turns to `arrow-counter-clockwise` (bold, emphasis) on a `bgBrand` disc, and a `bgBrand` glow (proposed `elevation.glowBrand`) rises behind the disc, or behind the Saathi avatar where a screen uses one. The glow breathes for two cycles of `motion.loop`, then holds still — it does not keep pulsing (`foundations/motion.md`: no idle animation). It clears when she taps (replay starts, state → playing) or leaves the screen. Reduced motion: the glow appears without breathing. One glow per screen: while a microphone on the screen is listening, the mic owns the glow and the voice control shows `finished` without it.
 - **Track**: fills left→right in real time; no knob; not draggable. Tapping the track does nothing.
 - **Sound toggle**: `speaker-high` = the app may speak on its own; `speaker-slash` = it speaks only when she taps play. Persistent per account; a Toast confirms *Voice on* / *Voice off — tap ▶ to hear*.
 - Never carries text: the screen's own copy is the transcript.
@@ -84,7 +86,7 @@ Anything that autoplays also shows the control, so what spoke can be replayed an
 
 ## Accessibility
 
-Bar: `group` labelled *Voice guidance*; disc announces *Play guidance* / *Pause*; toggle announces *Voice on* / *Voice off*. Inline: *Listen, {what}* / *Stop*. Live region announces *Playing* once. Contrast: disc `iconInverse` on `bgBrand`; track `bgBrand` on `bgBrandSubtle` 3.2:1 (non-text). Targets 48 dp.
+Bar: `group` labelled *Voice guidance*; disc announces *Play guidance* / *Pause* / *Play again* (finished); toggle announces *Voice on* / *Voice off*. Inline: *Listen, {what}* / *Stop*. Live region announces *Playing* once. Contrast: disc `iconInverse` on `bgBrand`; track `bgBrand` on `bgBrandSubtle` 3.2:1 (non-text). Targets 48 dp.
 
 ---
 
@@ -93,12 +95,13 @@ Bar: `group` labelled *Voice guidance*; disc announces *Play guidance* / *Pause*
 | Token | Value | Note |
 | --- | --- | --- |
 | `sound.voiceStart` | — | Tick haptic only; no sound (into the sound register) |
+| `elevation.glowBrand` | `pink600` glow, no offset (Figma: two shadows, 45 % blur 18 spread 3 and 25 % blur 6 spread 1) | The `finished` invitation behind the disc / Saathi. Proposed by `projects/hood-shift-change`, 2026-11-13 |
 
 ---
 
 ## Figma reconciliation
 
-1. **Create** VoicePrompt: `Form` (Bar / Inline), `State` (Idle / Playing / Finished), `Sound` (On / Off), boolean `Label` (inline). Bar bound to `bgBrandSubtle`, disc to `bgBrand`.
+1. **Create** VoicePrompt: `Form` (Bar / Inline), `State` (Idle / Playing / Paused / Finished — Finished carries the replay glyph and the glow), `Sound` (On / Off), boolean `Label` (inline). Bar bound to `bgBrandSubtle`, disc to `bgBrand`.
 2. Replace the scrubber knob in every onboarding frame with the knob-less track; add the bar to training, go-live and error screens.
 3. Replace the *Listen* pill and bare speakers with `inline` instances.
 4. Note autoplay in each screen mock's frame description (*autoplays first visit* / *never autoplays*).

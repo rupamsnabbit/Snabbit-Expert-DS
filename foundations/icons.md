@@ -25,10 +25,10 @@ Status: **seed**. Populated fully during the Button, Tab bar and Job-alert specs
 | `user-circle` | Profile tab | regular / fill when selected | Bottom tab bar |
 | `siren` | SOS | fill | SOS control — this icon is used for nothing else |
 | `shield-check` | Shield / Kavach active | fill | In-job header |
-| `speaker-high` | Play / replay spoken guidance | regular · fill while playing | Voice prompt, Coachmark, HeaderNav trailing |
+| `speaker-high` | **Listen** — this can be heard; tap to hear it (the `inline` voice control). Never the replay of a finished voice (that is `arrow-counter-clockwise`) | regular · fill while playing | Voice prompt `inline`, Coachmark, HeaderNav trailing |
 | `speaker-slash` | Sound / autoplay off | regular | VoicePrompt bar toggle, Coachmark muted state |
-| `play` | Play (voice or clip) | fill | VoicePrompt bar disc, HowToClip card |
-| `arrow-counter-clockwise` | Replay | regular | HowToClip player |
+| `play` | Play / **resume** (voice or clip) — it has not played yet, or it stopped midway. Never *play again* after it finished | fill | VoicePrompt bar disc (idle, paused), Saathi ring control, HowToClip card |
+| `arrow-counter-clockwise` | **Replay from the start** — a voice or clip that has finished; tap to hear it again | regular · bold on the 12 dp Saathi badge (emphasis) | HowToClip player; VoicePrompt `finished` disc and the Saathi ring control with the glow (`projects/hood-shift-change`, 2026-11-13) |
 | `pause` | Pause spoken guidance | fill | VoicePrompt bar disc while playing |
 | `wifi-slash` | Offline | regular | Offline banner |
 | `warning-circle` | Warning / attention | regular | Banner, Toast, ShieldRow blocked / stopped reason |
